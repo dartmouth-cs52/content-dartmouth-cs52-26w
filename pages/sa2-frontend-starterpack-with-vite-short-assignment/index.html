@@ -442,143 +442,130 @@
   </style>
 </head>
 <body>
-
-<p>Type: short<br>week: Week 2<br>Created time: April 9, 2023 6:01 PM<br>Dates: April 14, 2025 → April 17, 2025<br>published: Yes</p>
-<h1 style="background-color: #DDEBF1;"><strong>Frontend Starterpack — Short Assignment</strong></h1>
 <p><em>Note: We will use <strong>Vite</strong> this term. While it is perhaps less advanced than the previous champion, webpack, it is the up and coming bundler/builder that is taking over.</em> </p>
 <p><em>Changing from webpack to vite approximately halved this assignment, you are welcome.</em> </p>
-<h2 style="background-color: #FBF3DB;">Overview</h2>
+<div class="heading-block h2-block"><h2>Overview</h2></div>
 <p>Today, we’ll be learning about a set of tools for making your code compact and pretty. So far, you’ve been using html and css in separate files, and the sites have been fairly compact — but as your sites grow more complex and include more and more libraries, there has to be a way to manage it all. We’ll introduce a set of tools to help you build complex sites with many module dependencies easily.</p>
-<div class="callout" style="align-items: flex-start;"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
-<h2 style="background-color: #FBF3DB;">Today’s Stack</h2>
+<p></p>
+<p>💻️ run in Termninal</p>
+<p>🚀 a step to not forget</p>
+<div class="heading-block h2-block"><h2>Today’s Stack</h2></div>
 <p>We’ll build a starter package that will use:</p>
-<ul>
-<li>vite</li>
-<li>sass</li>
-<li>babel</li>
-<li>eslint</li>
-<li>as well as a suite of cool tools: node, npm</li>
-</ul>
+<ul><li>vite</li><li>sass</li><li>babel</li><li>eslint</li><li>as well as a suite of cool tools: node, npm</li></ul>
 <p>Don’t worry; we’ll learn allllll about it.</p>
 <p>🌵 Note: This <em>short</em> is a little on the long side, but it’s important. Try to read the explanations so you understand what is happening — you will be using and building up from this starterpack for the next month.</p>
-<p>🚨 <em>There is a way to generate a similar starterpack that some of you may have played around with: <code>create-react-app</code>. This is generally a fine way to do a quick start react project. However, it hides all the magic it does in a complex set of hidden config files, and is difficult to extend. We want to have the confidence to do that and to understand what is actually happening — so we’re going to start from scratch.</em> ✊</p>
-<h2 style="background-color: #FBF3DB;">To Start</h2>
+<p>🚨&nbsp;<em>There is a way to generate a similar starterpack that some of you may have played around with: <code>create-react-app</code>. This is generally a fine way to do a quick start react project. However, it hides all the magic it does in a complex set of hidden config files, and is difficult to extend. We want to have the confidence to do that and to understand what is actually happening — so we’re going to start from scratch.</em> ✊</p>
+<div class="heading-block h2-block"><h2>To Start</h2></div>
 <p>🚀  Get your repo from <a href="https://classmoji.io/">Classm🎯ji</a> in the <code>main</code> branch for now, you’ll see why later. The GitHub Issue for this assignment is named <code>Vite React StarterPack</code>. </p>
-<h2 style="background-color: #FBF3DB;"><a href="https://www.npmjs.com/">NPM</a></h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/npm-1767548419532.jpg" alt=""></p>
+<div class="heading-block h2-block"><h2><a href="https://www.npmjs.com/">NPM</a></h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/npm-1767548419532.jpg" alt="">
 <p><a href="https://www.npmjs.com/">NPM</a> is the dependency package manager for Node.js and the JavaScript ecosystem in general. While we won’t exactly be using Node just yet today, we will be using the package manager to install various JavaScript tools. Node.js is a JavaScript platform for running JavaScript outside of a browser for developing server-side applications, and we will be using it extensively later on. You can do things like <code>npm install somepackage</code> , and it will download that package and add it to your project. Great.</p>
-<h3>Installation</h3>
+<div class="heading-block h3-block"><h3>Installation</h3></div>
 <p>🚀 Let’s install some Node.js!</p>
-<h3>os x:</h3>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">brew update
+<div class="heading-block h3-block"><h3>os x:</h3></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">brew update
 brew upgrade
-brew install node</code></pre></div></div></div>
+brew install node</code></pre></div>
 <p>Make sure you have reasonably up-to-date versions of node/npm/yarn:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-bash">node --version
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">node --version
 # vv22.13.1
 npm --version
-# 11.0.0</code></pre></div></div></div>
+# 11.0.0</code></pre></div>
 <p>Newer than these is fine, but if you have older ones, you might need to force uninstall/reinstall:</p>
 <p>If you run into problems here (such as permissions issues), you can try forcing a reinstall (OSX):</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">sudo chown -R $USER /usr/local  #in case you had ever run brew with sudo
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">sudo chown -R $USER /usr/local  #in case you had ever run brew with sudo
 brew uninstall --force node
-brew install node</code></pre></div></div></div>
-<h3>windows, other:</h3>
-<ul>
-<li>windows: install from <a href="https://nodejs.org/en/">nodejs.org</a>. <em>you may need to restart git shell afterwards</em></li>
-<li>linux: use your distribution’s package manager.</li>
-</ul>
-<h3>Node Version Manager (optional)</h3>
+brew install node</code></pre></div>
+<div class="heading-block h3-block"><h3>windows, other:</h3></div>
+<ul><li>windows: install from <a href="https://nodejs.org/en/">nodejs.org</a>. <em>you may need to restart git shell afterwards</em></li><li>linux: use your distribution’s package manager.</li></ul>
+<div class="heading-block h3-block"><h3>Node Version Manager (optional)</h3></div>
 <p>If you want to get fancy, install a node version manager.  This will enable you to easily keep up to date with node versions and use different ones across different projects. It is a bit extra, and you won’t need it for this class, but it is best practice. <em>Mention it in your submission and screenshot in use.</em></p>
 <p><a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
-<h2 style="background-color: #FBF3DB;">start a node project</h2>
+<div class="heading-block h2-block"><h2>start a node project</h2></div>
 <p>🚀 We will start a Node.js project even though we will only be using the Node Package Manager.</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">#make sure you are cd&#39;d into your cloned workspace
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are cd'd into your cloned workspace
 
-npm init #accept all the default answers if you want</code></pre></div></div></div>
-<p>All this did was create a barebones <code>package.json</code> file. This file defines a Node.js-based project and is required. It will primarily list all of the dependencies of our project. It will also define some convenient scripts for us. 👀 Take a look at it; mostly, it has a name and some other metadata about your project.</p>
-<h3>Index file</h3>
+npm init #accept all the default answers if you want</code></pre></div>
+<p>All this did was create a barebones <code>package.json</code> file. This file defines a Node.js-based project and is required. It will primarily list all of the dependencies of our project. It will also define some convenient scripts for us. 👀&nbsp;Take a look at it; mostly, it has a name and some other metadata about your project.</p>
+<div class="heading-block h3-block"><h3>Index file</h3></div>
 <p>🚀 Let’s create a simple JavaScript file to get us started. It is good practice to keep your app in a subdirectory of the project, so let’s create that and call it <code>src</code>.</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-bash">mkdir src #create directory
-touch src/index.js   #creates an empty file</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">mkdir src #create directory
+touch src/index.js   #creates an empty file</code></pre></div>
 <p>🚀 Now in our code editor (<strong>VSCode),</strong> let’s give our app something to do. Edit <code>index.js</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">console.log(&#39;starting up!&#39;);</code></pre></div></div>
-<h3>npm start</h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">console.log('starting up!');</code></pre></div></div>
+<div class="heading-block h3-block"><h3>npm start</h3></div>
 <p>Now let’s make it so we can run our app!</p>
 <p>🚀 Edit your <code>package.json</code> file:</p>
-<ul>
-<li>change: <code>&quot;main&quot;: &quot;index.js&quot;</code> to <code>&quot;main&quot;: &quot;src/index.js&quot;</code></li>
-<li>add/modify a <code>&quot;scripts&quot;</code> section: <code>&quot;scripts&quot;: { &quot;start&quot;: &quot;node src/index.js&quot; }</code></li>
-</ul>
+<ul><li>change: <code>"main": "index.js"</code> to <code>"main": "src/index.js"</code></li><li>add/modify a <code>"scripts"</code> section: <code>"scripts": { "start": "node src/index.js" }</code></li></ul>
 <p>Now in 💻 you can:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-bash">💻 npm start
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 npm start
 
 &gt; starterpack@1.0.0 start
-&gt; node src/index.js</code></pre></div></div></div>
+&gt; node src/index.js</code></pre></div>
 <p>Great, you just ran a little bit of JavaScript on the computer without a browser.</p>
 <p>But, we want to actually make a webpage, right?</p>
-<h2 style="background-color: #FBF3DB;">Index HTML</h2>
+<div class="heading-block h2-block"><h2>Index HTML</h2></div>
 <p>Let’s set up a simple <code>index.html</code> to act as our main html page.</p>
 <p>🚀 Create an <code>index.html</code> in your project folder <em>(NOT src, just in the project root)</em>.</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;starter pack&lt;/title&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
     &lt;link
-      href=&quot;https://fonts.googleapis.com/css?family=Roboto&quot;
-      rel=&quot;stylesheet&quot;
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
     /&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;div class=&quot;logo&quot;&gt;&lt;/div&gt;
-    &lt;div id=&quot;main&quot;&gt;Loading&lt;/div&gt;
-    &lt;script type=&quot;module&quot; src=&quot;/src/index.js&quot;&gt;&lt;/script&gt;
+    &lt;div class="logo"&gt;&lt;/div&gt;
+    &lt;div id="main"&gt;Loading&lt;/div&gt;
+    &lt;script type="module" src="/src/index.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre></div></div>
 <p>Sweet, a page that probably says “loading”. We rock. But you probably want to be able to view it, and maybe we can do it better than with that Python module we used last week.</p>
-<p>🔔 Notice a strange line in there?  the <code>&lt;script&gt;</code> tag that loads in <code>/src/index.js</code>.. That is the key line - that tells Vite what the entry point is to our JavaScript application!  </p>
-<h2 style="background-color: #FBF3DB;">VITE</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/image-1767548419532.png" alt="image.png"></p>
+<p>🔔&nbsp;Notice a strange line in there?  the <code>&lt;script&gt;</code> tag that loads in <code>/src/index.js</code>.. That is the key line - that tells Vite what the entry point is to our JavaScript application!  </p>
+<div class="heading-block h2-block"><h2>VITE</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/image-1767548419532.png" alt="image.png">
 <p><a href="https://vitejs.dev/">Vite</a> is a powerful development server and build tool. What it does is take all your dependencies (all the various files and libraries that your project is using), processes them, and then either serves them in dev mode or builds them for production. It does this in a smart way, where it will only bundle up the things you need (<a href="https://rollupjs.org/">with Rollup</a>). It can do any preprocessing that you need, such as converting various code syntax, and supports hot-reloading, so you never have to refresh the page manually again. Most cleverly, it actually analyzes your code and figures out what you are doing and only includes what is necessary. </p>
-<h3>Install Vite for the project</h3>
+<div class="heading-block h3-block"><h3>Install Vite for the project</h3></div>
 <p>🚀 Let’s add Vite to our 🚼 project:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install -D vite</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -D vite</code></pre></div>
 <p><code>npm install</code> is how you add most any javascript library to your project. It will install in a directory <code>node_modules</code> in your project and it will also add it into the <code>dependencies</code> section of the <code>package.json</code>! You want to add it to your project so that later if others were to download the project they could install the same packages.</p>
-<p>Note: when you give <code>-D</code> as an argument it will add those modules to your <code>package.json</code> in a <code>devDependencies</code> section. In this case we are saying these are <em>development</em> only dependencies. So you will now notice new lines declaring those dependencies in <code>package.json</code> as <code>&quot;devDependencies&quot;</code>. Leave off the <code>-D</code> flag if you are adding in a library you want to package up for the browser.</p>
+<p>Note: when you give <code>-D</code> as an argument it will add those modules to your <code>package.json</code> in a <code>devDependencies</code> section. In this case we are saying these are <em>development</em> only dependencies. So you will now notice new lines declaring those dependencies in <code>package.json</code> as <code>"devDependencies"</code>. Leave off the <code>-D</code> flag if you are adding in a library you want to package up for the browser.</p>
 <p><em>If you see some warnings about deprecated packages — don’t worry, the NPM ecosystem is large and often packages you install will have their own dependencies that might have warnings about versions that should be upgraded. In this context warnings are usually ok.</em></p>
-<h3>.gitignore</h3>
+<div class="heading-block h3-block"><h3>.gitignore</h3></div>
 <p>⚠️ <code>node_modules</code> is <strong>not</strong> something you need to commit to git. These are libraries that you can assume will be available and so as long as you have saved the dependencies to the <code>package.json</code> file anybody can later install all of the required packages by simply running <code>npm install</code>. There will <strong>always be points off</strong> if your github repo contains <code>node_modules</code>.</p>
 <p>🚀 Let’s make sure we don’t do that now. Create a file called <code>.gitignore</code> and add the following:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">dist
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">dist
 node_modules
-.DS_Store</code></pre></div></div></div>
-<p>🚀 Let’s add things to git while we are at it: <code>git add * .gitignore</code>, <code>git commit -am &quot;we have some files in our project now&quot;</code></p>
+.DS_Store</code></pre></div>
+<p>🚀 Let’s add things to git while we are at it: <code>git add * .gitignore</code>, <code>git commit -am "we have some files in our project now"</code></p>
 <p>Whenever there are files in your project that you don’t want git tracking, you can add them to your <code>.gitignore</code> file.</p>
-<h3>First JS On The Web</h3>
+<div class="heading-block h3-block"><h3>First JS On The Web</h3></div>
 <p>🚀 Let’s add in <a href="http://jquery.com/">JQuery</a> really quick. We won’t really be using much jquery this term, but for a quick example it will suffice.</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-powershell">💻 npm install jquery   #notice there is no -D</code></pre></div></div>
 <p>🚀 Change your <code>src/index.js</code> to the following:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">import $ from &#39;jquery&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">import $ from 'jquery';
 
-$(&#39;#main&#39;).html(&#39;Here we go!&#39;);</code></pre></div></div>
+$('#main').html('Here we go!');</code></pre></div></div>
 <p>All this will do is find the element with the <code>id</code> of <code>main</code> and change the content to ‘Here we go!’.</p>
-<p>🔔 Note that we are already using <code>import</code> rather than the vanilla javascript <code>require.</code>That is because Vite uses esmodules and doesn’t like the older commonjs <code>require</code> syntax.  We’re already benefiting from a newer standard and we’ve barely even started. </p>
+<p>🔔&nbsp;Note that we are already using <code>import</code> rather than the vanilla javascript <code>require.</code>That is because Vite uses esmodules and doesn’t like the older commonjs <code>require</code> syntax.  We’re already benefiting from a newer standard and we’ve barely even started. </p>
 <p>At this point, you could try opening this page in a browser, but it won’t work! The browser has no idea how to find jquery and it all crashes and burns 🔥. Luckily, Vite allows us to run a development mode server.</p>
-<h3>Configure Vite</h3>
+<div class="heading-block h3-block"><h3>Configure Vite</h3></div>
 <p>🚀 Let’s give Vite a very basic configuration. Create a file called <code>vite.config.js</code> with these contents in the root folder:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">/* eslint-disable import/no-extraneous-dependencies */
-import { defineConfig } from &#39;vite&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">/* eslint-disable import/no-extraneous-dependencies */
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [],
 });</code></pre></div></div>
 <p>This is just a skeleton of the file for now, nothing very interesting here. Vite will assume a lot of things about our project - in particular it will package things up into a directory called <code>dist</code>.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">Code</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code>src/ #the source html,js,css,scss files for your app
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">src/ #the source html,js,css,scss files for your app
 dist/  #autogenerated directory where vite will put your bundle files</code></pre></div></div>
 <p>🚀 now try running vite directly from the commandline: <code>./node_modules/.bin/vite build</code></p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-bash">💻 ./node_modules/.bin/vite build
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 ./node_modules/.bin/vite build
 
 vite v6.0.11 building for production...
 ✓ 3 modules transformed.
@@ -586,74 +573,71 @@ dist/index.html                   0.45 kB
 dist/assets/tim-8716b194.png      5.11 kB
 dist/assets/index-bff30c8e.css    0.30 kB │ gzip:  0.23 kB
 dist/assets/index-0c5f68e6.js   184.17 kB │ gzip: 59.42 kB
-✓ built in 1.53s</code></pre></div></div></div>
+✓ built in 1.53s</code></pre></div>
 <p>🚀 Now if you do <code>ls dist</code>, you’ll see some files in there!</p>
 <p>Great! Vite is building our <code>index.js</code> file and all the required dependencies and packaging it up as a bundle for the web. How’d it know what to include? Well it started with <code>index.html</code> saw that we wanted to load in <code>index.js</code> and saw our <code>require</code> statement, then it also located the jQuery module in <code>node_modules</code> and included it. 😎</p>
 <p>🚀  If you want you can delete <code>dist</code> for now. <code>rm -rf dist</code> But, since it is in our .gitignore you can also just leave it.</p>
-<h3>Running Vite in dev mode</h3>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/js-engine-1767548419532.gif" alt=""></p>
+<div class="heading-block h3-block"><h3>Running Vite in dev mode</h3></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/js-engine-1767548419532.gif" alt="">
 <p>This is where Vite really shines. We could start up a python webserver to load the files, but Vite comes with a dev server built in and it is much better.</p>
 <p>🚀 Edit your <code>package.json</code> and set up some scripts.  Node package scripts are the section in the <code>package.json</code> that define how to run your project. </p>
 <p>Change this entire section to be:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">&quot;scripts&quot;: {
-    &quot;dev&quot;: &quot;vite&quot;,
-    &quot;build&quot;: &quot;vite build&quot;,
-    &quot;preview&quot;: &quot;vite preview&quot;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-javascript">"scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },</code></pre></div></div>
 <p>🚀 Now you can simply run <code>npm run dev</code>:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-bash">💻 npm run dev
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 npm run dev
 
 VITE v6.0.11  ready in 394 ms
 
   ➜  Local:   http://127.0.0.1:5173/
   ➜  Network: use --host to expose
-  ➜  press h to show help</code></pre></div></div></div>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-8-1767548419532.png" alt="Screenshot 2023-04-10 at 8.54.16 PM.png"></p>
-<h3>Vite Plugins</h3>
+  ➜  press h to show help</code></pre></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-8-1767548419532.png" alt="Screenshot 2023-04-10 at 8.54.16 PM.png">
+<div class="heading-block h3-block"><h3>Vite Plugins</h3></div>
 <p>Vite supports a concept of  plugins that extend the basic functionality.  It already comes out of the box with some support though that we should mention. </p>
-<h2 style="background-color: #FBF3DB;">Babel</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/babel-1767548419532.png" alt="babel.png"></p>
+<div class="heading-block h2-block"><h2>Babel</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/babel-1767548419532.png" alt="babel.png">
 <p>We’ve discussed various JavaScript versions. Babel is a transpiler that converts newer es20XX javascript syntax to more compatible syntax that browsers actually understand (browsers are typically behind in their ECMAScript support). If you are curious, you can try it out at <a href="https://babeljs.io/repl/">babeljs</a></p>
 <p>Vite includes transpiling newer syntax for us automatically and uses Babel under the hood with React once we get there, so we don’t have to configure this manually.  </p>
-<h2 style="background-color: #FBF3DB;">Main Functionality</h2>
-<p>🚀 Now write some JavaScript that updates the <code>#main</code> element every second to: <code>You&#39;ve been on this page for ${num} seconds.</code>. This will be a simple counter.</p>
-<ul>
-<li>you could use <code>setInterval</code> to call a function</li>
-<li>avoid using <code>var</code> (remember <code>let</code> and <code>const</code>)</li>
-</ul>
+<div class="heading-block h2-block"><h2>Main Functionality</h2></div>
+<p>🚀 Now write some JavaScript that updates the <code>#main</code> element every second to: <code>You've been on this page for ${num} seconds.</code>. This will be a simple counter.</p>
+<ul><li>you could use <code>setInterval</code> to call a function</li><li>avoid using <code>var</code> (remember <code>let</code> and <code>const</code>)</li></ul>
 <p>Excellent, now your page is keeping count of how long it has been since you loaded/reloaded it.<br><strong>SUPER USEFUL</strong>🤷**!**</p>
-<h2 style="background-color: #FBF3DB;">Linting</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-1767548419532.png" alt=""></p>
+<div class="heading-block h2-block"><h2>Linting</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-1767548419532.png" alt="">
 <p>Ok, how about we add in linting. Linters are code parsers that check your code for syntax errors, common style mistakes, and make sure that your code is clean and follows some best practices. Linters help save time, detect bugs, and improve code quality. Linters exist for all types of languages and even languages such as HTML, CSS, and JSON. Linters are especially helpful for detecting syntax errors when using dynamically typed languages in lightweight editors like VSCode.</p>
 <p>In VSCode, install the <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a> extension.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/vscode-eslint-1767548419532.jpg" alt=""></p>
-<p>🚨 <em><strong>Always open your entire project in VSCode rather than just single files or other folders. This will prevent failure due to VSCode not picking up the project-wide config files.</strong></em></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/vscode-eslint-1767548419532.jpg" alt="">
+<p>🚨&nbsp;<em><strong>Always open your entire project in VSCode rather than just single files or other folders. This will prevent failure due to VSCode not picking up the project-wide config files.</strong></em></p>
 <p>We’ll be using <a href="http://eslint.org/">Eslint</a> in every assignment!</p>
 <p>🚀 Install <code>eslint</code>:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">💻 npm install -D eslint@latest @eslint/js@latest eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-plugin-jsx-a11y @stylistic/eslint-plugin globals</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 npm install -D eslint@latest @eslint/js@latest eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-plugin-jsx-a11y @stylistic/eslint-plugin globals</code></pre></div>
 <p><code>eslint</code> comes with a series of plugins for various javascript packages. We’ll be changing some of the rules and the rules are flexible (you may disable some of the more annoying ones).</p>
 <p>🚀 After installing <code>eslint</code>, create an eslint configuration file <code>eslint.config.js</code> with the following content. This file sets us up with a lot of best practices and recommended rules. </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span><span class="line-number">43</span><span class="line-number">44</span><span class="line-number">45</span><span class="line-number">46</span><span class="line-number">47</span><span class="line-number">48</span><span class="line-number">49</span><span class="line-number">50</span></div><pre><code class="language-jsx">import js from &#39;@eslint/js&#39;;
-import globals from &#39;globals&#39;;
-import pluginReact from &#39;eslint-plugin-react&#39;;
-import pluginReactHooks from &#39;eslint-plugin-react-hooks&#39;;
-import pluginJsxA11y from &#39;eslint-plugin-jsx-a11y&#39;;
-import pluginImport from &#39;eslint-plugin-import&#39;;
-import stylistic from &#39;@stylistic/eslint-plugin&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span><span class="line-number">43</span><span class="line-number">44</span><span class="line-number">45</span><span class="line-number">46</span><span class="line-number">47</span><span class="line-number">48</span><span class="line-number">49</span><span class="line-number">50</span></div><pre><code class="language-javascript">import js from '@eslint/js';
+import globals from 'globals';
+import pluginReact from 'eslint-plugin-react';
+import pluginReactHooks from 'eslint-plugin-react-hooks';
+import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
+import pluginImport from 'eslint-plugin-import';
+import stylistic from '@stylistic/eslint-plugin';
 
 export default [
   js.configs.recommended,
   pluginReact.configs.flat.recommended,
-  pluginReactHooks.configs[&#39;recommended-latest&#39;],
+  pluginReactHooks.configs['recommended-latest'],
   pluginJsxA11y.flatConfigs.recommended,
   pluginImport.flatConfigs.recommended,
   stylistic.configs.recommended,
 
   {
-    files: [&#39;**/*.{js,jsx,ts,tsx}&#39;],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: &#39;latest&#39;,
-      sourceType: &#39;module&#39;,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: {
         ...globals.browser,
         ...globals.es2025,
@@ -661,77 +645,77 @@ export default [
       },
     },
     settings: {
-      react: { version: &#39;detect&#39; },
-      &#39;import/resolver&#39;: {
-        node: { extensions: [&#39;.js&#39;, &#39;.jsx&#39;, &#39;.ts&#39;, &#39;.tsx&#39;] },
+      react: { version: 'detect' },
+      'import/resolver': {
+        node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
       },
     },
     rules: {
-      &#39;react/jsx-uses-react&#39;: &#39;off&#39;,
-      &#39;react/react-in-jsx-scope&#39;: &#39;off&#39;,
-      &#39;react/prop-types&#39;: &#39;off&#39;,
-      &#39;no-console&#39;: [&#39;warn&#39;, { allow: [&#39;warn&#39;, &#39;error&#39;] }],
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
   {
-    files: [&#39;cypress/**/*.{js,jsx}&#39;],
+    files: ['cypress/**/*.{js,jsx}'],
     languageOptions: {
-      globals: { ...globals.browser, cy: &#39;readonly&#39;, Cypress: &#39;readonly&#39; },
+      globals: { ...globals.browser, cy: 'readonly', Cypress: 'readonly' },
     },
     rules: {
-      &#39;no-unused-expressions&#39;: &#39;off&#39;,
+      'no-unused-expressions': 'off',
     },
   },
 ];</code></pre></div></div>
 <p>If you find a rule you want to modify, or ignore — you can add it in above.</p>
-<p>🚀 In VSCode -&gt; Settings -&gt; Settings -&gt; search: <code>editor.codeActionsOnSave</code> -&gt; and click Edit in settings.json -&gt; add this line to the JSON file: <code>&quot;editor.codeActionsOnSave&quot;: { &quot;source.fixAll.eslint&quot;: true },</code> -&gt; save the file.</p>
+<p>🚀 In VSCode -&gt; Settings -&gt; Settings -&gt; search: <code>editor.codeActionsOnSave</code> -&gt; and click Edit in settings.json -&gt; add this line to the JSON file: <code>"editor.codeActionsOnSave": { "source.fixAll.eslint": true },</code> -&gt; save the file.</p>
 <p>👍 Super useful. This will fix indentation problems and some other things automatically whenever you save! Now restart your editor. Test it out - put in some extra spaces at the beginning of a line of javascript, make sure it highlights and when you save the file it should automatically fix any indentation and semi-colons etc.</p>
-<p>‼️ If this isn’t working, make sure that your editor is open to the root directory of your repository! This is necessary for the settings in <code>eslint.config.js</code> to be applied!</p>
+<p>‼️&nbsp;If this isn’t working, make sure that your editor is open to the root directory of your repository! This is necessary for the settings in <code>eslint.config.js</code> to be applied!</p>
 <p>When you see errors such as below:</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/linter-error-1767548419532.png" alt="linter-error.png"></p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-learn-more-1767548419532.jpg" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/linter-error-1767548419532.png" alt="linter-error.png">
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-learn-more-1767548419532.jpg" alt="">
 <p>You can click on the definition of the error to learn more. Note: many of these show up as errors but are not compiler errors like you might be used to with Java or C. The browser or node may still run the code fine — however it is recommended that you fix these errors or learn about what the errors mean and disable them only if you disagree with that particular rule stylistically.</p>
 <p>🚀 Now we add a plugin to Vite so that it automatically tests with eslint while you code. </p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install -D vite-plugin-eslint2</code></pre></div></div></div>
-<p>In your <code>vite.config.js</code> file, add <code>import eslint from &#39;vite-plugin-eslint2&#39;;</code> at the top of the file and <strong>merge</strong> in the following into the <code>plugins</code> section of your vite config.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">plugins: [
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -D vite-plugin-eslint2</code></pre></div>
+<p>In your <code>vite.config.js</code> file, add <code>import eslint from 'vite-plugin-eslint2';</code> at the top of the file and <strong>merge</strong> in the following into the <code>plugins</code> section of your vite config.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">plugins: [
     eslint(),
   ],</code></pre></div></div>
 <p>This will run your code through eslint before processing it – thus making sure it is all good and giving you warnings and errors otherwise. Not only will your editor show the errors - but the browser console will as well.</p>
 <p>From here on <strong>all assignments</strong> will all use eslint and you can customize it per project as you need.  Adhering to a code style will at first seem annoying, but over time, you will grow to appreciate the linting rules as they keep you from making mistakes. This is also pretty much industry standard.</p>
-<h2 style="background-color: #FBF3DB;">SASS with Vite</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/sass-1767548419532.png" alt="sass.png"></p>
+<div class="heading-block h2-block"><h2>SASS with Vite</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/sass-1767548419532.png" alt="sass.png">
 <p>Vite comes with built-in <a href="http://sass-lang.com/guide">SASS</a> support! SASS is a bit nicer than vanilla css - and demonstrates some of the power of using a builder/packager like Vite.</p>
 <p>🚀 Does this mean we need to npm install something? Yup!</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install -D sass</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -D sass</code></pre></div>
 <p>🚀 Create a <code>src/style.scss</code> file and add in some style!</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">scss</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-scss">body,
 html {
-  font-family: &#39;Roboto&#39;, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: linear-gradient(to bottom, #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
   height: 100%;
 }</code></pre></div></div>
-<p>🚀 Now, you need to have Vite include it in your build, so add <code>import &#39;./style.scss&#39;</code> to your <code>index.js</code> file! Remember Vite won’t include anything that isn’t used by your app directly - and the way to tell it is to import it into your app somewhere. Your whole app right now is <code>index.js</code> so let’s import it there.</p>
-<h2 style="background-color: #FBF3DB;">Hot reloading</h2>
+<p>🚀 Now, you need to have Vite include it in your build, so add <code>import './style.scss'</code> to your <code>index.js</code> file! Remember Vite won’t include anything that isn’t used by your app directly - and the way to tell it is to import it into your app somewhere. Your whole app right now is <code>index.js</code> so let’s import it there.</p>
+<div class="heading-block h2-block"><h2>Hot reloading</h2></div>
 <p>Wait, we were promised hot-reloading, whatever that means!</p>
 <p>You got it! Try changing your <code>style.scss</code> file – you should see changes as soon as you hit save, but your counter doesn’t restart!</p>
 <p>On the terminal, you’ll see anytime you change your project files that Vite recompiles/hot reloads automatically - and in your browser console log as well.</p>
-<h2 style="background-color: #FBF3DB;">Image Files</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/compiler-bot-1767548419532.gif" alt=""></p>
+<div class="heading-block h2-block"><h2>Image Files</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/compiler-bot-1767548419532.gif" alt="">
 <p>Ok, so now Vite understands html, js, sass, and css. But what if we want to include an image? Vite handles image files out of the box, no configuration necessary.  </p>
 <p>🚀 Try adding an image to your <code>src/img</code> folder maybe, and then showing it in the logo div. </p>
 <p>In your <code>style.scss</code> file, add:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-css">.logo {
-  background-image: url(&#39;img/MYIMAGE.jpg&#39;);
+  background-image: url('img/MYIMAGE.jpg');
   width: 100px;
   height: 100px;
   background-repeat: no-repeat;
   background-size: contain;
 }</code></pre></div></div>
 <p>Yeah, can you see it?</p>
-<p>⚠️ <em>Always make sure your file naming is case sensitive - don’t name a file <code>MyImage.jpg</code> and then reference with as <code>myimage.jpg</code>. That might work on your personal computer but it won’t work on the internet where most machines are linux and are case-sensitive.</em></p>
-<h2 style="background-color: #FBF3DB;">AutoPrefixing!</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/autoprefix-1767548419532.gif" alt=""></p>
+<p>⚠️&nbsp;<em>Always make sure your file naming is case sensitive - don’t name a file <code>MyImage.jpg</code> and then reference with as <code>myimage.jpg</code>. That might work on your personal computer but it won’t work on the internet where most machines are linux and are case-sensitive.</em></p>
+<div class="heading-block h2-block"><h2>AutoPrefixing!</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/autoprefix-1767548419532.gif" alt="">
 <p>As you’ve been playing with CSS you’ve probably noticed the internet mentioning vendor prefixes such as:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-css">-webkit-transition: all 4s ease;
 -moz-transition: all 4s ease;
@@ -742,7 +726,7 @@ transition: all 4s ease;</code></pre></div></div>
 <p>This is a module that we can incorporate and have Vite automatically prefix our canonical css to work in all browsers.  We will use <a href="https://vitejs.dev/guide/features.html#postcss">postcss</a> to load in <code>autoprefixer</code>.</p>
 <p>🚀 Let’s install some dependencies: <code>npm install -D autoprefixer</code></p>
 <p>🚀 Edit your <code>vite.config.js</code> file once again and merge in:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">import autoprefixer from &#39;autoprefixer&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-javascript">import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [eslint()],
@@ -757,10 +741,10 @@ export default defineConfig({
   text-size-adjust: 100%;
 }</code></pre></div></div>
 <p>and then look to see if you can see the prefixed versioned in your devtools. Yay!</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.35.33 PM.png"></p>
-<h2 style="background-color: #FBF3DB;">Project Structure</h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.35.33 PM.png">
+<div class="heading-block h2-block"><h2>Project Structure</h2></div>
 <p>At this point your project structure should look something like:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">Code</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code>.eslintrc.json
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">.eslintrc.json
 .git
 .gitignore
 node_modules/
@@ -772,78 +756,43 @@ src/
     index.js
     style.scss
 vite.config.js</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">Deployment</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/deploy-1767548419532.gif" alt=""></p>
+<div class="heading-block h2-block"><h2>Deployment</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/deploy-1767548419532.gif" alt="">
 <p>How would you <a href="https://vitejs.dev/guide/static-deploy.html">deploy a Vite setup such as this</a>?</p>
 <p>We’re prepping this to be our SPA (single-page-app) starter pack, and unfortunately, GitHub Pages doesn’t have good SPA support. So we’re going to be using another service to host our pages. Super easy though.</p>
-<h3>Test Build</h3>
+<div class="heading-block h3-block"><h3>Test Build</h3></div>
 <p>What if we could automatically deploy our main branch whenever it was updated on GitHub. That is exactly what we are going to do!</p>
 <p>Let’s test locally first though.</p>
 <p>🚀 Run <code>npm run build</code></p>
 <p>And poke around in the newly created <code>dist</code> folder, if it has some files you are probably gucci! </p>
 <p>These are the compiled/built output files — the actual files that the browser sees. </p>
 <p>⚠️<code>*dist</code> should never be added to git as it is generated output.*</p>
-<h3>Continuous Integration</h3>
+<div class="heading-block h3-block"><h3>Continuous Integration</h3></div>
 <p>🚀 Now git <code>add</code>, <code>commit</code>, <code>push</code> all the code that is currently in your <code>main</code> branch to your <code>origin main</code> branch. You should now have: <code>main</code> branch with <code>/src</code> and all your vite and package files. We won’t be using ghpages for this, so all your source code will simply be in a <code>main</code> branch.</p>
-<h3><a href="http://Render.com">Render.com</a></h3>
+<div class="heading-block h3-block"><h3><a href="http://Render.com">Render.com</a></h3></div>
 <p><a href="https://vitejs.dev/guide/static-deploy.html#render">(official Vite+render docs)</a></p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/untitled-1767548419532.png" alt="Untitled"></p>
-<ol>
-<li>Create account / Use GitHub to sign in</li>
-<li>New → Static Site</li>
-<li>Connect Github</li>
-<li>dartmouth-cs52-TERM/</li>
-<li>Set it to deploy your <code>main</code> branch, use <code>npm install &amp;&amp; npm run build</code> as the build setting and <code>dist</code> as the build folder.</li>
-<li>and Deploy - it will automatically update when you push new changes to GitHub</li>
-</ol>
-<h2 style="background-color: #FBF3DB;">Release Version</h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/untitled-1767548419532.png" alt="Untitled">
+<ol start="1"><li>Create account / Use GitHub to sign in</li><li>New → Static Site</li><li>Connect Github</li><li>dartmouth-cs52-TERM/</li><li>Set it to deploy your <code>main</code> branch, use <code>npm install &amp;&amp; npm run build</code> as the build setting and <code>dist</code> as the build folder.</li><li>and Deploy - it will automatically update when you push new changes to GitHub</li></ol>
+<div class="heading-block h2-block"><h2>Release Version</h2></div>
 <p>🐙 Before we finish let’s tag our repo so that there is a <em>release version</em> associated with our starterpack. This is convenient so you can keep track of how your starterpack progresses and for us to grade as well.</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-powershell">git tag starterpack.v1
 git push origin --tags</code></pre></div></div>
-<p>Now on github you can look at official releases of your startpack! So official. ⚠️ <em>Note: you have to push commit and push code and <code>--tags</code> separately, so don’t assume that because you tagged something that it was also pushed to the remote!</em></p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/record-1767548419532.gif" alt=""></p>
-<h2 style="background-color: #FBF3DB;">A word about debugging</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/debugging-code-1767548419532.gif" alt=""></p>
+<p>Now on github you can look at official releases of your startpack! So official. ⚠️&nbsp;<em>Note: you have to push commit and push code and <code>--tags</code> separately, so don’t assume that because you tagged something that it was also pushed to the remote!</em></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/record-1767548419532.gif" alt="">
+<div class="heading-block h2-block"><h2>A word about debugging</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/debugging-code-1767548419532.gif" alt="">
 <p>As always, you should use Chrome Dev Tools with the console as the first line of defense. Checking for errors there is the first thing you should look for. You can also use breakpoints. The recommended method is to use DevTools and click the line number in your source code to add a breakpoint. Because of Vite’s magic all sources end up in <em>(Sources -&gt; localhost:xxx . -&gt; src)</em></p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.43.01 PM.png"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.43.01 PM.png">
 <p>You can also use the statement <code>debugger;</code> in your code, but that is somewhat frowned upon as you might forget and leave one in a piece of code that doesn’t get executed often — causing mayhem for yourself later.</p>
-<h2 style="background-color: #FBF3DB;">Frontend Starter Pack is ready to go!</h2>
+<div class="heading-block h2-block"><h2>Frontend Starter Pack is ready to go!</h2></div>
 <p>You now have a nicely set up starter pack that you can use for all your cool projects. We will use this in most of the future assignments and build up on it too, so it is worth getting this all working.</p>
-<h3>To Turn In</h3>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>Checklist: <ul>
-<li><input disabled="" type="checkbox"> vite dev server starts and serves pages</li>
-<li><input disabled="" type="checkbox"> eslint is configured - it complains if there is bad code / autocorrects indents etc</li>
-<li><input disabled="" type="checkbox"> webpage displays and counts seconds</li>
-<li><input disabled="" type="checkbox"> image displays and is loaded via vite</li>
-<li><input disabled="" type="checkbox"> js is linted without errors!</li>
-</ul>
-</li>
-</ol>
-<h3>Extra Credit</h3>
-<ul>
-<li>add in some vite plugins such as favicon generation and or tailwind support</li>
-<li>setup and use <a href="https://github.com/nvm-sh/nvm">NVM</a></li>
-<li>deploy using a different provider if you want</li>
-</ul>
+<div class="heading-block h3-block"><h3>To Turn In</h3></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li></ul>
+<ol start="1"><li>Checklist:<ul><li><input disabled="" type="checkbox"> vite dev server starts and serves pages</li><li><input disabled="" type="checkbox"> eslint is configured - it complains if there is bad code / autocorrects indents etc</li><li><input disabled="" type="checkbox"> webpage displays and counts seconds</li><li><input disabled="" type="checkbox"> image displays and is loaded via vite</li><li><input disabled="" type="checkbox"> js is linted without errors!</li></ul></li></ol>
+<div class="heading-block h3-block"><h3>Extra Credit</h3></div>
+<ul><li>add in some vite plugins such as favicon generation and or tailwind support</li><li>setup and use <a href="https://github.com/nvm-sh/nvm">NVM</a></li><li>deploy using a different provider if you want</li></ul>
 <p><em>Take a screenshot of your completion of extra credits (eg. vite plugins loaded in, running nvm in your command line, etc.), and mention them in your Feedback PR comment!</em></p>
-<h2 style="background-color: #FBF3DB;">Resources:</h2>
-<ul>
-<li><a href="https://vitejs.dev/">vite docs</a></li>
-<li><a href="https://babeljs.io/">babeljs</a></li>
-<li><a href="https://www.youtube.com/watch?v=hzIzwmy3sas">Ijemma Onwuzulike ‘19: Pack It Up With WebPack</a></li>
-<li><a href="https://www.youtube.com/watch?v=6yf90kEJLh0">Ijemma Onwuzulike ‘19: Core Features of ESLint</a></li>
-<li><a href="https://www.youtube.com/watch?v=IZQhKi8oQl8">Ijemma Onwuzulike ‘19: Modernize Your JavaScript with Babel!</a></li>
-</ul>
-
+<div class="heading-block h2-block"><h2>Resources:</h2></div>
+<ul><li><a href="https://vitejs.dev/">vite docs</a></li><li><a href="https://babeljs.io/">babeljs</a></li><li><a href="https://www.youtube.com/watch?v=hzIzwmy3sas">Ijemma Onwuzulike ‘19: Pack It Up With WebPack</a></li><li><a href="https://www.youtube.com/watch?v=6yf90kEJLh0">Ijemma Onwuzulike ‘19: Core Features of ESLint</a></li><li><a href="https://www.youtube.com/watch?v=IZQhKi8oQl8">Ijemma Onwuzulike ‘19: Modernize Your JavaScript with Babel!</a></li></ul>
 </body>
 </html>
