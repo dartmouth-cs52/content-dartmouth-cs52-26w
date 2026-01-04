@@ -55,7 +55,9 @@
       }
     },
     "lab1-landing-page": {
-      "pages": [],
+      "pages": [
+        "sample-page-for-module"
+      ],
       "slides": [],
       "assignments": {
         "landing-page-part-2": {
