@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: extra-credit short<br>week: Week 8<br>Created time: February 7, 2022 9:18 PM<br>Dates: May 17, 2025 → May 23, 2025<br>published: No</p>
+<h1 style="background-color: #DDEBF1;">Websockets — Short Assignment</h1>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-websockets/assets/socket-io-1767548320056.png" alt=""></p>
+<h2 style="background-color: #FBF3DB;">Overview</h2>
+<p>We’re going to build a <a href="https://en.wikipedia.org/wiki/WebSocket">websocket</a> based server and refactor our notes app to use our own server rather than firebase! You’ll see how with just a little bit of code you can have a cool bidirectional event based server. You can also use this for implementing chat servers or push notification to your frontend!</p>
+<h2 style="background-color: #FBF3DB;">Let’s Start</h2>
+<p>🚀 Clone your <strong>Lab3 with firebase</strong>. Create a new branch with <code>git checkout -b websockets</code>. We’ll need to refactor this very slightly to not use firebase but use our new backend instead, and using a branch seems reasonable for this.</p>
+<p>🚀 Clone or Fork <a href="https://github.com/dartmouth-cs52/express-babel-starter">express-babel-starter</a> for our new server component. You can create a new github repo in your own account if you want for this and add it as a remote.</p>
+<p>In the following at times we’ll do stuff to both client (Lab3) and server (the new notes-websocket-server). This will be highlighted with <strong>SERVER</strong> vs <strong>CLIENT</strong>.</p>
+<h2 style="background-color: #FBF3DB;">Overview</h2>
+<p>Server: we will utilize websockets and mongo to create a simple realtime backend. You can use the techniques learned here for any realtime applications such as chat or notifications.</p>
+<p>Frontend: we will utilize our realtime react notes app and refactor slightly.</p>
+<h2 style="background-color: #FBF3DB;">Database</h2>
+<p><strong>SERVER</strong></p>
+<p>🚀 Let’s set up a few directories first. Create a <code>src/models</code> and a <code>src/controllers</code> directory.</p>
+<p>🚀 Remember how to make a mongoose model? Sure you do! Create a Note model <code>note.js</code> in your models directory and give it the following fields (you may need to adjust the names of these later based on how you coded your Lab3):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">  title: String,
+  x: Number,
+  y: Number,
+  zIndex: Number,
+  text: String,</code></pre></div></div>
+<p>Don&#39;t remember how to make a model? Look here! <code>javascript import mongoose, { Schema } from &#39;mongoose&#39;; const NoteSchema = new Schema({ title: String, x: Number, y: Number, zIndex: Number, text: String, }, { toJSON: { virtuals: true, }, }); // create model class const NoteModel = mongoose.model(&#39;Note&#39;, NoteSchema); export default NoteModel; </code></p>
+<p>🚀 <code>npm install mongoose</code>.</p>
+<p>In your <code>server.js</code> set up your mongo connection:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">import mongoose from &#39;mongoose&#39;;
+
+// DB Setup
+const mongoURI = process.env.MONGODB_URI || &#39;mongodb://localhost/notes&#39;;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+// set mongoose promises to es6 default
+mongoose.Promise = global.Promise;</code></pre></div></div>
+<p>🚀 And let’s make a controller, <code>note_controller.js</code>, while we are at it!</p>
+<p>It’ll be a bit simpler than the post controller. We’ll also do something similar to SA7 where we returned promises from our controller rather than operating on request and response objects.</p>
+<ul>
+<li>createNote: super simple, takes in note fields, and returns the save promise (doesn’t need to create a new promise).</li>
+<li>getNotes: this one is a bit trickier, hence full code is here. Returns the promise created by find(). If you recall our datastructure was a dictionary by note id. We can use an accumulator to construct an object from the array of notes that find gives us.</li>
+<li>deleteNote: delete a note by its id</li>
+<li>updateNote: update note, pretty similar to how you did it for posts</li>
+</ul>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span></div><pre><code class="language-jsx">import Note from &#39;../models/note&#39;;
+
+export const getNotes = () =&gt; {
+  return Note.find({}).then((notes) =&gt; {
+    return notes.reduce((result, item) =&gt; {
+      result[item.id] = item;
+      return result;
+    }, {});
+  });
+};
+
+export const deleteNote = (id) =&gt; {
+  // to quote Prof. Cormen: left as an exercise to the reader
+  // remember to return the mongoose function you use rather than just delete
+};
+
+export const createNote = (fields) =&gt; {
+  // you know the drill. create a new Note mongoose object
+  // return .save()
+};
+
+export const updateNote = (id, fields) =&gt; {
+  return Note.findById(id).then((note) =&gt; {
+    // check out this classy way of updating only the fields necessary
+    Object.keys(fields).forEach((k) =&gt; {
+      note[k] = fields[k];
+    });
+    return note.save();
+  });
+};</code></pre></div></div>
+<h2 style="background-color: #FBF3DB;">Socket.IO SERVER</h2>
+<p>We’ll be using <a href="http://socket.io/">socket.io</a> serverside and clientside. We could implement these from scratch with Node and HTML5 has websocket support built in, but socket.io provides nice reconnect functionality and integrates easily with an express app.</p>
+<p>🚀 Install socket.io in <strong>SERVER</strong>:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install socket.io http</code></pre></div></div></div>
+<p>We’ll need to change a few things in our <code>server.js</code> file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-jsx">// at top
+import socketio from &#39;socket.io&#39;;
+import http from &#39;http&#39;;
+
+// add server and io initialization after app
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server, {
+  cors: {
+    origin: &#39;*&#39;, // allows requests all incoming connections
+    methods: [&#39;GET&#39;, &#39;POST&#39;, &#39;PUT&#39;, &#39;DELETE&#39;],
+  },
+});
+
+// change app.listen to server.listen
+server.listen(port);</code></pre></div></div>
+<p>🚀 Now our server can talk websockets!</p>
+<h3>The Socket</h3>
+<p>Websockets are statefull connections. Each client gets their own socket. Let’s define some functionality — for now we’ll just do everything in our <code>server.js</code> file but for any larger app you’d separate this out into a separate module.</p>
+<p>🚀 In <code>server.js</code> add:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span></div><pre><code class="language-jsx">// at top
+import * as Notes from &#39;./controllers/note_controller&#39;;
+
+// at the bottom of server.js
+// lets register a connection listener
+io.on(&#39;connection&#39;, (socket) =&gt; {
+  // on first connection emit notes
+  Notes.getNotes().then((result) =&gt; {
+    socket.emit(&#39;notes&#39;, result);
+  });
+
+  // pushes notes to everybody
+  const pushNotes = () =&gt; {
+    Notes.getNotes().then((result) =&gt; {
+      // broadcasts to all sockets including ourselves
+      io.sockets.emit(&#39;notes&#39;, result);
+    });
+  };
+
+  // creates notes and
+  socket.on(&#39;createNote&#39;, (fields) =&gt; {
+    Notes.createNote(fields)
+      .then((result) =&gt; {
+        pushNotes();
+      })
+      .catch((error) =&gt; {
+        console.log(error);
+        socket.emit(&#39;error&#39;, &#39;create failed&#39;);
+      });
+  });
+});</code></pre></div></div>
+<p>Ok we have some basic functionality now. Let’s work on the frontend for a little bit. We’ll come back and add more listeners here. Don’t forget to start up mongod and also <code>npm start</code> the server.</p>
+<h2 style="background-color: #FBF3DB;">Socket.IO CLIENT</h2>
+<p>In your Lab3 new branch, let’s add some socket.io smarts.</p>
+<p>🚀 Install socket.io in CLIENT (Lab3)</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install socket.io-client</code></pre></div></div></div>
+<p>🚀 Some Setup in <code>index.js</code> or your main app component.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">// at top
+import io from &#39;socket.io-client&#39;;
+const socketserver = &#39;http://localhost:9090&#39;;</code></pre></div></div>
+<h2 style="background-color: #FBF3DB;">Event Listeners</h2>
+<p>We will define some specific event listeners. Firebase had the <em>on value</em> event listener, but for socket.io we will be able to define any number of our own custom events to listen to.</p>
+<p>In your database service file or App component (your choice which):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code class="language-jsx">const socket = io(socketserver);
+socket.on(&#39;connect&#39;, () =&gt; {
+  console.log(&#39;socket.io connected&#39;);
+});
+socket.on(&#39;disconnect&#39;, () =&gt; {
+  console.log(&#39;socket.io disconnected&#39;);
+});
+socket.on(&#39;reconnect&#39;, () =&gt; {
+  console.log(&#39;socket.io reconnected&#39;);
+});
+socket.on(&#39;error&#39;, (error) =&gt; {
+  console.log(error);
+});</code></pre></div></div>
+<p>Great! Now test it out, load up <a href="http://localhost:8080">http://localhost:8080</a> and you should be connecting and devtools console should be showing “socket.io connected”.</p>
+<h3>Notes Listener</h3>
+<p>But what about notes?!!</p>
+<p>🚀 Edit the function call where you start your firebase <code>database.onNotesValueChange()</code> handler. We’ll replace it with our socket.io listener:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">//in your onNotesValueChange subscriber function
+export function onNotesValueChange(callback) {
+  Notes.on(&#39;value&#39;, (snapshot) =&gt; {
+    const data = snapshot.val();
+    callback(data);
+  });
+}</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">// use sockets instead of the firebase on value change callback.
+socket.on(&#39;notes&#39;, (notes) =&gt; {
+  // etc etc
+});</code></pre></div></div>
+<p>All we are doing is subscribing to the notes event, and taking the payload and processing it the normal way. Since on the server we are emitting new notes immediately on connection this is all we need. However, we don’t have any notes yet, so we let’s keep going and update everything on the front end so we don’t have to keep fiddling with it.</p>
+<h2 style="background-color: #FBF3DB;">Notes Events</h2>
+<p>Ok, how do we send data to the server though? Sockets are bidirectional so if you wanted you can emit events back to the server!</p>
+<p>🚀 For each of the update, delete, and create methods you have just replace your firebase call with a socket.emit.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">socket.emit(&#39;updateNote&#39;, id, fields);
+
+socket.emit(&#39;deleteNote&#39;, id);
+
+socket.emit(&#39;createNote&#39;, note);</code></pre></div></div>
+<p>And, that’s it for the frontend! </p>
+<p>Try creating a note!</p>
+<h2 style="background-color: #FBF3DB;">SERVER Part Deux</h2>
+<p>Ok, let’s add back in some more functionality on the server side in <code>server.js</code>.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">// on update note do what is needful
+socket.on(&#39;updateNote&#39;, (id, fields) =&gt; {
+  Notes.updateNote(id, fields).then(() =&gt; {
+    pushNotes();
+  });
+});
+
+// on deleteNote do what is needful
+socket.on(&#39;deleteNote&#39;, (id) =&gt; {
+  // you can do it
+});</code></pre></div></div>
+<p>Now, try it out!</p>
+<h2 style="background-color: #FBF3DB;">Optimization (Optional)</h2>
+<p>Ok, for now this seems to work pretty well. However, if you were to push the server to Heroku (don’t forget mLab), you’d notice a bad jitter as you drag the notes around. Especially if you had it set to no grid. We’re basically doing no optimization so we are sending thousands of update messages. When there is no lag things work perfectly smoothly. As soon as you have a bit of lag our driven Notes component starts behaving badly.</p>
+<p>The Firebase SDK handled this for us by being very optimized. It would batch together updates as well as doing internel state diff’ing to only send around the needed bits. Our websockets implementation is fairly naive at this point. We send everything around at max speed.</p>
+<p>One thing we can do it throttle and debounce. Here’s a good article on the <a href="https://css-tricks.com/debouncing-throttling-explained-examples/">differences</a>. Just by adding this small optimization we can improve our performance by a lot.</p>
+<p>🚀 On the <strong>SERVER</strong> side lets add in lodash.debounce and lodash.throttle: <code>npm install --save lodash.throttle lodash.debounce</code>.</p>
+<p>Import them in <code>server.js</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">import throttle from &#39;lodash.throttle&#39;;
+import debounce from &#39;lodash.debounce&#39;;</code></pre></div></div>
+<p>Now, it turns out that in particular we want to do different things depending on whether we are the viewer dragging around a note, or if we are another browser that is just seeing the note being dragged around.</p>
+<ul>
+<li>We want to <strong>throttle</strong> broadcasting notes out to all other browsers (where throttle means: send at a constant decent rate). They don’t need the precision of getting every single update, but they should get a smooth constant rate of updates.</li>
+<li>For the client that is initiating the dragging however, we want to debounce. Basically we don’t want delayed updates coming in and causing jitter. But there are different cases here as well:<ul>
+<li>for dragging we want heavy debouncing</li>
+<li>for updating our text box, we want <em>no</em> debouncing at all</li>
+</ul>
+</li>
+</ul>
+<p>Ok, without further ado here’s how we can do this.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span></div><pre><code class="language-jsx">// add these at the top of your: io.on(&#39;connection&#39; section
+let emitToSelf = (notes) =&gt; {
+  socket.emit(&#39;notes&#39;, notes);
+};
+emitToSelf = debounce(emitToSelf, 200);
+
+let emitToOthers = (notes) =&gt; {
+  socket.broadcast.emit(&#39;notes&#39;, notes);
+};
+emitToOthers = throttle(emitToOthers, 25);
+
+const pushNotesSmoothed = () =&gt; {
+  Notes.getNotes().then((result) =&gt; {
+    emitToSelf(result);
+    emitToOthers(result);
+  });
+};</code></pre></div></div>
+<p>We’re creating two wrapper functions. One that emits to oneself (socket) and one that emits a broadcast to everybody <strong>except</strong> the originating socket. One we debounce, the other we throttle (just slightly).</p>
+<p>🚀 Now, let’s use this new <code>pushNotesSmoothed</code> function. We can leave delete and create alone as those don’t need to be smoothed, but update, that is the troublemaker. But we don’t want to use the smoothed function if we are updating text, that will cause really bad things. We only want to use it if we updating x,y. So let’s test for that:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">//inside of your updateNote success .then
+if (fields.text) {
+  pushNotes();
+} else {
+  pushNotesSmoothed();
+}</code></pre></div></div>
+<p>Ok. Now it should work much better when deployed. You don’t have to deploy or turn this in, it is just for fun to play with websockets, but if you were to deploy it, you would see that this makes a big difference. There are more optimizations that can be done, the easiest would be to make <strong>Note</strong> position not driven by props directly when you are dragging. For now though, you have implemented in half an hour a working alternative backend to firebase.</p>
+<h2 style="background-color: #FBF3DB;">Turn it in</h2>
+<ul>
+<li>comment on your lab3 PR with links to any new repos/deployed branches:<ul>
+<li>you can deploy specific branches to new urls to keep your original versions separate</li>
+<li>frontend branch</li>
+<li>websockets server</li>
+</ul>
+</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Resources</h2>
+<ul>
+<li><a href="https://github.com/socketio/socket.io">https://github.com/socketio/socket.io</a></li>
+<li><a href="https://github.com/socketio/socket.io-client">https://github.com/socketio/socket.io-client</a></li>
+</ul>
+
+</body>
+</html>
