@@ -442,70 +442,64 @@
   </style>
 </head>
 <body>
-
-<p>Type: short<br>week: Week 4<br>Created time: February 7, 2022 2:12 PM<br>Dates: April 30, 2025 → May 2, 2025<br>published: Yes</p>
-<h1 style="background-color: #DDEBF1;">Routing</h1>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screenshot-2025-01-27-at-10-1767548380008.png" alt="Screenshot 2025-01-27 at 10.15.13 AM.png"></p>
-<h2 style="background-color: #FBF3DB;">Overview</h2>
+<div class="heading-block h1-block"><h1>Routing</h1></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screenshot-2025-01-27-at-10-1767548380008.png" alt="Screenshot 2025-01-27 at 10.15.13 AM.png">
+<div class="heading-block h2-block"><h2>Overview</h2></div>
 <p>React + Routing</p>
 <p>What if you want your frontend to have routes — different URLs that map to different components and layouts of components? We’re going to add React Router to our starterpack so all your future projects can have it!</p>
-<div class="callout" style="align-items: flex-start;"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
-<h2 style="background-color: #FBF3DB;">Let’s Update our StarterPack!</h2>
+<div class="callout"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
+<div class="heading-block h2-block"><h2>Let’s Update our StarterPack!</h2></div>
 <p>🚀 We’re going to keep working on your starterpack for this assignment. So just dig up that repo and work there! At this point you should have a starterpack that has vite+babel+eslint+sass+react.</p>
 <p>For this workshop we’re just going to add React Router to your personal starter repository so now you’ll have vite+babel+eslint+sass+react+reactrouter! Wow.</p>
 <p><em>Note: if you forgot to push the react stuff from the first few steps of the <a href="https://cs52.me/assignments/sa/react-videos">React Videos assignment</a> to your starterpack, you should go back and do that now! You can simply do those steps now directly in your starterpack repo.</em>  </p>
 <p>🚀 Before we start… let’s make a feature branch! </p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-bash">#make sure you are in your starterpack repo root directory, not your react-videos or other
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your starterpack repo root directory, not your react-videos or other
 git pull origin main 
 #remember to pull in changes that we might have done separately on github
-git checkout -b add_routing</code></pre></div></div></div>
-<h2 style="background-color: #FBF3DB;">Start adding in routing</h2>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install react-router@latest</code></pre></div></div></div>
-<h2 style="background-color: #FBF3DB;">Done</h2>
+git checkout -b add_routing</code></pre></div>
+<div class="heading-block h2-block"><h2>Start adding in routing</h2></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install react-router@latest</code></pre></div>
+<div class="heading-block h2-block"><h2>Done</h2></div>
 <p>Now you have added React Router to your starter package!</p>
 <p><a href="https://reacttraining.com/react-router/web/example/basic">React Router</a> has undergone some major rewrites and the current version 7 is a complete overhaul. It has gone from single route definition, to composable routes, to hooks based smart routing, as well as data fetching. We’ll be using it in <a href="https://reactrouter.com/start/declarative/installation">Declarative Mode</a> rather than as a Framework for now.  <em>But, Framework mode is pretty cool, check it out once you are comfortable.</em> </p>
-<h2 style="background-color: #FBF3DB;">Route setup</h2>
+<div class="heading-block h2-block"><h2>Route setup</h2></div>
 <p>What we want to do is have the following URL structure:</p>
-<ul>
-<li><code>/</code> displays <code>Welcome</code> component and <code>Nav</code> component.</li>
-<li><code>/about</code> displays <code>About</code> component + <code>Nav</code>.</li>
-<li><code>/test/id</code> displays <code>Test</code> component and shows ID from url + <code>Nav</code></li>
-</ul>
+<ul><li><code>/</code> displays <code>Welcome</code> component and <code>Nav</code> component.</li><li><code>/about</code> displays <code>About</code> component + <code>Nav</code>.</li><li><code>/test/id</code> displays <code>Test</code> component and shows ID from url + <code>Nav</code></li></ul>
 <p>This will demonstrate the power of routing and we’ll be using this in our next lab as well.</p>
-<h2 style="background-color: #FBF3DB;">Let’s Build Some Test Components</h2>
+<div class="heading-block h2-block"><h2>Let’s Build Some Test Components</h2></div>
 <p>Go ahead and create three very simple function based components. You can make these in your <code>index.jsx</code> file for now.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">const About = (props) =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">const About = (props) =&gt; {
   return &lt;div&gt; All there is to know about me &lt;/div&gt;;
 };
 const Welcome = (props) =&gt; {
   return &lt;div&gt;Welcome&lt;/div&gt;;
 };</code></pre></div></div>
 <p>🚀 Now let’s import in some routing magic</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">import { BrowserRouter, Routes, Route, NavLink } from &#39;react-router&#39;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">import { BrowserRouter, Routes, Route, NavLink } from 'react-router';</code></pre></div></div>
 <p>🚀 And let’s add in some routes in our <code>App</code> component. For now it can just be a function component.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code class="language-jsx">const App = (props) =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code class="language-javascript">const App = (props) =&gt; {
   return (
     &lt;BrowserRouter&gt;
       &lt;div&gt;
         &lt;Nav /&gt;
         &lt;Routes&gt;
-          &lt;Route path=&quot;/&quot; element={&lt;Welcome /&gt;} /&gt;
-          &lt;Route path=&quot;/about&quot; element={&lt;About /&gt;} /&gt;
+          &lt;Route path="/" element={&lt;Welcome /&gt;} /&gt;
+          &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
         &lt;/Routes&gt;
       &lt;/div&gt;
     &lt;/BrowserRouter&gt;
   );
 };</code></pre></div></div>
 <p>Woop, we forgot our <code>Nav</code> component, that is essential.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-jsx">const Nav = (props) =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-javascript">const Nav = (props) =&gt; {
   return (
     &lt;nav&gt;
       &lt;ul&gt;
         &lt;li&gt;
-          &lt;NavLink to=&quot;/&quot;&gt;Home&lt;/NavLink&gt;
+          &lt;NavLink to="/"&gt;Home&lt;/NavLink&gt;
         &lt;/li&gt;
         &lt;li&gt;
-          &lt;NavLink to=&quot;/about&quot;&gt;About&lt;/NavLink&gt;
+          &lt;NavLink to="/about"&gt;About&lt;/NavLink&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/nav&gt;
@@ -516,78 +510,56 @@ const Welcome = (props) =&gt; {
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-css">.active {
   color: pink;
 }</code></pre></div></div>
-<p>(don’t forget <code>import &#39;../style.scss&#39;;</code> in app)</p>
+<p>(don’t forget <code>import '../style.scss';</code> in app)</p>
 <p>Ok, test this out. What you should have when you first load the page is some links in the top nav that show up on every page, but when you click them they navigate the page and also change to the highlighted color. </p>
 <p>Great, ok let’s add in one more component to test with. 👍</p>
-<h2 style="background-color: #FBF3DB;">URL Parameters</h2>
+<div class="heading-block h2-block"><h2>URL Parameters</h2></div>
 <p>So what if you want is to be able to pass in a URL parameter. Something like <code>profile/some_id</code> where <code>some_id</code> might be how Facebook does your profile url: <code>profile/username</code></p>
 <p>Turns out we can do that!</p>
 <p>🚀 Add in a new route:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">&lt;Route path=&quot;/test/:id&quot; element={&lt;Test /&gt;} /&gt;;</code></pre></div></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">const Test = (props) =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">&lt;Route path="/test/:id" element={&lt;Test /&gt;} /&gt;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-javascript">const Test = (props) =&gt; {
   const { id } = useParams();
   return &lt;div&gt; ID: {id} &lt;/div&gt;;
 };</code></pre></div></div>
 <p>We use the <code>useParams</code> hook to get an object with any extracted params. Note the destructuring assignment where we pull out id from that returned dictionary. This is given to us by react router for every path. We can use it for some cool things like knowing what url we are on, but also for parsing out any URL parameters that we defined!</p>
 <p>Let’s add in some links to our Nav as well:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">&lt;li&gt;
-  &lt;NavLink to=&quot;/test/id1&quot;&gt;test id1&lt;/NavLink&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">&lt;li&gt;
+  &lt;NavLink to="/test/id1"&gt;test id1&lt;/NavLink&gt;
 &lt;/li&gt;
 &lt;li&gt;
-  &lt;NavLink to=&quot;/test/id2&quot;&gt;test id2&lt;/NavLink&gt;
+  &lt;NavLink to="/test/id2"&gt;test id2&lt;/NavLink&gt;
 &lt;/li&gt;</code></pre></div></div>
 <p>Try it out. Cool. The “/path/:parameter” style of defining a http route is very common and used in many frameworks.</p>
-<h2 style="background-color: #FBF3DB;">Unknown Routes</h2>
+<div class="heading-block h2-block"><h2>Unknown Routes</h2></div>
 <p>What happens if we type in a route that is unknown to the router. Currently that would mean that it would not match any of existing <code>Route</code> components and so will display the <code>Nav</code> and nothing else. But what if we wanted a fallback route?</p>
 <p>React-Router let’s us do this with a <code>Routes</code> component – this component wraps <code>Route</code> components and returns ones that match the path. <em>By default if multiple Routes match they will all render.</em></p>
 <p>🚀 Wrap your <code>Route</code>s in a <code>Routes</code> element and add in a <code>FallBack</code> component that will always match (with no <code>path</code> specified):</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">&lt;Routes&gt;
-  &lt;Route path=&quot;/&quot; element={&lt;Welcome /&gt;} /&gt;
-  &lt;Route path=&quot;/about&quot; element={&lt;About /&gt;} /&gt;
-  &lt;Route path=&quot;/test/:id&quot; element={&lt;Test /&gt;} /&gt;
-  &lt;Route path=&quot;*&quot; element={&lt;FallBack /&gt;} /&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">&lt;Routes&gt;
+  &lt;Route path="/" element={&lt;Welcome /&gt;} /&gt;
+  &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+  &lt;Route path="/test/:id" element={&lt;Test /&gt;} /&gt;
+  &lt;Route path="*" element={&lt;FallBack /&gt;} /&gt;
 &lt;/Routes&gt;;</code></pre></div></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">const FallBack = (props) =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">const FallBack = (props) =&gt; {
   return &lt;div&gt;URL Not Found&lt;/div&gt;;
 };</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">Root Path</h2>
+<div class="heading-block h2-block"><h2>Root Path</h2></div>
 <p>There is one tricky bit with paths that we have to contend with. The problem is that say you go to your <code>yoursite.com/posts/id</code> when in point of fact the resource <code>/posts/id/index.html</code> does not exist on the server.  This is a single page app, so there is only 1 index.html file at the root.  Vite happens to know that it should serve up <code>/index.html</code> file for every resource URL that it can’t find, but various hosting providers may not do this automatically.  </p>
-<h3>RENDER.com</h3>
+<div class="heading-block h3-block"><h3>RENDER.com</h3></div>
 <p><em>Note: simply update your previous hosting setup - you don’t need to have a new link since we’re just updating the starterpack we did previously.</em></p>
 <p>We would like <a href="http://render.com">render.com</a> to set up <a href="https://render.com/docs/redirects-rewrites">redirects and rewrites</a> to help use route all urls to our <code>index.html</code> file. </p>
-<p>🚀 go to Redirects/Rewrites and add in <code>/*</code> pointing to <code>/index.html</code> as a rewrite.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screen-shot-2022-04-21-at-8-1767548380008.png" alt="Screen Shot 2022-04-21 at 8.26.40 AM.png"></p>
+<p>🚀&nbsp;go to Redirects/Rewrites and add in <code>/*</code> pointing to <code>/index.html</code> as a rewrite.</p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screen-shot-2022-04-21-at-8-1767548380008.png" alt="Screen Shot 2022-04-21 at 8.26.40 AM.png">
 <p>And you are done!</p>
-<h2 style="background-color: #FBF3DB;">Test Your Deployed URL</h2>
+<div class="heading-block h2-block"><h2>Test Your Deployed URL</h2></div>
 <p>Check it out in your browser. Try changing the url to <code>/badlink</code>, it should load your test app and hit the fallback route!</p>
-<h2 style="background-color: #FBF3DB;">Commit, PR, Merge!</h2>
+<div class="heading-block h2-block"><h2>Commit, PR, Merge!</h2></div>
 <p>Don’t forget, this is the last time we’ll tell you how to do it:</p>
-<ol>
-<li>git commit</li>
-<li>git push origin add_routing</li>
-<li>create a PR to <code>main</code> and merge in your <code>add_routing</code> branch.</li>
-</ol>
-<h2 style="background-color: #FBF3DB;">To Turn In</h2>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-<li>your starter pack should now<ul>
-<li>have working test routes</li>
-<li>be deployed to <a href="http://render.com">render.com</a> with rewrites set up.</li>
-<li>lint correctly</li>
-<li>have fallback routes working</li>
-</ul>
-</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Resources</h2>
-<ul>
-<li><a href="https://reactrouter.com">https://reactrouter.com</a></li>
-</ul>
-
+<ol start="1"><li>git commit</li><li>git push origin add_routing</li><li>create a PR to <code>main</code> and merge in your <code>add_routing</code> branch.</li></ol>
+<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li>your starter pack should now<ul><li>have working test routes</li><li>be deployed to <a href="http://render.com">render.com</a> with rewrites set up.</li><li>lint correctly</li><li>have fallback routes working</li></ul></li></ul>
+<div class="heading-block h2-block"><h2>Resources</h2></div>
+<ul><li><a href="https://reactrouter.com">https://reactrouter.com</a></li></ul>
 </body>
 </html>
