@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: extra-credit short<br>week: Week 8<br>Created time: May 15, 2024 1:45 PM<br>Dates: May 17, 2025 → May 23, 2025<br>published: No</p>
+<aside>
+🚧 DISCLAIMER: This assignment is still in progress and is being edited live. Please feel free to use *#assignment-help* and *WhisperBot* as needed for help along the way or questions that may come up!
+
+</aside>
+
+<h1 style="background-color: #DDEBF1;">Authentication</h1>
+<p>For this assignment we are going to build an <a href="https://expressjs.com/">express</a> and <a href="https://www.mongodb.com/">mongodb</a> CRUD api server for our react+zustand blog frontend. This will finally bring our stack all the way down to the database. In this part we’re going to be adding in <strong>Authentication</strong> 🔐</p>
+<p><a href="https://res.cloudinary.com/dali-lab/video/upload/c_scale,w_800/v1589346003/cs52/withauth-small.webm">withauth-small.webm</a></p>
+<h2 style="background-color: #FBF3DB;">Assignment At a Glance</h2>
+<ul>
+<li>Authentication: We’ll extend both our frontend and our backend to support authentication and users!</li>
+</ul>
+<p>On the frontend we’ll want to add a place for users to sign in. We’ll create a <code>/signin</code>, <code>/signup</code>, and <code>/signout</code> routes and add a way to restrict access to certain routes based on authentication. We’ll do this by designing our own higher order component.</p>
+<p>On the api server, we’re going to also add <code>/signin</code> and <code>/signup</code> routes that will connect to a new User model and Controller. We will also use <a href="http://passportjs.org/">Passport.js</a> to make JWT’s for us.</p>
+<h2 style="background-color: #FBF3DB;">Some Setup</h2>
+<p>We’ll just continue working on the same code from Lab5.</p>
+<p>We’re going to do a new thing with our git repos. We’re going to <code>tag</code> a certain revision so you’ll know where you started on authentication.</p>
+<p>🚀 Go into your Lab5 directory and run:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">git checkout -b withAuth</code></pre></div></div></div>
+<p>🚀 Go into your Lab4 directory and run:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">git checkout -b withAuth</code></pre></div></div></div>
+<p>Great, now you have a feature branch where you are adding in authentication, and a main branch before you veered off course and made this terrible decision to add authentication to your lovely content platform.</p>
+<p>You will end up with 3 server urls at the end of this:  A hosted url for loading the frontend, a hosted url for the api server, and an Atlas Cloud Mongo database url. In your hosting platform (render.com) for each of lab4 and lab5 you can create a new service to publish your withAuth branches as separate services (don’t use the same service as your prior labs).</p>
+<p>We’ll be working on both the api server and frontend app. So you’ll have two code windows open and two services running - both frontend and backend!</p>
+<h1 style="background-color: #DDEBF1;">Auth Enabled API</h1>
+<p>We shall start with the backend.</p>
+<h2 style="background-color: #FBF3DB;">Secret Key</h2>
+<p>For signing our JWT’s on the <strong>server side</strong> we’ll need a secret key. Might as well set that up now.</p>
+<p>We’ll need to create an <code>AUTH_SECRET</code> environment variable with some long random string (any characters).</p>
+<p>Use the <a href="https://www.npmjs.com/package/dotenv"><code>dotenv</code></a> module to import it into your code. IE. Save <code>AUTH_SECRET=&quot;somerandomstringthiscanbeanythingyoushouldmakeityourown&quot;</code> into a <code>.env</code> file that you do not add to git.</p>
+<p>🚀 Add <code>.env</code> to your <code>.gitignore</code> file.</p>
+<p>Then in your code in any file where you need the secret you can use:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">import dotenv from &#39;dotenv&#39;;
+dotenv.config({ silent: true });
+
+// and then the secret is usable this way:
+process.env.AUTH_SECRET;</code></pre></div></div>
+<p>⚠️ During deployment for <a href="http://Render.com">Render.com</a>  you’ll need to add <code>AUTH_SECRET</code> to your environment variables in Settings!</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/heroku-1767548298128.jpg" alt=""></p>
+<h2 style="background-color: #FBF3DB;">API Server Auth support</h2>
+<p>Let’s start adding authentication support to the api server.</p>
+<h3>User Model</h3>
+<p>To start with, we want to add Users. This means we’ll need a User model.</p>
+<p>🚀 You know models from Lab5 and SA6, oh yes you do. Create a <code>models/user_model.js</code> file. It will be set up identically to your Post model (ie. copy and refactor), but with the following fields:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">email: { type: String, unique: true, lowercase: true },
+password: { type: String }</code></pre></div></div>
+<p>For now we won’t store anything else in the User model, but you may eventually want to add to this.</p>
+<p>Make sure you have the config object:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">{
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  timestamps: true,
+}</code></pre></div></div>
+<p>These various settings provide a cleaner output object to JSON with <code>id</code> from <code>_id</code>, and also turns on using timestamps for each record.</p>
+<h3>Salt + Hash</h3>
+<p>Remember how we planned on saving our passwords?</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/saving-password-1767548298128.png" alt=""></p>
+<p>Now we get to implement that!</p>
+<p>🚀 We’re going to use the <a href="https://github.com/dcodeIO/bcrypt.js"><code>bcryptjs</code></a> module for this. So you should <code>npm install bcryptjs</code> and import it into your <code>user_model</code> now.</p>
+<h3>Saving Salt+Hash</h3>
+<p>For saving the password, we’re going to need a utilize a mongoose <a href="http://mongoosejs.com/docs/middleware.html#pre">pre save hook</a>. This is a bit tricky. We define a function in our <code>user_model</code> that will be called when the User object is saved. It will then take the plain text password and generate a salt and hash the password and save the salt+hash instead.</p>
+<p>The syntax for the pre-save hook is:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">yourModelSchema.pre(&#39;save&#39;, async function beforeyYourModelSave(next) {
+  // this is a reference to our model
+  // the function runs in some other context so DO NOT bind it
+  const model = this;
+
+  //TODO: do stuff here
+
+  // when done run the **next** callback with no arguments
+  // call next with an error if you encounter one
+  // return next();
+});</code></pre></div></div>
+<p>For the <a href="https://github.com/dcodeIO/bcrypt.js#usage---async"><code>bcryptjs</code></a> part what we’ll want to do first is generate a salt and then use that salt to hash our password. Take a look at the docs, there’s a few ways to do it. <code>10</code> (the default) is fine for the number of rounds.</p>
+<p>🚀 construct a method for: <code>userSchema.pre(&#39;save&#39;, function beforeUserSave(next) {</code>. Don’t forget that you’ll need to set <code>user</code> to <code>this</code> at the top.</p>
+<p>🚀 Generate a salt as they do in the docs and then hash <code>user.password</code> with the salt. </p>
+<p>Tip: in the docs the first argument to hash is the password, in our case you have it in a variable <code>user.password</code> - in case that was confusing documentation.</p>
+<p>🚀 Set the <code>user.password</code> to the hash and <code>return next()</code> which will allow the hook to proceed.</p>
+<p>But wait, won’t this update every single time we save the user? Yes, that might not be ideal if later we want to add in new fields and such!</p>
+<p>Luckily, you can add a check to see if the <code>password</code> field is being updated or not at the top:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">// only hash the password if it has been modified (or is new)
+if (!user.isModified(&#39;password&#39;)) return next();</code></pre></div></div>
+<ul>
+<li><p>Great, now we’ve got the first part down, how about comparing.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-jsx">// On Save Hook, encrypt password
+// Before saving a model, run this function
+//  note use of named function rather than arrow notation
+//  arrow notation is lexically scoped and prevents binding scope, which mongoose relies on
+UserSchema.pre(&#39;save&#39;, async function beforeUserSave(next) {
+  // get access to the user model
+  const user = this;
+
+  if (!user.isModified(&#39;password&#39;)) return next();
+
+  try {
+    // salt, hash, then set password to hash
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(user.password, salt);
+    user.password = hash;
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+});</code></pre></div></div>
+</li>
+</ul>
+<h3>Comparing Salt+Hash</h3>
+<p>We now want to add a method to our model to support comparing passwords. Turns out there is a nice way to <a href="http://mongoosejs.com/docs/guide.html#methods">add methods to a schema</a> in Mongoose. As with anything javascript, everything is just an object, so we can add a property in at anytime.</p>
+<p>🚀 We need to add a method that takes a <code>candidatePassword</code> and returns a boolean. We’ll use the <code>bcrypt.compare</code> functionality to do this. We’ll make this an async function.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">// note use of named function rather than arrow notation, required here
+UserSchema.methods.comparePassword = async function comparePassword(
+  candidatePassword,
+) {
+  const comparison = await bcrypt.compare(candidatePassword, this.password);
+  return comparison;
+};</code></pre></div></div>
+<p>This is slightly adapted for modern js from stackoverflow <a href="http://stackoverflow.com/questions/14588032/mongoose-password-hashing">mongoose-</a></p>
+<p><a href="http://stackoverflow.com/questions/14588032/mongoose-password-hashing">-hashing</a>.</p>
+<h3>User Controller</h3>
+<p>Let’s add a new User controller!</p>
+<p>🚀 Create a <code>controllers/user_controller.js</code>.</p>
+<p>To encode and decode our JWT’s we’re going to use the <a href="https://github.com/hokaccha/node-jwt-simple"><code>jwt-simple</code></a>. Go ahead and <code>npm install</code> it and import it: <code>import jwt from &#39;jwt-simple&#39;;</code></p>
+<p>🚀 Also import our new User model and init <code>dotenv</code> same as you did before!</p>
+<p>The controller has functions that we call for express routes. We are going to add 2 new routes <code>/signin</code> and <code>/signup</code>, so lets create function headers for those:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">export const signin = (user) =&gt; {};
+
+//note the lovely destructuring here indicating that we are passing in an object with these 3 keys
+export const signup = async ({ email, password }) =&gt; {};</code></pre></div></div>
+<p>When we generate a new JWT we need to simply encode a particular bit of json. This json has particular recommended fields which we’ll use. We’ll use <code>sub</code> or subject claim for the <em>user id</em> and <code>iat</code> for the <em>issued at timestamp</em>. This is according to the <a href="https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2">JWT standard</a>.</p>
+<p>🚀 We’ll just create a helper function for this:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">// encodes a new token for a user object
+function tokenForUser(user) {
+  const timestamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.AUTH_SECRET);
+}</code></pre></div></div>
+<p>What should our two authentication methods do?</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/token-process-1767548298128.png" alt=""></p>
+<p>For <code>signin</code>, once we have verified username/password we can just generate a new token. We’re going to do the verification with a passport middleware, so our <code>signin</code> function will already be protected – all it has to do is return a new token, nice and simple.</p>
+<p>For <code>signup</code>, it will be a bit more complicated. We need to create a new User object and save it, but first we need to verify that the user doesn’t already exist in the system (check their email address).</p>
+<p>First, let’s grab email and password and check them (this is inside the <code>signup</code> function in our <code>user_controller</code>):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span></div><pre><code class="language-jsx">if (!email || !password) {
+  throw new Error(&#39;You must provide email and password&#39;);
+}
+
+// See if a user with the given email exists
+const existingUser = await User.findOne({ email });
+if (existingUser) {
+  // If a user with email does exist, return an error
+  throw new Error(&#39;Email is in use&#39;);
+}
+
+// 🚀 TODO:
+// here you should use the User model to create a new user.
+// this is similar to how you created a Post
+// and then save and return a token
+await user.save();
+return tokenForUser(user);</code></pre></div></div>
+<p>Ok, now we have our controller and model done. We need one more module. A module that will provide passport authentication services to the rest of the app.</p>
+<h3>Passport Service</h3>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/passport-logo-1767548298128.png" alt=""></p>
+<p>We’re going to use more npm modules! Yay!</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install passport passport-local passport-jwt</code></pre></div></div></div>
+<p>We’ll be using <a href="http://passportjs.org/">Passport.js</a> to provide authentication services. Passport gives us multiple authentication “strategies”. We’ll use <code>passport-local</code> for authenticating with username and password, and <code>passport-jwt</code> for using JWT’s.</p>
+<p>Passport is a middleware in our routes, and it will analyze requests that need to be protected and deal with validating our JWT. It will do this automatically as a middleware on our routes.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/passport-strategies-1767548298128.png" alt=""></p>
+<p>🚀 Create a directory and file: <code>services/passport.js</code>.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span></div><pre><code class="language-jsx">import passport from &#39;passport&#39;;
+import LocalStrategy from &#39;passport-local&#39;;
+import { Strategy as JwtStrategy, ExtractJwt } from &#39;passport-jwt&#39;;
+import dotenv from &#39;dotenv&#39;;
+
+import User from &#39;../models/user_model&#39;;
+
+// loads in .env file if needed
+dotenv.config({ silent: true });
+
+// options for local strategy, we&#39;ll use email AS the username
+// not have separate ones
+const localOptions = { usernameField: &#39;email&#39; };
+
+// options for jwt strategy
+// we&#39;ll pass in the jwt in an `authorization` header
+// so passport can find it there
+const jwtOptions = {
+  jwtFromRequest: ExtractJwt.fromHeader(&#39;authorization&#39;),
+  secretOrKey: process.env.AUTH_SECRET,
+};
+// NOTE: we are not calling this a bearer token (although it technically is), if you see people use Bearer in front of token on the internet you could either ignore it, use it but then you have to parse it out here as well as prepend it on the frontend.
+
+// username/email + password authentication strategy
+const localLogin = new LocalStrategy(
+  localOptions,
+  async (email, password, done) =&gt; {
+    // 🚀 TODO: should find user by email and check password
+  },
+);
+
+const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) =&gt; {
+  // 🚀 TODO: is called with confirmed jwt we just need to confirm that user exits
+});
+
+// Tell passport to use this strategy
+passport.use(jwtLogin); // for &#39;jwt&#39;
+passport.use(localLogin); // for &#39;local&#39;
+
+// middleware functions to use in routes
+export const requireAuth = passport.authenticate(&#39;jwt&#39;, { session: false });
+export const requireSignin = passport.authenticate(&#39;local&#39;, { session: false });</code></pre></div></div>
+<p>For <code>localLogin</code> we need to run the <code>comparePassword</code> function that we wrote earlier.</p>
+<ul>
+<li><p>Here&#39;s the <code>localLogin</code> function in the interest of time.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span></div><pre><code class="language-jsx">const localLogin = new LocalStrategy(
+  localOptions,
+  async (email, password, done) =&gt; {
+    let user;
+    let isMatch;
+
+    try {
+      user = await User.findOne({ email });
+      if (!user) {
+        return done(null, false);
+      }
+      isMatch = await user.comparePassword(password);
+      if (!isMatch) {
+        return done(null, false);
+      } else {
+        return done(null, user);
+      }
+    } catch (error) {
+      return done(error);
+    }
+  },
+);</code></pre></div></div>
+<p>  Read through the above, make sense?</p>
+</li>
+</ul>
+<p>✍️ Comment each of the  calls above to explain what case it is and what it is doing. We will grade based on the comments in this case.</p>
+<p>For <code>jwtLogin</code>, we are given the payload of the passed in JWT. We need to check the userid and return the found user.</p>
+<ul>
+<li><p>Want to give <code>jwtLogin</code> a shot?</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-jsx">const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) =&gt; {
+  // See if the user ID in the payload exists in our database
+  // If it does, call &#39;done&#39; with that other
+  // otherwise, call done without a user object
+  let user;
+  try {
+    user = await User.findById(payload.sub);
+  } catch (error) {
+    done(error, false);
+  }
+  if (user) {
+    done(null, user);
+  } else {
+    done(null, false);
+  }
+});</code></pre></div></div>
+<p>  ⚠️ Many mongoose functions return a null object rather than an error — hence we have to check that. <code>done</code> is the callback and has the form <code>done(error, value)</code> as is fairly common with some JS libraries.</p>
+</li>
+</ul>
+<p>How does this all fit together?</p>
+<h3>Authentication Routes</h3>
+<p>Now that we have all the required parts, we are ready to tie it all together with Routes!</p>
+<p>🚀 Edit your <code>router.js</code> file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">// our imports as usual
+import * as UserController from &#39;./controllers/user_controller&#39;;
+import { requireAuth, requireSignin } from &#39;./services/passport&#39;;</code></pre></div></div>
+<p>🚀 Let’s add in the <code>/signin</code> route. Note the <code>requireSignin</code>. This is the passport middleware. It makes this route protected by the password+username strategy we defined in our passport.js file. Only once the user is authenticated via that method, will it allow the <code>UserController.signin</code> function to run.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">router.post(&#39;/signin&#39;, requireSignin, async (req, res) =&gt; {
+  try {
+    const token = UserController.signin(req.user);
+    res.json({ token, email: req.user.email });
+  } catch (error) {
+    res.status(422).send({ error: error.toString() });
+  }
+});</code></pre></div></div>
+<p>🚀 And add in the <code>/signup</code> route.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">router.post(&#39;/signup&#39;, async (req, res) =&gt; {
+  try {
+    const token = await UserController.signup(req.body);
+    res.json({ token, email: req.body.email });
+  } catch (error) {
+    res.status(422).send({ error: error.toString() });
+  }
+});</code></pre></div></div>
+<p>👀 See how we are handling the <code>req</code> and <code>res</code> objects in each router function. This will be the pattern that we use, await an async function in the controller then <code>res.json</code> to send the response back to the client.</p>
+<p>Note also how we set a status code and then send an error message. Note the 422 is a status code, there are <a href="https://http.cat/">lots of different status codes</a> to choose from, but is usually up to your client to interpret anyway, so choosing is somewhat arbitrary.</p>
+<p>Both of these are POSTs, so that implies that we are hoping that the frontend is going to be passing in some data in the request body — and that they match the email and password we are expecting.</p>
+<p>🚀 What other routes should be we protect? For now let’s use <code>requireAuth</code> to protect <code>createPost</code>, <code>updatePost</code>, and <code>deletePost</code>. As easy as: <code>.post(&#39;/thepathinyourroute&#39;, requireAuth,async (req,res) =&gt; {})</code> That is, you are setting <code>requireAuth</code> as middleware, in the middle between parsing the path, and your function handler.  </p>
+<p>Try a <code>curl</code> post to create a new post, you should get an unauthorized error!</p>
+<p>Let’s get a JWT we could use:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-bash">
+# try to signup
+curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;email&quot;: &quot;test@test.com&quot;,&quot;password&quot;: &quot;password&quot;}&#39; &quot;http://localhost:9090/api/signup&quot;
+
+# then try to signin
+curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;email&quot;: &quot;test@test.com&quot;,&quot;password&quot;: &quot;password&quot;}&#39; &quot;http://localhost:9090/api/signin&quot;
+
+# try posting!
+curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;authorization: JUST_THE_LONG_TOKEN_STRING&quot; -d &#39;{&quot;title&quot;: &quot;test&quot;,&quot;tags&quot;: &quot;sometag&quot;,&quot;content&quot;: &quot;this is a test post&quot;}&#39; &quot;http://localhost:9090/api/posts&quot;</code></pre></div></div></div>
+<p>Done! You now have an API server that supports authentication. This is fairly rudimentary, but you can expand on this. For instance you can make sure that a user can only update their own posts (just save the userID along with the post).</p>
+<p>🆒 Within <code>post_controller.js</code> for any route that is protected by <code>requireAuth</code> you will now have a <code>req.user</code> object. Nice!</p>
+<p>🚀 Might as well just add in recording who the author is with each post now. Edit your <code>post_model.js</code> file and add in this field to your schema: <code>author: { type: Schema.Types.ObjectId, ref: &#39;User&#39; },</code>. We are saying that the author field is now a reference to a User. We can later get this value automatically filled for us or can use the id to look up the author using <a href="http://mongoosejs.com/docs/populate.html"><code>populate</code></a>.</p>
+<p>🚀 Don’t forget to update your controller to utilize this new field.</p>
+<p>Now when you make new posts, here’s what your mongo database entry will look like:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">{ &quot;_id&quot; : ObjectId(&quot;57a94e206ec5eae238e359f8&quot;), &quot;author&quot; : ObjectId(&quot;57a94813e4c55bb432fc3a4d&quot;), &quot;content&quot; : &quot;this is a test post&quot;, &quot;tags&quot; : &quot;words&quot;, &quot;title&quot; : &quot;first post MORE TESTING&quot;, &quot;__v&quot; : 0 }</code></pre></div></div>
+<p>You can also have arrays of objectIds. This might come in handy if you are trying to model other types of relationships.</p>
+<h2 style="background-color: #FBF3DB;">Frontend Authentication</h2>
+<p>Ok, so now we should update our frontend to support authentication too right? YES!</p>
+<h3>Frontend Auth Summary</h3>
+<ol>
+<li>Add in new authentication slice</li>
+<li>Add in <code>/signin</code>, and <code>/signup</code> routes <ul>
+<li>these routes will need associated components</li>
+</ul>
+</li>
+<li>Modify NavBar with links and signout functionality</li>
+<li>Create a new higher order component to allow us to require auth on any frontend components</li>
+</ol>
+<h3>Auth Slice</h3>
+<p>🚀 Create a new auth slice in your Zustand store. </p>
+<p>We’ll need one state for now: a boolean for <code>authenticated</code> where the default is false, and four actions: <code>loadUser</code> , <code>signinUser</code> , <code>signUpUser</code> , <code>signoutUser</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span></div><pre><code class="language-jsx">// store/auth-slice.js
+
+import axios from &#39;axios&#39;;
+
+export default function createAuthSlice(set, get) {
+  return {
+    authenticated: false,
+    loadUser: () =&gt; {
+      // check for token in local storage
+    },
+    signinUser: async (fields, navigate) =&gt; {
+      // sign in user
+      // takes in an object with email and password (minimal user object)
+      // does an axios.post on the /signin endpoint and passes in { email, password}
+      // on success does:
+      //  sets authSlice authenticated state to &#39;true&#39;
+      //  localStorage.setItem(&#39;token&#39;, response.data.token);
+      //  navigates to the home page (&#39;/&#39;)
+      // on error does:
+      //  set error in error slice: get().errorSlice.newError(`Sign In Failed: ${error}`);
+    },
+    signUpUser: async (fields, navigate) =&gt; {
+      // sign up user
+      // takes in an object with email and password (minimal user object)
+      // does an axios.post on the /signup endpoint (only difference from above)
+      // on success does:
+      //  sets authSlice authenticated state to &#39;true&#39;
+      //  localStorage.setItem(&#39;token&#39;, response.data.token);
+      // on error does:
+      //  set error in error slice: get().errorSlice.newError(`Sign Up Failed: ${error}`);
+    },
+    signoutUser: async (navigate) =&gt; {
+      // sign out user
+      // deletes token from localstorage
+      // and deauths user
+      // sets authSlice authenticated state to &#39;false&#39;
+    },
+  };
+}</code></pre></div></div>
+<p>The most important difference in the above <code>signupUser</code> and <code>signinUser</code> actions is that they take the token that is in the response and put it in <code>localStorage</code>. We’ll be able to access this whenever we load up our site, so we’ll remain logged in without having to re-authenticate every time.</p>
+<h3>Import the new auth slice and specify auth type</h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-jsx">// store/index.js
+
+// AT THE TOP, WITH YOUR POST SLICE!
+import createAuthSlice from &#39;./auth-slice&#39;;
+
+// INSIDE YOUR USESTORE
+const useStore = create(
+  devtools(
+    immer((...args) =&gt; ({
+      authSlice: createAuthSlice(...args), // add in your new auth slice
+      // WHATEVER OTHER SLICES/LOGIC YOU HAVE TO HANDLE POST STATE
+      authType: &#39;token&#39;, // specify &#39;token&#39; auth type
+    })),
+  ),
+);</code></pre></div></div>
+<p>We import the <code>createAuthSlice</code> function we defined in &#39;./auth-slice&#39;.</p>
+<p>In the object passed to our existing store creation function, we create a new slice of state named &#39;authSlice&#39; by calling our new <code>createAuthSlice</code> function.</p>
+<p>We also specify an authentication type to use token-based authentication.</p>
+<h3>Authorization Header</h3>
+<p>We’ll need to add an Authorization Header to some of the existing axios API calls. For each of <code>deletePost</code>, <code>createPost</code>, <code>updatePost</code> you’ll need to modify the axios call to pass in headers. Here’s what the <code>createPost</code> one will look like:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">axios.post(`${ROOT_URL}/posts`, post, {
+  headers: { authorization: localStorage.getItem(&#39;token&#39;) },
+});</code></pre></div></div>
+<p>Note, the headers are in a config object being passed in as a <strong>third argument</strong> to axios.</p>
+<h3>On First Load</h3>
+<p>🚀 In your main <code>app.jsx</code> file you should call the <code>loadUser</code> function from your <code>authSlice</code> to check for a token in localStorage if you want it loaded on first start or reload:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">// include at the top with your imports
+import useStore from &#39;../store&#39;;
+
+// inside your App component
+const loadUser = useStore(({ authSlice }) =&gt; authSlice.loadUser);
+
+// call loadUser in useEffect
+useEffect(() =&gt; {
+  loadUser();
+}, []);</code></pre></div></div>
+<p>This will set our state as authenticated if there is a token available that was previously saved. You can debug this in your <em>Application</em> -&gt; <em>Local Storage</em> Chrome inspector tab.</p>
+<h3>Auth state</h3>
+<p>Your auth slice should have the default state of <code>{ authenticated: false }</code>. Which means the state to access to check if someone is authenticated is simply <code>const authenticated = useStore(({ authSlice }) =&gt; authSlice.authenticated);</code> </p>
+<p>You might want to eventually add more things, such as the <code>authorname</code> here later.</p>
+<p><em>Why are we just setting a boolean</em>, you ask? Good question. You may want to store something else, like the <code>authorname</code> which is a bit more useful.</p>
+<p>The security here is provided by the server, which if you don’t have a valid token won’t allow you to do certain operations. The frontend just needs to know whether it has a valid token or not so a boolean will suffice here — this is so our user experience can be informed about auth status and show the appropriate pages.  But if a user does get to them, the server will prevent any unauthorized operations anyway.</p>
+<h3>Components</h3>
+<p>Ok, finally we’re ready for the <code>SignIn</code> and <code>SignUp</code> components.</p>
+<ul>
+<li><strong>SignIn</strong> — A component that will use the <code>signinUser</code> function. Simple form with username and password.</li>
+<li><strong>SignUp</strong> — A component that will use the <code>signupUser</code> function. Simple form with whatever fields you want a user to have.</li>
+</ul>
+<p>🚀 Create these components. You can base them off of your New Post component pretty easily. Feel free to create one single component for this with different buttons triggering the signup / signin if you prefer that UX.</p>
+<p>🚀 Add Routes to these components inside <code>&lt;Routes&gt;&lt;/Routes&gt;</code> in your main <code>app.jsx</code> file.</p>
+<h3>NavBar</h3>
+<p>For SignOut simply make grant our NavBar component access to the <code>signoutUser</code> function. That function can do a <code>navigate</code> to ‘/’ on signout. You can just have a signout button that triggers this function. Then use the <code>authSlice.authenticated</code> to only show the signout button if a user is logged in, and signup/signout otherwise.</p>
+<p>Additionally add Links to <code>/signin</code> and <code>/signup</code>.</p>
+<h3>Authorized Component</h3>
+<p>One last thing. Right now an unauthenticated user can access the “Add a post” functionality. They will get an error (if you implemented an error state+function+component) or just a submit button that doesn’t work. Let’s make that page <strong>protected</strong> so that if the user isn’t authenticated they will be prompted to log in. Rather than adding checks into each of our components, we are going to create a <em>higher order</em> component that wraps Route! How might you go about doing this?</p>
+<p>What we can do is create a new component that wraps a Route component and some logic inside it.</p>
+<p>🚀 Create a new component <code>requireAuth.js</code>.</p>
+<p>Here’s it is in toto:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
+import { Navigate } from &#39;react-router-dom&#39;;
+
+import useStore from &#39;../store&#39;;
+
+// Router Wrapper
+function RequireAuth({ children }) {
+  const authenticated = useStore(({ authSlice }) =&gt; authSlice.authenticated);
+
+  if (!authenticated) {
+    return &lt;Navigate to=&quot;/signin&quot; /&gt;;
+  } else {
+    return children;
+  }
+}
+
+export default RequireAuth;</code></pre></div></div>
+<p>Note how it is a nice simple function component that simply checks if we are authenticated and if not navigates to sign-in.</p>
+<p>🚀 Now in your <code>&lt;Routes&gt;</code> in <code>app.jsx</code> you can import <code>RequireAuth</code> and protect the <code>New</code> path like so: <code>&lt;Route path=&quot;/posts/new&quot; element={ &lt;RequireAuth&gt; &lt;New/&gt; &lt;/RequireAuth&gt; } /&gt;</code></p>
+<h2 style="background-color: #FBF3DB;">Extend the User Model with Author</h2>
+<p>🚀 Extend the User Model to store the author’s name in addition to email, and add in support for that everywhere: express routes, user_model, user_controller, post_model, post_controller, Zustand state, function, and post components.</p>
+<p>🚀 Display the Author Name along with every post. You are welcome to either duplicate the name and store it directly as a field in the Post model, or look it up by reference. Note: <code>name</code> is a reserved word in JS and can cause problems if you reassign object.name, so call your field something other than name (e.g. <code>authorname</code> or <code>username</code>)</p>
+<p>🍹The best time/place to have access to the User object is actually right when you create the post on the api side. Since that route is an authenticated route wrapped in our <code>requireAuth</code> middleware, passport adds a <code>user</code> object to the request for you!  In your createPost method in your post controller you would have access to: <code>req.user</code>. If the user object has say an <code>authorname</code> field, then that would be available there for you to then save along with the post.</p>
+<p>There are 2 ways to associate the user with the post. You can save a <code>ref</code> to the whole user object (which you started to set up when you added author as an ObjectID type field). If you do that, then later when you retrieve the user you need to use <a href="http://mongoosejs.com/docs/populate.html"><code>populate</code></a> to fill in the object. Or you could add a <code>authorname</code> field to post and assign that. Using a reference and populating on retrieval is the better way, you can even select which field specifically to populate so you aren’t sending the whole user object if you don’t want to.</p>
+<h2 style="background-color: #FBF3DB;">Test and Submit</h2>
+<p>Test it all out and make sure all the parts still work!  The cypress tests have a suite for testing our authentication api routes so use those to help.</p>
+<p>Commit and push both both your Lab5 and Lab4 withAuth branches.  Deploy everything - in render choose your <code>withAuth</code> branches for new sites so you have 2 new URLS: <code>Lab4+auth</code>, and <code>Lab5+auth</code> . At this point you don’t need any help with that.</p>
+<h2 style="background-color: #FBF3DB;">To Turn In</h2>
+<ol>
+<li>make a comment on the auth ec issue and submit links to the github branches as well as the deployed versions of each of your frontend and backend.<ol>
+<li>include a couple sentence description about what you did</li>
+</ol>
+<ul>
+<li>and what worked / didn’t work</li>
+<li>any (extra) extra credit attempted</li>
+</ul>
+</li>
+<li>your app should: <ul>
+<li>have users sign-in, sign-up, sign-out</li>
+<li>not allow people to access /posts/new when not logged in</li>
+<li>have a user model that stores authorname, salt+hashed password, and name</li>
+<li>have a new Zustand auth slice to handle all auth state and functions</li>
+</ul>
+</li>
+</ol>
+<h2 style="background-color: #FBF3DB;">Extra Credit on Extra Credit!</h2>
+<p><em>always mention your extra credit in the README.md file</em></p>
+<ul>
+<li>so you now have users, what can you do with users? so many things!</li>
+<li>if you didn’t add error message handling before you should do it now (error state in store, error reducer, error action, error component)</li>
+<li>add more pages and content to your app, how about a profile page for each user (add in /user frontend route and api endpoints)</li>
+<li>extend the permissions system so that users can only edit their own posts</li>
+<li>add in commenting system, authenticated users can comment on posts</li>
+<li>suggest something else, this is your time to make this your own!</li>
+</ul>
+
+</body>
+</html>
