@@ -200,11 +200,15 @@
       "slides": [],
       "assignments": {
         "react-intro": {
-          "pages": [],
+          "pages": [
+            "sa3-intro-react-short-assignment"
+          ],
           "slides": []
         },
         "state-management-part-2-refactor-videos": {
-          "pages": [],
+          "pages": [
+            "sa-state-management-short-assignment"
+          ],
           "slides": []
         }
       }
@@ -236,8 +240,7 @@
   },
   "general": {
     "pages": [
-      "intro-to-cypress-and-web-testing",
-      "sa3-intro-react-short-assignment"
+      "intro-to-cypress-and-web-testing"
     ],
     "slides": []
   }
