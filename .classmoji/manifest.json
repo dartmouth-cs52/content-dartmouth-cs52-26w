@@ -125,11 +125,15 @@
       "slides": [],
       "assignments": {
         "lab4-prelab": {
-          "pages": [],
+          "pages": [
+            "prelab-4-platform-client"
+          ],
           "slides": []
         },
         "lab-4-platform-client": {
-          "pages": [],
+          "pages": [
+            "lab-4-platform-frontend"
+          ],
           "slides": []
         }
       }
@@ -220,9 +224,7 @@
     "pages": [
       "intro-to-cypress-and-web-testing",
       "lab-3-react-notes",
-      "lab-4-platform-frontend",
       "lab-5-platform-api",
-      "prelab-4-platform-client",
       "sa2-frontend-starterpack-with-vite-short-assignment",
       "sa3-intro-react-short-assignment",
       "sa6-kahoot-api",
