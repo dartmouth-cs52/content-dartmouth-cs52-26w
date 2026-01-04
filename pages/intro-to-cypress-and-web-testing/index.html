@@ -442,108 +442,85 @@
   </style>
 </head>
 <body>
-
-<p>Type: short<br>Created time: August 23, 2022 2:07 PM<br>published: No</p>
-<h1 style="background-color: #DDEBF1;">Intro to Cypress and Web Testing — SA#</h1>
 <p>In this assignment, we’ll be learning how to test front-end applications. This is important because it lets us ensure that everything is working while we develop. It is particularly useful as the complexity of a project grows and changes made in one section could break another without you knowing. You can save yourself a lot of frustration in the long run!</p>
 <p>We’re going to be testing against a website created by a previous student that is an exceptional example of a Lab 1 submission. You should get a good idea about how to add these tests to your future work since we’re going to be using testing from now.</p>
-<h1 style="background-color: #DDEBF1;">Let’s Start</h1>
+<div class="heading-block h1-block"><h1>Let’s Start</h1></div>
 <p>🚀 [Insert repo for assignment] </p>
-<h1 style="background-color: #DDEBF1;">Front-end Testing</h1>
+<div class="heading-block h1-block"><h1>Front-end Testing</h1></div>
 <p>In a nutshell, front-end testing is all about ensuring everything works correctly on the client side of an application. This includes visible components, functionality, layout, or other elements of user experience like loading speed. As you can imagine, there’s almost no limit to the number of tests you can write and it’s not possible to test against every possible error in the real world. This means that you need to scale your tests to fit the project. </p>
-<h3>Why Test?</h3>
+<div class="heading-block h3-block"><h3>Why Test?</h3></div>
 <p>As mentioned above, front-end testing is useful for a variety of reasons; it ensures that your application performs as expected and catches changes early. </p>
-<ul>
-<li><strong>Responsiveness and cross-browser compatibility:</strong> Testing the application on a variety of screen sizes to make sure that the layout and functionality do not break. Testing that everything works across different browsers is also important but we will not worry about that here.</li>
-<li><strong>Spotting performance issues:</strong> This is to make sure that everything loads fast enough and that the user has a smooth experience overall. The performance of a website depends on a large number of systems making testing in the front-end the only way to know if there’s an issue.</li>
-<li><strong>Testing 3rd party resources:</strong> These resources (such as fonts, images, or other services) may be critical to your website but are also outside of your direct control. Having tests in place to identify issues is important.</li>
-</ul>
-<h3>What to Test?</h3>
+<ul><li><strong>Responsiveness and cross-browser compatibility:</strong> Testing the application on a variety of screen sizes to make sure that the layout and functionality do not break. Testing that everything works across different browsers is also important but we will not worry about that here.</li><li><strong>Spotting performance issues:</strong> This is to make sure that everything loads fast enough and that the user has a smooth experience overall. The performance of a website depends on a large number of systems making testing in the front-end the only way to know if there’s an issue.</li><li><strong>Testing 3rd party resources:</strong> These resources (such as fonts, images, or other services) may be critical to your website but are also outside of your direct control. Having tests in place to identify issues is important.</li></ul>
+<div class="heading-block h3-block"><h3>What to Test?</h3></div>
 <p>Here’s an overview of some common ways to actually perform these kinds of tests. </p>
-<ul>
-<li><strong>Unit tests</strong> test the smallest components or “units” of your website independently of anything else on the page. Performing checks to make sure that buttons work, animations function, carousels carousel, you get the idea.</li>
-<li><strong>Visual tests</strong> are tests that rely on the visual presentation of your website as it is displayed in the viewport. Here, you’re ensuring that the website <em>looks</em> how it should rather than is coded correctly. This means—for example—that you measure the position of an element with JavaScript rather than look at what CSS values you gave it.</li>
-<li><strong>Cross-browser testing</strong> is how we make sure that the website performs correctly across all browsers (or at least the ones we care about, looking at you Internet Explorer).</li>
-<li><strong>Accessibility testing</strong> is important and not to be overlooked. These include tests of screen reader compatibility, colorblind-friendly interfaces, and navigability.</li>
-</ul>
+<ul><li><strong>Unit tests</strong> test the smallest components or “units” of your website independently of anything else on the page. Performing checks to make sure that buttons work, animations function, carousels carousel, you get the idea.</li><li><strong>Visual tests</strong> are tests that rely on the visual presentation of your website as it is displayed in the viewport. Here, you’re ensuring that the website <em>looks</em> how it should rather than is coded correctly. This means—for example—that you measure the position of an element with JavaScript rather than look at what CSS values you gave it.</li><li><strong>Cross-browser testing</strong> is how we make sure that the website performs correctly across all browsers (or at least the ones we care about, looking at you Internet Explorer).</li><li><strong>Accessibility testing</strong> is important and not to be overlooked. These include tests of screen reader compatibility, colorblind-friendly interfaces, and navigability.</li></ul>
 <p>There are more kinds of tests beyond these to meet the needs of the goals of the website and the evolving needs of users. As you can see, there’s a lot to cover but don’t worry, we’re going to be starting simple in this short assignment. </p>
-<h1 style="background-color: #DDEBF1;">Cypress Overview and Installation</h1>
+<div class="heading-block h1-block"><h1>Cypress Overview and Installation</h1></div>
 <p>The same content that’s in the API testing assignment. We should probably move that here.</p>
 <p>Adapt the section describing specs to fit this assignment. We can assume that they know that for the next one</p>
 <p>Future assignments will include Cypress tests that you can run on your code and UIs.</p>
-<h3>Let’s write some tests!</h3>
+<div class="heading-block h3-block"><h3>Let’s write some tests!</h3></div>
 <p>You should be greeted with this page giving two different options for getting started with your spec. The scaffold examples have a number of scripts for different kinds of tests. For this project, we’ll create an empty spec so we can go over all pieces of front-end tests.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/intro-to-cypress-and-web-testing/assets/untitled-1767548353620.png" alt="Untitled"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/intro-to-cypress-and-web-testing/assets/untitled-1767548353620.png" alt="Untitled">
 <p>Once you create the spec you can go ahead and run it. You will see the one filler test passing in the left panel.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/intro-to-cypress-and-web-testing/assets/untitled-1-1767548353620.png" alt="Untitled"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/intro-to-cypress-and-web-testing/assets/untitled-1-1767548353620.png" alt="Untitled">
 <p>You’ll see the website loading in the middle of the page. This is the view that Cypress has of the website and we’re going to replace it with ours instead of the default. In the left panel, you’ll be able to see which tests pass or fail and can open them up for more details about what is being tested and why it failed. In order to actually modify these tests, we’re going to open the <code>cypress/e2e/</code> folder in your IDE. Here’s the starter script it created:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">describe(&#39;empty spec&#39;, () =&gt; {
-  it(&#39;passes&#39;, () =&gt; {
-    cy.visit(&#39;https://example.cypress.io&#39;);
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-javascript">describe('empty spec', () =&gt; {
+  it('passes', () =&gt; {
+    cy.visit('https://example.cypress.io');
   });
 });</code></pre></div></div>
-<p>Here we can see the way the test is set up. We describe an <code>&#39;empty spec&#39;</code> (the name of our group of tests), that it <code>&#39;passes&#39;</code> (description of the test), and then the operation we want to test—in this case, visiting an example website. </p>
+<p>Here we can see the way the test is set up. We describe an <code>'empty spec'</code> (the name of our group of tests), that it <code>'passes'</code> (description of the test), and then the operation we want to test—in this case, visiting an example website. </p>
 <p>First, we’ll set up the <code>baseUrl</code> so that our tests will hit our front page. Make the change to the <code>cypress.config.js</code>. The file server folder indicates where the website is located in the directory one level up.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">const { defineConfig } = require(&#39;cypress&#39;);
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  fileServerFolder: &#39;../&#39;,
+  fileServerFolder: '../',
   e2e: {
     setupNodeEvents(on, config) {},
     supportFile: false,
   },
 });</code></pre></div></div>
 <p>The default test is not very interesting, we can use patterns like this to test various things about the page. In this case, that a particular element has a specific property.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">describe(&#39;check for responsiveness&#39;, () =&gt; {
-  it(&#39;description of test&#39;, () =&gt; {
-    cy.get(&#39;some element&#39;).should(&#39;have.css&#39;, &#39;property&#39;, &#39;value&#39;);
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-javascript">describe('check for responsiveness', () =&gt; {
+  it('description of test', () =&gt; {
+    cy.get('some element').should('have.css', 'property', 'value');
   });
 });</code></pre></div></div>
 <p>Our tests are going to focus on the responsiveness of the page and the functionality of the hamburger menu in mobile view. Test various views it is helpful to store those sizes as variables</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">const sizes = [&#39;iphone-x&#39;, &#39;ipad-2&#39;, [1024, 768]];</code></pre></div></div>
-<p>Now, if we want to set the viewport to <code>&#39;iphone-x&#39;</code>, for example, all we have to do is call <code>.viewport()</code>.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">cy.viewport(sizes[1]);</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">const sizes = ['iphone-x', 'ipad-2', [1024, 768]];</code></pre></div></div>
+<p>Now, if we want to set the viewport to <code>'iphone-x'</code>, for example, all we have to do is call <code>.viewport()</code>.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">cy.viewport(sizes[1]);</code></pre></div></div>
 <p>Now to test the flexbox functionality of the Day Trips component. </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">it(&#39;should display &quot;day trips&quot; as a flex row on ipad-2&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">it('should display "day trips" as a flex row on ipad-2', () =&gt; {
   cy.viewport(sizes[1]);
-  cy.visit(&#39;index.html&#39;);
-  cy.get(&#39;.day-trips__list&#39;).should(&#39;have.css&#39;, &#39;flex-direction&#39;, &#39;row&#39;);
+  cy.visit('index.html');
+  cy.get('.day-trips__list').should('have.css', 'flex-direction', 'row');
 });
 
-it(&#39;should display &quot;day trips&quot; as a flex column on iphone-x&#39;, () =&gt; {
+it('should display "day trips" as a flex column on iphone-x', () =&gt; {
   cy.viewport(sizes[0]);
-  cy.visit(&#39;index.html&#39;);
-  cy.get(&#39;.day-trips__list&#39;).should(&#39;have.css&#39;, &#39;flex-direction&#39;, &#39;column&#39;);
+  cy.visit('index.html');
+  cy.get('.day-trips__list').should('have.css', 'flex-direction', 'column');
 });</code></pre></div></div>
-<p>Let’s break this down. We first want to see that the default <code>flex-direction</code> is set to <code>row</code> to display each element horizontally and take advantage of the wider screen. We first set the size to <code>&#39;ipad-2&#39;</code> via the list of sizes we made above and then visit our homepage. We can grab the Day Trips element with its class and use the <code>.should()</code> method to specify a CSS property. </p>
-<p>Now we can set the size to iPhone and test that same property which should have changed from <code>&#39;row&#39;</code> to <code>&#39;column&#39;</code>. Pretty easy right? You can test the grids of other groups of elements for extra credit.</p>
+<p>Let’s break this down. We first want to see that the default <code>flex-direction</code> is set to <code>row</code> to display each element horizontally and take advantage of the wider screen. We first set the size to <code>'ipad-2'</code> via the list of sizes we made above and then visit our homepage. We can grab the Day Trips element with its class and use the <code>.should()</code> method to specify a CSS property. </p>
+<p>Now we can set the size to iPhone and test that same property which should have changed from <code>'row'</code> to <code>'column'</code>. Pretty easy right? You can test the grids of other groups of elements for extra credit.</p>
 <p>To test that the hamburger menu opens on a mobile screen size we first set the size and navigate to the homepage like before. The button that’s used in this implementation is actually a checkbox. Using Cypress we can force the checkbox to be activated and see what happens. By inspecting the element of the page we see that the menu is simply translated above the viewport with a transformation, which is a CSS property we can check. </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">it(&#39;should display nav on hamburger click in mobile view&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-javascript">it('should display nav on hamburger click in mobile view', () =&gt; {
   cy.viewport(sizes[0]);
-  cy.visit(&#39;index.html&#39;);
-  cy.get(&#39;.main-nav__mobile-nav-trigger&#39;).check({ force: true });
-  cy.get(&#39;.main-nav__nav-links&#39;)
-    .should(&#39;have.css&#39;, &#39;opacity&#39;, &#39;1&#39;)
-    .should(&#39;have.css&#39;, &#39;transform&#39;, &#39;matrix(1, 0, 0, 1, 0, 0)&#39;);
+  cy.visit('index.html');
+  cy.get('.main-nav__mobile-nav-trigger').check({ force: true });
+  cy.get('.main-nav__nav-links')
+    .should('have.css', 'opacity', '1')
+    .should('have.css', 'transform', 'matrix(1, 0, 0, 1, 0, 0)');
 });</code></pre></div></div>
 <p>[there are some other tests for horizontal overflow and nav type in the file that I’ve left out but we can add those in.]</p>
-<h2 style="background-color: #FBF3DB;">Commit!</h2>
+<div class="heading-block h2-block"><h2>Commit!</h2></div>
 <p>Don’t forget to commit and push your code.</p>
-<h2 style="background-color: #FBF3DB;">To Turn In</h2>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Resources</h2>
-<ul>
-<li><a href="https://www.cypress.io/">https://www.cypress.io/</a></li>
-</ul>
+<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li></ul>
+<div class="heading-block h2-block"><h2>Resources</h2></div>
+<ul><li><a href="https://www.cypress.io/">https://www.cypress.io/</a></li></ul>
 <p>testing against:   <a href="https://outlive-mini-project.netlify.app/">https://outlive-mini-project.netlify.app/</a></p>
-
 </body>
 </html>
