@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: lab<br>week: Week 1<br>Created time: February 7, 2022 9:20 PM<br>Dates: April 4, 2025 → April 8, 2025<br>published: Yes</p>
+<h1 style="background-color: #DDEBF1;">Lab 1 - Part 2 - CSS</h1>
+<p><strong>Build a Landing Page! ✈️</strong></p>
+<p>We shall continue on with our Landing Page!  Now that you have a great skeleton of a page, let’s hang some styles! 🤟</p>
+<h2 style="background-color: #FBF3DB;">Goal Overview</h2>
+<ul>
+<li>Become comfortable with <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a></li>
+<li>Be able to mimic the structure and style of pages using html structure and css rules</li>
+<li>Focus on CSS foundations</li>
+<li>Internalize Flexboxes for mobile and desktop</li>
+<li>Build a beautiful static landing page</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Getting Started</h2>
+<p>🚀  Use the <strong>same</strong> repository and code base you created for and review what you are building - a landing page with certain components. </p>
+<p><a href="https://www.notion.so/Lab-1-Part-1-Build-A-Landing-Page-HTML-263e1a579bf841b992eb430b199fcb91?pvs=21">Lab 1 Part 1:  Build A Landing Page HTML</a></p>
+<h2 style="background-color: #FBF3DB;">What you have so far</h2>
+<p>What you have now should look something like this: HTML with no CSS. </p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/html-layout-1767548518209.png" alt=""></p>
+<h2 style="background-color: #FBF3DB;">PART 2: Styling!</h2>
+<h3>Adding in Fonts</h3>
+<p>Right, in the above you may have noticed that yours was Times New Roman…</p>
+<p>🚀 You should get some better fonts quick from <a href="http://fonts.google.com/">Google Fonts</a>! 🐎</p>
+<p>🚀 And you might as well grab some nice icons while you are at it from <a href="http://fontawesome.io/">FontAwesome</a>. Easiest is to just download the whole fontawesome package and include that in your source.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/icons-1767548518209.png" alt=""></p>
+<h3>Background</h3>
+<p>🚀 Go ahead and add a background in!</p>
+<p>I recommend getting rid of margin and padding on body. Something like:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-css">body {
+  margin: 0;
+  padding: 0;
+}</code></pre></div></div>
+<p>and then creating a top level div with a background that is set to size <code>cover</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-css">.cover {
+  background-image: url(img/yourimagename.jpg);
+  background-size: cover;
+}</code></pre></div></div>
+<p><em>Note: the above are just tips - you may need to expand / do something a little different in your particular case.</em></p>
+<h3>Flex Boxes</h3>
+<p>🚀 Pretty much all the layout you can do with flex boxes. In fact you should absolutely do as much of the layout of this page using flexbox layout. Some of you may prefer using CSS grids for some elements, but flexboxes are all you really need. 🙊</p>
+<p>There may be some tricky elements, in particular full page ones. In this example there was a fullscreen gradient element which needed to have <code>absolute</code> positioning to place.</p>
+<p>Here is a good <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">guide to flex</a>.</p>
+<p><strong>Note:</strong> for now, only use pure CSS3 directives that are supported by the latest Chrome. Don’t worry about the various <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix">vendor prefixes</a> like <code>-webit</code> <code>-moz</code> or any of those prefixes. Later on we’ll learn about using <a href="https://css-tricks.com/autoprefixer/">autoprefixers</a> to make our code work better cross-platform, but for now use the latest the greatest that works in Chrome. That is the browser we’ll be testing your sites in and the only browser that matters for the time being. <strong>Do not</strong> use any other browser for your dev work.</p>
+<p>Now things should look like they are coming together.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/flexboxes-1767548518209.jpg" alt=""></p>
+<p>Things are not lining up and much of styling is missing, but most elements are in their proper places. Using only flexboxes and some very basic positioning. No bootstrap or css frameworks here!</p>
+<h3>Styling</h3>
+<p>Now get it looking good!</p>
+<p>🚀 Don’t forget the <code>:hover</code> CSS! There should be some nice little touches throughout.</p>
+<p><code>border</code>, <code>box-shadow</code>, <code>border-radius</code>, <code>margin</code>, <code>rgba</code>, all will come in handy!</p>
+<p>I recommend working on the full width version, and don’t worry about how it resizes till you are moderately happy with it.</p>
+<p>Getting there!</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/full-width-1767548518209.jpg" alt=""></p>
+<h3>Media query</h3>
+<p>Now for the tricky part! Shrink the width of your browser window all the way down! GASP! 💩</p>
+<p>Most likely it did not resize well. We’ll deal with this using a single media query.</p>
+<p>🚀Here’s how to start:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-css">@media only screen and (max-width: 640px) {
+}</code></pre></div></div>
+<p>Anything in this media query will only apply if the screen is fairly narrow. Don’t worry about it working on every single device - rather focus on it working in a more general fashion in a “mobile” width vs “desktop”. Flex-boxes will take care of things being responsive in most widths but you want to make sure that there is a mobile version where a few bigger site wide changes happen: rows into columns, nav links into hamburger menu.</p>
+<p>⚠️⚠️⚠️ Add <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code> to the <code>head</code> section of your html. This tells the mobile browser to not pretend to be a real browser and use actual device pixels for width and allows you to test on mobile / in the Chrome mobile device mode.</p>
+<h3>Important Techniques</h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-css">flex-direction: column;</code></pre></div></div>
+<p>🚀 Take some of your row flex boxes and simply convert them to columns. This works remarkably well for many cases. The input box and button,  the links at the bottom, the highlight selections in the middle. </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-css">display: none;</code></pre></div></div>
+<p>This method can be very powerful.   For your navbar the recommendation is to do this:</p>
+<ol>
+<li>create 2 separate <code>nav</code>  elements.<ol>
+<li><code>&lt;nav class=&quot;desktop&quot;&gt;</code></li>
+<li><code>&lt;nav class=&quot;mobile&quot;&gt;</code></li>
+</ol>
+</li>
+<li>Then in your stylesheet you can do:<ol>
+<li>by default <code>nav.mobile { display: none;}</code></li>
+<li>and then in your <code>@media query</code></li>
+<li>switch which is displayed and which is hidden!</li>
+<li><code>nav.mobile { display: flex;}</code>  &amp; <code>nav.desktop { display: none;}</code></li>
+</ol>
+</li>
+</ol>
+<p>This way you can toggle the display property on completely different sections of the site. You might have a completely different set of elements for the links section for instance. Toggle one off and the other on.</p>
+<p>At this point it might look something akin to:</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/responsive-1767548518209.jpg" alt=""></p>
+<p><strong>Note:</strong> I did not bother with making the bottom Link Heading sections expand. Extra credit if you do.</p>
+<h3>Speaking of CSS responding to clicks…</h3>
+<p>Notice that on most of these pages when you’re in the narrow responsive site if you click on the <em>Hamburger Menu</em> button an overlay menu comes up. This is done with javascript the world over. BUT it is possible to trick CSS into responding to clicks!</p>
+<p>This is called the <a href="https://css-tricks.com/the-checkbox-hack/">CSS Checkbox Hack</a>, very clever.</p>
+<p>You can implement this functionality in pure CSS. You can also play with CSS transitions for this to make the menu appear to slide or fade in. <strong>Caveat:</strong> CSS transitions don’t work if the element has <code>display: none</code> on it, but there are other ways to hide an element, <code>opacity</code> + <code>height: 0px</code> come to mind.</p>
+<p>Here’s what it could look like:</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/css-checkbox-hack-1767548518209.gif" alt=""></p>
+<h2 style="background-color: #FBF3DB;">And You Are Done! Don’t forget to host it.</h2>
+<p>See hosting from:</p>
+<h2 style="background-color: #FBF3DB;">Automatic Testing (in beta)</h2>
+<p>As part of this assignment we have provided a simple test suite. You can run this manually from your project directory in terminal: </p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">cd tests
+npm install
+npm run test</code></pre></div></div></div>
+<p>These test are written use <a href="https://www.cypress.io/">Cypress</a> which is an end-to-end testing platform. This is a trial. The hope is to provide a bit more feedback on the assignments before you submit it and attempt to suggest or note missing or broken aspects.  Since the assignments are creative and flexible, your mileage may vary.  Feedback on it welcome! We won’t be using this directly in grading. If you have questions about any of the feedback it is giving you let us know! </p>
+<h2 style="background-color: #FBF3DB;">To Turn In:</h2>
+<ul>
+<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
+<li>🙏 In your comment please include:<ul>
+<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
+<li>brief summary of what worked and what didn’t</li>
+<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
+</ul>
+</li>
+<li><strong>your page should:</strong><ul>
+<li>display as many elements from the original site as you can re-imagine</li>
+<li>use only pure CSS/HTML</li>
+<li>have clean CSS/HTML written by hand by you (your html file should only be a few hundred lines).</li>
+<li>use lots of flexboxes for layout</li>
+<li>include menu checkbox hack</li>
+<li>be responsive with 1 narrow phone-friendly version per the original</li>
+<li>include details such as hover effects and border-radius</li>
+<li>have clear document structure with proper semantic naming</li>
+<li>look reasonable :-)</li>
+</ul>
+</li>
+<li><strong>your part 2 submission comment should include</strong>:<ul>
+<li>a couple sentence description of what you did and what worked / didn’t work.</li>
+<li>screen caps with anything special you want to point out</li>
+</ul>
+</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Extra Credit</h2>
+<p><em>always mention your extra credit in the README.md file</em></p>
+<ul>
+<li>Fancy CSS transitions and animations!</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Resources:</h2>
+<ul>
+<li><a href="https://css-tricks.com/">https://css-tricks.com</a></li>
+<li><a href="http://www.w3schools.com/">http://www.w3schools.com</a></li>
+<li><a href="https://philipwalton.github.io/solved-by-flexbox/">https://philipwalton.github.io/solved-by-flexbox/</a></li>
+<li><a href="https://unused-css.com/blog/css-only-hamburger-menu/">https://unused-css.com/blog/css-only-hamburger-menu/</a></li>
+</ul>
+
+</body>
+</html>
