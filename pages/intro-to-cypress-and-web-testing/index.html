@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: short<br>Created time: August 23, 2022 2:07 PM<br>published: No</p>
+<h1 style="background-color: #DDEBF1;">Intro to Cypress and Web Testing — SA#</h1>
+<p>In this assignment, we’ll be learning how to test front-end applications. This is important because it lets us ensure that everything is working while we develop. It is particularly useful as the complexity of a project grows and changes made in one section could break another without you knowing. You can save yourself a lot of frustration in the long run!</p>
+<p>We’re going to be testing against a website created by a previous student that is an exceptional example of a Lab 1 submission. You should get a good idea about how to add these tests to your future work since we’re going to be using testing from now.</p>
+<h1 style="background-color: #DDEBF1;">Let’s Start</h1>
+<p>🚀 [Insert repo for assignment] </p>
+<h1 style="background-color: #DDEBF1;">Front-end Testing</h1>
+<p>In a nutshell, front-end testing is all about ensuring everything works correctly on the client side of an application. This includes visible components, functionality, layout, or other elements of user experience like loading speed. As you can imagine, there’s almost no limit to the number of tests you can write and it’s not possible to test against every possible error in the real world. This means that you need to scale your tests to fit the project. </p>
+<h3>Why Test?</h3>
+<p>As mentioned above, front-end testing is useful for a variety of reasons; it ensures that your application performs as expected and catches changes early. </p>
+<ul>
+<li><strong>Responsiveness and cross-browser compatibility:</strong> Testing the application on a variety of screen sizes to make sure that the layout and functionality do not break. Testing that everything works across different browsers is also important but we will not worry about that here.</li>
+<li><strong>Spotting performance issues:</strong> This is to make sure that everything loads fast enough and that the user has a smooth experience overall. The performance of a website depends on a large number of systems making testing in the front-end the only way to know if there’s an issue.</li>
+<li><strong>Testing 3rd party resources:</strong> These resources (such as fonts, images, or other services) may be critical to your website but are also outside of your direct control. Having tests in place to identify issues is important.</li>
+</ul>
+<h3>What to Test?</h3>
+<p>Here’s an overview of some common ways to actually perform these kinds of tests. </p>
+<ul>
+<li><strong>Unit tests</strong> test the smallest components or “units” of your website independently of anything else on the page. Performing checks to make sure that buttons work, animations function, carousels carousel, you get the idea.</li>
+<li><strong>Visual tests</strong> are tests that rely on the visual presentation of your website as it is displayed in the viewport. Here, you’re ensuring that the website <em>looks</em> how it should rather than is coded correctly. This means—for example—that you measure the position of an element with JavaScript rather than look at what CSS values you gave it.</li>
+<li><strong>Cross-browser testing</strong> is how we make sure that the website performs correctly across all browsers (or at least the ones we care about, looking at you Internet Explorer).</li>
+<li><strong>Accessibility testing</strong> is important and not to be overlooked. These include tests of screen reader compatibility, colorblind-friendly interfaces, and navigability.</li>
+</ul>
+<p>There are more kinds of tests beyond these to meet the needs of the goals of the website and the evolving needs of users. As you can see, there’s a lot to cover but don’t worry, we’re going to be starting simple in this short assignment. </p>
+<h1 style="background-color: #DDEBF1;">Cypress Overview and Installation</h1>
+<p>The same content that’s in the API testing assignment. We should probably move that here.</p>
+<p>Adapt the section describing specs to fit this assignment. We can assume that they know that for the next one</p>
+<p>Future assignments will include Cypress tests that you can run on your code and UIs.</p>
+<h3>Let’s write some tests!</h3>
+<p>You should be greeted with this page giving two different options for getting started with your spec. The scaffold examples have a number of scripts for different kinds of tests. For this project, we’ll create an empty spec so we can go over all pieces of front-end tests.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/intro-to-cypress-and-web-testing/assets/untitled-1767548353620.png" alt="Untitled"></p>
+<p>Once you create the spec you can go ahead and run it. You will see the one filler test passing in the left panel.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/intro-to-cypress-and-web-testing/assets/untitled-1-1767548353620.png" alt="Untitled"></p>
+<p>You’ll see the website loading in the middle of the page. This is the view that Cypress has of the website and we’re going to replace it with ours instead of the default. In the left panel, you’ll be able to see which tests pass or fail and can open them up for more details about what is being tested and why it failed. In order to actually modify these tests, we’re going to open the <code>cypress/e2e/</code> folder in your IDE. Here’s the starter script it created:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">describe(&#39;empty spec&#39;, () =&gt; {
+  it(&#39;passes&#39;, () =&gt; {
+    cy.visit(&#39;https://example.cypress.io&#39;);
+  });
+});</code></pre></div></div>
+<p>Here we can see the way the test is set up. We describe an <code>&#39;empty spec&#39;</code> (the name of our group of tests), that it <code>&#39;passes&#39;</code> (description of the test), and then the operation we want to test—in this case, visiting an example website. </p>
+<p>First, we’ll set up the <code>baseUrl</code> so that our tests will hit our front page. Make the change to the <code>cypress.config.js</code>. The file server folder indicates where the website is located in the directory one level up.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">const { defineConfig } = require(&#39;cypress&#39;);
+
+module.exports = defineConfig({
+  fileServerFolder: &#39;../&#39;,
+  e2e: {
+    setupNodeEvents(on, config) {},
+    supportFile: false,
+  },
+});</code></pre></div></div>
+<p>The default test is not very interesting, we can use patterns like this to test various things about the page. In this case, that a particular element has a specific property.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">describe(&#39;check for responsiveness&#39;, () =&gt; {
+  it(&#39;description of test&#39;, () =&gt; {
+    cy.get(&#39;some element&#39;).should(&#39;have.css&#39;, &#39;property&#39;, &#39;value&#39;);
+  });
+});</code></pre></div></div>
+<p>Our tests are going to focus on the responsiveness of the page and the functionality of the hamburger menu in mobile view. Test various views it is helpful to store those sizes as variables</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">const sizes = [&#39;iphone-x&#39;, &#39;ipad-2&#39;, [1024, 768]];</code></pre></div></div>
+<p>Now, if we want to set the viewport to <code>&#39;iphone-x&#39;</code>, for example, all we have to do is call <code>.viewport()</code>.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">cy.viewport(sizes[1]);</code></pre></div></div>
+<p>Now to test the flexbox functionality of the Day Trips component. </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">it(&#39;should display &quot;day trips&quot; as a flex row on ipad-2&#39;, () =&gt; {
+  cy.viewport(sizes[1]);
+  cy.visit(&#39;index.html&#39;);
+  cy.get(&#39;.day-trips__list&#39;).should(&#39;have.css&#39;, &#39;flex-direction&#39;, &#39;row&#39;);
+});
+
+it(&#39;should display &quot;day trips&quot; as a flex column on iphone-x&#39;, () =&gt; {
+  cy.viewport(sizes[0]);
+  cy.visit(&#39;index.html&#39;);
+  cy.get(&#39;.day-trips__list&#39;).should(&#39;have.css&#39;, &#39;flex-direction&#39;, &#39;column&#39;);
+});</code></pre></div></div>
+<p>Let’s break this down. We first want to see that the default <code>flex-direction</code> is set to <code>row</code> to display each element horizontally and take advantage of the wider screen. We first set the size to <code>&#39;ipad-2&#39;</code> via the list of sizes we made above and then visit our homepage. We can grab the Day Trips element with its class and use the <code>.should()</code> method to specify a CSS property. </p>
+<p>Now we can set the size to iPhone and test that same property which should have changed from <code>&#39;row&#39;</code> to <code>&#39;column&#39;</code>. Pretty easy right? You can test the grids of other groups of elements for extra credit.</p>
+<p>To test that the hamburger menu opens on a mobile screen size we first set the size and navigate to the homepage like before. The button that’s used in this implementation is actually a checkbox. Using Cypress we can force the checkbox to be activated and see what happens. By inspecting the element of the page we see that the menu is simply translated above the viewport with a transformation, which is a CSS property we can check. </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">it(&#39;should display nav on hamburger click in mobile view&#39;, () =&gt; {
+  cy.viewport(sizes[0]);
+  cy.visit(&#39;index.html&#39;);
+  cy.get(&#39;.main-nav__mobile-nav-trigger&#39;).check({ force: true });
+  cy.get(&#39;.main-nav__nav-links&#39;)
+    .should(&#39;have.css&#39;, &#39;opacity&#39;, &#39;1&#39;)
+    .should(&#39;have.css&#39;, &#39;transform&#39;, &#39;matrix(1, 0, 0, 1, 0, 0)&#39;);
+});</code></pre></div></div>
+<p>[there are some other tests for horizontal overflow and nav type in the file that I’ve left out but we can add those in.]</p>
+<h2 style="background-color: #FBF3DB;">Commit!</h2>
+<p>Don’t forget to commit and push your code.</p>
+<h2 style="background-color: #FBF3DB;">To Turn In</h2>
+<ul>
+<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
+<li>🙏 In your comment please include:<ul>
+<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
+<li>brief summary of what worked and what didn’t</li>
+<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
+</ul>
+</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Resources</h2>
+<ul>
+<li><a href="https://www.cypress.io/">https://www.cypress.io/</a></li>
+</ul>
+<p>testing against:   <a href="https://outlive-mini-project.netlify.app/">https://outlive-mini-project.netlify.app/</a></p>
+
+</body>
+</html>
