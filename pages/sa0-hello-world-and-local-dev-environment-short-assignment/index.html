@@ -584,8 +584,8 @@ To git@github.com:dartmouth-cs52/cs52.me.git
 <p>Note the several IP addresses in the <code>A Record</code> fields, those are github servers (<a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider">apex domain setup</a>).</p>
 <p>Here’s <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain">more on adding in <em>A Records</em>.</a> <em>These numbers change periodically, do not copy the numbers I have above - but look at the github documentation.</em> </p>
 <p>❓Are those my own personal IP addresses?  Nope, they are shared. If you do a reverse lookup you may find either they don’t have a reverse lookup or go to a generic github domain name. If you owned the actual IP addresses you could set it up so reverse lookup matched forward lookup!</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-powershell">💻 host 185.199.108.153
-Host 153.108.199.185.in-addr.arpa. not found: 3(NXDOMAIN)</code></pre></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 host 185.199.108.153
+Host 153.108.199.185.in-addr.arpa. not found: 3(NXDOMAIN)</code></pre></div>
 <p>Wait, so it doesn’t even have a DNS entry? But how does github know what page to show? Does that machine serve lots of addresses?</p>
 <p>Yes, those IPs point to load balancers that direct requests based on the transport packet which happens to have the domain name requested in it. This is where that magical <code>CNAME</code> file comes in. That tells GitHub Pages that your repository should be served when requests come in for that domain.</p>
 <div class="heading-block h3-block"><h3>To Turn In:</h3></div>
