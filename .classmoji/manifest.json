@@ -1,0 +1,224 @@
+{
+  "modules": {
+    "extracreditshorts": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "ecsa-intro-to-api-testing": {
+          "pages": [],
+          "slides": []
+        },
+        "ecsa-git-map": {
+          "pages": [],
+          "slides": []
+        },
+        "ecsa-reactnative-part-1": {
+          "pages": [],
+          "slides": []
+        },
+        "ecsa-websockets": {
+          "pages": [],
+          "slides": []
+        },
+        "ecsa-uploading-images": {
+          "pages": [],
+          "slides": []
+        },
+        "ecsa-react-native-part-2": {
+          "pages": [],
+          "slides": []
+        },
+        "ecsa-frontend-and-backend-authentication": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "helloworld": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "hello-world": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "kahootapishortassignment": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "kahootapi-short-assignment": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "lab1landingpage": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "landing-page-part-1": {
+          "pages": [
+            "lab-1-part-1-build-a-landing-page-html"
+          ],
+          "slides": []
+        },
+        "landing-page-part-2": {
+          "pages": [
+            "lab-1-part-2-build-a-landing-page-css"
+          ],
+          "slides": []
+        }
+      }
+    },
+    "lab2quizplatform": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "lab2-quizsite": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "lab3reactnotes": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "react-notes-part-2": {
+          "pages": [],
+          "slides": []
+        },
+        "react-notes-prelab": {
+          "pages": [],
+          "slides": []
+        },
+        "react-notes-part-1": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "lab4platformclient": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "lab4-prelab": {
+          "pages": [],
+          "slides": []
+        },
+        "lab-4-platform-client": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "lab5platformapi": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "lab-5-platform-api": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "project": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "project-7-final-project-submission": {
+          "pages": [],
+          "slides": []
+        },
+        "project-4-scaffolding": {
+          "pages": [],
+          "slides": []
+        },
+        "project-1-first-team-meeting-worksheet": {
+          "pages": [],
+          "slides": []
+        },
+        "project-5-dev-site-and-wiring": {
+          "pages": [],
+          "slides": []
+        },
+        "project-6-final-demos": {
+          "pages": [],
+          "slides": []
+        },
+        "project-3-mockups-and-sketches": {
+          "pages": [],
+          "slides": []
+        },
+        "project-2-feature-spec": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "projectapi": {
+      "pages": [],
+      "slides": [],
+      "assignments": {}
+    },
+    "reactintro": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "react-intro": {
+          "pages": [],
+          "slides": []
+        },
+        "state-management-part-2-refactor-videos": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    },
+    "starterpack": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "vite-starterpack": {
+          "pages": [],
+          "slides": []
+        },
+        "react-router": {
+          "pages": [],
+          "slides": []
+        },
+        "state-management-part-1-add-to-starterpack": {
+          "pages": [],
+          "slides": []
+        }
+      }
+    }
+  },
+  "general": {
+    "pages": [
+      "ecsa-frontend-and-backend-authentication",
+      "ecsa-git-map",
+      "ecsa-intro-to-api-testing",
+      "ecsa-react-native-part-1",
+      "ecsa-react-native-part-2",
+      "ecsa-uploading-images",
+      "ecsa-websockets",
+      "intro-to-cypress-and-web-testing",
+      "lab-2-build-a-buzzfeed-quiz",
+      "lab-3-react-notes",
+      "lab-4-platform-frontend",
+      "lab-5-platform-api",
+      "prelab-3-react-notes",
+      "prelab-4-platform-client",
+      "sa0-hello-world-and-local-dev-environment-short-assignment",
+      "sa2-frontend-starterpack-with-vite-short-assignment",
+      "sa3-intro-react-short-assignment",
+      "sa6-kahoot-api",
+      "sa-routing-short-assignment",
+      "sa-state-management-short-assignment"
+    ],
+    "slides": []
+  }
+}
