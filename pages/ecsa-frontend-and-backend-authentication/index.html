@@ -442,9 +442,9 @@
   </style>
 </head>
 <body>
-<div class="heading-block h1-block"><h1>Authentication</h1></div>
-<p>For this assignment we are going to build an <a href="https://expressjs.com/">express</a> and <a href="https://www.mongodb.com/">mongodb</a> CRUD api server for our react+zustand blog frontend. This will finally bring our stack all the way down to the database. In this part we’re going to be adding in <strong>Authentication</strong> 🔐</p>
-<p><a href="https://res.cloudinary.com/dali-lab/video/upload/c_scale,w_800/v1589346003/cs52/withauth-small.webm">withauth-small.webm</a></p>
+<div class="heading-block h2-block"><h2>Authentication</h2></div>
+<p>For this assignment we are going to build an <a href="https://expressjs.com/">express</a> and <a href="https://www.mongodb.com/">mongodb</a> CRUD api server for our react+zustand blog frontend. This will finally bring our stack all the way down to the database. In this part we’re going to be adding in&nbsp;</p>
+<div class="video-embed"><iframe src="https://res.cloudinary.com/dali-lab/video/upload/c_scale,w_800/v1589346003/cs52/withauth-small.webm" frameborder="0" allowfullscreen></iframe></div>
 <div class="heading-block h2-block"><h2>Assignment At a Glance</h2></div>
 <ul><li>Authentication: We’ll extend both our frontend and our backend to support authentication and users!</li></ul>
 <p>On the frontend we’ll want to add a place for users to sign in. We’ll create a <code>/signin</code>, <code>/signup</code>, and <code>/signout</code> routes and add a way to restrict access to certain routes based on authentication. We’ll do this by designing our own higher order component.</p>
@@ -528,8 +528,7 @@ UserSchema.methods.comparePassword = async function comparePassword(
   const comparison = await bcrypt.compare(candidatePassword, this.password);
   return comparison;
 };</code></pre></div></div>
-<p>This is slightly adapted for modern js from stackoverflow <a href="http://stackoverflow.com/questions/14588032/mongoose-password-hashing">mongoose-</a></p>
-<p><a href="http://stackoverflow.com/questions/14588032/mongoose-password-hashing">-hashing</a>.</p>
+<p>This is slightly adapted for modern js from stackoverflow <a href="https://stackoverflow.com/questions/14588032/mongoose-password-hashing">mongoose-hashing</a>.</p>
 <div class="heading-block h3-block"><h3>User Controller</h3></div>
 <p>Let’s add a new User controller!</p>
 <p>🚀 Create a <code>controllers/user_controller.js</code>.</p>
@@ -660,8 +659,7 @@ import { requireAuth, requireSignin } from './services/passport';</code></pre></
 <p>🚀 What other routes should be we protect? For now let’s use <code>requireAuth</code> to protect <code>createPost</code>, <code>updatePost</code>, and <code>deletePost</code>. As easy as: <code>.post('/thepathinyourroute', requireAuth,async (req,res) =&gt; {})</code> That is, you are setting <code>requireAuth</code> as middleware, in the middle between parsing the path, and your function handler.  </p>
 <p>Try a <code>curl</code> post to create a new post, you should get an unauthorized error!</p>
 <p>Let’s get a JWT we could use:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">
-# try to signup
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># try to signup
 curl -X POST -H "Content-Type: application/json" -d '{"email": "test@test.com","password": "password"}' "http://localhost:9090/api/signup"
 
 # then try to signin
@@ -674,7 +672,7 @@ curl -X POST -H "Content-Type: application/json" -H "authorization: JUST_THE_LON
 <p>🚀 Might as well just add in recording who the author is with each post now. Edit your <code>post_model.js</code> file and add in this field to your schema: <code>author: { type: Schema.Types.ObjectId, ref: 'User' },</code>. We are saying that the author field is now a reference to a User. We can later get this value automatically filled for us or can use the id to look up the author using <a href="http://mongoosejs.com/docs/populate.html"><code>populate</code></a>.</p>
 <p>🚀 Don’t forget to update your controller to utilize this new field.</p>
 <p>Now when you make new posts, here’s what your mongo database entry will look like:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">{ "_id" : ObjectId("57a94e206ec5eae238e359f8"), "author" : ObjectId("57a94813e4c55bb432fc3a4d"), "content" : "this is a test post", "tags" : "words", "title" : "first post MORE TESTING", "__v" : 0 }</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-json">{ "_id" : ObjectId("57a94e206ec5eae238e359f8"), "author" : ObjectId("57a94813e4c55bb432fc3a4d"), "content" : "this is a test post", "tags" : "words", "title" : "first post MORE TESTING", "__v" : 0 }</code></pre></div></div>
 <p>You can also have arrays of objectIds. This might come in handy if you are trying to model other types of relationships.</p>
 <div class="heading-block h2-block"><h2>Frontend Authentication</h2></div>
 <p>Ok, so now we should update our frontend to support authentication too right? YES!</p>
