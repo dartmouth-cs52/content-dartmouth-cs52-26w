@@ -442,112 +442,62 @@
   </style>
 </head>
 <body>
-
-<p>Type: pre-lab<br>week: Week 3<br>Created time: April 14, 2023 10:31 AM<br>Dates: April 16, 2025 → April 19, 2025<br>published: Yes</p>
-<h1 style="background-color: #DDEBF1;">React Notes</h1>
+<div class="heading-block h1-block"><h1>React Notes</h1></div>
 <p>Where we dive deeper into React and construct a realtime collaborative post-it note app with React!</p>
-<p><a href="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_800,h_510/v1546203223/cs52/live-notes-1080p.webm">live-notes-1080p.webm</a></p>
+<div class="video-embed"><iframe src="https://res.cloudinary.com/dali-lab/video/upload/ac_none,w_800,h_510/v1546203223/cs52/live-notes-1080p.webm" frameborder="0" allowfullscreen></iframe></div>
 <p>We’ll be building something like the above. A collaborative platform where multiple people can create and edit content together.  What that content is, and how it all looks, is all up to you!  The basic functionality though is demonstrated above. </p>
-<h2 style="background-color: #FBF3DB;">Let’s Start</h2>
+<div class="heading-block h2-block"><h2>Let’s Start</h2></div>
 <p>🚀 To start grab the <a href="http://classmoji.brunchlabs.com">classmoji.brunchlabs.com</a> repository. Then you’ll pull in your vite+babel+eslint+(with the prior short react additions) starter code like so:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">#make sure you are in your new github project created for you by classroom
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your new github project created for you by classroom
 git remote add starter your-starterpack-github-url
-git pull starter main --allow-unrelated-histories</code></pre></div></div></div>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-bash"># also don&#39;t forget to run:
-npm install #to fetch all your webpack dependencies</code></pre></div></div></div>
-<h2 style="background-color: #FBF3DB;">What are we building?!</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/double-window-1767548342071.png" alt=""></p>
+git pull starter main --allow-unrelated-histories</code></pre></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
+npm install #to fetch all your webpack dependencies</code></pre></div>
+<div class="heading-block h2-block"><h2>What are we building?!</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/double-window-1767548342071.png" alt="">
 <p>A post it note style app where users can add notes, move them around, edit them, and delete them. This React app will use Firebase as its backend to store collections of notes. The position of notes will also be stored, so people in multiple browsers can edit and arrange them in realtime. The notes themselves will support markdown notation and editing.</p>
 <p>Here are the overall specs of the full project.</p>
-<h3>Minimal Functional Specs</h3>
-<ul>
-<li>Notes App:<ul>
-<li>Add a note:<ul>
-<li>can either be a single title input + create button</li>
-<li>or a modal if you prefer with all fields</li>
-</ul>
-</li>
-<li>Delete a note</li>
-<li>Move a note in x, y<ul>
-<li>optionally in z <em>(zIndex)</em></li>
-</ul>
-</li>
-<li>Edit a note:<ul>
-<li>title, content</li>
-</ul>
-</li>
-<li>Notes:<ul>
-<li>have title and content</li>
-<li>display with some formatting</li>
-</ul>
-</li>
-<li>Persists all changes to Firebase in realtime</li>
-<li>Updates based on Firebase events</li>
-<li>is at least as stylish as these mockups</li>
-</ul>
-</li>
-</ul>
+<div class="heading-block h3-block"><h3>Minimal Functional Specs</h3></div>
+<ul><li>Notes App:<ul><li>Add a note:<ul><li>can either be a single title input + create button</li><li>or a modal if you prefer with all fields</li></ul></li><li>Delete a note</li><li>Move a note in x, y<ul><li>optionally in z <em>(zIndex)</em></li></ul></li><li>Edit a note:<ul><li>title, content</li></ul></li><li>Notes:<ul><li>have title and content</li><li>display with some formatting</li></ul></li><li>Persists all changes to Firebase in realtime</li><li>Updates based on Firebase events</li><li>is at least as stylish as these mockups</li></ul></li></ul>
 <p><em>Note: you are welcome to use CSS frameworks to help with styling (but be careful as the JS that comes with some of them does not play nice with react).</em></p>
-<h2 style="background-color: #FBF3DB;">Plan</h2>
+<div class="heading-block h2-block"><h2>Plan</h2></div>
 <p>Ok, so what’s the plan?</p>
 <p>You tell me!</p>
 <p>The goal of this pre-lab is to come up with a game plan.  Layout your components and think a little bit about data flow. This is a checkpoint of sorts. It makes sure you start on the assignment early, but also research has shown that planning out paper leads to better outcomes. </p>
-<h2 style="background-color: #FBF3DB;">Component Sketch</h2>
+<div class="heading-block h2-block"><h2>Component Sketch</h2></div>
 <p>Remember this? </p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/app-components-1767548342071.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/app-components-1767548342071.png" alt="">
 <p>Let’s do that with this application.   Sketch it out on paper or if you prefer in Figma (we’ll be using that for projects!). </p>
 <p>🚀 Sketch out the React components you will need. You probably need a general <em>App</em> component to wrap everything, a <em>Note</em> component, a component for adding notes (say a text input bar similar to <em>SearchBar</em>!), and potentially other components.</p>
-<h2 style="background-color: #FBF3DB;">Component Graph</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/video-tree-1767548342071.png" alt=""></p>
+<div class="heading-block h2-block"><h2>Component Graph</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/video-tree-1767548342071.png" alt="">
 <p>🚀 Now that you’ve sketched out your components, let’s build up what we think the component graph will look like.  Again, sketch it out on paper or in Figma. </p>
 <p>The level of detail you choose can be the minimal above, or you can go into more details like the one below. </p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/videos-components-1767548342071.png" alt="videos-components.png"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/videos-components-1767548342071.png" alt="videos-components.png">
 <p>At this point - something in the middle is the most useful. You don’t need the function names or anything in there yet, but drawing out the initial dataflow is useful.</p>
-<p>🚀 Refer to the full assignment with further details here!</p>
+<p>🚀&nbsp;Refer to the full assignment with further details here!</p>
 <p><a href="https://www.notion.so/Lab-3-React-Notes-8a34798087ab469797c2aadd9a42f800?pvs=21">Lab 3: React Notes</a></p>
-<p>⚠️ There are 2 parts the Lab,  the first is a standalone “single user” React state based app, and then we refactor it and add in cloud data persistence.  For basic credit draw out the data flow for Part 1, for extra credit also draw out the data flow of Part 2!   </p>
-<p>🚨 Yes, you’ll need to <strong>read</strong> through </p>
+<p>⚠️&nbsp;There are 2 parts the Lab,  the first is a standalone “single user” React state based app, and then we refactor it and add in cloud data persistence.  For basic credit draw out the data flow for Part 1, for extra credit also draw out the data flow of Part 2!   </p>
+<p>🚨&nbsp;Yes, you’ll need to <strong>read</strong> through </p>
 <p>To be able to do this. </p>
-<h2 style="background-color: #FBF3DB;">Note Component</h2>
+<div class="heading-block h2-block"><h2>Note Component</h2></div>
 <p>You might need a <em>Note</em> component. What might a <em>Note</em> do?</p>
-<ul>
-<li>A Note:<ul>
-<li>displays title</li>
-<li>displays content</li>
-<li>is draggable</li>
-<li>is editable</li>
-<li>is deletable</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-1767548342071.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-edit-1767548342071.png" alt="note-edit.png"></p>
-<h3>If you sketch it, Scan it</h3>
-<p>Use an app like <a href="https://readdle.com/scannerpro">Scanner Pro</a> or <a href="https://play.google.com/store/apps/details?id=com.adobe.scan.android&hl=en_US&gl=US&pli=1">Adobe Scan</a> to take a high quality photo scan of your sketches.   We don’t want to see low res night time barely readable yellow photos… always use a scanner app.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/dropbox-scan-1767548342071.gif" alt="dropbox-scan.gif"></p>
-<h3>If you Figma it, get a shareable link</h3>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/screenshot-2023-04-15-at-8-1767548342071.png" alt="Screenshot 2023-04-15 at 8.10.19 AM.png"></p>
-<h3>If you already started coding it all up</h3>
+<ul><li>A Note:<ul><li>displays title</li><li>displays content</li><li>is draggable</li><li>is editable</li><li>is deletable</li></ul></li></ul>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-1767548342071.png" alt="">
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-edit-1767548342071.png" alt="note-edit.png">
+<div class="heading-block h3-block"><h3>If you sketch it, Scan it</h3></div>
+<p>Use an app like <a href="https://readdle.com/scannerpro">Scanner Pro</a> or <a href="https://play.google.com/store/apps/details?id=com.adobe.scan.android&amp;hl=en_US&amp;gl=US&amp;pli=1">Adobe Scan</a> to take a high quality photo scan of your sketches.   We don’t want to see low res night time barely readable yellow photos… always use a scanner app.</p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/dropbox-scan-1767548342071.gif" alt="dropbox-scan.gif">
+<div class="heading-block h3-block"><h3>If you Figma it, get a shareable link</h3></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/screenshot-2023-04-15-at-8-1767548342071.png" alt="Screenshot 2023-04-15 at 8.10.19 AM.png">
+<div class="heading-block h3-block"><h3>If you already started coding it all up</h3></div>
 <p>That is great, jump in now, do all the codes, this is an important one to start early. Still submit the component graph sketches though.</p>
-<h3>To Turn In</h3>
-<ul>
-<li>👉 The GitHub Issue is your official assignment.  <strong>To officially turn it in, please comment on the issue in the repository when you have completed the assignment.</strong></li>
-<li>🙏 In your comment please include (either scanned or figma link):<ul>
-<li>sketch of your components</li>
-<li>your component graph with at least some  data flow</li>
-</ul>
-</li>
-</ul>
-<h3>Extra Credit</h3>
+<div class="heading-block h3-block"><h3>To Turn In</h3></div>
+<ul><li>👉&nbsp;The GitHub Issue is your official assignment.  <strong>To officially turn it in, please comment on the issue in the repository when you have completed the assignment.</strong></li><li>🙏&nbsp;In your comment please include (either scanned or figma link):<ul><li>sketch of your components</li><li>your component graph with at least some  data flow</li></ul></li></ul>
+<div class="heading-block h3-block"><h3>Extra Credit</h3></div>
 <p><em>always mention your extra credit in your submission comment</em></p>
-<ul>
-<li>create your schematic and a lightweight design for your product in Figma!</li>
-</ul>
-<h3>Resources</h3>
-<ul>
-<li>Here’s a good article on <a href="https://facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a>,</li>
-<li>always the super helpful <a href="http://React.dev">React.dev</a> official docs for learning more.</li>
-</ul>
-
+<ul><li>create your schematic and a lightweight design for your product in Figma!</li></ul>
+<div class="heading-block h3-block"><h3>Resources</h3></div>
+<ul><li>Here’s a good article on <a href="https://facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a>,</li><li>always the super helpful <a href="http://React.dev">React.dev</a> official docs for learning more.</li></ul>
 </body>
 </html>
