@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: short<br>week: Week 1<br>Created time: February 7, 2022 2:11 PM<br>Dates: March 31, 2025 12:00 AM (EDT) → April 2, 2025 11:59 PM (EDT)<br>published: Yes</p>
+<h1 style="background-color: #DDEBF1;"><strong>Hello World &amp; Local Dev Environment</strong></h1>
+<p>First things first. You need a local development environment.</p>
+<p><em>Why is this important you ask. Couldn’t I just copy code over to a server every time I make changes? You could. But imagine debugging, every change you make you spend a few seconds maybe copying code over, or pushing git. This time adds up. Save yourself hours of your life, get your laptop set up for coding now.</em></p>
+<div class="callout" style="align-items: flex-start;"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
+<h2 style="background-color: #FBF3DB;">Command Line</h2>
+<p>We’ll be doing a lot of <strong>commandline</strong> stuff. We’ll introduce stuff as we go, so do not fear, commandline is best — it is the experts way to tell your computer what to do!</p>
+<p>If you are interested here’s a tutorial that gives you more than enough to be a master: <a href="https://www.learnenough.com/command-line-tutorial">learn just enough command-line to be dangerous</a></p>
+<p>🚀 First, pick a Terminal program.  I like to recommend <a href="https://tabby.sh/">Tabby</a>. </p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/image-1767548442052.png" alt="image.png"></p>
+<p>There are lots of other options:</p>
+<ul>
+<li><a href="https://www.warp.dev/">Warp</a> - is AI enabled</li>
+<li><a href="https://iterm2.com/">iTerm2</a> classic Mac Terminal replacement</li>
+</ul>
+<p>What I don’t recommend is using the default Terminal on MacOS or CMD/Powershell on Windows. </p>
+<p>Here’s some commandline basics:</p>
+<ul>
+<li><code>ls -la</code> will list files in current directory</li>
+<li><code>pwd</code> will show current directory</li>
+<li><code>cd somedirectory</code> will change directory to <em>somedirectory</em></li>
+<li><code>cp source target</code> will copy files</li>
+<li><code>mv source target</code> will move</li>
+<li><code>rm somefile</code> will remove that file (permanently, bypassing trash)</li>
+<li><code>mkdir somedirectory</code> will create a folder (directory)</li>
+</ul>
+<p>On OSX:</p>
+<ul>
+<li><code>open somefile</code> will open the file in the default app associated with it</li>
+<li><code>open somedirectory</code> will open that folder in Finder</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Tools!</h2>
+<p>🚀Install <a href="https://code.visualstudio.com/download">VSCode</a>. VSCode is a code editor. VSCode is an open source, made by Microsoft web technology written in html+css+javascript using a platform called <a href="https://electronjs.org/">Electron</a>. Using Electron to create a desktop app is an option for the final project. We’ll be using VSCode for coding and utilizing a lot of its plugins. After installing and starting up VSCode, run: <em>cmd + shift + p -&gt; Shell Command: Install ‘code’ command in PATH</em> to be able to run <code>code</code> from the command line. <em>You are welcome to use another editor like <a href="https://www.cursor.com/">Cursor</a> instead if you want more AI power!</em></p>
+<p>🚀If you don’t have it, install <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a>. Why? Because we’ll be using <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome Developer Tools</a> for debugging — more on that later. Also because all the other browsers support slightly different standards, and Chrome simply displays pages more correctly and sticks to the actual standards so we can all be on the same page. To re-iterate: you are required to use a Chrome based browser for this class. <em>You are welcome to use <a href="https://brave.com/">Brave</a> or <a href="https://arc.net/">Arc</a> instead as both are chromium based.</em> </p>
+<p>🚀 If you don’t have git set up on your machine: Install <a href="http://desktop.github.com/">GitHub Desktop</a>. We will be mostly using <code>git</code> from the command line but installing the desktop app will give you a nice tree visualization and setups up your local git environment. </p>
+<h3>OS X</h3>
+<p>🚀Install <a href="http://brew.sh/">Homebrew</a>. This is a package manager for all things open source. We will use <code>brew</code> extensively to setup your dev environment.</p>
+<h3>Various Linux</h3>
+<p>Most of the directions through the class will be very similar on the various flavors of linux. Mostly just replace any <code>brew</code> command with the package manager for your system (<code>apt</code> on Ubuntu or <code>yum</code> on Fedora).</p>
+<h3>Windows</h3>
+<p>Windows is a trickier dev environment. We’ll try to provide directions but these may need revision.</p>
+<p>In general though whenever we refer to 💻 Terminal/iTerm you can just use <em><strong>Git Shell</strong></em> (which comes bundled with the GitHub app). You may want to check out <a href="http://chocolatey.org/">Chocolatey</a> which is a package manager for Windows.</p>
+<p>You can also try out <a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">ubuntu in windows</a> if you have Windows 10 — pretty good option.</p>
+<p>You could also run a <a href="https://www.lifewire.com/run-ubuntu-within-windows-virtualbox-2202098">linux virtual machine</a> if you don’t have windows 10 / the above didn’t work out for you. This runs a self-contained linux OS on your windows box.</p>
+<p><em>see the <code>#windows</code> Slack channel for support</em></p>
+<h2 style="background-color: #FBF3DB;">Register a Domain!</h2>
+<p>Lets start off the term right, with a domain of your own that you’ll use throughout the course.</p>
+<p>We’ll use NameCheap as our registrar. Namecheap is a good <a href="https://www.netneutrality.com/">net citizen</a> and have free domains for students.</p>
+<p>🚀go to: <a href="https://nc.me/">https://nc.me/</a> and lets register you a domain!</p>
+<p><em><strong>(if you have already used your free .me domain, you can either use an email alias or just submit what did before— we just want to see that you can get a domain registered and hosted so no need to do it all again unless you want to)</strong></em></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/namecheap-1767548442052.jpg" alt=""></p>
+<p>🚀I’m going to grab one for cs52 now too!</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/buy-1767548442052.png" alt=""></p>
+<p>🚀When prompted, choose Github Pages Setup</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/choose-github-pages-1767548442052.png" alt=""></p>
+<p>🚀 Now, the automatic Github Setup in the next screen may do some of the steps below for you. It has a tendency to fail for a variety of reasons (don’t worry if that happens to you). The below are the full directions in case in fails and you need to step through it.</p>
+<h2 style="background-color: #FBF3DB;">Create a GitHub Repo</h2>
+<p>🚀 go to <a href="http://github.com/">github.com</a> if you don’t have an account, set one up! Use your .edu account and get the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>. <em><strong>You are completely welcome to just use your existing personal github account, please do not create a second one.</strong></em></p>
+<p>🚀 create a new repo for your domain, name it with <em>your</em> domain name.</p>
+<p><em>Note: Keep this in your own personal github — later we’ll use repos under the course organization but for this one your own is fine.</em></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/create-repo-1767548442052.png" alt=""></p>
+<p><em>Note: Do not select “Initialize this repository with a README”, we’ll create one manually later.</em></p>
+<p>Grab the URL for the repository (either SSH or HTTPS depending on how you have git setup. If SSH gives you trouble just try HTTPS.)</p>
+<p><strong>Note:</strong> the following are transcripts of MY terminal session while setting up <strong>cs52.me</strong> with my github URL. You should replace anything with cs52.me with your repo name and your github URL instead.</p>
+<h3>Clone Repo</h3>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-bash">💻 git clone git@github.com:dartmouth-cs52/cs52.me.git
+Cloning into &#39;cs52.me&#39;...
+warning: You appear to have cloned an empty repository.
+Checking connectivity... done.
+💻 cd cs52.me/
+💻 pwd  #checking current working directory
+/Users/tim/Sandbox/cs52.me</code></pre></div></div></div>
+<h3>Create some HTML</h3>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">💻 code index.html</code></pre></div></div></div>
+<p>🚀basically just start VSCode and create a file called <code>index.html</code> in your cloned workspace.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/index-html-1767548442052.png" alt=""></p>
+<h3>Test Locally</h3>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">💻 python -m http.server 9000
+Serving HTTP on 0.0.0.0 port 9000 ...
+127.0.0.1 - - [09/Jun/2016 18:25:18] &quot;GET / HTTP/1.1&quot; 200 -</code></pre></div></div></div>
+<p><em>If you are running python2.7 try: <code>python -m SimpleHTTPServer 9000</code> instead</em></p>
+<p>❓does anybody know what <code>127.0.0.1</code> is the address for?</p>
+<p>Lets check out what we have made: <a href="http://localhost:9000/">http://localhost:9000</a></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/localhost-1767548442052.png" alt=""></p>
+<p>Note: to quit the python server type: ctrl+c (this is a default for many commandline processes).</p>
+<h3>Git Add</h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span></div><pre><code class="language-powershell">💻 git status  #check and see what the story is
+On branch main
+
+Initial commit
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+  index.html
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+💻 git add index.html  #lets track index.html
+💻 git status  #check again -- I&#39;m OCD with this
+On branch main
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+  new file:   index.html
+
+💻 git commit -am &quot;its hideous&quot;   #please make yours prettier 😃
+[main (root-commit) 93a5c69] its hideous
+ 1 file changed, 10 insertions(+)
+ create mode 100644 index.html</code></pre></div></div>
+<h3>Git Branch</h3>
+<p>Ok, now we have a local commit! However, before we push our changes. GitHub Pages requires that the git branch we use for their hosting is named <code>gh-pages</code>.</p>
+<p>So lets rename our branch!</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-powershell">💻 git branch
+ * main
+💻 git branch -m main gh-pages
+💻 git branch
+ * gh-pages</code></pre></div></div>
+<h3>Git Push</h3>
+<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-powershell">💻 git push -u origin gh-pages
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 289 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:dartmouth-cs52/cs52.me.git
+ * [new branch]      gh-pages -&gt; gh-pages</code></pre></div></div>
+<p><em>Note: On GitHub you should double check your branches. You could either change settings to use main branch for gh-pages, or use the gh-pages branch, but make sure that you don’t have both.</em></p>
+<h3>Default GitHub Pages Hosting</h3>
+<p>By default GitHub Pages, when it sees a branch named <code>gh-pages</code>, will publish it at <code>http://&lt;github username&gt;.github.io/&lt;repository name&gt;</code>.</p>
+<p><em>You can also go into settings and turn on github-pages for a differently named branch.</em></p>
+<p>You can make sure of this by going to Settings for your repository.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/screenshot-2024-12-31-at-2-1767548442052.png" alt="Screenshot 2024-12-31 at 2.24.01 PM.png"></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/default-hosting-1767548442052.png" alt=""></p>
+<h3>CNAME hosting</h3>
+<p>But we want our domain!</p>
+<p>Ok. Add another file to your local workspace named <code>CNAME</code>. Inside this file put in just one line with your domain name.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/cname-1767548442052.png" alt=""></p>
+<p>🚀 Now you have to <code>git add</code> and <code>git commit</code> and <code>git push</code> this new file. See <a href="https://www.notion.so/SA0-Hello-World-and-Local-Dev-Environment-Short-Assignment-7e2a3ffa95544301b2041ee7ff5e1ebe?pvs=21">Git Add</a> section (skip branching as that is a one time thing).</p>
+<h3>DONE!</h3>
+<p>As soon as you <code>git push</code> your site should become available at your URL! <em>Note: actually it might take up to 5 minutes for it to start working with your domain name as github pushes your content to various servers.</em></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/done-1767548442052.png" alt=""></p>
+<h3>Add in some HTML if you haven’t played much with HTML before.</h3>
+<p>Try some of these:</p>
+<ul>
+<li><code>&lt;h1&gt;</code></li>
+<li><code>&lt;p&gt;</code></li>
+<li><code>&lt;img src=&quot;http://someimageurl&quot;/&gt;</code></li>
+<li><code>&lt;a href=&quot;http://somelink&quot;&gt;</code></li>
+<li><code>&lt;ul&gt;</code><ul>
+<li><code>&lt;li&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h3>What if it still doesn’t work?</h3>
+<p>You may need to wait a few minutes.  If it still doesn’t work lets check that Namecheap actually did things right.</p>
+<p>You didn’t actually have to do any DNS setup, what happened?</p>
+<p>NameCheap should have set up the right Domain Name Service Records automatically for you. In NameCheap you can inspect what it did:</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa0-hello-world-and-local-dev-environment-short-assignment/assets/a-records-1767548442052.jpg" alt=""></p>
+<p>Take a look at your settings in your Namecheap Dashboard.</p>
+<p>Note the several IP addresses in the <code>A Record</code> fields, those are github servers (<a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider">apex domain setup</a>).</p>
+<p>Here’s <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain">more on adding in <em>A Records</em>.</a> <em>These numbers change periodically, do not copy the numbers I have above - but look at the github documentation.</em> </p>
+<p>❓Are those my own personal IP addresses?  Nope, they are shared. If you do a reverse lookup you may find either they don’t have a reverse lookup or go to a generic github domain name. If you owned the actual IP addresses you could set it up so reverse lookup matched forward lookup!</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-powershell">💻 host 185.199.108.153
+Host 153.108.199.185.in-addr.arpa. not found: 3(NXDOMAIN)</code></pre></div></div>
+<p>Wait, so it doesn’t even have a DNS entry? But how does github know what page to show? Does that machine serve lots of addresses?</p>
+<p>Yes, those IPs point to load balancers that direct requests based on the transport packet which happens to have the domain name requested in it. This is where that magical <code>CNAME</code> file comes in. That tells GitHub Pages that your repository should be served when requests come in for that domain.</p>
+<h3>To Turn In:</h3>
+<ul>
+<li>We’ll be a using a new platform developed specifically for this class for all of our submissions and feedback. Please accept your invitation to <a href="http://classmoji.brunchlabs.com">classmoji.brunchlabs.com</a> to proceed and find the assignment there.</li>
+<li>👉 The GitHub assignment Issue you will find there, will be considered your submission! <strong>To officially turn it in, please comment on the Issue on GitHub named <code>Hello World and Local Dev Environment</code> when you have completed the assignment and close it.</strong></li>
+<li><strong>🙏 In your comment on the assignment github issue please include:</strong><ol>
+<li>link to deployed hosted version of the page</li>
+<li>url of the repository in your personal github that is connected to this domain</li>
+<li>brief summary of what worked and what didn’t</li>
+<li>was this a new domain or did you already have this set up? (totally ok either way) </li>
+<li>do you think personal websites are more or less interesting than using a social media profile?  any differences?</li>
+</ol>
+</li>
+<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Resources:</h2>
+<ul>
+<li><a href="https://share.descript.com/view/HlqzpXWwPMq">Local Environment and Simple Bash with Ijemma</a></li>
+<li><a href="https://share.descript.com/view/1xtv65odJTV">HTML with Ijemma</a></li>
+<li><a href="http://www.w3schools.com/">http://www.w3schools.com</a></li>
+</ul>
+<p>Extra Credit</p>
+<ul>
+<li>🍰 You can also download a git command prompt to make life easier when we work with git later on. You can find a cool one <a href="https://github.com/jimeh/git-aware-prompt">here</a>. Follow the instructions on the README at that link to install it!</li>
+</ul>
+
+</body>
+</html>
