@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: lab<br>week: Week 2<br>Created time: February 7, 2022 9:20 PM<br>Dates: April 8, 2025 → April 14, 2025<br>published: Yes</p>
+<h1 style="background-color: #DDEBF1;">Build a Buzzfeed® Quiz Site!</h1>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/quiz-1767548500125.gif" alt=""></p>
+<p>All the kids are doing it these days. This is where we’ll learn a little bit about making interactive sites. We won’t need to deal with any backend servers, just some nice clientside code (no server) to build up a fun quiz and show some calculated results.</p>
+<p>🚀 head over to buzzfeed and take <a href="https://www.buzzfeed.com/justkatiejoy/what-disney-animal-are-you-9bf0kqt6pd">this quiz</a>. I’ll wait.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/buzzfeed-1767548500125.png" alt=""></p>
+<p>Doesn’t that make you want to make your own quiz? Ok, you could use buzzfeed to do this, but you want to make one that doesn’t have ugly ads. And looks classier too!</p>
+<p>This assignment is going to <em>flex</em> your html and css skills some more as well as some javascript! We’ll use some JS to compute the results of the quiz as well as to check that the quiz was filled out correctly.</p>
+<p><strong>Note:</strong> You are allowed to use HTML5/CSS3/JS/jQuery in this assignment but no other javascript libraries or frameworks. You may use CSS libraries to help with styling but it is recommended to practice your CSS skills and try to do it from scratch. 🔩</p>
+<p><strong>Note:</strong> You can and should use the <a href="https://developer.chrome.com/devtools">inspector 🔍</a> to examine the structure pages you see. Although it is a good idea to inspect individual elements (for instance: a button to see how they styled the borders) you’ll find that the way they do things is ugly anyway and I would recommend not imitating them at all. If your code blatantly includes <a href="https://cs52.me/logistics/#citation-format">un-cited code</a> copied from buzzfeed.com, or any other source, that will be considered an honor code violation <a href="https://emojikeyboard.org/copy/Warning_Sign_Emoji_%E2%9A%A0%EF%B8%8F">⚠️</a> </p>
+<h2 style="background-color: #FBF3DB;">Plan</h2>
+<p>You have a lot of flexibility in this assignment. This is your content, so be creative. How much you abstract out the problem is up to you. You can start by hard-coding every question and answers in HTML, that is 100% acceptable. If you choose, you could implement reading the questions from say a separate JSON file. More about this later. How you score the quiz is completely up to you. Just a counter is sufficient but you could try something more complicated with different weights associated with the various answers. And finally, the look and feel is all up to you. There are just a few minimum requirements.</p>
+<h3>Minimal Functional Specs:</h3>
+<ul>
+<li>Quiz Page:<ul>
+<li>Questions:<ul>
+<li>display several questions (enough for this to be interesting)</li>
+<li>have a header image and some text</li>
+<li>have some number of potential answers</li>
+</ul>
+</li>
+<li>Question Answers:<ul>
+<li>be either text or an image (demonstrate some of both)<ul>
+<li><em>text answers are just clickable text boxes (not an image)</em></li>
+</ul>
+</li>
+<li>have 4 potential display states:<ul>
+<li>initial none selected state</li>
+<li>have a <code>:hover</code> effect</li>
+<li>have a clicked/selected state</li>
+<li>when one answer is chosen all other answers should change to a not-selected state (different from the initial no answer chosen state).</li>
+</ul>
+</li>
+<li>have an associated value to be used to calculate the overall quiz output.</li>
+</ul>
+</li>
+<li>Done Button:<ul>
+<li>calculate the quiz output</li>
+</ul>
+</li>
+<li>Output Display<ul>
+<li>should have text and an image</li>
+<li>should not show unless the calculations are finished</li>
+<li>should display an error if not all questions were answered</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here’s some design specs thrown together in <a href="https://www.figma.com/">Figma</a></p>
+<ol>
+<li>Quiz page with a question and some image answers - nothing selected:</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/main-1767548500125.png" alt=""></p>
+<ol>
+<li><p>An example hover effect:</p>
+<p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/hover-1767548500125.png" alt=""></p>
+<ol start="3">
+<li>An answer selected:</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/checked-1767548500125.png" alt=""></p>
+<ol>
+<li><p>Answer display:</p>
+<p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/done-1767548500125.png" alt=""></p>
+</li>
+</ol>
+<h2 style="background-color: #FBF3DB;">Where to Start?!</h2>
+<p>🚀 Please use the <a href="https://classmoji.brunchlabs.com">ClassMoji</a> created repository. </p>
+<p>🚀 Clone this repo to work on.</p>
+<p>🚀 Open up your code editor and create an <code>index.html</code>, a <code>style.css</code>, and a <code>main.js</code> file.</p>
+<p>🚀 Link your <code>style.css</code> file into the head of your html file.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot; /&gt;</code></pre></div></div>
+<p>🚀 Link in your <code>main.js</code> file. Best place for this is right before your closing <code>&lt;/body&gt;</code> tag.</p>
+<p>Extra credit question (add to submission comment): why might it be better for this to be placed at the bottom rather than in <code>&lt;head&gt; ... &lt;/head&gt;</code>?</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-html">&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code></pre></div></div>
+<h2 style="background-color: #FBF3DB;">HTML</h2>
+<p>Start with coding up a single question and answer - then use flexboxes to arrange them. At this point using flexboxes for this should be almost second nature. You don’t need any of those fancy grid frameworks.</p>
+<p>One thing you may have noticed is that when you select an answer it is a exclusive selection. There is an input type that already does that automatically. Yup, <a href="http://learn.shayhowe.com/html-css/building-forms/#radio-buttons">radio boxes</a>!</p>
+<p>But the default styling of radio boxes is so ugly! Sure, but you can do something similar to the checkbox hack and hide the actual radio box but use it for some display logic.</p>
+<p>Here is the basic syntax for a radio button with an image label.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-html">&lt;label for=&quot;puppy_question&quot;&gt;&lt;img src=&quot;http://onlines/someimage.png&quot; /&gt;&lt;/label&gt;
+&lt;input type=&quot;radio&quot; id=&quot;puppy_question&quot; value=&quot;puppy&quot; /&gt;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-css">#puppy_question {
+  display: none;
+}</code></pre></div></div>
+<p>You can actually nest the input inside of the label and then you don’t have to do the <code>for=&quot;elementID&quot;</code> part of the label, it will just automatically serve as the label for the input inside it.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-html">&lt;label&gt;
+  &lt;img src=&quot;http://onlines/someimage.png&quot; /&gt;
+  &lt;input type=&quot;radio&quot; value=&quot;puppy&quot; /&gt;
+&lt;/label&gt;</code></pre></div></div>
+<p>And you can suppress all radio inputs like so:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-css">input[type=&#39;radio&#39;] {
+  display: none;
+}</code></pre></div></div>
+<p>It is important to note that the way that you group radio buttons together (i.e make it so clicking one de-clicks/de-selects the others) is by their ‘name’ property. Giving two radio buttons the same name groups them together.</p>
+<p>For example, these two radio buttons could both be selected at the same time (you can have a favorite dog and a favorite cat):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-html">&lt;label&gt;
+  &lt;img src=&quot;http://onlines/someimage.png&quot; /&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;favorite_dog&quot; value=&quot;dalmation&quot; /&gt;
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;img src=&quot;http://onlines/someimage.png&quot; /&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;favorite_cat&quot; value=&quot;tiger&quot; /&gt;
+&lt;/label&gt;</code></pre></div></div>
+<p>While these two radio buttons will automatically unselect one when the other is clicked (you cannot have two favorite dogs):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-html">&lt;label&gt;
+  &lt;img src=&quot;http://onlines/someimage.png&quot; /&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;favorite_dog&quot; value=&quot;dalmation&quot; /&gt;
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;img src=&quot;http://onlines/someimage.png&quot; /&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;favorite_dog&quot; value=&quot;retriever&quot; /&gt;
+&lt;/label&gt;</code></pre></div></div>
+<h2 style="background-color: #FBF3DB;">Javascript Logic</h2>
+<p>Once you have the basic structure up you can dive into getting the logic working. At this point you should have some radio boxes on the screen that are checkable. But how do you collect the input from them?</p>
+<p>For this assignment you are allowed to use <a href="https://jquery.com/">jQuery</a> if you wish. Just load it before your own javascript in your <code>index.html</code> file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-html">&lt;script
+  src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;
+  integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot;
+  crossorigin=&quot;anonymous&quot;
+&gt;&lt;/script&gt;</code></pre></div></div>
+<p>jQuery is purely a personal choice. It helps simplify some things. If you have used it before, challenge yourself and use plain vanilla JS this time around. Many sites on the internet use jQuery so it doesn’t hurt to be familiar with it.</p>
+<p>Most likely you have a button that you would like to attach a javascript action to. Here’s a tiny bit of code to get you started:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">$(&#39;#idOfYourButton&#39;).on(&#39;click&#39;, function (e) {
+  // gather all checked radio-button values
+  var choices = $(&quot;input[type=&#39;radio&#39;]:checked&quot;)
+    .map(function (i, radio) {
+      return $(radio).val();
+    })
+    .toArray();
+  // now you have an array of choices = [&quot;valueofradiobox1&quot;, &quot;valueofradiobox2&quot;, &quot;valueofradiobox2&quot;]
+  // you&#39;ll need to do some calculations with this
+  // a naive approach would be to just choose the most common option - seems reasonable
+});</code></pre></div></div>
+<p>Some jQuery/JS that will come in handy:</p>
+<ul>
+<li><a href="https://www.w3schools.com/jquery/jquery_hide_show.asp">show()/hide()</a> // equivalent to  <code>document.getElementById(&#39;someid&#39;).style.display = &#39;none&#39;;</code></li>
+<li><a href="https://www.w3schools.com/jquery/jquery_dom_set.asp">text()/html()</a> // equivalent to  <code>document.getElementById(&#39;someid&#39;).textContent=&#39;newtext&#39;;</code></li>
+</ul>
+<p>There’s a lot you can do here, but the basics that you want are a button that calculates an answer and then shows it on the page!</p>
+<p>The answer could be displayed as a <a href="https://www.w3schools.com/howto/howto_css_modals.asp">simple modal</a> or inline like how buzzfeed does it.</p>
+<h2 style="background-color: #FBF3DB;">Styling</h2>
+<p>Now get it looking good! If you need suggestions on how to improve your design come by any of our office hours. This assignment will be partially graded on styling. The minimum effort would be to do something like the primitive mockups or an equivalent attempt at improving the design of buzzfeed.</p>
+<h2 style="background-color: #FBF3DB;">Choose Your Own Adventure Part and Git Feature Flow</h2>
+<p>You are required to <strong>choose 1 of the next 2 options</strong> to complete. Extra credit if you do both, but 1 is part of the assignment.</p>
+<p>We’re going to start learning how to use <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches">github branches</a> and pull requests for something called git feature flow.  </p>
+<p>Git Feature Flow is a branching strategy that helps teams manage feature development in a structured way.  We aren’t yet working in a team, but we’re going to start using feature branches to keep track of our work.</p>
+<p>In Git Feature Flow, you would normally:</p>
+<ul>
+<li><code>git checkout -b my_new_feature</code>  create a new branch</li>
+<li>work on branch, <code>git commit</code>, etc</li>
+<li><code>git push origin my_new_feature</code>  push your new branch to github</li>
+<li>go to github and create pull request comparing main branch to my_new_feature</li>
+<li>(optionally) tag someone to review</li>
+<li>(once they approve) - go back on GitHub and merge it in</li>
+</ul>
+<p>This workflow helps keep the main branch stable while allowing parallel feature development. It also provides a nice history for your project with a distinct timeline for when certain features were added. </p>
+<p>If you would like more practice with this try out: </p>
+<p><a href="https://www.notion.so/ECSA-Git-Map-029087af71764896a7246445074002c0?pvs=21">ECSA: Git Map</a></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/image-1767548500125.png" alt="image.png"></p>
+<p>For now here is what I’d like your project to look like:</p>
+<ul>
+<li>a main branch - the one you have been working on so far</li>
+<li>a <code>javascript_focus</code> or a <code>styling_focus</code> branch  (or both if you do both!)</li>
+<li>and a closed pull request from your feature branches that merges your code back into the <code>main</code> branch.</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Javascript Focus (Option 1)</h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">git commit -am &quot;making sure main is fully committed&quot;
+git checkout -b javascript_focus</code></pre></div></div>
+<p>🍸 Create a generalized framework for quizzes. This will help you understand frontend frameworks and get a better feel for javascript and how to work with the DOM.</p>
+<p>This will involve reading in quiz questions and answers from a <a href="http://api.jquery.com/jquery.getjson/">JSON file</a> and then looping through them and <a href="http://api.jquery.com/append/">appending</a> to the html of the page with javascript.</p>
+<p>Imagine you had a <code>data.json</code> file that looked like this:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span></div><pre><code class="language-json">{
+  &quot;title&quot;: &quot;quiz title&quot;,
+  &quot;outcomes&quot;: {
+    &quot;outcome1&quot;: { &quot;img&quot;: &quot;img/outcome1.jpg&quot;, &quot;text&quot;: &quot;outcome 1&quot; },
+    &quot;outcome2&quot;: { &quot;img&quot;: &quot;img/outcome2.jpg&quot;, &quot;text&quot;: &quot;outcome 2&quot; }
+  },
+  &quot;questions&quot;: [
+    {
+      &quot;question_name&quot;: &quot;question1&quot;,
+      &quot;question_img_url&quot;: &quot;img/question1.jpg&quot;,
+      &quot;answers&quot;: [
+        {
+          &quot;text&quot;: &quot;&quot;,
+          &quot;img_url&quot;: &quot;img/image1.jpg&quot;,
+          &quot;outcome&quot;: &quot;outcome2&quot;
+        },
+        {
+          &quot;text&quot;: &quot;&quot;,
+          &quot;img_url&quot;: &quot;img/image2.jpg&quot;,
+          &quot;outcome&quot;: &quot;outcome2&quot;
+        },
+        {
+          &quot;text&quot;: &quot;&quot;,
+          &quot;img_url&quot;: &quot;img/image3.jpg&quot;,
+          &quot;outcome&quot;: &quot;outcome1&quot;
+        }
+      ]
+    },
+    {
+      /*........*/
+    }
+  ]
+}</code></pre></div></div>
+<p>You may load this file into your main javascript using the <a href="https://api.jquery.com/jquery.getjson/">jQuery getJSON</a> function:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">$.getJSON(&#39;data.json&#39;, function (data) {
+  // now you can do something with this data.
+  // remember you can only work with the data in this callback
+  // data.title has the title
+  // maybe you want to loop through data.questions?
+});</code></pre></div></div>
+<p>💰 Most likely you’ll want to take your already working hardcoded HTML, abstract out some section, and output it from a javascript loop that constructs a big string of all the html you need and then append it to some element in the page. You may find it irritating to do: <code>&quot;&lt;div&gt;&quot;+question.title+&quot;&lt;/div&gt;&quot;</code>… as such if you don’t care about backwards compatibility (Internet Explorer) you may find <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">template literals</a> useful.</p>
+<h2 style="background-color: #FBF3DB;">Styling Focus (Option 2)</h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">git commit -am &quot;making sure main is fully committed&quot;
+git checkout -b styling_focus</code></pre></div></div>
+<p>You second option is make your quiz site as beautiful as possible with as much fancy CSS as you can muster.</p>
+<p>Minimum Styling Requirements:</p>
+<ul>
+<li>No visible default looking radio buttons here folks.</li>
+<li>Hovers and clicks have animation/transition effects.</li>
+<li>Your output is a modal, or a new page, or a scroll, it is not a alert, and it is animated.</li>
+<li>and finally, your page works in mobile!</li>
+</ul>
+<p>This will push your CSS skills and will be super helpful later as you become the style wizard for your team. You will make your product look amazing, and honestly isn’t that the part that everybody appreciates the most?</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/cool-modal-animations-1767548500125.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/fullscreen-expanding-div-1767548500125.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/pure-css-zoom-in-blocks-on-hover-1767548500125.gif" alt=""></p>
+<p><em>might be overkill</em></p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/light-sweep-button-1767548500125.gif" alt=""></p>
+<p><em>sweet button</em></p>
+<p>Lots of inspiration at <a href="https://codemyui.com/">codemyui.com</a>.</p>
+<p>Some more resources:</p>
+<ul>
+<li><a href="https://thekevhu.github.io/Styles/">Kevin’s CSS Styles</a></li>
+<li><a href="https://css-tricks.com/">https://css-tricks.com</a></li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Host It and You Are Done!</h2>
+<p>You have some options for how to host this. Github Pages is soon going to be too simple for us once we start using frameworks so we’ll need to move to another static hosting platform.  You could use <a href="http://Render.com">Render.com</a> or any other hosting platform that you like.  We’ll use Render later for hosting web services, so that one might be easiest if you want to only use 1 platform for the class going forward. </p>
+<h3><a href="http://Render.com">Render.com</a></h3>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/untitled-1767548500125.png" alt="Untitled"></p>
+<ol>
+<li>Create account / Use github to sign in</li>
+<li>New → Static Site</li>
+<li>Connect Github</li>
+<li>dartmouth-cs52-TERM/</li>
+<li>Choose defaults and deploy</li>
+<li>Deploy - it will automatically update when you push new changes to GitHub</li>
+</ol>
+<h2 style="background-color: #FBF3DB;">And done!</h2>
+<p>Remember to have fun with this. We’ll share the quizzes in class!</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/scar-1767548500125.png" alt=""></p>
+<h2 style="background-color: #FBF3DB;">To Turn In:</h2>
+<ul>
+<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
+<li>🙏 In your comment please include:<ul>
+<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
+<li>brief summary of what worked and what didn’t</li>
+<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
+</ul>
+</li>
+<li>your submission comment should include:<ul>
+<li>a couple sentence description of what you did and what worked / didn’t work.</li>
+<li>what focus you chose: javascript or style or both</li>
+<li>screen caps with anything special you want to point out</li>
+<li>and make sure you have github pull request that is merged into main for any focus areas.</li>
+</ul>
+</li>
+<li>your page should have all the MVP specs above in addition to:<ul>
+<li>have clear document structure with proper semantic naming</li>
+<li>functional calculations and error checking to get quiz results</li>
+<li>look reasonable, styling should be at least as classy as the mockups…</li>
+</ul>
+</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Extra Credit</h2>
+<p><em>feel free to suggest other possibilities;</em> <em>always mention your extra credit in the submission comment</em></p>
+<ul>
+<li>More complex quiz scoring (weighted options, real science, probabilities)</li>
+<li>Multiple quizzes / pages</li>
+<li>Not a quiz at all but some sort of game or other idea</li>
+<li>? (create your own extra credit!)</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Resources:</h2>
+<ul>
+<li><a href="https://share.descript.com/view/Md1dSkRgeWJ">CSS Grid with Ijemma</a></li>
+<li><a href="https://share.descript.com/view/OZARqEHxdW4">CSS Flexbox with Ijemma</a></li>
+<li><a href="https://share.descript.com/view/JeU0zLQIpLG">Javascript with Ijemma</a></li>
+<li><a href="https://www.w3schools.com/jquery/default.asp">jquery tutorial</a></li>
+<li><a href="https://css-tricks.com/">https://css-tricks.com</a></li>
+<li><a href="http://www.w3schools.com/">http://www.w3schools.com</a></li>
+<li><a href="https://philipwalton.github.io/solved-by-flexbox/">https://philipwalton.github.io/solved-by-flexbox/</a></li>
+<li><a href="http://learn.shayhowe.com/html-css/building-forms/#radio-buttons">http://learn.shayhowe.com/html-css/building-forms/#radio-buttons</a></li>
+<li><a href="https://thoughtbot.com/blog/css-animation-for-beginners">css-animation-for-beginners</a></li>
+<li><a href="https://developer.chrome.com/devtools">Chrome Devtools</a></li>
+<li><a href="https://mycolor.space/">mycolor.space/</a></li>
+<li><a href="https://color.adobe.com/create/color-wheel">color.adobe.com/create/color-wheel</a></li>
+<li><a href="https://javascript.info/">https://javascript.info</a></li>
+<li><a href="https://www.w3schools.com/js/default.asp">https://www.w3schools.com/js/default.asp</a></li>
+<li><a href="http://www.learn-js.org/">http://www.learn-js.org/</a></li>
+</ul>
+
+</body>
+</html>
