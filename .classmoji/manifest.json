@@ -214,15 +214,21 @@
       "slides": [],
       "assignments": {
         "vite-starterpack": {
-          "pages": [],
-          "slides": []
-        },
-        "react-router": {
-          "pages": [],
+          "pages": [
+            "sa2-frontend-starterpack-with-vite-short-assignment"
+          ],
           "slides": []
         },
         "state-management-part-1-add-to-starterpack": {
-          "pages": [],
+          "pages": [
+            "sa-state-management-short-assignment"
+          ],
+          "slides": []
+        },
+        "react-router": {
+          "pages": [
+            "sa-routing-short-assignment"
+          ],
           "slides": []
         }
       }
@@ -231,10 +237,7 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
-      "sa-state-management-short-assignment",
-      "sa-routing-short-assignment",
-      "sa3-intro-react-short-assignment",
-      "sa2-frontend-starterpack-with-vite-short-assignment"
+      "sa3-intro-react-short-assignment"
     ],
     "slides": []
   }
