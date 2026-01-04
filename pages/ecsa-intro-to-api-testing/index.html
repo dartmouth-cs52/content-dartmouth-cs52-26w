@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: extra-credit short<br>week: Week 10<br>Created time: August 16, 2022 1:20 PM<br>Dates: May 22, 2025 → May 25, 2025<br>published: No</p>
+<h1 style="background-color: #DDEBF1;">Intro to API Testing — SA?</h1>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1-1767548250342.png" alt="Untitled-1.png"></p>
+<p>In this short assignment, we’ll be learning to write tests against APIs using <a href="https://www.cypress.io/">Cypress</a>. Cypress is an end-to-end testing framework that can be used to test your whole web stack or individual components. This is a powerful tool that we’ll be using for the duration of the course. </p>
+<p>[explain the context of this assignment in comparison to the other relevant ones (other cypress assignments, lab4, etc.)]</p>
+<h2 style="background-color: #FBF3DB;">Let’s Start</h2>
+<p>🚀 [Insert repo for assignment] </p>
+<h2 style="background-color: #FBF3DB;">CRUD API [FROM LAB 4]</h2>
+<p>We’ll be using an API server running at <a href="https://platform.cs52.me/api">https://platform.cs52.me/api</a></p>
+<p>The API has the following endpoints:</p>
+<ul>
+<li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{&quot;id&quot;:&quot;&quot;,title&quot;:&quot;&quot;,&quot;tags&quot;:&quot;&quot;, &quot;coverUrl&quot;:&quot;&quot;},...]</code></li>
+<li>POST <code>/api/posts/</code> with post parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> creates a new post</li>
+<li>PUT <code>/api/posts/:postID</code> with parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> will update an entry</li>
+<li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li>
+<li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li>
+</ul>
+<h3>API key</h3>
+<p>For each of these, you need to append an API key. This key can just be your <code>firstinitial_lastname</code>. You can test the API using <a href="https://insomnia.rest/">insomnia</a> or curl.</p>
+<h3>Testing APIs from CLI with curl</h3>
+<p>There is a command that you can run in Terminal called <code>curl</code> that can fetch remote data. Here’s how you would use it for testing the API server. This will also come in handy when you have to create the API server next week!</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-bash"># all posts get:
+curl -X GET &quot;https://platform.cs52.me/api/posts?key=YOURKEY&quot;
+
+# create new post
+curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{
+    &quot;title&quot;: &quot;first post&quot;,
+    &quot;tags&quot;: &quot;words&quot;,
+    &quot;content&quot;:  &quot;this is a test post&quot;,
+    &quot;coverUrl&quot;: &quot;https://media.giphy.com/media/gyRWkLSQVqlPi/giphy.gif&quot;
+}&#39; &quot;https://platform.cs52.me/api/posts/?key=YOURKEY&quot;
+
+# update by POSTID
+curl -X PUT -H &quot;Content-Type: application/json&quot; -d &#39;{
+    &quot;title&quot;: &quot;new title&quot;
+}&#39; &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;
+
+# fetch 1 by POSTID
+curl -X GET &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;
+
+# delete by POSTID
+curl -X DELETE -H &quot;Content-Type: application/json&quot; &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;</code></pre></div></div></div>
+<p>Try these out. Run the create new post one a couple of times to populate your database!</p>
+<p>This will work a bit different from the react-notes, and in a way will be much simpler. Every time you want to update, create, delete, retrieve, you will use http calls like the above to interact with the server.</p>
+<p>Remember our SPA architecture:</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/single-page-app-1767548250343.png" alt=""></p>
+<p>The above is the data requests we’ll be making. They all return <em>JSON</em>.</p>
+<p>This site will <em>not</em> update live in the sense that if someone else on another browser added a post, you would not see it pop up automatically, but would need to reload. This is fairly common of most platforms like this, your feed doesn&#39;t change as you look at it, you need to refresh to see new articles. Once Redux is in place it’ll be really easy to trigger a refresh with a button or pulldown if you want.</p>
+<h2 style="background-color: #FBF3DB;">HTTP Status Codes</h2>
+<p>When you send a CRUD request to a server, you use the HTTP status code in the response to determine how the server has responded. These can be broken into five different categories.</p>
+<ul>
+<li><strong>1xx —</strong> Informational responses</li>
+<li><strong>2xx —</strong> Success</li>
+<li><strong>3xx —</strong> Redirection</li>
+<li><strong>4xx —</strong> Client errors</li>
+<li><strong>5xx —</strong> Server errors</li>
+</ul>
+<p>We won’t look at most of these codes here (you can read up on each of them in greater detail <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">here</a>). For now, we’ll just look at the most important ones—and the ones you should focus on in this assignment. </p>
+<p><code>200 OK</code> The request was successful. The actual operation that succeeded will of course change based on what HTTP method was invoked. </p>
+<p><code>400 Bad Request</code> The request will not be performed due to some client error (invalid JSON type or values, incorrect request syntax, etc.).</p>
+<p><code>404 Not Found</code> The requested resource could not be located or does not exist. Note that this can be true even if the request is to a valid endpoint. </p>
+<p><code>422 Unprocessable Entity</code> Similar to the 400 error, customarily returned if the formatting of the JSON is correct but the fields are not. </p>
+<p><code>500 Internal Server Error</code> Generic server error that indicates it encountered an unexpected condition that prevented it from fulfilling the request. Other 500 response codes offer more detail about why the error occurred. </p>
+<h2 style="background-color: #FBF3DB;"><a href="https://www.cypress.io/">Cypress</a></h2>
+<h3>Installation &amp; Setup</h3>
+<p>It’s now time to install Cypress and get it set up in the project. Since we’re only testing a remote API, our project will be sparse and only contain the files for Cypress. </p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install cypress@10</code></pre></div></div></div>
+<p>Once the package finishes installing (the <code>npm</code> package is actually an installer for the larger package itself) you will be able to run Cypress with:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npx cypress open</code></pre></div></div></div>
+<p>You can also add a script (alongside any others) for running this with <code>npm</code> like so:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;cypress open&quot;
+  }
+}</code></pre></div></div>
+<p>Which can be executed like this:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm run test</code></pre></div></div></div>
+<p>After a few moments, the Cypress Launchpad will open. </p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/cypress-launchpad-1767548250343.png" alt="Cypress Launchpad.png"></p>
+<p>We’re going to be using E2E (End-to-End) testing for this project, it’s for testing the whole application and will allow us to access external APIs as well. We’ll take a look at component testing in a future assignment, so go ahead and click on E2E Testing to set up the configuration. You can keep the default files and hit continue at the bottom of the page.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1767548250343.png" alt="Untitled"></p>
+<p>You will now be prompted to choose which browser to run cypress in. You’ll notice that it comes with Electron (a Chromium-based browser that uses a Node.js runtime environment!). We’ll just use the default for this. </p>
+<p>Go ahead and click “Start E2E Testing” to continue. </p>
+<h3>Let’s write some tests!</h3>
+<p>You should be greeted with this page giving two different options for getting started with your spec. The scaffold examples have a number of scripts for different kinds of tests. For this project, we’ll create an empty spec so we can go over all pieces for writing API tests.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1-1767548250343.png" alt="Untitled"></p>
+<p>Once you create the spec you can go ahead and run it. You will see the one filler API test passing in the left panel.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-2-1767548250343.png" alt="Untitled"></p>
+<p>We will be focusing on this panel for this assignment since we’re only going to be dealing with the API. Here is where you’ll be able to see which tests pass or fail and can open them up for more details about what is being tested and why it failed. In order to actually modify these tests, we’re going to open the <code>cypress/e2e/</code> folder in your IDE. Here’s the starter script it created:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">describe(&#39;empty spec&#39;, () =&gt; {
+  it(&#39;passes&#39;, () =&gt; {
+    cy.visit(&#39;https://example.cypress.io&#39;);
+  });
+});</code></pre></div></div>
+<p>Here we can see the way the test is set up. We describe an <code>&#39;empty spec&#39;</code> (the name of our group of tests), that it <code>&#39;passes&#39;</code> (description of the test), and then the operation we want to test—in this case, visiting an example website. </p>
+<p>First, we’ll set up the <code>baseUrl</code> so that our tests will hit the server. Make the change to the <code>cypress.config.js</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">const { defineConfig } = require(&#39;cypress&#39;);
+
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
+    baseUrl: &#39;https://platform.cs52.me&#39;,
+  },
+});</code></pre></div></div>
+<p>The default test is not very interesting, we’re going to replace that with a pattern like this:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">describe(&#39;api crud spec&#39;, () =&gt; {
+  it(&#39;description of test&#39;, () =&gt; {
+    cy.request({
+      &quot;insert json request&quot;
+    }).then((response) =&gt; {
+      expect(&quot;some property of response&quot;).to.eq(&quot;some status&quot;);
+    });
+  });
+})</code></pre></div></div>
+<p>where <code>&quot;insert json request&quot;</code>, <code>&quot;some property of response&quot;</code>, and <code>&quot;some status&quot;</code> are to be replaced with values for the test we want to run. Additionally, we can run as many <code>expect</code> functions as we like on our request to test multiple values at once. </p>
+<p>Let’s start with a GET method to grab all posts from the database at once:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">it(&#39;user retrieves all posts&#39;, () =&gt; {
+  cy.request({
+    method: &#39;GET&#39;,
+    url: `/api/posts`,
+  }).then((response) =&gt; {
+    expect(response.status).to.eq(200);
+    expect(response.body).to.be.a(&#39;array&#39;);
+    expect(response.body[0]).to.be.a(&#39;object&#39;);
+    expect(response.body[0].title).to.eq(&#39;first post&#39;);
+  });
+});</code></pre></div></div>
+<p>We have placed the description of our test at the top which will be displayed in Cypress when the tests are run. Our request body is JSON that states our method is GET and the URL of our request (this gets appended to our base URL and would look like <code>&#39;https://platform.cs52.me/api/posts&#39;</code>). We can also include a header but it is not necessary at this point. The <code>then</code> method contains our tests where we can test the properties of the returned response object. In this case, the status should be 200 because the request should be successful. The body will be an array of JSON objects, each of which is a single post. We can test that the type is an array, and then perform a few additional tests on the first element. In what circumstances would it be a good idea to assume what the title of the post is?</p>
+<p>As we move on to other requests you may have noticed a problem. Our other requests rely on the id of the post in order to retrieve or modify it. Let’s make our first request be a POST method where we can store its id in a global variable we can use for our other tests, the last of which is to delete it.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-jsx">it(&#39;user creates a post&#39;, () =&gt; {
+  cy.request({
+    method: &#39;POST&#39;,
+    url: &#39;/api/posts&#39;,
+    body: {
+      title: &#39;first post&#39;,
+      tags: &#39;words&#39;,
+      content: &#39;this is a test post&#39;,
+      coverUrl: &#39;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&#39;,
+    },
+  }).then((response) =&gt; {
+    expect(response.status).to.eq(200);
+    postId = response.body.id ?? response.body._id;
+  });
+});</code></pre></div></div>
+<p>We put our id in a variable <code>postId</code> which is defined at the top of the document <code>let postId;</code>. Another problem that gets inadvertently resolved is managing the number of posts that get created each time our tests execute. We will not be filling up our database each time we run our tests! This has, however, made our tests somewhat interdependent—it’s not ideal but okay here. </p>
+<p>We can use this variable inline in our requests. Here’s our GET request from before, but this time we’ll just retrieve one post (the one we just created) using its id:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">it(&#39;user retrieves a post&#39;, () =&gt; {
+  cy.request({
+    method: &#39;GET&#39;,
+    url: `/api/posts/${postId}`,
+  }).then((response) =&gt; {
+    expect(response.status).to.eq(200);
+    expect(response.body.title).to.eq(&#39;first post&#39;);
+  });
+});</code></pre></div></div>
+<p>We can now be sure about the properties of that post—such as the title—since we just created it!</p>
+<p>Let’s step back now. We’ve tested POST and two different GET requests; that leaves PUT, DELETE, and various cases to test error scenarios. Our PUT and DELETE methods will be pretty straightforward to test:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-jsx">it(&#39;user updates a post&#39;, () =&gt; {
+  cy.request({
+    method: &#39;PUT&#39;,
+    url: `/api/posts/${postId}`,
+    body: {
+      title: &#39;updated post&#39;,
+      tags: &#39;words&#39;,
+      content: &#39;this is a test post&#39;,
+      coverUrl: &#39;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&#39;,
+    },
+  }).then((response) =&gt; {
+    expect(response.status).to.eq(200);
+    expect(response.body.title).to.eq(&#39;updated post&#39;);
+  });
+});
+it(&#39;user deletes a post&#39;, () =&gt; {
+  cy.request({
+    method: &#39;DELETE&#39;,
+    url: `/api/posts/${postId}`,
+  }).then((response) =&gt; {
+    expect(response.status).to.eq(200);
+  });
+});</code></pre></div></div>
+<p>That just leaves the error cases. We can test the 400 error by GETing a post with an invalid id.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">it(&#39;user retrieves a bad post id, expecting failure code 400&#39;, () =&gt; {
+  cy.request({
+    failOnStatusCode: false,
+    method: &#39;GET&#39;,
+    url: &#39;/api/posts/INVALID_ID&#39;,
+  }).then((response) =&gt; {
+    expect(response.status).to.eq(400);
+  });
+});</code></pre></div></div>
+<p>And 404 by trying to GET the post we were originally working with after it’s deleted.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">it(&#39;retrieving deleted post, expecting error code 404&#39;, () =&gt; {
+  cy.request({
+    failOnStatusCode: false,
+    method: &#39;GET&#39;,
+    url: `/api/posts/${postId}`,
+  }).then((res) =&gt; {
+    expect(res.status).to.eq(404);
+  });
+});</code></pre></div></div>
+<h2 style="background-color: #FBF3DB;">Commit!</h2>
+<p>Don’t forget to commit and push your code so that your <del>starterpack</del> now has routing support and an example!</p>
+<h2 style="background-color: #FBF3DB;">To Turn In</h2>
+<ul>
+<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
+<li>🙏 In your comment please include:<ul>
+<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
+<li>brief summary of what worked and what didn’t</li>
+<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
+</ul>
+</li>
+<li><strong>^ note this is the SAME PR as your previous starterpack submission - that is ok -just add a new comment.</strong></li>
+<li>your starter pack should now<ul>
+<li>have working test routes</li>
+<li>be deployed to netlify with working _redirects or <a href="http://render.com">render.com</a> with rewrites set up.</li>
+<li>lint correctly</li>
+<li>have fallback webpack serving index.html for any route</li>
+</ul>
+</li>
+</ul>
+<h2 style="background-color: #FBF3DB;">Resources</h2>
+<ul>
+<li><a href="https://www.cypress.io/">https://www.cypress.io/</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a></li>
+<li><a href="https://insomnia.rest/">https://insomnia.rest/</a></li>
+</ul>
+
+</body>
+</html>
