@@ -471,36 +471,36 @@
 # question index integers are automatically assigned</code></pre></div></div>
 <p>This will return a game state object that will include the room id, which you will definitely want to keep track of for future use!</p>
 <div class="heading-block h3-block"><h3>Admin Opens Game</h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-javascript">curl --request PATCH 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl --request PATCH 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
 --header 'Content-Type: application/json' \
 --data '{
         "roomKey": "secret",
     "status": "OPEN"
 }'
 
-// returns game state</code></pre></div></div>
+// returns game state</code></pre></div>
 <div class="heading-block h3-block"><h3><strong>Get the game state/next question</strong></h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">curl --request GET 'http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%'
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl --request GET 'http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%'
 
-// returns game state</code></pre></div></div>
+// returns game state</code></pre></div>
 <div class="heading-block h3-block"><h3>Players Join Game</h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "%YOUR_PLAYER_NAME"
 }'
 
-// returns game room id and name confirmation</code></pre></div></div>
+// returns game room id and name confirmation</code></pre></div>
 <div class="heading-block h3-block"><h3>Admin Starts Game</h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">curl --request PATCH 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl --request PATCH 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
 --header 'Content-Type: application/json' \
 --data '{
     "status": "IN_PROGRESS"
 }'
 
-// returns game state</code></pre></div></div>
+// returns game state</code></pre></div>
 <div class="heading-block h3-block"><h3><strong>Submit answer for a player</strong></h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-javascript">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%/submissions' \
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%/submissions' \
 --header 'Content-Type: application/json' \
 --data '{
     "player": "%YOUR_PLAYER_NAME%",
@@ -509,11 +509,11 @@
 
 // returns game state
 // applies to currently open question only automatically, once all players answer 
-// a question gamestate automatically moves to next questions</code></pre></div></div>
+// a question gamestate automatically moves to next questions</code></pre></div>
 <div class="heading-block h3-block"><h3><strong>Look at the scoreboard to see who won! (just the regular getState above)</strong></h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">curl --request GET 'http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%'
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl --request GET 'http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%'
 
-// returns game state - no need for a separate handling this is literally just the same game state endpoint</code></pre></div></div>
+// returns game state - no need for a separate handling this is literally just the same game state endpoint</code></pre></div>
 <div class="heading-block h2-block"><h2>To <strong>Start</strong></h2></div>
 <p>We will build an <a href="https://expressjs.com/">express</a> server that will store data in <a href="https://www.mongodb.com/">mongodb</a>.</p>
 <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/enm-1767548363203.jpg" alt="">
