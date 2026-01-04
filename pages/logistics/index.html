@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="background-color: #FBF3DB;">Textbook</h2>
+<p>A collection of online resources will be used, but no textbook will be required. Current blog posts and videos about the state of various technologies and best practices will be included in some assignments. Peruse them to learn something. If you have good resources that you find along the way - <a href="https://github.com/dartmouth-cs52/dartmouth-cs52.github.io/issues">contribute</a>!</p>
+<h2 style="background-color: #FBF3DB;">Auditing</h2>
+<p>Unfortunately, due to the nature of the class and our classroom size, auditing the class will not be permitted. All class material will be posted here online though!</p>
+<h2 style="background-color: #FBF3DB;">Slack</h2>
+<p>We will use <a href="https://cs52-dartmouth.slack.com/">Slack</a>, an online collaborative tool for most class messaging and help. Details in class. We will also write Slack integrations!</p>
+<h2 style="background-color: #FBF3DB;">Grading</h2>
+<ul>
+<li>short assignments: 10%</li>
+<li>labs: 35%</li>
+<li>quizzes: 5%</li>
+<li>group presentation and workshop: 10%</li>
+<li>final project: 35%</li>
+<li>class participation: 5%</li>
+<li>late penalty:<ul>
+<li>1 emoji per day</li>
+</ul>
+</li>
+<li>2 allowed re-submits (capped at 👍, only available before the final projects start)</li>
+<li>for any assignment, you can add extra credit during 3 days after it is due</li>
+<li>2 x 24 hour extension (comment on issue submission  to indicate activation)</li>
+<li>👀 added for any submission fails (unshared links, empty repos, wrong urls)</li>
+</ul>
+<h3>Group Final Project Grading</h3>
+<p>Grading of some collaborative team-based work (the final project) will be done based on GitHub pull requests, GitHub Issues, codes committed, and other things such as design contributions. Using version control will become second nature to you. Proper git flow will be introduced and will be required for all groups. Since projects are a team effort, you will earn a group grade along the way with a modifier for individual performance. In extreme cases, individual final project grades may differ substantially from the group grades. For instance, if you were the star performer on the team and committed the large majority of code, but your teammates didn’t pull their weight, so the project wasn’t quite up to standards, the team might receive an 80 for the project milestones, but you might get a 100 scaled for contributions. Alternatively, if you slacked and contributed only a few lines to some documentation to boost your git commit count, we will notice, and you might get a 0 even if your teammates pulled off an impressive project without you, and the team received a 98 overall.</p>
+<h2 style="background-color: #FBF3DB;">Software</h2>
+<p>We will use open-source development tools and frameworks. Note: These will work out of the box in macOS and Linux and should work ok with a bit of coercion in Windows (tested in Win10). (details in short assignment 1)</p>
+<h2 style="background-color: #FBF3DB;">Honor principle – Not your standard warning!</h2>
+<p>We understand that a large part of software engineering involves learning from examples, searching for solutions, working with ChatGPT and other AI tools, and integrating your research into your own code. We want you to learn from all available resources while still learning the concepts necessary to generate your own solutions and become capable software engineers.  You should understand all the code that you write/integrate, and be able to walk through it. Most critically, to avoid an Academic Honor Violation you need to cite any sources that you use in your process.  </p>
+<h3>The Internet</h3>
+<p>The Internet will be a large source of information and help to you as you do your assignments in this class. We want to encourage you to scour the internet / stackoverflow / chatGPT for help, <strong>but</strong> you <strong>must credit</strong> any solutions you find in comments in your code specifying where you found them and what you took from them. If you copy/paste code without attribution, you are violating the Academic Honor Principle. You will <strong>not</strong> be penalized for copied code as long as it is <strong>properly attributed</strong>. Obviously don’t copy/paste the whole project, as you may not get full credit, but even if you do at least you will not facing the COS. </p>
+<h3>Student Collaboration</h3>
+<p>For the short assignments and the labs, you may verbally collaborate as much as you want. However, the code that you commit (turn in), is ideally created, typed, documented, and output generated, by you. You may consult freely with instructors and classmates but you should work individually when actually coding. If you copy or look at code from another current or previous student for “debugging” purposes, it will be considered a violation of the Academic Honor Principle unless you cite that you have done so in the code. All collaboration with another student should be documented in the comments and cited, exactly as you would with an internet resource. If there is any question about whether you wrote the code yourself or were inspired by or copied off of others, just CITE IT. You may lose some points for not implementing that specific component yourself, but properly cited code will not be considered a violation of the Academic Honor Principle.</p>
+<h3>Citation Format</h3>
+<p>Make your in-code citations look something like this (policy adapted from <a href="https://integrity.mit.edu/handbook/writing-code">MIT Integrity Handbook</a>):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">Code</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code>// adapted from: http://stackoverflow.com/someurl
+// this method does x and y
+
+or
+
+// copied off of Cameron Howe&#39;s code for this assignment
+// this method does x and y</code></pre></div></div>
+<h3>Honor Code Violation Examples</h3>
+<p>These are designed to serve to help illustrate the various situations that might arise and whether they are or are not violations of the Academic Honor Code. Violations will be reported to the Committee on Standards. Regardless of the outcome of the COS hearing, we reserve the right to assign a failing grade on an assignment where we suspect an honor code violation occurred.</p>
+<ul>
+<li>You ask ChatGPT to help you with your homework, it spits out some decent-looking code and you copy/paste it in. You don’t really know what it is doing, but ChatGPT seems very confident it will fix your problem/get you an A. Your assignment may or may not work as intended and may or may not attempt to take over the world as part of an AI uprising. Regardless, this is a violation of the Honor Code unless you mark the code with a comment citing ChatGPT for any help it provided. CITE IT, and you will be fine.</li>
+<li>You find a block of code online that you don’t quite understand but it seems to work either when you make your code look similar or you copy/paste it in. Either because you are embarrassed or careless, you do not cite where you got the code from. This is a violation of the Honor Code. CITE IT, and you will be fine.</li>
+<li>It is midnight, and the assignment is due, and your friend sends you a block of code to help debug. You try to not look at it, but you end up turning in something very similar to what your friend sent. This would be an attribution error and an Academic Honor Code violation <strong>if you did not cite it</strong>. CITE IT LIKE YOUR LIFE DEPENDS ON IT. If you had turned it in with an attribution: <code>“I whole-heartedly copied this from my friend N”,</code> we would deduct points from your assignment, but that is it!</li>
+<li>You and a couple of friends are working together on an individual (not team) assignment. You are talking about it and planning it out on the whiteboard. If you are using natural spoken language you are ok. If you are writing code on the board or telling each other what to type in, that is a violation of the Academic Honor Code <strong>if you do not cite it</strong>. If you have not properly attributed work to your friend and you end up with the same code you would face a COS hearing to disentangle what happened. These hearings are brutal with back-stabbings, tears, and ruined friendships. Why risk it? The best approach when talking about your assignments together is to do it as if you were helping each other learn: ask questions, give hints. That is why we are all here after all. If you type in what someone tells you to type, CITE IT.</li>
+</ul>
+<h3>But officer I panicked!</h3>
+<p>If you are stuck: ask for an extension, come to office hours, email or slack your Instructor and your TAs, learn some humility and accept that you might need help. Asking for help is one of the greatest skills that one can possess, and if you get anything from this class is that it is OK to ask for help.</p>
+<p>Please do not create a horrible situation for all of us by copying code without citing the source. Our job is to help you learn. You will not be penalized for asking.</p>
+<h2 style="background-color: #FBF3DB;">Special Accommodations</h2>
+<p>Students requesting disability-related accommodations and services for this course are encouraged to schedule a phone/video meeting with me as early in the term as possible. This conversation will help to establish what supports are built into my online course. In order for accommodations to be authorized, students are required to consult with Student Accessibility Services (SAS; <a href="mailto:student.accessibility.services@dartmouth.edu">student.accessibility.services@dartmouth.edu</a>; SAS website; 603-646-9900) and to email me their SAS accommodation form. We will then work together with SAS if accommodations need to be modified based on the online learning environment. If students have questions about whether they are eligible for accommodations, they should contact the SAS office. All inquiries and discussions will remain confidential.</p>
+<h2 style="background-color: #FBF3DB;">Wellness</h2>
+<p>We recognize that the academic environment at Dartmouth is challenging, that our terms are intensive, and that classes are not the only demanding part of your life. There are a number of resources available to you on campus to support your wellness, including: your undergraduate dean (<a href="http://www.dartmouth.edu/~upperde/">http://www.dartmouth.edu/~upperde/</a>), Counseling and Human Development (<a href="http://www.dartmouth.edu/~chd/">http://www.dartmouth.edu/~chd/</a>), and the Student Wellness Center (<a href="http://www.dartmouth.edu/~healthed/">http://www.dartmouth.edu/~healthed/</a>). I encourage you to use these resources and come speak with me to take care of yourself throughout the term.</p>
+<h2 style="background-color: #FBF3DB;">Religious Observances</h2>
+<p>Some students may wish to take part in religious observances that occur during this academic term. If you have a religious observance that conflicts with your participation in the course, please meet with me before the end of the second week of the term to discuss appropriate accommodations.</p>
+<h2 style="background-color: #FBF3DB;">Video Recording</h2>
+<p>From the Dean of the Faculty to students regarding the recording of class sessions:</p>
+<h3>1. Consent to recording of course and group office hours</h3>
+<p>By enrolling in this course,<br>a) I affirm my understanding that the instructor may record meetings of this course and any associated meetings open to multiple students and the instructor, including but not limited to scheduled and ad hoc office hours and other consultations, within any digital platform, including those used to offer remote instruction for this course.<br>b) I further affirm that the instructor owns the copyright to their instructional materials, of which these recordings constitute a part, and my distribution of any of these recordings in whole or in part to any person or entity other than other members of the class without prior written consent of the instructor may be subject to discipline by Dartmouth up to and including separation from Dartmouth.</p>
+<h3>2. Requirement of consent to one-on-one recordings</h3>
+<p>By enrolling in this course, I hereby affirm that I will not make a recording in any medium of any one-on-one meeting with the instructor or another member of the class or group of members of the class without obtaining the prior written consent of all those participating, and I understand that if I violate this prohibition, I will be subject to discipline by Dartmouth up to and including separation from Dartmouth, as well as any other civil or criminal penalties under applicable law. I understand that an exception to this consent applies to accommodations approved by SAS for a student’s disability, and that one or more students in a class may record class lectures, discussions, lab sessions, and review sessions and take pictures of essential information, and/or be provided class notes for personal study use only.<br> If you have questions, please contact the Office of the Dean of the Faculty of Arts and Sciences.</p>
+<h3>Requirement of consent to one-on-one recordings</h3>
+<p>By enrolling in this course, I hereby affirm that I will not under any circumstance make a recording in any medium of any one-on-one meeting with the instructor without obtaining the prior written consent of all those participating, and I understand that if I violate this prohibition, I will be subject to discipline by Dartmouth up to and including expulsion, as well as any other civil or criminal penalties under applicable law.</p>
+<p>If you have any questions about any of these prohibitions or instructions, please consult your Dean’s Office.</p>
+<h2 style="background-color: #FBF3DB;">Deprecated COVID-19 Addendum</h2>
+<p>While the COVID-19 pandemic has already changed how this course is structured, it has the potential to result in further personal impact which may prevent you from continuing engagement in the class. This may be due to contraction of the disease by you or a loved one, increased familial responsibilities, financial difficulties, or impacts on your mental/emotional health.</p>
+<p>We have structured the course so that these disruptions will not necessarily prevent you from successfully completing this course. First, lectures while conducted via Zoom will also be available for watching later. This will enable flexible viewing of the course content. Second, we will schedule opportunities for live interaction with the Professor and the TAs during diverse times throughout the week. Third, the workshops and labs are all structured to be done on your own time from home. And finally, the group project is designed to be facilitate remote work using industry standard collaboration tools.</p>
+<p>In the event that you are directly or indirectly impacted by COVID-19 in such a way that will affect your performance in the course, it is imperative that you reach out to the instructor as soon as possible. You may also reach out to your undergraduate Dean if that would make you more comfortable. We cannot assist you if we don’t know there is a problem. Our first priority is your health and security. We will work to put you in touch with appropriate resources to assist you. In addition, appropriate accommodations (for example: deadline extensions and/or extra office hours) will be implemented.</p>
+
+</body>
+</html>
