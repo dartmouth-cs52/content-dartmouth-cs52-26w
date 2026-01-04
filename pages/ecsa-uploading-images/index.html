@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<p>Type: extra-credit short<br>week: Week 8<br>Created time: February 7, 2022 2:35 PM<br>Dates: May 17, 2025 → May 23, 2025<br>published: No</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/fbansyz-1767548311581.png" alt=""></p>
+<h2 style="background-color: #FBF3DB;">Overview</h2>
+<p><em>Updated by Sudharsan and Rishik 21S</em></p>
+<p>Today we’ll be learning how to directly upload images to Amazon Web Services Simple Storage Service (S3) on our blog application from Lab 4 and 5. We will be implementing an image input for handling image uploads and then these images will directly be uploaded to S3.</p>
+<p>Amazon S3 is a popular and reliable storage option for storing files such as images, documents, and videos. By uploading directly to S3, we can reduce server load because our server load no longer needs to handle receiving images from the client. When handling large images, our service would otherwise not be able to respond to other web requests as efficiently.</p>
+<h3>Code Flow</h3>
+<p>In general, the method described in this article follows these simple steps:</p>
+<ul>
+<li>A file is selected for upload by the user in the client</li>
+<li>The client makes a request to your server, which produces a temporary signature with which to sign the upload request</li>
+<li>The browser then uploads the file directly to Amazon S3 using the signed request</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/s3-upload-1767548311581.jpg" alt=""></p>
+<h2 style="background-color: #FBF3DB;">Setup</h2>
+<p>🚀 Make sure everything is committed and pushed to github normally for both Lab4 and Lab5</p>
+<p>🚀 Go into your Lab5 and Lab4 directories and run:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">git checkout -b withS3</code></pre></div></div></div>
+<p>Now you will have a separate branch with image uploading as a feature.</p>
+<h3>S3 Setup</h3>
+<p>First we need to enable our Heroku application to use S3, which requires that the app have access to the AWS credentials as well as the name of the bucket to store files.</p>
+<p>🚀 Create an AWS account <a href="https://aws.amazon.com/">here</a> and navigate to the <a href="https://console.aws.amazon.com/iam/home?#security_credential">Security Credentials</a> page under Identity Access Management (IAM). You’ll need to scroll down to Access Keys and create an access key.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/creating-key2-1767548311581.jpg" alt=""></p>
+<p>🚀 Copy down the Access Key ID and the Secret Access Key ID, you will be putting it into your Heroku App config vars later on.</p>
+<p>🚀 Next, navigate back to the AWS <a href="https://aws.amazon.com/">home page</a> and then to the <a href="https://console.aws.amazon.com/s3/home?#">S3 Console</a>. Here, create a bucket; this is where all the files you upload from your client will live. Choose an <a href="https://devcenter.heroku.com/articles/s3#naming-buckets">appropriate name</a> and take it down as well, we will also be adding it to heroku. For the region, make sure you create the bucket in the same region as the app that will use it. Uncheck the block public access box for now and keep the rest of the settings the default.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/creating-bucket2-1767548311581.jpg" alt=""></p>
+<p>🚀 You will now need to edit some of the permissions properties of the target S3 bucket so that the final request has sufficient privileges to write to the bucket. In a web-browser, sign in to the AWS console and select the S3 section. Select the appropriate bucket (or create a new one) and click the ‘Permissions’ tab. Scroll down to the very bottom, where you will see ‘cross-origin resource sharing’ (CORS).</p>
+<p>CORS (Cross-Origin Resource Sharing) will allow your application to access content in the S3 bucket. Each rule should specify a set of domains from which access to the bucket is granted and also the methods and headers permitted from those domains.</p>
+<p>Then, click the Edit button at the right and enter the following JSON inside the configuration editor:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-json">[
+  {
+    &quot;AllowedHeaders&quot;: [&quot;*&quot;],
+    &quot;AllowedMethods&quot;: [&quot;PUT&quot;, &quot;POST&quot;, &quot;GET&quot;],
+    &quot;AllowedOrigins&quot;: [&quot;*&quot;],
+    &quot;ExposeHeaders&quot;: []
+  }
+]</code></pre></div></div>
+<p>🚀 Click ‘Save’ in the CORS window.</p>
+<p>This tells S3 to allow any domain access to the bucket and that requests can contain any headers, which is generally fine for testing. When deploying, you should change the ‘AllowedOrigin’ to only accept requests from your domain.</p>
+<p>🚀 Create a Bucket policy:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-jsx">{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Sid&quot;: &quot;PublicReadGetObject&quot;,
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: &quot;*&quot;,
+            &quot;Action&quot;: &quot;s3:GetObject&quot;,
+            &quot;Resource&quot;: &quot;arn:aws:s3:::YOURBUCKETNAME/*&quot;
+        }
+    ]
+}</code></pre></div></div>
+<p>This grants read access to ALL objects in YOURBUCKETNAME to anonymous users. This is slightly risky in that someone on the internet <strong>could</strong> use your platform to upload bad content and then use your bucket as free hosting, but if that starts happening there are ways to create signed urls for reading not just for writing. We’ll skip over that for now.</p>
+<p>🚀 Finally, log the three fields you took down onto your API’s configuration variables. When you are locally testing, add them to your <code>.env</code> file.</p>
+<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/config-vars-1767548311581.jpg" alt=""></p>
+<h2 style="background-color: #FBF3DB;">Direct Uploading Client</h2>
+<h3>File input component</h3>
+<p>We need to add some JSX to our frontend in both the <code>newPost</code> component and <code>post</code> component that allows us to upload images for our cover image.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-html">&lt;img id=&quot;preview&quot; alt=&quot;preview&quot; src=&quot;{img.preview}&quot; /&gt;
+&lt;input type=&quot;file&quot; name=&quot;coverImage&quot; onChange=&quot;{onImageUpload}&quot; /&gt;</code></pre></div></div>
+<p>These are the basic elements you would need. You should definitely revamp this to make this look nicer. The <code>preview</code> element shows a preview of the new image you just added after you choose it. We have a function <code>onImageUpload</code> that handles our input.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">function onImageUpload(event) {
+  const file = event.target.files[0];
+  // Get url of the file and set it to the src of preview
+  if (file) {
+    setImg({ preview: window.URL.createObjectURL(file), file });
+  }
+}</code></pre></div></div>
+<p>Note: in the above we have <strong>2</strong> bits of state. <code>preview</code> which is set to an inlined string blob version of the image created by <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL"><code>window.URL.createObjectURL</code></a>, and <code>file</code> which is the actual <a href="https://developer.mozilla.org/en-US/docs/Web/API/File">file object</a> that is currently only in the browser memory but not yet uploaded.</p>
+<p>⚠️ You should theoretically cleanup these weird window global preview url objects with: <code>window.URL.revokeObjectURL()</code> and if a new image is uploaded as they will leak memory, but you can ignore these for now.</p>
+<p>You can also use external react components such as <a href="https://react-dropzone.netlify.com/">react-dropzone</a></p>
+<h3>S3 Functions</h3>
+<p>Since our post creation no longer relies on the <code>cover_url</code> input we need to do a bit more work to preview and upload the image, and only upon success get access to the url.</p>
+<p>🚀 Create a file named <code>s3.js</code> - we won’t need to use state management for this immediately so we’re going to simplify and keep these functions separate from actions. You will need access to your api server <code>ROOT_URL</code> through, so you can try to <code>import { ROOT_URL } from &#39;./store&#39;;</code> if you’ve also exported it.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">async function getSignedRequest(file) {
+  const fileName = encodeURIComponent(file.name);
+  // hit our own server to get a signed s3 url
+  const response = await axios.get(
+    `${ROOT_URL}/sign-s3?file-name=${fileName}&amp;file-type=${file.type}`,
+  );
+  return response;
+}</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">// upload file directly to S3
+// note how we return the passed in url here rather than any return value
+// since we already know what the url will be - just not that it has been uploaded
+async function uploadFileToS3(signedRequest, file, url) {
+  await axios.put(signedRequest, file, {
+    headers: { &#39;Content-Type&#39;: file.type },
+  });
+  return url;
+}</code></pre></div></div>
+<p>We have two async helper functions, <code>getSignedRequest</code> and <code>uploadFileToS3</code>. The reason why we have this pattern is that <code>uploadFileToS3</code> requires <code>getSignedRequest</code> to return a success call. These functions are used by <code>uploadImage</code> which also returns a promise.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">export default async function uploadImage(file) {
+  // returns a promise so you can handle error and completion in your component
+  const response = await getSignedRequest(file);
+  return uploadFileToS3(response.data.signedRequest, file, response.data.url);
+}</code></pre></div></div>
+<p>We use promises because we need the image to successfully upload to S3 first, before we can add it to our post - this way we can wait for <code>uploadImage</code> and only submit our post after that.</p>
+<h3>Submit Handler</h3>
+<p>How would use our new <code>s3.uploadImage</code> function? Well something like the following in your <em>onSubmit</em> or <code>onFinishEdit</code> handlers would work. All you are doing is waiting for the image to upload first and only then creating or updating your post.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-jsx">async function onSubmit(event) {
+  event.preventDefault();
+
+  const url = await uploadImage(img.file);
+  await createPost({
+    title,
+    tags,
+    content,
+    cover_url: url,
+  });
+  navigate(&#39;/&#39;);
+}</code></pre></div></div>
+<h2 style="background-color: #FBF3DB;">Server</h2>
+<p>We need some new packages to communicate with s3. <code>aws-sdk</code> is used to communicate with s3 and <code>dotenv</code> is used to load environment variables from <code>.env</code> for your server.</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner dotenv</code></pre></div></div></div>
+<p>🚀 To setup <code>dotenv</code>, we want to call <code>dotenv.config({ silent: true });</code> as early as possible in our <code>server.js</code>. Then we can access our environment variables by using <code>process.env.S3_BUCKET_NAME</code>.</p>
+<h3>Heroku/Render.com Setup</h3>
+<p>🚀 Make a <code>.env</code> file in your root directory of your <strong>server</strong>. It should look something like this.</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">AWS_ACCESS_KEY_ID=YOUR_KEY_HERE
+AWS_SECRET_ACCESS_KEY=YOUR_KEY_HERE
+S3_BUCKET_NAME=YOUR_BUCKET_NAME_HERE</code></pre></div></div></div>
+<p>🚀 Remember to add the <code>.env</code> file to your <code>.gitignore</code>, since this file should only be used for local testing.</p>
+<p>In order for your application to access the AWS credentials for signing upload requests, they will need to be added as configuration/environment variables in Heroku/Render.com. </p>
+<p>We set all of these secret keys in environment variables because we don’t want to expose these variables directly in code, where they could be potentially stolen.</p>
+<h3>S3 Service</h3>
+<p>We also need a new route on our server to return our signedRequest. Make a new folder under app called <code>services</code>, and add a new <code>s3.js</code> file.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span></div><pre><code class="language-jsx">import { PutObjectCommand, S3Client } from &#39;@aws-sdk/client-s3&#39;;
+import { getSignedUrl } from &#39;@aws-sdk/s3-request-presigner&#39;;
+
+const createPresignedUrlWithClient = ({ region, bucket, key }) =&gt; {
+  const client = new S3Client({ region });
+  const command = new PutObjectCommand({ Bucket: bucket, Key: key });
+  return getSignedUrl(client, command, { expiresIn: 3600 });
+};
+
+const signS3 = async (req, res) =&gt; {
+  const fileName = req.query[&#39;file-name&#39;];
+  const s3Params = {
+    bucket: process.env.S3_BUCKET_NAME,
+    key: fileName,
+    acl: &#39;public-read&#39;,
+    region: &#39;us-east-1&#39;,
+  };
+  try {
+    const clientURL = await createPresignedUrlWithClient(s3Params);
+    const returnData = {
+      signedRequest: clientURL,
+      url: `https://${process.env.S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`,
+    };
+    return res.send(JSON.stringify(returnData));
+  } catch (error) {
+    return res.status(422).end();
+  }
+};
+
+export default signS3;</code></pre></div></div>
+<p>Note:  double check </p>
+<p>🚀 Now in your router, we can add a new route:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">router.get(&#39;/sign-s3&#39;, signS3);</code></pre></div></div>
+<h3>Test it</h3>
+<p>Things should be working now!</p>
+<h3>Required Features</h3>
+<ul>
+<li>Add the image upload ability to create post and update post</li>
+<li>Add a route on the backend to return signed requests</li>
+</ul>
+<h3>To Turn In</h3>
+<ul>
+<li>add comment to the proper extra credit issue in your extra-credit repo</li>
+<li>include links to 2 new hosted urls to the withS3 branches of your frontend and backend.</li>
+</ul>
+
+</body>
+</html>
