@@ -65,7 +65,9 @@
       "slides": [],
       "assignments": {
         "kahootapi-short-assignment": {
-          "pages": [],
+          "pages": [
+            "sa6-kahoot-api"
+          ],
           "slides": []
         }
       }
@@ -228,7 +230,6 @@
       "lab-3-react-notes",
       "sa2-frontend-starterpack-with-vite-short-assignment",
       "sa3-intro-react-short-assignment",
-      "sa6-kahoot-api",
       "sa-routing-short-assignment",
       "sa-state-management-short-assignment"
     ],
