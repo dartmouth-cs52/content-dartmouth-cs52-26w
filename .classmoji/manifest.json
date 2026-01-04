@@ -223,15 +223,15 @@
           ],
           "slides": []
         },
-        "state-management-part-1-add-to-starterpack": {
-          "pages": [
-            "sa-state-management-short-assignment"
-          ],
-          "slides": []
-        },
         "react-router": {
           "pages": [
             "sa-routing-short-assignment"
+          ],
+          "slides": []
+        },
+        "state-management-part-1-add-to-starterpack": {
+          "pages": [
+            "sa-state-management-short-assignment"
           ],
           "slides": []
         }
