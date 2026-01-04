@@ -442,123 +442,118 @@
   </style>
 </head>
 <body>
-
-<p>Type: lab<br>week: Week 5<br>Created time: April 26, 2024 10:07 PM<br>Dates: May 2, 2025 → May 8, 2025<br>published: Yes</p>
-<h1 style="background-color: #DDEBF1;">CRUD Platform: Client</h1>
+<div class="heading-block h1-block"><h1>CRUD Platform: Client</h1></div>
 <p>We’ll build a React+State Management Content Platform. It can be a platform for any type of content you desire. As long as there are individual content items that have some content that need to be saved to a database! Aside from the core functionality of creating an item with title and content, showing those, editing the fields, and deleting, you should feel free to be creative with it. It will basically be a CRUD platform — create, read, update, delete, storing data on a server with best practices, user authentication, and security — those features encompass a world of possibilities.</p>
 <p><a href="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_840,h_643/v1546203223/cs52/platform-client.webm">platform-client.webm</a></p>
-<h3><strong>Lab 4</strong></h3>
+<div class="heading-block h3-block"><h3><strong>Lab 4</strong></h3></div>
 <p>We’ll build out a Create+Update+Delete (CRUD) style content app using React and state management and React-Router. We will use an API server hosted at: <code>https://platform.cs52.me/api</code>.</p>
 <p>For now the API only supports <code>title</code>, <code>content</code>, <code>tags</code>, <code>coverUrl</code>, but even with just those fields (especially if content supports markdown) you could think of other things that you could display. Menu Items for a restaurant. Or even quiz answers (you’ll be able to add fields in Lab 5).</p>
 <p>Be creative and make this your own.</p>
 <p>🍰  Feel free to use any CSS or React Component Libraries that you want.</p>
-<h3>Preview: Lab 5</h3>
+<div class="heading-block h3-block"><h3>Preview: Lab 5</h3></div>
 <p>We will rip out <code>platform.cs52.me/api</code> and build our own Nodejs+Express+Mongo based API server. Finally FULL-STACK! You’ll be able to modify the data model at this point and really make your platform do anything. We’ll also add authentication and image uploading!</p>
-<h2 style="background-color: #FBF3DB;">Let’s Start</h2>
+<div class="heading-block h2-block"><h2>Let’s Start</h2></div>
 <p>🚀 Clone you <a href="http://classmoji.brunchlabs.com">classmoji.brunchlabs.com</a> generated repo. Then you’ll pull in your vite+babel+eslint+react+routing+zustand starter code like so:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">#make sure you are in your project directory
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your project directory
 git remote add starter URL_TO_YOUR_STARTERPACK
-git pull starter main  # you may need --allow-unrelated-histories</code></pre></div></div></div>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-bash"># also don&#39;t forget to run:
-npm install #to fetch all your package.json dependencies</code></pre></div></div></div>
-<h2 style="background-color: #FBF3DB;">CRUD API</h2>
+git pull starter main  # you may need --allow-unrelated-histories</code></pre></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
+npm install #to fetch all your package.json dependencies</code></pre></div>
+<div class="heading-block h2-block"><h2>CRUD API</h2></div>
 <p>We’ll be using an API server running at <a href="https://platform.cs52.brunchlabs.com/api">https://platform.cs52.brunchlabs.com/api</a></p>
 <p>The API has the following endpoints:</p>
-<ul>
-<li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{&quot;id&quot;:&quot;&quot;,title&quot;:&quot;&quot;,&quot;tags&quot;:&quot;&quot;, &quot;coverUrl&quot;:&quot;&quot;},...]</code></li>
-<li>POST <code>/api/posts/</code> with post parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> creates a new post</li>
-<li>PUT <code>/api/posts/:postID</code> with parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> will update an entry</li>
-<li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li>
-<li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li>
-</ul>
-<h3>API key</h3>
+<ul><li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{"id":"",title":"","tags":"", "coverUrl":""},...]</code></li><li>POST <code>/api/posts/</code> with post parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> creates a new post</li><li>PUT <code>/api/posts/:postID</code> with parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> will update an entry</li><li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li><li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li></ul>
+<div class="heading-block h3-block"><h3>API key</h3></div>
 <p>For each of these you need to append an api key. This key can just be your <code>firstinitial_lastname</code>. You can test the api using <a href="https://insomnia.rest/">insomnia</a> or curl.</p>
-<h3>Testing APIs from CLI with CURL</h3>
+<div class="heading-block h3-block"><h3>Testing APIs from CLI with CURL</h3></div>
 <p>There is a command that you can run in Terminal called <code>curl</code> that can fetch remote data. Here’s how you would use it for testing the api server. This will also come in handy when you have to create the api server next week! </p>
-<p>🪟 <em>If you are on windows you may need to download a <a href="https://curl.se/windows/">linux style curl command here</a>.</em></p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-bash"># all posts get:
-curl -X GET &quot;https://platform.cs52.me/api/posts?key=YOURKEY&quot;
+<p>🪟&nbsp;<em>If you are on windows you may need to download a <a href="https://curl.se/windows/">linux style curl command here</a>.</em></p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># all posts get:
+curl -X GET "https://platform.cs52.me/api/posts?key=YOURKEY"
 
 # create new post
-curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;first post&quot;,
-    &quot;tags&quot;: &quot;words&quot;,
-    &quot;content&quot;:  &quot;this is a test post&quot;,
-    &quot;coverUrl&quot;: &quot;https://media.giphy.com/media/gyRWkLSQVqlPi/giphy.gif&quot;
-}&#39; &quot;https://platform.cs52.me/api/posts/?key=YOURKEY&quot;
+curl -X POST -H "Content-Type: application/json" -d '{
+    "title": "first post",
+    "tags": "words",
+    "content":  "this is a test post",
+    "coverUrl": "https://media.giphy.com/media/gyRWkLSQVqlPi/giphy.gif"
+}' "https://platform.cs52.me/api/posts/?key=YOURKEY"
 
 # update by POSTID
-curl -X PUT -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;new title&quot;
-}&#39; &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;
+curl -X PUT -H "Content-Type: application/json" -d '{
+    "title": "new title"
+}' "https://platform.cs52.me/api/posts/POSTID?key=YOURKEY"
 
 # fetch 1 by POSTID
-curl -X GET &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;
+curl -X GET "https://platform.cs52.me/api/posts/POSTID?key=YOURKEY"
 
 # delete by POSTID
-curl -X DELETE -H &quot;Content-Type: application/json&quot; &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;</code></pre></div></div></div>
+curl -X DELETE -H "Content-Type: application/json" "https://platform.cs52.me/api/posts/POSTID?key=YOURKEY"</code></pre></div>
 <p>Try these out. Run the create new post one a couple of times to populate your database!</p>
 <p>This will work a bit different from the react-notes, and in a way will be much simpler. Every time you want to update, create, delete, retrieve, you will use http calls like the above to interact with the server.</p>
 <p>Remember our SPA architecture:</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/single-page-app-1767548463916.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/single-page-app-1767548463916.png" alt="">
 <p>The above are the data requests we’ll be making. They all return <em>JSON</em>.</p>
 <p>This site will <em>not</em> update live in the sense that if someone else on another browser added a post, you would not see it pop up automatically, but would need to reload. This is fairly common of most platforms like this, your feed does’t change as you look at it, you need to refresh to see new articles.  It’ll be easy to trigger a refresh with a button or pull down though if you want.</p>
-<h2 style="background-color: #FBF3DB;">Routes</h2>
+<div class="heading-block h2-block"><h2>Routes</h2></div>
 <p>We’re going to use some routes to set up our app with different “pages”.</p>
 <p>🚀 Your routes could look something like this. Basically you’re going to have a route for creating new posts (this will be a form) and a page for showing a post by ID. The default route will show a list of all posts.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">&lt;Routes&gt;
-  &lt;Route path=&quot;/&quot; element={&lt;Posts /&gt;} /&gt;
-  &lt;Route path=&quot;/posts/new&quot; element={&lt;NewPost /&gt;} /&gt;
-  &lt;Route path=&quot;/posts/:postID&quot; element={&lt;Post /&gt;} /&gt;
-  &lt;Route path=&quot;*&quot; element={&lt;div&gt;post not found &lt;/div&gt;} /&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">&lt;Routes&gt;
+  &lt;Route path="/" element={&lt;Posts /&gt;} /&gt;
+  &lt;Route path="/posts/new" element={&lt;NewPost /&gt;} /&gt;
+  &lt;Route path="/posts/:postID" element={&lt;Post /&gt;} /&gt;
+  &lt;Route path="*" element={&lt;div&gt;post not found &lt;/div&gt;} /&gt;
 &lt;/Routes&gt;;</code></pre></div></div>
 <p>This is just the basics, feel free to expand on this. For reference it might help to look back on the <a href="https://cs52.me/assignments/lab/sa/routing">routes short assignment</a>. Refresh your understanding of what the <code>:postID</code> part of the route means.</p>
-<h3>App</h3>
+<div class="heading-block h3-block"><h3>App</h3></div>
 <p>Is a simple component that simply renders a <em>NavBar</em> component and the route components. You can think of this as your main layout!</p>
-<h3>NavBar</h3>
+<div class="heading-block h3-block"><h3>NavBar</h3></div>
 <p>A simple component that renders a nav with two <code>&lt;NavLink&gt;</code> <code>react-router-dom</code> components such as the following:</p>
-<ul>
-<li><code>&lt;NavLink to=&quot;/&quot;&gt;My Super Awesome Blog&lt;/NavLink&gt;</code></li>
-<li><code>&lt;NavLink to=&quot;/posts/new&quot;&gt;new post&lt;/NavLink&gt;</code></li>
-</ul>
-<h3>Posts</h3>
+<ul><li><code>&lt;NavLink to="/"&gt;My Super Awesome Blog&lt;/NavLink&gt;</code></li><li><code>&lt;NavLink to="/posts/new"&gt;new post&lt;/NavLink&gt;</code></li></ul>
+<div class="heading-block h3-block"><h3>Posts</h3></div>
 <p>This will be the default page. It will display a list of posts. These posts can look like whatever you want. The posts will be stored in the zustand state rather than any single component so this will need to be a component that connects to <code>store.postSlice.all</code>. In your listing you should utilize each posts <em>coverUrl</em>, <em>title</em>, and <em>tags</em>.</p>
 <p>Try the curl commands above, you’ll see that one of the fields you get back in the JSON is <code>id</code>. You’ll use that construct <code>NavLink</code> elements to <code>posts/:postID</code> when you render the posts. Each post should be clickable to open it full page using this route. <code>&lt;Link to={posts/${post.id}}&gt;...</code>. Where <code>:postID</code> is provided the router, refer back to the routing short to see how we did that there.</p>
 <p>Min specs at a glance:</p>
-<ul>
-<li>default page listing all posts</li>
-<li>use post id to link to full view</li>
-<li>show <em>coverUrl</em>, <em>title</em>, <em>tags</em> in some form - can be a list, can be tiles, whatever you want!</li>
-</ul>
+<ul><li>default page listing all posts</li><li>use post id to link to full view</li><li>show <em>coverUrl</em>, <em>title</em>, <em>tags</em> in some form - can be a list, can be tiles, whatever you want!</li></ul>
 <p>Hint: You’ll use your store to synchronize with the server and also to initiate actions.  Remember, you’ll want to initiate the <code>fetchPosts</code> store action in a <code>useEffect</code> with an empty dependency list!</p>
-<h3>NewPost</h3>
+<div class="heading-block h3-block"><h3>NewPost</h3></div>
 <p>This is a component to create a new blog post. You <em>could</em> have one page that is used for create, show, and update. Personal preference on this, but it might be easier at first to have a simple new post component and then refactor later to have one component that does double duty.</p>
-<h3>Post (display and edit)</h3>
+<div class="heading-block h3-block"><h3>Post (display and edit)</h3></div>
 <p>This is the component that gets loaded when you want to see the full rendered contents of a single post. <em>Post</em> should display the full content of the post (selected by the ID that is passed in through <code>params.postID</code>. This post id parameter will come from the react-router when you navigate to: <code>/posts/:postID</code>. Where does postID come from in general? It is automatically assigned to your post by the API when you create the post (similarly to how firebase assigned automatic keys). You will need to use the <code>useParams</code> hook. <a href="https://www.notion.so/Lab-4-Platform-Frontend-ca27606f6bb54ad89f1d5c3d19e32e1c?pvs=21">See section at the end for instructions</a>!</p>
 <p>Your <em>Post</em> component should provide a way to edit the post. You can either have an edit button that makes the whole post editable, or you could have in place editing for each field as in the gif. Another option is to have an edit route: <code>/posts/:postID/edit</code> for instance. Personal preference here, lots of different design choices you can make.</p>
 <p><em>Note: for now the shared API server only supports title, tags, content, coverUrl as fields. In part 2 you will implement your own server and can add or change fields then.</em></p>
 <p>Min specs at a glance:</p>
-<ul>
-<li>render full content of post at route <code>/posts/:postID</code></li>
-<li>render markdown</li>
-<li>allow editing of post fields<ul>
-<li>either in separate form or as individual editable fields</li>
-</ul>
-</li>
-</ul>
+<ul><li>render full content of post at route <code>/posts/:postID</code></li><li>render markdown</li><li>allow editing of post fields<ul><li>either in separate form or as individual editable fields</li></ul></li></ul>
 <p>This is a component that can both trigger actions and is connected to the global zustand state.</p>
-<details><summary>❓Can you remind me what I’m doing heret?!</summary><div data-encoded="PHA+SnVzdCBhIGNvbXBvbmVudCB0aGF0IGJvdGggc3Vic2NyaWJlcyB0byBhIHN0b3JlIHNsaWNlIGFuZCBhbHNvIHRyaWdnZXJzIGEgc3RvcmUgYWN0aW9uLjwvcD4KPHA+QW5kIGhlcmXigJlzIHNvbWUgZ2l2ZWF3YXkgY29kZSBmb3IgeW91ciA8Y29kZT5Qb3N0czwvY29kZT4gY29tcG9uZW50OjwvcD4KPHByZT48Y29kZSBjbGFzcz0ibGFuZ3VhZ2UtanN4Ij4gICAgCiAgICBpbXBvcnQgUmVhY3QsIHt1c2VFZmZlY3R9IGZyb20gJiMzOTtyZWFjdCYjMzk7OwogICAgCiAgICBmdW5jdGlvbiBTb21lQ29tcG9uZW50KHByb3BzKSB7CiAgICAgICAgY29uc3QgYWxsUG9zdHMgPSB1c2VTdG9yZSgoeyBwb3N0U2xpY2UgfSkgPSZndDsgcG9zdFNsaWNlLmFsbCk7CiAgICAgICAgY29uc3QgZmV0Y2hBbGxQb3N0cyA9IHVzZVN0b3JlKCh7IHBvc3RTbGljZSB9KSA9Jmd0OyBwb3N0U2xpY2UuZmV0Y2hBbGxQb3N0cyk7CiAgICAKICAgICAgICB1c2VFZmZlY3QoICgpID0mZ3Q7IHsKICAgICAgICAgICAgZmV0Y2hBbGxQb3N0cygpOwogICAgICAgIH0sIFtdKTsKICAgIAogICAgICAgIHJldHVybiAoCiAgICAgICAgICAgIHsgYWxsUG9zdHMubWFwKCBwb3N0ID0mZ3Q7IHsgcmV0dXJuICZsdDtkaXYmZ3Q7e3Bvc3QudGl0bGV9Jmx0Oy9kaXYmZ3Q7fSkgfSAKICAgICAgICApCiAgICB9CjwvY29kZT48L3ByZT4KPHA+PGVtPldoYXQgb3RoZXIgY29tcG9uZW50cyB3aWxsIG5lZWQgdG8gYmUgY29ubmVjdGVkIGxpa2UgdGhpcz88L2VtPjwvcD4K"></div></details>
-
-<h2 style="background-color: #FBF3DB;">State Management</h2>
+<details><summary>❓Can you remind me what I’m doing heret?!</summary><div><p>Just a component that both subscribes to a store slice and also triggers a store action.</p>
+<p>And hereâs some giveaway code for your <code>Posts</code> component:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-javascript">    
+    import React, {useEffect} from 'react';
+    
+    function SomeComponent(props) {
+        const allPosts = useStore(({ postSlice }) =&gt; postSlice.all);
+        const fetchAllPosts = useStore(({ postSlice }) =&gt; postSlice.fetchAllPosts);
+    
+        useEffect( () =&gt; {
+            fetchAllPosts();
+        }, []);
+    
+        return (
+            { allPosts.map( post =&gt; { return &lt;div&gt;{post.title}&lt;/div&gt;}) } 
+        )
+    }
+</code></pre></div></div>
+<p><em>What other components will need to be connected like this?</em></p></div></details>
+<div class="heading-block h2-block"><h2>State Management</h2></div>
 <p>We will be using Zustand for our application state! We’re going to just have 1 slice to start with: <code>postSlice</code>.  Essentially what we are doing is manually syncronizing the frontend store with our backend.  So if the backend has posts that we want to display we will fetch those objects from the api and then store them on the frontend.  Essentially we are caching our queries so the frontend has data to display. </p>
 <p>For now we will have a slice associated with the key <code>postSlice</code>  and will return the global state as an object that looks something like this initially:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">postSlice: {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-javascript">postSlice: {
   all: [],
   current: {},
 }</code></pre></div></div>
-<h3>Store</h3>
-<p>🏪 Setting up your store is left as an exercise for the reader.  But here is a barebones setup for your postSlice: </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span></div><pre><code class="language-jsx">export default function createPostSlice(set, get) {
+<div class="heading-block h3-block"><h3>Store</h3></div>
+<p>🏪&nbsp;Setting up your store is left as an exercise for the reader.  But here is a barebones setup for your postSlice: </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span></div><pre><code class="language-javascript">export default function createPostSlice(set, get) {
   return {
     all: [],
     current: {},
@@ -568,7 +563,7 @@ curl -X DELETE -H &quot;Content-Type: application/json&quot; &quot;https://platf
     },
     fetchAllPosts: async () =&gt; {
       // GET
-      // would need pagination but for now we&#39;ll just get them all
+      // would need pagination but for now we'll just get them all
     },
     updatePost: async (post) =&gt; {
       // PUT
@@ -587,44 +582,44 @@ curl -X DELETE -H &quot;Content-Type: application/json&quot; &quot;https://platf
 <p>Here are some actions you should consider implementing. </p>
 <p>Now you might ask, how the heck do we fetch from an API using actions!?</p>
 <p>Don’t worry, this part we’ll walk you through.</p>
-<h2 style="background-color: #FBF3DB;">Connecting to API</h2>
+<div class="heading-block h2-block"><h2>Connecting to API</h2></div>
 <p>Not another library! <code>axios</code> will give us a nice ajax library.</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install axios</code></pre></div></div></div>
-<h3><a href="https://github.com/mzabriskie/axios"><strong>Axios</strong></a></h3>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install axios</code></pre></div>
+<div class="heading-block h3-block"><h3><a href="https://github.com/mzabriskie/axios"><strong>Axios</strong></a></h3></div>
 <p>Axios gives us a promise based async interface to make API requests. We used this in our intro react project as well. Here is an <strong>example</strong> of a get:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">const ROOT_URL = &#39;https://platform.cs52.brunchlabs.com/api&#39;;
-const API_KEY = &#39;?key=yourfirstname_yourlastname&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-javascript">const ROOT_URL = 'https://platform.cs52.brunchlabs.com/api';
+const API_KEY = '?key=yourfirstname_yourlastname';
 
 const response = await axios.get(`${ROOT_URL}/posts${API_KEY}`);</code></pre></div></div>
 <p>Axios supports <em>GET</em>, <em>POST</em>, <em>PUT</em>, <em>DELETE</em>, and other <em>HTTP</em> verbs.</p>
 <p>With <em>POST</em> and <em>PUT</em> you need to supply an object with key,value data. Something like the following would work:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">const fields = {
-  title: &#39;test&#39;,
-  content: &#39;blah blah&#39;,
-  coverUrl: &#39;http://someimage.gif&#39;,
-  tags: &#39;testing123&#39;,
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">const fields = {
+  title: 'test',
+  content: 'blah blah',
+  coverUrl: 'http://someimage.gif',
+  tags: 'testing123',
 };
 const result = await axios.post(`${ROOT_URL}/posts${API_KEY}`, fields);</code></pre></div></div>
 <p><em>Note: <code>fields</code> in the above is just an example. I called it fields here in reference to form fields, but the point is that you can send any old javascript object.</em></p>
-<h3>Fetching Data from our API</h3>
+<div class="heading-block h3-block"><h3>Fetching Data from our API</h3></div>
 <p>What we want to do is go and fetch some data from a rest api into our app and organize our code nicely.  Easiest way to do this is to have the <code>axios</code> call essentially in your Zustand action functions, and you’ll need to make a network request in each of the store methods we defined previously.  Ok, here’s one as an example:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-javascript">
 // a slice action to fetch a singular post
     fetchPost: async (id) =&gt; {
       try {
         const response = await axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
-        set(({ postSlice }) =&gt; { postSlice.current = response.data; }, false, &#39;posts/fetchPost&#39;);
+        set(({ postSlice }) =&gt; { postSlice.current = response.data; }, false, 'posts/fetchPost');
       } catch (error) {
         get().errorSlice.newError(error.message);
       }
     },</code></pre></div></div>
-<h3>Debugging</h3>
+<div class="heading-block h3-block"><h3>Debugging</h3></div>
 <p>Recall that you can use Redux DevTools to debug your Zustand store!  You should be able to see you actions happening and your global state. This is key, if it isn’t changing, something ain’t right!</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/screenshot-2024-04-30-at-9-1767548463916.png" alt="Screenshot 2024-04-30 at 9.43.00 PM.png"></p>
-<h3>Navigation Flow</h3>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/screenshot-2024-04-30-at-9-1767548463916.png" alt="Screenshot 2024-04-30 at 9.43.00 PM.png">
+<div class="heading-block h3-block"><h3>Navigation Flow</h3></div>
 <p>When you have a successful create and delete you may find it useful to simply navigate back to your main page. For instance, when you hit delete on the page that is the view of a single post <code>/posts/234243</code>, you would want to be taken back to the <code>/</code> page that shows all the posts rather than an empty page that says ‘post not found’.   If you do a modal this doesn’t apply, you would simply close the modal. </p>
 <p>How might we navigate after deleting or creating a new post?  Something like this might work: </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">const navigate = useNavigate();
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">const navigate = useNavigate();
 const params = useParams();
 
 function Post(props) {
@@ -632,91 +627,31 @@ function Post(props) {
 
   const onDeleteClick = async () =&gt; {
     await deletePost(params.postID);
-    navigate(&#39;/&#39;);
+    navigate('/');
   };
 }</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">And you are on your way!</h2>
+<div class="heading-block h2-block"><h2>And you are on your way!</h2></div>
 <p>That should be all you need to build a simple content platform (we’ll add more features later!).</p>
 <p>If you don’t know where to start, remember the steps in creating a React application:</p>
-<ol>
-<li>Start with a mock❗️</li>
-<li>Break the UI into a component hierarchy❗️</li>
-<li>Build the Presentational Components for a static version without any state</li>
-<li>Identify what the local vs  “global” state should be</li>
-<li>Implement local UI state in Presentational components</li>
-<li>Identify Store Actions (things that change global state)</li>
-<li>Create ActionCreators for each action</li>
-<li>Write Reducers for each Action</li>
-<li>Connect necessary components to the Store</li>
-<li>Style it</li>
-<li>Ship it</li>
-</ol>
+<ol start="1"><li>Start with a mock❗️</li><li>Break the UI into a component hierarchy❗️</li><li>Build the Presentational Components for a static version without any state</li><li>Identify what the local vs  “global” state should be</li><li>Implement local UI state in Presentational components</li><li>Identify Store Actions (things that change global state)</li><li>Create ActionCreators for each action</li><li>Write Reducers for each Action</li><li>Connect necessary components to the Store</li><li>Style it</li><li>Ship it</li></ol>
 <p>It might help data flow to try getting one working first. For instance maybe get the <em>Post</em> component working first, the others will come more easily once you have the full path tested with one of them.</p>
-<p>🙋 Don’t forget to use #assignment-help slack channel!</p>
-<h2 style="background-color: #FBF3DB;">Error Handling</h2>
+<p>🙋&nbsp;Don’t forget to use #assignment-help slack channel!</p>
+<div class="heading-block h2-block"><h2>Error Handling</h2></div>
 <p>It is always important to do proper error handling.  You should do 2 things - <code>try/catch</code> to grab errors when they happen and then in the catch you should NEVER EVER EVER just console.log an error and move on, you should always let the user know something is up.   Silent fails are the worst.  Say the user types in the wrong password and hits submit and nothing happens, they aren’t told what is wrong, just nothing happens.  This is bad, don’t be bad.  </p>
-<p>🚀 Add <a href="https://fkhadra.github.io/react-toastify/introduction/">react-toastify</a> to your project and at the very least use toasts to let the user know something is up when things fail.  At this point you should be able to integrate the below on your ownsome.  </p>
-<p>⚠️ Your app should handle axios failures. There are a number of ways to do this, but at the minimum you should:  <code>try/catch</code> your axios call and then <code>toast</code> the error. </p>
+<p>🚀&nbsp;Add <a href="https://fkhadra.github.io/react-toastify/introduction/">react-toastify</a> to your project and at the very least use toasts to let the user know something is up when things fail.  At this point you should be able to integrate the below on your ownsome.  </p>
+<p>⚠️&nbsp;Your app should handle axios failures. There are a number of ways to do this, but at the minimum you should:  <code>try/catch</code> your axios call and then <code>toast</code> the error. </p>
 <p><a href="https://fkhadra.github.io/react-toastify/introduction/">React-toastify | React-Toastify</a></p>
-<h2 style="background-color: #FBF3DB;">Style It!</h2>
+<div class="heading-block h2-block"><h2>Style It!</h2></div>
 <p>Make it look pretty. Remember you are free to make this whatever you want. It does NOT have to be blog posts. Right now there are a few required fields, but how you display them is up to you.</p>
 <p>🍰You are allowed and encouraged to use various CSS/Styling/Component libraries for this assignment:</p>
-<ul>
-<li><a href="https://mantine.dev/">Mantine</a> is getting some hype these days.</li>
-<li><a href="https://chakra-ui.com/guides/getting-started/cra-guide#manual-installation">Chakra UI</a> is a nice one</li>
-<li><a href="https://material-ui.com/">Material-UI</a> has that google material look.</li>
-<li><a href="https://v2.grommet.io/">Grommet</a> great look and simple to use components.</li>
-<li><a href="https://blueprintjs.com/">Blueprint.JS</a> is popular.</li>
-<li><a href="https://react.semantic-ui.com/">Semantic-UI</a> is pretty full featured.</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Release it!</h2>
+<ul><li><a href="https://mantine.dev/">Mantine</a> is getting some hype these days.</li><li><a href="https://chakra-ui.com/guides/getting-started/cra-guide#manual-installation">Chakra UI</a> is a nice one</li><li><a href="https://material-ui.com/">Material-UI</a> has that google material look.</li><li><a href="https://v2.grommet.io/">Grommet</a> great look and simple to use components.</li><li><a href="https://blueprintjs.com/">Blueprint.JS</a>&nbsp;is popular.</li><li><a href="https://react.semantic-ui.com/">Semantic-UI</a> is pretty full featured.</li></ul>
+<div class="heading-block h2-block"><h2>Release it!</h2></div>
 <p>Get it hosted! </p>
-<h2 style="background-color: #FBF3DB;">To Turn In</h2>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>App should have individual routes for: <ul>
-<li>new (unless you make this a modal)</li>
-<li>list view (default view)</li>
-<li>full show view (needs to be a path like posts/:id)</li>
-</ul>
-</li>
-<li>App should make CRUD api calls <ul>
-<li>create</li>
-<li>update</li>
-<li>delete</li>
-<li>fetch post by id</li>
-<li>fetch all posts</li>
-</ul>
-</li>
-<li>should be styled at least a little</li>
-<li>handle server outages with graceful use exposed errors</li>
-<li>your repo should include a README.md file with: <ul>
-<li>a couple sentence description about what you did</li>
-<li>and what worked / didn’t work</li>
-<li>any extra credit attempted</li>
-</ul>
-</li>
-</ol>
-<h2 style="background-color: #FBF3DB;">Extra Credit</h2>
+<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li></ul>
+<ol start="1"><li>App should have individual routes for:<ul><li>new (unless you make this a modal)</li><li>list view (default view)</li><li>full show view (needs to be a path like posts/:id)</li></ul></li><li>App should make CRUD api calls<ul><li>create</li><li>update</li><li>delete</li><li>fetch post by id</li><li>fetch all posts</li></ul></li><li>should be styled at least a little</li><li>handle server outages with graceful use exposed errors</li><li>your repo should include a README.md file with:<ul><li>a couple sentence description about what you did</li><li>and what worked / didn’t work</li><li>any extra credit attempted</li></ul></li></ol>
+<div class="heading-block h2-block"><h2>Extra Credit</h2></div>
 <p><em>always mention your extra credit in the README.md file</em></p>
-<ul>
-<li>make it into something other than a blog platform as long as it has the CRUD functionality</li>
-<li>input validation — check that all fields have required values when creating new form for instance.</li>
-<li>add a filter posts functionality, filter by tags initially.<ul>
-<li>for now our api is limited so additional search will come in lab5</li>
-</ul>
-</li>
-<li>style it extra special with transitions and all that squishy animation goodness.</li>
-<li>more EC available in lab5!</li>
-</ul>
-
+<ul><li>make it into something other than a blog platform as long as it has the CRUD functionality</li><li>input validation — check that all fields have required values when creating new form for instance.</li><li>add a filter posts functionality, filter by tags initially.<ul><li>for now our api is limited so additional search will come in lab5</li></ul></li><li>style it extra special with transitions and all that squishy animation goodness.</li><li>more EC available in lab5!</li></ul>
 </body>
 </html>
