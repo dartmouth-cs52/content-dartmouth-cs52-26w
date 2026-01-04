@@ -53,7 +53,9 @@
       "slides": [],
       "assignments": {
         "hello-world": {
-          "pages": [],
+          "pages": [
+            "sa0-hello-world-and-local-dev-environment-short-assignment"
+          ],
           "slides": []
         }
       }
@@ -217,7 +219,6 @@
       "lab-5-platform-api",
       "prelab-3-react-notes",
       "prelab-4-platform-client",
-      "sa0-hello-world-and-local-dev-environment-short-assignment",
       "sa2-frontend-starterpack-with-vite-short-assignment",
       "sa3-intro-react-short-assignment",
       "sa6-kahoot-api",
