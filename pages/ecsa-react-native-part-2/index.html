@@ -442,70 +442,68 @@
   </style>
 </head>
 <body>
-
-<p>Type: extra-credit short<br>week: Week 8<br>Created time: February 7, 2022 9:19 PM<br>Dates: May 17, 2025 → May 23, 2025<br>published: No</p>
-<h1 style="background-color: #DDEBF1;">Advanced React Native</h1>
+<div class="heading-block h1-block"><h1>Advanced React Native</h1></div>
 <p>This short assignment will build off the React Native app you created in <a href="http://cs52.me/assignments/sa/react-native/">part 1</a> to search for and display YouTube videos. If you haven’t completed that project yet, you should do so before starting this short assignment.</p>
 <p>We will be adding authentication, video uploads, and basic animations to this app to further showcase the power of React Native.</p>
 <p>⚠️ For this assignment, we’ll be removing Expo and running the app as a bare React Native app through Xcode. We’ll also only focus on iOS development (although many of these steps are easily extendable to Android). Because of this, you’ll need a Mac to complete this tutorial and you should <a href="https://apps.apple.com/us/app/xcode/id497799835">download Xcode</a> before starting.</p>
-<p>⚠️ This assignment is relatively long/involved. Don’t hesitate to post in Slack for help with installation/dependencies/code setup or any other issues!</p>
-<h2 style="background-color: #FBF3DB;">Ejecting from Expo</h2>
+<p>⚠️&nbsp;This assignment is relatively long/involved. Don’t hesitate to post in Slack for help with installation/dependencies/code setup or any other issues!</p>
+<div class="heading-block h2-block"><h2>Ejecting from Expo</h2></div>
 <p>First, we’ll need to <strong>eject</strong> from our trusty Expo client (oh no!) to install and set up the dependencies we’ll need for this assignment. Ejecting – or the process of removing Expo and configuring your project as a standard React Native app – is unnecessary in many cases. Often, it makes sense to keep all development in Expo and never eject, or only eject towards the end of development.</p>
 <p>However, some modules will require you to install custom native code (usually indicated by references to “linking” in the installation instructions), which requires removing Expo and exposing the iOS and Android project files. While Expo does have its own authentication and background process modules (which we’ll be using), they rely on Expo API keys and generally aren’t as robust or adaptable as their native equivalents.</p>
 <p>⚠️ While Expo is constantly improving, the eject process tends to produce bugs and your app may not always compile properly straight after ejecting. If that happens, Google your error message – eject errors are common enough that someone likely has documented the error you’re encountering – or post in the Slack group for this short assignment.</p>
 <p>🚀<code>git commit</code> any changes you’ve made before starting. This will allow you to easily revert back if something goes wrong with the eject process or you decide to switch back to the managed workflow in the future.</p>
 <p>🚀Run <code>expo eject</code> in your app’s directory. You can name your Android package and iOS bundle identifier whatever you want – it should be unique and in the format of a <em>reverse domain name</em> (e.g. edu.dartmouth.cs.rnshort). Expo will then generate <code>ios</code> and <code>android</code> folders for you containing traditional projects that can be opened with Xcode or the Android SDK. These projects essentially serve as the bridge between your JS code and the native platform code.</p>
 <p>🚀After this, <a href="https://cocoapods.org/">install Cocoapods</a> if you don’t already have them installed (you’ll only have to do this once). Then, <code>cd</code> into your <code>ios</code> folder and run <code>pod install</code> to install all of your dependencies for iOS.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/screen-shot-2022-05-16-at-12-1767548327240.png" alt="Screen Shot 2022-05-16 at 12.36.40 PM.png"></p>
-<h3>Xcode</h3>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/screen-shot-2022-05-16-at-12-1767548327240.png" alt="Screen Shot 2022-05-16 at 12.36.40 PM.png">
+<div class="heading-block h3-block"><h3>Xcode</h3></div>
 <p>🚀Next, let’s check to make sure the app still compiles and builds properly. You can do this by running <code>npm run ios</code> (the equivalent of <code>expo start</code>) from the terminal to launch a simulator, but let’s do this through Xcode the first time so we can easily catch any errors.</p>
 <p>🚀In your <code>ios</code> folder, open the <code>.xcworkspace</code> file (<strong>not</strong> <code>.xcodeproj</code>) in Xcode.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/xcode-1767548327240.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/xcode-1767548327240.png" alt="">
 <p>🚀Click the run button (▶️) at the top of the screen to build and run your app on a simulator.</p>
 <p>❄️ Note that the build process takes a while, especially for the first time. That’s one downside of bare React Native apps as opposed to managed Expo projects – you have to wait for the Xcode compiler to bundle everything into a native app package before testing and debugging your app. You’ll still get access to hot reloading once the app’s open, though.</p>
 <p>At this point, if the simulator pops up with your app loaded, then you’ve successfully ejected from Expo!</p>
-<h2 style="background-color: #FBF3DB;">Upload Screen</h2>
+<div class="heading-block h2-block"><h2>Upload Screen</h2></div>
 <p>Let’s create the screen that’ll be used to upload videos from our app. This will require another set of nested navigators to provide two ways to navigate away from our search page: to the VideoDetail component or the Upload component.</p>
 <p>🚀In <code>components/upload.js</code>, let’s create an empty view for now to represent our Upload component.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import { View } from &#39;react-native&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-javascript">import React from 'react';
+import { View } from 'react-native';
 
 const Upload = (props) =&gt; {
   return &lt;View /&gt;;
 };
 
 export default Upload;</code></pre></div></div>
-<h3>Header</h3>
+<div class="heading-block h3-block"><h3>Header</h3></div>
 <p>Now, let’s create a custom header component to allow us to navigate between our search screen and upload screen. This allows us to handle navigation ourselves, which is nice, and enables some more complex header configurations and layouts.</p>
-<p>🚀 Fill in <code>components/header.js</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span><span class="line-number">43</span><span class="line-number">44</span><span class="line-number">45</span><span class="line-number">46</span><span class="line-number">47</span><span class="line-number">48</span><span class="line-number">49</span><span class="line-number">50</span><span class="line-number">51</span><span class="line-number">52</span><span class="line-number">53</span><span class="line-number">54</span><span class="line-number">55</span><span class="line-number">56</span><span class="line-number">57</span><span class="line-number">58</span><span class="line-number">59</span><span class="line-number">60</span><span class="line-number">61</span><span class="line-number">62</span><span class="line-number">63</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
+<p>🚀&nbsp;Fill in <code>components/header.js</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span><span class="line-number">43</span><span class="line-number">44</span><span class="line-number">45</span><span class="line-number">46</span><span class="line-number">47</span><span class="line-number">48</span><span class="line-number">49</span><span class="line-number">50</span><span class="line-number">51</span><span class="line-number">52</span><span class="line-number">53</span><span class="line-number">54</span><span class="line-number">55</span><span class="line-number">56</span><span class="line-number">57</span><span class="line-number">58</span><span class="line-number">59</span><span class="line-number">60</span><span class="line-number">61</span><span class="line-number">62</span><span class="line-number">63</span></div><pre><code class="language-javascript">import React from 'react';
 import {
   View,
   StyleSheet,
   Text,
   Dimensions,
   TouchableOpacity,
-} from &#39;react-native&#39;;
-import Ionicons from &#39;react-native-vector-icons/FontAwesome&#39;;
-import { useNavigation } from &#39;@react-navigation/native&#39;;
+} from 'react-native';
+import Ionicons from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const UploadHeader = ({ title }) =&gt; {
   const navigation = useNavigation();
-  const isUpload = title === &#39;Upload a Video&#39;;
+  const isUpload = title === 'Upload a Video';
 
   return (
     &lt;View style={headerStyles.header}&gt;
-      &lt;Text style={{ color: &#39;white&#39;, fontWeight: &#39;700&#39;, fontSize: 18 }}&gt;
+      &lt;Text style={{ color: 'white', fontWeight: '700', fontSize: 18 }}&gt;
         {title}
       &lt;/Text&gt;
       {!isUpload ? (
         &lt;TouchableOpacity
           style={headerStyles.uploadIcon}
           onPress={() =&gt; {
-            navigation.navigate(&#39;Upload&#39;);
+            navigation.navigate('Upload');
           }}
         &gt;
-          &lt;Ionicons name=&quot;upload&quot; size={26} color=&quot;#fff&quot; /&gt;
+          &lt;Ionicons name="upload" size={26} color="#fff" /&gt;
         &lt;/TouchableOpacity&gt;
       ) : (
         &lt;TouchableOpacity
@@ -514,7 +512,7 @@ const UploadHeader = ({ title }) =&gt; {
             navigation.goBack();
           }}
         &gt;
-          &lt;Ionicons name=&quot;times&quot; size={26} color=&quot;#fff&quot; /&gt;
+          &lt;Ionicons name="times" size={26} color="#fff" /&gt;
         &lt;/TouchableOpacity&gt;
       )}
     &lt;/View&gt;
@@ -523,19 +521,19 @@ const UploadHeader = ({ title }) =&gt; {
 
 const headerStyles = StyleSheet.create({
   header: {
-    backgroundColor: &#39;#f4511e&#39;,
+    backgroundColor: '#f4511e',
     flex: 1,
-    alignItems: &#39;center&#39;,
-    justifyContent: &#39;center&#39;,
+    alignItems: 'center',
+    justifyContent: 'center',
     minHeight: 50,
-    width: Dimensions.get(&#39;window&#39;).width,
+    width: Dimensions.get('window').width,
   },
   uploadIcon: {
-    position: &#39;absolute&#39;,
+    position: 'absolute',
     right: 15,
   },
   closeIcon: {
-    position: &#39;absolute&#39;,
+    position: 'absolute',
     left: 15,
   },
 });
@@ -543,48 +541,48 @@ const headerStyles = StyleSheet.create({
 export default UploadHeader;</code></pre></div></div>
 <p>❄️ There’s a lot going on here, so let’s break it down. We’re sharing this header between two screens – the search view and the upload view – so we pass the title in as a prop and use that to define which icon the header should display. We’re also using the <code>useNavigation</code> hook conveniently provided by React Native Navigation to handle opening and closing our screens. Finally, <code>TouchableOpacity</code> is a default React Native component that essentially serves as a more flexible button – you can use it to receive onPress events and it automatically responds by decreasing the opacity of its children when pressed.</p>
 <p>🚀Let’s update <code>search_tab.js</code> so we can display our new header. Replace the SearchTab component with the following:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-jsx">const SearchTab = () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">const SearchTab = () =&gt; {
   return (
     &lt;Stack.Navigator&gt;
       &lt;Stack.Screen
-        name=&quot;Search&quot;
+        name="Search"
         component={SearchUploadNavigator}
         options={{ headerShown: false }}
       /&gt;
-      &lt;Stack.Screen name=&quot;Detail&quot; component={VideoDetail} /&gt;
+      &lt;Stack.Screen name="Detail" component={VideoDetail} /&gt;
     &lt;/Stack.Navigator&gt;
   );
 };</code></pre></div></div>
 <p>🚀And define <code>SearchUploadNavigator</code> directly above <code>SearchTab</code> (make sure to update your imports as well):</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span></div><pre><code class="language-jsx">const SearchUploadNavigator = () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span></div><pre><code class="language-javascript">const SearchUploadNavigator = () =&gt; {
   return (
-    &lt;Stack.Navigator mode=&quot;modal&quot; initialRouteName=&quot;SearchScreen&quot;&gt;
+    &lt;Stack.Navigator mode="modal" initialRouteName="SearchScreen"&gt;
       &lt;Stack.Screen
-        name=&quot;SearchScreen&quot;
+        name="SearchScreen"
         component={VideoList}
         options={{
           headerStyle: {
-            backgroundColor: &#39;#f4511e&#39;,
+            backgroundColor: '#f4511e',
           },
-          headerTintColor: &#39;#fff&#39;,
+          headerTintColor: '#fff',
           headerLeft: (props) =&gt; (
-            &lt;UploadHeader {...props} title=&quot;YouTube Search&quot; /&gt;
+            &lt;UploadHeader {...props} title="YouTube Search" /&gt;
           ),
-          title: &#39;&#39;, // Override default title
+          title: '', // Override default title
         }}
       /&gt;
       &lt;Stack.Screen
-        name=&quot;Upload&quot;
+        name="Upload"
         component={Upload}
         options={{
           headerStyle: {
-            backgroundColor: &#39;#f4511e&#39;,
+            backgroundColor: '#f4511e',
           },
-          headerTintColor: &#39;#fff&#39;,
+          headerTintColor: '#fff',
           headerLeft: (props) =&gt; (
-            &lt;UploadHeader {...props} title=&quot;Upload a Video&quot; /&gt;
+            &lt;UploadHeader {...props} title="Upload a Video" /&gt;
           ),
-          title: &#39;&#39;,
+          title: '',
         }}
       /&gt;
     &lt;/Stack.Navigator&gt;
@@ -593,17 +591,17 @@ export default UploadHeader;</code></pre></div></div>
 <p>What happened here? We kept the “Search” route from the original navigator, but instead of making it point to a component, we directed it to <em>another navigator</em> that controls navigation between the search and upload screens. The reason why we did this was so we could use modal navigation mode (where the view comes from the bottom instead of the side) with the Upload component. Notice how we override the header on the original navigator and use <code>SearchUploadNavigator</code> to control the custom headers.</p>
 <p>❄️ Also notice how we pass the <code>UploadHeader</code> component into the <code>headerTitle</code> option of <code>Stack.Screen</code>. <code>headerTitle</code> allows you to pass in another component, and since we defined the width of <code>UploadHeader</code> to be the width of the window it takes up the whole header.</p>
 <p>If you did it right, you should now be able to do this:</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/upload-1767548327240.gif" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/upload-1767548327240.gif" alt="">
 <p>Cool, right?</p>
-<h2 style="background-color: #FBF3DB;">Firebase</h2>
+<div class="heading-block h2-block"><h2>Firebase</h2></div>
 <p>Let’s connect our app with Firebase to allow us to authenticate with Google.</p>
-<h3>Configuration</h3>
+<div class="heading-block h3-block"><h3>Configuration</h3></div>
 <p>🚀Go to <a href="https://firebase.google.com/">firebase.google.com</a> and create a new project.</p>
 <p>🚀Click the “iOS” button on the main screen to add an iOS app to your project. The bundle ID should be the same as the one you set when ejecting from Expo – if you can’t remember it, then go to Xcode and check the build settings.</p>
 <p>🚀Download the config file generated by Firebase and add it to your project’s root in Xcode.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/firebase-config-1767548327240.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/firebase-config-1767548327240.png" alt="">
 <p>🚀While we’re in Xcode, let’s modify a couple of the automatically generated app files so they’re compatible with Firebase. Open <code>AppDelegate.m</code> from Xcode and add this to the top:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">#import &lt;Firebase.h&gt;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">#import &lt;Firebase.h&gt;</code></pre></div></div>
 <p>🚀And, at the top of the <code>didFinishLaunchingWithOptions</code> method, add this:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">swift</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-swift">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   if ([FIRApp defaultApp] == nil) {
@@ -612,26 +610,21 @@ export default UploadHeader;</code></pre></div></div>
   // Rest of the default function code
 }</code></pre></div></div>
 <p>🚀Finally, in your project directory, run <code>npm install @react-native-firebase/app</code> to add the Firebase NPM package. Then run <code>cd ios</code> and <code>pod install</code> to install its native dependencies.</p>
-<ul>
-<li><p>If this command fails, try running <code>pod repo update</code> first. Depending on the errors that you receive (e.g. you get an error about modular headers), you can add the following lines to your Podfile:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">    pod &#39;GoogleUtilities&#39;, :modular_headers =&gt; true
-    pod &#39;FirebaseCore&#39;, :modular_headers =&gt; true</code></pre></div></div>
-</li>
-</ul>
+<ul><li><p>If this command fails, try running <code>pod repo update</code> first. Depending on the errors that you receive (e.g. you get an error about modular headers), you can add the following lines to your Podfile:</p></li></ul>
 <p> Your app is now configured to use Firebase! Rebuild your app to make sure it still runs.</p>
-<h3>Authentication</h3>
+<div class="heading-block h3-block"><h3>Authentication</h3></div>
 <p>Now, let’s set up authentication for our app. Although we’re just using Google login in this case for the purposes of being able to upload videos to YouTube, this process can be scaled to add full user authentication to any React Native app.</p>
 <p>🚀In the Firebase console, click the Authentication icon in the sidebar and then the “Set up sign-in method” button.</p>
 <p>🚀Enable Google as a sign-in provider. Save the web client ID – you’ll need it later.</p>
 <p>🚀Let’s define the login UI for our app. Change <code>upload.js</code> to the following:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import { View, TouchableOpacity, Text, StyleSheet } from &#39;react-native&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span></div><pre><code class="language-javascript">import React from 'react';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 const Upload = (props) =&gt; {
   const signInButton = () =&gt; {
     return (
       &lt;TouchableOpacity style={styles.button}&gt;
-        &lt;Text style={{ color: &#39;white&#39; }}&gt;Sign in with Google&lt;/Text&gt;
+        &lt;Text style={{ color: 'white' }}&gt;Sign in with Google&lt;/Text&gt;
       &lt;/TouchableOpacity&gt;
     );
   };
@@ -642,15 +635,15 @@ const Upload = (props) =&gt; {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    alignItems: &#39;center&#39;,
-    justifyContent: &#39;center&#39;,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   button: {
     flex: -1,
-    alignItems: &#39;center&#39;,
-    justifyContent: &#39;center&#39;,
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 10,
-    backgroundColor: &#39;#f4511e&#39;,
+    backgroundColor: '#f4511e',
     borderRadius: 5,
   },
 });
@@ -659,18 +652,18 @@ export default Upload;</code></pre></div></div>
 <p>🚀Install the Google login SDK – which Firebase will use to login with Google – using <code>npm install @react-native-google-signin/google-signin @react-native-firebase/auth</code>.</p>
 <p>🚀Then, you know the drill – <code>cd ios</code> and <code>pod install</code> to get all the native dependencies.</p>
 <p>🚀In Xcode, open <code>GoogleService-Info.plist</code> and copy your REVERSED_CLIENT_ID. Then, click on your project in the left sidebar and add a new URL type under the Info panel containing your REVERSED_CLIENT_ID.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/url-type-1767548327240.png" alt=""></p>
-<p>🚀 Rebuild the app to capture all your changes.</p>
-<p>🚀 Let’s actually try signing in! At the top of <code>upload.js</code>, add the following imports (note that this is where you use your Web Client ID from Firebase):</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">import auth from &#39;@react-native-firebase/auth&#39;;
-import { GoogleSignin } from &#39;@react-native-community/google-signin&#39;;
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/url-type-1767548327240.png" alt="">
+<p>🚀&nbsp;Rebuild the app to capture all your changes.</p>
+<p>🚀&nbsp;Let’s actually try signing in! At the top of <code>upload.js</code>, add the following imports (note that this is where you use your Web Client ID from Firebase):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin';
 
 GoogleSignin.configure({
   webClientId: YOUR_WEB_CLIENT_ID,
-  scopes: [&#39;https://www.googleapis.com/auth/youtube.upload&#39;],
+  scopes: ['https://www.googleapis.com/auth/youtube.upload'],
 });</code></pre></div></div>
 <p>🚀And then at the very top of the Upload functional component:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-jsx">const Upload = (props) =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-javascript">const Upload = (props) =&gt; {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
@@ -700,13 +693,13 @@ GoogleSignin.configure({
 <p>🚀Add <code>onGoogleButtonPress</code> to the <code>onPress</code> prop of your sign in button.</p>
 <p>🚀Try signing in! It’ll warn you about not being a verified app, which you can safely ignore, and then prompt you to grant access to your YouTube account. After the window closes, you should see your user data printed in the console. <strong>Make sure you explicitly grant Google access to manage your YouTube account during this step.</strong></p>
 <p>If you open the authentication pane of your Firebase console, you should see a new user added.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/firebase-user-1767548327240.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/firebase-user-1767548327240.png" alt="">
 <p>❄️ If you’ve used other authentication APIs in the past, you might be wondering whether we need to store a refresh token or some other means of persisting the user’s data between app closures. We don’t want to have to login again every time we reload the app! Luckily, Firebase deals with many of the complexities behind persisting a user for you. In this case, the <code>onAuthStateChanged</code> function subscribes to authentication state changes and automatically updates the state when the component is mounted with the user’s account info. Additionally, the <code>signInOnStart</code> function automatically refreshes the user’s Google API access token when the component loads so that we can use it to call the YouTube API.</p>
 <p>🚀Finally, add an upload button and update what you return to check whether or not a user has logged in:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">Code</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code>  const uploadButton = () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code class="language-javascript">  const uploadButton = () =&gt; {
     return (
       &lt;TouchableOpacity style={styles.button}&gt;
-        &lt;Text style={{ color: &#39;white&#39; }}&gt;Upload Video&lt;/Text&gt;
+        &lt;Text style={{ color: 'white' }}&gt;Upload Video&lt;/Text&gt;
       &lt;/TouchableOpacity&gt;
     );
   };
@@ -717,9 +710,9 @@ GoogleSignin.configure({
     &lt;/View&gt;
   );</code></pre></div></div>
 <p>You should see your app change to display the new upload button. You’ve now implemented Google sign-in through Firebase for your app!</p>
-<h2 style="background-color: #FBF3DB;">Upload Video</h2>
+<div class="heading-block h2-block"><h2>Upload Video</h2></div>
 <p>Now, let’s actually set up video uploading to YouTube.</p>
-<h3>Getting Video from Camera Roll</h3>
+<div class="heading-block h3-block"><h3>Getting Video from Camera Roll</h3></div>
 <p>In order to retrieve a video to upload, we’ll need to ask for permission from the user to access the Camera Roll and then display a dialog prompting them to select a video. Luckily, Expo has some built-in libraries that allow us to do this fairly easily.</p>
 <p>❄️ But I thought we got rid of Expo? Although we ejected the app from the Expo client, we can still use Expo-made packages in our app – essentially, you get the best of both worlds.</p>
 <p>🚀Run <code>npx expo install expo-image-picker expo-permissions</code> in your command line. Then, <code>cd ios</code> and <code>pod install</code> again.</p>
@@ -728,9 +721,9 @@ GoogleSignin.configure({
 &lt;string&gt;Give $(PRODUCT_NAME) permission to save photos&lt;/string&gt;</code></pre></div></div>
 <p>🚀Rebuild your app.</p>
 <p>🚀In <code>upload.js</code>, add the following under the <code>signInOnStart</code> function:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-jsx">async function retrieveVideo() {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">async function retrieveVideo() {
   const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-  if (status === &#39;granted&#39;) {
+  if (status === 'granted') {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Videos,
       allowsEditing: false,
@@ -747,40 +740,40 @@ async function upload() {
   console.log(video?.uri);
 }</code></pre></div></div>
 <p>🚀Update your imports:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">import * as ImagePicker from &#39;expo-image-picker&#39;;
-import * as Permissions from &#39;expo-permissions&#39;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';</code></pre></div></div>
 <p>🚀And don’t forget to add <code>upload</code> to the onPress handler of <code>uploadButton</code>!</p>
 <p>❄️ What is this <code>?.</code> operator we used in <code>console.log</code>? The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining">optional chaining</a> operator is new in the 2020 edition of Javascript. It allows you to check for nested properties in an object without receiving a TypeError for attempting to read properties from a missing or undefined object reference. Cool, right?</p>
 <p>Now, when you click the upload button, it should prompt you to grant permission to access the Camera Roll and open a dialog to allow you to select a video. (Make sure to give the app access to your photos!) One problem – if you’re testing this on a simulator, there aren’t any videos to select! You’ll see the console log “undefined” when you close the dialog. Let’s fix that.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/empty-1767548327240.png" alt=""></p>
-<p>🚀 Choose a video from your hard drive and drag it onto the simulator. You can use any video – I used Dartmouth’s <a href="https://www.youtube.com/watch?v=fIQoLdlJPk0">2020 commencement address</a> – but make sure it’s at least several hundred MB so that it doesn’t upload instantly.</p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/empty-1767548327240.png" alt="">
+<p>🚀&nbsp;Choose a video from your hard drive and drag it onto the simulator. You can use any video – I used Dartmouth’s <a href="https://www.youtube.com/watch?v=fIQoLdlJPk0">2020 commencement address</a> – but make sure it’s at least several hundred MB so that it doesn’t upload instantly.</p>
 <p>⚠️  If you encounter an error when attempting to import your file from Finder, try moving it to a different directory and re-import it.</p>
 <p>Now, you should be able to select your video from the Camera Roll and see the file URI displayed in the console.</p>
-<h3>Uploading the Video</h3>
+<div class="heading-block h3-block"><h3>Uploading the Video</h3></div>
 <p>We <em>could</em> use Axios to upload the video, but for a large upload like this we want to allow the user to send the app to the background and conduct other tasks on the device without fear of terminating the download. Let’s install another module to help us accomplish that.</p>
-<p>🚀 Run <code>npm install react-native-background-upload</code> and then <code>cd ios</code> <code>pod install</code>.</p>
-<p>🚀 Since we created a new Firebase project for this app and we’re using that API key to authenticate the user, we’ll need to re-enable access to the YouTube API. Go to your <a href="https://console.cloud.google.com/">Google Cloud console</a> (not Firebase console) and follow the instructions from Short Assignment 4 to enable the YouTube Data API. Note that you don’t have to generate a new API key, just enable the API.</p>
-<p>🚀 In your <code>upload</code> function, under the <code>console.log</code> add the following code:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-jsx">if (video) {
+<p>🚀&nbsp;Run <code>npm install react-native-background-upload</code> and then <code>cd ios</code> <code>pod install</code>.</p>
+<p>🚀&nbsp;Since we created a new Firebase project for this app and we’re using that API key to authenticate the user, we’ll need to re-enable access to the YouTube API. Go to your <a href="https://console.cloud.google.com/">Google Cloud console</a> (not Firebase console) and follow the instructions from Short Assignment 4 to enable the YouTube Data API. Note that you don’t have to generate a new API key, just enable the API.</p>
+<p>🚀&nbsp;In your <code>upload</code> function, under the <code>console.log</code> add the following code:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-javascript">if (video) {
   const { accessToken } = await GoogleSignin.getTokens();
   const { size } = await stat(video.uri);
 
   const uploadData = await axios({
-    method: &#39;POST&#39;,
-    url: &#39;https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&amp;part=snippet,status,contentDetails&#39;,
+    method: 'POST',
+    url: 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&amp;part=snippet,status,contentDetails',
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      &#39;content-type&#39;: &#39;application/json; charset=UTF-8&#39;,
-      &#39;x-upload-content-type&#39;: &#39;video/*&#39;,
-      &#39;x-upload-content-length&#39;: size,
+      'content-type': 'application/json; charset=UTF-8',
+      'x-upload-content-type': 'video/*',
+      'x-upload-content-length': size,
     },
     data: {
       snippet: {
-        title: &#39;RN Video Upload&#39;,
+        title: 'RN Video Upload',
         categoryId: 24,
       },
       status: {
-        privacyStatus: &#39;private&#39;,
+        privacyStatus: 'private',
       },
     },
   });
@@ -788,26 +781,26 @@ import * as Permissions from &#39;expo-permissions&#39;;</code></pre></div></div
   const uploadUrl = uploadData?.headers?.location;
   console.log(uploadUrl);
 }</code></pre></div></div>
-<p>🚀And, we’ll need to install the <code>react-native-fs</code> module to get the video file size. Run <code>npm install react-native-fs</code> and then manually add <code>pod &#39;RNFS&#39;, :path =&gt; &#39;../node_modules/react-native-fs&#39;</code> to your Podfile like before. Then, run <code>pod install</code> and add the following import statement:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">import { stat } from &#39;react-native-fs&#39;;</code></pre></div></div>
+<p>🚀And, we’ll need to install the <code>react-native-fs</code> module to get the video file size. Run <code>npm install react-native-fs</code> and then manually add <code>pod 'RNFS', :path =&gt; '../node_modules/react-native-fs'</code> to your Podfile like before. Then, run <code>pod install</code> and add the following import statement:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">import { stat } from 'react-native-fs';</code></pre></div></div>
 <p>❄️ There’s a lot going on here, so let’s break it down. YouTube follows a <a href="https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol">multi-step upload protocol</a>, and the first step is to retrieve the URL that will be used for upload. We then call YouTube’s upload API with the user’s access token and details about the video to obtain the URL. Note that some of these parameters, like the video title and category, would be generated based on user input in an actual app – you can see how to obtain YouTube category IDs <a href="https://developers.google.com/youtube/v3/docs/videoCategories/list">here</a>.</p>
 <p>⚠️ For basic versions of the API, there’s a quota on the amount of times you can call this API endpoint per day – make sure to not test these steps more than a couple times once you get it working, or you may encounter 403 errors until midnight Pacific Time the next day.</p>
 <p>🚀Let’s actually upload the video now! Replace the last <code>console.log</code> with the following:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span></div><pre><code class="language-jsx">const uploadOptions = {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span></div><pre><code class="language-javascript">const uploadOptions = {
   url: uploadUrl,
   path: video.uri,
-  method: &#39;PUT&#39;,
-  type: &#39;raw&#39;,
+  method: 'PUT',
+  type: 'raw',
   headers: {
     Authorization: `Bearer ${accessToken}`,
-    &#39;content-type&#39;: &#39;video/*&#39;,
-    &#39;content-length&#39;: size,
+    'content-type': 'video/*',
+    'content-length': size,
   },
 };
 
 BackgroundUpload.startUpload(uploadOptions)
   .then((uploadId) =&gt; {
-    BackgroundUpload.addListener(&#39;progress&#39;, uploadId, (data) =&gt; {
+    BackgroundUpload.addListener('progress', uploadId, (data) =&gt; {
       console.log(data.progress);
       setProgress(data.progress);
 
@@ -815,7 +808,7 @@ BackgroundUpload.startUpload(uploadOptions)
         setProgress(0);
       }
     });
-    BackgroundUpload.addListener(&#39;error&#39;, uploadId, (data) =&gt; {
+    BackgroundUpload.addListener('error', uploadId, (data) =&gt; {
       console.log(`Error: ${data.error}`);
     });
   })
@@ -823,14 +816,14 @@ BackgroundUpload.startUpload(uploadOptions)
     console.log(err);
   });</code></pre></div></div>
 <p>🚀Update your imports:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">import BackgroundUpload from &#39;react-native-background-upload&#39;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">import BackgroundUpload from 'react-native-background-upload';</code></pre></div></div>
 <p>🚀And of course, add another variable to your state configuration:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">const [progress, setProgress] = useState(0);</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">const [progress, setProgress] = useState(0);</code></pre></div></div>
 <p>Now, after selecting your video, you should see the progress logged in the console as it uploads.</p>
-<h3>Progress Bar</h3>
+<div class="heading-block h3-block"><h3>Progress Bar</h3></div>
 <p>Just logging our progress isn’t very interesting, though. We want to keep the user informed of how much their upload has progressed.</p>
 <p>🚀Let’s create a <code>progressBar</code> function to render a progress bar. Under where you have <code>uploadButton</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">const progressBar = () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-javascript">const progressBar = () =&gt; {
   return (
     &lt;&gt;
       &lt;View style={styles.progressBar}&gt;
@@ -841,34 +834,34 @@ BackgroundUpload.startUpload(uploadOptions)
   );
 };</code></pre></div></div>
 <p>🚀Update your return block to conditionally check for progress:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">return (
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">return (
   &lt;View style={styles.background}&gt;
     {progress &gt; 0 &amp;&amp; progressBar()}
     {progress === 0 &amp;&amp; (user ? uploadButton() : signInButton())}
   &lt;/View&gt;
 );</code></pre></div></div>
 <p>🚀And add some styles:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code class="language-jsx">  progressBar: {
-    width: &#39;80%&#39;,
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span></div><pre><code class="language-javascript">  progressBar: {
+    width: '80%',
     height: 25,
-    backgroundColor: &#39;rgba(0,0,0,0.2)&#39;,
+    backgroundColor: 'rgba(0,0,0,0.2)',
     borderRadius: 5,
   },
   progress: {
-    position: &#39;absolute&#39;,
+    position: 'absolute',
     left: 0,
     height: 25,
-    backgroundColor: &#39;#f4511e&#39;,
+    backgroundColor: '#f4511e',
     borderRadius: 5,
   },</code></pre></div></div>
 <p>It should look like this:</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/progress-1767548327240.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/progress-1767548327240.png" alt="">
 <p>🚀But wait! If we close the upload modal and wait for the component to unmount, when we open it again we don’t have access to the progress bar from before! Let’s update our <code>useEffect</code> hook to listen for a progress event when the modal opens:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-jsx">useEffect(() =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">useEffect(() =&gt; {
   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
   signInOnStart();
 
-  BackgroundUpload.addListener(&#39;progress&#39;, null, (data) =&gt; {
+  BackgroundUpload.addListener('progress', null, (data) =&gt; {
     console.log(data.progress);
     setProgress(data.progress);
 
@@ -884,22 +877,22 @@ BackgroundUpload.startUpload(uploadOptions)
 }, []);</code></pre></div></div>
 <p>🚀And add <code>DeviceEventEmitter</code> to your <code>react-native</code> imports.</p>
 <p>❄️ What does useEffect do? useEffect is a React hook designed to mirror the functionality of componentDidMount, componentDidUpdate, and componentWillUnmount in functional components. Here, the empty dependency array [] supplied as the second parameter to the hook specifies that the function should run once upon mount, and returns a cleanup function for our event subscriptions that will run on unmount. You can add objects to the dependency array to specify that useEffect should run when one of those parameters changes.</p>
-<p>🚀 If you run into a “403: Quota Exceeded” error when attempting this code, that’s okay! You can still submit and receive credit if the rest of the code is there. YouTube restricts you to 4-5 upload requests a day on the free tier, so don’t try uploading until you’re sure you have it right.</p>
+<p>🚀&nbsp;If you run into a “403: Quota Exceeded” error when attempting this code, that’s okay! You can still submit and receive credit if the rest of the code is there. YouTube restricts you to 4-5 upload requests a day on the free tier, so don’t try uploading until you’re sure you have it right.</p>
 <p><a href="https://emojipedia.org/warning/">**⚠️</a>** If you get a 401 unauthorized error, make sure the account you’re signing in with has a YouTube channel associated with it!</p>
-<h2 style="background-color: #FBF3DB;">Animation</h2>
+<div class="heading-block h2-block"><h2>Animation</h2></div>
 <p>Finally, let’s add some animations to our upload screen to make it more interesting.</p>
-<h3>Lottie</h3>
+<div class="heading-block h3-block"><h3>Lottie</h3></div>
 <p>🚀Run <code>npm i lottie-ios@3.1.8 lottie-react-native@3.5.0</code>, then <code>cd ios</code> and <code>pod install</code>. This adds <a href="https://github.com/react-native-community/lottie-react-native">Lottie</a> to your project, a framework that parses Adobe After Effects animations and renders them natively on mobile.</p>
 <p>🚀We’re going to add an animation from <a href="https://lottiefiles.com/">LottieFiles</a>, a free library of Lottie animations that you can download and use in your projects. We’re going to be using <a href="https://lottiefiles.com/196-material-wave-loading">this</a> loading indicator, which you can download below. Download it and put it in your <code>assets</code> folder.</p>
 <p><a href="ECSA%20React%20Native%20%E2%80%94%20Part%202/196-material-wave-loading.json">196-material-wave-loading.json</a></p>
 <p>🚀In <code>upload.js</code>, add the following import:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">import LottieView from &#39;lottie-react-native&#39;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">import LottieView from 'lottie-react-native';</code></pre></div></div>
 <p>🚀And update your <code>progressBar</code> function:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-jsx">const progressBar = () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-javascript">const progressBar = () =&gt; {
   return (
     &lt;&gt;
       &lt;LottieView
-        source={require(&#39;../assets/196-material-wave-loading.json&#39;)}
+        source={require('../assets/196-material-wave-loading.json')}
         autoPlay
         loop
         style={{ marginBottom: 100 }}
@@ -912,18 +905,18 @@ BackgroundUpload.startUpload(uploadOptions)
   );
 };</code></pre></div></div>
 <p>You should now have a nice complement to your progress bar.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/lottie-1767548327240.png" alt=""></p>
-<h3>React Native Animatable</h3>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/lottie-1767548327240.png" alt="">
+<div class="heading-block h3-block"><h3>React Native Animatable</h3></div>
 <p>React Native Animatable is a library that makes it easy to animate <code>components</code> in React Native. Let’s use it to spruce up our upload button.</p>
 <p>🚀Run <code>npm install react-native-animatable</code>.</p>
 <p>🚀Import the module:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">import * as Animatable from &#39;react-native-animatable&#39;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">import * as Animatable from 'react-native-animatable';</code></pre></div></div>
 <p>🚀Then, wrap your button components in Animatable.View, like so:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span></div><pre><code class="language-jsx">const signInButton = () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span></div><pre><code class="language-javascript">const signInButton = () =&gt; {
   return (
-    &lt;Animatable.View animation=&quot;fadeInLeft&quot; delay={500}&gt;
+    &lt;Animatable.View animation="fadeInLeft" delay={500}&gt;
       &lt;TouchableOpacity style={styles.button} onPress={onGoogleButtonPress}&gt;
-        &lt;Text style={{ color: &#39;white&#39; }}&gt;Sign in with Google&lt;/Text&gt;
+        &lt;Text style={{ color: 'white' }}&gt;Sign in with Google&lt;/Text&gt;
       &lt;/TouchableOpacity&gt;
     &lt;/Animatable.View&gt;
   );
@@ -931,29 +924,22 @@ BackgroundUpload.startUpload(uploadOptions)
 
 const uploadButton = () =&gt; {
   return (
-    &lt;Animatable.View animation=&quot;fadeInLeft&quot; delay={500}&gt;
+    &lt;Animatable.View animation="fadeInLeft" delay={500}&gt;
       &lt;TouchableOpacity style={styles.button} onPress={upload}&gt;
-        &lt;Text style={{ color: &#39;white&#39; }}&gt;Upload Video&lt;/Text&gt;
+        &lt;Text style={{ color: 'white' }}&gt;Upload Video&lt;/Text&gt;
       &lt;/TouchableOpacity&gt;
     &lt;/Animatable.View&gt;
   );
 };</code></pre></div></div>
 <p>That was easy!</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/animation-1767548327240.gif" alt=""></p>
-<h2 style="background-color: #FBF3DB;">We’re done!</h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/animation-1767548327240.gif" alt="">
+<div class="heading-block h2-block"><h2>We’re done!</h2></div>
 <p>You successfully took off the Expo training wheels and built a full-fledged video uploader, complete with animations, background loading, and Firebase authentication. And you did it without having to write a single line of native code!</p>
 <p>There’s a lot going on in <code>upload.js</code> – think about how you’d divide up the code and organize a larger React or React Native project.</p>
 <p>We breezed through Firebase and the YouTube API, but there’s a lot more functionality to them that’s accessible with a simple <code>npm install</code>.</p>
-<h2 style="background-color: #FBF3DB;">Submission</h2>
+<div class="heading-block h2-block"><h2>Submission</h2></div>
 <p>To submit, create a new comment on your react-native short assignment. </p>
-<h2 style="background-color: #FBF3DB;">Resources</h2>
-<ul>
-<li><a href="https://rnfirebase.io/auth/social-auth">https://rnfirebase.io/auth/social-auth</a></li>
-<li><a href="https://github.com/react-native-community/google-signin">https://github.com/react-native-community/google-signin</a></li>
-<li><a href="https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol">https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol</a></li>
-<li><a href="https://docs.expo.io/versions/latest/sdk/imagepicker">https://docs.expo.io/versions/latest/sdk/imagepicker</a></li>
-<li><a href="https://github.com/Vydia/react-native-background-upload">https://github.com/Vydia/react-native-background-upload</a></li>
-</ul>
-
+<div class="heading-block h2-block"><h2>Resources</h2></div>
+<ul><li><a href="https://rnfirebase.io/auth/social-auth">https://rnfirebase.io/auth/social-auth</a></li><li><a href="https://github.com/react-native-community/google-signin">https://github.com/react-native-community/google-signin</a></li><li><a href="https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol">https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol</a></li><li><a href="https://docs.expo.io/versions/latest/sdk/imagepicker">https://docs.expo.io/versions/latest/sdk/imagepicker</a></li><li><a href="https://github.com/Vydia/react-native-background-upload">https://github.com/Vydia/react-native-background-upload</a></li></ul>
 </body>
 </html>
