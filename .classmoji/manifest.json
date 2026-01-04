@@ -107,16 +107,20 @@
       "slides": [],
       "assignments": {
         "react-notes-part-2": {
-          "pages": [],
-          "slides": []
-        },
-        "react-notes-part-1": {
-          "pages": [],
+          "pages": [
+            "lab-3-react-notes"
+          ],
           "slides": []
         },
         "react-notes-prelab": {
           "pages": [
             "prelab-3-react-notes"
+          ],
+          "slides": []
+        },
+        "react-notes-part-1": {
+          "pages": [
+            "lab-3-react-notes"
           ],
           "slides": []
         }
@@ -227,11 +231,10 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
-      "lab-3-react-notes",
-      "sa2-frontend-starterpack-with-vite-short-assignment",
-      "sa3-intro-react-short-assignment",
+      "sa-state-management-short-assignment",
       "sa-routing-short-assignment",
-      "sa-state-management-short-assignment"
+      "sa3-intro-react-short-assignment",
+      "sa2-frontend-starterpack-with-vite-short-assignment"
     ],
     "slides": []
   }
