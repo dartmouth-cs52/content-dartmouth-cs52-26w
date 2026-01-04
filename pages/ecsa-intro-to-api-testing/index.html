@@ -442,147 +442,132 @@
   </style>
 </head>
 <body>
-
-<p>Type: extra-credit short<br>week: Week 10<br>Created time: August 16, 2022 1:20 PM<br>Dates: May 22, 2025 → May 25, 2025<br>published: No</p>
-<h1 style="background-color: #DDEBF1;">Intro to API Testing — SA?</h1>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1-1767548250342.png" alt="Untitled-1.png"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1-1767548250342.png" alt="Untitled-1.png">
 <p>In this short assignment, we’ll be learning to write tests against APIs using <a href="https://www.cypress.io/">Cypress</a>. Cypress is an end-to-end testing framework that can be used to test your whole web stack or individual components. This is a powerful tool that we’ll be using for the duration of the course. </p>
 <p>[explain the context of this assignment in comparison to the other relevant ones (other cypress assignments, lab4, etc.)]</p>
-<h2 style="background-color: #FBF3DB;">Let’s Start</h2>
+<div class="heading-block h2-block"><h2>Let’s Start</h2></div>
 <p>🚀 [Insert repo for assignment] </p>
-<h2 style="background-color: #FBF3DB;">CRUD API [FROM LAB 4]</h2>
+<div class="heading-block h2-block"><h2>CRUD API [FROM LAB 4]</h2></div>
 <p>We’ll be using an API server running at <a href="https://platform.cs52.me/api">https://platform.cs52.me/api</a></p>
 <p>The API has the following endpoints:</p>
-<ul>
-<li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{&quot;id&quot;:&quot;&quot;,title&quot;:&quot;&quot;,&quot;tags&quot;:&quot;&quot;, &quot;coverUrl&quot;:&quot;&quot;},...]</code></li>
-<li>POST <code>/api/posts/</code> with post parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> creates a new post</li>
-<li>PUT <code>/api/posts/:postID</code> with parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> will update an entry</li>
-<li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li>
-<li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li>
-</ul>
-<h3>API key</h3>
+<ul><li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{"id":"",title":"","tags":"", "coverUrl":""},...]</code></li><li>POST <code>/api/posts/</code> with post parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> creates a new post</li><li>PUT <code>/api/posts/:postID</code> with parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> will update an entry</li><li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li><li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li></ul>
+<div class="heading-block h3-block"><h3>API key</h3></div>
 <p>For each of these, you need to append an API key. This key can just be your <code>firstinitial_lastname</code>. You can test the API using <a href="https://insomnia.rest/">insomnia</a> or curl.</p>
-<h3>Testing APIs from CLI with curl</h3>
+<div class="heading-block h3-block"><h3>Testing APIs from CLI with curl</h3></div>
 <p>There is a command that you can run in Terminal called <code>curl</code> that can fetch remote data. Here’s how you would use it for testing the API server. This will also come in handy when you have to create the API server next week!</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-bash"># all posts get:
-curl -X GET &quot;https://platform.cs52.me/api/posts?key=YOURKEY&quot;
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># all posts get:
+curl -X GET "https://platform.cs52.me/api/posts?key=YOURKEY"
 
 # create new post
-curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;first post&quot;,
-    &quot;tags&quot;: &quot;words&quot;,
-    &quot;content&quot;:  &quot;this is a test post&quot;,
-    &quot;coverUrl&quot;: &quot;https://media.giphy.com/media/gyRWkLSQVqlPi/giphy.gif&quot;
-}&#39; &quot;https://platform.cs52.me/api/posts/?key=YOURKEY&quot;
+curl -X POST -H "Content-Type: application/json" -d '{
+    "title": "first post",
+    "tags": "words",
+    "content":  "this is a test post",
+    "coverUrl": "https://media.giphy.com/media/gyRWkLSQVqlPi/giphy.gif"
+}' "https://platform.cs52.me/api/posts/?key=YOURKEY"
 
 # update by POSTID
-curl -X PUT -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;new title&quot;
-}&#39; &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;
+curl -X PUT -H "Content-Type: application/json" -d '{
+    "title": "new title"
+}' "https://platform.cs52.me/api/posts/POSTID?key=YOURKEY"
 
 # fetch 1 by POSTID
-curl -X GET &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;
+curl -X GET "https://platform.cs52.me/api/posts/POSTID?key=YOURKEY"
 
 # delete by POSTID
-curl -X DELETE -H &quot;Content-Type: application/json&quot; &quot;https://platform.cs52.me/api/posts/POSTID?key=YOURKEY&quot;</code></pre></div></div></div>
+curl -X DELETE -H "Content-Type: application/json" "https://platform.cs52.me/api/posts/POSTID?key=YOURKEY"</code></pre></div>
 <p>Try these out. Run the create new post one a couple of times to populate your database!</p>
 <p>This will work a bit different from the react-notes, and in a way will be much simpler. Every time you want to update, create, delete, retrieve, you will use http calls like the above to interact with the server.</p>
 <p>Remember our SPA architecture:</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/single-page-app-1767548250343.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/single-page-app-1767548250343.png" alt="">
 <p>The above is the data requests we’ll be making. They all return <em>JSON</em>.</p>
-<p>This site will <em>not</em> update live in the sense that if someone else on another browser added a post, you would not see it pop up automatically, but would need to reload. This is fairly common of most platforms like this, your feed doesn&#39;t change as you look at it, you need to refresh to see new articles. Once Redux is in place it’ll be really easy to trigger a refresh with a button or pulldown if you want.</p>
-<h2 style="background-color: #FBF3DB;">HTTP Status Codes</h2>
+<p>This site will <em>not</em> update live in the sense that if someone else on another browser added a post, you would not see it pop up automatically, but would need to reload. This is fairly common of most platforms like this, your feed doesn't change as you look at it, you need to refresh to see new articles. Once Redux is in place it’ll be really easy to trigger a refresh with a button or pulldown if you want.</p>
+<div class="heading-block h2-block"><h2>HTTP Status Codes</h2></div>
 <p>When you send a CRUD request to a server, you use the HTTP status code in the response to determine how the server has responded. These can be broken into five different categories.</p>
-<ul>
-<li><strong>1xx —</strong> Informational responses</li>
-<li><strong>2xx —</strong> Success</li>
-<li><strong>3xx —</strong> Redirection</li>
-<li><strong>4xx —</strong> Client errors</li>
-<li><strong>5xx —</strong> Server errors</li>
-</ul>
+<ul><li><strong>1xx —</strong> Informational responses</li><li><strong>2xx —</strong> Success</li><li><strong>3xx —</strong> Redirection</li><li><strong>4xx —</strong> Client errors</li><li><strong>5xx —</strong> Server errors</li></ul>
 <p>We won’t look at most of these codes here (you can read up on each of them in greater detail <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">here</a>). For now, we’ll just look at the most important ones—and the ones you should focus on in this assignment. </p>
 <p><code>200 OK</code> The request was successful. The actual operation that succeeded will of course change based on what HTTP method was invoked. </p>
 <p><code>400 Bad Request</code> The request will not be performed due to some client error (invalid JSON type or values, incorrect request syntax, etc.).</p>
 <p><code>404 Not Found</code> The requested resource could not be located or does not exist. Note that this can be true even if the request is to a valid endpoint. </p>
 <p><code>422 Unprocessable Entity</code> Similar to the 400 error, customarily returned if the formatting of the JSON is correct but the fields are not. </p>
 <p><code>500 Internal Server Error</code> Generic server error that indicates it encountered an unexpected condition that prevented it from fulfilling the request. Other 500 response codes offer more detail about why the error occurred. </p>
-<h2 style="background-color: #FBF3DB;"><a href="https://www.cypress.io/">Cypress</a></h2>
-<h3>Installation &amp; Setup</h3>
+<div class="heading-block h2-block"><h2><a href="https://www.cypress.io/">Cypress</a></h2></div>
+<div class="heading-block h3-block"><h3>Installation &amp; Setup</h3></div>
 <p>It’s now time to install Cypress and get it set up in the project. Since we’re only testing a remote API, our project will be sparse and only contain the files for Cypress. </p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install cypress@10</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install cypress@10</code></pre></div>
 <p>Once the package finishes installing (the <code>npm</code> package is actually an installer for the larger package itself) you will be able to run Cypress with:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npx cypress open</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npx cypress open</code></pre></div>
 <p>You can also add a script (alongside any others) for running this with <code>npm</code> like so:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-json">{
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;cypress open&quot;
+  "scripts": {
+    "test": "cypress open"
   }
 }</code></pre></div></div>
 <p>Which can be executed like this:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm run test</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm run test</code></pre></div>
 <p>After a few moments, the Cypress Launchpad will open. </p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/cypress-launchpad-1767548250343.png" alt="Cypress Launchpad.png"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/cypress-launchpad-1767548250343.png" alt="Cypress Launchpad.png">
 <p>We’re going to be using E2E (End-to-End) testing for this project, it’s for testing the whole application and will allow us to access external APIs as well. We’ll take a look at component testing in a future assignment, so go ahead and click on E2E Testing to set up the configuration. You can keep the default files and hit continue at the bottom of the page.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1767548250343.png" alt="Untitled"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1767548250343.png" alt="Untitled">
 <p>You will now be prompted to choose which browser to run cypress in. You’ll notice that it comes with Electron (a Chromium-based browser that uses a Node.js runtime environment!). We’ll just use the default for this. </p>
 <p>Go ahead and click “Start E2E Testing” to continue. </p>
-<h3>Let’s write some tests!</h3>
+<div class="heading-block h3-block"><h3>Let’s write some tests!</h3></div>
 <p>You should be greeted with this page giving two different options for getting started with your spec. The scaffold examples have a number of scripts for different kinds of tests. For this project, we’ll create an empty spec so we can go over all pieces for writing API tests.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1-1767548250343.png" alt="Untitled"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-1-1767548250343.png" alt="Untitled">
 <p>Once you create the spec you can go ahead and run it. You will see the one filler API test passing in the left panel.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-2-1767548250343.png" alt="Untitled"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-intro-to-api-testing/assets/untitled-2-1767548250343.png" alt="Untitled">
 <p>We will be focusing on this panel for this assignment since we’re only going to be dealing with the API. Here is where you’ll be able to see which tests pass or fail and can open them up for more details about what is being tested and why it failed. In order to actually modify these tests, we’re going to open the <code>cypress/e2e/</code> folder in your IDE. Here’s the starter script it created:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">describe(&#39;empty spec&#39;, () =&gt; {
-  it(&#39;passes&#39;, () =&gt; {
-    cy.visit(&#39;https://example.cypress.io&#39;);
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-javascript">describe('empty spec', () =&gt; {
+  it('passes', () =&gt; {
+    cy.visit('https://example.cypress.io');
   });
 });</code></pre></div></div>
-<p>Here we can see the way the test is set up. We describe an <code>&#39;empty spec&#39;</code> (the name of our group of tests), that it <code>&#39;passes&#39;</code> (description of the test), and then the operation we want to test—in this case, visiting an example website. </p>
+<p>Here we can see the way the test is set up. We describe an <code>'empty spec'</code> (the name of our group of tests), that it <code>'passes'</code> (description of the test), and then the operation we want to test—in this case, visiting an example website. </p>
 <p>First, we’ll set up the <code>baseUrl</code> so that our tests will hit the server. Make the change to the <code>cypress.config.js</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">const { defineConfig } = require(&#39;cypress&#39;);
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-javascript">const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: &#39;https://platform.cs52.me&#39;,
+    baseUrl: 'https://platform.cs52.me',
   },
 });</code></pre></div></div>
 <p>The default test is not very interesting, we’re going to replace that with a pattern like this:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">describe(&#39;api crud spec&#39;, () =&gt; {
-  it(&#39;description of test&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">describe('api crud spec', () =&gt; {
+  it('description of test', () =&gt; {
     cy.request({
-      &quot;insert json request&quot;
+      "insert json request"
     }).then((response) =&gt; {
-      expect(&quot;some property of response&quot;).to.eq(&quot;some status&quot;);
+      expect("some property of response").to.eq("some status");
     });
   });
 })</code></pre></div></div>
-<p>where <code>&quot;insert json request&quot;</code>, <code>&quot;some property of response&quot;</code>, and <code>&quot;some status&quot;</code> are to be replaced with values for the test we want to run. Additionally, we can run as many <code>expect</code> functions as we like on our request to test multiple values at once. </p>
+<p>where <code>"insert json request"</code>, <code>"some property of response"</code>, and <code>"some status"</code> are to be replaced with values for the test we want to run. Additionally, we can run as many <code>expect</code> functions as we like on our request to test multiple values at once. </p>
 <p>Let’s start with a GET method to grab all posts from the database at once:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">it(&#39;user retrieves all posts&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">it('user retrieves all posts', () =&gt; {
   cy.request({
-    method: &#39;GET&#39;,
+    method: 'GET',
     url: `/api/posts`,
   }).then((response) =&gt; {
     expect(response.status).to.eq(200);
-    expect(response.body).to.be.a(&#39;array&#39;);
-    expect(response.body[0]).to.be.a(&#39;object&#39;);
-    expect(response.body[0].title).to.eq(&#39;first post&#39;);
+    expect(response.body).to.be.a('array');
+    expect(response.body[0]).to.be.a('object');
+    expect(response.body[0].title).to.eq('first post');
   });
 });</code></pre></div></div>
-<p>We have placed the description of our test at the top which will be displayed in Cypress when the tests are run. Our request body is JSON that states our method is GET and the URL of our request (this gets appended to our base URL and would look like <code>&#39;https://platform.cs52.me/api/posts&#39;</code>). We can also include a header but it is not necessary at this point. The <code>then</code> method contains our tests where we can test the properties of the returned response object. In this case, the status should be 200 because the request should be successful. The body will be an array of JSON objects, each of which is a single post. We can test that the type is an array, and then perform a few additional tests on the first element. In what circumstances would it be a good idea to assume what the title of the post is?</p>
+<p>We have placed the description of our test at the top which will be displayed in Cypress when the tests are run. Our request body is JSON that states our method is GET and the URL of our request (this gets appended to our base URL and would look like <code>'https://platform.cs52.me/api/posts'</code>). We can also include a header but it is not necessary at this point. The <code>then</code> method contains our tests where we can test the properties of the returned response object. In this case, the status should be 200 because the request should be successful. The body will be an array of JSON objects, each of which is a single post. We can test that the type is an array, and then perform a few additional tests on the first element. In what circumstances would it be a good idea to assume what the title of the post is?</p>
 <p>As we move on to other requests you may have noticed a problem. Our other requests rely on the id of the post in order to retrieve or modify it. Let’s make our first request be a POST method where we can store its id in a global variable we can use for our other tests, the last of which is to delete it.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-jsx">it(&#39;user creates a post&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-javascript">it('user creates a post', () =&gt; {
   cy.request({
-    method: &#39;POST&#39;,
-    url: &#39;/api/posts&#39;,
+    method: 'POST',
+    url: '/api/posts',
     body: {
-      title: &#39;first post&#39;,
-      tags: &#39;words&#39;,
-      content: &#39;this is a test post&#39;,
-      coverUrl: &#39;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&#39;,
+      title: 'first post',
+      tags: 'words',
+      content: 'this is a test post',
+      coverUrl: 'https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif',
     },
   }).then((response) =&gt; {
     expect(response.status).to.eq(200);
@@ -591,86 +576,65 @@ module.exports = defineConfig({
 });</code></pre></div></div>
 <p>We put our id in a variable <code>postId</code> which is defined at the top of the document <code>let postId;</code>. Another problem that gets inadvertently resolved is managing the number of posts that get created each time our tests execute. We will not be filling up our database each time we run our tests! This has, however, made our tests somewhat interdependent—it’s not ideal but okay here. </p>
 <p>We can use this variable inline in our requests. Here’s our GET request from before, but this time we’ll just retrieve one post (the one we just created) using its id:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">it(&#39;user retrieves a post&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">it('user retrieves a post', () =&gt; {
   cy.request({
-    method: &#39;GET&#39;,
+    method: 'GET',
     url: `/api/posts/${postId}`,
   }).then((response) =&gt; {
     expect(response.status).to.eq(200);
-    expect(response.body.title).to.eq(&#39;first post&#39;);
+    expect(response.body.title).to.eq('first post');
   });
 });</code></pre></div></div>
 <p>We can now be sure about the properties of that post—such as the title—since we just created it!</p>
 <p>Let’s step back now. We’ve tested POST and two different GET requests; that leaves PUT, DELETE, and various cases to test error scenarios. Our PUT and DELETE methods will be pretty straightforward to test:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-jsx">it(&#39;user updates a post&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-javascript">it('user updates a post', () =&gt; {
   cy.request({
-    method: &#39;PUT&#39;,
+    method: 'PUT',
     url: `/api/posts/${postId}`,
     body: {
-      title: &#39;updated post&#39;,
-      tags: &#39;words&#39;,
-      content: &#39;this is a test post&#39;,
-      coverUrl: &#39;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&#39;,
+      title: 'updated post',
+      tags: 'words',
+      content: 'this is a test post',
+      coverUrl: 'https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif',
     },
   }).then((response) =&gt; {
     expect(response.status).to.eq(200);
-    expect(response.body.title).to.eq(&#39;updated post&#39;);
+    expect(response.body.title).to.eq('updated post');
   });
 });
-it(&#39;user deletes a post&#39;, () =&gt; {
+it('user deletes a post', () =&gt; {
   cy.request({
-    method: &#39;DELETE&#39;,
+    method: 'DELETE',
     url: `/api/posts/${postId}`,
   }).then((response) =&gt; {
     expect(response.status).to.eq(200);
   });
 });</code></pre></div></div>
 <p>That just leaves the error cases. We can test the 400 error by GETing a post with an invalid id.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">it(&#39;user retrieves a bad post id, expecting failure code 400&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">it('user retrieves a bad post id, expecting failure code 400', () =&gt; {
   cy.request({
     failOnStatusCode: false,
-    method: &#39;GET&#39;,
-    url: &#39;/api/posts/INVALID_ID&#39;,
+    method: 'GET',
+    url: '/api/posts/INVALID_ID',
   }).then((response) =&gt; {
     expect(response.status).to.eq(400);
   });
 });</code></pre></div></div>
 <p>And 404 by trying to GET the post we were originally working with after it’s deleted.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">it(&#39;retrieving deleted post, expecting error code 404&#39;, () =&gt; {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">it('retrieving deleted post, expecting error code 404', () =&gt; {
   cy.request({
     failOnStatusCode: false,
-    method: &#39;GET&#39;,
+    method: 'GET',
     url: `/api/posts/${postId}`,
   }).then((res) =&gt; {
     expect(res.status).to.eq(404);
   });
 });</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">Commit!</h2>
+<div class="heading-block h2-block"><h2>Commit!</h2></div>
 <p>Don’t forget to commit and push your code so that your <del>starterpack</del> now has routing support and an example!</p>
-<h2 style="background-color: #FBF3DB;">To Turn In</h2>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-<li><strong>^ note this is the SAME PR as your previous starterpack submission - that is ok -just add a new comment.</strong></li>
-<li>your starter pack should now<ul>
-<li>have working test routes</li>
-<li>be deployed to netlify with working _redirects or <a href="http://render.com">render.com</a> with rewrites set up.</li>
-<li>lint correctly</li>
-<li>have fallback webpack serving index.html for any route</li>
-</ul>
-</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Resources</h2>
-<ul>
-<li><a href="https://www.cypress.io/">https://www.cypress.io/</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a></li>
-<li><a href="https://insomnia.rest/">https://insomnia.rest/</a></li>
-</ul>
-
+<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li><strong>^ note this is the SAME PR as your previous starterpack submission - that is ok -just add a new comment.</strong></li><li>your starter pack should now<ul><li>have working test routes</li><li>be deployed to netlify with working _redirects or <a href="http://render.com">render.com</a> with rewrites set up.</li><li>lint correctly</li><li>have fallback webpack serving index.html for any route</li></ul></li></ul>
+<div class="heading-block h2-block"><h2>Resources</h2></div>
+<ul><li><a href="https://www.cypress.io/">https://www.cypress.io/</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</a></li><li><a href="https://insomnia.rest/">https://insomnia.rest/</a></li></ul>
 </body>
 </html>
