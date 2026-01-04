@@ -442,7 +442,6 @@
   </style>
 </head>
 <body>
-<div class="heading-block h1-block"><h1><strong>Hello World &amp; Local Dev Environment</strong></h1></div>
 <p>First things first. You need a local development environment.</p>
 <p><em>Why is this important you ask. Couldn’t I just copy code over to a server every time I make changes? You could. But imagine debugging, every change you make you spend a few seconds maybe copying code over, or pushing git. This time adds up. Save yourself hours of your life, get your laptop set up for coding now.</em></p>
 <p></p>
@@ -544,20 +543,20 @@ Changes to be committed:
 <div class="heading-block h3-block"><h3>Git Branch</h3></div>
 <p>Ok, now we have a local commit! However, before we push our changes. GitHub Pages requires that the git branch we use for their hosting is named <code>gh-pages</code>.</p>
 <p>So lets rename our branch!</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-powershell">💻 git branch
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 git branch
  * main
 💻 git branch -m main gh-pages
 💻 git branch
- * gh-pages</code></pre></div></div>
+ * gh-pages</code></pre></div>
 <div class="heading-block h3-block"><h3>Git Push</h3></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-powershell">💻 git push -u origin gh-pages
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">💻 git push -u origin gh-pages
 Counting objects: 3, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 289 bytes | 0 bytes/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To git@github.com:dartmouth-cs52/cs52.me.git
- * [new branch]      gh-pages -&gt; gh-pages</code></pre></div></div>
+ * [new branch]      gh-pages -&gt; gh-pages</code></pre></div>
 <p><em>Note: On GitHub you should double check your branches. You could either change settings to use main branch for gh-pages, or use the gh-pages branch, but make sure that you don’t have both.</em></p>
 <div class="heading-block h3-block"><h3>Default GitHub Pages Hosting</h3></div>
 <p>By default GitHub Pages, when it sees a branch named <code>gh-pages</code>, will publish it at <code>http://&lt;github username&gt;.github.io/&lt;repository name&gt;</code>.</p>
