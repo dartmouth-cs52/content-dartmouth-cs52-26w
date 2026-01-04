@@ -442,7 +442,6 @@
   </style>
 </head>
 <body>
-<div class="heading-block h1-block"><h1>CRUD Platform: Client</h1></div>
 <p>We’ll build a React+State Management Content Platform. It can be a platform for any type of content you desire. As long as there are individual content items that have some content that need to be saved to a database! Aside from the core functionality of creating an item with title and content, showing those, editing the fields, and deleting, you should feel free to be creative with it. It will basically be a CRUD platform — create, read, update, delete, storing data on a server with best practices, user authentication, and security — those features encompass a world of possibilities.</p>
 <p><a href="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_840,h_643/v1546203223/cs52/platform-client.webm">platform-client.webm</a></p>
 <div class="heading-block h3-block"><h3><strong>Lab 4</strong></h3></div>
@@ -527,21 +526,19 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform.cs52.me/api
 <p>This is a component that can both trigger actions and is connected to the global zustand state.</p>
 <details><summary>❓Can you remind me what I’m doing heret?!</summary><div><p>Just a component that both subscribes to a store slice and also triggers a store action.</p>
 <p>And hereâs some giveaway code for your <code>Posts</code> component:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-javascript">    
-    import React, {useEffect} from 'react';
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-javascript">import React, {useEffect} from 'react';
     
-    function SomeComponent(props) {
-        const allPosts = useStore(({ postSlice }) =&gt; postSlice.all);
-        const fetchAllPosts = useStore(({ postSlice }) =&gt; postSlice.fetchAllPosts);
+function SomeComponent(props) {
+   const allPosts = useStore(({ postSlice }) =&gt; postSlice.all);
+   const fetchAllPosts = useStore(({ postSlice }) =&gt; postSlice.fetchAllPosts);
     
-        useEffect( () =&gt; {
-            fetchAllPosts();
-        }, []);
+   useEffect( () =&gt; {
+      fetchAllPosts();
+   }, []);
     
-        return (
-            { allPosts.map( post =&gt; { return &lt;div&gt;{post.title}&lt;/div&gt;}) } 
-        )
-    }
+   return (
+    { allPosts.map( post =&gt; { return &lt;div&gt;{post.title}&lt;/div&gt;}) } 
+)}
 </code></pre></div></div>
 <p><em>What other components will need to be connected like this?</em></p></div></details>
 <div class="heading-block h2-block"><h2>State Management</h2></div>
