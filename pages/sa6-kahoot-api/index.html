@@ -442,164 +442,148 @@
   </style>
 </head>
 <body>
-
-<p>Type: short<br>week: Week 6<br>Created time: April 19, 2022 5:08 PM<br>Dates: May 7, 2025 → May 11, 2025<br>published: Yes</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/kahoot-1767548363203.png" alt="kahoot.png"></p>
-<h2 style="background-color: #FBF3DB;"><strong>Overview</strong></h2>
-<p>In this assignment we will augment our frontend knowledge of creating beautiful websites by learning how to design backends to provide your sites with data and handle complex “business” logic. We will build a replica of an API for the popular quiz website <a href="https://kahoot.com/">Kahoot</a>. The assignment will help you practice more complex database and API design techniques and help you learn how to test a backend without using a frontend (A well-designed API can work with many variations of frontends—you can design one for EC 😊). We’ll use a standard REST API design for our approach this time around but you’ll also learn what some limitations of the REST approach might be.</p>
-<p>Remember our basic client-server <strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer (REST) CRUD design:</p>
-<ul>
-<li><strong>Create</strong> via <code>POST</code> <a href="http://api.domain/resource">http://api.domain/resource</a> endpoint</li>
-<li><strong>Retrieve</strong> via <code>GET</code> <a href="http://api.domain/resource">http://api.domain/resource</a> or <a href="http://api.domain/resource/:id">http://api.domain/resource/:id</a> endpoints</li>
-<li><strong>Update</strong> via <code>PUT</code> or <code>PATCH</code> <a href="http://api.domain/resource/:id">http://api.domain/resource/:id</a> endpoint</li>
-<li><strong>Delete</strong> via <code>DELETE</code> <a href="http://api.domain/resource/:id">http://api.domain/resource/:id</a> endpoint</li>
-<li></li>
-</ul>
-<div class="callout" style="align-items: flex-start;"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
-<h2 style="background-color: #FBF3DB;">Gameflow &amp; <strong>Testing!</strong></h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/kahoot-1767548363203.png" alt="kahoot.png">
+<div class="heading-block h2-block"><h2><strong>Overview</strong></h2></div>
+<p>In this assignment we will augment our frontend knowledge of creating beautiful websites by learning how to design backends to provide your sites with data and handle complex “business” logic. We will build a replica of an API for the popular quiz website&nbsp;<a href="https://kahoot.com/">Kahoot</a>. The assignment will help you practice more complex database and API design techniques and help you learn how to test a backend without using a frontend (A well-designed API can work with many variations of frontends—you can design one for EC 😊). We’ll use a standard REST API design for our approach this time around but you’ll also learn what some limitations of the REST approach might be.</p>
+<p>Remember our basic client-server <strong>RE</strong>presentational&nbsp;<strong>S</strong>tate&nbsp;<strong>T</strong>ransfer (REST) CRUD design:</p>
+<ul><li><strong>Create</strong> via <code>POST</code> <a href="http://api.domain/resource">http://api.domain/resource</a> endpoint</li><li><strong>Retrieve</strong> via <code>GET</code> <a href="http://api.domain/resource">http://api.domain/resource</a> or <a href="http://api.domain/resource/:id">http://api.domain/resource/:id</a> endpoints</li><li><strong>Update</strong> via <code>PUT</code> or <code>PATCH</code> <a href="http://api.domain/resource/:id">http://api.domain/resource/:id</a> endpoint</li><li><strong>Delete</strong> via <code>DELETE</code> <a href="http://api.domain/resource/:id">http://api.domain/resource/:id</a> endpoint</li></ul>
+<div class="callout"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
+<div class="heading-block h2-block"><h2>Gameflow &amp; <strong>Testing!</strong></h2></div>
 <p>Wait, how does Kahoot work again?</p>
 <p>Sure!  Here is a basic flow:</p>
-<ol>
-<li>admin creates some questions and records the correct answers (POST), then gets back a room code to share with players</li>
-<li>admin opens the game to allow players to join (PATCH)</li>
-<li>players join with room code and with their name and get the current room info (POST). no duplicate names are allowed</li>
-<li>admin starts the game, closing the opportunity for new players to join (PATCH)</li>
-<li>players retrieve current room state to see the question they should answer (GET)</li>
-<li>players submit their answers (POST)<ol>
-<li>one player cannot make multiple submissions</li>
-<li>Upon each submission, the API computes if everyone answered the question and if so increment the current question index</li>
-<li>system allows the next question once all players have submitted answers</li>
-<li>Players can leave the game, but they will get a 0 for questions they don’t answer after leaving (this is EC, by default all players must answer question to advance)</li>
-</ol>
-</li>
-<li>anybody can see current room state / scoreboard  (GET)<ol>
-<li>scoreboard: top 3, your rank (if player name is included) </li>
-<li>current question</li>
-</ol>
-</li>
-<li>repeat steps 5-6</li>
-<li>game ends when all players have answered all questions</li>
-<li>players get score<ol>
-<li>returns final game state - current question == null, final scoreboard</li>
-</ol>
-</li>
-</ol>
+<ol start="1"><li>admin creates some questions and records the correct answers (POST), then gets back a room code to share with players</li><li>admin opens the game to allow players to join (PATCH)</li><li>players join with room code and with their name and get the current room info (POST). no duplicate names are allowed</li><li>admin starts the game, closing the opportunity for new players to join (PATCH)</li><li>players retrieve current room state to see the question they should answer (GET)</li><li>players submit their answers (POST)<ol start="1"><li>one player cannot make multiple submissions</li><li>Upon each submission, the API computes if everyone answered the question and if so increment the current question index</li><li>system allows the next question once all players have submitted answers</li><li>Players can leave the game, but they will get a 0 for questions they don’t answer after leaving (this is EC, by default all players must answer question to advance)</li></ol></li><li>anybody can see current room state / scoreboard  (GET)<ol start="1"><li>scoreboard: top 3, your rank (if player name is included)</li><li>current question</li></ol></li><li>repeat steps 5-6</li><li>game ends when all players have answered all questions</li><li>players get score<ol start="1"><li>returns final game state - current question == null, final scoreboard</li></ol></li></ol>
 <p>Here are some curl requests simulating a typical game flow to test your program. </p>
-<h2 style="background-color: #FBF3DB;">API Endpoints and DataStructures</h2>
-<h3><strong>Create the game room</strong></h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-jsx">curl --request POST &#39;http://localhost:9090/rooms&#39; \
---header &#39;Content-Type: application/json&#39; \
---data &#39;{
-    &quot;creator&quot;: &quot;Admin&quot;,
-    &quot;roomKey&quot;: &quot;secret&quot;,
-    &quot;questions&quot;: [
-            {&quot;prompt&quot;: &quot;Question1?&quot;, &quot;answer&quot;: &quot;1&quot;},
-            {&quot;prompt&quot;: &quot;Question2?&quot;, &quot;answer&quot;: &quot;2&quot;}
+<div class="heading-block h2-block"><h2>API Endpoints and DataStructures</h2></div>
+<div class="heading-block h3-block"><h3><strong>Create the game room</strong></h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">curl --request POST 'http://localhost:9090/rooms' \
+--header 'Content-Type: application/json' \
+--data '{
+    "creator": "Admin",
+    "roomKey": "secret",
+    "questions": [
+            {"prompt": "Question1?", "answer": "1"},
+            {"prompt": "Question2?", "answer": "2"}
     ]
-}&#39;
+}'
 # response is game state - see below
 # question index integers are automatically assigned</code></pre></div></div>
 <p>This will return a game state object that will include the room id, which you will definitely want to keep track of for future use!</p>
-<h3>Admin Opens Game</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">curl --request PATCH &#39;http://localhost:9090/rooms/%YOUR_ROOM_ID%&#39; \
---header &#39;Content-Type: application/json&#39; \
---data &#39;{
-        &quot;roomKey&quot;: &quot;secret&quot;,
-    &quot;status&quot;: &quot;OPEN&quot;
-}&#39;
+<div class="heading-block h3-block"><h3>Admin Opens Game</h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-javascript">curl --request PATCH 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+--header 'Content-Type: application/json' \
+--data '{
+        "roomKey": "secret",
+    "status": "OPEN"
+}'
 
 // returns game state</code></pre></div></div>
-<h3><strong>Get the game state/next question</strong></h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">curl --request GET &#39;http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%&#39;
+<div class="heading-block h3-block"><h3><strong>Get the game state/next question</strong></h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">curl --request GET 'http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%'
 
 // returns game state</code></pre></div></div>
-<h3>Players Join Game</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">curl --request POST &#39;http://localhost:9090/rooms/%YOUR_ROOM_ID%&#39; \
---header &#39;Content-Type: application/json&#39; \
---data &#39;{
-    &quot;name&quot;: &quot;%YOUR_PLAYER_NAME&quot;
-}&#39;
+<div class="heading-block h3-block"><h3>Players Join Game</h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "%YOUR_PLAYER_NAME"
+}'
 
 // returns game room id and name confirmation</code></pre></div></div>
-<h3>Admin Starts Game</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">curl --request PATCH &#39;http://localhost:9090/rooms/%YOUR_ROOM_ID%&#39; \
---header &#39;Content-Type: application/json&#39; \
---data &#39;{
-    &quot;status&quot;: &quot;IN_PROGRESS&quot;
-}&#39;
+<div class="heading-block h3-block"><h3>Admin Starts Game</h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">curl --request PATCH 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+--header 'Content-Type: application/json' \
+--data '{
+    "status": "IN_PROGRESS"
+}'
 
 // returns game state</code></pre></div></div>
-<h3><strong>Submit answer for a player</strong></h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-jsx">curl --request POST &#39;http://localhost:9090/rooms/%YOUR_ROOM_ID%/submissions&#39; \
---header &#39;Content-Type: application/json&#39; \
---data &#39;{
-    &quot;player&quot;: &quot;%YOUR_PLAYER_NAME%&quot;,
-    &quot;response&quot;: &quot;1&quot;
-}&#39;
+<div class="heading-block h3-block"><h3><strong>Submit answer for a player</strong></h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span></div><pre><code class="language-javascript">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%/submissions' \
+--header 'Content-Type: application/json' \
+--data '{
+    "player": "%YOUR_PLAYER_NAME%",
+    "response": "1"
+}'
 
 // returns game state
 // applies to currently open question only automatically, once all players answer 
 // a question gamestate automatically moves to next questions</code></pre></div></div>
-<h3><strong>Look at the scoreboard to see who won! (just the regular getState above)</strong></h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">curl --request GET &#39;http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%&#39;
+<div class="heading-block h3-block"><h3><strong>Look at the scoreboard to see who won! (just the regular getState above)</strong></h3></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">curl --request GET 'http://localhost:9090/rooms/%YOUR_ROOM_ID%?player=%YOUR_PLAYER_NAME%'
 
 // returns game state - no need for a separate handling this is literally just the same game state endpoint</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">To <strong>Start</strong></h2>
+<div class="heading-block h2-block"><h2>To <strong>Start</strong></h2></div>
 <p>We will build an <a href="https://expressjs.com/">express</a> server that will store data in <a href="https://www.mongodb.com/">mongodb</a>.</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/enm-1767548363203.jpg" alt=""></p>
-<h3><strong>Database (Mongo)</strong></h3>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/enm-1767548363203.jpg" alt="">
+<div class="heading-block h3-block"><h3><strong>Database (Mongo)</strong></h3></div>
 <p>First, you need to install MongoDB Community Edition, the database client for this API. </p>
-<p>🚀 Install our database server <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">installation instructions here</a>.</p>
-<ul>
-<li><p>On OSX something like this should work</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">    brew uninstall --force mongodb mongodb-community
-    brew tap mongodb/brew
-    brew install mongodb-community</code></pre></div></div></div>
-<p>  ⚠️ On OSX if you get a permissions error you may need to make sure that the database directory is writable <code>sudo chown $USER /path/to/datadir</code>. If you get an error about <code>/path/to/datadir</code> not existing you can run: <code>sudo mkdir -p /path/to/datadir</code>. Pay attention to the error message to determine what directory your system is complaining about. If you still run into trouble and you are running Catalina <a href="https://stackoverflow.com/questions/58034955/read-only-file-system-when-attempting-mkdir-data-db-on-mac/#answer-60299088">this might help</a></p>
-</li>
-<li><p>or Windows/Linux:</p>
-<p>  <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">installation instructions here</a>.</p>
-</li>
-</ul>
-<h3><strong>Pull Starter</strong></h3>
-<p>We&#39;re going to be building an API, where users can make requests to create or respond to quizzes. We will be using <a href="https://github.com/dartmouth-cs52/express-babel-starter">a backend starterpack</a> to start, which sets us up with an <code>express</code> node server with a tiny bit of boilerplate as well as linting and transpilation. You could recreate this starterpack, but for now we&#39;ll save you some time by providing it for you.</p>
-<p>🚀 Use the provided <a href="http://classroom.brunchlabs.com">classroom.brunchlabs.com</a> repository.  Then pull in some starter code from this opensource repo: <a href="https://github.com/dartmouth-cs52/express-babel-starter">https://github.com/dartmouth-cs52/express-babel-starter</a>.  This isn’t your frontend-starter, this is a backend starter that you can use which gives you just a little bit of setup.  </p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash"># make sure you are in your cloned classroom project directory
+<p>🚀&nbsp;Install our database server <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">installation instructions here</a>.</p>
+<ul><li><p>On OSX something like this should work</p>
+
+<p>  ⚠️ On OSX if you get a permissions error you may need to make sure that the database directory is writable <code>sudo chown $USER /path/to/datadir</code>. If you get an error about <code>/path/to/datadir</code> not existing you can run: <code>sudo mkdir -p /path/to/datadir</code>. Pay attention to the error message to determine what directory your system is complaining about. If you still run into trouble and you are running Catalina <a href="https://stackoverflow.com/questions/58034955/read-only-file-system-when-attempting-mkdir-data-db-on-mac/#answer-60299088">this might help</a></p></li><li><p>or Windows/Linux:</p>
+<p>  <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">installation instructions here</a>.</p></li></ul>
+<div class="heading-block h3-block"><h3><strong>Pull Starter</strong></h3></div>
+<p>We're going to be building an API, where users can make requests to create or respond to quizzes. We will be using&nbsp;<a href="https://github.com/dartmouth-cs52/express-babel-starter">a backend starterpack</a>&nbsp;to start, which sets us up with an&nbsp;<code>express</code>&nbsp;node server with a tiny bit of boilerplate as well as linting and transpilation. You could recreate this starterpack, but for now we'll save you some time by providing it for you.</p>
+<p>🚀&nbsp;Use the provided <a href="http://classroom.brunchlabs.com">classroom.brunchlabs.com</a> repository.  Then pull in some starter code from this opensource repo: <a href="https://github.com/dartmouth-cs52/express-babel-starter">https://github.com/dartmouth-cs52/express-babel-starter</a>.  This isn’t your frontend-starter, this is a backend starter that you can use which gives you just a little bit of setup.  </p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># make sure you are in your cloned classroom project directory
 git remote add starter https://github.com/dartmouth-cs52/express-babel-starter
-git pull starter main</code></pre></div></div></div>
-<p><em>You may have to add the <code>--allow-unrelated-histories</code> flag to the <code>git pull</code> command if you get an error about the histories not being related.</em></p>
-<p>🚀 Then run these following commands in your project directory to start our new node+express app in dev reloading mode.</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-bash">npm install
-npm start</code></pre></div></div></div>
-<h2 style="background-color: #FBF3DB;"><strong>Intro Express</strong></h2>
-<p><a href="https://expressjs.com/">Express</a> is a <strong>server-side</strong> web framework for Node.js. What it does for us is provide a way to listen for and respond to incoming web requests. Today, we will be creating API endpoints to respond to certain CRUD-style requests.</p>
-<p>Recall that the <code>src/server.js</code> file is the entry point for our API. Note how we are setting the route:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">// default index route
-app.get(&#39;/&#39;, (req, res) =&gt; {
-  res.send(&#39;hi&#39;);
+git pull starter main</code></pre></div>
+<p><em>You may have to add the&nbsp;<code>--allow-unrelated-histories</code>&nbsp;flag to the&nbsp;<code>git pull</code>&nbsp;command if you get an error about the histories not being related.</em></p>
+<p>🚀&nbsp;Then run these following commands in your project directory to start our new node+express app in dev reloading mode.</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install
+npm start</code></pre></div>
+<div class="heading-block h2-block"><h2><strong>Intro Express</strong></h2></div>
+<p><a href="https://expressjs.com/">Express</a>&nbsp;is a&nbsp;<strong>server-side</strong>&nbsp;web framework for Node.js. What it does for us is provide a way to listen for and respond to incoming web requests. Today, we will be creating API endpoints to respond to certain CRUD-style requests.</p>
+<p>Recall that the&nbsp;<code>src/server.js</code>&nbsp;file is the entry point for our API. Note how we are setting the route:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-javascript">// default index route
+app.get('/', (req, res) =&gt; {
+  res.send('hi');
 });</code></pre></div></div>
-<p>The 2nd parameter to <code>.get()</code> is a function that takes 2 arguments: <code>request</code> and <code>response</code>.</p>
-<p><code>request</code> is a wrapper object around the Express API&#39;s Request class that contains, among other things, any data that was part of the request. For instance, the JSON parameters we would POST or PUT in our asynchronous <code>axios</code> calls would be available as <code>req.body.parameterName</code>.</p>
-<p><code>response</code> is a wrapper object around the Express API’s Response class, which is an object that contains, among other things, a method named <code>send</code> that allows us a send back a response to the client. When your API call gets back JSON data this is how it is returned. Consider <code>res.send()</code> the equivalent of a network-based <code>return</code> statement. This is important. </p>
-<aside>
-💡 You can only have **1** `res.send()`. Note that it is good practice to `return res.send()` unless you intend to run code after sending the response.
+<p>The 2nd parameter to&nbsp;<code>.get()</code>&nbsp;is a function that takes 2 arguments:&nbsp;<code>request</code>&nbsp;and&nbsp;<code>response</code>.</p>
+<p><code>request</code>&nbsp;is a wrapper object around the Express API's Request class that contains, among other things, any data that was part of the request. For instance, the JSON parameters we would POST or PUT in our asynchronous&nbsp;<code>axios</code>&nbsp;calls would be available as&nbsp;<code>req.body.parameterName</code>.</p>
+<p><code>response</code>&nbsp;is a wrapper object around the Express API’s Response class, which is an object that contains, among other things, a method named&nbsp;<code>send</code>&nbsp;that allows us a send back a response to the client. When your API call gets back JSON data this is how it is returned. Consider&nbsp;<code>res.send()</code>&nbsp;the equivalent of a network-based&nbsp;<code>return</code>&nbsp;statement. This is important. </p>
+<p>
+💡 You can only have&nbsp;**1**&nbsp;`res.send()`. Note that it is good practice to&nbsp;`return res.send()`&nbsp;unless you intend to run code after sending the response.
 
-</aside>
-
-<p>We&#39;ll add more routing shortly, but first, let&#39;s set up our database!</p>
-<h2 style="background-color: #FBF3DB;"><strong>Mongo Database Server</strong></h2>
-<p>We will need a database to store the information about the Kahoot quizzes and the responses from players. For this version of the assignment, we will be using the non-relational <a href="https://www.mongodb.com/">MongoDB</a> as our database.</p>
-<p>🚀 You may need to run the <code>brew services start mongodb-community</code> process, which your node app will connect to. This is a background server process. <a href="https://www.mongodb.com/docs/manual/installation/#mongodb-community-edition">See the installation instructions for Windows/Linux</a>. </p>
-<p>You can interface with your database from the commandline using the mongo shell with the command <code>mongo</code>. You can also play around with a more graphical client <a href="https://www.mongodb.com/download-center?jmp=nav#compass">mongodb compass community</a> (just make sure to download the <em>community</em> version).</p>
-<details><summary>👽 Below are some commands to play around with a test database in the mongoshell, always nice to know you can inspect your database pretty easily.</summary><div data-encoded="PHByZT48Y29kZSBjbGFzcz0ibGFuZ3VhZ2UtYmFzaCI+ICAgIAogICAgIyBydW4gYG1vbmdvYCBjb21tYW5kIAogICAgIyB0aGlzIGxhdW5jaGVzIG1vbmdvc2hlbGwgaXMgYSBjb21tYW5kbGluZSBpbnRlcmZhY2UgdG8geW91ciBsb2NhbCBtb25nbyBkYgogICAgCiAgICBzaG93IGRicwogICAgIyB3aWxsIHNob3cgeW91ciBjdXJyZW50IGRhdGFiYXNlcwogICAgCiAgICB1c2UgdGVzdAogICAgIyB3aWxsIG1ha2UgJnF1b3Q7dGVzdCZxdW90OyB0aGUgY3VycmVudCBkYXRhYmFzZQogICAgCiAgICBkYi50ZXN0Lmluc2VydCgKICAgICAgIHsKICAgICAgICAgICYjMzk7dGV4dCYjMzk7OiAmIzM5O1BhbmdvbGlucyBhcmUgY3V0ZSYjMzk7LAogICAgICAgICAgJiMzOTtpbWFnZVVSTCYjMzk7OiYjMzk7aHR0cHM6Ly9tZWRpYS5naXBoeS5jb20vbWVkaWEvdXNjdVRBUHJXcW1xSS9naXBoeS5naWYmIzM5OywKICAgICAgIH0KICAgICkKICAgICMgd2lsbCBpbnNlcnQgYW4gb2JqZWN0IGludG8gdGhlIGRhdGFiYXNlCiAgICAjIGludG8gYSBjb2xsZWN0aW9uIGNhbGxlZCBgdGVzdGAKICAgIAogICAgZGIudGVzdC5maW5kKCkKICAgICMgcmV0dXJucyBldmVyeXRoaW5nIGluIHRoaXMgY29sbGVjdGlvbgogICAgCiAgICBkYi50ZXN0LmZpbmQoeyZxdW90O3RleHQmcXVvdDs6ICZxdW90O1BhbmdvbGlucyBhcmUgY3V0ZSZxdW90O30pCiAgICAjIGZpbmRzIGEgZW50cnkgaW4gZGF0YWJhc2UgYnkga2V5OnZhbHVlCjwvY29kZT48L3ByZT4KPHA+T2ssIHNvIG5vdyB5b3XigJl2ZSBwbGF5ZWQgYSBsaXR0bGUgYml0IHdpdGggbW9uZ28gZGlyZWN0bHksIGxldOKAmXMgYnVpbGQgc29tZXRoaW5nIG9uIHRvcCBvZiBpdC48L3A+Cg=="></div></details>
-
-<h2 style="background-color: #FBF3DB;"><strong>Mongoose</strong></h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/mongoose-1767548363203.jpg" alt=""></p>
-<p>To interface with mongo for our API, we will use a module called <code>mongoose</code>. <a href="http://mongoosejs.com/">Mongoose</a> is an object model for mongo. This allows us to treat data that we are storing in mongo as objects in our code that have a nice API for querying, saving, validating, etc. rather than writing Mongo queries directly. Mongo is in general considered a schema-less store. We store JSON documents similarly to Firebase. However, with Mongoose we are able to specify a schema for our objects. This allows us to validate and assert our data before inserting it into the database to protect us from pesky bugs. You will sometimes see this type of module called an ODM (Object Document Mapping/Mapper) for non-relational databases like mongo or an ORM (Object Relational Mapping) for relational databases like PostgreSQL.</p>
-<p>🚀 Install mongoose: <code>npm install mongoose</code></p>
-<p>🚀 Add this snippet to get mongoose initialized with our database at the bottom of <code>server.js</code>. We will wrap this in an anonymous <code>async</code> function so that we can <code>await</code> our call to connect to the database:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span></div><pre><code class="language-jsx">// at top
-import mongoose from &#39;mongoose&#39;;
+</p>
+<p>We'll add more routing shortly, but first, let's set up our database!</p>
+<div class="heading-block h2-block"><h2><strong>Mongo Database Server</strong></h2></div>
+<p>We will need a database to store the information about the Kahoot quizzes and the responses from players. For this version of the assignment, we will be using the non-relational&nbsp;<a href="https://www.mongodb.com/">MongoDB</a>&nbsp;as our database.</p>
+<p>🚀 You may need to run the&nbsp;<code>brew services start mongodb-community</code>&nbsp;process, which your node app will connect to. This is a background server process. <a href="https://www.mongodb.com/docs/manual/installation/#mongodb-community-edition">See the installation instructions for Windows/Linux</a>. </p>
+<p>You can interface with your database from the commandline using the mongo shell with the command&nbsp;<code>mongo</code>. You can also play around with a more graphical client&nbsp;<a href="https://www.mongodb.com/download-center?jmp=nav#compass">mongodb compass community</a>&nbsp;(just make sure to download the&nbsp;<em>community</em>&nbsp;version).</p>
+<details><summary>👽&nbsp;Below are some commands to play around with a test database in the mongoshell, always nice to know you can inspect your database pretty easily.</summary><div><div class="code-block"><div class="code-header"><span class="code-lang">Bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span></div><pre><code class="language-bash">    
+    # run `mongo` command 
+    # this launches mongoshell is a commandline interface to your local mongo db
+    
+    show dbs
+    # will show your current databases
+    
+    use test
+    # will make "test" the current database
+    
+    db.test.insert(
+       {
+          'text': 'Pangolins are cute',
+          'imageURL':'https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif',
+       }
+    )
+    # will insert an object into the database
+    # into a collection called `test`
+    
+    db.test.find()
+    # returns everything in this collection
+    
+    db.test.find({"text": "Pangolins are cute"})
+    # finds a entry in database by key:value
+</code></pre></div></div>
+<p>Ok, so now youâve played a little bit with mongo directly, letâs build something on top of it.</p></div></details>
+<div class="heading-block h2-block"><h2><strong>Mongoose</strong></h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/mongoose-1767548363203.jpg" alt="">
+<p>To interface with mongo for our API, we will use a module called&nbsp;<code>mongoose</code>. <a href="http://mongoosejs.com/">Mongoose</a>&nbsp;is an object model for mongo. This allows us to treat data that we are storing in mongo as objects in our code that have a nice API for querying, saving, validating, etc. rather than writing Mongo queries directly. Mongo is in general considered a schema-less store. We store JSON documents similarly to Firebase. However, with Mongoose we are able to specify a schema for our objects. This allows us to validate and assert our data before inserting it into the database to protect us from pesky bugs. You will sometimes see this type of module called an ODM (Object Document Mapping/Mapper) for non-relational databases like mongo or an ORM (Object Relational Mapping) for relational databases like PostgreSQL.</p>
+<p>🚀 Install mongoose:&nbsp;<code>npm install mongoose</code></p>
+<p>🚀 Add this snippet to get mongoose initialized with our database at the bottom of&nbsp;<code>server.js</code>. We will wrap this in an anonymous&nbsp;<code>async</code>&nbsp;function so that we can&nbsp;<code>await</code>&nbsp;our call to connect to the database:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span></div><pre><code class="language-javascript">// at top
+import mongoose from 'mongoose';
 
 // at bottom of file
 
@@ -608,7 +592,7 @@ import mongoose from &#39;mongoose&#39;;
 async function startServer() {
   try {
     // connect DB
-    const mongoURI = process.env.MONGODB_URI || &#39;mongodb://localhost/kahootAPI&#39;;
+    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/kahootAPI';
     await mongoose.connect(mongoURI);
     console.log(`Mongoose connected to: ${mongoURI}`);
 
@@ -622,17 +606,17 @@ async function startServer() {
 }
 
 startServer();</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;"><strong>Models</strong></h2>
-<p>We&#39;re going to create a data model to work with. A data model in mongoose is initialized from a schema, which is a description of the structure of the object. This is much more like what you might be familiar with statically typed classes in Java.</p>
-<h3>Room Model</h3>
-<p>🚀 Create a directory <code>src/models</code> and a file inside this directory named <code>room_model.js</code>.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-jsx">import mongoose, { Schema } from &#39;mongoose&#39;;
+<div class="heading-block h2-block"><h2><strong>Models</strong></h2></div>
+<p>We're going to create a data model to work with. A data model in mongoose is initialized from a schema, which is a description of the structure of the object. This is much more like what you might be familiar with statically typed classes in Java.</p>
+<div class="heading-block h3-block"><h3>Room Model</h3></div>
+<p>🚀 Create a directory&nbsp;<code>src/models</code>&nbsp;and a file inside this directory named&nbsp;<code>room_model.js</code>.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-javascript">import mongoose, { Schema } from 'mongoose';
 
 export const RoomStates = {
-  IN_PROGRESS: &#39;IN_PROGRESS&#39;,
-  CLOSED: &#39;CLOSED&#39;,
-  GAME_OVER: &#39;GAME_OVER&#39;,
-  OPEN: &#39;OPEN&#39;,
+  IN_PROGRESS: 'IN_PROGRESS',
+  CLOSED: 'CLOSED',
+  GAME_OVER: 'GAME_OVER',
+  OPEN: 'OPEN',
 };
 
 const RoomSchema = new Schema(
@@ -650,23 +634,22 @@ const RoomSchema = new Schema(
   },
 );
 
-const RoomModel = mongoose.model(&#39;Room&#39;, RoomSchema);
+const RoomModel = mongoose.model('Room', RoomSchema);
 
 export default RoomModel;</code></pre></div></div>
 <p>Some fun things to take note of: We are creating a javascript enum to handle RoomStates and the schema will validate them.  And note that questions is a list of objects - this is a subschema in mongoose which is useful for a nested structure such as this.  </p>
-<h3>Submission Model</h3>
-<p>How might we design a Submission Schema? This would need to represent a submission (an answer to one of the room&#39;s questions) by one player. The submission will indicate the player who submitted the response and the responses themselves. The <code>player</code> field is a username string (used only for that room) that we let each player define and validate is unique when the players are joining.</p>
-<aside>
+<div class="heading-block h3-block"><h3>Submission Model</h3></div>
+<p>How might we design a Submission Schema? This would need to represent a submission (an answer to one of the room's questions) by one player. The submission will indicate the player who submitted the response and the responses themselves. The&nbsp;<code>player</code>&nbsp;field is a username string (used only for that room) that we let each player define and validate is unique when the players are joining.</p>
+<p>
 💡 EC: What type of validation might we want on usernames? (Think about things like special characters and even profanity 😳.) What would we have to do if we wanted usernames to persist across rooms? Try to implement some of these improvements.
 
-</aside>
-
-<p>Now that we know we want to multiple types of data (rooms and submissions), we have a few choices. One option is to store the submissions in a separate collection with the <code>roomId</code> of the room to which they were submitted and store no information about the submissions in the room model. Another is to just make the <code>submissions</code> field of each room an array of <code>SubmissionSchema</code> instances, so the room knows all the information about players&#39; submissions to it. We could even combine these options to have the submissions stored in their own collection and the rooms have a <code>submissions</code> field that stores the ids of its submissions so it can recover them if needed. All of these are valid options, but we’re going to make them separate collections to see what that is like. Let’s make a submission schema and model in <code>src/models/submission_model.js</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-jsx">import mongoose, { Schema } from &#39;mongoose&#39;;
+</p>
+<p>Now that we know we want to multiple types of data (rooms and submissions), we have a few choices. One option is to store the submissions in a separate collection with the <code>roomId</code> of the room to which they were submitted and store no information about the submissions in the room model. Another is to just make the&nbsp;<code>submissions</code>&nbsp;field of each room an array of&nbsp;<code>SubmissionSchema</code>&nbsp;instances, so the room knows all the information about players' submissions to it. We could even combine these options to have the submissions stored in their own collection and the rooms have a <code>submissions</code> field that stores the ids of its submissions so it can recover them if needed. All of these are valid options, but we’re going to make them separate collections to see what that is like. Let’s make a submission schema and model in <code>src/models/submission_model.js</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import mongoose, { Schema } from 'mongoose';
 
 export const SubmissionSchema = new Schema(
   {
-    roomId: { type: Schema.Types.ObjectId, ref: &#39;Room&#39; },
+    roomId: { type: Schema.Types.ObjectId, ref: 'Room' },
     player: { type: String, required: true },
     response: { type: String, required: true },
     questionNumber: { type: Number, required: true },
@@ -679,14 +662,14 @@ export const SubmissionSchema = new Schema(
   },
 );
 
-const SubmissionModel = mongoose.model(&#39;Submission&#39;, SubmissionSchema);
+const SubmissionModel = mongoose.model('Submission', SubmissionSchema);
 
 export default SubmissionModel;</code></pre></div></div>
 <p>We hope you do not leave this assignment thinking that there are not alternative approaches. All of the designs we mentioned are valid, and there are likely more we did not consider. Here we chose to keep the submission information separate from the rooms.</p>
-<h2 style="background-color: #FBF3DB;"><strong>Controllers</strong></h2>
-<p>🚀 Create a directory <code>src/controllers</code> and a file inside this named <code>room_controller.js</code>. This controller will hold the business logic responsible for handling all the requests related to rooms (aka games) for our API:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-jsx">import Room, { RoomStates } from &#39;../models/room_model&#39;;
-import { submit, getScores, countSubmissions } from &#39;./submission_controller&#39;;
+<div class="heading-block h2-block"><h2><strong>Controllers</strong></h2></div>
+<p>🚀 Create a directory&nbsp;<code>src/controllers</code>&nbsp;and a file inside this named&nbsp;<code>room_controller.js</code>. This controller will hold the business logic responsible for handling all the requests related to rooms (aka games) for our API:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-javascript">import Room, { RoomStates } from '../models/room_model';
+import { submit, getScores, countSubmissions } from './submission_controller';
 
 export async function createRoom(roomInitInfo) {}
 
@@ -697,10 +680,10 @@ export async function changeStatus(roomId, roomKey, status) {}
 // returns the main game state with current question, rank, game status, and scoreboard
 export async function getState(roomId, player) {}
 
-// submit an answer to a room&#39;s current question
+// submit an answer to a room's current question
 export async function submitAnswer(roomId, player, response) {}</code></pre></div></div>
 <p>And a submission controller in <code>src/controllers/submission_controller.js</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-jsx">import Submission from &#39;../models/submission_model&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-javascript">import Submission from '../models/submission_model';
 
 // new answer submission
 export async function submit(
@@ -716,22 +699,22 @@ export async function countSubmissions(roomId, questionNumber) {}
 // computes scores for all players in a room
 export async function getScores(roomId, currentQuestionNumber, players) {}</code></pre></div></div>
 <p>These are empty right now, but we will come back to them soon.</p>
-<h2 style="background-color: #FBF3DB;"><strong>Routing</strong></h2>
-<p>Before we finish the controllers, let&#39;s define our routes. Each route defines a url that a client of the API can hit to either retrieve data or send new data to be stored. Our API will listen to requests at these routes and respond accordingly, usually by calling one of the controller methods we defined above. With only a few routes, it makes sense to keep them in <code>src/server.js</code>, but now we&#39;ll move routes out to their own file, <code>src/routes.js</code>. We filled in the main stuff but you should go through each route and fill in the missing sections.  They all <code>await</code> a function in the Room Controller and handle sending <code>res</code> which is the response back to the client.  </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span><span class="line-number">43</span><span class="line-number">44</span><span class="line-number">45</span><span class="line-number">46</span><span class="line-number">47</span><span class="line-number">48</span><span class="line-number">49</span><span class="line-number">50</span><span class="line-number">51</span><span class="line-number">52</span><span class="line-number">53</span><span class="line-number">54</span><span class="line-number">55</span><span class="line-number">56</span><span class="line-number">57</span><span class="line-number">58</span><span class="line-number">59</span><span class="line-number">60</span><span class="line-number">61</span></div><pre><code class="language-jsx">import { Router } from &#39;express&#39;;
-import * as Rooms from &#39;./controllers/room_controller&#39;;
+<div class="heading-block h2-block"><h2><strong>Routing</strong></h2></div>
+<p>Before we finish the controllers, let's define our routes. Each route defines a url that a client of the API can hit to either retrieve data or send new data to be stored. Our API will listen to requests at these routes and respond accordingly, usually by calling one of the controller methods we defined above. With only a few routes, it makes sense to keep them in&nbsp;<code>src/server.js</code>, but now we'll move routes out to their own file,&nbsp;<code>src/routes.js</code>. We filled in the main stuff but you should go through each route and fill in the missing sections.  They all <code>await</code> a function in the Room Controller and handle sending <code>res</code> which is the response back to the client.  </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span><span class="line-number">42</span><span class="line-number">43</span><span class="line-number">44</span><span class="line-number">45</span><span class="line-number">46</span><span class="line-number">47</span><span class="line-number">48</span><span class="line-number">49</span><span class="line-number">50</span><span class="line-number">51</span><span class="line-number">52</span><span class="line-number">53</span><span class="line-number">54</span><span class="line-number">55</span><span class="line-number">56</span><span class="line-number">57</span><span class="line-number">58</span><span class="line-number">59</span><span class="line-number">60</span><span class="line-number">61</span></div><pre><code class="language-javascript">import { Router } from 'express';
+import * as Rooms from './controllers/room_controller';
 
 const router = Router();
 // here we set up handling of endpoints
 // each route will talk to a controller and return a response
 
 // default index route
-router.get(&#39;/&#39;, (req, res) =&gt; {
-  return res.json({ message: &#39;Welcome to the kahoot API!&#39; });
+router.get('/', (req, res) =&gt; {
+  return res.json({ message: 'Welcome to the kahoot API!' });
 });
 
 // create a room - admin
-router.post(&#39;/rooms&#39;, async (req, res) =&gt; {
+router.post('/rooms', async (req, res) =&gt; {
   const roomInitInfo = req.body;
 
   try {
@@ -743,7 +726,7 @@ router.post(&#39;/rooms&#39;, async (req, res) =&gt; {
 });
 
 // get gamestate for room
-router.get(&#39;/rooms/:id&#39;, async (req, res) =&gt; {
+router.get('/rooms/:id', async (req, res) =&gt; {
   const roomId = req.params.id;
   const { player } = req.query;
 
@@ -752,7 +735,7 @@ router.get(&#39;/rooms/:id&#39;, async (req, res) =&gt; {
 });
 
 // join a room
-router.post(&#39;/rooms/:id&#39;, async (req, res) =&gt; {
+router.post('/rooms/:id', async (req, res) =&gt; {
   const roomId = req.params.id;
   const playerInfo = req.body;
 
@@ -761,7 +744,7 @@ router.post(&#39;/rooms/:id&#39;, async (req, res) =&gt; {
 });
 
 // change room status - admin
-router.patch(&#39;/rooms/:id&#39;, async (req, res) =&gt; {
+router.patch('/rooms/:id', async (req, res) =&gt; {
   const roomId = req.params.id;
   const { roomKey, status } = req.body;
 
@@ -770,7 +753,7 @@ router.patch(&#39;/rooms/:id&#39;, async (req, res) =&gt; {
 });
 
 // submit a response
-router.post(&#39;/rooms/:id/submissions&#39;, async (req, res) =&gt; {
+router.post('/rooms/:id/submissions', async (req, res) =&gt; {
   const roomId = req.params.id;
   const { player, response } = req.body;
 
@@ -780,41 +763,29 @@ router.post(&#39;/rooms/:id/submissions&#39;, async (req, res) =&gt; {
 
 export default router;</code></pre></div></div>
 <p>After making your <code>routes.js</code> , add the following line to your server.js <strong>below</strong> where you have <code>app.use(express.json());</code> and before <code>startServer</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">app.use(&#39;&#39;, routes);</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">app.use('', routes);</code></pre></div></div>
 <p>And import your routes in <code>server.js</code> :</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">import routes from &#39;./routes&#39;;</code></pre></div></div>
-<p>When looking over the above endpoints, recall that when we reference <code>req.params.id</code>, the <code>:id</code> is defined in the route — the <code>:</code> indicates pattern matching the next part. When the user makes a GET request to the route <code>rooms/33</code>, for example, <code>req.params.id</code> is 33. Similarly, <code>req.query</code> is the query parameters (e.g., the <code>name</code> query param would have the value <code>Tim</code> in <code>https://exampleurl?name=Tim</code>).</p>
-<h2 style="background-color: #FBF3DB;">Test Suite with <a href="https://www.cypress.io/">Cypress.io</a></h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">import routes from './routes';</code></pre></div></div>
+<p>When looking over the above endpoints, recall that when we reference&nbsp;<code>req.params.id</code>, the&nbsp;<code>:id</code>&nbsp;is defined in the route — the <code>:</code> indicates pattern matching the next part. When the user makes a GET request to the route&nbsp;<code>rooms/33</code>, for example,&nbsp;<code>req.params.id</code>&nbsp;is 33. Similarly, <code>req.query</code> is the query parameters (e.g., the <code>name</code> query param would have the value <code>Tim</code> in <code>https://exampleurl?name=Tim</code>).</p>
+<div class="heading-block h2-block"><h2>Test Suite with <a href="https://www.cypress.io/">Cypress.io</a></h2></div>
 <p>So, you may have heard of test driven development — the idea being develop a test first and then code to satisfy the test.  We may rarely have that opportunity, but in this case we’ve gone ahead and build a test suite for you!</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-07-at-11-1767548363203.png" alt="Screen Shot 2022-05-07 at 11.27.10 AM.png"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-07-at-11-1767548363203.png" alt="Screen Shot 2022-05-07 at 11.27.10 AM.png">
 <p>We’ll use <a href="http://cypress.io">cypress.io</a> as our test running.  Cypress is an end-to-end testing framework that is primarily geared toward front end testing, but it is flexible and we can use it for server side also. </p>
 <p>In the template code for the repo we gave you a <code>cypress</code> directory and a <code>cypress.json</code> config file.  </p>
-<p>🚀 We should add in Cypress to our project!</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">npm install cypress</code></pre></div></div>
-<p>🚀 And we should add a test command to our <code>package.json</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">// make your scripts test line to be:
-&quot;test&quot;: &quot;cypress run&quot;,</code></pre></div></div>
-<p>🚀 Now you can run <code>npm run test</code> to run a full game for you!  Take a look at <code>cypress/integration/kahoot-game-flow-test.js</code> you can read through and see what a game looks like with all the api requests.  Super convenience.  Right now it’ll all fail, but as you add code you can keep running it.  Just remember you have to have your server running first,  so <code>npm start</code> and then in a different terminal <code>npm run test</code></p>
-<ul>
-<li><p>The most basic unit of these tests are<code>expect</code> statements that check the results of an api call, or the results of a frontend click, etc.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">describe(&#39;testing something&#39;, () =&gt; {
-  it(&#39;here we test a web request&#39;, () =&gt; {
-    cy.request(&#39;POST&#39;, `/rooms/${roomId}`, {
-      key: &#39;value&#39;,
-    }).then((response) =&gt; {
-      expect(response.status).to.eq(200);
-    });
-  });
-});</code></pre></div></div>
-</li>
-</ul>
-<p>💁 One tip, if you want to specify which test to you you can modify the lines that look like: <code>it(&#39;admin creates room&#39;, () =&gt; {</code> to <code>it.only(&#39;admin creates room&#39;, () =&gt; {</code> and cypress will ONLY run the ones that have .only.  That is helpful is you want to test incrementally. </p>
-<h2 style="background-color: #FBF3DB;"><strong>Back to Controllers!</strong></h2>
-<p>Now we&#39;ll finish the controllers for both the submissions and rooms.</p>
-<h3>Create a new room → <strong><code>createRoom</code></strong></h3>
-<p>We should first implement the <code>createRoom</code> endpoint. Without any rooms, we can&#39;t play! This will be in the room_controller.</p>
-<p>🚀  We use the <code>new</code> keyword to initialize a new room, then give it the appropriate properties and save it using the <code>.save()</code> method.  <a href="https://mongoosejs.com/docs/api.html#model_Model">Here’s the docs</a>. </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-jsx">export async function createRoom(roomInitInfo) {
+<p>🚀&nbsp;We should add in Cypress to our project!</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">npm install cypress</code></pre></div></div>
+<p>🚀&nbsp;And we should add a test command to our <code>package.json</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">// make your scripts test line to be:
+"test": "cypress run",</code></pre></div></div>
+<p>🚀&nbsp;Now you can run <code>npm run test</code> to run a full game for you!  Take a look at <code>cypress/integration/kahoot-game-flow-test.js</code> you can read through and see what a game looks like with all the api requests.  Super convenience.  Right now it’ll all fail, but as you add code you can keep running it.  Just remember you have to have your server running first,  so <code>npm start</code> and then in a different terminal <code>npm run test</code></p>
+<ul><li><p>The most basic unit of these tests are<code>expect</code> statements that check the results of an api call, or the results of a frontend click, etc.</p></li></ul>
+<p>💁&nbsp;One tip, if you want to specify which test to you you can modify the lines that look like: <code>it('admin creates room', () =&gt; {</code> to <code>it.only('admin creates room', () =&gt; {</code> and cypress will ONLY run the ones that have .only.  That is helpful is you want to test incrementally. </p>
+<div class="heading-block h2-block"><h2><strong>Back to Controllers!</strong></h2></div>
+<p>Now we'll finish the controllers for both the submissions and rooms.</p>
+<div class="heading-block h3-block"><h3>Create a new room → <strong><code>createRoom</code></strong></h3></div>
+<p>We should first implement the&nbsp;<code>createRoom</code>&nbsp;endpoint. Without any rooms, we can't play! This will be in the room_controller.</p>
+<p>🚀&nbsp; We use the&nbsp;<code>new</code>&nbsp;keyword to initialize a new room, then give it the appropriate properties and save it using the&nbsp;<code>.save()</code>&nbsp;method.  <a href="https://mongoosejs.com/docs/api.html#model_Model">Here’s the docs</a>. </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">export async function createRoom(roomInitInfo) {
   const newRoom = new Room();
   newRoom.creator = roomInitInfo.creator;
   newRoom.questions = roomInitInfo.questions;
@@ -825,25 +796,25 @@ export default router;</code></pre></div></div>
 
   return newRoom.save();
 }</code></pre></div></div>
-<p>The <code>.save()</code> method returns a promise, so we should make sure to <code>await</code> <code>createRoom</code> when we call it.</p>
-<p>🚀  Let&#39;s see if this works! For this assignment, we do not have a frontend, so we will instead use tools to test our API. <a href="https://www.postman.com/">Postman</a> and <a href="https://insomnia.rest/download">Insomnia</a> are tools that lets us make requests to an API, and can help us test our endpoints more easily. If you download Insomnia here are the requests in easy to import format!</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-07-at-6-1767548363203.png" alt="Screen Shot 2022-05-07 at 6.36.15 PM.png"></p>
+<p>The&nbsp;<code>.save()</code>&nbsp;method returns a promise, so we should make sure to&nbsp;<code>await</code>&nbsp;<code>createRoom</code> when we call it.</p>
+<p>🚀  Let's see if this works! For this assignment, we do not have a frontend, so we will instead use&nbsp;tools&nbsp;to test our API. <a href="https://www.postman.com/">Postman</a> and <a href="https://insomnia.rest/download">Insomnia</a> are tools that lets us make requests to an API, and can help us test our endpoints more easily. If you download Insomnia here are the requests in easy to import format!</p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-07-at-6-1767548363203.png" alt="Screen Shot 2022-05-07 at 6.36.15 PM.png">
 <p><a href="SA6%20Kahoot%20API/Insomnia-All_2022-05-10.json">Insomnia-All_kahoots.json</a></p>
 <p>For you terminal junkies out there, <a href="https://curl.se/">Curl</a> is a commandline tool for requests. It’s lightweight and requires no installation as it is commonly present in terminal environments.</p>
-<p>Now, start up your API with <code>npm start</code> and, using the curl commands above, test that creating a room via a post to <code>localhost:9090/rooms</code> with a properly formatted body returns a success message. </p>
-<p>[curl --request POST &#39;<a href="http://localhost:9090/rooms">http://localhost:9090/rooms</a>&#39; <br>--header &#39;Content-Type: application/json&#39; <br>--data &#39;{<br>    &quot;creator&quot;: &quot;Admin&quot;,<br>    &quot;roomKey&quot;: &quot;secret&quot;,<br>    &quot;questions&quot;: [<br>            {&quot;prompt&quot;: &quot;Question1?&quot;, &quot;answer&quot;: &quot;1&quot;},<br>            {&quot;prompt&quot;: &quot;Question2?&quot;, &quot;answer&quot;: &quot;2&quot;}<br>    ]<br>}&#39;</p>
-<h1 style="background-color: #DDEBF1;">response is game state - see below</h1>
-<h1 style="background-color: #DDEBF1;">question index integers are automatically assigned](<a href="https://www.notion.so/curl-request-POST-http-localhost-9090-rooms-header-Content-Type-application-json-da-4fae2fbd910b4c2a9e16ed08f55c2352?pvs=21">https://www.notion.so/curl-request-POST-http-localhost-9090-rooms-header-Content-Type-application-json-da-4fae2fbd910b4c2a9e16ed08f55c2352?pvs=21</a>)</h1>
+<p>Now, start up your API with <code>npm start</code> and, using the curl commands above, test that creating a room via a post to&nbsp;<code>localhost:9090/rooms</code>&nbsp;with a properly formatted body returns a success message. </p>
+<p>[curl --request POST '<a href="http://localhost:9090/rooms">http://localhost:9090/rooms</a>' <br>--header 'Content-Type: application/json' <br>--data '{<br>    "creator": "Admin",<br>    "roomKey": "secret",<br>    "questions": [<br>            {"prompt": "Question1?", "answer": "1"},<br>            {"prompt": "Question2?", "answer": "2"}<br>    ]<br>}'</p>
+<div class="heading-block h1-block"><h1>response is game state - see below</h1></div>
+<div class="heading-block h1-block"><h1>question index integers are automatically assigned](<a href="https://www.notion.so/curl-request-POST-http-localhost-9090-rooms-header-Content-Type-application-json-da-4fae2fbd910b4c2a9e16ed08f55c2352?pvs=21">https://www.notion.so/curl-request-POST-http-localhost-9090-rooms-header-Content-Type-application-json-da-4fae2fbd910b4c2a9e16ed08f55c2352?pvs=21</a>)</h1></div>
 <p>Remember how you set up your room model? What should your backend be expecting to receive as input?  Take a look at it now.</p>
 <p>Would it look something like this?  Track this through the  <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">POST to /rooms route</a>, then to the <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">Room Controller</a>, then to <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">Room Model</a>.  Now you too can save anything you want on a server!  Find the curl command and you should be able to test it: </p>
 <p><a href="https://www.notion.so/API-Endpoints-and-DataStructures-8e645054d22141cd84bd78b90c2582c2?pvs=21">API Endpoints and DataStructures</a> </p>
-<h3>Open Room → <code>changeStatus</code></h3>
+<div class="heading-block h3-block"><h3>Open Room → <code>changeStatus</code></h3></div>
 <p>Now that the Admin has created a room, let’s create a way for the admin to open the room for players to join! In our case all that means is changing the room status to <code>OPEN</code>. Now here’s the trick,  remember the <code>id</code> that we are returning when we create a room?   Of course you do, because you ran that curl request above and it worked.  Now you’ll want to copy the <code>id</code> or <code>_id</code> (same thing) and use that in the URL part of the other requests where we have <code>%YOUR_ROOM_ID%</code>. </p>
-<p>🚀 Here’s our controller <code>changeStatus</code> function.  Note it checks that the roomkey passed in matches that of the creator.  Super basic secret style security, not the best, but sufficient for us here. </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-jsx">export async function changeStatus(roomId, roomKey, status) {
+<p>🚀&nbsp;Here’s our controller <code>changeStatus</code> function.  Note it checks that the roomkey passed in matches that of the creator.  Super basic secret style security, not the best, but sufficient for us here. </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-javascript">export async function changeStatus(roomId, roomKey, status) {
   const room = await Room.findById(roomId);
   if (room.roomKey !== roomKey) {
-    throw new Error(&#39;Room key is incorrect&#39;);
+    throw new Error('Room key is incorrect');
   }
 
   if (status in RoomStates) {
@@ -856,13 +827,13 @@ export default router;</code></pre></div></div>
 
   return room.save();
 }</code></pre></div></div>
-<p>Note how we’re using a dictionary as an enum that we get from the room model <code>import Room, { RoomStates } from &#39;../models/room_model&#39;;</code>.   Now we have this called by our PATCH route that we set up.  Don’t forget to go back to that route and make sure this is being called and test it with <a href="https://www.notion.so/Backend-2-Kahoot-API-df8153201c6f431b829f39f84880d48b?pvs=21">curl</a>.</p>
-<h3>Players Join → joinRoom</h3>
+<p>Note how we’re using a dictionary as an enum that we get from the room model <code>import Room, { RoomStates } from '../models/room_model';</code>.   Now we have this called by our PATCH route that we set up.  Don’t forget to go back to that route and make sure this is being called and test it with <a href="https://www.notion.so/Backend-2-Kahoot-API-df8153201c6f431b829f39f84880d48b?pvs=21">curl</a>.</p>
+<div class="heading-block h3-block"><h3>Players Join → joinRoom</h3></div>
 <p>Now that the room is open, players should join it!   Here’s our joinRoom.  We have to do some work here, mostly just making sure that rooms don’t have duplicate player names and that the room is open for joining.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-jsx">export async function joinRoom(roomId, playerInfo) {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-javascript">export async function joinRoom(roomId, playerInfo) {
   const room = await Room.findById(roomId);
 
-  // make sure player&#39;s intended name does not already exist
+  // make sure player's intended name does not already exist
   const newPlayerName = playerInfo.name;
   const existingPlayers = room.players;
 
@@ -883,17 +854,17 @@ export default router;</code></pre></div></div>
   return room.save();
 }</code></pre></div></div>
 <p>Don’t forget to wire this in to our POST <code>/rooms/:id</code> route and <a href="https://www.notion.so/Backend-2-Kahoot-API-df8153201c6f431b829f39f84880d48b?pvs=21">test it!</a> </p>
-<h3>Start Game → <code>changeStatus</code></h3>
+<div class="heading-block h3-block"><h3>Start Game → <code>changeStatus</code></h3></div>
 <p>Once all the players join the room that the admin wants - they need to start the game. In our case all that means is changing the status to <code>IN_PROGRESS</code></p>
 <p>We already have this function wired in - we’ll reuse the changeStatus functionality we used before.   <a href="https://www.notion.so/Backend-2-Kahoot-API-df8153201c6f431b829f39f84880d48b?pvs=21">Test it and start the game.</a></p>
-<h3><strong>Submit answer for Player</strong></h3>
+<div class="heading-block h3-block"><h3><strong>Submit answer for Player</strong></h3></div>
 <p>Great, now for the fun part - players should submit their answers to the first question.  Wait, but how do we know what the question is? Let’s make this function first and then see how to ask for questions, since we made the question/answer pairs we can play it without it (its a big one). </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span></div><pre><code class="language-jsx">// submit an answer to a room&#39;s current question
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span><span class="line-number">41</span></div><pre><code class="language-javascript">// submit an answer to a room's current question
 export async function submitAnswer(roomId, player, response) {
   const room = await Room.findById(roomId);
 
-  if (room.status !== &#39;IN_PROGRESS&#39;) {
-    throw new Error(&quot;This game is not in progress. Can&#39;t submit now.&quot;);
+  if (room.status !== 'IN_PROGRESS') {
+    throw new Error("This game is not in progress. Can't submit now.");
   }
 
   if (!room.players.includes(player)) {
@@ -930,10 +901,10 @@ export async function submitAnswer(roomId, player, response) {
   return newSubmission;
 }</code></pre></div></div>
 <p><code>rooms/:id/submissions</code></p>
-<p>⚠️ Oh no, this is calling functions in our <code>submission_controller</code> that we haven’t filled out.  Let’s do that now.   The idea is that we want <code>room_controller</code> to be the main controller in our abstraction,  submissions belong to a room after all.  We’ve decided that it is ok for one controller to talk to another one, but we wanted to avoid a single controller interacting with multiple models.  </p>
+<p>⚠️&nbsp;Oh no, this is calling functions in our <code>submission_controller</code> that we haven’t filled out.  Let’s do that now.   The idea is that we want <code>room_controller</code> to be the main controller in our abstraction,  submissions belong to a room after all.  We’ve decided that it is ok for one controller to talk to another one, but we wanted to avoid a single controller interacting with multiple models.  </p>
 <p>Every time a player submits an answer we need to compute a few things.  Have all the players answered the question? If yes we should move on to the next question.  Have all the questions been answered? If yes, game over! </p>
-<p>🚀 Fill in the <code>submit</code> and <code>countSubmissions</code> functions in the <code>submission_controller</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span></div><pre><code class="language-jsx">// new answer submission
+<p>🚀&nbsp;Fill in the <code>submit</code> and <code>countSubmissions</code> functions in the <code>submission_controller</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span></div><pre><code class="language-javascript">// new answer submission
 export async function submit(
   roomId,
   player,
@@ -948,7 +919,7 @@ export async function submit(
   });
   if (exisitingSubmission) {
     throw new Error(
-      &#39;This player has already submitted a repsonse to this question&#39;,
+      'This player has already submitted a repsonse to this question',
     );
   }
 
@@ -973,10 +944,10 @@ export async function countSubmissions(roomId, questionNumber) {
 
   return numSubmissions;
 }</code></pre></div></div>
-<p>Players will include the information about their submissions in the body of a post request to the <code>/rooms/:id/submissions</code>/ endpoint. We will parse this to get the player&#39;s name and the answers they submitted.  Don’t forget hook it up in routes and to <a href="https://www.notion.so/Backend-2-Kahoot-API-df8153201c6f431b829f39f84880d48b?pvs=21">test it out!</a> </p>
-<h3>Get Room State for next questions and <strong>scoreboard! → <code>getState</code></strong></h3>
+<p>Players will include the information about their submissions in the body of a post request to the&nbsp;<code>/rooms/:id/submissions</code>/&nbsp;endpoint. We will parse this to get the player's name and the answers they submitted.  Don’t forget hook it up in routes and to <a href="https://www.notion.so/Backend-2-Kahoot-API-df8153201c6f431b829f39f84880d48b?pvs=21">test it out!</a> </p>
+<div class="heading-block h3-block"><h3>Get Room State for next questions and <strong>scoreboard! → <code>getState</code></strong></h3></div>
 <p>We need an endpoint for players to be able to access the information about a room.  This is the most complicated endpoint we have.  Folks need to be able to get what the current question is, the list of players, and the running leaderboard of the top 3 players.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span></div><pre><code class="language-jsx">// returns the main game state with current question, rank, game status, and scoreboard
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span></div><pre><code class="language-javascript">// returns the main game state with current question, rank, game status, and scoreboard
 export async function getState(roomId, player) {
   const room = await Room.findById(roomId);
   const scores = await getScores(
@@ -1012,8 +983,8 @@ export async function getState(roomId, player) {
   return state;
 }</code></pre></div></div>
 <p>But you’ll notice here too, we need something from submissions - scores are computed from the submissions after all.  </p>
-<p>🚀 We should add a <code>getScores</code> function to the <code>submission_controller</code> to help us. </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span></div><pre><code class="language-jsx">// computes scores for all players in a room
+<p>🚀&nbsp;We should add a <code>getScores</code> function to the <code>submission_controller</code> to help us. </p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span></div><pre><code class="language-javascript">// computes scores for all players in a room
 export async function getScores(roomId, currentQuestionNumber, players) {
   const submissions = await Submission.find({ roomId });
 
@@ -1023,7 +994,7 @@ export async function getScores(roomId, currentQuestionNumber, players) {
   });
 
   submissions.forEach((submission) =&gt; {
-    // don&#39;t count unfinished rounds
+    // don't count unfinished rounds
     if (
       submission.questionNumber &lt; currentQuestionNumber &amp;&amp;
       submission.correct
@@ -1039,70 +1010,31 @@ export async function getScores(roomId, currentQuestionNumber, players) {
   return sorted;
 }</code></pre></div></div>
 <p>Great, now we should be able to do all the steps to play a game and see how we are doing! </p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screenshot-2024-05-04-at-1-1767548363203.png" alt="Screenshot 2024-05-04 at 1.49.17 PM.png"></p>
-<h2 style="background-color: #FBF3DB;"><strong>Deploy!</strong></h2>
-<h2 style="background-color: #FBF3DB;"><strong>Render</strong></h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screenshot-2024-05-04-at-1-1767548363203.png" alt="Screenshot 2024-05-04 at 1.49.17 PM.png">
+<div class="heading-block h2-block"><h2><strong>Deploy!</strong></h2></div>
+<div class="heading-block h2-block"><h2><strong>Render</strong></h2></div>
 <p>Let’s deploy all of this! </p>
-<p>🚀 Create a new Web Service</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-03-at-5-1767548363203.png" alt="Screen Shot 2022-05-03 at 5.28.07 PM.png"></p>
-<p>🚀 Choose:</p>
-<ul>
-<li>environment: <code>Node</code></li>
-<li><strong>IMPORTANT</strong> - build command: <code>npm install &amp;&amp; npm run build</code></li>
-<li>start command: <code>npm run prod</code></li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-03-at-12-1767548363203.png" alt="Screen Shot 2022-05-03 at 12.28.27 PM.png"></p>
-<h2 style="background-color: #FBF3DB;"><strong>MongoDB Atlas</strong></h2>
-<p>Wait, but we don&#39;t have a database on our remote server! </p>
-<p>To run a MongoDB process with remote access there are several options, but we&#39;ll choose the cloud mongo option offered by mongodb.com.</p>
-<ol>
-<li><p>Create an account at <a href="https://www.mongodb.com/cloud/atlas/signup">cloud.mongodb.co</a></p>
-</li>
-<li><p>Select the free <em>Shared Clusters</em>.</p>
-</li>
-<li><p>Pick most of the provided defaults, in particular under <em>Cluster Tier</em> Select the <code>M0 Sandbox</code>(which is free). Don&#39;t turn on backups as that will add cost.</p>
-</li>
-<li><p>This will create a &quot;Project 0&quot; with &quot;Cluster 0&quot;. You are limited to 1 free cluster per project, so later on you may want to create more. For now, it is probably fine to use the same database for all your projects.</p>
-</li>
-<li><p>Create an access username and password. Save them.</p>
+<p>🚀&nbsp;Create a new Web Service</p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-03-at-5-1767548363203.png" alt="Screen Shot 2022-05-03 at 5.28.07 PM.png">
+<p>🚀&nbsp;Choose:</p>
+<ul><li>environment: <code>Node</code></li><li><strong>IMPORTANT</strong> - build command: <code>npm install &amp;&amp; npm run build</code></li><li>start command: <code>npm run prod</code></li></ul>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-03-at-12-1767548363203.png" alt="Screen Shot 2022-05-03 at 12.28.27 PM.png">
+<div class="heading-block h2-block"><h2><strong>MongoDB Atlas</strong></h2></div>
+<p>Wait, but we don't have a database on our remote server! </p>
+<p>To run a MongoDB process with remote access there are several options, but we'll choose the cloud mongo option offered by mongodb.com.</p>
+<ol start="1"><li><p>Create an account at&nbsp;<a href="https://www.mongodb.com/cloud/atlas/signup">cloud.mongodb.co</a></p></li><li><p>Select the free&nbsp;<em>Shared Clusters</em>.</p></li><li><p>Pick most of the provided defaults, in particular under&nbsp;<em>Cluster Tier</em>&nbsp;Select the&nbsp;<code>M0 Sandbox</code>(which is free). Don't turn on backups as that will add cost.</p></li><li><p>This will create a "Project 0" with "Cluster 0". You are limited to 1 free cluster per project, so later on you may want to create more. For now, it is probably fine to use the same database for all your projects.</p></li><li><p>Create an access username and password. Save them.</p>
 <p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/newuser0-1767548363203.jpg" alt=""></p>
-<p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/newuser-1767548363203.jpg" alt=""></p>
-</li>
-<li><p>Under <em>Network Access</em>, add an IP Access Entry with <code>0.0.0.0/0</code> as the entry. This will allow all IPs, which is not ideal, but for testing purposes we’ll leave it.</p>
-<p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screenshot-2025-02-12-at-2-1767548363203.png" alt="Screenshot 2025-02-12 at 2.56.47 PM.png"></p>
-</li>
-<li><p>Click <em>Clusters</em> -&gt; <em>Connect</em> -&gt; <em>Connect Your Application</em></p>
-</li>
-<li><p>Copy the connection string into a safe place and replace <code>&lt;password&gt;</code> with the password you saved earlier.</p>
-</li>
-</ol>
-<h2 style="background-color: #FBF3DB;">Connect Your DB to Render</h2>
+<p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/newuser-1767548363203.jpg" alt=""></p></li><li><p>Under <em>Network Access</em>, add an IP Access Entry with <code>0.0.0.0/0</code> as the entry. This will allow all IPs, which is not ideal, but for testing purposes we’ll leave it.</p>
+<p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screenshot-2025-02-12-at-2-1767548363203.png" alt="Screenshot 2025-02-12 at 2.56.47 PM.png"></p></li><li><p>Click&nbsp;<em>Clusters</em>&nbsp;-&gt;&nbsp;<em>Connect</em>&nbsp;-&gt;&nbsp;<em>Connect Your Application</em></p></li><li><p>Copy the connection string into a safe place and replace&nbsp;<code>&lt;password&gt;</code>&nbsp;with the password you saved earlier.</p></li></ol>
+<div class="heading-block h2-block"><h2>Connect Your DB to Render</h2></div>
 <p>One you have your connection string  you can add it to <a href="http://Render.com">Render.com</a> as <code>MONGODB_URI</code></p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-07-at-10-1767548363203.png" alt="Screen Shot 2022-05-07 at 10.27.26 PM.png"></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/screen-shot-2022-05-07-at-10-1767548363203.png" alt="Screen Shot 2022-05-07 at 10.27.26 PM.png">
 <p> Once you add that you should be able to access the deployed url and try it out there!</p>
-<h2 style="background-color: #FBF3DB;"><strong>Congrats!</strong> 😊</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/kahoot-podium-1767548363203.gif" alt="kahoot-podium.gif"></p>
-<h2 style="background-color: #FBF3DB;">To Turn In</h2>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-<li>At this point, 80% of the tests should pass* - nice and simple. If you add extra credit and it breaks testing, try to edit the test file and fix them!<br>*<em>Included is a test for admin forcing next move - that is EC and ok to fail it and the 3 following tests (final score checks + straggler submission) if you don’t choose that one.</em></li>
-<li><em>If you are confused about http status codes, open up <code>cypress/e2e/kahoot-game-flow.cy.js</code> and look through to see what status codes the tests are expecting - feel free to alter if you prefer others or make your endpoints return the same ones.</em></li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Extra Credit Options!</h2>
-<ul>
-<li>Allow admin to force next move.  Currently the game can’t progress if not all players have submitted an answer, but if you want to have timed games or someone doesn’t answer you need a way to move forward!</li>
-<li>Appropriate state: return full data for room creators for the GET /rooms getState info - so admins get for instance all the player scores, whereas players only get the top 3.</li>
-<li>Allow the admin to delete a room, or to replay a room! Generally for Mongoose Model operations, best bet is to look for methods in the documentation! <a href="https://mongoosejs.com/docs/api.html#model_Model.findByIdAndDelete">Here</a>.</li>
-<li>Allow the Admin to update the room using findByIdAndUpdate and use the roomkey to make it so that only the orginal creator can do so.</li>
-<li>Do something different for scoring - right now it just tallies up number correct, but could you do something more interesting?</li>
-<li>Add in more robust test cases</li>
-</ul>
-
+<div class="heading-block h2-block"><h2><strong>Congrats!</strong> 😊</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa6-kahoot-api/assets/kahoot-podium-1767548363203.gif" alt="kahoot-podium.gif">
+<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li>At this point, 80% of the tests should pass* - nice and simple. If you add extra credit and it breaks testing, try to edit the test file and fix them!<br>*<em>Included is a test for admin forcing next move - that is EC and ok to fail it and the 3 following tests (final score checks + straggler submission) if you don’t choose that one.</em></li><li><em>If you are confused about http status codes, open up <code>cypress/e2e/kahoot-game-flow.cy.js</code> and look through to see what status codes the tests are expecting - feel free to alter if you prefer others or make your endpoints return the same ones.</em></li></ul>
+<div class="heading-block h2-block"><h2>Extra Credit Options!</h2></div>
+<ul><li>Allow admin to force next move.  Currently the game can’t progress if not all players have submitted an answer, but if you want to have timed games or someone doesn’t answer you need a way to move forward!</li><li>Appropriate state: return full data for room creators for the GET /rooms getState info - so admins get for instance all the player scores, whereas players only get the top 3.</li><li>Allow the admin to delete a room, or to replay a room! Generally for Mongoose Model operations, best bet is to look for methods in the documentation! <a href="https://mongoosejs.com/docs/api.html#model_Model.findByIdAndDelete">Here</a>.</li><li>Allow the Admin to update the room using findByIdAndUpdate and use the roomkey to make it so that only the orginal creator can do so.</li><li>Do something different for scoring - right now it just tallies up number correct, but could you do something more interesting?</li><li>Add in more robust test cases</li></ul>
 </body>
 </html>
