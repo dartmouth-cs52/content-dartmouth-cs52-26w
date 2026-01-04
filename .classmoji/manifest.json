@@ -93,7 +93,9 @@
       "slides": [],
       "assignments": {
         "lab2-quizsite": {
-          "pages": [],
+          "pages": [
+            "lab-2-build-a-buzzfeed-quiz"
+          ],
           "slides": []
         }
       }
@@ -215,7 +217,6 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
-      "lab-2-build-a-buzzfeed-quiz",
       "lab-3-react-notes",
       "lab-4-platform-frontend",
       "lab-5-platform-api",
