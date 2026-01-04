@@ -442,58 +442,47 @@
   </style>
 </head>
 <body>
-
-<p>Type: lab<br>week: Week 7<br>Created time: February 7, 2022 9:21 PM<br>Dates: May 9, 2025 → May 14, 2025<br>published: Yes</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-5-platform-api/assets/enm-1767548457636.jpg" alt=""></p>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-5-platform-api/assets/enm-1767548457636.jpg" alt="">
 <p>For this assignment we are going to build an <a href="https://expressjs.com/">express</a> and <a href="https://www.mongodb.com/">mongodb</a> CRUD api server for our react+redux blog frontend. This will finally bring our stack all the way down to the database.</p>
 <p>Our server will be a pure api server, returning only JSON format data to our Lab4 frontend.</p>
-<h2 style="background-color: #FBF3DB;">Assignment At a Glance</h2>
-<ul>
-<li>Intro to Express and Mongo. <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">SA6</a> got you started with Express.js and Mongo, we’ll now use that knowledge to build up an API server. We’ll add in the <code>post</code> schema, get going with express routes, and get set up for adding in the other stuff.</li>
-<li>Basic CRUD API: Building from the intro, we’ll implement the full <strong>create</strong>, <strong>retrieve</strong>, <strong>update</strong>, <strong>delete</strong> api for our blog.</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Some Setup</h2>
+<div class="heading-block h2-block"><h2>Assignment At a Glance</h2></div>
+<ul><li>Intro to Express and Mongo. <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">SA6</a> got you started with Express.js and Mongo, we’ll now use that knowledge to build up an API server. We’ll add in the <code>post</code> schema, get going with express routes, and get set up for adding in the other stuff.</li><li>Basic CRUD API: Building from the intro, we’ll implement the full <strong>create</strong>, <strong>retrieve</strong>, <strong>update</strong>, <strong>delete</strong> api for our blog.</li></ul>
+<div class="heading-block h2-block"><h2>Some Setup</h2></div>
 <p>First we should do some basic setup steps.</p>
 <p>🚀 Check your repo <code>platform-api</code></p>
 <p>🚀 Do what you did in <a href="https://www.notion.so/Lab-4-DEPRECATED-Redux-Platform-Frontend-b9afe87e26cb4deca344688de11796fb?pvs=21">lab4</a> when pulling from your own starterpack but in this case we’ll pull from a different starter — clone your repo, add a starter remote to this premade starter pack, and pull from it.</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">#make sure you are in your project directory
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your project directory
 git remote add starter https://github.com/dartmouth-cs52/express-babel-starter.git
-git pull starter main</code></pre></div></div></div>
+git pull starter main</code></pre></div>
 <p>During the server side short assignment we inspected the starterpack, it isn’t very complicated - just express+babel+eslint (no webpack or vite since we are using node).</p>
 <p>Ok, now that we got that out of the way. Let’s dig in!</p>
-<h3>React App Debugging</h3>
+<div class="heading-block h3-block"><h3>React App Debugging</h3></div>
 <p>The whole point here is to get your blog app working with this new server, so we will point your blog frontend to this new server.</p>
 <p>🚀 Change your server api url:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">const ROOT_URL = &#39;http://localhost:9090/api&#39;;
-// const ROOT_URL = &#39;https://platform.cs52.me/api&#39;;</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'https://platform.cs52.me/api';</code></pre></div></div>
 <p>And start up your platform-client app. It’ll be broken for now (should display no blog entries), but hopefully soon we’ll have it all working!</p>
-<h2 style="background-color: #FBF3DB;">Intro Express</h2>
+<div class="heading-block h2-block"><h2>Intro Express</h2></div>
 <p><a href="https://expressjs.com/">Express</a> is a web framework for Node.js. What it does for us is provide a way to listen for and respond to incoming web requests.</p>
 <p>Each of the http API requests we were making will need to be provided in this assignment.</p>
 <p>To recap the API has the following endpoints:</p>
-<ul>
-<li><strong>GET</strong> <code>/api/posts/</code> returns only title, tags, and coverUrl for all posts <code>[[{&quot;id&quot;:&quot;&quot;,title&quot;:&quot;&quot;,&quot;tags&quot;:&quot;&quot;, &quot;coverUrl&quot;: &quot;&quot;},...]</code></li>
-<li><strong>POST</strong> <code>/api/posts/</code> with post parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> creates a new post</li>
-<li><strong>PUT</strong> <code>/api/posts/:postID</code> with parameters <code>{&#39;title&#39;, &#39;tags&#39;, &#39;content&#39;, &#39;coverUrl&#39;}</code> will update an entry</li>
-<li><strong>GET</strong> <code>/api/posts/:postID</code> returns the post found at <code>postID</code></li>
-<li><strong>DELETE</strong> <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li>
-</ul>
+<ul><li><strong>GET</strong> <code>/api/posts/</code> returns only title, tags, and coverUrl for all posts <code>[[{"id":"",title":"","tags":"", "coverUrl": ""},...]</code></li><li><strong>POST</strong> <code>/api/posts/</code> with post parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> creates a new post</li><li><strong>PUT</strong> <code>/api/posts/:postID</code> with parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> will update an entry</li><li><strong>GET</strong> <code>/api/posts/:postID</code> returns the post found at <code>postID</code></li><li><strong>DELETE</strong> <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li></ul>
 <p>Let’s implement these and more!</p>
 <p>Take a look through the current <code>src/server.js</code> file. This is the entry point for the app. Just like <code>index.js</code> has been in our frontend app (the names of these are arbitrary). Note how we are setting the route:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-jsx">// default index route
-app.get(&#39;/&#39;, (req, res) =&gt; {
-  res.send(&#39;hi&#39;);
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-javascript">// default index route
+app.get('/', (req, res) =&gt; {
+  res.send('hi');
 });</code></pre></div></div>
 <p>This routing concept is identical to the routing we used in our react app. It maps URL paths to functions. These functions take 2 arguments: <code>request</code> and <code>response</code>.</p>
 <p><strong>Request</strong> is an express object that contains, among other things, any data that was part of the request. For instance, the JSON parameters we would POST or PUT in our asynchronous <code>axios</code> calls would be available as <code>req.body.title</code>, etc.</p>
 <p><strong>Response</strong> is another special express object that contains, among other things, a method named <code>send</code> that allows us to send back a response to the client. When your api call gets back JSON data this is how it is returned. Consider <code>res.send()</code> the equivalent of a network based <code>return</code> statement.</p>
 <p>We’ll add more routing in shortly, but first let’s set up our database!</p>
-<h2 style="background-color: #FBF3DB;">Mongo Database Server</h2>
+<div class="heading-block h2-block"><h2>Mongo Database Server</h2></div>
 <p>Mongo is the database that we are going to use. We will run a local mongo daemon to connect to for testing.</p>
 <p>🚀 Install MongoDB Server and Client: you should already have these installed from the <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">server-side short</a> assignment <a href="https://docs.mongodb.com/manual/installation/#mongodb-community-edition">installation instructions here</a>.</p>
 <p>There is a commmandline client you can use to connect to the database: <code>mongosh</code>. You can also play around with a more graphical client <a href="https://www.mongodb.com/download-center?jmp=nav#compass">mongodb compass community</a> (just make sure to download the <em>community</em> version).</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">mongosh</code></pre></div></div></div>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span></div><pre><code class="language-jsx">// mongoshell is a commandline interface to your local mongo db
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">mongosh</code></pre></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span></div><pre><code class="language-javascript">// mongoshell is a commandline interface to your local mongo db
 
 show dbs
 // will show your current databases
@@ -503,10 +492,10 @@ use platform_db
 
 db.posts.insert(
    {
-     &quot;title&quot;: &quot;first post&quot;,
-     &quot;tags&quot;: &quot;words&quot;,
-     &quot;content&quot;:  &quot;this is a test post&quot;,
-     &quot;coverUrl&quot;: &quot;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&quot;
+     "title": "first post",
+     "tags": "words",
+     "content":  "this is a test post",
+     "coverUrl": "https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif"
    }
 )
 // will insert an object into the database
@@ -515,17 +504,17 @@ db.posts.insert(
 db.posts.find()
 // returns everything in this collection
 
-db.posts.find({&quot;title&quot;: &quot;first post&quot;})
+db.posts.find({"title": "first post"})
 // finds a entry in database by nested key:value</code></pre></div></div>
 <p>Ok, so now you’ve played a little bit with mongo directly, let’s build something on top of it.</p>
-<h2 style="background-color: #FBF3DB;">Mongoose</h2>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-5-platform-api/assets/mongoose-1767548457636.jpg" alt=""></p>
+<div class="heading-block h2-block"><h2>Mongoose</h2></div>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-5-platform-api/assets/mongoose-1767548457636.jpg" alt="">
 <p>Don’t forget to install Mongoose! Just repeat the Mongoose section from <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">server-side</a></p>
-<p>⚠️ Use <code>platform_db</code> as your database name though!</p>
-<h2 style="background-color: #FBF3DB;">Models</h2>
+<p>⚠️&nbsp;Use <code>platform_db</code> as your database name though!</p>
+<div class="heading-block h2-block"><h2>Models</h2></div>
 <p>We’re going to create a <code>Post</code> data model to work with. You’ve already made something similar in the <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">serverside short.</a>  Take a look at those schemas/models to figure out how to make this one!</p>
 <p>🚀 Create a directory <code>src/models</code> and a file inside this directory named <code>post_model.js</code>.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-jsx">import mongoose, { Schema } from &#39;mongoose&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">import mongoose, { Schema } from 'mongoose';
 
 // create a PostSchema with a title field
 
@@ -533,11 +522,11 @@ db.posts.find({&quot;title&quot;: &quot;first post&quot;})
 
 export default PostModel;</code></pre></div></div>
 <p>This will do for now, let’s see about how to use this.</p>
-<h2 style="background-color: #FBF3DB;">Controllers</h2>
+<div class="heading-block h2-block"><h2>Controllers</h2></div>
 <p>🚀 Create a directory <code>src/controllers</code> and a file inside this named <code>post_controller.js</code>.</p>
 <p>What might our controller do?</p>
 <p>Well it should have methods that perform all the main functionality of our API. In short those methods would be:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span></div><pre><code class="language-jsx">import Post from &#39;../models/post_model&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span></div><pre><code class="language-javascript">import Post from '../models/post_model';
 
 export async function createPost(postFields) {
   //await creating a post
@@ -561,17 +550,17 @@ export async function updatePost(id, postFields) {
 }</code></pre></div></div>
 <p>Let’s just have them empty for now and then deal with the details later. </p>
 <p>⚠️ Note now this is a bit different from what we did in the server-side short. There we played with promises, but here we’ll play with async/await to make it a bit more readable. Up to you how you prefer it.</p>
-<h2 style="background-color: #FBF3DB;">Routing</h2>
+<div class="heading-block h2-block"><h2>Routing</h2></div>
 <p>Now we are ready to wire it all together with routes! ⚡ The way we were doing it earlier is not very extensible. Let’s create a separate file for routes.</p>
 <p>🚀 Create: <code>src/router.js</code>.</p>
 <p>Here’s some boilerplate to get us going:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-jsx">import { Router } from &#39;express&#39;;
-import * as Posts from &#39;./controllers/post_controller&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">import { Router } from 'express';
+import * as Posts from './controllers/post_controller';
 
 const router = Router();
 
-router.get(&#39;/&#39;, (req, res) =&gt; {
-  res.json({ message: &#39;welcome to our blog api!&#39; });
+router.get('/', (req, res) =&gt; {
+  res.json({ message: 'welcome to our blog api!' });
 });
 
 ///your routes will go here
@@ -579,7 +568,7 @@ router.get(&#39;/&#39;, (req, res) =&gt; {
 export default router;</code></pre></div></div>
 <p>Express provides a nice <a href="https://expressjs.com/en/4x/api.html#router">route interface</a> that we will use to define all of our routes.</p>
 <p>The chaining method simplifies how our routes look. For instance here is how we could define our <code>posts/:id</code> routes.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span></div><pre><code class="language-jsx">// example!
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span></div><pre><code class="language-javascript">// example!
 // on routes ending in /someroute/:someID
 // ----------------------------------------------------
 
@@ -596,7 +585,7 @@ const exampleHandleDelete = async (req, res) =&gt; {
 };
 
 router
-  .route(&#39;/someroute/:someID&#39;)
+  .route('/someroute/:someID')
   .post(async (req, res) =&gt; {
     // use req.body etc to await some contoller function
     // send back the result
@@ -607,77 +596,70 @@ router
 <p>In short, you listen on a route and register various callback functions. Those could be defined inline, or separated out. In this example we are marking them as async functions and from each of these we will call the various controller methods we have defined.</p>
 <p>Ok, remember how we defined all our API endpoints? Let’s map them in our router.</p>
 <p>🚀 Use the syntax above to make routes and functions to handle the following:</p>
-<ul>
-<li>POST <code>/posts</code>: <code>Posts.createPost</code></li>
-<li>GET <code>/posts</code>: <code>Posts.getPosts</code></li>
-</ul>
+<ul><li>POST <code>/posts</code>: <code>Posts.createPost</code></li><li>GET <code>/posts</code>: <code>Posts.getPosts</code></li></ul>
 <p>and also for:</p>
-<ul>
-<li>GET <code>/posts/:id</code>: <code>Posts.getPost</code></li>
-<li>PUT <code>/posts/:id</code>: <code>Posts.updatePost</code></li>
-<li>DELETE <code>/posts/:id</code>: <code>Posts.deletePost</code></li>
-</ul>
+<ul><li>GET <code>/posts/:id</code>: <code>Posts.getPost</code></li><li>PUT <code>/posts/:id</code>: <code>Posts.updatePost</code></li><li>DELETE <code>/posts/:id</code>: <code>Posts.deletePost</code></li></ul>
 <p>You can have 2 <code>router.route()</code> definitions with separate chains of HTTP verb methods, one for <code>/posts</code> and one for <code>/posts/:id</code>.</p>
-<h3>Import New Routes</h3>
+<div class="heading-block h3-block"><h3>Import New Routes</h3></div>
 <p>🚀 Now in your <code>src/server.js</code> file import our new routes and assign them to handle all <code>/api/*</code> routes! Nicely organized.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-jsx">//at top of server.js
-import apiRoutes from &#39;./router&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-javascript">//at top of server.js
+import apiRoutes from './router';
 // when importing a default route you can name it whatever you want router, routes, apiRoutes, etc. naming is only important when you destructure import { key } from module.
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 // this should go AFTER body parser
-app.use(&#39;/api&#39;, apiRoutes);</code></pre></div></div>
+app.use('/api', apiRoutes);</code></pre></div></div>
 <p>Neat! 🌟</p>
-<p>Note: the <code>app.use(&#39;api</code> line should go towards the bottom of the file, in particular after <code>bodyparser</code>. The <code>server.js</code> file is <strong>read top to bottom every connection request</strong>, so when it hits the route definition if the body of the request hasn’t been parsed you will get errors when you try to use <code>req.body</code>.</p>
-<h2 style="background-color: #FBF3DB;">Testing</h2>
+<p>Note: the <code>app.use('api</code> line should go towards the bottom of the file, in particular after <code>bodyparser</code>. The <code>server.js</code> file is <strong>read top to bottom every connection request</strong>, so when it hits the route definition if the body of the request hasn’t been parsed you will get errors when you try to use <code>req.body</code>.</p>
+<div class="heading-block h2-block"><h2>Testing</h2></div>
 <p>Let’s test what we have done so far! Test out each of the routes using these curl commands (just modified version with localhost from platform-client).</p>
-<p>🍸 Since you don’t yet have the controller functions working, try making mock <code>res.json({&#39;hi&#39;})</code> test responses for each of the routes so you know that they are being called.</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span></div><pre><code class="language-bash"># all posts get:
-curl -X GET &quot;http://localhost:9090/api/posts&quot;
+<p>🍸 Since you don’t yet have the controller functions working, try making mock <code>res.json({'hi'})</code> test responses for each of the routes so you know that they are being called.</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># all posts get:
+curl -X GET "http://localhost:9090/api/posts"
 
 # create new post
-curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;first post&quot;,
-    &quot;tags&quot;: &quot;words&quot;,
-    &quot;content&quot;:  &quot;this is a test post&quot;,
-    &quot;coverUrl&quot;: &quot;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&quot;
-}&#39; &quot;http://localhost:9090/api/posts&quot;
+curl -X POST -H "Content-Type: application/json" -d '{
+    "title": "first post",
+    "tags": "words",
+    "content":  "this is a test post",
+    "coverUrl": "https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif"
+}' "http://localhost:9090/api/posts"
 
 # update by POSTID
-curl -X PUT -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;updated title&quot;,
-    &quot;tags&quot;: &quot;words&quot;,
-    &quot;content&quot;:  &quot;this is a test post&quot;,
-    &quot;coverUrl&quot;: &quot;https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif&quot;
-}&#39; &quot;http://localhost:9090/api/posts/POSTID&quot;
+curl -X PUT -H "Content-Type: application/json" -d '{
+    "title": "updated title",
+    "tags": "words",
+    "content":  "this is a test post",
+    "coverUrl": "https://media.giphy.com/media/uscuTAPrWqmqI/giphy.gif"
+}' "http://localhost:9090/api/posts/POSTID"
 
 # fetch 1 by POSTID
-curl -X GET &quot;http://localhost:9090/api/posts/POSTID&quot;
+curl -X GET "http://localhost:9090/api/posts/POSTID"
 
 # delete by POSTID
-curl -X DELETE -H &quot;Content-Type: application/json&quot; &quot;http://localhost:9090/api/posts/POSTID&quot;
+curl -X DELETE -H "Content-Type: application/json" "http://localhost:9090/api/posts/POSTID"
 
 # update by POSTID (optional fields)
-curl -X PATCH -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;new title&quot;
-}&#39; &quot;http://localhost:9090/api/posts/POSTID&quot;</code></pre></div></div></div>
+curl -X PATCH -H "Content-Type: application/json" -d '{
+    "title": "new title"
+}' "http://localhost:9090/api/posts/POSTID"</code></pre></div>
 <p>Here is an insomnia setup:</p>
 <p><a href="Lab%205%20Platform%20+%20API/Insomnia_2022-05-09.json">Insomnia_2022-05-09.json</a></p>
 <p>Or a simpler api client that doesn’t require creating an account, Bruno! <a href="https://www.usebruno.com/">https://www.usebruno.com/</a> </p>
 <p><a href="Lab%205%20Platform%20+%20API/cs52-localhost-api.json">cs52-localhost-api.json</a></p>
-<p>We have also provided a cypress test suite!   Add in <code>&quot;test&quot;: &quot;cypress run&quot;</code> to your scripts and you can run <code>npm run test</code> to see how you fare. </p>
-<h2 style="background-color: #FBF3DB;">Controller Continued</h2>
+<p>We have also provided a cypress test suite!   Add in <code>"test": "cypress run"</code> to your scripts and you can run <code>npm run test</code> to see how you fare. </p>
+<div class="heading-block h2-block"><h2>Controller Continued</h2></div>
 <p>Ok, but our controller <code>controllers/post_controller.js</code> is fairly useless. We have everything wired, but we need to actually store stuff.</p>
 <p>Let’s walk through making one of those endpoints not useless!</p>
-<p>The most important might be how to handle <code>createPost</code>. If you recall from Lab4 this gets called with the fields of our new post <code>{title: &#39;&#39;, tags: &#39;&#39;, contents: &#39;&#39;, coverUrl: &#39;&#39;}</code>. These end up in our <code>req</code> (request) object, specifically in <code>req.body</code>.</p>
+<p>The most important might be how to handle <code>createPost</code>. If you recall from Lab4 this gets called with the fields of our new post <code>{title: '', tags: '', contents: '', coverUrl: ''}</code>. These end up in our <code>req</code> (request) object, specifically in <code>req.body</code>.</p>
 <p>Let’s fill out the contents of the <code>createPost</code> method:</p>
 <p>🚀 create a new Post object:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">const post = new Post();
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">const post = new Post();
 post.title = postFields.title;</code></pre></div></div>
 <p>🚀 All our fields are available in <code>req.body</code> and we should have passed them into our controller as <code>postFields</code> (or however you want to name the argument), so let’s set them on the new Post object. You know how to do this.</p>
 <p>Now we just have to save the object (so far we’ve been working with a new instance purely in memory). Most save and query methods in Mongoose can return promises — which we know can also be used with async/await notation, so let’s practice that a bit here.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-jsx">try {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">try {
   const savedpost = await post.save();
   return savedpost;
 } catch (error) {
@@ -686,60 +668,43 @@ post.title = postFields.title;</code></pre></div></div>
 <p>It is common practice to return the modified object in a API call as confirmation, but often API’s will just return various success codes also to indicate success or failure. Why might you want to return the entire updated object though? </p>
 <p>⚠️ Double check your route handler, are you <code>await</code>ing the controller function <code>Posts.createPost(req.body)</code> and then <code>res.json</code> responding with the results?</p>
 <p>🚀 Let’s test that this worked:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-bash">curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{
-    &quot;title&quot;: &quot;first post&quot;
-}&#39; &quot;http://localhost:9090/api/posts&quot;</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl -X POST -H "Content-Type: application/json" -d '{
+    "title": "first post"
+}' "http://localhost:9090/api/posts"</code></pre></div>
 <p>And then in mongo shell <code>mongosh</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-jsx">use platform_db
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">use platform_db
 db.posts.find({})</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">Get All Endpoints Working</h2>
+<div class="heading-block h2-block"><h2>Get All Endpoints Working</h2></div>
 <p>Your mission is to now implement the rest of the endpoints! You have the wiring ready, all you need is to use the <a href="http://mongoosejs.com/docs/queries.html">mongoose docs</a> to implement <code>getPost</code>, <code>getPosts</code>, <code>updatePost</code>, and <code>deletePost</code>. You may find mongoose methods such as: <code>.find()</code>, <code>.findById()</code>, <code>.remove()</code> helpful. You might want to look into sorting the results for <code>getPosts</code> by <code>createdAt</code>.</p>
 <p>⚠️ In the above we only saved <code>title</code>, none of the other fields were defined in our Post Schema! You should now go back and add the other fields we need to the model as well as to the all the controller methods.</p>
 <p>And finally, you’ll need to get the router id that is passed in when we hit <code>/posts/:id</code>. This is accessible as <code>req.params.id</code> inside each of our controller functions that had this <code>:id</code> path pattern matching syntax.</p>
-<h2 style="background-color: #FBF3DB;">Test It!</h2>
-<p>Add in <code>&quot;test&quot;: &quot;cypress run&quot;</code> to your scripts and you can run <code>npm run test</code> to see how you fare.  If your frontend is working, but the tests are failing… that is because the tests expect specific error codes.  You can and should edit your code and/or the test so that it works!  Take a look at <code>cypress/e2e/*.cy</code> for the tests that are run!  </p>
+<div class="heading-block h2-block"><h2>Test It!</h2></div>
+<p>Add in <code>"test": "cypress run"</code> to your scripts and you can run <code>npm run test</code> to see how you fare.  If your frontend is working, but the tests are failing… that is because the tests expect specific error codes.  You can and should edit your code and/or the test so that it works!  Take a look at <code>cypress/e2e/*.cy</code> for the tests that are run!  </p>
 <p>For instance, here’s an example:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">expect(response.status).to.eq(401);</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">expect(response.status).to.eq(401);</code></pre></div></div>
 <p>This is looking for a 401 error code,  but maybe you are responding with 402.  Status codes may feel somewhat arbitrary, but <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">here’s a list of them</a>.  Try to shoot for ones that make sense. In the test, we’ve done some of the decision-making around that. If you disagree, feel free to change them. </p>
-<h2 style="background-color: #FBF3DB;">What about APIKEY</h2>
+<div class="heading-block h2-block"><h2>What about APIKEY</h2></div>
 <p>Unlike the blog api we’ve been using, nothing in the above relies on the query parameter <code>?key=foobar</code>. This is because this is your personal database for which we’re shortly going to implement authentication, so you don’t really need the APIKEY sandboxing. If you were curious and wanted to implement it it would be available to you in <code>req.query.key</code> and easiest would be to store it in the db as a new field and then query on it.</p>
-<h2 style="background-color: #FBF3DB;">Deploy</h2>
+<div class="heading-block h2-block"><h2>Deploy</h2></div>
 <p>We will need to host this new server component so your blog can use it instead of the <code>platform.cs52.me</code> one.</p>
 <p>🚀 <a href="https://www.notion.so/SA6-Kahoot-API-f9e5bbc269654c918a14b0860ab510b7?pvs=21">Same steps as for the short.</a></p>
 <p>Create a new web service instance, but you can use the same mongo connection string as you had for previous assignments which will look something like the following. Just make sure to change the DATABASENAME section for your new project so you aren’t using the same one as the server-side short. </p>
 <p><code>mongodb+srv://USERNAME:PASSWORD@cluster.yourmongoclusterid.mongodb.net/DATABASENAME?retryWrites=true&amp;w=majority</code></p>
-<h2 style="background-color: #FBF3DB;">Basic API server Complete!</h2>
+<div class="heading-block h2-block"><h2>Basic API server Complete!</h2></div>
 <p>Once you have all the api endpoints complete, test it out using your blog frontend, make sure all the parts still work! IE. Change your platform-client frontend <code>ROOT_URL</code> to point to your Render hosted server instance. Commit and push your very slightly altered platform-client so that it now uses your server instead of the provided CS52 one.</p>
-<h2 style="background-color: #FBF3DB;">To Turn In</h2>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-<li>Tests should all pass - nice and simple. If you add extra credit and it breaks testing, try to edit the test file and fix them.</li>
-<li>Make sure you have deployed separate branches of your frontend and your backend so new URLs for both is ideal.</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Extra Credit</h2>
+<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li>Tests should all pass - nice and simple. If you add extra credit and it breaks testing, try to edit the test file and fix them.</li><li>Make sure you have deployed separate branches of your frontend and your backend so new URLs for both is ideal.</li></ul>
+<div class="heading-block h2-block"><h2>Extra Credit</h2></div>
 <p><em>always mention your extra credit in the README.md file</em></p>
-<ul>
-<li>change your tags store to be an array rather than a string, can just split by whitespace</li>
-<li>add commenting to posts (either an array or another model) / change both api and frontend to support this.</li>
-<li>really at this point you can start modifying your blog to be whatever you want. Add in new fields to your posts.</li>
-<li>add in search support.</li>
-<li>later we’ll introduce User and Authentication so <strong>do not</strong> implement those here though.</li>
-</ul>
-<h3>EC Option: Implementing Search</h3>
+<ul><li>change your tags store to be an array rather than a string, can just split by whitespace</li><li>add commenting to posts (either an array or another model) / change both api and frontend to support this.</li><li>really at this point you can start modifying your blog to be whatever you want. Add in new fields to your posts.</li><li>add in search support.</li><li>later we’ll introduce User and Authentication so <strong>do not</strong> implement those here though.</li></ul>
+<div class="heading-block h3-block"><h3>EC Option: Implementing Search</h3></div>
 <p>If you’d like to add Search, you’ll need several things: a search bar, a UI for search results, a route in your API which can receive a query. To make an object’s fields searchable, add the following line immediately after you create your object’s Schema:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">ObjectSchema.index({ fieldToSearch1: &#39;text&#39;, fieldToSearch2: &#39;text&#39;, ... });</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">ObjectSchema.index({ fieldToSearch1: 'text', fieldToSearch2: 'text', ... });</code></pre></div></div>
 <p>Indices allow Mongo to efficiently store and sort searchable information. By default, the ID of an object recieves an index. In this case, we’re going to set Mongo’s special <code>$text</code> index to match certain fields. Then, in your search-controller function, add:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">const searchedObjects = await Object.find({
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">const searchedObjects = await Object.find({
   $text: { $search: my - query - string },
 });</code></pre></div></div>
 <p>where <code>my-query-string</code> is the string you’re searching for. Notice that we use the same <code>Object.find()</code> function, except we pass in an object that acts as a filter.</p>
 <p>Need more help? The <a href="https://docs.mongodb.com/manual/text-search/">Mongo docs</a> are your friend! Alternatively, here’s an <a href="https://www.compose.com/articles/full-text-search-with-mongodb-and-node-js/">article</a> with a more detailed approach.</p>
-
 </body>
 </html>
