@@ -58,16 +58,12 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "landing-page-part-1": {
-          "pages": [
-            "lab-1-part-1-build-a-landing-page-html"
-          ],
+        "landing-page-part-2": {
+          "pages": [],
           "slides": []
         },
-        "landing-page-part-2": {
-          "pages": [
-            "lab-1-part-2-build-a-landing-page-css"
-          ],
+        "landing-page-part-1": {
+          "pages": [],
           "slides": []
         }
       }
@@ -206,6 +202,8 @@
       "ecsa-uploading-images",
       "ecsa-websockets",
       "intro-to-cypress-and-web-testing",
+      "lab-1-part-1-build-a-landing-page-html",
+      "lab-1-part-2-build-a-landing-page-css",
       "lab-2-build-a-buzzfeed-quiz",
       "lab-3-react-notes",
       "lab-4-platform-frontend",
