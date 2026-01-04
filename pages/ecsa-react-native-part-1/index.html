@@ -912,7 +912,7 @@ const VideoList = () =&gt; {
 <div class="heading-block h3-block"><h3>Youtube API</h3></div>
 <p>Ah darn, one other thing. We need to actually have a reference to the API, right? This next part should (hopefully) look super familiar.</p>
 <p>🚀 Create a new file in the services directory, <code>services/youtube-api.js</code>.</p>
-<p>Sound familiar? We did this in <a href="https://www.notion.so/SA3-Intro-React-Short-Assignment-fab0accb331d4fe7a2112db853bafdd0?pvs=21">SA3</a>, and we will be using the exact same api for this react-native app! That’s coooool.</p>
+<p>Sound familiar? We did this in <a href="https://app.classmoji.io/dartmouth-cs52-26w/pages/cb1b1fc2-39ca-4151-a252-6a4fc0cbca7f">SA3</a>, and we will be using the exact same api for this react-native app! That’s coooool.</p>
 <p>🚀 Go ahead and find that file and copy it here. We need to do this because we need your individual api key, which you already made in sa4. If you want more than 5 results at a time then add in <code>maxResults: 15</code> to the <code>params</code>.</p>
 <ul><li>Accidentally deleted your API key? No biggie. Just follow the <a href="http://cs52.me/assignments/sa/react-videos/#youtube-api">old instructions from sa4</a>.</li></ul>
 <p>🚀 Let’s add in a <code>useEffect()</code> to trigger our API call whenever the <code>query</code> variable changes:</p>
