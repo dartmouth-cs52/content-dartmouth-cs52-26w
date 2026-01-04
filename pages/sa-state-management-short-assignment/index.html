@@ -442,55 +442,49 @@
   </style>
 </head>
 <body>
-
-<p>Type: short<br>week: Week 5<br>Created time: April 15, 2024 1:09 PM<br>Dates: April 28, 2025 → April 30, 2025<br>published: Yes</p>
-<h1 style="background-color: #DDEBF1;">State Management — Short Assignment</h1>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/untitled-1767548385857.png" alt="Untitled"></p>
-<h2 style="background-color: #FBF3DB;">Overview</h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/untitled-1767548385857.png" alt="Untitled">
+<div class="heading-block h2-block"><h2>Overview</h2></div>
 <p>React StarterPack + <a href="https://zustand-demo.pmnd.rs/">Zustand</a></p>
 <p>For this workshop we’re just going to add Zustand to our starter pack and our YouTube video Short Assignment!</p>
 <p>Zustand is a fancy state management system that we’ll be using to build our various next assignments. It will allow us to simplify our code and have a global state in our app with fewer callbacks!  It is a successor to Redux, which is a popular state management tool you may have heard of. Zustand follows the same <a href="https://docs.pmnd.rs/zustand/guides/flux-inspired-practice">Flux pattern</a> but simplifies it significantly.  Instead of Actions, ActionCreators, Dispatch, Reducers, createAsyncThunk, createSlice, etc,  we have a store, and action functions, well and a bit of slices. </p>
-<div class="callout" style="align-items: flex-start;"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
-<h2 style="background-color: #FBF3DB;">Part 1:  starterpack update</h2>
+<div class="callout"><span class="callout-emoji">💻</span><span>run in Terminal<br> 🚀 : a step to not forget</span></div>
+<div class="heading-block h2-block"><h2>Part 1:  starterpack update</h2></div>
 <p>🚀 We’re going to keep working on your <strong>frontend-starterpack</strong> for this assignment. </p>
 <p>So just dig up that repo and work there! At this point you should have a starterpack that has vite+babel+eslint+sass+react+reactrouter. Remember to just push your new stuff to this. For grading we’ll know which commits to look at. You want to keep building this up.</p>
 <p>Now we’re going to add in Zustand to your personal starter repository so now you’ll have vite+babel+eslint+sass+react+reactrouter+zustand! Wow.</p>
-<h2 style="background-color: #FBF3DB;">Branch it</h2>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">git checkout -b add_state_management</code></pre></div></div></div>
-<h2 style="background-color: #FBF3DB;">Zustand</h2>
+<div class="heading-block h2-block"><h2>Branch it</h2></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">git checkout -b add_state_management</code></pre></div>
+<div class="heading-block h2-block"><h2>Zustand</h2></div>
 <p>🚀 Install zustand node module</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-bash">npm install zustand</code></pre></div></div></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install zustand</code></pre></div>
 <p>Zustand is a general state management paradigm that does not necessarily need to be tied to React. But together they are an unstoppable force for clean web development. </p>
-<h2 style="background-color: #FBF3DB;">What is Zustand?</h2>
+<div class="heading-block h2-block"><h2>What is Zustand?</h2></div>
 <blockquote>
 <p>Zustand is a predictable state container for JavaScript apps that is small, fast, and scalable. It is based on simplified flux principles and has a hook-based API, and involves a lot less boilerplate code than Redux and similar libraries for managing React states.</p>
 </blockquote>
 <p>Zustand has a few main concepts that we will tackle.</p>
-<ul>
-<li><strong>Store</strong>: the entire state of your app is stored in an object tree inside a single store.</li>
-<li><strong>Action Functions</strong>: the only way to change the state tree 🌳 is to run a set function that lives in the store.</li>
-</ul>
+<ul><li><strong>Store</strong>: the entire state of your app is stored in an object tree inside a single store.</li><li><strong>Action Functions</strong>: the only way to change the state tree 🌳&nbsp;is to run a set function that lives in the store.</li></ul>
 <p>This is a simplification of the flux pattern we have discussed, and a welcome one at that!</p>
-<h3>Actions</h3>
+<div class="heading-block h3-block"><h3>Actions</h3></div>
 <p>Remember how our state should be treated as if it is immutable (read-only)? Actions are the way to trigger new states. In plain React we would run a <code>setState</code> based on events passed up through callbacks. With Zustand,  we can still use local react component state for certain things, but whenever we need a far reaching state change we will use store actions instead.</p>
 <p>For instance an action could look like the following.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">(someActionPayload) =&gt; set((state) =&gt; ({ someKey: someActionPayload }));</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">(someActionPayload) =&gt; set((state) =&gt; ({ someKey: someActionPayload }));</code></pre></div></div>
 <p>Actions ensure that the state is set properly.</p>
-<h3>Store</h3>
+<div class="heading-block h3-block"><h3>Store</h3></div>
 <p>The Store is a way to store the global state for your app. So far for the React apps that we have built we have had local component state for a few of our smart components, and often have had a top level state inside of our App component. Having your app state in a single state tree has lots of positive benefits. The store is initialized in your top level <code>index.jsx</code> file.</p>
-<h2 style="background-color: #FBF3DB;">Code</h2>
+<div class="heading-block h2-block"><h2>Code</h2></div>
 <p>Let’s wire this all together, it may seem a bit tricky at first but we’ll work though it!</p>
-<h3>File Structure</h3>
+<div class="heading-block h3-block"><h3>File Structure</h3></div>
 <p>🚀 Create a file structure to store our actions and reducers.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">Code</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code>mkdir src/store src/components</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">mkdir src/store src/components</code></pre></div></div>
 <p>We’re going to create an extensible structure so there might be a little bit extra boilerplate, but not to worry it’ll all make sense.</p>
-<h3>Store</h3>
+<div class="heading-block h3-block"><h3>Store</h3></div>
 <p>The Zustand store is the main module responsible for bringing it all together. The store contains our state data and contains the functions that generate new state all in one neat package. </p>
 <p>With Javascript if you have a directory with multiple files and an <code>index.js</code> file you can import it by the directory name: <code>import ./store</code> we’ll use this to create a module store with potentially multiple files in it. </p>
 <p>For this simple example we’re going to have 1 global store. When a store gets too large folks will sometimes split it up either into multiple stores (when no actions need to change data across stores, or into a slices pattern when they are more interconnected. We’ll use and learn about slices later but for now let’s just set up on simple store. </p>
-<p>🚀 Create a super simple store <code>store/index.js</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-jsx">import { create } from &#39;zustand&#39;;
-import { devtools } from &#39;zustand/middleware&#39;;
+<p>🚀&nbsp;Create a super simple store <code>store/index.js</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-javascript">import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 const useStore = create(
   devtools((set) =&gt; {
@@ -504,7 +498,7 @@ const useStore = create(
 
 export default useStore;</code></pre></div></div>
 <p>Ok, what did we just?   We’re using Zustand’s <code>create</code> function and we pass in a function that takes <code>set</code> as an argument and returns an object with multiple keys.  This is our store!  We have <code>count</code> which is a value and two functions which we will call actions.  Super simple. </p>
-<h3>DevTools</h3>
+<div class="heading-block h3-block"><h3>DevTools</h3></div>
 <p>Wait, before we go on, it would be really lovely to have some devtools that can show us the state of the store, right?  </p>
 <p>Notice in our store we have a small bit of middleware we snuck in there. A function called devtools.  This function makes our store accessible to some devtools! </p>
 <p>Great, let’s all download and install <a href="https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">ReduxDevtools</a>!  </p>
@@ -513,14 +507,14 @@ export default useStore;</code></pre></div></div>
 </blockquote>
 <p>True, but Zustand maintains a store that turns out to be compatible with Redux and the Redux devtools work pretty seamlessly with it, so we’ll do that. </p>
 <p>✔️ Now you can open redux dev tools in your browser and confirm that the redux store is initialized:</p>
-<p><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/confirm-store-1767548385857.jpg" alt=""></p>
-<h2 style="background-color: #FBF3DB;">Connected components</h2>
+<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/confirm-store-1767548385857.jpg" alt="">
+<div class="heading-block h2-block"><h2>Connected components</h2></div>
 <p>Now we have the basics done, we should create some connected components. A connected component is one that is literally connected to the store for some bit of state.</p>
 <p>Let’s create some components that make use of our setup! These will be toy examples, and don’t particularly need app state management. But they’ll demonstrate the various wirings needed for setting up a much more complicated app.</p>
-<h3>Counter</h3>
+<div class="heading-block h3-block"><h3>Counter</h3></div>
 <p>🚀 Let’s create a component for displaying our state. Create a new file <code>counter.jsx</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import useStore from &#39;../store&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">import React from 'react';
+import useStore from '../store';
 
 function Counter(props) {
   const count = useStore((state) =&gt; state.count);
@@ -529,16 +523,13 @@ function Counter(props) {
 
 export default Counter;</code></pre></div></div>
 <p>Some things to note about this component:</p>
-<ol>
-<li><code>useStore</code>. It turns out that the Zustand store is really just a hook! This hook gives you access to the store and from there either the state or the action functions. In this case, we only want the count.</li>
-<li><code>count</code>. Check it, what we are doing is selecting a small bit of the data, not the whole thing. This means that this component will be rerendered when the store <code>state.count</code> state is updated, but it will ignore any other data that wasn’t specified in this <em>selector</em> function.</li>
-</ol>
+<ol start="1"><li><code>useStore</code>. It turns out that the Zustand store is really just a hook! This hook gives you access to the store and from there either the state or the action functions. In this case, we only want the count.</li><li><code>count</code>. Check it, what we are doing is selecting a small bit of the data, not the whole thing. This means that this component will be rerendered when the store <code>state.count</code> state is updated, but it will ignore any other data that wasn’t specified in this <em>selector</em> function.</li></ol>
 <p>🚀 Add <code>&lt;Counter /&gt;</code> to the render method of one of the components that are currently displaying like <em>Welcome</em></p>
 <p>You should now see it rendering with a value of 0. This value is coming from the default value in our reducer!</p>
-<h3>Controls</h3>
+<div class="heading-block h3-block"><h3>Controls</h3></div>
 <p>🚀 Let’s create one more component. Oof! This time it’ll just be a couple of buttons to call some actions. Make one last file: <code>controls.jsx</code>.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import useStore from &#39;../store&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import React from 'react';
+import useStore from '../store';
 
 function Controls(props) {
   const increment = useStore((state) =&gt; state.increment);
@@ -546,10 +537,10 @@ function Controls(props) {
 
   return (
     &lt;div&gt;
-      &lt;button type=&quot;button&quot; onClick={increment}&gt;
+      &lt;button type="button" onClick={increment}&gt;
         +
       &lt;/button&gt;
-      &lt;button type=&quot;button&quot; onClick={decrement}&gt;
+      &lt;button type="button" onClick={decrement}&gt;
         -
       &lt;/button&gt;
     &lt;/div&gt;
@@ -558,39 +549,32 @@ function Controls(props) {
 
 export default Controls;</code></pre></div></div>
 <p>Some things to note about the this component:</p>
-<ol>
-<li><code>useStore</code>  we use the <code>useStore</code> hook (that we created!) again here to pull out the two action functions. </li>
-<li><code>increment/decrement</code> are the two action functions that we created in the store, here we grab references to them and can then pass them in as onClick handlers.</li>
-</ol>
+<ol start="1"><li><code>useStore</code>  we use the <code>useStore</code> hook (that we created!) again here to pull out the two action functions.</li><li><code>increment/decrement</code> are the two action functions that we created in the store, here we grab references to them and can then pass them in as onClick handlers.</li></ol>
 <p>🚀 Add <code>&lt;Controls /&gt;</code> to the render method of one of the components that are currently displaying like <em>Welcome</em></p>
 <p>Note that these two components <strong>don’t need to have a common parent</strong>, and you <strong>don’t have to pass around functions in callbacks</strong>. In a simple example like this it might not make much of a difference, we could have put the counter into the local component state of the parent. However if you had multiple levels of components the callback tracking would get difficult.</p>
-<p>🧘 We’ll do much more of this type of app state management, so if this is a little confusing now don’t worry!</p>
-<h2 style="background-color: #FBF3DB;">Debugging</h2>
+<p>🧘&nbsp;We’ll do much more of this type of app state management, so if this is a little confusing now don’t worry!</p>
+<div class="heading-block h2-block"><h2>Debugging</h2></div>
 <p>Last thing! Try opening up the Redux Chrome DevTools and play with the timeline to move the state forward and back.</p>
 <p>Play with the <em>slider</em> and note how you can export and import state. Imagine how powerful that would be if we could just save the whole state of a very complex app!</p>
 <p>❓But there is a question here.  Why are all the actions showing up as “anonymous”?!?</p>
-<p>✔️ Yeah, that is because the redux devtools want a specific String name for the action. We can add that in like so:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-jsx">    // careful with this syntax - if 2nd arg is true it will replace all state rather than merge
-    increment: () =&gt; set((state) =&gt; ({ count: state.count + 1 }), false, &#39;count/increment&#39;),
-    decrement: () =&gt; set((state) =&gt; ({ count: state.count - 1 }), false, &#39;count/decrement&#39;),</code></pre></div></div>
+<p>✔️&nbsp;Yeah, that is because the redux devtools want a specific String name for the action. We can add that in like so:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">// careful with this syntax - if 2nd arg is true it will replace all state rather than merge
+increment: () =&gt; set((state) =&gt; ({ count: state.count + 1 }), false, 'count/increment'),
+decrement: () =&gt; set((state) =&gt; ({ count: state.count - 1 }), false, 'count/decrement'),</code></pre></div></div>
 <p>The zustand <code>set</code> function takes some extra arguments! </p>
-<ol>
-<li>Argument 1 (what we have used so far) is the state updater function that returns new state. </li>
-<li>Argument 2 is a boolean that determines whether the state should be merged (false is default and almost always desired) or if it should be replaced (useful for resetting everything). Leave this false unless you know what you are doing.</li>
-<li>Argument 3 is a String name for the action.</li>
-</ol>
+<ol start="1"><li>Argument 1 (what we have used so far) is the state updater function that returns new state.</li><li>Argument 2 is a boolean that determines whether the state should be merged (false is default and almost always desired) or if it should be replaced (useful for resetting everything). Leave this false unless you know what you are doing.</li><li>Argument 3 is a String name for the action.</li></ol>
 <p>Replace the lines you have in your <code>store/index.js</code>, refresh the page, and now in devtools you should see the names of the actions!</p>
-<p>❓ Should you always name your actions?  Yes! You’ll thank yourself later. </p>
-<h2 style="background-color: #FBF3DB;">Immer</h2>
-<p>❓ Ok, this is all fine, but what if we have complex state, we’ve heard tell that immutability of state is important, but in the above examples what is preventing us from mutating state?  </p>
+<p>❓&nbsp;Should you always name your actions?  Yes! You’ll thank yourself later. </p>
+<div class="heading-block h2-block"><h2>Immer</h2></div>
+<p>❓&nbsp;Ok, this is all fine, but what if we have complex state, we’ve heard tell that immutability of state is important, but in the above examples what is preventing us from mutating state?  </p>
 <p>Well nothing,  if you did <code>set((state) =&gt; { state.count++; }</code> you would get some eslint warnings, but it would, at this stage, work.  However, that is only because count is a primitive, if count was an object and you were then modifying some property inside it, then the page may not update predictably or rerender as you desire, especially if there are lots of changes. </p>
 <p>❓How might we guarantee that we don’t make an assignment mistake and always treat state as immutable?  </p>
-<p>GREAT QUESTION!  Easy!  We can use <a href="https://immerjs.github.io/immer/">Immer</a>!  Turns out Zustand supports it out of the box. 🎁  Just have to: </p>
+<p>GREAT QUESTION!  Easy!  We can use <a href="https://immerjs.github.io/immer/">Immer</a>!  Turns out Zustand supports it out of the box. 🎁&nbsp; Just have to: </p>
 <p><code>npm install immer</code></p>
-<p>🚀  Add Immer to your store like so:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span></div><pre><code class="language-jsx">import { create } from &#39;zustand&#39;;
-import { devtools } from &#39;zustand/middleware&#39;;
-import { immer } from &#39;zustand/middleware/immer&#39;;
+<p>🚀&nbsp; Add Immer to your store like so:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span></div><pre><code class="language-javascript">import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 
 const useStore = create(
   devtools(
@@ -604,7 +588,7 @@ const useStore = create(
               draftState.count += 1;
             },
             false,
-            &#39;count/increment&#39;,
+            'count/increment',
           ),
         decrement: () =&gt;
           set(
@@ -612,7 +596,7 @@ const useStore = create(
               draftState.count -= 1;
             },
             false,
-            &#39;count/decrement&#39;,
+            'count/decrement',
           ),
       };
     }),
@@ -622,103 +606,48 @@ const useStore = create(
 export default useStore;</code></pre></div></div>
 <p>❗Shoot, I’m getting a nasty <code>eslint</code> error about reassigning a parameter!  </p>
 <p>Well technically, you are assigning to a property of a parameter, so that isn’t as bad.  </p>
-<p>🚀 Add the following to your <code>.eslintrc.json</code> file to make it go away. </p>
+<p>🚀&nbsp;Add the following to your <code>.eslintrc.json</code> file to make it go away. </p>
 <p>This says that we should still error if we were to reassign the parameter completely like <code>function foo(param) { param = somethingesle }</code> but it won’t error if it is a property of the parameter like ``function foo(param) { param.property = soemthing }` </p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">&quot;no-param-reassign&quot;: [ &quot;error&quot;, { &quot;props&quot;: false } ],</code></pre></div></div>
-<p>❓ Ok, but can you explain?  What happened with <code>draftState</code> and what did we change?!</p>
-<p>✔️ Sure!  With the Immer middleware (notice how we now have <code>devtools</code> and <code>immer</code> middleware in our <code>create</code>) instead of passing in the current store state to our action functions, we instead get passed in a draftState which immer then creates a new state out of.  SO!  We can now simply mutate draftState and are always guaranteed that our actual store state won’t be mutated because Immer is great. AND we didn’t even need the Immer <code>produce</code> function, as essentially our entire store is automatically wrapped in Immer with this middleware.  Nifty keen! </p>
-<p>🧪 Ok test it all out, still works great?  Great!  Release it. </p>
-<h2 style="background-color: #FBF3DB;">PR it!</h2>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-bash">
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">"no-param-reassign": [ "error", { "props": false } ],</code></pre></div></div>
+<p>❓&nbsp;Ok, but can you explain?  What happened with <code>draftState</code> and what did we change?!</p>
+<p>✔️&nbsp;Sure!  With the Immer middleware (notice how we now have <code>devtools</code> and <code>immer</code> middleware in our <code>create</code>) instead of passing in the current store state to our action functions, we instead get passed in a draftState which immer then creates a new state out of.  SO!  We can now simply mutate draftState and are always guaranteed that our actual store state won’t be mutated because Immer is great. AND we didn’t even need the Immer <code>produce</code> function, as essentially our entire store is automatically wrapped in Immer with this middleware.  Nifty keen! </p>
+<p>🧪&nbsp;Ok test it all out, still works great?  Great!  Release it. </p>
+<div class="heading-block h2-block"><h2>PR it!</h2></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">
 git commit 
 git push origin add_state_management
-# then make a PR and merge it in to your main branch!</code></pre></div></div></div>
-<h1 style="background-color: #DDEBF1;">Part 2: YouTube!</h1>
+# then make a PR and merge it in to your main branch!</code></pre></div>
+<div class="heading-block h1-block"><h1>Part 2: YouTube!</h1></div>
 <p>Currently our React YouTube search app works great, but maybe we can learn some state management and refactor it! If you remember, we had to pass props down multiple levels, can we now use our new State Management Skills to select the video to show in Detail View without having to pass properties down multiple levels and to keep our state beautifully coherent?</p>
 <p><a href="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_800,h_762/v1546203223/cs52/videos-redux.webm">videos-redux.webm</a></p>
-<h2 style="background-color: #FBF3DB;">Prepare the Repo</h2>
-<p>😱 The next part may be a bit scary - we’re going to merge in your new starterpack changes into this repo and it’ll create a bit of confusion. <strong>You can either do the merge and practice fixing merge conflicts, or you can manually try to copy over changes.</strong> The merge conflict way works surprisingly well, but can be a bit scary at first as you’ll have some broken code and you’ll need to pay attention to linting errors and merge conflict markers to fix it. If you need a refresher about git merge resolution see the <a href="https://www.notion.so/ECSA-Git-Map-029087af71764896a7246445074002c0?pvs=21">git-map ec short</a>. You got this, breathe and read the codes. 👏 This is a great exercise as to merge successfully you’ll need to read the codes and understand which lines to pick — but I believe in you, you are ready. </p>
+<div class="heading-block h2-block"><h2>Prepare the Repo</h2></div>
+<p>😱 The next part may be a bit scary - we’re going to merge in your new starterpack changes into this repo and it’ll create a bit of confusion. <strong>You can either do the merge and practice fixing merge conflicts, or you can manually try to copy over changes.</strong> The merge conflict way works surprisingly well, but can be a bit scary at first as you’ll have some broken code and you’ll need to pay attention to linting errors and merge conflict markers to fix it. If you need a refresher about git merge resolution see the <a href="https://www.notion.so/ECSA-Git-Map-029087af71764896a7246445074002c0?pvs=21">git-map ec short</a>. You got this, breathe and read the codes. 👏&nbsp;This is a great exercise as to merge successfully you’ll need to read the codes and understand which lines to pick — but I believe in you, you are ready. </p>
 <p>🚀 To begin, we’ll create a new branch <code>statemanagement-sa</code> in your react-videos short assignment repo.</p>
 <p>Navigate to your repository on the command line and pull in the updates you’ve just made to your starterpack:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-bash">cd react-videos-short-assignment-directory
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">cd react-videos-short-assignment-directory
 git pull origin main #just in case to make sure you have the latest
 git checkout -b statemanagement-sa #create a new branch statemanagement-sa
-git pull starter main  #pull in your updated starter code! (this will only work AFTER you have merged in your changes in P1!</code></pre></div></div></div>
+git pull starter main  #pull in your updated starter code! (this will only work AFTER you have merged in your changes in P1!</code></pre></div>
 <p>Hopefully, you should only have major conflicts in your <code>src/index.jsx</code> file. Let’s handle them now!</p>
 <p>⚠️ If you have conflicts in your <code>package-lock.json</code> do: <code>git checkout --theirs -- package-lock.json</code>. This will choose the entire file from your starterpack.</p>
 <p>⚠️ If you have conflicts in your <code>package.json</code>, merge them in manually, you will most likely want the union of the two.</p>
 <p>🚀 Copy all the code from the HEAD (Current Change) of <code>src/index.jsx</code> or (<code>app.jsx</code> if you had chosen to put it in there) and paste it into its own new file <code>src/components/youtube.jsx</code>. Now go ahead and accept the incoming change.</p>
-<ul>
-<li><p>Don’t worry if you lost your HEAD, it’s right here!</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span><span class="line-number">36</span><span class="line-number">37</span><span class="line-number">38</span><span class="line-number">39</span><span class="line-number">40</span></div><pre><code class="language-jsx">import React, { useCallback, useEffect, useState } from &#39;react&#39;;
-import debounce from &#39;lodash.debounce&#39;;
-
-import SearchBar from &#39;./search_bar&#39;;
-import youtubeSearch from &#39;../../services/youtube-api&#39;;
-import VideoList from &#39;./video_list&#39;;
-import VideoDetail from &#39;./video_detail&#39;;
-
-function YouTubeHooks(props) {
-  const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelected] = useState(null);
-
-  const search = (text) =&gt; {
-    youtubeSearch(text).then((result) =&gt; {
-      setVideos(result);
-      setSelected(result[0]);
-    });
-  };
-
-  const debouncedSearch = useCallback(debounce(search, 500), []);
-
-  useEffect(() =&gt; {
-    debouncedSearch(&#39;pixar&#39;);
-  }, []);
-
-  return (
-    &lt;div&gt;
-      &lt;SearchBar onSearchChange={debouncedSearch} /&gt;
-      &lt;div id=&quot;video-section&quot;&gt;
-        &lt;VideoDetail video={selectedVideo} /&gt;
-        &lt;VideoList
-          onVideoSelect={(selection) =&gt; setSelected(selection)}
-          videos={videos}
-        /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default YouTubeHooks;</code></pre></div></div>
-</li>
-</ul>
+<ul><li><p>Don’t worry if you lost your HEAD, it’s right here!</p></li></ul>
 <p>🚀 To finish off our merge:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-jsx">// you&#39;ll need to import the YouTube component in index.jsx (or app.jsx)
-import YouTube from &#39;./youtube&#39;;
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-javascript">// you'll need to import the YouTube component in index.jsx (or app.jsx)
+import YouTube from './youtube';
 
 // and then display the component
 &lt;YouTube /&gt;;</code></pre></div></div>
 <p>⚠️ You may need to do a little bit of cleanup, for instance in <code>app.jsx</code> get rid of the counter and controls components, you won’t need them. This is a good exercise in going through your code and doing some refactoring. Your linter will help you here, it will tell you things that are undefined or need importing etc.</p>
-<ul>
-<li><p>Essentially, all we are doing is making our index.jsx file simply load up the YouTube component — you could also have index render app render youtube.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import { createRoot } from &#39;react-dom/client&#39;;
-import YouTube from &#39;./components/youtube&#39;;
-
-import &#39;./style.scss&#39;;
-
-const root = createRoot(document.getElementById(&#39;main&#39;));
-
-root.render(&lt;YouTube /&gt;);</code></pre></div></div>
-</li>
-</ul>
+<ul><li><p>Essentially, all we are doing is making our index.jsx file simply load up the YouTube component — you could also have index render app render youtube.</p></li></ul>
 <p>🚀 Your linter should tell you that <code>youtube.jsx</code> has a lot of errors. Notice that we moved that code into the component directory so a lot of the import paths are wrong. You’ll want to fix the paths in those import statements. Remember <code>../</code> is up one directory and <code>./</code> is in the current directory. At this point you should be able to get it to a point where it will build and you can get the main page up and running.</p>
 <p>🚀 Don’t forget to run <code>npm install</code> to install any of the new dependencies that were merged into <code>package.json</code>.</p>
 <p>🚀 Finish the Merge! Once you have finished handling the conflicts, go ahead and <code>git add</code> and <code>git commit</code> the changes to resolve the conflicts and finish the merge.</p>
 <p><em>NOTE: If you are adding zustand to some other existing project and don’t want to merge in the starter repo, you can go through the steps in part 1 to set up the dependencies and store.</em> </p>
-<h2 style="background-color: #FBF3DB;">Store</h2>
+<div class="heading-block h2-block"><h2>Store</h2></div>
 <p>Ok,  let’s think about the data that we want now.  Let’s summarize what data we want:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-jsx">countStore: {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span></div><pre><code class="language-javascript">countStore: {
   count: 0;
 }
 
@@ -728,20 +657,16 @@ videoStore: {
   }
 }</code></pre></div></div>
 <p>So we could have:</p>
-<ul>
-<li>one big store just like we did in Part 1.  Easy but over time will get confusing.</li>
-<li>we could split this up into 2 completely separate stores, fine, but what if we ever wanted to change something in both, and if we want to see them in the Redux DevTools as one global state?</li>
-<li>we could use a pattern called slices.  This is the <a href="https://docs.pmnd.rs/zustand/guides/slices-pattern">recommended pattern</a> from the Zustand creators, so while we don’t need it at this stage, we might as well introduce it so you know it!</li>
-</ul>
-<h3>Slices</h3>
-<p>🚀 Set up your store to have slices!  </p>
-<p>1️⃣  <code>store/index.js</code> will now import slices and create the store</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-jsx">import { create } from &#39;zustand&#39;;
-import { devtools } from &#39;zustand/middleware&#39;;
-import { immer } from &#39;zustand/middleware/immer&#39;;
+<ul><li>one big store just like we did in Part 1.  Easy but over time will get confusing.</li><li>we could split this up into 2 completely separate stores, fine, but what if we ever wanted to change something in both, and if we want to see them in the Redux DevTools as one global state?</li><li>we could use a pattern called slices.  This is the <a href="https://docs.pmnd.rs/zustand/guides/slices-pattern">recommended pattern</a> from the Zustand creators, so while we don’t need it at this stage, we might as well introduce it so you know it!</li></ul>
+<div class="heading-block h3-block"><h3>Slices</h3></div>
+<p>🚀&nbsp;Set up your store to have slices!  </p>
+<p>1️⃣&nbsp; <code>store/index.js</code> will now import slices and create the store</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 
-import createVideoSlice from &#39;./video-slice&#39;;
-import createCountSlice from &#39;./count-slice&#39;;
+import createVideoSlice from './video-slice';
+import createCountSlice from './count-slice';
 
 // folks can use slices or multiple stores if they want
 const useStore = create(
@@ -755,8 +680,8 @@ const useStore = create(
 
 export default useStore;</code></pre></div></div>
 <p><em>EC question:  what is <code>...args</code> up above?</em> </p>
-<p>2️⃣ Recreate our count store as a slice! <code>store/count-slice.js</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-jsx">export default function createCountSlice(set) {
+<p>2️⃣&nbsp;Recreate our count store as a slice! <code>store/count-slice.js</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-javascript">export default function createCountSlice(set) {
   return {
     count: 0,
     increment: () =&gt;
@@ -765,7 +690,7 @@ export default useStore;</code></pre></div></div>
           draftState.count += 1;
         },
         false,
-        &#39;counter/increment&#39;,
+        'counter/increment',
       ),
     decrement: () =&gt;
       set(
@@ -773,14 +698,14 @@ export default useStore;</code></pre></div></div>
           draftState.count -= 1;
         },
         false,
-        &#39;counter/decrement&#39;,
+        'counter/decrement',
       ),
   };
 }</code></pre></div></div>
 <p>Note some peculiarities.. We essentially have just taken part of the store creation out into a separate file, yes. BUT we have also used some <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructuring syntax</a> to help us only operate on the count slice key we defined in the store. We called our slice <code>countSlice</code> so here we pull that key out AND rename it:  <code>{countSlice: draftState}</code> deconstructs our global state object and pulls out only the <code>countSlice</code> key and renames it to be <code>draftState</code>.  </p>
 <p>WHY!??   For clarity! This is so you don’t forget that we are working with Immer on a draft.  If you forget, you may do things that don’t work.  So we remind ourselves by writing clear code! </p>
-<p>3️⃣ Create our videoStore <code>store/video-slice.js</code></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-jsx">export default function createVideoSlice(set) {
+<p>3️⃣&nbsp;Create our videoStore <code>store/video-slice.js</code></p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-javascript">export default function createVideoSlice(set) {
   return {
     selected: null,
     list: [],
@@ -790,7 +715,7 @@ export default useStore;</code></pre></div></div>
           draftState.selected = video;
         },
         false,
-        &#39;video/selectVideo&#39;,
+        'video/selectVideo',
       ),
     setVideos: (videos) =&gt;
       set(
@@ -799,147 +724,42 @@ export default useStore;</code></pre></div></div>
           draftState.list = videos;
         },
         false,
-        &#39;video/setVideos&#39;,
+        'video/setVideos',
       ),
   };
 }</code></pre></div></div>
-<h2 style="background-color: #FBF3DB;">Connected Components</h2>
+<div class="heading-block h2-block"><h2>Connected Components</h2></div>
 <p>Let’s see what you remember!</p>
-<h3>VideoListItem</h3>
+<div class="heading-block h3-block"><h3>VideoListItem</h3></div>
 <p>🚀 In <code>components/video_list_item.jsx</code> connect <code>VideoListItem</code> to the store (import <code>useStore</code>) and change the react function <code>props.onVideoSelect(props.video)</code> to now instead grab the <code>videoSlice.selectVideo</code> function from the store. </p>
 <p><strong>HINT:</strong> if you’re stuck, use <code>controls.js</code> as an example</p>
-<ul>
-<li><p>If you’re stuck++, take a look here</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import useStore from &#39;../store&#39;;
-
-function VideoListItem(props) {
-  const selectVideo = useStore(({ videoSlice }) =&gt; videoSlice.selectVideo);
-  const imgUrl = props?.video?.snippet?.thumbnails?.default?.url;
-  //notice our nice use of optional chaining
-
-  return (
-    &lt;li onClick={() =&gt; selectVideo(props.video)}&gt;
-      &lt;img src={imgUrl} alt=&quot;video&quot; /&gt;
-      &lt;div&gt;{props?.video?.snippet?.title}&lt;/div&gt;
-    &lt;/li&gt;
-  );
-}
-
-export default VideoListItem;</code></pre></div></div>
-</li>
-</ul>
-<h3>VideoList</h3>
+<ul><li><p>If you’re stuck++, take a look here</p></li></ul>
+<div class="heading-block h3-block"><h3>VideoList</h3></div>
 <p>🚀 In <code>components/video_list.jsx</code> remove <code>onVideoSelect={props.onVideoSelect}</code>  from <code>VideoListItem</code>. Yay! We no longer need to pass this function around it lives directly in our store.</p>
 <p>🚀 We can also upgrade <em>VideoList</em> to connect to the entire list of videos. Edit <code>video_list.jsx</code> to include the following:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">const videos = useStore(({ videoSlice }) =&gt; videoSlice.list);</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">const videos = useStore(({ videoSlice }) =&gt; videoSlice.list);</code></pre></div></div>
 <p><em>Note we don’t have to edit that we map over props.videos… cause we’re just naming it the same thing!</em></p>
-<ul>
-<li><p>Whole thing in case, but you should really not need this.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-jsx">import React from &#39;react&#39;;
-import useStore from &#39;../store&#39;;
-import VideoListItem from &#39;./video_list_item&#39;;
-
-const VideoList = (props) =&gt; {
-  const videos = useStore(({ videoSlice }) =&gt; videoSlice.list);
-  const videoItems = videos.map((video) =&gt; {
-    return &lt;VideoListItem key={video.etag} video={video} /&gt;;
-  });
-
-  return &lt;ul&gt;{videoItems}&lt;/ul&gt;;
-};
-
-export default VideoList;</code></pre></div></div>
-</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">YouTube Component</h2>
+<ul><li><p>Whole thing in case, but you should really not need this.</p></li></ul>
+<div class="heading-block h2-block"><h2>YouTube Component</h2></div>
 <p>🚀 Now, we need to connect <code>components/youtube.jsx</code></p>
-<ol>
-<li>Let’s connect <code>YouTube</code> to our store. The only thing this top component now needs is to be able to run the <code>setVideos</code> action.</li>
-<li><strong>Remove ALL top level state</strong>! It isn’t necessary to keep the variables in both the react state and the  store in this situation.</li>
-<li><strong>Remove ALL passed props</strong> from <code>&lt;VideoDetail /&gt;</code> and <code>&lt;VideoList /&gt;</code>, just render them as is.</li>
-<li>Change the search function to simply pass the videos list to <code>setVideos(videos)</code> rather than running any setState. We’ll stick with using the youtubeSearch api promise like we’ve been doing.</li>
-</ol>
-<ul>
-<li><p>Give it a try on your own first!</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span><span class="line-number">28</span><span class="line-number">29</span><span class="line-number">30</span><span class="line-number">31</span><span class="line-number">32</span><span class="line-number">33</span><span class="line-number">34</span><span class="line-number">35</span></div><pre><code class="language-jsx">import React, { useCallback, useEffect } from &#39;react&#39;;
-import debounce from &#39;lodash.debounce&#39;;
-import SearchBar from &#39;./search_bar&#39;;
-import youtubeSearch from &#39;../services/youtube-api&#39;;
-import VideoList from &#39;./video_list&#39;;
-import VideoDetail from &#39;./video_detail&#39;;
-import useStore from &#39;../store&#39;;
-
-function YouTube(props) {
-  const setVideos = useStore(({ videoSlice }) =&gt; videoSlice.setVideos);
-
-  const search = (text) =&gt; {
-    youtubeSearch(text).then((videos) =&gt; {
-      setVideos(videos);
-    });
-  };
-
-  const debouncedSearch = useCallback(debounce(search, 500), []);
-
-  useEffect(() =&gt; {
-    search(&#39;pixar&#39;);
-  }, []);
-
-  return (
-    &lt;div&gt;
-      &lt;SearchBar onSearchChange={debouncedSearch} /&gt;
-      &lt;div id=&quot;video-section&quot;&gt;
-        &lt;VideoDetail /&gt;
-        &lt;VideoList /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default YouTube;</code></pre></div></div>
-</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">VideoDetail</h2>
+<ol start="1"><li>Let’s connect <code>YouTube</code> to our store. The only thing this top component now needs is to be able to run the <code>setVideos</code> action.</li><li><strong>Remove ALL top level state</strong>! It isn’t necessary to keep the variables in both the react state and the  store in this situation.</li><li><strong>Remove ALL passed props</strong> from <code>&lt;VideoDetail /&gt;</code> and <code>&lt;VideoList /&gt;</code>, just render them as is.</li><li>Change the search function to simply pass the videos list to <code>setVideos(videos)</code> rather than running any setState. We’ll stick with using the youtubeSearch api promise like we’ve been doing.</li></ol>
+<ul><li><p>Give it a try on your own first!</p></li></ul>
+<div class="heading-block h2-block"><h2>VideoDetail</h2></div>
 <p>Ok, this one needs access to the bit of store state which is <code>state.videoSlice.selected</code>.</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-jsx">const video = useStore((state) =&gt; state.videoSlice.selected);</code></pre></div></div>
-<p>❓ Wait, you did something different there. You don’t have any destructuring assignment… and state is in there?  </p>
-<p>🤪 Sure thing!  There are many ways to do stuff.  <code>({videoSlice})</code> is an example of destructuring assignment, but here I wanted to show that you can also just dig through the global state object to get at the videoSlice data.  Your preference how you do it. I like the destructuring because I feel it makes things clearer, but you may prefer to always just think of the global state.  Your preference!</p>
-<h2 style="background-color: #FBF3DB;">Debugging</h2>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-javascript">const video = useStore((state) =&gt; state.videoSlice.selected);</code></pre></div></div>
+<p>❓&nbsp;Wait, you did something different there. You don’t have any destructuring assignment… and state is in there?  </p>
+<p>🤪&nbsp;Sure thing!  There are many ways to do stuff.  <code>({videoSlice})</code> is an example of destructuring assignment, but here I wanted to show that you can also just dig through the global state object to get at the videoSlice data.  Your preference how you do it. I like the destructuring because I feel it makes things clearer, but you may prefer to always just think of the global state.  Your preference!</p>
+<div class="heading-block h2-block"><h2>Debugging</h2></div>
 <p>Last thing! Try opening up the Redux Chrome DevTools and play with the timeline to move the state forward and back.</p>
 <p>Play with the <em>slider</em> and note how you can export and import state. Imagine how powerful that would be if we could just save the whole state of a very complex app!</p>
-<h2 style="background-color: #FBF3DB;">Release it!</h2>
+<div class="heading-block h2-block"><h2>Release it!</h2></div>
 <p><strong>Commit</strong> and <strong>push</strong> your changes to your new state management branch  <code>git push origin statemanagement-sa</code>. No need to merge into main! </p>
-<p>🚀 You should create a new render site and then select the <code>statemanagement-sa</code> branch instead of <code>main</code> so you can have multiple sites running off of different versions of your code.</p>
-<h1 style="background-color: #DDEBF1;">To Turn In</h1>
-<ul>
-<li>👉 The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li>
-<li>🙏 In your comment please include:<ul>
-<li><strong>link to deployed hosted version of the page (render.com)</strong></li>
-<li>brief summary of what worked and what didn’t</li>
-<li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li>
-</ul>
-</li>
-<li>include: url to new starterpack render deployed site</li>
-<li>include: url to new react-videos render deployed site from the <code>statemanagement-sa</code> branch</li>
-<li>remember that all your code should lint cleanly</li>
-<li>your youtube searcher should have the same functionality as before, but now with state management!</li>
-</ul>
-<h1 style="background-color: #DDEBF1;">Extra Credit</h1>
-<ul>
-<li>hmm, as always add in some more data sources, giphy etc (can’t count em twice but if you hadn’t done it before you could now)</li>
-<li>add in zustand persist middleware</li>
-<li>implement undo/redo</li>
-<li>play around with other zustand middleware, including <a href="https://docs.pmnd.rs/zustand/integrations/third-party-libraries">these third-party libraries</a><ul>
-<li><a href="https://github.com/charkour/zundo">https://github.com/charkour/zundo</a></li>
-<li><a href="https://github.com/Albert-Gao/auto-zustand-selectors-hook">https://github.com/Albert-Gao/auto-zustand-selectors-hook</a></li>
-<li><a href="https://github.com/oslabs-beta/Zusty">https://github.com/oslabs-beta/Zusty</a></li>
-</ul>
-</li>
-</ul>
-<h2 style="background-color: #FBF3DB;">Resources</h2>
-<ul>
-<li><a href="https://zustand-demo.pmnd.rs/">https://zustand-demo.pmnd.rs/</a></li>
-</ul>
-
+<p>🚀&nbsp;You should create a new render site and then select the <code>statemanagement-sa</code> branch instead of <code>main</code> so you can have multiple sites running off of different versions of your code.</p>
+<div class="heading-block h1-block"><h1>To Turn In</h1></div>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li>include: url to new starterpack render deployed site</li><li>include: url to new react-videos render deployed site from the <code>statemanagement-sa</code> branch</li><li>remember that all your code should lint cleanly</li><li>your youtube searcher should have the same functionality as before, but now with state management!</li></ul>
+<div class="heading-block h1-block"><h1>Extra Credit</h1></div>
+<ul><li>hmm, as always add in some more data sources, giphy etc (can’t count em twice but if you hadn’t done it before you could now)</li><li>add in zustand persist middleware</li><li>implement undo/redo</li><li>play around with other zustand middleware, including <a href="https://docs.pmnd.rs/zustand/integrations/third-party-libraries">these third-party libraries</a><ul><li><a href="https://github.com/charkour/zundo">https://github.com/charkour/zundo</a></li><li><a href="https://github.com/Albert-Gao/auto-zustand-selectors-hook">https://github.com/Albert-Gao/auto-zustand-selectors-hook</a></li><li><a href="https://github.com/oslabs-beta/Zusty">https://github.com/oslabs-beta/Zusty</a></li></ul></li></ul>
+<div class="heading-block h2-block"><h2>Resources</h2></div>
+<ul><li><a href="https://zustand-demo.pmnd.rs/">https://zustand-demo.pmnd.rs/</a></li></ul>
 </body>
 </html>
