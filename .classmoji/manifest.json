@@ -1,40 +1,54 @@
 {
   "modules": {
-    "extracreditshorts": {
+    "extra-credit-shorts": {
       "pages": [],
       "slides": [],
       "assignments": {
-        "ecsa-intro-to-api-testing": {
-          "pages": [],
-          "slides": []
-        },
         "ecsa-git-map": {
-          "pages": [],
-          "slides": []
-        },
-        "ecsa-reactnative-part-1": {
-          "pages": [],
+          "pages": [
+            "ecsa-git-map"
+          ],
           "slides": []
         },
         "ecsa-websockets": {
-          "pages": [],
+          "pages": [
+            "ecsa-websockets"
+          ],
           "slides": []
         },
-        "ecsa-uploading-images": {
-          "pages": [],
+        "ecsa-reactnative-part-1": {
+          "pages": [
+            "ecsa-react-native-part-1"
+          ],
           "slides": []
         },
         "ecsa-react-native-part-2": {
-          "pages": [],
+          "pages": [
+            "ecsa-react-native-part-2"
+          ],
+          "slides": []
+        },
+        "ecsa-uploading-images": {
+          "pages": [
+            "ecsa-uploading-images"
+          ],
+          "slides": []
+        },
+        "ecsa-intro-to-api-testing": {
+          "pages": [
+            "ecsa-intro-to-api-testing"
+          ],
           "slides": []
         },
         "ecsa-frontend-and-backend-authentication": {
-          "pages": [],
+          "pages": [
+            "ecsa-frontend-and-backend-authentication"
+          ],
           "slides": []
         }
       }
     },
-    "helloworld": {
+    "hello-world": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -44,7 +58,7 @@
         }
       }
     },
-    "kahootapishortassignment": {
+    "kahoot-api-short-assignment": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -54,7 +68,7 @@
         }
       }
     },
-    "lab1landingpage": {
+    "lab1-landing-page": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -68,7 +82,7 @@
         }
       }
     },
-    "lab2quizplatform": {
+    "lab2-quiz-platform": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -78,7 +92,7 @@
         }
       }
     },
-    "lab3reactnotes": {
+    "lab3-react-notes": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -96,7 +110,7 @@
         }
       }
     },
-    "lab4platformclient": {
+    "lab4-platform-client": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -110,7 +124,7 @@
         }
       }
     },
-    "lab5platformapi": {
+    "lab5-platform-api": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -154,12 +168,12 @@
         }
       }
     },
-    "projectapi": {
+    "project-api": {
       "pages": [],
       "slides": [],
       "assignments": {}
     },
-    "reactintro": {
+    "react-intro": {
       "pages": [],
       "slides": [],
       "assignments": {
@@ -194,13 +208,6 @@
   },
   "general": {
     "pages": [
-      "ecsa-frontend-and-backend-authentication",
-      "ecsa-git-map",
-      "ecsa-intro-to-api-testing",
-      "ecsa-react-native-part-1",
-      "ecsa-react-native-part-2",
-      "ecsa-uploading-images",
-      "ecsa-websockets",
       "intro-to-cypress-and-web-testing",
       "lab-1-part-1-build-a-landing-page-html",
       "lab-1-part-2-build-a-landing-page-css",
