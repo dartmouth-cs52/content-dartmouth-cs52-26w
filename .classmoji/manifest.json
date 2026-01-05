@@ -150,7 +150,9 @@
       "slides": [],
       "assignments": {
         "lab-5-platform-api": {
-          "pages": [],
+          "pages": [
+            "lab-5-platform-api"
+          ],
           "slides": []
         }
       }
