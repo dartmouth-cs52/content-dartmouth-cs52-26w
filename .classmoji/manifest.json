@@ -65,9 +65,7 @@
       "slides": [],
       "assignments": {
         "kahootapi-short-assignment": {
-          "pages": [
-            "sa6-kahoot-api"
-          ],
+          "pages": [],
           "slides": []
         }
       }
@@ -255,6 +253,7 @@
   },
   "general": {
     "pages": [
+      "sa6-kahoot-api",
       "intro-to-cypress-and-web-testing",
       "dartmouth-cs52",
       "logistics",
