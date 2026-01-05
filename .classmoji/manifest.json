@@ -49,7 +49,9 @@
       }
     },
     "hello-world": {
-      "pages": [],
+      "pages": [
+        "intro-to-cypress-and-web-testing"
+      ],
       "slides": [],
       "assignments": {
         "hello-world": {
@@ -255,7 +257,6 @@
   },
   "general": {
     "pages": [
-      "intro-to-cypress-and-web-testing",
       "dartmouth-cs52",
       "logistics",
       "projects"
