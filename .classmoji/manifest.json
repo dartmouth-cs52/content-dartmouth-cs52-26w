@@ -106,7 +106,8 @@
       "assignments": {
         "react-notes-part-2": {
           "pages": [
-            "lab-3-react-notes"
+            "lab-3-react-notes",
+            "lab-5-platform-api"
           ],
           "slides": []
         },
