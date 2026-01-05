@@ -53,7 +53,9 @@
       "slides": [],
       "assignments": {
         "hello-world": {
-          "pages": [],
+          "pages": [
+            "sa0-hello-world-and-local-dev-environment-short-assignment"
+          ],
           "slides": []
         }
       }
@@ -254,7 +256,6 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
-      "sa0-hello-world-and-local-dev-environment-short-assignment",
       "dartmouth-cs52",
       "logistics",
       "projects"
