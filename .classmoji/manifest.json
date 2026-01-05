@@ -256,7 +256,8 @@
     "pages": [
       "intro-to-cypress-and-web-testing",
       "dartmouth-cs52",
-      "logistics"
+      "logistics",
+      "projects"
     ],
     "slides": []
   }
