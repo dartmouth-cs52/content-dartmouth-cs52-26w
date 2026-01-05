@@ -161,31 +161,45 @@
       "slides": [],
       "assignments": {
         "project-7-final-project-submission": {
-          "pages": [],
+          "pages": [
+            "project-7-final-project-submission"
+          ],
           "slides": []
         },
         "project-4-scaffolding": {
-          "pages": [],
+          "pages": [
+            "project-4-scaffolding"
+          ],
           "slides": []
         },
         "project-1-first-team-meeting-worksheet": {
-          "pages": [],
+          "pages": [
+            "project-1-first-team-meeting"
+          ],
           "slides": []
         },
         "project-5-dev-site-and-wiring": {
-          "pages": [],
+          "pages": [
+            "project-5-dev-site-and-wiring"
+          ],
           "slides": []
         },
         "project-6-final-demos": {
-          "pages": [],
+          "pages": [
+            "project-6-final-demos"
+          ],
           "slides": []
         },
         "project-3-mockups-and-sketches": {
-          "pages": [],
+          "pages": [
+            "project-3-mockups-and-sketches"
+          ],
           "slides": []
         },
         "project-2-feature-spec": {
-          "pages": [],
+          "pages": [
+            "project-2-feature-spec"
+          ],
           "slides": []
         }
       }
@@ -240,7 +254,9 @@
   },
   "general": {
     "pages": [
-      "intro-to-cypress-and-web-testing"
+      "intro-to-cypress-and-web-testing",
+      "dartmouth-cs52",
+      "logistics"
     ],
     "slides": []
   }
