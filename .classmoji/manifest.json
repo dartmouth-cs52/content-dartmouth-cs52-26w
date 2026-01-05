@@ -158,7 +158,9 @@
       }
     },
     "project": {
-      "pages": [],
+      "pages": [
+        "projects"
+      ],
       "slides": [],
       "assignments": {
         "project-7-final-project-submission": {
@@ -257,9 +259,10 @@
     "pages": [
       "intro-to-cypress-and-web-testing",
       "dartmouth-cs52",
-      "logistics",
-      "projects"
+      "logistics"
     ],
-    "slides": []
+    "slides": [
+      "welcome"
+    ]
   }
 }
