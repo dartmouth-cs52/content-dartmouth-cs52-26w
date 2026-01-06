@@ -258,8 +258,9 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
+      "logistics",
       "dartmouth-cs52",
-      "logistics"
+      "project-0-pitch-ideas"
     ],
     "slides": [
       "welcome"
