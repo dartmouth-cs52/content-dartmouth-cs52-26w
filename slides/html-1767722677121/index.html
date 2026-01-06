@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section class="stack" data-id="ff572c5fb6a0b6c8d38aa1208d0219f9"><section data-id="647d82fb97c6e0edaa27cc63d0398907"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="1e973129f9690bc3ed2be54a452769f0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CS52: HTML</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">What is <strong>HyperText Markup Language</strong> and why should I care?</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="9d5e5a7215f0eb1af9742e8329a81de2">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 146.5px;" data-name="text-99428f" data-block-id="8e3961ffc6dc1dc0ac4845b7d2b404aa">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+        <ul>
+            <li>html describes</li>
+            <li>what a thing is</li>
+            <li>not how they work or look</li>
+        </ul>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 543.333px; height: 326px; left: 208.834px; top: 318px; min-width: 1px; min-height: 1px;" data-name="image-acb727" data-block-id="62b9bfe4de8b2c7a8145c874eda1208d">
+    <div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="300" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/85f152fcf531a9f86e6f632499e37e42.gif"></div>
+</div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-b01962" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="292a98894e79086823a010fb0afae28f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">HyperText Markup Language</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">today HTML only - next class is CSS - there's a difference
+html not like python and Java - no logic
+just like this cat is not really a panda
+It is a descriptor language.
+describes what things are
+not how they work or even how they look
+</aside></section><section data-id="af6a5d0fddbd141c7a049c96f0c7cb21">
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 133px;" data-name="text-7f3cc4" data-block-id="180165ec489aca467320c285737acbc6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>describes <strong>structure of document</strong>
+</li>
+	<li>semantics rather than style or computation</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 35.2599px; left: 240px; top: 244.74px;" data-name="code-1e705b" data-block-id="2f13306f56cc7b46bfb4b0368e8d3619"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;"><code>&lt;purple-text&gt;Hello&lt;/purple-text&gt; &lt;!--BAD--&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 81px; top: 291.616px;" data-name="text-d9a1a9" data-block-id="9d6ae66e9086e8da0d59dd1ccc327e04"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>VS</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 35.3268px; left: 241px; top: 343.945px;" data-name="code-dd21d3" data-block-id="123d6b29ceb95c2036ca2eba77feb909"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 13;"><pre style="font-size: 16px; line-height: 19px;"><code>&lt;greeting&gt;Hello&lt;/greeting&gt; &lt;!--GOOD--&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="width: 485.476px; height: 272.838px; left: 241px; top: 412px; min-width: 1px; min-height: 1px;" data-name="image-6146c3" data-block-id="ba27f6080bb0a77f5423c325ea4d7666"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="500" data-natural-height="281" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/41093c3b22311c9c08c5abf7d4b212c9.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-dee800" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d372d614a4f55c778d5b2b2fd413f6cd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 15;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">document semantics</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">HTML describes the structure of a document semantically
+no operations or actions
+can't compute with it
+but you can define structure.
+WORD analogy - in word you typically just say, italize this, change the font here - thats not scalable - if you do redefine styles in word kudos
+</aside></section><section data-id="4707c6f0523c7736ba1f03d4e3993d8c">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 458px; top: 210px;" data-name="text-ddffa2" data-block-id="78b3f380add1c87984e5464c913f9027"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>HTML:
+	<ul>
+		<li>is the <span style="color:rgb(148, 35, 35)"><strong>skeleton/bones</strong></span>&nbsp;of a document</li>
+		<li>is not the pretty clothing</li>
+		<li>is not the muscles</li>
+		<li>only underlying structure</li>
+	</ul>
+	</li>
+	<li>Structure is important</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-658cc5" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="7d668597e2906dca0a975c3b5721537d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">html == skeleton</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 438px; height: 438px; left: 32px; top: 172px; min-width: 1px; min-height: 1px;" data-name="image-83dd53" data-block-id="84d4d61166fb285d114af3a2c4da6773"><div class="sl-block-content plain" style="z-index: 12;"><img style="" data-natural-width="1080" data-natural-height="1080" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/19267d4b29d60f2c74cc4cce41076b27.gif"></div></div><aside class="notes">another way to think of it as the skeleton upon which to hang pretty wings
+ok maybe lets not get carried away with analogies
+in anycase - the skeleton of a page is super important -
+ it doesn't matter if you are using framework to help, fancy pants react, etc - understanding how the skeleton is put together will matter - you won't be able to style or adjust or layer or move elements if they aren't structured well.
+</aside></section><section data-id="f205d674560188672073803db060d7c7">
+
+
+
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 35.2599px; left: 243px; top: 244.673px;" data-name="code-1e705b" data-block-id="dbef8a295f3da42934eb63ec937aacfa"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>&lt;div class="ball"&gt;&lt;/div&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 83px; top: 291.616px;" data-name="text-d9a1a9" data-block-id="678461b9c8916db03922fac8edef4ca1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>VS</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 116.863px; left: 243px; top: 350px;" data-name="code-dd21d3" data-block-id="c5afec9b5a2b8dc243d75ed46c677b73"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;"><pre style="font-size: 16px; line-height: 19px;" class="python"><code># from cs1
+disable_stroke()  
+enable_fill()
+set_fill_color(0, 0, 0)
+draw_circle(135, 110, 20)
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 140px;" data-name="text-fea26e" data-block-id="0e9ba77143bdbdaabf4223d029d7a42d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><span style="color:#d19a66">what</span>&nbsp;vs <span style="color:#d19a66">how</span></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-7eab89" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="abe3494961083c19dfe9765f555131ee"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Declarative Vs Imperative</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* HTML =&gt; declarative.
+* sequence of drawing instructions =&gt; imperative.
+* soome style somewhere would have to describe the display properties of the ball
+* that is where css would come in - but css is also descriptive - rather than command based
+</aside></section><section data-id="3b3cf4e668995b5627c1c2ce31fe8d06">
+
+<div class="sl-block" data-block-type="image" style="width: 400px; height: 400px; left: 52.5258px; top: 90px; min-width: 1px; min-height: 1px;" data-name="image-b2ef83" data-block-id="eb0e46ee42f50df7f5e5d26f322c20bc"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="480" alt="cat pretending to be a pirate" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/37f7208a76103a3188e3ac774e3e6ace.gif"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 542.344px;" data-name="text-15d190" data-block-id="2db2108b9371a0354673fed08c0cff0c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>built-in browser styles exist</li>
+	<li>but html != styles</li>
+	<li>dressup is css</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-796329" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="82ff81620809c4a383eef2d74fe267af"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Markup Not Dressup</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-6a0afd" data-block-id="ad05d87c511c0099b29312bcaec239a0" style="width: 476.735px; height: 327.704px; left: 480px; top: 162.296px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="1022" data-natural-height="430" data-crop-x="0" data-crop-y="0.188679" data-crop-width="0.496599" data-crop-height="0.811321" style="left: 0px; top: -76px; width: 960px; height: 404px;" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/e71bcbbdbca051e7f18f0d732024637a.png"></div></div><aside class="notes">html is a type of markup language
+adding marks to something to indicate what it is
+markdown, LaTex
+in the first lab - you'll see how we focus on structure first
+example: underlining and color of links
+we'll often have to undo these bad design decisions
+</aside></section><section data-id="5e3a6c1802648c532b8a8d3d10bd605a">
+
+<div class="sl-block" data-block-type="image" style="width: 571.591px; height: 408.279px; left: 194.204px; top: 109.119px; min-width: 1px; min-height: 1px;" data-name="image-85668b" data-block-id="114bb7b8b6de5d56c71177d90d3f39ce"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="700" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/e140f08d3f17055ec6ed6cbeae53e346.jpg"></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 560px;" data-name="text-27bd8f" data-block-id="e5401e850a59595b4552a57ddb6d2e71"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>syntactically identifiable annotations</li>
+	<li>describe the content</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-da43e2" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="51628ddf7f4e7e6f4c71553fbef9fbbb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Semantic Structure</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* what you want to do is **annotate your content**
+* with **syntactically identifiable notation/descriptions** in your document that describe what it is - and later can dictate what it looks like
+* all these are builtin html5 semantic tags
+</aside></section></section><section class="stack" data-id="02774574bc0df8e9142a7dc0ef353f84"><section data-id="a65619d772763730f6db3560de40200d">
+<div class="sl-block" data-block-type="image" style="width: 642.837px; height: 434.558px; left: 158.582px; top: 116.483px; min-width: 1px; min-height: 1px;" data-name="image-7f716b" data-block-id="43a134f53dfc88b35b565f31b87f4d17"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1000" data-natural-height="676" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/de17fab5a8659d7659b25b41e1d2b82d.jpg"></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 641.418px; left: 158.582px; top: 582.5px;" data-name="text-6e2f55" data-block-id="1f1db7265392ff401eaaa961c6508178"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>i made this amazing tool. but then they used it for kittens... 😹 ~Sir Tim Berners-Lee</p></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-5b1b70" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="3fda95607e541d6d2af84cbdc4dd7ea7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">brief history of html</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">he was later surprised in a reddit ama that kittens took over the internet
+silly human
+he'd probably also be surprised by this photo since i photoshopped the kitten into it</aside></section><section data-id="fd5909e897d58420ee21dbc3a70e8d9b">
+
+
+<div class="sl-block" data-block-type="image" style="width: 564.876px; height: 379.142px; left: 197.562px; top: 160.429px; min-width: 1px; min-height: 1px;" data-name="image-c450b2" data-block-id="e075cd41aa06d307e4a0f940cf39e3fa"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="736" data-natural-height="494" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/5cb19db685b22c86b40cbe675c35ae76.gif"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 101px;" data-name="text-b4d872" data-block-id="a613d00315cb23140196a4567081397a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>1990</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 571.5px;" data-name="text-10da76" data-block-id="b3e4020ccc61ea8a507f13684ffa3f19"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>"I just had to take the <strong>hypertext</strong>&nbsp;idea and connect it to the Transmission Control Protocol and domain name system ideas and—ta-da!—the World Wide Web" —Sir Tim Berners-Lee</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-5b1b70" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="0e6c432a4b601edd78fd44b2d35db8bf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">brief history of html</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* just tim back then
+* so checkit, tomorrow we'll learn about TCP and DNS. dudes lets connect em to document
+* **hypertext** was a concept of linking text documents together with hyperlinks (on disk).
+* built **html** and **http** and **first web browser**
+</aside></section><section data-id="b2a1186bb90dba8efddc24f58526ce46">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 614px;" data-name="text-d44126" data-block-id="00a9234fb7ea11117b616d8a4ee595fb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>1968 - Douglas Engelbart</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 483.84px; left: 76.8px; top: 108.08px; min-width: 1px; min-height: 1px;" data-name="image-3d2cf2" data-block-id="c91ee0ed9710e576a520d9d6ac16b0f0"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="600" data-natural-height="360" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/bd868abb4163c94c27a57744e80bbb1e.jpg"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9e9ede" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="da49e92884d0e3daceeb8e2dffb76181"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">HyperText</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* hypertext was around in works of fiction as early as the 1940s (theoretically **linked microfilms** and such)
+* 1968 Douglas Engelbart - Mother of all Demos (mouse / video conferencing / and hypertext)
+* who knows that microfilms/fiche were? 
+</aside></section><section data-id="e5474df91657a891d89d4bc9e875ed95">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 614px;" data-name="text-d44126" data-block-id="77c04082c9fb7139a912bc496cc6c6af"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>because carrier pigeons! 🕊</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 600.975px; height: 431.2px; left: 179.025px; top: 134.4px; min-width: 1px; min-height: 1px;" data-name="image-9478d7" data-block-id="fe3c1e5b3b3db7a76eee0371e4ac5f43"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="574" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/98b54c7db8ad5f027e33849d40c3639e.jpg"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9e9ede" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="1aa563d3288867b64c00ecf87ca3ddd2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Microfilm/Microfiche aside</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* originally invented for use by carrier pigeons in the late 1800s
+* can imagine thinking how nice it would be to have links - so easy progression from this to that
+</aside></section><section data-id="640646377d6cdc489f4b29168965f14e">
+<div class="sl-block" data-block-type="iframe" style="width: 869.956px; height: 489.351px; left: 45.022px; top: 140px;" data-name="iframe-4cc651" data-block-id="9de0e6c320f766a23cda7c82aecb349d"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://www.youtube.com/embed/yJDv-zdhzMY?enablejsapi=1" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-6227a1" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d7b430d7b302545adf5c07c0431fcbad"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Origins of HyperText</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* theoretical demo mouse and videoconfercing and hypertext idea
+* wasn't quite all implementable, but showed all the basic features of modern computing, mouse, browser,video
+* and somehow 50 years later videoconferencing is still shit
+* skip to 30
+</aside></section><section data-id="1b85fe6857846b44d4f73ebf825d4d8f">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 646.289px;" data-name="text-d44126" data-block-id="75e212e50f66f6ce2778ca33e155fc20"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>WorldWideWeb 1990</p></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-8c9cbb" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="df78941a147a7efd75b88865c2bedd46"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">The First Browser</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-2854c1" data-block-id="86afaf000e66c495b1440819df2999e8" style="width: 699.763px; height: 548.439px; left: 130.119px; top: 83.7805px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="800" data-natural-height="627" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/958e459cdb0e7cc116e69d7ddff4df14.png"></div></div><aside class="notes">* was called **WorldWideWeb 1990ish**
+* i can remember the days without the internet, it was a scary world
+* no way to get directions, no way to look something up during an argument
+* **marc andreesens mosaic 1993** and then netscape 1994, etc
+</aside></section></section><section class="stack" data-id="16de661d1effde491fde782e04c4cb7d"><section data-id="28e0f39f06f3dd884730a2b2c17fb1ce">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: -3.55271e-15px; top: 97px;" data-name="text-5f5f1d" data-block-id="062298dcb4c3e16945a96e548048311a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>varying compatibilities, 2000 first xhtml standard</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-85d39e" data-block-id="6967c41824ff4933f6f5ba3841a23e3b" style="width: 760.117px; height: 518px; left: 99.9415px; top: 161px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1981" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/9501a1542b5f93e024bcc1cfd60cf27a.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-7b8bd4" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d80cafbfbbf2a779ffb7bda2fda03058"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Browser Implementations</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* now we have lots of browsers
+* Due to some original problems with various implementations of the HTML standard in browsers
+* because race to see who can implement coolest stuff
+* allowing missing closing tags
+* XHTML standard developed (2000) mucho stricter and yay
+* __back then everybody coded html manually, so browsers were forgiving - now we have better tools__
+</aside></section><section data-id="527d2317b07679ff55b30b56e7dfc53e">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 105.123px;" data-name="text-5f5f1d" data-block-id="bc603dc628cffe3d43c81cdb94b1848e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>in this class, we'll focus on Brave/Chrome</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 638.57px; height: 495.016px; left: 10.8443px; top: 198.802px; min-width: 1px; min-height: 1px;" data-name="image-4fa6bb" data-block-id="90b62c3295083c9f37fc27f61bd8de46"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="774" data-natural-height="600" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/71611a2f0d89ec91e576b0ae4becbc98.jpg"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 302.085px; height: 170.376px; left: 657.915px; top: 523.442px; min-width: 1px; min-height: 1px;" data-name="image-45c4ee" data-block-id="2d15c69fe9ad8cd72b8d9bb8546aaf86"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="250" data-natural-height="141" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/cd34be4b94b5194b11d636cd77112ba4.gif"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190.146px; left: 760.895px; top: 529.704px;" data-name="text-7c4f50" data-block-id="df5db3a2f5c6dd7121bace00c4f47c49"><div class="sl-block-style" style="z-index: 13; transform: rotate(26deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><span style="font-size:0.7em">safari</span></p>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-114b50" data-block-id="20b32c20ae9a64f2866b380d32db7127" style="width: 298.704px; height: 213px; left: 627.296px; top: 173.5px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="474" data-natural-height="338" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/daac9034948f343e9fd4cd4050876960.jpeg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190.849px; left: 737.907px; top: 350.534px;" data-block-id="f732a27c76ad748dbd8fae7cb3eba51f" data-name="text-c4b32f"><div class="sl-block-style" style="z-index: 15; transform: rotate(-40deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:21px">Brave</span></p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 186.992px; left: 755.393px; top: 154px;" data-block-id="63e07439b02859fee08db838861fcb30" data-name="text-99d62f"><div class="sl-block-style" style="z-index: 16; transform: rotate(-19deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p><span style="font-size:21px">ROAR</span></p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190.146px; left: 760.895px; top: 529.704px;" data-block-id="de9e30589c5e3f1622ba0a4b31215b1d" data-name="text-4d33a3"><div class="sl-block-style" style="z-index: 17; transform: rotate(26deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p><span style="font-size:0.7em">safari</span></p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190.146px; left: 798.926px; top: 400.5px;" data-block-id="430197db5f497803f0c02d58ddfca80c" data-name="text-8e6656"><div class="sl-block-style" style="z-index: 18; transform: rotate(26deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>no ads</p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190.146px; left: 738.259px; top: 457.497px;" data-block-id="1b5bc8816f2642e6e4641ad4754bac8b" data-name="text-baf685"><div class="sl-block-style" style="z-index: 19; transform: rotate(-17deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;">
+<p>privacy</p>
+</div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-15873e" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="c86cc189ac57fe4666da65c541e7f87a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 20;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Browser Wars</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* safari is clearly just out the jungle somewhere taking pretty pictures of animals instead
+* for this class... ONLY CHROME/Brave WILL DO
+* everybody wants your data
+</aside></section><section data-id="11c51c8b86f171e8ed033d0019744641">
+<div class="sl-block" data-block-type="image" style="width: 734.806px; height: 496.491px; left: 107.064px; top: 91.116px; min-width: 1px; min-height: 1px;" data-name="image-f1bf94" data-block-id="13b4bd8c755f90f588718da6bcb6ad28"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="222" data-natural-height="150" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/d9576e315420119334c6a587b7d9bd8b.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 583px;" data-name="text-b73230" data-block-id="5c8246eb9b9ea8675f11e44c412192f6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li><span style="font-size:0.9em">many new semantic elements such as: <span style="color:#4757ff">time</span>, <span style="color:#4757ff">audio</span>, <span style="color:#4757ff">video</span>, <span style="color:#4757ff">nav</span>, <span style="color:#4757ff">footer</span></span></li>
+	<li><span style="font-size:0.9em">many new form controls such as: <span style="color:#4757ff">email</span>&nbsp;and <span style="color:#4757ff">search</span></span></li>
+	<li><span style="font-size:27px">standard is now updated more incrementally</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-bbcf36" style="width: 960px; height: 70px; left: 2.13163e-14px; top: 0px;" data-block-id="39727ff254d62ec08ae723e2502030ea"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">HTML5 circa 2014</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* HTML5 (2014) is the latest version (also has an XML version enforcing strictness). - basically used to refer to a modern set of web technologies including javascript
+* new apis: editable content, drag-and-drop, canvas
+* `nav` and `footers` are here to stay
+* things like `&lt;b&gt;` for bold are frowned on - `&lt;em&gt;` for emphasis
+* all promoting the structural definition way of thinking
+* crazy how it wasn't that long ago that this stuff became normal
+* basically get rid of style, bring in structure
+</aside></section><section data-id="a74b99c0fe2c2f226a6154b826cd1d24">
+<div class="sl-block" data-block-type="image" style="width: 603.071px; height: 335.458px; left: 178.464px; top: 112.271px; min-width: 1px; min-height: 1px;" data-name="image-da0862" data-block-id="f8a6bd6b6bf2df31d08c80f3d714bb72"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="320" data-natural-height="178" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/19113023395ce383803541e0f27430ab.gif"></div></div>
+<div class="sl-block" data-block-type="code" style="width: 560px; height: 140px; left: 200px; top: 490px;" data-name="code-e6a1d6" data-block-id="0bf8fd131b28cc3499aa1dd2d4be3d10"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="python" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
+&lt;blink&gt; the sadness of changing standards &lt;/blink&gt;
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9940b5" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="96e79f4c48cb174d06a5cc62d5f97429"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">removed elements</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* other elements got axed
+* this used to be a thing
+* now you have to write a bunch of css animation keyframes to achieve what you could in just 15 characters
+</aside></section></section><section data-id="73828d5342c524eabe9740deaaacd307">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 752.953px; left: 103.524px; top: 221.5px;" data-name="text-5f5f1d" data-block-id="d5537ac718fc0af7ea5224abdc10a93a"><div class="sl-block-content card" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><br>
+basic premise is<br>
+<strong>documents</strong>&nbsp;with <strong>links </strong>between them</p>
+
+<p>&nbsp;</p>
+
+<p>and <strong>tags</strong> that define <strong>structure</strong></p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-571ec6" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="8b9eb0f8c115b7983918f841898403d5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Structural tags and links!</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* The basic idea of **structural tags** with **links between documents** has remained the same since then.
+</aside></section><section class="stack" data-id="228b4f4d8e4e64c7138aed4409b0d4e4"><section data-id="44264b9c2aec482291a477d3ec51b3a2">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 229.716px;" data-name="text-a10ca5" data-block-id="7ca96123a0f9782dc297adf9377bb758"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>hierarchical collection of elements, starting with <span style="color:#4757ff">&lt;html&gt;</span>
+</li>
+	<li>have a start tag, contents, and end tag</li>
+	<li>contents can be text or other elements</li>
+	<li>may be nested</li>
+	<li>self-closing: <span style="color:#4757ff">&lt;foo /&gt;</span> vs <span style="color:#4757ff">&lt;foo&gt;&lt;/foo&gt;</span>
+</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-fc6384" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="988dc49527cdc8d5274c0be0a2c4d0bd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">HTML Syntax In a NutShell 🌰</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">the following is a bit of a reference to some of the tags you'll need to know! 
+
+self-closing tags have no children elements.  leaf nodes</aside></section><section data-id="22e085409930db91e75971a0aaa246b8">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 226.357px;" data-name="text-638157" data-block-id="cadc483eab60d1b150b1e359f760ced9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+	<p><strong>tags</strong> denote structural <a href="http://www.w3schools.com/html/html_elements.asp" target="_blank">elements</a></p>
+	</li>
+	<li>
+	<p><span style="color:#4757ff"><strong>&lt; &gt;</strong></span> surrounding the tag</p>
+	</li>
+	<li>
+	<p>start tag, <span style="color:#4757ff"><strong>&lt; tag &gt;</strong></span></p>
+	</li>
+	<li>
+	<p>and an ending tag <span style="color:#4757ff"><strong>&lt;/tag&gt;</strong></span></p>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-09872a" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e74ad16c523bb0384b236710cd21ca1e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">HTML Elements and Tags</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* everything in between a pair of **start** and **end** tags can be thought of as the **child/children** of that tag.
+* underneath it all, your HTML is parsed into a particular **data structure** - any guesses?</aside></section><section data-id="f923d5502e3f5aee4001fe5950a02cf6">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 192.762px;" data-name="text-a10ca5" data-block-id="9033b33a761c1144ccce8945f73a7a68"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>Start tags may have <a href="http://www.w3schools.com/html/html_attributes.asp" target="_blank">attributes</a>
+	<ul>
+		<li>
+<a href="http://www.w3schools.com/html/html_attributes.asp" target="_blank">​</a>&lt;input <span style="color:#1d8700">type="text"</span>&gt;</li>
+		<li>&lt;img <span style="color:#1d8700">src="image.jpg"</span> /&gt;</li>
+		<li>&lt;div <span style="color:#1d8700">class="col-md-5"</span>&gt;</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-4bb05c" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="ca609ab2a2eea4c037867ed494c1238a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Attributes</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* another way to think of an attribute as is a parameter to a function - this way of thinking will matter more when we get to react but regardless, you are passing in arguments to an element that customizes it.  
+* and all elements can have classes
+</aside></section><section data-id="3e7b10415c75d1477efa8a8845950b0e">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 394.793px;" data-name="text-0c269a" data-block-id="c82423213428564491dc04d5b7080929"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>your document structure — tags and classes should be self-evident first</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 360.179px; height: 115.364px; left: 299.911px; top: 194.871px;" data-name="code-fdd7d4" data-block-id="7d25b2608a52f93be65583f0c86bc770"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;!--- this is a comment --&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="e690c3408c32be7bbab53dcca027f4ce"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">comments</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">don't need to use these much - should be readable!</aside></section><section data-id="2f92af3cb58bf575272a763703acfdd5">
+<div class="sl-block" data-block-type="image" style="width: 444.794px; height: 518px; left: 257.603px; top: 91px; min-width: 1px; min-height: 1px;" data-name="image-e9d26e" data-block-id="91894c350bde0c0457beccb7b796834d"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="559" alt="html elements as a tree from from watershedcreative" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/2caaa91fe8e427d5f37c2b85361121a5.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 642.156px;" data-name="text-069cfd" data-block-id="fa7b1249f6ef2a83f6feb9e459e3f225"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Browser parses html into a tree structure — the DOM</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f82890" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="60c02e990c4af4b931b2169709df5ed8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Underneath it all</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* browser parses it into a tree.
+* pretty much everything in this course is going to be a tree! 🌳
+* basically everything in the world is a graph - if you've taken algos, you can be happy now
+* more next week
+</aside></section></section><section class="stack" data-id="2f6ad1e7b486d0cff114634fa8ef4f5d"><section data-id="ee7523434c2262ab67d26af8f7a34961"><div class="sl-block" data-block-type="iframe" style="width: 876.238px; height: 526.204px; left: 41.881px; top: 126.562px;" data-name="iframe-73d3ce" data-block-id="585dac3ff22a81432823b6227e58af0b"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e6bad6db1a6fbebf4d365939d61926de?height=300&amp;theme-id=24117&amp;default-tab=html,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-72591a" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d6523257c7ddfaa0e9e6613ecbb56d9c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">HTML Elements Galore</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="a12341a67ba94ea24f58baebc090a44c">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-name="text-0c269a" data-block-id="72d4ce106062c26fe6fad222f3138af4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+	<p><a href="http://www.w3schools.com/tags/tag_a.asp" target="_blank">Anchor</a> to Hypertext REFerence:</p>
+
+	<ul>
+		<li>
+		<p>HyperLinks are what hypertext is all about</p>
+		</li>
+		<li>
+		<p>need to have an <strong><span style="color:#1d8700">href</span></strong>&nbsp;attribute which is a string URL to the target</p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 532.632px; height: 103.046px; left: 213.684px; top: 176.954px;" data-name="code-fdd7d4" data-block-id="f18822ea3746ccaadc286f45822849d9"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">a link to &lt;a href="http://google.com"&gt;google&lt;/a&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-4c85a1" style="height: auto; width: 600px; left: 180px; top: 617.5px;" data-block-id="5e797544594659af5254f211faee6b36"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>a link to <a href="http://google.com" target="_blank">google</a></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f746f0" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="ba7a000629dfb5dec380c3e4aa81fd09"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">HyperLinks</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* usually urls, but can also be javascript
+</aside></section><section data-id="ec8e2824b20df2a7d1ccf962fc694ede">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 74px; top: 514px;" data-name="text-0c269a" data-block-id="9ac2ab78f89ae27d4aa570adb12e44d6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>&nbsp;</p>
+
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_li.asp" target="_blank">list item</a>:
+
+	<ul>
+		<li>indicates a list item</li>
+		<li>inside of an unordered or ordered list</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 881.453px; height: 330.982px; left: 38.015px; top: 91.509px;" data-name="code-fdd7d4" data-block-id="106355e8a8c732cb5053ab03837e7745"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">&lt;ul&gt;
+   &lt;li&gt;unordered list: wraps list items&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+   &lt;li&gt;ordered list: wraps list items&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol&gt;
+   &lt;li&gt;list item:&lt;/li&gt;
+   &lt;ol&gt;
+      &lt;li&gt;indicates a list item&lt;/li&gt;
+      &lt;li&gt;inside of an unordered or ordered list&lt;/li&gt;
+   &lt;/ol&gt;
+&lt;/ol&gt;
+
+    
+    </code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 443.5px;" data-name="text-2b8b64" data-block-id="6e517ea71028db8a71402fd74103b69a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_ul.asp" target="_blank">unordered list</a>: wraps list items</li>
+</ul>
+
+<ol>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_li.asp" target="_blank">ordered list</a>: wraps list items</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-e17b54" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="fdb2ddeacdb063d3ddf51eda34ad3c15"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">lists</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* lists are often used by convention for things like nav bars - in places where you logically think, oh its a list of links etc.
+* lis are nested inside of ul/ols
+</aside></section><section data-id="76a63e76f603c24d538ceb3735599367">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 835.834px; left: 62.083px; top: 264.323px;" data-name="text-0c269a" data-block-id="5197536f6494c3fc0bfd3e724cbd538f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_img.asp" target="_blank">image tag</a>:
+	<ul>
+		<li>defines an image to include</li>
+		<li>is a <strong>self-closing</strong>&nbsp;tag:&nbsp; <span style="color:#1d8700">/&gt;</span>
+</li>
+		<li>must contain an <strong>attribute</strong>&nbsp;<span style="color:#1d8700">src</span>&nbsp;with URL to image file</li>
+		<li>inline by default but usually then set to block</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 124.323px; left: 240px; top: 140px;" data-name="code-fdd7d4" data-block-id="dab0aaf1ef9cb4676dcfa76f7cf314b7"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;img src="https://gph.to/2GhMDt2"/&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-137c80" style="width: 274.194px; height: 204px; left: 342.903px; top: 479px; min-width: 1px; min-height: 1px;" data-block-id="0617ee22ee8df33340d1c20206226b12"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="250" data-natural-height="186" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/6395de0465413027da9e22d442513271.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-30c2ce" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="69536cc17bfeb01a7644195a9bc52294"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">images</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">which is set to the string URL of where the image is located. More on attributes and urls soon.
+</aside></section><section data-id="45830c7078c6e434c63cda98f8efb58e">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 331px;" data-name="text-0c269a" data-block-id="4205f0c5c5593a68cb3d92ecc772a08f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_p.asp" target="_blank">paragraph</a>:
+	<ul>
+		<li>defines a paragraph</li>
+		<li>define structure</li>
+		<li>starts a new line / block</li>
+		<li>needed because HTML is white space collapsing</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>this is a paragraph of text.</p>
+
+<p>And Another Paragraph</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 140px; left: 240px; top: 155.677px;" data-name="code-fdd7d4" data-block-id="52596d2a55c9b32ef67ca7adf56333cb"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+&lt;p&gt;And Another Paragraph&lt;/p&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="c2e273b8e669779a9ccfb58cd9a4d20f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">paragraph</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what is white space?  spaces/newlines/tabs/etc multiple spaces become 1 space
+* html is generally white-space collapsing (multiple spaces and new lines are ignored)
+* spaces aren't structure - if you want to know what something is - mark it
+* parser needs to know what is paragraphs
+</aside></section><section data-id="b09d0330fc291191ccf56a0385452f21">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 346px;" data-name="text-0c269a" data-block-id="c369544260c56750774fe449bfb6c86d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<h2>Heading 2:</h2>
+
+<ul>
+	<li>surrounds a header of a particular level</li>
+	<li>H1 is top-level</li>
+	<li>H2 would be a subheading, and so on</li>
+	<li>don't skip levels</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h3>Heading 3</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 480px; height: 140px; left: 240px; top: 140px;" data-name="code-fdd7d4" data-block-id="e215bd53a6af4fb841e1de60edc2076d"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="c9a00e67eae80896039a44c8be36946a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">headings</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="44b4f5531c0b14c214988bc50fee2451"><div class="sl-block" data-block-type="code" style="width: 523px; height: 166px; left: 218.5px; top: 140px;" data-name="code-fdd7d4" data-block-id="d0d7d8f2d321ff63b8350f2756e62d62"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;footer&gt;
+ &lt;!-- content at the bottom of the page --&gt;
+&lt;/footer&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 360px;" data-name="text-0c269a" data-block-id="5d6dee6a2f869a3131763bfc0d4e3cf9">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer" target="_blank">footer</a>:
+	<ul>
+		<li>represents the footer of the page</li>
+		<li>although it's a generic container, it usually has more specific content that only appears at the bottom of the page</li>
+	</ul>
+	</li>
+</ul>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="03e5516eea3b2319f33013760cc27793"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">footers</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="fc0a77736868bb0fcf57e0e6a01b8360">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 859.281px; left: 50.8845px; top: 256px;" data-name="text-0c269a" data-block-id="9aa582c21776e20c1df085ab257e30fc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_iframe.asp" target="_blank">iframe</a>:
+	<ul>
+		<li>inline frames can embed other pages inside a pages</li>
+		<li>the code sample above and often video embeds can be iframes</li>
+		<li>sizing can be tricky</li>
+		<li>iframe code can't affect parent</li>
+		<li>can be prohibited by origin</li>
+		<li>parent styles don't apply to child</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 534.871px; height: 107.525px; left: 226.129px; top: 113.475px;" data-name="code-fdd7d4" data-block-id="f98167d89f83eca4656f75ed2c3c69d5"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;iframe src="http://cs52.me"&gt;&lt;/iframe&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-99b43d" data-block-id="ece04789c893f701d2f495fa6b749421" style="width: 360px; height: 300px; left: 600px; top: 400px;"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://wikipedia.com" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="57bd5f2825068040f02352505e20ee9d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">iframes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* can be tricky to size automatically
+* code running inside iframe can't affect parent
+* can be prohibited by origin
+</aside></section><section data-id="79c0892a27a3da7b698a157ea425cdae"><div class="sl-block" data-block-type="code" style="width: 480px; height: 166px; left: 240px; top: 140px;" data-name="code-fdd7d4" data-block-id="8bdbdd0d18ee3efd4371354bc6018ca0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;input /&gt;
+&lt;input type="checkbox" /&gt;
+&lt;input type="radio" /&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 360px;" data-name="text-0c269a" data-block-id="44f552a0f2b295251c55e2e19e78742e">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">input</a>:
+	<ul>
+		<li>takes in user input</li>
+		<li>different types of input (text, number, checkbox, radio, etc.)</li>
+		<li>often used in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">form</a> element to capture data for submission</li>
+	</ul>
+	</li>
+</ul>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="4844a0f30d1c9033f22072e67c18efda"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">inputs and forms</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="5d1c628ea64f310cc9057ef1a5c6c4f8">
+
+<div class="sl-block" data-block-type="code" style="width: 269.179px; height: 579.364px; left: 118.821px; top: 113.636px;" data-name="code-fdd7d4" data-block-id="8af1c406233b7205397f9b2cf87fac67"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;header&gt;
+
+&lt;nav&gt;
+
+&lt;main&gt;
+
+&lt;article&gt;
+
+&lt;section&gt;
+
+&lt;summary&gt;
+
+&lt;video&gt;
+
+&lt;audio&gt;
+
+&lt;input&gt;
+
+&lt;table&gt;
+
+&lt;object&gt;
+
+&lt;script&gt;
+
+&lt;footer&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-bb4e24" data-block-id="804cc9081839b31c67b233b345e42dae" style="height: auto; width: 410px; left: 470px; top: 149.734px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><a href="https://www.w3schools.com/tags/tag_source.asp" target="_blank">https://www.w3schools.com/tags/tag_source.asp</a></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="c1cad517a746c2c392a346535c3adbb4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the world of semantic html tags</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-4eef56" style="width: 500px; height: 416.667px; left: 437.671px; top: 261.338px;" data-block-id="691f00ed131c7627505c90f0642997d9"><div class="sl-block-content" style="z-index: 13;"><iframe allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay" data-src="https://giphy.com/embed/xT5LMKqlcoLeHC10xa" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation"></iframe></div></div><aside class="notes">the point is that the more of these you use the clearer your document structure is!
+will be graded in lab1 on usage of semantic tags</aside></section></section><section class="stack" data-id="1bba5815a1fd54b4c8e458331fbceb95"><section data-id="eea4064435218f33ee710f64012b6c58">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-name="text-0c269a" data-block-id="78631d0978089ed0b4a1394e1fcd9861"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+	<p>Absolute URLs consist of at least three parts:</p>
+
+	<ul>
+		<li>
+		<p>the protocol (http://, https://, etc)</p>
+		</li>
+		<li>
+		<p>the name of the host (www.domainname.com)</p>
+		</li>
+		<li>
+		<p>the path to the given resource (/assets/image.jpg)</p>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 118.831px;" data-name="text-29637d" data-block-id="15028a0a5ebccbd42ea2a103fc409542"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator" target="_blank">Uniform Resource Locators</a></p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 210px;" data-name="text-1f4f76" data-block-id="3ac3c7b5c4833c8c836e3e4780e9b167"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="color:#61afef">protocol</span>://<span style="color:#61afef">host</span><span style="color:#afafaf">:port</span>/<span style="color:#61afef">path</span><span style="color:#afafaf">?query#fragment</span></p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="cb2f25da18a90af3cc9a0bc75c374117"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is a URL?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we'll get into protocols and hosts and all that tomorrow
+</aside></section><section data-id="7b28a7fcd5886ac353d70fdfd7043123">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 311px;" data-name="text-0c269a" data-block-id="4b09cf087a2627247743c4fd66132610"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+	<p>if same <span style="color:#ff9c33">protocol</span> and <span style="color:#ff9c33">host</span>:</p>
+
+	<ul>
+		<li>
+		<p><span style="color:#58aada">path</span> can be relative to current page location</p>
+		</li>
+		<li>
+		<p>&lt;img src="assets/image.jpg" /&gt;<br>
+		&nbsp; &nbsp; occurring in<br>
+		&nbsp; &nbsp; http://www.domainname.com/people/me.html<br>
+		&nbsp; &nbsp; =<br>
+		&nbsp; &nbsp; http://www.domainname.com/people/assets/image.jpg</p>
+		</li>
+		<li>
+		<p>../ directory above</p>
+		</li>
+		<li>
+		<p>/ &nbsp; base url</p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 167px;" data-block-id="ca46aad4b1e877641573d5bf8451e2fc" data-name="text-802422"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:#ff9c33">protocol://host</span>:port/<span style="color:#58aada">path</span>?query#fragment</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="362a4ea0070c83efc3310d21835912c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">relative path vs absolute path?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="8ed1c208743e7bb8eccefa7f40b56ebf">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 311px;" data-name="text-0c269a" data-block-id="53e62f9f0e49cd51bb2d1536b2c1b877"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+	<p><span style="color:#ff9c33">?query</span></p>
+
+	<ul>
+		<li>
+		<p><span style="color:#ff9c33">​</span>is an optional set of arguments</p>
+		</li>
+		<li>
+		<p>?key0=value0&amp;key1=value1</p>
+		</li>
+		<li>
+		<p>can be processed by host</p>
+		</li>
+		<li>
+		<p>only way to <strong>send</strong> data in <strong>GET</strong> request</p>
+
+		<p>&nbsp;</p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 167.5px;" data-name="text-802422" data-block-id="4f2a59d0fc9990c5b616a1e0a1a951ab"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>protocol://host:port/path<span style="color:#ff9c33">?query</span>#fragment</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="829625c7ba345a6c18366f898290be66"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">query argument</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">we'll go into these bits later when we start writing more complex pages</aside></section></section><section class="stack" data-id="5b564c85f469612e37343360689b71a1"><section data-id="8eaffd260a9bb509bb8f65e3f9ca1540">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 586.208px; left: 160px; top: 436px;" data-name="text-0c269a" data-block-id="b5cd82012b1dab9123fdda3d9c09289d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_strong.asp" target="_blank">strong</a> / em:
+	<ul>
+		<li>for bolder or more emphatic coffee</li>
+		<li>default is bolding but can redefine</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 642px; height: 140px; left: 169px; top: 155.677px;" data-name="code-fdd7d4" data-block-id="ffe0a74ece6abe1bc11311c05a0b1bec"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">in a boring text this is &lt;strong&gt;strong&lt;/strong&gt; and &lt;br&gt;
+this text is &lt;em&gt;emphasized&lt;/em&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3e3667" data-block-id="fdc1c943e81ed57d06329b68c900afcc" style="height: auto; width: 600px; left: 190px; top: 311px;">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>in a boring text this is <strong>strong</strong>&nbsp;and<br>
+this text is <strong>emphasized</strong></p></div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-8c913f" data-block-id="2079b76d91209e57cbb2d9d4f8c0a116"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">strong (new semantic vs old stylistic)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 160px; top: 568px;" data-block-id="667d2de3b7df16771354291f1c5f597e" data-name="text-01250b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><ul>
+	<li>accessibility note:&nbsp; screen readers will emphasize &lt;strong&gt;/&lt;em&gt; but don't know what to do with &lt;bold&gt;</li>
+</ul></div></div><aside class="notes">* is this structure or style?  
+* the "bolding" is a stylistic thing
+* but defining some content as more important than its surroundings is structure
+* this is also an example of how semantic tags help with accessibility (which we'll talk about more in a future session on accessibility and design)
+* https://accessibility.psu.edu/boldfacehtml
+</aside></section><section data-id="60e912bf372a9f2ebbdbe4c5d34d88f1">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 140px;" data-name="text-802422" data-block-id="5ecc7f3c43c2d0fef83cbfdb92d1ac00"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>What if I want a &lt;<span style="color:#58aada">slide&gt;</span>&nbsp;or a &lt;<span style="color:#58aada">profile-image&gt;</span>&nbsp;element?</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 226px;" data-name="text-0a1621" data-block-id="5f0da28d45da4142191c948e61688a7d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>html5 spec has some support</li>
+	<li>requires javascript / not widely used</li>
+	<li>BUT
+	<ul>
+		<li>you can use <strong><span style="color:#58aada">class</span></strong>&nbsp;and <strong><span style="color:#58aada">id</span></strong>&nbsp;attributes!</li>
+		<li>and <strong><span style="color:#58aada">div</span></strong>&nbsp;and <strong><span style="color:#58aada">span</span></strong>&nbsp;elements!</li>
+		<li>use these to create your own structure markers</li>
+	</ul>
+	</li>
+	<li>AND
+	<ul>
+		<li>wait for when we get to frontend frameworks</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-9fd3f1" data-block-id="9689b255efb39ee469dd5ccfe9f49c41"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">I want my own semantics!</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* ok structure over style.
+* what about other semantic tags?
+* but there are generic tags that you can give id's and classes to!
+* REACT will give us more powerful abstraction
+</aside></section><section data-id="ad26d59f62791c67b1704c9514adad7d">
+
+<div class="sl-block" data-block-type="code" style="width: 586.226px; height: 137.626px; left: 186.887px; top: 141.187px;" data-name="code-3d1fcc" data-block-id="90edf349342e428aaf556f53c107b9bc"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;div class="slide"&gt;the contents of this slide&lt;/div&gt;
+&lt;img class="profile" src="" /&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 190.638px; top: 334px;" data-name="text-18018f" data-block-id="188ed5ff166d36255129dcb1d24d7b1a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>elements with <span style="color:#58aada">class</span>:
+	<ul>
+		<li>belong to a <strong>set</strong>&nbsp;of elements with some meaning (and style)</li>
+		<li>space-separated string attribute <span style="color:#58aada">class="one-class another-class"</span>
+</li>
+		<li>inherits from both</li>
+	</ul>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-df29e5" data-block-id="a5517ba38d931de45b6b63431c6042ae"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">generic elements - class</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-5740aa" data-block-id="90878a9193b38db500e7943d351dd85d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Classes</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* By adding a `class` to an element you are saying it belongs to **set of elements** that mean a certain thing and should be styled a particular way
+* Where styled really means **selected** or **grouped**.
+* The `class` property is assigned a space separated quoted string with potentially multiple classes. `class="aclass"` but also `class="aclass anotherclass"` this is convenient as you can have one element belong to multiple style classes, inheriting styles from each!  
+</aside></section><section data-id="4997a502c8365b23f3141ebd36af7573">
+
+<div class="sl-block" data-block-type="code" style="width: 586.226px; height: 137.626px; left: 186.887px; top: 141.187px;" data-name="code-3d1fcc" data-block-id="e5f0a1347cf3b16274ad0c4ba7db2d9e"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;a id="username" href="..."&gt;A unique username link&lt;/a&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 363.115px;" data-name="text-18018f" data-block-id="63bf1650def9b2b27e84284aec4d1098"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>elements with <span style="color:#58aada">id</span>:
+	<ul>
+		<li>uniquely identified on the page</li>
+		<li>have special role</li>
+		<li>
+<span style="color:#58aada">primary_navbar</span>&nbsp;or <span style="color:#58aada">username_field</span>
+</li>
+		<li>single string no spaces</li>
+		<li>an element can only have 1 id</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-e1da6b" data-block-id="84a157098f9ced2c125cf6bd2b63a523"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">IDs</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* Define your meaning and style information once and use it in many places.
+* properly classing and iding your html structure will be critical once we start styling it.
+</aside></section><section data-id="4be4787a4137706c2d0e842b54facdb5">
+
+<div class="sl-block" data-block-type="code" style="width: 441.433px; height: 210px; left: 38.5666px; top: 124.881px;" data-name="code-3d1fcc" data-block-id="0995d70aa0a50ea6df14daa6e4fc3290"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;p&gt;
+  &lt;a&gt; a link &lt;/a&gt;
+  &lt;em&gt;emphasized text&lt;/em&gt;
+  &lt;span class="code"&gt;inline span&lt;/span&gt;
+  can all appear in a paragraph or block
+&lt;p&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 38.5666px; top: 358px;" data-name="text-18018f" data-block-id="87e2dc6d8e9dd9e43839a83563c71fd1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>inline elements:
+	<ul>
+		<li>do not start a new line</li>
+		<li>only takes up as much width as necessary</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 373.333px; height: 210px; left: 560px; top: 124.881px; min-width: 1px; min-height: 1px;" data-name="image-517553" data-block-id="0be1d4a5830b4d556b7f04a99f236658"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="480" data-natural-height="270" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/d3451ed7f205ff9d20197a5fa69ccadc.gif"></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-8d30e3" data-block-id="3d4357f75bc1e3854aff52ddcd6cde06" style="height: auto; width: 901.433px; left: 38.567px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><a href="#">a link</a> <strong>emphasized text</strong> <span style="color:#afafaf">inline span</span>&nbsp;can all appear in a paragraph or block</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="eff63d9ee9fae56f2739f0425a9fe671"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Inline Elements</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* certain elements are by default displayed a certain way
+* important to remember this so you arent' overriding these
+</aside></section><section data-id="d4c4fb80ce9a1c5cb4b2f46d9eb68802">
+
+<div class="sl-block" data-block-type="code" style="width: 441.433px; height: 210px; left: 38.5666px; top: 124.881px;" data-name="code-3d1fcc" data-block-id="a394d848a8012435527721d9448b7703"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;h1&gt;headings&lt;/h1&gt;
+&lt;p&gt;paragraphs&lt;/p&gt;
+&lt;form&gt;forms&lt;/form&gt;
+&lt;ul&gt;lists&lt;/ul&gt;
+&lt;div&gt;and divisions&lt;/div&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79.9996px; top: 413px;" data-name="text-18018f" data-block-id="efeab4f1eeeee44dd3f989a7b3227af4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>block elements:
+	<ul>
+		<li>start a new line</li>
+		<li>take up the full width available
+		<ul>
+			<li>stretches out to the left and right as far as it can (width of parent)<br>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 376.394px; height: 212.286px; left: 547.12px; top: 122.595px; min-width: 1px; min-height: 1px;" data-name="image-5e9812" data-block-id="f86bf096167ae9b9e15cc1199976621a"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="250" data-natural-height="141" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/1048f615b638aaa88fd5facae60236f8.gif"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="34b68381a4d79ff5b285a2ebe83ead12"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Block Elements</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">fills parent element
+</aside></section><section data-id="c2a86cf47edad625a3dac22d49902cfa"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="470aee27acccece1ba0c03b41717dcfa"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>generic inline: span</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="code" style="width: 830.011px; height: 132.732px; left: 64.9945px; top: 124.881px;" data-name="code-3d1fcc" data-block-id="6ee4b5fd6bfd18e91d062caddf6a665b"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;p&gt;and then they said, &lt;span class="redaction"&gt;spans are for babies!&lt;/span&gt;.&lt;/p&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 315px;" data-name="text-18018f" data-block-id="f6e9ec933fc5084c74f48d9cdc2f3a58"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_span.asp" target="_blank">span</a> elements:
+	<ul>
+		<li>is a generic inline element</li>
+		<li>don't take up space by default</li>
+		<li>don't start a new line</li>
+		<li>
+		<p>are by default:<span style="color:#98c379"> display: inline</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-19a445" data-block-id="fc73f7ccd2d23bda924544a44e18228a" style="height: auto; width: 799px; left: 81px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>and then they said,&nbsp; <s>spans are for babies!</s></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1f393d" data-block-id="b5f048cab371f69b731f4eae28e19f29"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">generic inline: span</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">* is a generic inline element
+* have no default style and can be used inline with other tags.  For instance to separate a word from a sentence.
+</aside></section><section data-id="41ffdbb5edfeb26c51b7fd28d8a24836">
+
+<div class="sl-block" data-block-type="code" style="width: 554.536px; height: 112.575px; left: 202.732px; top: 140px;" data-name="code-3d1fcc" data-block-id="3400cb8e19de9a443208ebaafd794c28"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="xml" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;div&gt;on one line&lt;/div&gt;&lt;div&gt;on the line below&lt;/div&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 280px;" data-name="text-18018f" data-block-id="131c978b6c1699ae2ecc7a7bb7307471"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>
+<a href="http://www.w3schools.com/tags/tag_div.asp" target="_blank">div</a> elements:
+	<ul>
+		<li>is a generic block element</li>
+		<li>takes up space by default</li>
+		<li>start a new line</li>
+		<li>are by default:<span style="color:rgb(152, 195, 121)"> display: block</span>
+</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-159cbe" data-block-id="a69d726a7f79af558785e2058b653316" style="height: auto; width: 600px; left: 180px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>on one line</p>
+
+<p>on the line below</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="061e8afa48edd7f6f44e623b64e099c8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">generic block: div</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="a4e57d5bcd23a8c5f7b7dc10e26f8d60"><section data-id="b5425b9efc629457e0936eb42ef8c570">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 130.438px;" data-name="text-802422" data-block-id="2a7bbb5e34e9cf5af056dbb84f0b473f">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+        <p>So far everything we've looked at has been snippets.&nbsp; The full HTML document has just a few more default tags.</p>
+
+        <p>&nbsp;</p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-name="image-bc9901" style="width: 558.711px; height: 453.407px; left: 200.644px; top: 225.593px; min-width: 1px; min-height: 1px;" data-block-id="79ce2cc9c511e57a8a2515d06fcabe9c">
+    <div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1024" data-natural-height="831" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/887206aa84679d464169f29611c092bc.png"></div>
+</div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="9a62307825bb164fa34718d2a6e6a179"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Document</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* might see more complicated doctypes usually XHTML just more strict
+* you should be strict on yourself regardless
+* can have meta tags for things like author
+</aside></section><section data-id="74fd6ff9249e5e451e2d4765e0d6499e">
+
+<div class="sl-block" data-block-type="code" style="width: 569.094px; height: 210px; left: 217.29px; top: 126.562px;" data-name="code-3d1fcc" data-block-id="b0acefc8849640f529ec04a50d669b1b"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;p&gt; &lt;p&gt;stuff&lt;/p&gt;&lt;/p&gt; &lt;!-- no --&gt;
+
+&lt;span&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/span&gt; &lt;!-- no --&gt;
+
+&lt;div&gt;&lt;h1&gt;hello&lt;/div&gt;&lt;/h1&gt; &lt;!-- wtf no --&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 420px;" data-name="text-18018f" data-block-id="54a4397f6430e1f55d2224380f0663aa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>many elements can be nested but with caveats
+	<ul>
+		<li>block inside block ok, but not <span style="color:#58aada">p</span>&nbsp;or <span style="color:#58aada">h*</span>
+</li>
+		<li>block not nested in inline</li>
+		<li>strict nesting no overlaps</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 2px; top: 0px;" data-block-id="65e10bb710c971f0c3e53aefba9e680a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Nesting Elements</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="e6ed5efd683f3efc79178bb4b31936d1">
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: -5.24025e-14px; top: 94.096px;" data-name="text-25e1ad" data-block-id="0414d908508d808b1c82f9731bb5f8cc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>Let's code a little html together</li>
+	<li>at each table:
+	<ul>
+		<li>1 person go to <a href="https://fiddlesticks.brunchlabs.com/new" target="_blank">https://fiddlesticks.brunchlabs.com/new</a>
+		<ul>
+			<li>copy the URL and send to others</li>
+		</ul>
+		</li>
+		<li>OR</li>
+		<li>1 person go to <a href="https://jsfiddle.net/" target="_blank">jsfiddle.net</a>
+		<ul>
+			<li>click collaborate -&gt; send link to each other on slack</li>
+		</ul>
+		</li>
+		<li>talk to each other about your hopes and dreams</li>
+		<li>hack some HTML, doesn't matter what</li>
+		<li>try an image tag with a gif: <a href="https://tinyurl.com/testthisgif" target="_blank">https://tinyurl.com/testthisgif</a>
+</li>
+		<li>try including some music:&nbsp;</li>
+	</ul>
+	</li>
+</ul></div></div>
+
+
+<div class="sl-block" data-block-type="line" data-name="line-d3bf8c" data-block-id="a19b1fa99154e61ebaa13c08aa3387a9" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 251.233px; top: 431.171px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="70.904" data-line-x2="56.766999999999996" data-line-y2="0" data-line-color="#ff9c33" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 13;" data-line-width="7px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid" width="56.766999999999996" height="70.904" viewBox="0 0 56.766999999999996 70.904"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#ff9c33" stroke-width="7" d="M4.375 65.44 L56.767 0"></path><path stroke="#ff9c33" stroke-width="7" d="M 0.205 45.448 L 2.656 67.586 L 24.795 65.135 L 2.656 67.586" class="line-start"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 70.904 L56.767 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 70.904 L56.767 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 837.5px; top: 481.5px;" data-block-id="9e8826ae87e0495256861cd0ae047157" data-name="line-5a4cd6"><div class="sl-block-content" data-line-x1="77.233" data-line-y1="90.904" data-line-x2="0" data-line-y2="0" data-line-color="#ff9c33" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 14;" data-line-width="7px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid" width="77.233" height="90.904" viewBox="0 0 77.233 90.904"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#ff9c33" stroke-width="7" d="M72.701 85.569 L0 0"></path><path stroke="#ff9c33" stroke-width="7" d="M 52.281 85.86 L 74.481 87.665 L 76.286 65.465 L 74.481 87.665" class="line-start"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M77.233 90.904 L0 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M77.233 90.904 L0 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="c968a35f5bca9419c80c647555ce9d1c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 15;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">hack some pages activity time!!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">caveat - jsfiddle does not handle multiple people typing at the same time very well - so discuss what you are adding</aside></section><section class="stack" data-id="c9e37944f61fa4f08ab950b6c19c6d51"><section data-id="a1aea2085d41b7b17aea8e2a8b95d436">
+
+
+<div class="sl-block" data-block-type="image" style="width: 514.919px; height: 386.189px; left: 229.259px; top: 307.092px; min-width: 1px; min-height: 1px;" data-name="image-327e48" data-block-id="f8cbc5cfbaf4d914fdffddd52d204ce1"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="360" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/35326bf6cd7f43af4d47ea020fe4256a.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="129dd55dd5f8486ccdfd56e5cfef9b82"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">html, the beauty of structure</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 118.768px;" data-name="text-18018f" data-block-id="4d4ca5f6c6de781967d2aa42d510d849"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="color:rgb(34, 34, 34)">but </span><strong>STRUCTURE</strong>&nbsp;looks so boring</p>
+
+<p>&nbsp;</p>
+
+<p>How do I make it pretty with colors?!</p>
+
+<p>​</p>
+</div></div><aside class="notes">* So far we've only talked about STRUCTURE but it all looks so boring.
+* well we can't make it too pretty without CSS - we'll learn that soon enough
+</aside></section><section data-id="59cbb81e1f937e4334364dee6edbac37">
+
+<div class="sl-block" data-block-type="image" style="width: 602.613px; height: 587.429px; left: 160px; top: 91px; min-width: 1px; min-height: 1px;" data-name="image-8d5fc5" data-block-id="34ec9ca502157e73c8e416c44f34d8ce"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="635" data-natural-height="619" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/4281dd12eeba77b57c9336dddf0d7de8.jpg"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="3d8658185b2447e29dc3b3bbc362cc67"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">amazon 1995</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* check it, no styyyle
+</aside></section><section data-id="7022a97524f538a3e3be1553827a0602">
+
+<div class="sl-block" data-block-type="image" style="width: 654.035px; height: 581.151px; left: 152.983px; top: 91px; min-width: 1px; min-height: 1px;" data-name="image-a264fb" data-block-id="9b1a3ec3431d3b7c9dfff42ddda96701"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="682" data-natural-height="606" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/96dcacd8a0010f37de22569d58cd2c35.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="43a873df489123a7793baf03841e5882"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">google backrub 1996</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">no joke</aside></section><section data-id="76ea68bf05b819203a515637ae03d0bc">
+
+<div class="sl-block" data-block-type="image" style="width: 740.894px; height: 543.756px; left: 109.553px; top: 114.516px; min-width: 1px; min-height: 1px;" data-name="image-8d30cb" data-block-id="6c0e8bed7cc2e72fb0206426f8b2ce32"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="684" data-natural-height="502" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/f20b1f4ee48523b9fcd0a746f469c4a0.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e58f18089c2351b63b305e7968b7e8fa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">google after backrub 1997</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">microsoft paint masterpiece there
+</aside></section><section data-id="285f3cea23eae84010a2138888166b4f">
+
+<div class="sl-block" data-block-type="image" style="width: 505.647px; height: 600.867px; left: 227.177px; top: 85.4009px; min-width: 1px; min-height: 1px;" data-name="image-408b9a" data-block-id="88b9fdc1f10dee848fff983c7a4e5238"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="616" data-natural-height="732" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/e8f4ac36a3dffea16d73137394a245a9.jpg"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="2cc80ea5c5e08683e9230a132eba0ea2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">apple 1997</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="82952cdfdfd4a7c39b5f864d309fe444">
+
+<div class="sl-block" data-block-type="image" style="width: 455.601px; height: 927.324px; left: 240px; top: 96.338px; min-width: 1px; min-height: 1px;" data-name="image-be20cc" data-block-id="8508164d8f03856e02a0b4b8016fa206"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="763" data-natural-height="1553" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/77124c8553d1a41c6224aff91ac984ca.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="5f8cdcc193974c50770de58e84e7c89c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">ebay 1996</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="2c82baf16334fa30ae8be9db6ecd4b0c">
+
+<div class="sl-block" data-block-type="image" style="width: 894.565px; height: 509.76px; left: 32.7175px; top: 120.24px; min-width: 1px; min-height: 1px;" data-name="image-9477f1" data-block-id="56055dfda67d242e6982e930bda2095f"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="630" data-natural-height="359" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/d31dd6f2e86eaeb51ee1385c8e349f52.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="4387e5321f96cf04f50a299e6fb66f8c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">youtube 2005</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="e3a2983bd2d957e69d22d23c864647c0">
+
+<div class="sl-block" data-block-type="image" style="width: 780.833px; height: 518px; left: 89.5835px; top: 112px; min-width: 1px; min-height: 1px;" data-name="image-02a900" data-block-id="d017b31826e85deb8457a3039218aa40"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="713" data-natural-height="473" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/5a8b64ee32193a6634b637effc3eb470.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e45355607937b08781a6fee8e763a5d8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">facebook 2004</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="334b7d8ce379a0e7419f4a13f2571d2d">
+
+<div class="sl-block" data-block-type="image" style="width: 803.486px; height: 560.553px; left: 80px; top: 95.4793px; min-width: 1px; min-height: 1px;" data-name="image-73a54d" data-block-id="f706ba44d1ff586db11cfa360662ebb1"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1022" data-natural-height="713" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/238b02cf2a5706c3cf5a9a462c0bd5dc.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="fb2e6f284d9e98fc4a0f3297152fdcac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">twitter 2006</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="84e68cc22064e6efa153f8db7b4a992b">
+
+<div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="de21183682134a9e47d1c8146bc17cd7"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>evolution</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 311px;" data-name="text-2cd40f" data-block-id="ed5c980d88cf32be99817e5f0701db2e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><a href="http://fabianburghardt.de/webolution/" target="_blank"><span style="color:rgb(198, 120, 221)">http://fabianburghardt.de/webolution/</span></a></p></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="b9974bfc573f2057c867d014010eee09"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">more webevolution</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="ec4d4df1b8ac6468530ed917f74c8c56">
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 688.466px; left: 135.767px; top: 204px;" data-name="text-25e1ad" data-block-id="0b957bfa26f6be25bd9f20a6557019ac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>x-hour: how the internet works and what are A and CNAME records exactly?<br>
+	&nbsp;</li>
+	<li>Friday: CSS, and how to "steal" from pages online<br>
+	&nbsp;</li>
+	<li>Lab1 Landing Page out - start with part 1 HTML ONLY</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-f2a572" data-block-id="4cc16b066034905c3e150322207abcde"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
