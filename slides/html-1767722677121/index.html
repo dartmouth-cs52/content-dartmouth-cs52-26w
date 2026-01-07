@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML</title>
-  <!-- Reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <!-- Shared theme lib CSS (fonts, base styles) -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
-  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <!-- Shared theme custom CSS -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
   <style>
-    /* Override slides.com animation system - make all elements fully visible */
+    /* Override slides.com animation system - make all elements visible */
     .sl-block-content,
     .sl-block-content[data-animation-type],
     .sl-block-content[data-animation-type="fade-in"],
@@ -21,12 +20,13 @@
       pointer-events: auto !important;
     }
   </style>
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
 </head>
 <body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
-  <div class="reveal" data-theme="shared:cs52-theme">
+  <div class="reveal" data-theme="shared:cs52-theme" data-code-theme="github">
     <div class="slides">
-
-				<section class="stack" data-id="ff572c5fb6a0b6c8d38aa1208d0219f9"><section data-id="647d82fb97c6e0edaa27cc63d0398907"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="1e973129f9690bc3ed2be54a452769f0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<section class="stack editing-mode" data-id="ff572c5fb6a0b6c8d38aa1208d0219f9" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="647d82fb97c6e0edaa27cc63d0398907" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="1e973129f9690bc3ed2be54a452769f0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -40,7 +40,7 @@
 
 <div class="logo-spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="9d5e5a7215f0eb1af9742e8329a81de2">
+</div></div></section><section data-id="9d5e5a7215f0eb1af9742e8329a81de2" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 146.5px;" data-name="text-99428f" data-block-id="8e3961ffc6dc1dc0ac4845b7d2b404aa">
@@ -67,7 +67,7 @@ just like this cat is not really a panda
 It is a descriptor language.
 describes what things are
 not how they work or even how they look
-</aside></section><section data-id="af6a5d0fddbd141c7a049c96f0c7cb21">
+</aside></section><section data-id="af6a5d0fddbd141c7a049c96f0c7cb21" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
 
@@ -98,7 +98,7 @@ no operations or actions
 can't compute with it
 but you can define structure.
 WORD analogy - in word you typically just say, italize this, change the font here - thats not scalable - if you do redefine styles in word kudos
-</aside></section><section data-id="4707c6f0523c7736ba1f03d4e3993d8c">
+</aside></section><section data-id="4707c6f0523c7736ba1f03d4e3993d8c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 480px; left: 458px; top: 210px;" data-name="text-ddffa2" data-block-id="78b3f380add1c87984e5464c913f9027"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
 	<li>HTML:
@@ -122,7 +122,7 @@ WORD analogy - in word you typically just say, italize this, change the font her
 ok maybe lets not get carried away with analogies
 in anycase - the skeleton of a page is super important -
  it doesn't matter if you are using framework to help, fancy pants react, etc - understanding how the skeleton is put together will matter - you won't be able to style or adjust or layer or move elements if they aren't structured well.
-</aside></section><section data-id="f205d674560188672073803db060d7c7">
+</aside></section><section data-id="f205d674560188672073803db060d7c7" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
 
@@ -150,7 +150,7 @@ draw_circle(135, 110, 20)
 * sequence of drawing instructions =&gt; imperative.
 * soome style somewhere would have to describe the display properties of the ball
 * that is where css would come in - but css is also descriptive - rather than command based
-</aside></section><section data-id="3b3cf4e668995b5627c1c2ce31fe8d06">
+</aside></section><section data-id="3b3cf4e668995b5627c1c2ce31fe8d06" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="image" style="width: 400px; height: 400px; left: 52.5258px; top: 90px; min-width: 1px; min-height: 1px;" data-name="image-b2ef83" data-block-id="eb0e46ee42f50df7f5e5d26f322c20bc"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="480" alt="cat pretending to be a pirate" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/37f7208a76103a3188e3ac774e3e6ace.gif"></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 542.344px;" data-name="text-15d190" data-block-id="2db2108b9371a0354673fed08c0cff0c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -173,7 +173,7 @@ markdown, LaTex
 in the first lab - you'll see how we focus on structure first
 example: underlining and color of links
 we'll often have to undo these bad design decisions
-</aside></section><section data-id="5e3a6c1802648c532b8a8d3d10bd605a">
+</aside></section><section data-id="5e3a6c1802648c532b8a8d3d10bd605a" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="image" style="width: 571.591px; height: 408.279px; left: 194.204px; top: 109.119px; min-width: 1px; min-height: 1px;" data-name="image-85668b" data-block-id="114bb7b8b6de5d56c71177d90d3f39ce"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="700" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/e140f08d3f17055ec6ed6cbeae53e346.jpg"></div></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 560px;" data-name="text-27bd8f" data-block-id="e5401e850a59595b4552a57ddb6d2e71"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -193,7 +193,8 @@ we'll often have to undo these bad design decisions
 </div></div></div><aside class="notes">* what you want to do is **annotate your content**
 * with **syntactically identifiable notation/descriptions** in your document that describe what it is - and later can dictate what it looks like
 * all these are builtin html5 semantic tags
-</aside></section></section><section class="stack" data-id="02774574bc0df8e9142a7dc0ef353f84"><section data-id="a65619d772763730f6db3560de40200d">
+</aside></section></section>
+<section class="stack editing-mode" data-id="02774574bc0df8e9142a7dc0ef353f84" style="top: 0px; display: none;" data-previous-indexv="5" hidden="" aria-hidden="true"><section data-id="a65619d772763730f6db3560de40200d" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" style="width: 642.837px; height: 434.558px; left: 158.582px; top: 116.483px; min-width: 1px; min-height: 1px;" data-name="image-7f716b" data-block-id="43a134f53dfc88b35b565f31b87f4d17"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1000" data-natural-height="676" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/de17fab5a8659d7659b25b41e1d2b82d.jpg"></div></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 641.418px; left: 158.582px; top: 582.5px;" data-name="text-6e2f55" data-block-id="1f1db7265392ff401eaaa961c6508178"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>i made this amazing tool. but then they used it for kittens... 😹 ~Sir Tim Berners-Lee</p></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-5b1b70" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="3fda95607e541d6d2af84cbdc4dd7ea7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
@@ -204,7 +205,7 @@ we'll often have to undo these bad design decisions
   <div class="spacer"></div>
 </div></div></div><aside class="notes">he was later surprised in a reddit ama that kittens took over the internet
 silly human
-he'd probably also be surprised by this photo since i photoshopped the kitten into it</aside></section><section data-id="fd5909e897d58420ee21dbc3a70e8d9b">
+he'd probably also be surprised by this photo since i photoshopped the kitten into it</aside></section><section data-id="fd5909e897d58420ee21dbc3a70e8d9b" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="image" style="width: 564.876px; height: 379.142px; left: 197.562px; top: 160.429px; min-width: 1px; min-height: 1px;" data-name="image-c450b2" data-block-id="e075cd41aa06d307e4a0f940cf39e3fa"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="736" data-natural-height="494" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/5cb19db685b22c86b40cbe675c35ae76.gif"></div></div>
@@ -224,7 +225,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 * so checkit, tomorrow we'll learn about TCP and DNS. dudes lets connect em to document
 * **hypertext** was a concept of linking text documents together with hyperlinks (on disk).
 * built **html** and **http** and **first web browser**
-</aside></section><section data-id="b2a1186bb90dba8efddc24f58526ce46">
+</aside></section><section data-id="b2a1186bb90dba8efddc24f58526ce46" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 614px;" data-name="text-d44126" data-block-id="00a9234fb7ea11117b616d8a4ee595fb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>1968 - Douglas Engelbart</p>
 </div></div>
@@ -238,7 +239,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 </div></div></div><aside class="notes">* hypertext was around in works of fiction as early as the 1940s (theoretically **linked microfilms** and such)
 * 1968 Douglas Engelbart - Mother of all Demos (mouse / video conferencing / and hypertext)
 * who knows that microfilms/fiche were? 
-</aside></section><section data-id="e5474df91657a891d89d4bc9e875ed95">
+</aside></section><section data-id="e5474df91657a891d89d4bc9e875ed95" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 614px;" data-name="text-d44126" data-block-id="77c04082c9fb7139a912bc496cc6c6af"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>because carrier pigeons! 🕊</p>
 
@@ -257,7 +258,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 </div>
 </div></div><aside class="notes">* originally invented for use by carrier pigeons in the late 1800s
 * can imagine thinking how nice it would be to have links - so easy progression from this to that
-</aside></section><section data-id="640646377d6cdc489f4b29168965f14e">
+</aside></section><section data-id="640646377d6cdc489f4b29168965f14e" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="iframe" style="width: 869.956px; height: 489.351px; left: 45.022px; top: 140px;" data-name="iframe-4cc651" data-block-id="9de0e6c320f766a23cda7c82aecb349d"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://www.youtube.com/embed/yJDv-zdhzMY?enablejsapi=1" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-6227a1" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d7b430d7b302545adf5c07c0431fcbad"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -273,7 +274,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 * wasn't quite all implementable, but showed all the basic features of modern computing, mouse, browser,video
 * and somehow 50 years later videoconferencing is still shit
 * skip to 30
-</aside></section><section data-id="1b85fe6857846b44d4f73ebf825d4d8f">
+</aside></section><section data-id="1b85fe6857846b44d4f73ebf825d4d8f" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 646.289px;" data-name="text-d44126" data-block-id="75e212e50f66f6ce2778ca33e155fc20"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>WorldWideWeb 1990</p></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-8c9cbb" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="df78941a147a7efd75b88865c2bedd46"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
@@ -287,7 +288,8 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 * i can remember the days without the internet, it was a scary world
 * no way to get directions, no way to look something up during an argument
 * **marc andreesens mosaic 1993** and then netscape 1994, etc
-</aside></section></section><section class="stack" data-id="16de661d1effde491fde782e04c4cb7d"><section data-id="28e0f39f06f3dd884730a2b2c17fb1ce">
+</aside></section></section>
+<section class="stack editing-mode" data-id="16de661d1effde491fde782e04c4cb7d" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="28e0f39f06f3dd884730a2b2c17fb1ce" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: -3.55271e-15px; top: 97px;" data-name="text-5f5f1d" data-block-id="062298dcb4c3e16945a96e548048311a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>varying compatibilities, 2000 first xhtml standard</p>
 
@@ -306,7 +308,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 * allowing missing closing tags
 * XHTML standard developed (2000) mucho stricter and yay
 * __back then everybody coded html manually, so browsers were forgiving - now we have better tools__
-</aside></section><section data-id="527d2317b07679ff55b30b56e7dfc53e">
+</aside></section><section data-id="527d2317b07679ff55b30b56e7dfc53e" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 105.123px;" data-name="text-5f5f1d" data-block-id="bc603dc628cffe3d43c81cdb94b1848e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>in this class, we'll focus on Brave/Chrome</p>
 </div></div>
@@ -340,7 +342,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 </div></div></div><aside class="notes">* safari is clearly just out the jungle somewhere taking pretty pictures of animals instead
 * for this class... ONLY CHROME/Brave WILL DO
 * everybody wants your data
-</aside></section><section data-id="11c51c8b86f171e8ed033d0019744641">
+</aside></section><section data-id="11c51c8b86f171e8ed033d0019744641" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" style="width: 734.806px; height: 496.491px; left: 107.064px; top: 91.116px; min-width: 1px; min-height: 1px;" data-name="image-f1bf94" data-block-id="13b4bd8c755f90f588718da6bcb6ad28"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="222" data-natural-height="150" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/d9576e315420119334c6a587b7d9bd8b.svg"></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 583px;" data-name="text-b73230" data-block-id="5c8246eb9b9ea8675f11e44c412192f6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
@@ -366,7 +368,7 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 * all promoting the structural definition way of thinking
 * crazy how it wasn't that long ago that this stuff became normal
 * basically get rid of style, bring in structure
-</aside></section><section data-id="a74b99c0fe2c2f226a6154b826cd1d24">
+</aside></section><section data-id="a74b99c0fe2c2f226a6154b826cd1d24" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" style="width: 603.071px; height: 335.458px; left: 178.464px; top: 112.271px; min-width: 1px; min-height: 1px;" data-name="image-da0862" data-block-id="f8a6bd6b6bf2df31d08c80f3d714bb72"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="320" data-natural-height="178" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/19113023395ce383803541e0f27430ab.gif"></div></div>
 <div class="sl-block" data-block-type="code" style="width: 560px; height: 140px; left: 200px; top: 490px;" data-name="code-e6a1d6" data-block-id="0bf8fd131b28cc3499aa1dd2d4be3d10"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="python" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
 &lt;blink&gt; the sadness of changing standards &lt;/blink&gt;
@@ -381,7 +383,8 @@ he'd probably also be surprised by this photo since i photoshopped the kitten in
 </div></div></div><aside class="notes">* other elements got axed
 * this used to be a thing
 * now you have to write a bunch of css animation keyframes to achieve what you could in just 15 characters
-</aside></section></section><section data-id="73828d5342c524eabe9740deaaacd307">
+</aside></section></section>
+<section data-id="73828d5342c524eabe9740deaaacd307" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 752.953px; left: 103.524px; top: 221.5px;" data-name="text-5f5f1d" data-block-id="d5537ac718fc0af7ea5224abdc10a93a"><div class="sl-block-content card" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p><br>
 basic premise is<br>
@@ -400,7 +403,8 @@ basic premise is<br>
   </div>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* The basic idea of **structural tags** with **links between documents** has remained the same since then.
-</aside></section><section class="stack" data-id="228b4f4d8e4e64c7138aed4409b0d4e4"><section data-id="44264b9c2aec482291a477d3ec51b3a2">
+</aside></section>
+<section class="stack editing-mode" data-id="228b4f4d8e4e64c7138aed4409b0d4e4" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="44264b9c2aec482291a477d3ec51b3a2" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 229.716px;" data-name="text-a10ca5" data-block-id="7ca96123a0f9782dc297adf9377bb758"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>hierarchical collection of elements, starting with <span style="color:#4757ff">&lt;html&gt;</span>
@@ -422,7 +426,7 @@ basic premise is<br>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">the following is a bit of a reference to some of the tags you'll need to know! 
 
-self-closing tags have no children elements.  leaf nodes</aside></section><section data-id="22e085409930db91e75971a0aaa246b8">
+self-closing tags have no children elements.  leaf nodes</aside></section><section data-id="22e085409930db91e75971a0aaa246b8" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 226.357px;" data-name="text-638157" data-block-id="cadc483eab60d1b150b1e359f760ced9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -448,7 +452,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
   </div>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* everything in between a pair of **start** and **end** tags can be thought of as the **child/children** of that tag.
-* underneath it all, your HTML is parsed into a particular **data structure** - any guesses?</aside></section><section data-id="f923d5502e3f5aee4001fe5950a02cf6">
+* underneath it all, your HTML is parsed into a particular **data structure** - any guesses?</aside></section><section data-id="f923d5502e3f5aee4001fe5950a02cf6" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 192.762px;" data-name="text-a10ca5" data-block-id="9033b33a761c1144ccce8945f73a7a68"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>Start tags may have <a href="http://www.w3schools.com/html/html_attributes.asp" target="_blank">attributes</a>
@@ -471,7 +475,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* another way to think of an attribute as is a parameter to a function - this way of thinking will matter more when we get to react but regardless, you are passing in arguments to an element that customizes it.  
 * and all elements can have classes
-</aside></section><section data-id="3e7b10415c75d1477efa8a8845950b0e">
+</aside></section><section data-id="3e7b10415c75d1477efa8a8845950b0e" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 394.793px;" data-name="text-0c269a" data-block-id="c82423213428564491dc04d5b7080929"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>your document structure — tags and classes should be self-evident first</li>
@@ -491,7 +495,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">don't need to use these much - should be readable!</aside></section><section data-id="2f92af3cb58bf575272a763703acfdd5">
+</div></div><aside class="notes">don't need to use these much - should be readable!</aside></section><section data-id="2f92af3cb58bf575272a763703acfdd5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" style="width: 444.794px; height: 518px; left: 257.603px; top: 91px; min-width: 1px; min-height: 1px;" data-name="image-e9d26e" data-block-id="91894c350bde0c0457beccb7b796834d"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="559" alt="html elements as a tree from from watershedcreative" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/2caaa91fe8e427d5f37c2b85361121a5.png"></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 642.156px;" data-name="text-069cfd" data-block-id="fa7b1249f6ef2a83f6feb9e459e3f225"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>Browser parses html into a tree structure — the DOM</p>
@@ -506,7 +510,8 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 * pretty much everything in this course is going to be a tree! 🌳
 * basically everything in the world is a graph - if you've taken algos, you can be happy now
 * more next week
-</aside></section></section><section class="stack" data-id="2f6ad1e7b486d0cff114634fa8ef4f5d"><section data-id="ee7523434c2262ab67d26af8f7a34961"><div class="sl-block" data-block-type="iframe" style="width: 876.238px; height: 526.204px; left: 41.881px; top: 126.562px;" data-name="iframe-73d3ce" data-block-id="585dac3ff22a81432823b6227e58af0b"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e6bad6db1a6fbebf4d365939d61926de?height=300&amp;theme-id=24117&amp;default-tab=html,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+</aside></section></section>
+<section class="stack editing-mode" data-id="2f6ad1e7b486d0cff114634fa8ef4f5d" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="ee7523434c2262ab67d26af8f7a34961" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true"><div class="sl-block" data-block-type="iframe" style="width: 876.238px; height: 526.204px; left: 41.881px; top: 126.562px;" data-name="iframe-73d3ce" data-block-id="585dac3ff22a81432823b6227e58af0b"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e6bad6db1a6fbebf4d365939d61926de?height=300&amp;theme-id=24117&amp;default-tab=html,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-72591a" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d6523257c7ddfaa0e9e6613ecbb56d9c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -517,7 +522,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="a12341a67ba94ea24f58baebc090a44c">
+</div></div></section><section data-id="a12341a67ba94ea24f58baebc090a44c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-name="text-0c269a" data-block-id="72d4ce106062c26fe6fad222f3138af4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
@@ -547,7 +552,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
   </div>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* usually urls, but can also be javascript
-</aside></section><section data-id="ec8e2824b20df2a7d1ccf962fc694ede">
+</aside></section><section data-id="ec8e2824b20df2a7d1ccf962fc694ede" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 74px; top: 514px;" data-name="text-0c269a" data-block-id="9ac2ab78f89ae27d4aa570adb12e44d6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
@@ -600,7 +605,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* lists are often used by convention for things like nav bars - in places where you logically think, oh its a list of links etc.
 * lis are nested inside of ul/ols
-</aside></section><section data-id="76a63e76f603c24d538ceb3735599367">
+</aside></section><section data-id="76a63e76f603c24d538ceb3735599367" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 835.834px; left: 62.083px; top: 264.323px;" data-name="text-0c269a" data-block-id="5197536f6494c3fc0bfd3e724cbd538f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
@@ -626,7 +631,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
   </div>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">which is set to the string URL of where the image is located. More on attributes and urls soon.
-</aside></section><section data-id="45830c7078c6e434c63cda98f8efb58e">
+</aside></section><section data-id="45830c7078c6e434c63cda98f8efb58e" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 331px;" data-name="text-0c269a" data-block-id="4205f0c5c5593a68cb3d92ecc772a08f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -662,7 +667,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 * html is generally white-space collapsing (multiple spaces and new lines are ignored)
 * spaces aren't structure - if you want to know what something is - mark it
 * parser needs to know what is paragraphs
-</aside></section><section data-id="b09d0330fc291191ccf56a0385452f21">
+</aside></section><section data-id="b09d0330fc291191ccf56a0385452f21" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 346px;" data-name="text-0c269a" data-block-id="c369544260c56750774fe449bfb6c86d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <h2>Heading 2:</h2>
 
@@ -690,7 +695,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="44b4f5531c0b14c214988bc50fee2451"><div class="sl-block" data-block-type="code" style="width: 523px; height: 166px; left: 218.5px; top: 140px;" data-name="code-fdd7d4" data-block-id="d0d7d8f2d321ff63b8350f2756e62d62"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;footer&gt;
+</div></div></section><section data-id="44b4f5531c0b14c214988bc50fee2451" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="code" style="width: 523px; height: 166px; left: 218.5px; top: 140px;" data-name="code-fdd7d4" data-block-id="d0d7d8f2d321ff63b8350f2756e62d62"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;footer&gt;
  &lt;!-- content at the bottom of the page --&gt;
 &lt;/footer&gt;</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 360px;" data-name="text-0c269a" data-block-id="5d6dee6a2f869a3131763bfc0d4e3cf9">
@@ -717,7 +722,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="fc0a77736868bb0fcf57e0e6a01b8360">
+</div></div></section><section data-id="fc0a77736868bb0fcf57e0e6a01b8360" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 859.281px; left: 50.8845px; top: 256px;" data-name="text-0c269a" data-block-id="9aa582c21776e20c1df085ab257e30fc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -748,7 +753,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 </div></div><aside class="notes">* can be tricky to size automatically
 * code running inside iframe can't affect parent
 * can be prohibited by origin
-</aside></section><section data-id="79c0892a27a3da7b698a157ea425cdae"><div class="sl-block" data-block-type="code" style="width: 480px; height: 166px; left: 240px; top: 140px;" data-name="code-fdd7d4" data-block-id="8bdbdd0d18ee3efd4371354bc6018ca0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;input /&gt;
+</aside></section><section data-id="79c0892a27a3da7b698a157ea425cdae" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="code" style="width: 480px; height: 166px; left: 240px; top: 140px;" data-name="code-fdd7d4" data-block-id="8bdbdd0d18ee3efd4371354bc6018ca0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;input /&gt;
 &lt;input type="checkbox" /&gt;
 &lt;input type="radio" /&gt;</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 360px;" data-name="text-0c269a" data-block-id="44f552a0f2b295251c55e2e19e78742e">
@@ -776,7 +781,7 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="5d1c628ea64f310cc9057ef1a5c6c4f8">
+</div></div></section><section data-id="5d1c628ea64f310cc9057ef1a5c6c4f8" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="code" style="width: 269.179px; height: 579.364px; left: 118.821px; top: 113.636px;" data-name="code-fdd7d4" data-block-id="8af1c406233b7205397f9b2cf87fac67"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;header&gt;
 
@@ -818,7 +823,8 @@ self-closing tags have no children elements.  leaf nodes</aside></section><secti
 </div>
 </div></div>
 <div class="sl-block" data-block-type="iframe" data-name="iframe-4eef56" style="width: 500px; height: 416.667px; left: 437.671px; top: 261.338px;" data-block-id="691f00ed131c7627505c90f0642997d9"><div class="sl-block-content" style="z-index: 13;"><iframe allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay" data-src="https://giphy.com/embed/xT5LMKqlcoLeHC10xa" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation"></iframe></div></div><aside class="notes">the point is that the more of these you use the clearer your document structure is!
-will be graded in lab1 on usage of semantic tags</aside></section></section><section class="stack" data-id="1bba5815a1fd54b4c8e458331fbceb95"><section data-id="eea4064435218f33ee710f64012b6c58">
+will be graded in lab1 on usage of semantic tags</aside></section></section>
+<section class="stack editing-mode" data-id="1bba5815a1fd54b4c8e458331fbceb95" style="top: 0px; display: none;" data-previous-indexv="2" hidden="" aria-hidden="true"><section data-id="eea4064435218f33ee710f64012b6c58" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 350px;" data-name="text-0c269a" data-block-id="78631d0978089ed0b4a1394e1fcd9861"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -861,7 +867,7 @@ will be graded in lab1 on usage of semantic tags</aside></section></section><sec
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* we'll get into protocols and hosts and all that tomorrow
-</aside></section><section data-id="7b28a7fcd5886ac353d70fdfd7043123">
+</aside></section><section data-id="7b28a7fcd5886ac353d70fdfd7043123" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 311px;" data-name="text-0c269a" data-block-id="4b09cf087a2627247743c4fd66132610"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -903,7 +909,7 @@ will be graded in lab1 on usage of semantic tags</aside></section></section><sec
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="8ed1c208743e7bb8eccefa7f40b56ebf">
+</div></div></section><section data-id="8ed1c208743e7bb8eccefa7f40b56ebf" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 311px;" data-name="text-0c269a" data-block-id="53e62f9f0e49cd51bb2d1536b2c1b877"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -943,7 +949,8 @@ will be graded in lab1 on usage of semantic tags</aside></section></section><sec
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">we'll go into these bits later when we start writing more complex pages</aside></section></section><section class="stack" data-id="5b564c85f469612e37343360689b71a1"><section data-id="8eaffd260a9bb509bb8f65e3f9ca1540">
+</div></div><aside class="notes">we'll go into these bits later when we start writing more complex pages</aside></section></section>
+<section class="stack editing-mode" data-id="5b564c85f469612e37343360689b71a1" style="top: 0px; display: none;" data-previous-indexv="2" hidden="" aria-hidden="true"><section data-id="8eaffd260a9bb509bb8f65e3f9ca1540" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 586.208px; left: 160px; top: 436px;" data-name="text-0c269a" data-block-id="b5cd82012b1dab9123fdda3d9c09289d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -980,7 +987,7 @@ this text is <strong>emphasized</strong></p></div>
 * but defining some content as more important than its surroundings is structure
 * this is also an example of how semantic tags help with accessibility (which we'll talk about more in a future session on accessibility and design)
 * https://accessibility.psu.edu/boldfacehtml
-</aside></section><section data-id="60e912bf372a9f2ebbdbe4c5d34d88f1">
+</aside></section><section data-id="60e912bf372a9f2ebbdbe4c5d34d88f1" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 140px;" data-name="text-802422" data-block-id="5ecc7f3c43c2d0fef83cbfdb92d1ac00"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>What if I want a &lt;<span style="color:#58aada">slide&gt;</span>&nbsp;or a &lt;<span style="color:#58aada">profile-image&gt;</span>&nbsp;element?</p>
@@ -1017,7 +1024,7 @@ this text is <strong>emphasized</strong></p></div>
 * what about other semantic tags?
 * but there are generic tags that you can give id's and classes to!
 * REACT will give us more powerful abstraction
-</aside></section><section data-id="ad26d59f62791c67b1704c9514adad7d">
+</aside></section><section data-id="ad26d59f62791c67b1704c9514adad7d" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 
 <div class="sl-block" data-block-type="code" style="width: 586.226px; height: 137.626px; left: 186.887px; top: 141.187px;" data-name="code-3d1fcc" data-block-id="90edf349342e428aaf556f53c107b9bc"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;div class="slide"&gt;the contents of this slide&lt;/div&gt;
 &lt;img class="profile" src="" /&gt;
@@ -1056,7 +1063,7 @@ this text is <strong>emphasized</strong></p></div>
 </div></div></div><aside class="notes">* By adding a `class` to an element you are saying it belongs to **set of elements** that mean a certain thing and should be styled a particular way
 * Where styled really means **selected** or **grouped**.
 * The `class` property is assigned a space separated quoted string with potentially multiple classes. `class="aclass"` but also `class="aclass anotherclass"` this is convenient as you can have one element belong to multiple style classes, inheriting styles from each!  
-</aside></section><section data-id="4997a502c8365b23f3141ebd36af7573">
+</aside></section><section data-id="4997a502c8365b23f3141ebd36af7573" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="code" style="width: 586.226px; height: 137.626px; left: 186.887px; top: 141.187px;" data-name="code-3d1fcc" data-block-id="e5f0a1347cf3b16274ad0c4ba7db2d9e"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;a id="username" href="..."&gt;A unique username link&lt;/a&gt;
 </code></pre></div></div>
@@ -1081,7 +1088,7 @@ this text is <strong>emphasized</strong></p></div>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* Define your meaning and style information once and use it in many places.
 * properly classing and iding your html structure will be critical once we start styling it.
-</aside></section><section data-id="4be4787a4137706c2d0e842b54facdb5">
+</aside></section><section data-id="4be4787a4137706c2d0e842b54facdb5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="code" style="width: 441.433px; height: 210px; left: 38.5666px; top: 124.881px;" data-name="code-3d1fcc" data-block-id="0995d70aa0a50ea6df14daa6e4fc3290"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;p&gt;
   &lt;a&gt; a link &lt;/a&gt;
@@ -1115,7 +1122,7 @@ this text is <strong>emphasized</strong></p></div>
 </div>
 </div></div><aside class="notes">* certain elements are by default displayed a certain way
 * important to remember this so you arent' overriding these
-</aside></section><section data-id="d4c4fb80ce9a1c5cb4b2f46d9eb68802">
+</aside></section><section data-id="d4c4fb80ce9a1c5cb4b2f46d9eb68802" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="code" style="width: 441.433px; height: 210px; left: 38.5666px; top: 124.881px;" data-name="code-3d1fcc" data-block-id="a394d848a8012435527721d9448b7703"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;h1&gt;headings&lt;/h1&gt;
 &lt;p&gt;paragraphs&lt;/p&gt;
@@ -1150,7 +1157,7 @@ this text is <strong>emphasized</strong></p></div>
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">fills parent element
-</aside></section><section data-id="c2a86cf47edad625a3dac22d49902cfa"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="470aee27acccece1ba0c03b41717dcfa"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+</aside></section><section data-id="c2a86cf47edad625a3dac22d49902cfa" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="470aee27acccece1ba0c03b41717dcfa"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h2>generic inline: span</h2>
 </div></div>
 
@@ -1181,7 +1188,7 @@ this text is <strong>emphasized</strong></p></div>
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* is a generic inline element
 * have no default style and can be used inline with other tags.  For instance to separate a word from a sentence.
-</aside></section><section data-id="41ffdbb5edfeb26c51b7fd28d8a24836">
+</aside></section><section data-id="41ffdbb5edfeb26c51b7fd28d8a24836" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="code" style="width: 554.536px; height: 112.575px; left: 202.732px; top: 140px;" data-name="code-3d1fcc" data-block-id="3400cb8e19de9a443208ebaafd794c28"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="xml" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;div&gt;on one line&lt;/div&gt;&lt;div&gt;on the line below&lt;/div&gt;</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 280px;" data-name="text-18018f" data-block-id="131c978b6c1699ae2ecc7a7bb7307471"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -1213,7 +1220,8 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section></section><section class="stack" data-id="a4e57d5bcd23a8c5f7b7dc10e26f8d60"><section data-id="b5425b9efc629457e0936eb42ef8c570">
+</div></div></section></section>
+<section class="stack editing-mode" data-id="a4e57d5bcd23a8c5f7b7dc10e26f8d60" style="top: 0px; display: none;" data-previous-indexv="1" hidden="" aria-hidden="true"><section data-id="b5425b9efc629457e0936eb42ef8c570" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 130.438px;" data-name="text-802422" data-block-id="2a7bbb5e34e9cf5af056dbb84f0b473f">
@@ -1239,7 +1247,7 @@ this text is <strong>emphasized</strong></p></div>
 </div></div><aside class="notes">* might see more complicated doctypes usually XHTML just more strict
 * you should be strict on yourself regardless
 * can have meta tags for things like author
-</aside></section><section data-id="74fd6ff9249e5e451e2d4765e0d6499e">
+</aside></section><section data-id="74fd6ff9249e5e451e2d4765e0d6499e" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 
 <div class="sl-block" data-block-type="code" style="width: 569.094px; height: 210px; left: 217.29px; top: 126.562px;" data-name="code-3d1fcc" data-block-id="b0acefc8849640f529ec04a50d669b1b"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;p&gt; &lt;p&gt;stuff&lt;/p&gt;&lt;/p&gt; &lt;!-- no --&gt;
 
@@ -1269,7 +1277,8 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section></section><section data-id="e6ed5efd683f3efc79178bb4b31936d1">
+</div></div></section></section>
+<section data-id="e6ed5efd683f3efc79178bb4b31936d1" style="top: 350px; display: block;" class="editing-mode" hidden="" aria-hidden="true">
 
 
 
@@ -1310,7 +1319,8 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">caveat - jsfiddle does not handle multiple people typing at the same time very well - so discuss what you are adding</aside></section><section class="stack" data-id="c9e37944f61fa4f08ab950b6c19c6d51"><section data-id="a1aea2085d41b7b17aea8e2a8b95d436">
+</div></div><aside class="notes">caveat - jsfiddle does not handle multiple people typing at the same time very well - so discuss what you are adding</aside></section>
+<section class="stack editing-mode" data-id="c9e37944f61fa4f08ab950b6c19c6d51" style="top: 0px; display: block;" data-previous-indexv="9" hidden="" aria-hidden="true"><section data-id="a1aea2085d41b7b17aea8e2a8b95d436" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="image" style="width: 514.919px; height: 386.189px; left: 229.259px; top: 307.092px; min-width: 1px; min-height: 1px;" data-name="image-327e48" data-block-id="f8cbc5cfbaf4d914fdffddd52d204ce1"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="360" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/35326bf6cd7f43af4d47ea020fe4256a.gif"></div></div>
@@ -1335,7 +1345,7 @@ this text is <strong>emphasized</strong></p></div>
 <p>​</p>
 </div></div><aside class="notes">* So far we've only talked about STRUCTURE but it all looks so boring.
 * well we can't make it too pretty without CSS - we'll learn that soon enough
-</aside></section><section data-id="59cbb81e1f937e4334364dee6edbac37">
+</aside></section><section data-id="59cbb81e1f937e4334364dee6edbac37" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 602.613px; height: 587.429px; left: 160px; top: 91px; min-width: 1px; min-height: 1px;" data-name="image-8d5fc5" data-block-id="34ec9ca502157e73c8e416c44f34d8ce"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="635" data-natural-height="619" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/4281dd12eeba77b57c9336dddf0d7de8.jpg"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="3d8658185b2447e29dc3b3bbc362cc67"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1349,7 +1359,7 @@ this text is <strong>emphasized</strong></p></div>
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* check it, no styyyle
-</aside></section><section data-id="7022a97524f538a3e3be1553827a0602">
+</aside></section><section data-id="7022a97524f538a3e3be1553827a0602" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 654.035px; height: 581.151px; left: 152.983px; top: 91px; min-width: 1px; min-height: 1px;" data-name="image-a264fb" data-block-id="9b1a3ec3431d3b7c9dfff42ddda96701"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="682" data-natural-height="606" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/96dcacd8a0010f37de22569d58cd2c35.png"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="43a873df489123a7793baf03841e5882"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1362,7 +1372,7 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">no joke</aside></section><section data-id="76ea68bf05b819203a515637ae03d0bc">
+</div></div><aside class="notes">no joke</aside></section><section data-id="76ea68bf05b819203a515637ae03d0bc" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 740.894px; height: 543.756px; left: 109.553px; top: 114.516px; min-width: 1px; min-height: 1px;" data-name="image-8d30cb" data-block-id="6c0e8bed7cc2e72fb0206426f8b2ce32"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="684" data-natural-height="502" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/f20b1f4ee48523b9fcd0a746f469c4a0.png"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e58f18089c2351b63b305e7968b7e8fa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1376,7 +1386,7 @@ this text is <strong>emphasized</strong></p></div>
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">microsoft paint masterpiece there
-</aside></section><section data-id="285f3cea23eae84010a2138888166b4f">
+</aside></section><section data-id="285f3cea23eae84010a2138888166b4f" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 505.647px; height: 600.867px; left: 227.177px; top: 85.4009px; min-width: 1px; min-height: 1px;" data-name="image-408b9a" data-block-id="88b9fdc1f10dee848fff983c7a4e5238"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="616" data-natural-height="732" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/e8f4ac36a3dffea16d73137394a245a9.jpg"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="2cc80ea5c5e08683e9230a132eba0ea2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1389,7 +1399,7 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="82952cdfdfd4a7c39b5f864d309fe444">
+</div></div></section><section data-id="82952cdfdfd4a7c39b5f864d309fe444" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 455.601px; height: 927.324px; left: 240px; top: 96.338px; min-width: 1px; min-height: 1px;" data-name="image-be20cc" data-block-id="8508164d8f03856e02a0b4b8016fa206"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="763" data-natural-height="1553" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/77124c8553d1a41c6224aff91ac984ca.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="5f8cdcc193974c50770de58e84e7c89c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1402,7 +1412,7 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="2c82baf16334fa30ae8be9db6ecd4b0c">
+</div></div></section><section data-id="2c82baf16334fa30ae8be9db6ecd4b0c" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 894.565px; height: 509.76px; left: 32.7175px; top: 120.24px; min-width: 1px; min-height: 1px;" data-name="image-9477f1" data-block-id="56055dfda67d242e6982e930bda2095f"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="630" data-natural-height="359" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/d31dd6f2e86eaeb51ee1385c8e349f52.png"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="4387e5321f96cf04f50a299e6fb66f8c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1415,7 +1425,7 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="e3a2983bd2d957e69d22d23c864647c0">
+</div></div></section><section data-id="e3a2983bd2d957e69d22d23c864647c0" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 780.833px; height: 518px; left: 89.5835px; top: 112px; min-width: 1px; min-height: 1px;" data-name="image-02a900" data-block-id="d017b31826e85deb8457a3039218aa40"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="713" data-natural-height="473" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/5a8b64ee32193a6634b637effc3eb470.png"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e45355607937b08781a6fee8e763a5d8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1428,7 +1438,7 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="334b7d8ce379a0e7419f4a13f2571d2d">
+</div></div></section><section data-id="334b7d8ce379a0e7419f4a13f2571d2d" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="image" style="width: 803.486px; height: 560.553px; left: 80px; top: 95.4793px; min-width: 1px; min-height: 1px;" data-name="image-73a54d" data-block-id="f706ba44d1ff586db11cfa360662ebb1"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1022" data-natural-height="713" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/html-1767722677121/images/238b02cf2a5706c3cf5a9a462c0bd5dc.png"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="fb2e6f284d9e98fc4a0f3297152fdcac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1441,7 +1451,7 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="84e68cc22064e6efa153f8db7b4a992b">
+</div></div></section><section data-id="84e68cc22064e6efa153f8db7b4a992b" class="editing-mode" style="top: 350px; display: block;" aria-hidden="true">
 
 <div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="de21183682134a9e47d1c8146bc17cd7"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h2>evolution</h2>
@@ -1457,18 +1467,19 @@ this text is <strong>emphasized</strong></p></div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section></section><section data-id="ec4d4df1b8ac6468530ed917f74c8c56">
+</div></div></section></section>
+<section data-id="ec4d4df1b8ac6468530ed917f74c8c56" style="top: 0px; display: block;" class="editing-mode">
 
 
 
-<div class="sl-block" data-block-type="text" style="height: auto; width: 688.466px; left: 135.767px; top: 204px;" data-name="text-25e1ad" data-block-id="0b957bfa26f6be25bd9f20a6557019ac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
-	<li>x-hour: how the internet works and what are A and CNAME records exactly?<br>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 688.466px; left: 135.767px; top: 204px;" data-name="text-25e1ad" data-block-id="0b957bfa26f6be25bd9f20a6557019ac" data-column-label="Column 1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>Next: how the internet works and what are A and CNAME records exactly?<br>
 	&nbsp;</li>
-	<li>Friday: CSS, and how to "steal" from pages online<br>
+	<li>Next: CSS, and how to "steal" from pages online<br>
 	&nbsp;</li>
 	<li>Lab1 Landing Page out - start with part 1 HTML ONLY</li>
 </ul></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-f2a572" data-block-id="4cc16b066034905c3e150322207abcde"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-f2a572" data-block-id="4cc16b066034905c3e150322207abcde" data-column-label="Column 2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
@@ -1479,7 +1490,6 @@ this text is <strong>emphasized</strong></p></div>
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div></section>
-			
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -1489,10 +1499,8 @@ this text is <strong>emphasized</strong></p></div>
       hash: true,
       controls: true,
       progress: true,
-      center: false,
+      center: true,
       transition: 'slide',
-      width: 960,
-      height: 700,
       plugins: [RevealHighlight]
     });
   </script>
