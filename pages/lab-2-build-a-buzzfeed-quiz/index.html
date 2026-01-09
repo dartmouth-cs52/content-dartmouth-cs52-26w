@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -442,10 +462,10 @@
   </style>
 </head>
 <body>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/quiz-1767548500125.gif" alt="">
+<figure class="image-block image-align-center"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/quiz-1767548500125.gif" alt="" style="width: 334px" width="334" data-align="center"></figure>
 <p>All the kids are doing it these days. This is where we’ll learn a little bit about making interactive sites. We won’t need to deal with any backend servers, just some nice clientside code (no server) to build up a fun quiz and show some calculated results.</p>
 <p>🚀 head over to buzzfeed and take <a href="https://www.buzzfeed.com/justkatiejoy/what-disney-animal-are-you-9bf0kqt6pd">this quiz</a>. I’ll wait.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/buzzfeed-1767548500125.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/buzzfeed-1767548500125.png" alt=""></figure>
 <p>Doesn’t that make you want to make your own quiz? Ok, you could use buzzfeed to do this, but you want to make one that doesn’t have ugly ads. And looks classier too!</p>
 <p>This assignment is going to <em>flex</em> your html and css skills some more as well as some javascript! We’ll use some JS to compute the results of the quiz as well as to check that the quiz was filled out correctly.</p>
 <p><strong>Note:</strong> You are allowed to use HTML5/CSS3/JS/jQuery in this assignment but no other javascript libraries or frameworks. You may use CSS libraries to help with styling but it is recommended to practice your CSS skills and try to do it from scratch. 🔩</p>
@@ -456,10 +476,10 @@
 <ul><li>Quiz Page:<ul><li>Questions:<ul><li>display several questions (enough for this to be interesting)</li><li>have a header image and some text</li><li>have some number of potential answers</li></ul></li><li>Question Answers:<ul><li>be either text or an image (demonstrate some of both)<ul><li><em>text answers are just clickable text boxes (not an image)</em></li></ul></li><li>have 4 potential display states:<ul><li>initial none selected state</li><li>have a <code>:hover</code> effect</li><li>have a clicked/selected state</li><li>when one answer is chosen all other answers should change to a not-selected state (different from the initial no answer chosen state).</li></ul></li><li>have an associated value to be used to calculate the overall quiz output.</li></ul></li><li>Done Button:<ul><li>calculate the quiz output</li></ul></li><li>Output Display<ul><li>should have text and an image</li><li>should not show unless the calculations are finished</li><li>should display an error if not all questions were answered</li></ul></li></ul></li></ul>
 <p>Here’s some design specs thrown together in <a href="https://www.figma.com/">Figma</a></p>
 <ol start="1"><li>Quiz page with a question and some image answers - nothing selected:</li></ol>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/main-1767548500125.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/main-1767548500125.png" alt=""></figure>
 <ol start="1"><li><p>An example hover effect:</p>
 <p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/hover-1767548500125.png" alt=""></p><ol start="3"><li>An answer selected:</li></ol></li></ol>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/checked-1767548500125.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/checked-1767548500125.png" alt=""></figure>
 <ol start="1"><li><p>Answer display:</p>
 <p> <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/done-1767548500125.png" alt=""></p></li></ol>
 <div class="heading-block h2-block"><h2>Where to Start?!</h2></div>
@@ -545,7 +565,7 @@
 <p>This workflow helps keep the main branch stable while allowing parallel feature development. It also provides a nice history for your project with a distinct timeline for when certain features were added. </p>
 <p>If you would like more practice with this try out: </p>
 <p><a href="https://www.notion.so/ECSA-Git-Map-029087af71764896a7246445074002c0?pvs=21">ECSA: Git Map</a></p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/image-1767548500125.png" alt="image.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/image-1767548500125.png" alt="image.png"></figure>
 <p>For now here is what I’d like your project to look like:</p>
 <ul><li>a main branch - the one you have been working on so far</li><li>a <code>javascript_focus</code> or a <code>styling_focus</code> branch  (or both if you do both!)</li><li>and a closed pull request from your feature branches that merges your code back into the <code>main</code> branch.</li></ul>
 <div class="heading-block h2-block"><h2>Javascript Focus (Option 1)</h2></div>
@@ -602,11 +622,11 @@ git checkout -b styling_focus</code></pre></div></div>
 <p>Minimum Styling Requirements:</p>
 <ul><li>No visible default looking radio buttons here folks.</li><li>Hovers and clicks have animation/transition effects.</li><li>Your output is a modal, or a new page, or a scroll, it is not a alert, and it is animated.</li><li>and finally, your page works in mobile!</li></ul>
 <p>This will push your CSS skills and will be super helpful later as you become the style wizard for your team. You will make your product look amazing, and honestly isn’t that the part that everybody appreciates the most?</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/cool-modal-animations-1767548500125.gif" alt="">
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/fullscreen-expanding-div-1767548500125.gif" alt="">
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/pure-css-zoom-in-blocks-on-hover-1767548500125.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/cool-modal-animations-1767548500125.gif" alt=""></figure>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/fullscreen-expanding-div-1767548500125.gif" alt=""></figure>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/pure-css-zoom-in-blocks-on-hover-1767548500125.gif" alt=""></figure>
 <p><em>might be overkill</em></p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/light-sweep-button-1767548500125.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/light-sweep-button-1767548500125.gif" alt=""></figure>
 <p><em>sweet button</em></p>
 <p>Lots of inspiration at <a href="https://codemyui.com/">codemyui.com</a>.</p>
 <p>Some more resources:</p>
@@ -614,11 +634,11 @@ git checkout -b styling_focus</code></pre></div></div>
 <div class="heading-block h2-block"><h2>Host It and You Are Done!</h2></div>
 <p>You have some options for how to host this. Github Pages is soon going to be too simple for us once we start using frameworks so we’ll need to move to another static hosting platform.  You could use <a href="http://Render.com">Render.com</a> or any other hosting platform that you like.  We’ll use Render later for hosting web services, so that one might be easiest if you want to only use 1 platform for the class going forward. </p>
 <div class="heading-block h3-block"><h3><a href="http://Render.com">Render.com</a></h3></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/untitled-1767548500125.png" alt="Untitled">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/untitled-1767548500125.png" alt="Untitled"></figure>
 <ol start="1"><li>Create account / Use github to sign in</li><li>New → Static Site</li><li>Connect Github</li><li>dartmouth-cs52-TERM/</li><li>Choose defaults and deploy</li><li>Deploy - it will automatically update when you push new changes to GitHub</li></ol>
 <div class="heading-block h2-block"><h2>And done!</h2></div>
 <p>Remember to have fun with this. We’ll share the quizzes in class!</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/scar-1767548500125.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/scar-1767548500125.png" alt=""></figure>
 <div class="heading-block h2-block"><h2>To Turn In:</h2></div>
 <ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li>your submission comment should include:<ul><li>a couple sentence description of what you did and what worked / didn’t work.</li><li>what focus you chose: javascript or style or both</li><li>screen caps with anything special you want to point out</li><li>and make sure you have github pull request that is merged into main for any focus areas.</li></ul></li><li>your page should have all the MVP specs above in addition to:<ul><li>have clear document structure with proper semantic naming</li><li>functional calculations and error checking to get quiz results</li><li>look reasonable, styling should be at least as classy as the mockups…</li></ul></li></ul>
 <div class="heading-block h2-block"><h2>Extra Credit</h2></div>
