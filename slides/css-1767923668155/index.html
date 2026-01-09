@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS</title>
-  <!-- Reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <!-- Shared theme lib CSS (fonts, base styles) -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
-  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <!-- Shared theme custom CSS -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
   <style>
-    /* Override slides.com animation system - make all elements fully visible */
+    /* Override slides.com animation system - make all elements visible */
     .sl-block-content,
     .sl-block-content[data-animation-type],
     .sl-block-content[data-animation-type="fade-in"],
@@ -21,12 +20,13 @@
       pointer-events: auto !important;
     }
   </style>
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
 </head>
 <body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
-  <div class="reveal" data-theme="shared:cs52-theme">
+  <div class="reveal" data-theme="shared:cs52-theme" data-code-theme="github">
     <div class="slides">
-
-				<section class="stack" data-id="9cec09c8167734e914e0bf999efc83f9"><section data-id="fae8d9bdb6bc072d70f829c3afddfe13"><div class="sl-block" data-block-type="snippet" style="width: 586px; height: 323px; left: 187px; top: 188.5px;" data-name="snippet-9e95b4" data-block-id="5de40b4ed667e916940f8e011056b6c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<section class="stack editing-mode" data-id="9cec09c8167734e914e0bf999efc83f9" style="top: 0px; display: block;" data-previous-indexv="1" hidden="" aria-hidden="true"><section data-id="fae8d9bdb6bc072d70f829c3afddfe13" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true"><div class="sl-block" data-block-type="snippet" style="width: 586px; height: 323px; left: 187px; top: 188.5px;" data-name="snippet-9e95b4" data-block-id="5de40b4ed667e916940f8e011056b6c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -40,7 +40,8 @@
 
 <div class="logo-spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="9de0d6930bd41d472fde6f9823201636"><div class="sl-block" data-block-type="iframe" data-name="iframe-145cbb" style="width: 960px; height: 620.832px; left: 0px; top: 20.8394px;" data-block-id="5da5748864e308256ffaf5a15e173180"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://www.youtube.com/embed/LWGJA9i18Co?enablejsapi=1" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></section></section><section class="stack" data-id="095883c1085c1833d550274c0f4ec109"><section data-id="c924867c2a666e842945a287c4c79a3f">
+</div></div></section><section data-id="9de0d6930bd41d472fde6f9823201636" class="editing-mode" style="top: 350px; display: block;" aria-hidden="true"><div class="sl-block" data-block-type="iframe" data-name="iframe-145cbb" style="width: 960px; height: 620.832px; left: 0px; top: 20.8394px;" data-block-id="5da5748864e308256ffaf5a15e173180"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://www.youtube.com/embed/LWGJA9i18Co?enablejsapi=1" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></section></section>
+<section class="stack editing-mode" data-id="095883c1085c1833d550274c0f4ec109" style="top: 0px; display: block;" data-previous-indexv="4" hidden="" aria-hidden="true"><section data-id="c924867c2a666e842945a287c4c79a3f" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-15ecb0" data-block-id="18e4283de2b64fb2fa8579c7affe086e" style="width: 806.4px; height: 204.288px; left: 76.8px; top: 294.803px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="600" data-natural-height="152" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/8d197bfa3a2b73edce0442508ea9d5b7.jpg"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="0638f4631563e69d44ead9edb1132f7d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;"><div id="header-title">
   <div class="left">
@@ -50,7 +51,7 @@
   <div class="spacer"></div>
 </div></div></div><aside class="notes">* today:
   * on the order of a million slides to get through - so we'll go quickly but will finish up on monday
-  * and games,  don't worry if it all seems overwhelming - plenty of time to practice and don't need to memorize it all</aside></section><section data-id="6e026692d64af8433aa8b44a85c74b97">
+  * and games,  don't worry if it all seems overwhelming - plenty of time to practice and don't need to memorize it all</aside></section><section data-id="6e026692d64af8433aa8b44a85c74b97" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-07be0a" data-block-id="d3c45d8ba6777cba34e8e8602c4b79c4" style="width: 744.594px; height: 518px; left: 107.703px; top: 161px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1482" data-natural-height="1031" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/3032c6bfefe3a7f89a56b2b7569eba9d.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="0f10c1d25e4a07a89e4a6b268ffe906c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -64,7 +65,7 @@
 </div>
 </div></div>
 <div class="sl-block" data-block-type="shape" style="width: 44.5169px; height: 112.175px; left: 75.7794px; top: 98.5135px;" data-name="shape-6ec8fb" data-block-id="53bc030d833564b5c93d36a916eab785"><div class="sl-block-style" style="z-index: 12; transform: rotate(-45deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="rgb(97, 97, 97)" data-shape-stretch="true" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 45 112"><polygon points="22.25845,112.175 44.5169,56.0875 31.16183,56.0875 31.16183,0 13.35507,0 13.35507,56.0875 0,56.0875 22.25845,112.175" class="shape-element" fill="rgb(97, 97, 97)"></polygon></svg></div></div></div><aside class="notes">* ghpages is a content delivery network
-</aside></section><section data-id="2165deee3ead9fac2374b6b30bca969f">
+</aside></section><section data-id="2165deee3ead9fac2374b6b30bca969f" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-221ec9" data-block-id="aec439c9b5d647b1ef18aded1e814e11" style="width: 617.962px; height: 378.502px; left: 177.464px; top: 90.749px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://www.youtube.com/embed/4bZrJwxVPS8?enablejsapi=1&amp;autoplay=1&amp;rel=0&amp;loop=1&amp;controls=0" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-b520f0" data-block-id="026c66bf46ae5d70ea21f11cd8591647" style="height: auto; width: 972.89px; left: 0px; top: 505px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p><span style="font-size:0.9em">"It has been a constant source of delight for me over the past year to get to continually tell hordes (literally) of people who want to -- strap yourselves in, here it comes -- control what their documents look like in ways that would be trivial in TeX, Microsoft Word, and every other common text processing environment: 'Sorry, you're screwed." — Mark Andreessen, 1994</span></p>
@@ -82,7 +83,7 @@
 </div></div><aside class="notes">* we'll dive deeper into the CSS render tree, next class, when we learn how the browser thinks about the document internally
 * this is a video of the layout reflow render passes the browser makes just to display google
 * basically as your browser processes the render tree (html+css) this is it drawing things. more on this later
-</aside></section><section data-id="1c5a2d0d7e9517bce7dad0616cafe9f7">
+</aside></section><section data-id="1c5a2d0d7e9517bce7dad0616cafe9f7" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-b520f0" style="height: auto; width: 370.89px; left: 560px; top: 239px;" data-block-id="a4caa7254edcdc8d9e00f50df517a503"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>CSS v1 1996</li>
@@ -111,7 +112,7 @@
 * netscape used javascript at first for styling (super slow and still is not the best styling tool)
 * css is faster than js for animations
 * [full history](https://eager.io/blog/the-languages-which-almost-were-css/)
-</aside></section><section data-id="caa286f8d3e3fac9980085343c6baa07">
+</aside></section><section data-id="caa286f8d3e3fac9980085343c6baa07" class="editing-mode" style="top: 350px; display: block;" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-b520f0" style="height: auto; width: 640px; left: 161.644px; top: 105.812px;" data-block-id="5fa0acbe42251fa9543ad1cd1699eb2f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>So far: html for structure</li>
@@ -144,7 +145,7 @@
 * relied on the default display styles provided by the browser
 * set the `h1` tag the font size increased
 * What we were defining was a section of content that was intended to be a header of level 1.
-* **specify the intended use of the content**,  whether it is a header or a paragraph etc,  and then you **define the look and feel of these blocks separately**.</aside></section><section data-id="aea943ee6e1e39a64d05dc8bf50e9d4e">
+* **specify the intended use of the content**,  whether it is a header or a paragraph etc,  and then you **define the look and feel of these blocks separately**.</aside></section><section data-id="aea943ee6e1e39a64d05dc8bf50e9d4e" class="editing-mode" aria-hidden="true" style="top: 350px; display: block;" hidden="">
 
 <div class="sl-block" data-block-type="image" data-name="image-a6493c" data-block-id="120e1216b3cb351d6aaae5efd776b08c" style="width: 675.802px; height: 506.851px; left: 142.099px; top: 96.5745px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="460" data-natural-height="345" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/f663b52c568228f9a58ebdead69a7b09.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-0b77b2" data-block-id="3bfbbad5fdbc5eac08b9e6c70f0957e0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -162,7 +163,7 @@
 * Certain things will be easy, certain things will feel impossible - but together we will prevail.
 * css inside joke: Try to vertically center something
 * We will learn the current best practices to conquer this though, quite easily, anybody know?
-</aside></section><section data-id="42288a3f730b7b3d1f8387065172cf15">
+</aside></section><section data-id="42288a3f730b7b3d1f8387065172cf15" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-d1db39" data-block-id="b7296cc93bbaa4b8bbf8f6a2f60599df" style="width: 960px; height: 304.228px; left: 0px; top: 216.886px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2455" data-natural-height="778" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/742ca78d667c72a2c7c85c597e6d9cfe.jpg"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="bfd9e2fd6e6a05f5dbf6d6985e75dd37"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -175,21 +176,8 @@
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* just going to get all the css meme's out of the way.
-</aside></section></section><section data-id="cced35f205788a33d8eea8d0fa3ba512" data-visibility="hidden"><div class="sl-block" data-block-type="snippet" style="width: 586px; height: 323px; left: 187px; top: 188.5px;" data-name="snippet-9e95b4" data-block-id="fb1bbf6be88f4c23565f599603705cbe"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
-<div id="box-title">
-<div class="top">
-<div class="logo">&nbsp;</div>
-
-<div class="title">CSS</div>
-
-<div class="logo-spacer">&nbsp;</div>
-</div>
-
-<div class="body">All about cascading style sheets.</div>
-
-<div class="logo-spacer">&nbsp;</div>
-</div>
-</div></div></section><section class="stack" data-id="b3e1ddc906d36e05706aac29c2417589"><section data-id="b833f35da04b016063f31f6629b15e5b">
+</aside></section></section>
+<section class="stack editing-mode" data-id="b3e1ddc906d36e05706aac29c2417589" style="top: 0px; display: block;" data-previous-indexv="2"><section data-id="b833f35da04b016063f31f6629b15e5b" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-283192" data-block-id="de20bc5751305d14467187e513d63475" style="width: 583.034px; height: 300.176px; left: 188.483px; top: 101.412px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="707" data-natural-height="364" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/3f2f3209e9df94f967c5d599445f9cee.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-44e8e0" data-block-id="0f0cb3232828854d78201114da387df4" style="height: auto; width: 960px; left: 0px; top: 458.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
@@ -214,7 +202,7 @@
 </div>
 </div></div><aside class="notes">* When you gave your page structure
   * you defined the elements that could be selected with CSS!
-</aside></section><section data-id="2de08ee538f032d0846b9717f08769ae">
+</aside></section><section data-id="2de08ee538f032d0846b9717f08769ae" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-9dcdfd" data-block-id="12eb400ef3c4049d979b54ad07cf8876" style="width: 788.905px; height: 610px; left: 85.5475px; top: 83px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1098" data-natural-height="849" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/df3e0ce4e0db6b5b2ccbfa9bd867f56e.jpg"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="c8768b0fb8b63bc5bc258362be6328a1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -234,7 +222,7 @@
 * property is what is  being set
 * value self explanatory
 
-</aside></section><section data-id="66089aace9a97f2082610a7964869155">
+</aside></section><section data-id="66089aace9a97f2082610a7964869155" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a7e044" data-block-id="bcef00635405b9446639e0c5e3cbc1b6" style="height: auto; width: 800px; left: 80px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>A selector can target elements in different ways</p>
 </div></div>
@@ -276,7 +264,7 @@ p {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">what </aside></section><section data-id="ccde5277b742d50f6326c662a90890cc">
+</div></div><aside class="notes">what </aside></section><section data-id="ccde5277b742d50f6326c662a90890cc" class="editing-mode" style="top: 0px; display: block;">
 <div class="sl-block" data-block-type="code" data-name="code-378ea1" style="width: 720px; height: auto; left: 119px; top: 160px;" data-block-id="12e7d039a625d409ea54d43abcb1633b"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre style="font-size: 16px; line-height: 19px;" class="css"><code style="padding: 10px;">
 p.someclass {...} /* element with class */
 
@@ -304,7 +292,7 @@ a, input, .classy {...} /* multiple selectors */
 </div>
 </div></div><aside class="notes">* what would happen if I clicked 'let's go'? nothing - in the lab do that.
 * what kind of element is span in terms of display?
-</aside></section><section data-id="e068905aca4d7d8b22fd9e2520ea37a7">
+</aside></section><section data-id="e068905aca4d7d8b22fd9e2520ea37a7" class="editing-mode" aria-hidden="true" style="top: 350px; display: block;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-378ea1" style="width: 720px; height: auto; left: 126px; top: 162px;" data-block-id="655ea89198c9eacf60c3187a2685b8bc"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre style="font-size: 16px; line-height: 19px;"><code style="padding: 10px;">ul li {  } /* descendent */
 ul &gt; li {  } /* direct child */
 #title + ul {  } /* adjacent sibling */
@@ -340,7 +328,7 @@ ul &gt; li {  } /* direct child */
 * child would only include direct children, so say a nested `ol`'s children would be left untouched: 1,2,3
 * adjacent sibling, directly adjacent with no elemnts in between: list1
 * general sibling any matching as long as parent is same: list1, list2. but can't be before
-</aside></section><section data-id="b164de8f61276c254d7936bf9df56a91">
+</aside></section><section data-id="b164de8f61276c254d7936bf9df56a91" class="editing-mode" aria-hidden="true" style="top: 350px; display: block;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-378ea1" style="width: 720px; height: auto; left: 120px; top: 261.5px;" data-block-id="fe2bc9adce8162a965ac2b7157109650"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre style="font-size: 16px; line-height: 19px;"><code style="padding: 10px;">p:hover { color: orange; }
 
 a:link { color: blue;}
@@ -375,7 +363,7 @@ input[type=checkbox]:checked ~ #hiddenmenu {
 * ok that last one might be giving away too much... more complicated even:
   * ~ is sibling selector, so it selects the second selector based on the first.
   * can someone explain what this does?
-</aside></section><section data-id="3735131091bf58d100f73c2c09bc26bb"><div class="sl-block" data-block-type="code" data-name="code-378ea1" style="width: 720px; height: auto; left: 126px; top: 115px;" data-block-id="bbcfcc14af839795338d740724f6362a"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre style="font-size: 16px; line-height: 19px;"><code style="padding: 10px;">a[href="https://cs52.me"] {
+</aside></section><section data-id="3735131091bf58d100f73c2c09bc26bb" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="code" data-name="code-378ea1" style="width: 720px; height: auto; left: 126px; top: 115px;" data-block-id="bbcfcc14af839795338d740724f6362a"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre style="font-size: 16px; line-height: 19px;"><code style="padding: 10px;">a[href="https://cs52.me"] {
   color: green;
 }
 
@@ -406,7 +394,8 @@ button[disabled] {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section></section><section class="stack" data-id="6dd708f3ee21ab2d5b55787798e33439"><section data-id="df9a7aa600f395f260fbf185df560a86">
+</div></div></section></section>
+<section class="stack editing-mode" data-id="6dd708f3ee21ab2d5b55787798e33439" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="df9a7aa600f395f260fbf185df560a86" style="top: 350px; display: block;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-e0acde" data-block-id="e5e86680a8f4809bb2d00dad1e31a08f" style="width: 806.399px; height: 225.969px; left: 80px; top: 124.031px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1092" data-natural-height="306" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/61be45b9a744aa282316dfd922483a35.svg"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-3b1acf" data-block-id="97ab4aae3fd2a35922676f90cf660e5b" style="height: auto; width: 600px; left: 180px; top: 420px;">
 <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -439,7 +428,7 @@ button[disabled] {
 </div></div><aside class="notes">* since we're talking interfaces here, and humans see in *some* color - let's talk colors
 * RGB just like the receptor cones in our eyes
 * (2^8 -1)
-</aside></section><section data-id="9fa79ab6f8a705bd910028765e36526c">
+</aside></section><section data-id="9fa79ab6f8a705bd910028765e36526c" class="editing-mode" aria-hidden="true" style="top: 350px; display: block;" hidden="">
 
 <div class="sl-block" data-block-type="text" data-name="text-0cce3d" data-block-id="3bd14cf10cc58c875fde17fcc395d5ca" style="height: auto; width: 842px; left: 59px; top: 81px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
@@ -473,7 +462,7 @@ button[disabled] {
 </div></div><aside class="notes">* which of these is most legible -- stick with one
 * don't use color names
 * **vscode and atom "color picker" and pigments plugins**
-</aside></section><section data-id="88573d391bccdc0fa1048f0d99532838">
+</aside></section><section data-id="88573d391bccdc0fa1048f0d99532838" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-187154" data-block-id="0d6094f5840877eae23e035e56eb99d8" style="width: 864px; height: 523px; left: 42px; top: 140px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/a54aae158ba02e5e4cfe33c089277603?height=300&amp;theme-id=24117&amp;default-tab=css,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="2fa6c62a659f4d617cadaf7b02da0d08"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -487,25 +476,12 @@ button[disabled] {
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* Note: I cheated in the above example and included some magic for that font.
-</aside></section><section data-id="c36dd5e255a48c857ec478bbbfd5efd7" data-background-iframe="https://flukeout.github.io" data-background-interactive="true">
+</aside></section><section data-id="c36dd5e255a48c857ec478bbbfd5efd7" data-background-iframe="https://flukeout.github.io" data-background-interactive="true" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 <div class="sl-block" data-block-type="text" data-name="text-48a3d5" data-block-id="f2b651742127838710ac036aab4b71a1" style="height: auto; width: 400px; left: 92.1053px; top: 101px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(254, 247, 147);"><p><a href="https://https://flukeout.github.io/" target="_blank"><span style="color:#ffffff">&nbsp;</span></a><a href="http://flukeout.github.io/" target="_blank"><span style="color:#ffffff">http://flukeout.github.io</span></a></p></div></div>
 <div class="sl-block" data-block-type="shape" data-name="shape-1f732f" data-block-id="f40af55e3220bd8cd49d1d2c512425b1" style="width: 400px; height: 39px; left: 0px; top: 0px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 10;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 400 39"><rect width="400" height="39" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div><aside class="notes">* so overwhelming! time for a break!
-</aside></section></section><section data-id="651f571eafa755db563d1e30687ee93a" data-visibility="hidden"><div class="sl-block" data-block-type="snippet" style="width: 586px; height: 323px; left: 187px; top: 188.5px;" data-name="snippet-9e95b4" data-block-id="7999bd66a066087246283499ee8bbebe"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
-<div id="box-title">
-<div class="top">
-<div class="logo">&nbsp;</div>
-
-<div class="title">CSS</div>
-
-<div class="logo-spacer">&nbsp;</div>
-</div>
-
-<div class="body">All about cascading style sheets.</div>
-
-<div class="logo-spacer">&nbsp;</div>
-</div>
-</div></div></section><section class="stack" data-id="750bc40014c2af40bd3f17e58d4aeab9"><section data-id="024e7097cec4974620f4b97a65fe5dc4">
+</aside></section></section>
+<section class="stack editing-mode" data-id="750bc40014c2af40bd3f17e58d4aeab9" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="024e7097cec4974620f4b97a65fe5dc4" style="top: 350px; display: block;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 184px;" data-name="text-0c269a" data-block-id="802a24a3b469904396ed1bedf20c674e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>The default <a href="http://www.w3schools.com/css/css_font.asp" target="_blank">"websafe"</a> fonts that browsers support are a bajillion years old</li>
@@ -528,7 +504,7 @@ button[disabled] {
 * some options like verdana are a bit better
 * better options exist
 
-</aside></section><section data-id="7a06debb570780376ed50ef75fa5d520">
+</aside></section><section data-id="7a06debb570780376ed50ef75fa5d520" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 155px;" data-name="text-0c269a" data-block-id="7e87a0c94651606a430d714218efb0e1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -563,7 +539,7 @@ body {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="e985f93c3b6ac0e28738de9960fe984b">
+</div></div></section><section data-id="e985f93c3b6ac0e28738de9960fe984b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-10c7ea" data-block-id="c11b49f64b63ef6b74e08a0a44f9d458" style="height: auto; width: 600px; left: 180px; top: 645.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p><span style="font-size:0.9em"><a href="http://www.myscriptfont.com/" target="_blank">i want my handwriting as a font</a></span></p>
 </div></div>
@@ -596,19 +572,8 @@ p {
 * but not recommended as it is more resource intensive
 * and loading for a font provider gives you the most optimized compatible fonts for the browser
 * and provide all the possible variants you need
-</aside></section></section><section data-id="701457920d8e70bcb3094a6be5bb4732" data-visibility="hidden"><div class="sl-block" data-block-type="snippet" style="width: 656.232px; height: 150.396px; left: 151.884px; top: 274.802px;" data-name="snippet-9e95b4" data-block-id="e9a6d8104f336c06d39f19b108c068b7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
-<div id="box-title">
-<div class="top">
-<div class="logo">&nbsp;</div>
-
-<div class="title">Units of Size</div>
-
-<div class="logo-spacer">&nbsp;</div>
-</div>
-
-<div class="body">&nbsp;</div>
-</div>
-</div></div></section><section class="stack" data-id="41f4981a21bce313de0cf9d513cbd05f"><section data-id="7a54cbea0c680e2370db1b65fdad456b">
+</aside></section></section>
+<section class="stack editing-mode" data-id="41f4981a21bce313de0cf9d513cbd05f" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="7a54cbea0c680e2370db1b65fdad456b" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-b24f5b" data-block-id="1d2c44a137331efc3d7c031461ebc52a" style="width: 563.2px; height: 278.221px; left: 198.4px; top: 125.819px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="247" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/316ce00f5726f18b70842bf4d391bb51.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-cf4418" data-block-id="e95b57c49d78d75ff97563f752b4cd53" style="height: auto; width: 960px; left: 0px; top: 455px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
 	<li>many css properties take size/length values:
@@ -633,7 +598,7 @@ p {
 </div></div><aside class="notes">* programmatic ways to think abouut sizes
 * lots of overwhelming options for setting size
 * what are best practices
-</aside></section><section data-id="b55ea97accd777d20990cfa763ca1f20">
+</aside></section><section data-id="b55ea97accd777d20990cfa763ca1f20" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-7118e2" data-block-id="b0efc463e14d6cc57a02cab7520b8472" style="height: auto; width: 960px; left: 0px; top: 178px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>
@@ -663,7 +628,7 @@ p {
 </div>
 </div></div><aside class="notes">* actually pixels are a very interesting case
 * stick to pixels
-</aside></section><section data-id="3239ba0a26f9a73d9d63a868ba2516c5">
+</aside></section><section data-id="3239ba0a26f9a73d9d63a868ba2516c5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-090714" data-block-id="9230828d1fabf0c591c5ef4f45d372ad" style="width: 476.544px; height: 189.256px; left: 241.728px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="350" data-natural-height="139" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/697fc5d97c97afd8083147d144691c97.png"></div></div>
 
 <div class="sl-block" data-block-type="code" data-name="code-ee69da" data-block-id="093f92c01ec1f8ee3f27c22140b464c6" style="width: 800px; height: 134px; left: 80px; top: 368px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;"><pre style="font-size: 16px; line-height: 19px;"><code>#moon {
@@ -696,7 +661,7 @@ more at <a href="http://tinyurl.com/cssmath" target="_blank">http://tinyurl.com/
 * tan(α) = (1/192) / 28
 * tan(α) = 1/5376
 * α = arctan(1/5376)
-* 1 / arctan( ( ( 1/96 ) / 2 ) / 28)</aside></section><section data-id="e83596ad0a99608fe1244b3eb52bc4fb">
+* 1 / arctan( ( ( 1/96 ) / 2 ) / 28)</aside></section><section data-id="e83596ad0a99608fe1244b3eb52bc4fb" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-57818d" data-block-id="d94974948642a0cab8855d8802079037" style="height: auto; width: 960px; left: 0px; top: 93px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>
@@ -741,7 +706,7 @@ more at <a href="http://tinyurl.com/cssmath" target="_blank">http://tinyurl.com/
 * 1 rem is 16px by default
 * **em originally** was the lineheight *C* when metal type was a thing and was also the same as the width of the letter m - hence **em dash** vs **en dash**
 
-</aside></section><section data-id="0766aa0f985ff54450ed3d035a649c6d">
+</aside></section><section data-id="0766aa0f985ff54450ed3d035a649c6d" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-b9d8f8" data-block-id="bbebaf814dda90ed6fa1bf7cbd8b7dbf" style="width: 700.76px; height: 518px; left: 129.62px; top: 85px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="648" data-natural-height="479" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/80490a5157d6e274886c285079ce2a38.svg"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-5fc4c1" data-block-id="c8bfd507684e7539d5a1613d3d556b2e" style="height: auto; width: 600px; left: 180px; top: 610.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -762,7 +727,8 @@ more at <a href="http://tinyurl.com/cssmath" target="_blank">http://tinyurl.com/
 * main sections are in `rem`
 * contents of each section are in `em`
 * independent control of scaling for the main sections
-</aside></section></section><section class="stack" data-id="d1be30d4505083926eb983ed0bc47df0"><section data-id="c36e7f1102aead121597f087ae611968">
+</aside></section></section>
+<section class="stack editing-mode" data-id="d1be30d4505083926eb983ed0bc47df0" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="c36e7f1102aead121597f087ae611968" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-95a18b" data-block-id="eb83218bca7336550df8f88fa5b1304a" style="height: auto; width: 800px; left: 80px; top: 115.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>There are 3 ways to include CSS styles in your page</p>
 
@@ -802,7 +768,7 @@ more at <a href="http://tinyurl.com/cssmath" target="_blank">http://tinyurl.com/
 * CSS Preprocessor Magics:  is actually best, we'll look into this more later. See: [SASS](http://sass-lang.com/)
 * why is inline worst?
 * we won't be individually adding in styles for every single html file - in fact eventually we won't even be creating individual html pages! gasp!
-</aside></section><section data-id="b08f22f2a866866c26ae023dec20832b">
+</aside></section><section data-id="b08f22f2a866866c26ae023dec20832b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-950771" data-block-id="4561cc560c85843d34f624ece096c5fd" style="height: auto; width: 960px; left: 0px; top: 102px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>Selectors are <strong>unable to ascend</strong>
@@ -844,7 +810,8 @@ nesting: can nest rules so each rule doesn't ahve to have the whole selector
 mixins: like functions -- especially useful for vendor prefixes
 partials: separate files that can be included when you need
 math: can do math with pixels for instance
-</aside></section></section><section class="stack" data-id="eb98558170f7b77d0c09b07a9f0b2cc2"><section data-id="4ba1e6a1cf25be3a8a97427a22e7daa5">
+</aside></section></section>
+<section class="stack editing-mode" data-id="eb98558170f7b77d0c09b07a9f0b2cc2" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="4ba1e6a1cf25be3a8a97427a22e7daa5" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-babad2" data-block-id="7d78c2bb120749695669d158e587485e" style="width: 518px; height: 518px; left: 221px; top: 106px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/f127870691f664b07fa3dc83bfc632dc.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-c64853" style="height: auto; width: 517px; left: 222px; top: 484px;" data-block-id="2a0ac8e0d0fc5a375679a1d316d55f9a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
 <p>each style sheet applies in a cascading manner</p>
@@ -862,7 +829,7 @@ math: can do math with pixels for instance
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">what is the cascading part of css?
-</aside></section><section data-id="db2c12cf696031ee08c4a7ca801a94a3">
+</aside></section><section data-id="db2c12cf696031ee08c4a7ca801a94a3" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-9dd2cb" data-block-id="27b6222c9e04d5b500a5f336569ba203" style="width: 640.905px; height: 626px; left: 160px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="774" data-natural-height="756" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/4e8cf57c0c229a1aa2dbbf5d7594f34d.jpg"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-c25ace" data-block-id="eef57dead14d9ef9c938a629c127eb3b" style="height: auto; width: 252.313px; left: 522.105px; top: 478.171px;"><div class="sl-block-style" style="z-index: 11; transform: rotate(-39deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><span style="font-size:1.2em">!important</span></p></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="80356ec6574dbe582d4f84a997e3c773"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -873,7 +840,7 @@ math: can do math with pixels for instance
 <div class="title">tell me about precedence</div>
 </div>
 </div>
-</div></div></section><section data-id="2b5d6cf5563e8c4ce006feb817cd0df3">
+</div></div></section><section data-id="2b5d6cf5563e8c4ce006feb817cd0df3" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-9e97b6" data-block-id="e1eba5f6276bd082f3eaa977dbdeaf24" style="width: 806.4px; height: 141.12px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="140" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/e642b56695e798b945d16ece6a464005.png"></div></div>
 <div class="sl-block" data-block-type="code" data-name="code-d4d708" data-block-id="0d3661ee671f62a6c420564c6ea03eff" style="width: 741px; height: 364px; left: 109.5px; top: 317px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="css"><code data-line-numbers="">
 &lt;p style="color:#ffffff;"&gt;hi there&lt;/p&gt; &lt;!-- inline please no --&gt;
@@ -903,7 +870,7 @@ p {
 </div></div><aside class="notes">* can have multiple rules that match an element
 * and multiple stylesheets with overlapping rules
 * enter precedence - basically, how do you handle multiple inheritance safely and in a deterministic fashion
-</aside></section><section data-id="70d531a709708dee039ba4902373ff64">
+</aside></section><section data-id="70d531a709708dee039ba4902373ff64" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-9e97b6" style="width: 806.4px; height: 141.12px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;" data-block-id="109edbe37a6cceb4b651a97b3a1dbb86"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="140" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/e642b56695e798b945d16ece6a464005.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-ff34fd" data-block-id="3296de6d7cf7000fd501a3c651170de7" style="height: auto; width: 960px; left: 0px; top: 350px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -933,7 +900,7 @@ p {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="cede258fd9c408cd416c801cd16d1ef7">
+</div></div></section><section data-id="cede258fd9c408cd416c801cd16d1ef7" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-d5ad24" data-block-id="2c586403e17fa3e07f87ebf8bb972448" style="width: 726.933px; height: 518px; left: 116.534px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="755" data-natural-height="538" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/82b11f7f3c1e4f60c74fc4fcf05f084e.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-c1a7e1" data-block-id="48164e61a6ab9e09346bef93332a2d68" style="height: auto; width: 949px; left: 11px; top: 630px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
 	<li>Every element on the page is a box</li>
@@ -956,7 +923,7 @@ p {
 * `padding:` defines the spacing *inside* of the element between the border and the contents (can be text of children elements)
 * `width/height:`  define the size of the element contents — important to understand that this size does not include the totals
 * is a little  confusing
-</aside></section><section data-id="c1557fbd5ac66a22436cbf8e578f6bd5">
+</aside></section><section data-id="c1557fbd5ac66a22436cbf8e578f6bd5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-d5ad24" style="width: 726.933px; height: 518px; left: 116.534px; top: 81px; min-width: 1px; min-height: 1px;" data-block-id="ff37c7aed552c548355924d95bbb6706"><div class="sl-block-content plain" style="z-index: 10;"><img style="left: 0px; top: -10px; width: 727px; height: 539px;" data-natural-width="726" data-natural-height="538" data-crop-x="0" data-crop-y="0.019205" data-crop-width="1" data-crop-height="0.96159" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/9980a8906257f9c876cad766dbfaf966.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-c1a7e1" style="height: auto; width: 949px; left: 11px; top: 622px;" data-block-id="a304ef259ee9839c0337164504e87a4e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -979,7 +946,7 @@ p {
 * width = actual visible/rendered width of an element's box
 * height = actual visible/rendered height of an element's box
 * much more straightforward
-</aside></section><section data-id="f78e6592ec13c43d40a6bb197e569080">
+</aside></section><section data-id="f78e6592ec13c43d40a6bb197e569080" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-07d07b" data-block-id="eb032009bc4d61fa3fd165c7d7166b0c" style="width: 911.618px; height: 601px; left: 32.1395px; top: 89px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1802" data-natural-height="1188" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/608e610a60dad29ee5d1c90d78744233.jpg"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="30bb694d7eae5a73800b25343c87bf83"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -991,7 +958,7 @@ p {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="7f9cca7e0622e5696ce24cb540ee642c">
+</div></div></section><section data-id="7f9cca7e0622e5696ce24cb540ee642c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-c8d03e" data-block-id="0ac2e14b14d107f817d64108068b7797" style="width: 500px; height: 300px; left: 230px; top: 260px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="css" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">html {
   box-sizing: border-box;
 }
@@ -1012,7 +979,7 @@ p {
 </div></div><aside class="notes">* sets it to border-box
 * and then forces everything to specifically inherit
 * allows you to override if you need - although why you would want to... 
-</aside></section><section data-id="ca2c9a77c16ba88fd9cb2b2b576b1b26">
+</aside></section><section data-id="ca2c9a77c16ba88fd9cb2b2b576b1b26" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-d28355" data-block-id="5dc599405caa75cb974a08b3956f4144" style="width: 960px; height: 615px; left: 0px; top: 85px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/7d2e106d4cc1a1103b0def719be9584a?height=300&amp;theme-id=24117&amp;default-tab=result" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="a3bdd2cf963d363abbbf9370c1d100e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1024,7 +991,8 @@ p {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section></section><section class="stack" data-id="0a880029eb1bcc657c5781b82cadafa8"><section data-id="43c7972348d6872c3e43b1bd79f7527a">
+</div></div></section></section>
+<section class="stack editing-mode" data-id="0a880029eb1bcc657c5781b82cadafa8" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="43c7972348d6872c3e43b1bd79f7527a" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 
 <div class="sl-block" data-block-type="code" style="width: 520px; height: 255px; left: 240px; top: 268px;" data-name="code-fdd7d4" data-block-id="6667309ee2a6b3ee76adbd248cf3535a"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
 div {
@@ -1047,7 +1015,7 @@ div {
 </div></div><aside class="notes">* we talked about inline and block elements last class
 * can someone remember what block elements do?
 * take up all available horizontal space and come one after another down the page
-</aside></section><section data-id="3479be95364e43395f1705b6a400dafc">
+</aside></section><section data-id="3479be95364e43395f1705b6a400dafc" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-a3efd2" data-block-id="bbf4f03941df8968542e9bb0cb6c6319" style="width: 459px; height: 459px; left: 250.5px; top: 101px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="400" data-natural-height="400" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/ea65f5f4d40fb8d9de19ede91ecb1f87.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-758065" data-block-id="f1baf69c8144087aedc789843ac2f8bb" style="height: auto; width: 960px; left: 0px; top: 579px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>Default. Elements take up space within the document flow.<br>
@@ -1063,7 +1031,7 @@ div {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="f424eef4e28b71a4c678e10be883f789">
+</div></div></section><section data-id="f424eef4e28b71a4c678e10be883f789" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-758065" style="height: auto; width: 960px; left: 0px; top: 575px;" data-block-id="8d677669ffb9d48e084b3d53a21a568a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>Position is relative to parent within document flow via <span style="color:#98c379">top</span>, <span style="color:#98c379">right</span>, <span style="color:#98c379">bottom</span>, <span style="color:#98c379">left</span>&nbsp;properties.</p>
 
@@ -1080,7 +1048,7 @@ div {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="81897ce53c2cbb4b64a8df20d52fe2b5">
+</div></div></section><section data-id="81897ce53c2cbb4b64a8df20d52fe2b5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-758065" style="height: auto; width: 960px; left: 0px; top: 583px;" data-block-id="2e428a72032ae7d5f717de4d550cf92a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>Position is <span style="color:#d19a66">relative</span>&nbsp;to the <span style="color:#d19a66">nearest absolute parent</span>&nbsp;element via <span style="color:#98c379">top</span>, <span style="color:#98c379">right</span>, <span style="color:#98c379">bottom</span>, <span style="color:#98c379">left</span>&nbsp;properties.<br>
 Element is removed from flow so other elements ignore it.</p>
@@ -1099,7 +1067,7 @@ Element is removed from flow so other elements ignore it.</p>
 </div></div><aside class="notes">* tricky to remember that the nearest absolute parent
 * have to go and set absolute on some parent as is not default, or uses doc body
 * can use z-index
-</aside></section><section data-id="c6c766d7bd8bcae366648d15f763bcfa">
+</aside></section><section data-id="c6c766d7bd8bcae366648d15f763bcfa" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-758065" style="height: auto; width: 960px; left: 0px; top: 583px;" data-block-id="fad752677c03407658812689de18099c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>Position is relative to the <strong>window</strong> via <span style="color:#98c379">top</span>, <span style="color:#98c379">right</span>, <span style="color:#98c379">bottom</span>, <span style="color:#98c379">left</span>&nbsp;properties.<br>
 Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
@@ -1115,7 +1083,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">also can use z-index</aside></section><section data-id="c1bdec0760c04b7060a981629c609439">
+</div></div><aside class="notes">also can use z-index</aside></section><section data-id="c1bdec0760c04b7060a981629c609439" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-758065" style="height: auto; width: 960px; left: 0px; top: 591px;" data-block-id="cb8165638aa0e02ee270e91ac0fe338c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>Allows elements (absolute and fixed) to be ordered / layered. Parameter: signed integer. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context#The_stacking_context" target="_blank"><span style="color:#61afef">stacking contexts</span></a></p>
 </div></div>
@@ -1140,7 +1108,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
   * [FROONT](http://blog.froont.com/positioning-in-web-design/)
   * For more detailed examples: [css-tricks](https://css-tricks.com/almanac/properties/p/position/)
   * draw parent with boxes inside, then one outside, can't layer it in between
-</aside></section><section data-id="c8684054c1c9db8b63e7b1d13ca9b1e5">
+</aside></section><section data-id="c8684054c1c9db8b63e7b1d13ca9b1e5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-758065" style="height: auto; width: 960px; left: 0px; top: 175px;" data-block-id="ce0afc7906402541c36a7086d484e6ec"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>
@@ -1180,7 +1148,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 * keep it "clear" on which side
 * Floating can get tricky.
 
-</aside></section><section data-id="afdce38155af6287b816bbab872d5ec8">
+</aside></section><section data-id="afdce38155af6287b816bbab872d5ec8" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-f41fb6" data-block-id="11370f558a04065d16bfb19b819263c0" style="width: 869px; height: 550px; left: 40px; top: 114px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/cc696879a64585dc629b27fba80c183d?height=300&amp;theme-id=24117&amp;default-tab=html,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="5ddb0d0fa8eeb63748a4a0df0494ad32"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1194,7 +1162,8 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 </div>
 </div></div><aside class="notes">* imagine this with multiple elements in columns or something?!?
 * but for this particular use case, works pretty well. 
-</aside></section></section><section class="stack" data-id="002ca2145635d1d7919ed9c22a7d890a"><section data-id="7ee7026d9183a70ab259e41c11a0a190">
+</aside></section></section>
+<section class="stack editing-mode" data-id="002ca2145635d1d7919ed9c22a7d890a" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="7ee7026d9183a70ab259e41c11a0a190" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 
 <div class="sl-block" data-block-type="text" data-name="text-5c29a0" data-block-id="f903fe6f5c06dcb33dcf8eb392bd3a27" style="height: auto; width: 600px; left: 176.8px; top: 167.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p style="color:rgb(58, 62, 64)">Alignment used to be miserable.</p>
@@ -1213,7 +1182,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 </div>
 </div></div>
 <div class="sl-block" data-block-type="image" style="width: 705.082px; height: 396.609px; left: 127.459px; top: 280px;" data-name="image-c9a45d" data-block-id="0be9b8fea566d07842ad61022b4fd151"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1280" data-natural-height="720" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/386c11d80461f4814188617844324652.gif"></div></div><aside class="notes">* main idea: give the container the ability to alter its items' width/height (and order) to best fill the available space based on some rules
-</aside></section><section data-id="f9a9af34ef46e4ed56badf73fe1e1e86">
+</aside></section><section data-id="f9a9af34ef46e4ed56badf73fe1e1e86" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-797f37" data-block-id="d498542056ab6d6af9aa5f8a43305036" style="width: 951.255px; height: 341.088px; left: 8.745px; top: 117.456px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1255" data-natural-height="450" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/8109ffb9410a82ae16cc90c8ac2053e1.jpg"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-db751f" data-block-id="4e579298314feadfa669e7b58851f2ba" style="height: auto; width: 640px; left: 160px; top: 529px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
@@ -1250,7 +1219,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
   * Flex lines are filled with items and placed into the container starting on the cross-start side of the flex container and going toward the cross-end side.
 * *cross size* / *cross size property*
   * The width or height of a flex item, whichever is in the cross dimension, is the item’s cross size. The cross size property is whichever of width or height that is in the cross dimension.
-</aside></section><section data-id="405522753952d1cb35013a248eea4c94">
+</aside></section><section data-id="405522753952d1cb35013a248eea4c94" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-d3ba7e" data-block-id="a5684d05b8de02c6994a12af41e9f198" style="width: 884px; height: 561px; left: 28px; top: 109px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/03b6b8b6dace6d8f7c666514ac66bead?height=300&amp;theme-id=24117&amp;default-tab=css,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-0b77b2" data-block-id="04bbfd7cc10022b3dcd26c6c9a048f6d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1262,7 +1231,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="a629db06210c4c9456a5421542fed565">
+</div></div></section><section data-id="a629db06210c4c9456a5421542fed565" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-c7ca01" data-block-id="3fa71dcaea85781b11e7c4a0ff058a09" style="width: 960px; height: 255.799px; left: 5.32907e-14px; top: 119.536px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="319" data-natural-height="85" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/76b5aa72ab9cf849bcf0b59a13f76ca6.svg"></div></div>
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" data-block-id="60a9ce8419c476d2ef89636e8529e31d" style="width: 800px; height: 209px; left: 80px; top: 421px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="css"><code>.container {
   flex-direction:  column | column-reverse | row | row-reverse ;
@@ -1278,7 +1247,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="42d0103a2e353a2400fa3c305e35ec84">
+</div></div></section><section data-id="42d0103a2e353a2400fa3c305e35ec84" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 800px; height: 209px; left: 80px; top: 421px;" data-block-id="e745beeb3a3ddeb243a391138d2bdf32"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.container{
   flex-wrap: nowrap | wrap | wrap-reverse;
 }
@@ -1294,7 +1263,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="f02fb6725adb93bc6011c092aea7c122">
+</div></div></section><section data-id="f02fb6725adb93bc6011c092aea7c122" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 800px; height: 145px; left: 80px; top: 527.5px;" data-block-id="2c4901e54611f8d59d401683b4d1634c"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;" class="css"><code>.container {
   justify-content: flex-start | flex-end | center | space-between | space-around;
 }
@@ -1311,7 +1280,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* along main axis
-</aside></section><section data-id="2eadf5a171e74f881f7326ca9a3aa4af">
+</aside></section><section data-id="2eadf5a171e74f881f7326ca9a3aa4af" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 800px; height: 145px; left: 80px; top: 526.5px;" data-block-id="72b66596cf312c003eb93fd4f0f333b5"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;" class="css"><code>.container {
   align-items: flex-start | flex-end | center | baseline | stretch;
 }
@@ -1327,7 +1296,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">cross-axis - can't do it in main axis</aside></section><section data-id="d336b54137791c089e66b7177bd34b1e">
+</div></div><aside class="notes">cross-axis - can't do it in main axis</aside></section><section data-id="d336b54137791c089e66b7177bd34b1e" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 960px; height: 145px; left: 0px; top: 525.5px;" data-block-id="13498d5b1fed22b8ce0f44e4659eae18"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.container {
   align-content: flex-start | flex-end | center | space-between | space-around | stretch;
 }
@@ -1346,7 +1315,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 </div></div><aside class="notes">* cross direction!
 * modifies the behavior of the flex-wrap property
 * similar to align-items, but instead of aligning flex items, it aligns flex lines
-</aside></section><section data-id="58c8c79231ac3975e930dec0985e8cf5">
+</aside></section><section data-id="58c8c79231ac3975e930dec0985e8cf5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 355px; height: 145px; left: 302.5px; top: 490px;" data-block-id="9715738a072585307876c1a79df0f578"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.item {
   order: &lt;integer&gt;;
 }
@@ -1362,7 +1331,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="93bf6b69a0327824fccc1da4f458f106">
+</div></div></section><section data-id="93bf6b69a0327824fccc1da4f458f106" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 948px; height: 195px; left: 6px; top: 396px;" data-block-id="3555fc205d052effca13fb6b94d19109"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.item {
   flex-grow: &lt;number&gt;; /* default 0 non negative */
   flex-shrink: &lt;number&gt;; /* default 1 non negative */
@@ -1385,7 +1354,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 * how it shrinks
 * basis: default size before remaining space is distributed
 
-</aside></section><section data-id="11211db1009d6ece4b6069fc1ccc0aa3">
+</aside></section><section data-id="11211db1009d6ece4b6069fc1ccc0aa3" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-ba9d52" style="width: 822px; height: 195px; left: 69.0005px; top: 428px;" data-block-id="4f009888c29921da6b20c3131f6de057"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.item {
   align-self: auto | flex-start | flex-end | center | baseline | stretch;
 }
@@ -1402,9 +1371,9 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* remember cross direction!
-</aside></section><section data-id="01001cb28c3006f0748f4663b3a81b92" data-background-iframe="https://flexboxfroggy.com/" data-background-interactive="true"><div class="sl-block" data-block-type="text" data-name="text-437178" data-block-id="74c5432b2cc220d7c732d964333e0999" style="height: auto; width: 503.708px; left: 456.292px; top: 617.827px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p><a href="http://flexboxfroggy.com/" target="_blank"><span style="color:#ffffff">http://flexboxfroggy.com/</span></a></p></div></div><aside class="notes">* let's take 5, stretch, play some of these games
+</aside></section><section data-id="01001cb28c3006f0748f4663b3a81b92" data-background-iframe="https://flexboxfroggy.com/" data-background-interactive="true" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="text" data-name="text-437178" data-block-id="74c5432b2cc220d7c732d964333e0999" style="height: auto; width: 503.708px; left: 456.292px; top: 617.827px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p><a href="http://flexboxfroggy.com/" target="_blank"><span style="color:#ffffff">http://flexboxfroggy.com/</span></a></p></div></div><aside class="notes">* let's take 5, stretch, play some of these games
 * you may not get though them now but please do play them all the way through after class and before you do the lab,  you'll need to understand flexboxes to do the lab. 
-</aside></section><section data-id="57ebfdf20dc82bb2e9094a0f7e6e155f"><div class="sl-block" data-block-type="text" data-name="text-437178" style="height: auto; width: 928px; left: 31px; top: 138px;" data-block-id="341258ff1229c470d936fc3f267af662">
+</aside></section><section data-id="57ebfdf20dc82bb2e9094a0f7e6e155f" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="text" data-name="text-437178" style="height: auto; width: 928px; left: 31px; top: 138px;" data-block-id="341258ff1229c470d936fc3f267af662">
 <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>more games!
@@ -1442,7 +1411,8 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section></section><section class="stack" data-id="18e937863452bf74c7b0b8423dedc615"><section data-id="9980bd73952bee1c3520b2e7393656bd"><div class="sl-block" data-block-type="text" data-name="text-5c29a0" style="height: auto; width: 716px; left: 128.8px; top: 151.5px;" data-block-id="fe67325791db563bd5227fc90245c337"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+</div></div></section></section>
+<section class="stack editing-mode" data-id="18e937863452bf74c7b0b8423dedc615" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="9980bd73952bee1c3520b2e7393656bd" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true"><div class="sl-block" data-block-type="text" data-name="text-5c29a0" style="height: auto; width: 716px; left: 128.8px; top: 151.5px;" data-block-id="fe67325791db563bd5227fc90245c337"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
 	<li style="color:rgb(58, 62, 64); text-align:left">CSS Grid layout is a two-dimensional grid-based layout system</li>
 	<li style="color:rgb(58, 62, 64); text-align:left">Flexbox is a one-dimensional layout system (with overflow)</li>
 </ul></div></div>
@@ -1461,18 +1431,7 @@ Otherwise similar to absolute. Position 0,0 is the top left corner.</p>
 
 The biggest difference between CSS grids and flex boxes is that CSS grids are two-dimensional, meaning the container's children elements are arranged in a grid, kind of reminiscent of graph paper.
 
-While flexbox is one-dimensional, there's only one direction of flow at a time for the flexbox (either row or column) but with overflow.</aside></section><section data-id="43e8983fb69b77f800c8394c27a604cd" data-visibility="hidden"><div class="sl-block" data-block-type="iframe" style="width: 905px; height: 561px; left: 36px; top: 113px;" data-name="iframe-a60706" data-block-id="8afa36403fd3898a370bd0fc1eb84e36"><div class="sl-block-content" style="z-index: 10;"><iframe allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay" data-src="https://codesandbox.io/embed/intelligent-lamarr-0izog?fontsize=14&amp;hidenavigation=1&amp;theme=light" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation"></iframe></div></div>
-<div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f6f05cf7bbbe13719579c7b2cf9cc32a"><div class="sl-block-content" data-has-custom-html="" style="z-index: 11;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">CSS Grids come to the rescue!</div>
-</div>
-
-<div class="spacer">&nbsp;</div>
-</div>
-</div></div><aside class="notes">To further understand the difference between CSS grids and flexboxes, I've created a Code Sandbox with a basic CSS grid. We're going to use this sandbox to explore core concepts for CSS grid.</aside></section><section data-id="0d103731d568e543a0e9cf7499c21223"><div class="sl-block" data-block-type="image" data-name="image-0403de" style="width: 806.4px; height: 477.085px; left: 76.8px; top: 90px; min-width: 1px; min-height: 1px;" data-block-id="88214f681d1eeba81a9db48d57630d0b"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="955" data-natural-height="565" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/d2873de11ac0953a4b528c13407bbcdd.png"></div></div>
+While flexbox is one-dimensional, there's only one direction of flow at a time for the flexbox (either row or column) but with overflow.</aside></section><section data-id="0d103731d568e543a0e9cf7499c21223" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="image" data-name="image-0403de" style="width: 806.4px; height: 477.085px; left: 76.8px; top: 90px; min-width: 1px; min-height: 1px;" data-block-id="88214f681d1eeba81a9db48d57630d0b"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="955" data-natural-height="565" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/d2873de11ac0953a4b528c13407bbcdd.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-98f97d" style="height: auto; width: 600px; left: 208px; top: 591px;" data-block-id="065e662a90d0567072a1419e86abeb86"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
 	<li>two dimensional grid with cells that can span specified widths and lengths</li>
@@ -1492,7 +1451,7 @@ While flexbox is one-dimensional, there's only one direction of flow at a time f
 
 This change will then allow all children elements to use other CSS grid attributes to position themselves within the grid.
 
-Ie with flex - you can say it is a row and align cross direction but with grid you can go in both direction</aside></section><section data-id="b7417d448d5908d7164072b46083e928"><div class="sl-block" data-block-type="text" data-name="text-5c29a0" style="height: auto; width: 716px; left: 128.8px; top: 151.5px;" data-block-id="a21981200fc44dd313d2564ba4fc36d1">
+Ie with flex - you can say it is a row and align cross direction but with grid you can go in both direction</aside></section><section data-id="b7417d448d5908d7164072b46083e928" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="text" data-name="text-5c29a0" style="height: auto; width: 716px; left: 128.8px; top: 151.5px;" data-block-id="a21981200fc44dd313d2564ba4fc36d1">
 <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
 	<li style="color:rgb(58, 62, 64); text-align:left">container is the wrapping element that displays the grid</li>
 	<li style="color:rgb(58, 62, 64); text-align:left">grid item is the child that displays on the grid&nbsp;</li>
@@ -1517,7 +1476,7 @@ Ie with flex - you can say it is a row and align cross direction but with grid y
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">Element grid item has the potential to change in size and position when using grid css rules.</aside></section><section data-id="edf75c1c23acd71e0a6dad3a5ea62550">
+</div></div><aside class="notes">Element grid item has the potential to change in size and position when using grid css rules.</aside></section><section data-id="edf75c1c23acd71e0a6dad3a5ea62550" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-5b4d76" style="width: 440.449px; height: 320px; left: 259.776px; top: 100px; min-width: 1px; min-height: 1px;" data-block-id="32635926c2bfeb541fb20cee89c7f04f"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="490" data-natural-height="356" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/b6be40f8a45d30e8f3498f58c471e486.svg"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="91357221a021635d5f2884abe206aeea"><div class="sl-block-content" data-has-custom-html="" style="z-index: 12;">
 <div id="header-title">
@@ -1549,7 +1508,7 @@ By specifying these slash-separated numbers, CSS grid is able to calculate the s
 
 I like to think about each number as a start and end x/y coordinate.
 
-If any of the numbers exceed the specified number of rows and columns, the grid will currently stretch to fit that newly expanded content.</aside></section><section data-id="db1368d12f3a7972cde8bfb650f095a2"><div class="sl-block" data-block-type="code" style="width: 835.5px; height: 251px; left: 80px; top: 412px;" data-name="code-b2c46e" data-block-id="acf184ab793eb85b147cbf447a0feea6"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.container {
+If any of the numbers exceed the specified number of rows and columns, the grid will currently stretch to fit that newly expanded content.</aside></section><section data-id="db1368d12f3a7972cde8bfb650f095a2" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="code" style="width: 835.5px; height: 251px; left: 80px; top: 412px;" data-name="code-b2c46e" data-block-id="acf184ab793eb85b147cbf447a0feea6"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>.container {
   /* standard */
   column-gap: &lt;line-size&gt;;
   row-gap: &lt;line-size&gt;;
@@ -1572,9 +1531,10 @@ If any of the numbers exceed the specified number of rows and columns, the grid 
 </div>
 </div></div><aside class="notes">The column and row gap allow you to specify how much space should be present between each grid item along the rows and columns.
 
-If you want to specify the same gap space for both rows and columns you can use the shorthand gap.</aside></section><section data-id="88dad4212d95af2a1911e21c5c5cd1ba" data-background-iframe="https://cssgridgarden.com/" data-background-interactive="true"><div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 368.502px; top: 630px;" data-name="text-5ac7c7" data-block-id="9db36ebcf15442deb6c5a466b33bd671"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+If you want to specify the same gap space for both rows and columns you can use the shorthand gap.</aside></section><section data-id="88dad4212d95af2a1911e21c5c5cd1ba" data-background-iframe="https://cssgridgarden.com/" data-background-interactive="true" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden=""><div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 368.502px; top: 630px;" data-name="text-5ac7c7" data-block-id="9db36ebcf15442deb6c5a466b33bd671"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p><a href="https://cssgridgarden.com/" target="_blank"><span style="color:#13134e">https://cssgridgarden.com/</span></a></p>
-</div></div></section></section><section data-id="9bdaab2e57cf5638c16ace6e4af9e1ea">
+</div></div></section></section>
+<section data-id="9bdaab2e57cf5638c16ace6e4af9e1ea" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-c1739e" data-block-id="92e342d0e5e9c32f336ab4cdf376d979" style="height: auto; width: 960px; left: 0px; top: 123px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
@@ -1607,7 +1567,8 @@ If you want to specify the same gap space for both rows and columns you can use 
 * note,  you can fade in opacity but the others are binary
 * opacity better than visibility
 
-</aside></section><section class="stack" data-id="b1a2d59b289f3665f16727b5be527d8e"><section data-id="74ec548a4b61873736c7c83f716d83f8">
+</aside></section>
+<section class="stack editing-mode" data-id="b1a2d59b289f3665f16727b5be527d8e" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="74ec548a4b61873736c7c83f716d83f8" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-9c92ce" data-block-id="99e554507bf3ab41f7d025e268529d74" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/EWyyNJ?height=300&amp;theme-id=24117&amp;default-tab=css,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="b4f344938407806c6e6cab04429fcdab"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1622,7 +1583,7 @@ If you want to specify the same gap space for both rows and columns you can use 
 </div></div><aside class="notes">* now we're getting to the good stuff
 * CSS3 can do a lot of stuff.  Transitions, animations, and even 3D transforms.
 
-</aside></section><section data-id="6bf65f01cb5eb3f2fde5ce012ce79635">
+</aside></section><section data-id="6bf65f01cb5eb3f2fde5ce012ce79635" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-705d39" data-block-id="3961b7c38fe54387b625099b994f2adf" style="width: 800px; height: 518px; left: 80px; top: 140px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="css" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">div {
   transition-property: [property];
   transition-duration: [duration];
@@ -1645,7 +1606,7 @@ div {
 </div></div><aside class="notes">* things that trigger transitions are any change in the style applied to an element
 * hover, active,
 * or even a class to an element in javascript
-</aside></section><section data-id="08b4b8fdc3b2d7740d668b2d085d74ae">
+</aside></section><section data-id="08b4b8fdc3b2d7740d668b2d085d74ae" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="image" data-name="image-070b28" data-block-id="74ef6ff61d4c5097db34e92b1243417e" style="width: 806.4px; height: 168.336px; left: 64.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="167" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/a81ee88d86f29a5a93991e08902f1945.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-5f3f97" data-block-id="ac8a6b34f180fbb89534c4df038a6445" style="height: auto; width: 960px; left: 0px; top: 373px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
@@ -1667,7 +1628,7 @@ div {
 </div>
 </div></div><aside class="notes">* you can define your own timing functions if you really want
 * ease is faster in the middle
-</aside></section><section data-id="ec1b5e51b3345a12fb894c024601c173">
+</aside></section><section data-id="ec1b5e51b3345a12fb894c024601c173" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-545e43" data-block-id="7581c6fca717f84bcc666ccf48ea4a24" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/598dcc037bd45c9e8c431646bd77a004?height=300&amp;theme-id=24117&amp;default-tab=css,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="9d1fd5a829a43098a178a1fa030d8a78"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1677,7 +1638,8 @@ div {
 <div class="title">transitions</div>
 </div>
 </div>
-</div></div></section></section><section class="stack" data-id="af81eb8f0d339f26c11b0126b77486f5"><section data-id="17e4d0d3af098e369b0937ad12cb48b6">
+</div></div></section></section>
+<section class="stack editing-mode" data-id="af81eb8f0d339f26c11b0126b77486f5" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="17e4d0d3af098e369b0937ad12cb48b6" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="code" data-name="code-1a38f2" data-block-id="dbea38aa1ea2abbbcf6547cd0c7f3a56" style="width: 640px; height: auto; left: 160px; top: 126px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre class="css" style="font-size: 16px; line-height: 19px;"><code>transform: translate(x, y);
 transform: perspective(distance_from_view) translate3d(x, y, z);
 </code></pre></div></div></div>
@@ -1693,7 +1655,7 @@ transform: perspective(distance_from_view) translate3d(x, y, z);
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">A 2D translate in Y:
-</aside></section><section data-id="9a30ac63dfdfca652be56e4f729eef24">
+</aside></section><section data-id="9a30ac63dfdfca652be56e4f729eef24" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="code" data-name="code-1a38f2" style="width: 640px; height: auto; left: 160px; top: 96.5px;" data-block-id="92ecc328c1292f2f4cfbcdae1fb77379"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 10;" data-code-autoheight="true"><pre class="css" style="font-size: 16px; line-height: 19px;"><code>rotate(angle)	/* 2D rotation */
 rotate3d(x,y,z,angle)	/* 3D rotation with axis (with transform-origin )and rotation*/
 rotateX(angle) /* shorthand 3D along the X-axis */
@@ -1714,7 +1676,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 </div></div><aside class="notes">* Here's a visualization of how the rotation works.
 * Note transform-origin is the default center of the object here, but it can be shifted.
 * What happens when you do that?
-</aside></section><section data-id="76c43ccbc9c17f4136ab77a03a8841e6">
+</aside></section><section data-id="76c43ccbc9c17f4136ab77a03a8841e6" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-850bc8" data-block-id="5c42b962a5407ffe3a8f84183c686472" style="width: 920px; height: 482px; left: 17px; top: 199px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/c0bacc59c1a4f7bade4a52e10d87373c?height=300&amp;theme-id=24117&amp;default-tab=css,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-bc42a0" data-block-id="192c166cc4b4512f4e9bb1ca1a1f7dab" style="height: auto; width: 960px; left: 0px; top: 110.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>simpler example</p>
@@ -1730,7 +1692,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">Here's an effect that may be a little over the top for daily use.
-</aside></section><section data-id="016aa85f50da332508557a0ae277b13b">
+</aside></section><section data-id="016aa85f50da332508557a0ae277b13b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 <div class="sl-block" data-block-type="text" data-name="text-31bf41" data-block-id="8d25fc4bc2c52e0569e380fe7b2cb1ee" style="height: auto; width: 600px; left: 180px; top: 91px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <p>Ok, that might be enough of 3D for one day! More demos can be found here</p>
 
@@ -1748,7 +1710,8 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">try the carousel
-</aside></section></section><section data-id="6930a0c30dbf1f2f6331aaf070b977e2">
+</aside></section></section>
+<section data-id="6930a0c30dbf1f2f6331aaf070b977e2" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-ffb220" data-block-id="240fe45f1aec42a43b988e9bdc29c9ff" style="height: auto; width: 870px; left: 18px; top: 228.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>
@@ -1771,7 +1734,8 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 <div class="title">so many resources</div>
 </div>
 </div>
-</div></div></section><section class="stack" data-id="58d2923e627c46e1ce420756331855b4"><section data-id="9b9b50040fdbb83da146cde38bf1dc38">
+</div></div></section>
+<section class="stack editing-mode" data-id="58d2923e627c46e1ce420756331855b4" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="9b9b50040fdbb83da146cde38bf1dc38" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-f9a945" data-block-id="1425b18b22d97370a9a20e27bbe8a62d" style="height: auto; width: 600px; left: 180px; top: 245.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <h2 style="color:rgb(58, 62, 64)"><a href="https://en.wikipedia.org/wiki/UTSL" target="_blank">UTSL</a></h2>
 
@@ -1787,7 +1751,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 <div class="title">further learning: use the source, Luke</div>
 </div>
 </div>
-</div></div></section><section data-id="d43c8249c1bd39064e0f321afc72adf7">
+</div></div></section><section data-id="d43c8249c1bd39064e0f321afc72adf7" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" data-block-id="aaad1338b67e454781f43cdc82ee2107" style="height: auto; width: 600px; left: 973px; top: 462.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-de1686" data-block-id="d80c0fc00cb9a20560cdca0578436def" style="width: 688.123px; height: 469px; left: 135.938px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1074" data-natural-height="732" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/cfd953a95a3a4b7cfef35c68786679aa.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-88f0ee" data-block-id="02a47b0a8c39cfd97724ab10f51a2d83" style="height: auto; width: 960px; left: -0.0005px; top: 575px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
@@ -1808,7 +1772,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">you will be using this ALL THE TIME - leave it open practically</aside></section><section data-id="d06adf4e68bb49a7805ef8d58f73e3ab">
+</div></div><aside class="notes">you will be using this ALL THE TIME - leave it open practically</aside></section><section data-id="d06adf4e68bb49a7805ef8d58f73e3ab" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="e0847440f3f87db02559571bc4be4a29"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-5f1551" data-block-id="26b80655d8ff685f8db9e5c74c2b47da" style="width: 691.964px; height: 620px; left: 140.938px; top: 80px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="448" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/b255626b8893da13b163e6439e59cf54.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="7d32df620edb4ec0e6488fe7b2bacb14"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1822,7 +1786,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">inspect border box model!
-</aside></section><section data-id="5d523b0308c755f82269bbe2a7f45a15">
+</aside></section><section data-id="5d523b0308c755f82269bbe2a7f45a15" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="c9f76669bbff94d503073f04ad4c855a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-5f1551" style="width: 691.964px; height: 620px; left: 140.938px; top: 80px; min-width: 1px; min-height: 1px;" data-block-id="a04d7ed55e362b97621c0115e671dfba"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="448" data-crop-x="0" data-crop-y="0" data-crop-width="1" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/c1e69e7901482e88a140e4686c46b8e1.gif"></div></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="610014c6039fa82568f2fd89da52d3af"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1835,7 +1799,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="0731cc2ff730475530f04df9c0d41534">
+</div></div></section><section data-id="0731cc2ff730475530f04df9c0d41534" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="3b114ccc0c653ea1ccaeb897c7422163"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-5f1551" style="width: 691.964px; height: 620px; left: 140.938px; top: 80px; min-width: 1px; min-height: 1px;" data-block-id="7228201fdfc8c32ec9604eb5168b304f"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="448" data-crop-x="0" data-crop-y="0" data-crop-width="1" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/b44b822120ff78b93a27681b19f6172e.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="27e109b4406c18562227392f811874a9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1848,7 +1812,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">https://media.giphy.com/media/irKbGo3c5zZeKCpxVP/giphy.gif</aside></section><section data-id="f59f35ff9cbf80ab758231f43cc832d3">
+</div></div><aside class="notes">https://media.giphy.com/media/irKbGo3c5zZeKCpxVP/giphy.gif</aside></section><section data-id="f59f35ff9cbf80ab758231f43cc832d3" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="7a9eaf4cb1c85bda0ae13c562d1f1a6c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-359d65" data-block-id="d2e9d47887979cb16551b7ed189f2c7b" style="width: 960px; height: 467.2px; left: 0px; top: 116.4px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="600" data-natural-height="292" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/1cd7e23a12ae674796a7d71647cbebbd.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="4557d4f2d4a4c6ae1554a00dc467373e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1861,7 +1825,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="e8aaa2f0be4edcebe65865ba833bda27">
+</div></div></section><section data-id="e8aaa2f0be4edcebe65865ba833bda27" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="5904e5c847c5249d401a934f365da588"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-131b22" data-block-id="59b4fc05ecc2dcd4314cb716998f102e" style="width: 710.471px; height: 590px; left: 124.764px; top: 89px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="920" data-natural-height="764" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/css-1767923668155/images/9f5210422d1c1c5e23e96e22b61b0301.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-f05243" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="6ff23d739b7637f0ff943daa418d751b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1874,7 +1838,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="b42408619896eac10583882cfc908e88">
+</div></div></section><section data-id="b42408619896eac10583882cfc908e88" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="e6e5e2bb735823fe11ddd859e9581707"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-ff7b5a" data-block-id="f8a7304cbc69905d3d188b0d7f70f70a" style="height: auto; width: 960px; left: 0px; top: 233px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p style="color:rgb(58, 62, 64)"><a href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank">https://developers.google.com/web/tools/chrome-devtools/</a></p>
@@ -1896,7 +1860,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 </div>
 </div>
 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;" class="cGcvT"></grammarly-extension>
-</div></section><section data-id="8e0f59db5f74239b9e31da7a44f55a90">
+</div></section><section data-id="8e0f59db5f74239b9e31da7a44f55a90" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="c8d19b01b9cf71324d4ddda65ef3fba1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 <div class="sl-block" data-block-type="video" data-name="video-e1ad1f" data-block-id="64f92d0b07d009187c3f4444c4e6b4d5" style="min-width: 30px; min-height: 30px; width: 317.589px; height: 566px; left: 56.206px; top: 102px;"><div class="sl-block-content" style="z-index: 11;"><video playsinline="" controls="controls" data-paused-by-reveal="" src="https://res.cloudinary.com/dali-lab/video/upload/f_auto,q_auto/v1/classmoji/slides/dfce72ce-a54d-4d29-bb31-a52828d82e5c/6b7b57104a3b8da5b35a04d356894402?_a=BAMAMihK0"></video></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-749289" data-block-id="dd5beaca2e41296d9407ecf4b689409a" style="height: auto; width: 509px; left: 400px; top: 202px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul style="color:rgb(58, 62, 64)">
@@ -1917,7 +1881,7 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 <div class="title">another activity?!</div>
 </div>
 </div>
-</div></div></section><section data-id="ba2e9837fad1f0c81eb8326ad5686fcb">
+</div></div></section><section data-id="ba2e9837fad1f0c81eb8326ad5686fcb" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-a039d3" style="height: auto; width: 600px; left: 973px; top: 462.5px;" data-block-id="6a79e5c2f3a0a1285916f3e127379d57"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p>Text</p></div></div>
 
 <div class="sl-block" data-block-type="text" data-name="text-204839" data-block-id="b93e21fd5b6fe657196a5e6645e60e74" style="height: auto; width: 960px; left: 0px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
@@ -1941,7 +1905,6 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
 </div>
 </div>
 </div></div></section></section>
-			
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -1951,10 +1914,8 @@ rotateZ(angle) /* shorthand 3D along the X-axis */
       hash: true,
       controls: true,
       progress: true,
-      center: false,
+      center: true,
       transition: 'slide',
-      width: 960,
-      height: 700,
       plugins: [RevealHighlight]
     });
   </script>
