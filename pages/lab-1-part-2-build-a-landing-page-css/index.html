@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -448,16 +468,16 @@
 <ul><li>Become comfortable with <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a></li><li>Be able to mimic the structure and style of pages using html structure and css rules</li><li>Focus on CSS foundations</li><li>Internalize Flexboxes for mobile and desktop</li><li>Build a beautiful static landing page</li></ul>
 <div class="heading-block h2-block"><h2>Getting Started</h2></div>
 <p>🚀  Use the <strong>same</strong> repository and code base you created for and review what you are building - a landing page with certain components. </p>
-<p><a href="https://www.notion.so/Lab-1-Part-1-Build-A-Landing-Page-HTML-263e1a579bf841b992eb430b199fcb91?pvs=21">Lab 1 Part 1:  Build A Landing Page HTML</a></p>
+<div class="page-link-block"><a href="/dartmouth-cs52-26w/pages/e5cdbc89-3425-463b-ac0a-0d15723e52eb" data-page-id="e5cdbc89-3425-463b-ac0a-0d15723e52eb">Lab 1 Part 1:  Build A Landing Page HTML</a></div>
 <div class="heading-block h2-block"><h2>What you have so far</h2></div>
 <p>What you have now should look something like this: HTML with no CSS. </p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/html-layout-1767548518209.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/html-layout-1767548518209.png" alt=""></figure>
 <div class="heading-block h2-block"><h2>PART 2: Styling!</h2></div>
 <div class="heading-block h3-block"><h3>Adding in Fonts</h3></div>
 <p>Right, in the above you may have noticed that yours was Times New Roman…</p>
 <p>🚀&nbsp;You should get some better fonts quick from <a href="http://fonts.google.com/">Google Fonts</a>! 🐎</p>
 <p>🚀&nbsp;And you might as well grab some nice icons while you are at it from <a href="http://fontawesome.io/">FontAwesome</a>. Easiest is to just download the whole fontawesome package and include that in your source.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/icons-1767548518209.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/icons-1767548518209.png" alt="" style="width: 407px" width="407"></figure>
 <div class="heading-block h3-block"><h3>Background</h3></div>
 <p>🚀&nbsp;Go ahead and add a background in!</p>
 <p>I recommend getting rid of margin and padding on body. Something like:</p>
@@ -477,7 +497,7 @@
 <p>Here is a good <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">guide to flex</a>.</p>
 <p><strong>Note:</strong> for now, only use pure CSS3 directives that are supported by the latest Chrome. Don’t worry about the various <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix">vendor prefixes</a> like <code>-webit</code> <code>-moz</code> or any of those prefixes. Later on we’ll learn about using <a href="https://css-tricks.com/autoprefixer/">autoprefixers</a> to make our code work better cross-platform, but for now use the latest the greatest that works in Chrome. That is the browser we’ll be testing your sites in and the only browser that matters for the time being. <strong>Do not</strong> use any other browser for your dev work.</p>
 <p>Now things should look like they are coming together.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/flexboxes-1767548518209.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/flexboxes-1767548518209.jpg" alt=""></figure>
 <p>Things are not lining up and much of styling is missing, but most elements are in their proper places. Using only flexboxes and some very basic positioning. No bootstrap or css frameworks here!</p>
 <div class="heading-block h3-block"><h3>Styling</h3></div>
 <p>Now get it looking good!</p>
@@ -485,7 +505,7 @@
 <p><code>border</code>, <code>box-shadow</code>, <code>border-radius</code>, <code>margin</code>, <code>rgba</code>, all will come in handy!</p>
 <p>I recommend working on the full width version, and don’t worry about how it resizes till you are moderately happy with it.</p>
 <p>Getting there!</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/full-width-1767548518209.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/full-width-1767548518209.jpg" alt=""></figure>
 <div class="heading-block h3-block"><h3>Media query</h3></div>
 <p>Now for the tricky part! Shrink the width of your browser window all the way down! GASP! 💩</p>
 <p>Most likely it did not resize well. We’ll deal with this using a single media query.</p>
@@ -502,16 +522,17 @@
 <ol start="1"><li>create 2 separate <code>nav</code>  elements.<ol start="1"><li><code>&lt;nav class="desktop"&gt;</code></li><li><code>&lt;nav class="mobile"&gt;</code></li></ol></li><li>Then in your stylesheet you can do:<ol start="1"><li>by default <code>nav.mobile { display: none;}</code></li><li>and then in your <code>@media query</code></li><li>switch which is displayed and which is hidden!</li><li><code>nav.mobile { display: flex;}</code>  &amp; <code>nav.desktop { display: none;}</code></li></ol></li></ol>
 <p>This way you can toggle the display property on completely different sections of the site. You might have a completely different set of elements for the links section for instance. Toggle one off and the other on.</p>
 <p>At this point it might look something akin to:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/responsive-1767548518209.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/responsive-1767548518209.jpg" alt="" style="width: 306px" width="306"></figure>
 <p><strong>Note:</strong> I did not bother with making the bottom Link Heading sections expand. Extra credit if you do.</p>
 <div class="heading-block h3-block"><h3>Speaking of CSS responding to clicks…</h3></div>
 <p>Notice that on most of these pages when you’re in the narrow responsive site if you click on the <em>Hamburger Menu</em> button an overlay menu comes up. This is done with javascript the world over. BUT it is possible to trick CSS into responding to clicks!</p>
 <p>This is called the <a href="https://css-tricks.com/the-checkbox-hack/">CSS Checkbox Hack</a>, very clever.</p>
 <p>You can implement this functionality in pure CSS. You can also play with CSS transitions for this to make the menu appear to slide or fade in. <strong>Caveat:</strong> CSS transitions don’t work if the element has <code>display: none</code> on it, but there are other ways to hide an element, <code>opacity</code> + <code>height: 0px</code> come to mind.</p>
 <p>Here’s what it could look like:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/css-checkbox-hack-1767548518209.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-1-part-2-build-a-landing-page-css/assets/css-checkbox-hack-1767548518209.gif" alt="" style="width: 357px" width="357"></figure>
 <div class="heading-block h2-block"><h2>And You Are Done! Don’t forget to host it.</h2></div>
-<p>See hosting from:</p>
+<p>See hosting from:&nbsp;</p>
+<div class="page-link-block"><a href="/dartmouth-cs52-26w/pages/e5cdbc89-3425-463b-ac0a-0d15723e52eb" data-page-id="e5cdbc89-3425-463b-ac0a-0d15723e52eb">Lab 1 Part 1:  Build A Landing Page HTML</a></div>
 <div class="heading-block h2-block"><h2>Automatic Testing (in beta)</h2></div>
 <p>As part of this assignment we have provided a simple test suite. You can run this manually from your project directory in terminal: </p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">cd tests
@@ -519,7 +540,7 @@ npm install
 npm run test</code></pre></div>
 <p>These test are written use <a href="https://www.cypress.io/">Cypress</a> which is an end-to-end testing platform. This is a trial. The hope is to provide a bit more feedback on the assignments before you submit it and attempt to suggest or note missing or broken aspects.  Since the assignments are creative and flexible, your mileage may vary.  Feedback on it welcome! We won’t be using this directly in grading. If you have questions about any of the feedback it is giving you let us know! </p>
 <div class="heading-block h2-block"><h2>To Turn In:</h2></div>
-<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li><strong>your page should:</strong><ul><li>display as many elements from the original site as you can re-imagine</li><li>use only pure CSS/HTML</li><li>have clean CSS/HTML written by hand by you (your html file should only be a few hundred lines).</li><li>use lots of flexboxes for layout</li><li>include menu checkbox hack</li><li>be responsive with 1 narrow phone-friendly version per the original</li><li>include details such as hover effects and border-radius</li><li>have clear document structure with proper semantic naming</li><li>look reasonable :-)</li></ul></li><li><strong>your part 2 submission comment should include</strong>:<ul><li>a couple sentence description of what you did and what worked / didn’t work.</li><li>screen caps with anything special you want to point out</li></ul></li></ul>
+<ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li><li><strong>your page should:</strong><ul><li>display as many elements from the original site as you can re-imagine</li><li>use only pure CSS/HTML</li><li>have clean CSS/HTML written by hand by you (your html file should only be a few hundred lines).</li><li>use lots of flexboxes for layout</li><li>include menu checkbox hack</li><li>be responsive with 1 narrow phone-friendly version per the original</li><li>include details such as hover effects and border-radius</li><li>have clear document structure with proper semantic naming</li><li>look BEAUTIFUL 🤩</li></ul></li><li><strong>your part 2 submission comment should include</strong>:<ul><li>a couple sentence description of what you did and what worked / didn’t work.</li><li>screen caps with anything special you want to point out</li></ul></li></ul>
 <div class="heading-block h2-block"><h2>Extra Credit</h2></div>
 <p><em>always mention your extra credit in the README.md file</em></p>
 <ul><li>Fancy CSS transitions and animations!</li></ul>
