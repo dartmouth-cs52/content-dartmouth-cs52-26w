@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immutability and Services</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section data-id="5623cbd2749e99a1bf942c446f87ee04"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 161.418px; left: 80px; top: 199.291px;" data-block-id="ef9ff9bc57b34d199dfee5a843eb88f3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Immutability</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="efbbaa75b9c8b177af6a669156264a24"><section data-id="33f03db1e782b816eedb93165c262884">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-4ad029" data-block-id="f6db7834083f9fdc89fe9b290e712609" style="width: 400.262px; height: 216.141px; left: 279.869px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="270" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/6909d37102b181274db5474ff9d23c75.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-14d1e0" data-block-id="1c50d35f3a5162fbdc020bd5f994935c" style="height: auto; width: 600px; left: 180px; top: 441.494px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ol style="color:rgb(58, 62, 64)">
+	<li>Randall mutates</li>
+	<li>Randall is bad</li>
+	<li>thus mutation is bad</li>
+	<li><span><span class="katex" style="font-size:1.21em"><span class="katex-mathml">\blacksquare</span><span class="katex-html"><span class="base textstyle uncramped"><span class="mathrm mord">■</span></span></span></span></span></li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="e091afee12b259dde976a33f287b6971"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Intro to immutable data structures</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="b3512cf4b6a8b781f9924194af1bfe0f">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-f41a4e" data-block-id="8384ed581f2081d6c0a8be0a34f1e1de" style="width: 656.462px; height: 300px; left: 151.769px; top: 190px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// first problem
+let identity;
+identity = 'one thing';
+identity = 'another thing';
+identity = 0;
+identity = ['what will identity be in the future?'];
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a21a27761a5ad71288fddd7bc90a3e0a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but why?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* you're trying to use it, but its a global and you don't know what it is
+</aside></section><section data-id="2fabedfa2085178204bb78ab97ee7a0b">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-cf37da" data-block-id="ad65701d82edce060b204c6698399cc4" style="width: 289.815px; height: 151.549px; left: 320px; top: 162.309px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="251" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/7f469c8b51f568f8dd8c301df2fcee5b.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-344fb8" data-block-id="2d53338a3fdfc42601f92f5c6b35de01" style="height: auto; width: 960px; left: 0px; top: 408.062px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>when values change over time</li>
+	<li>how do you track?</li>
+	<li>you only have reference to the newest</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="0aa8397769f55f32829467200698682d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">time and value</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* when you go back in time and try to change stuff, bad shit happens</aside></section><section data-id="f5009bb34055016ef57c05fade1449b1">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-67abd9" data-block-id="74308df10af271445cb6a5a660fdc91b" style="width: 687.681px; height: 440px; left: 136.159px; top: 190px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
+var instanceVar1;
+var instanceVar2;
+
+
+// ... lots of code,  getters and setters
+
+
+function obtuse(value) {
+  const data = someFunc(value, instanceVar1);
+  instanceVar2 *= data;
+  return(instanceVar2);
+}
+
+obtuse(0) == ?;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="4e57b788bb8ff3ee4aab5c8dfe073ab0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">side effects</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so much leakage in this example you have no idea what is happening
+* hard to test, have multiple dependent variables -- as with science, too many dependent variables is bad
+* TDD
+</aside></section><section data-id="58a1e8491356caa7b5daa33f119bfb7b">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-67abd9" style="width: 687.681px; height: 300px; left: 136.159px; top: 107.089px;" data-block-id="1e16b531ca946962c350623ca0599dd8"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">videos = ['video1', 'video2'];
+
+$('.video li').forEach( (el, i) =&gt; {
+  el.text(videos[i]);
+});
+
+fetch(url, (newVideos) =&gt; {
+  videos += newVideos;
+  // now what?
+})
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-112ddf" data-block-id="b155a6c35f727f03a471c07c4d00d965" style="height: auto; width: 899.551px; left: 19.7805px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
+	<li>some solutions:
+	<ul>
+		<li>create complex models that keep track of dirty data</li>
+		<li>re-run render often manually (backbonejs)</li>
+		<li>embrace the chaos?</li>
+		<li>react state</li>
+		<li>immutable data scructures</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="d43e43ce8b8bd783507d2b91eb87038b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">how to know what changed?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we don't know which videos updated or added
+* counter somewhere else on the page
+* maybe a delete function elsewhere on page
+* react immutable state is the answer here
+* does this make sense
+* well or there is reacts nice state first views
+
+</aside></section><section data-id="ceeff853022f2fe85a940b05d9dd421a">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-112ddf" style="height: auto; width: 899.551px; left: 30.224px; top: 140px;" data-block-id="18b0f83c7e3f1af298c8b6dd5ca97292"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>strings are typically immutable in most languages!</p>
+</div></div>
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="917585e451002e3ad6cd03e7cc6b8be6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">strings are immutable</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 791.306px; height: 468.13px; left: 84.347px; top: 200.041px;" data-block-id="d2b1f2f037ebe6c2f94f8c40b538ae3e"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/QWZEOdQ?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* great, you've all already worked with immutable data structures!
+* the string methods all return a new string rather than modify the existing  one
+</aside></section><section data-id="d07f76579d2487ab219df509c0bf9b75">
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="e2bb4dd89d07723df83e36090ed4109d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but not so array</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 791.306px; height: 468.13px; left: 84.347px; top: 200.041px;" data-block-id="ed23503490eb153bfa75744645a8898e"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/QWZEOpQ?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* original array is gonezo
+* what if you needed it?
+</aside></section></section><section class="stack" data-id="397684726be41a8754fbda0b42e1cff4"><section data-id="12fac598c16eaf8fc77a9c9fbe0ed8ae">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-67abd9" style="width: 687.681px; height: 203.716px; left: 136.159px; top: 108.142px;" data-block-id="bb0da7a9ef97423a7b235596d913e1f5"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>const [numbers, setNumbers] = useState([1,2]);
+
+// ... 
+
+render() {
+  return &lt;div&gt;Counting: {numbers.join('')}&lt;/div&gt;
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-112ddf" style="height: auto; width: 899.551px; left: 30.2245px; top: 358.156px;" data-block-id="1dffab1c599f0afb3dfc0f77ab966ddf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>however, have to do it right<br>
+</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-71a1f0" data-block-id="fd337d4b94ae09fcb32ec6dfe6c79a2b" style="width: 751.633px; height: 242.107px; left: 104.183px; top: 438.947px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>// mutating, data loss and unpredictable behavior
+numbers.push(3);  // real bad
+setNumbers(numbers.push(3)); //still bad
+
+
+// vs new array or object
+const newNumbers = [...numbers, 3 ];
+setNumbers(newNumbers);
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="174e3ea827a3fd0ad3dbe185ff2435fc"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Why React cares about state being new</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* react to the rescue
+* the ... is called the spread operator, takes the object or array apart by key
+* trick to state:
+  * render is pure function
+  * state is updated to new state not mutated
+* state is an object so generally mutable so lets be careful here
+</aside></section><section data-id="92731561dbc448d539dddefb661fe932" data-visibility="hidden">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9ae6bd240508f479063f5b015e75354d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Why React cares about state being new</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="ca0697d1514bd9647eeeab23df293bc3"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/JjMwyrB?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* PureComponent 
+* runs shouldComponentUpdate as a shallow compare - without it a class based component will always rerender - hence preference to use pureComponent
+</aside></section><section data-id="37c363fa615b7a42964117c3a819664b">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ef8bbb3cd553af3b3d6f5a0c35a7ea18"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Why React cares about state being new</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="70b48993e66b85bb77edf206b5bf2abd"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/RwxELqp?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">setItems([...items, item]);  </aside></section><section data-id="008a723b286b37cdcf334b2c8ad05387">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-67abd9" style="width: 687.681px; height: 476.729px; left: 136.159px; top: 107.089px;" data-block-id="4069d093378c0cb5ca5d6473b15def69"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// Adding to end of array
+// Bad
+state.push('foo');
+// Good
+setState([...state, 'foo'])
+
+
+// Adding to middle of an array
+// Bad
+state[3] = 'foo';
+//Good
+setState(state.map((item, index) =&gt; index === 3 ? 'foo' : item))
+
+
+// Array deletion
+// Bad
+state.splice(2,1)
+// Good
+setState(state.filter((item, index) =&gt; index !== 2 ))
+</code></pre></div></div>
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="3c12dd243a1deae65e64eea93388564f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">for arrays</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="98517fe6fe92e8652144c09d004f1ecd">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-67abd9" style="width: 687.681px; height: 414.662px; left: 136.159px; top: 107.089px;" data-block-id="713075f67845529a86b0a5bfdad160b2"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// Key insertion/mutation
+// Bad
+stateObj.key = 'bar';
+// Good
+setState({
+  ...stateObj,
+  key: 'bar'
+})
+
+
+// Key deletion
+// Bad
+delete stateObj.key;
+// Good
+const {key, ...newObj} = stateObj;
+setState(newObj)
+</code></pre></div></div>
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="4fde5371785eb22a6d9842abdfe7ef1b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">for objects</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="7d41a37761074ce0e7e704834bbf06f2">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-67abd9" style="width: 687.681px; height: 556.911px; left: 136.159px; top: 107.089px;" data-block-id="bcf497c21a9b6e84c89508e4302823aa"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">stateObj = {
+  a1: 'a',
+  a2: {
+    b1: 'b',
+    b2: {
+      c1: 'c',
+      c2: function () { console.log('hi')}
+    }
+  }
+}
+
+//shallow clone - but...
+const copy = Object.assign({}, stateObj);
+const copy = {...stateObj};
+
+//deep clone
+//hack - but won't work for functions
+const copy = JSON.parse(JSON.stringify(stateObj))
+//new way
+const copy = structuredClone(stateObj)
+
+
+copy.a2.b2.c1='new c';
+setState(copy);
+
+</code></pre></div></div>
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="2c97efaf13a2061e71d14c2dee46a262"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what about deepclone + mutation of copy?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* shallow clones won't always work depending on your data
+* deep clones are super expensive
+* is there a better way?</aside></section></section><section class="stack" data-id="ef1c31cc9ebc3c69b9a2b0f2c7ea4a9f"><section data-id="3f85f9e40f70c7959a601c4f28d2957f">
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a0ee2ee5a417f7a5baecdec7457dd5ca"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Immutability Libraries for React</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 423.706px; height: 125.11px; left: 46.7012px; top: 147.445px; min-width: 1px; min-height: 1px;" data-name="image-c6e26b" data-block-id="83e73ce9bf79e4d2c994fdef098eecad"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="762" data-natural-height="225" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/a4c0536bf637c9a243d796c9d4ad6572.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 474.578px; height: 101.331px; left: 462.891px; top: 280px; min-width: 1px; min-height: 1px;" data-name="image-82010b" data-block-id="d88e8b7f102a84f9ae34a5b9fc889194"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1302" data-natural-height="278" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/761fbcdeba9973c3671f430f74de7c6c.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 631.457px; height: 86.8899px; left: 31.5569px; top: 409.246px; min-width: 1px; min-height: 1px;" data-name="image-ea0ea4" data-block-id="e774e9c9036ca91e36a6663036eceb55"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1468" data-natural-height="202" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/9b1d4250aa99b19f90848101c1e24e6d.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 454.503px; height: 75.1333px; left: 492.748px; top: 74.3234px; min-width: 1px; min-height: 1px;" data-name="image-2c923b" data-block-id="60d77bee8deb3970ff6f5230ea07f2fb"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="1718" data-natural-height="284" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/2ee71129838a205e432c679b1ee118b9.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 170.407px; top: 534.101px;" data-name="text-45c45d" data-block-id="2b6127e9832d8c0add368d21f8384a96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ul>
+	<li>many immutability libraries and helpers</li>
+	<li>pros/cons to all of them</li>
+</ul>
+</div></div><aside class="notes">* some are slow
+* some take over you have to use new types that you might not be used to
+</aside></section><section data-id="a847ffa3d4c1f91ce07e81881c10015b">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-71a1f0" style="width: 751.633px; height: 206px; left: 104.183px; top: 343.473px;" data-block-id="53a45466808db4fb3425f963dc16ddfc"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>//immutable.js
+
+let v1 = Immutable.Array([1]);
+let v2 = v1.push(2);
+
+v2 == [1,2];
+v1 = [1]
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a056bf9f2671f10c9438f4564e7e176c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Immutable.js - lovely but wants to take over</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 423.706px; height: 125.11px; left: 268.147px; top: 147.445px; min-width: 1px; min-height: 1px;" data-name="image-c6e26b" data-block-id="74e2e89136799c2bdb3f327e859358eb"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="762" data-natural-height="225" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/a4c0536bf637c9a243d796c9d4ad6572.png"></div></div><aside class="notes">* immutable used to be the top solution -
+* has a completely separate set of data structures with their own API. 
+* lovely, but learning curve, and if you use it in one bit of your code now have to use it everywhere</aside></section><section data-id="98c86a152a2a2b1b6bcfdd083deef0e8">
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="f719b4cb1fec0ee46a04371b3a4bfb15"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Immer</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 368.693px; height: 248px; left: 295.654px; top: 102px; min-width: 1px; min-height: 1px;" data-name="image-753311" data-block-id="47c21346dec95999dcff61eb5db1a69f"><div class="sl-block-content plain" style="z-index: 12;"><img style="" data-natural-width="223" data-natural-height="150" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/c7bd387046a3412012a916840e166f4f.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 838.149px; height: 325.681px; left: 60.926px; top: 341.576px; min-width: 1px; min-height: 1px;" data-name="image-a101a0" data-block-id="7d3c6b5a059a3612f20115410dbb72d2"><div class="sl-block-content plain" style="z-index: 13;"><img style="" data-natural-width="1400" data-natural-height="544" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/db89ca964a418bd3f5c820f0fa54d76d.png"></div></div><aside class="notes">* current favorite
+* part of redux now
+* lightlight - just one function </aside></section><section data-id="8671cbc32f87bf6757b1f4299746a537">
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="034f2eeae49a7c5cc4b4ce102082bae3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Immer is just 1 function</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 455.516px; height: 177.001px; left: 262.082px; top: 94.319px; min-width: 1px; min-height: 1px;" data-name="image-a101a0" data-block-id="496b23a46b13c5eb4f995f9794cb7f11"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="1400" data-natural-height="544" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/db89ca964a418bd3f5c820f0fa54d76d.png"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-71a1f0" style="width: 751.633px; height: 388.57px; left: 114.024px; top: 280px;" data-block-id="567adf01c1d0bfe16bf4afcccca9468f"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>produce(currentState, recipe: (draftState) =&gt; void): nextState
+
+const nextState = produce(baseState, draftState =&gt; {
+    draftState.push('newitem')
+})
+
+//OR
+
+function nextStateProducer(state, argument) {
+  return produce(state, draft =&gt; {
+    draftState.push(argument)
+  });
+}
+
+const nextState = nextStateProducer(baseState, 'newitem')</code></pre></div></div><aside class="notes">* just 1 function produce
+* takes the current state and a recipe
+* recipe is just a function that is given a draftState - a state you can modify a proxy object
+* and returns nextState - which is an optimized new object that may share structure</aside></section><section data-id="427125dd6e80222b1f3bba75907ac3ac">
+
+
+
+
+<div class="sl-block" data-block-type="video" data-name="video-d2aca4" data-block-id="7ab4e63957d0e507c7114d810a878b9f" style="min-width: 30px; min-height: 30px; width: 710.125px; height: 424.19px; left: 124.938px; top: 135.81px;"><div class="sl-block-content" style="z-index: 10;"><video playsinline="" controls="controls" data-paused-by-reveal="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/videos/8d326ee200603eba1997f1ba81edccd2.mp4"></video></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-7f1b5f" data-block-id="2838dcb09603b28b3299a156d0e20849" style="height: auto; width: 600px; left: 180px; top: 580px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><a href="https://www.youtube.com/watch?v=I7IdS-PbEgI" target="_blank"><span><span class="katex" style="font-size:1.21em"><span class="katex-html"><span class="base textstyle uncramped"><span class="mathit mord">O</span><span class="mopen">(</span><span class="mathit mord">l</span><span class="mathit mord">o</span><span class="mathit mord">g</span><span class="mathrm mord">3</span><span class="mathrm mord">2</span><span class="mathit mord">N</span><span class="mclose">)</span></span></span></span></span>&nbsp;and more</a></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="238a1d1afe75857a2b8fc789887b0023"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">inefficient? how about some structure sharing</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* Structural Sharing
+* Directed Acyclic Graph
+* ok so its efficient $O(log32 N)$
+* can use Trie to store arrays
+* https://www.youtube.com/watch?v=I7IdS-PbEgI
+</aside></section><section data-id="19d17115895fc9f4f86bec1862df84bf" data-visibility="hidden"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="4d32f2c40c4f18ebf29d7caedfc76536"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Array in Trie</h1>
+</div></div>
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-b52721" data-block-id="8d5035dc6e7e92432a1c2bf1635c2317" style="width: 621.702px; height: 355.607px; left: 169.149px; top: 280px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1528" data-natural-height="874" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/17c31a5cffd36f860239e1b9be4ea59a.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3c958d" data-block-id="db91856a60508fdec0f42f80be32a2f3" style="height: auto; width: 600px; left: 180px; top: 171px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="color:#2aa198">const val = list.get(141)</span></p>
+</div></div><aside class="notes">* array get stored in a trie
+* trie for re-trie-val, now often pronounced try
+* ordered tree, keyed by prefix
+* usually 32bit binary keys, here we have 8 bits
+* here we start from most significant bit
+</aside></section><section data-id="c4f05ceb4c6025d67a0148a5b5dbf0ea" data-visibility="hidden"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="86f59786ca1fd75d9e3294d3f4376d92"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Array in Trie</h2>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-3c958d" style="height: auto; width: 600px; left: 180px; top: 171px;" data-block-id="4d94ea16dd25ce492df8b0ab24080809"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:#2aa198">const newlist = list.set(141, 'foo')</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-d7bb56" data-block-id="4b7690ca66340476463cda689525feeb" style="width: 806.399px; height: 460.346px; left: 80px; top: 239.654px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1524" data-natural-height="870" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/6579c20286979e40d5d4efe7f5699be8.jpg"></div></div><aside class="notes">* and here's setting an array value
+</aside></section><section data-id="bdfe75a97e2f08c0e56c906551ac2d76" data-visibility="hidden"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="2d9f53e0c751362754c573fdce110ba0"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Map in Trie</h2>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-af7c68" data-block-id="4f43de1d471585bcfa7db2af0b0be9a8" style="width: 806.4px; height: 459.743px; left: 80px; top: 190.129px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1526" data-natural-height="870" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/3d64b194d0aacbb5107d3a74b028ab32.jpg"></div></div><aside class="notes">* and here's a map
+* only difference is index is hash value of key
+</aside></section><section data-id="714ab9e4c2974fffb5ab309e0036e6ed">
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-137a78" data-block-id="3676cac29aa534b44d63837f5fe15000" style="width: 660px; height: 390.191px; left: 160px; top: 179.579px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">const history = [];
+let post = Immutable.Map({
+  title: 'hi',
+  content: 'stuff',
+});
+
+// updating note
+history.push(post);
+post = post.set({content: 'real import stuff'});
+
+// voila you has undo!
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="532dc1d41e00e04a07b1d3eff774d446"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">efficient undo with immutable.js</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* easiest undo in the world
+* remember this could be your whole app state for instance
+* because render only relies on state...
+* why does this work?  what is it that we are putting into the history array?
+</aside></section><section data-id="ff2283cc1912b755cf56681fa7898847">
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="2cd4e4220df8fef951da50704360cd9f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">efficient undo with immer</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="35a44a51e0ef5e5e2a56fd74751627fd"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/popqVjb?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* immer is slightly more challenging but still pretty easy
+* here's a complete example of a todo</aside></section></section><section data-id="9b5fd5e3e22dd5a80b1c6685d5c7d20e">
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a85251" data-block-id="10b58a4277a1cec0018866e6c69fc70e" style="height: auto; width: 600px; left: 180px; top: 261.349px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li><span style="color:#13134e">made for each other</span></li>
+	<li><span style="color:#13134e">make it easier to work with making new state objects</span></li>
+	<li><span style="color:#13134e">There are many options</span></li>
+	<li><span style="color:#13134e">We will use immer</span></li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ff3c48c227343530fc41cc1e57dbab41"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">React + immutable data structures</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="8f0647b4a58ea24cc810928dab8761da"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 81px; top: 179.023px;" data-block-id="88a7b566930d0dbe644d72f532948afd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">BAAS</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">Backend As A Service</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="76bde540ac1809d75c2858a370d2ced5"><section data-id="66fef79c78f345a4d201dde42b682595">
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-14ee2a" style="width: 806.4px; height: 246.438px; left: 76.8px; top: 121.275px; min-width: 1px; min-height: 1px;" data-block-id="92803f62196f096a14f7adf895ac8cf8"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1178" data-natural-height="360" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/939e8e23bc69ef3a0b9b2369dd1ebb32.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-553b5d" style="height: auto; width: 960px; left: 0px; top: 405.375px;" data-block-id="a7c87b6cf5269d419b830849fb9d7ec7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">BAAS</span>
+	<ul>
+		<li>realtime data store</li>
+		<li>nice api</li>
+		<li>notifications, image storage, authentication and more!</li>
+		<li>admin portal</li>
+		<li>scalability</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="6faa64d57c8182037939f2cb21fd94ce"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Intro BAAS</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* and it isn't even made by facebook?! but google, facebook used to have a platform like this called parse that they ditched for some reason but had lots of fans
+* backend as a service
+* json storage -- who remembers JSON?</aside></section><section data-id="6710ad6966bd48fd18f59355b56c8cff">
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-82e5ff" data-block-id="f412fe457c21c31501512e428a832bb1" style="width: 728.605px; height: 603px; left: 115.697px; top: 97px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1543" data-natural-height="1277" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/44a3066bf9f9bad21d13fe9e0db185d8.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="c0c3a00208d12cb94c4d777abe17fd56"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Firebase BAAS</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* provides data persistence for us
+</aside></section><section data-id="dd6135efd877f018f3060f92d7d6fc1e">
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-8ca50a" data-block-id="f366f9b82e6321e198ab86675021f530" style="width: 760.362px; height: 360px; left: 119.638px; top: 184.455px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="json" style="font-size: 16px; line-height: 19px;"><code>{
+  "noteboard list": {
+    "1": { "title":"notes from cs52", "author": "Ada Lovelace" },
+    "2": { "title": "travel ideas", "author": "tim" }
+  },
+  "notes from cs52": {
+    "1": {
+      "title": "such great class",
+      "content": "lectures are too fast!"
+    },
+    "2": { ... }
+  },
+  "travel ideas": { ... }
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ac59f0e018ca000c2ac8009de8013e7f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">json data structures</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* more here: https://firebase.google.com/docs/database/web/structure-data
+* don't nest too far
+* document types (mongo will be similar)
+* users
+* notes
+</aside></section><section data-id="403fa9bec338afebd233e4d779aaf583">
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-8ca50a" style="width: 760.362px; height: 456.205px; left: 119.638px; top: 184.455px;" data-block-id="49e9c67e769255a747d002fd55215fcd"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>
+//push()
+const fb=firebase.database();
+
+const id = fb.ref('users').push({username: name}).key()
+
+//set()
+fb.ref(`users/${id}`).set({username: name, email});
+
+//update()
+fb.ref('users').child(id).update({email: newEmail});
+
+//remove()
+fb.ref('users').child(id).remove();
+
+
+//this is version 8/compat syntax not v9</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9e795cc01e304a267289471996012a03"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">realtime database api</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* push appends data to dictionary
+* set overwrites if exists
+* updates
+
+</aside></section><section data-id="24641616a93fff1e24a6d1d97dfd8f86">
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" data-block-id="712065266048418b32b6cb1f18e897c3" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/QwwNbKg?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="bbb4bd54fa529974d140c089f290c05f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">firebase example</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="64dbd011ee178b8c06d59d3c026118a5" data-visibility="hidden">
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="320bf40f53a95f9718bbacfb6bef7b23"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/bab1c926da57c4136b409b49ec364c8d?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="c813d04801bf43fc7f7251f8059f4060"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">firebase reads is a subscription</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="250067cd5b8d127543358b966ef233a4" data-visibility="hidden">
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 591.223px; left: 0px; top: 108.777px;" data-block-id="1cd7e59892dd67a773ea72ca4ab17a3b"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/bfb7e2fcd1f8f4d3816e20160faf8648?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="7ec5012660217c844d2a8445360f4d29"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">firebase writes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">https://console.firebase.google.com/u/1/project/cs52-codepen-aea3a/database/cs52-codepen-aea3a/data/~2Fcomments </aside></section></section><section data-id="5c6bbba44f8fe2595eb55d2fdee3ff06"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 160.369px; left: 80px; top: 38.5588px;" data-block-id="4552faa1c4ade668d909dbc07be8191e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Lab3 Helpful Tips</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a4786e" style="width: 495.025px; height: 388.67px; left: 232.488px; top: 250.699px; min-width: 1px; min-height: 1px;" data-block-id="88d8cc09bb3e9f142b9ff6929fdff104"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1778" data-natural-height="1396" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/25e2fc6cf4f9e630de831cbc709dc551.jpg"></div></div></section><section class="stack" data-id="25b2469daece462fbe3d7d9d249bf2d1"><section data-id="af31d01fb76ce79eae4d7981b87552c0">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-c3da05" data-block-id="577b0d8a3d0c410290159f388a167a03" style="height: auto; width: 960px; left: 0px; top: 220.395px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>what if we have multiple js files and modularized code?</li>
+	<li>es6 modules:
+	<ul>
+		<li>import</li>
+		<li>export</li>
+		<li>have own scope</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a532df0629dffcb29bf6ae6a8d7943c3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">javascript modules review</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="69403d7cacff58425ab75e62a3b859fd">
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-4db098" data-block-id="c7a7ee1b7ab5f1c36ba082f8d03c7d26" style="width: 500px; height: 300px; left: 49.6179px; top: 120px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>// create in new file myModule.js
+function someCoolFunction() {
+    return coolStuff;
+}
+function boringFunction(a, b) {
+    return a + b;
+}
+
+export { someCoolFunction, boringFunction }
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="width: 651.453px; height: 300px; left: 281.3px; top: 372.543px;" data-block-id="82f165bb14b7cb0dd9ba419d853ac78e" data-name="code-ffedd4"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>// import
+import { someCoolFunction, boringFunction } from 'myModule';
+someCoolFunction();
+// or
+import * as cool from "myModule";
+cool.someCoolFunction();
+//or
+import {someCoolFunction as newName} from "myModule";
+newName();
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="6e6e9209b2237675670169521f6821bf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">import/export functions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="a22c47595ace53a83c412e1e1c90f3f7">
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-4db098" style="width: 683.785px; height: 209.809px; left: 66.635px; top: 150.631px;" data-block-id="6722d53c867f848c1a67bc0d43581df4"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>// what if we want to export an object in a file myModule?
+var coolCode = {
+  someCoolFunction: () =&gt; { return coolStuff; },
+  boringFunction:  (a, b) =&gt; { return a + b; }
+};
+
+export default coolCode;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="width: 525.277px; height: 192.792px; left: 341.109px; top: 404.665px;" data-name="code-ffedd4" data-block-id="d3516c813f59bea8d90758928ac01a76"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>// import
+import coolCode from 'myModule';
+coolCode.someCoolFunction();
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="51ac874fee71aef9e924c32b733873d8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">default import/export object</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="d9cb25937c7d6eb33888076618981e2e">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 1px;" data-name="snippet-ad5a13" data-block-id="cd83537da8152ead8bcf8d9619744c2b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title"><s>state shadowing props</s></div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 899.903px; height: auto; left: 30.0485px; top: 198.528px;" data-block-id="ad12dfd69788d86cc234affd77adaa50" data-name="code-582c1c"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>function BadShadow(props) {
+  // props is passing down unreadCount
+  // but for some reason we have local state? 
+  const [unreadCount, setUnread] = useState(props.unreadCount);
+
+  handleClick = () =&gt; {setUnread(prevState=&gt;(prevState.unreadCount-1);}
+
+  return (
+    &lt;div&gt;
+      &lt;div&gt;`unread: ${unreadCount}`&lt;/div&gt;
+      &lt;div onClick={handleClick}&gt; message &lt;/div&gt;
+    &lt;/div&gt;
+  )
+};
+</code></pre></div></div></div><aside class="notes">what if props here changes for some reason - say it is coming from firebase?  what would happen? </aside></section><section data-id="cc6e0d71e27cf718788e5b239b2503b2">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" data-block-id="eedee076278cba5bd23aaae87e4b539f" style="width: 960px; height: 570px; left: 0px; top: 109.579px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/015ae54386f2d04e7eb4702d134f4791?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="53d71756dde00b77fe2842cc35b5e7ec"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">optional chaining</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* super useful if you are for instance checking if a video.id exists but video does not exist - so the code crashes!</aside></section><section data-id="6caa830b0c3709699c7716619e2c79a0">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="e7cb34e13b60a6fbd9b6e117ba657eda"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/07ba5b15407c27ff4c171bee8f41da18?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="aca2837ee53f690e3510a0ed63ba877e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">spread syntax</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.</aside></section><section data-id="61856d82cf7343ed447dc3c539505493">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="d2d576e450f0d71fc58407c111f199e9"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/0f93ba8eaf64a0f32b05a5c724558445?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9a69187967360c114b969630bcb35991"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">nullish coalescing operator</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.</aside></section><section data-id="6a6f3d390d358f353cb5f615147f4b72">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="2337dfe155cecb62a081bf53360ab319"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/9f67634b89490352bb74b3c4bc0ac25f?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1bf6734fc949cf464333f56beadf6dce"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">destructuring assignment</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="3d561d3cc02f162c98c56251a138ed3a"><section data-id="605d1fdc18ecb2b127d602e181c0b450">
+
+
+
+
+
+
+<div class="sl-block" data-block-type="video" data-name="video-51b058" data-block-id="f383803d537701ff9645bb4715222d6a" style="min-width: 30px; min-height: 30px; width: 882.36px; height: 562.504px; left: 38.82px; top: 120.249px;"><div class="sl-block-content" style="z-index: 10;"><video playsinline="" controls="controls" data-autoplay="" loop="loop" data-paused-by-reveal="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/videos/0cce48e8819aef6c0093dfb11c287bf1.mp4"></video></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="80600386810fa2867a793d18750b01f8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">react notes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what are some components you might need? 
+* where might data live?
+</aside></section><section data-id="596c24de6e1d9eae2f881ad4fe6e6390">
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-3cbcc2" data-block-id="4eeb5f7202b7d2e9d4b067820f134aa2" style="width: 939.625px; height: 576.094px; left: 10.1875px; top: 105.187px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1556" data-natural-height="954" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/cfe7b74125716f36d9051418765509ef.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="29857bc1142004821c361cd53050629c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">with firebase architectures</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* wrapper module
+* there will be a websockets intro were we can replace what firebase is to us fairly quickly with websockets
+</aside></section></section><section class="stack" data-id="fbeaab1a1ed54d48a8445fc2926f448b"><section data-id="fa977095bed0c0cab8eaeb523d1d2afd" data-visibility="hidden">
+<div class="sl-block" data-block-type="text" data-name="text-b1fae7" data-block-id="2628dc76f114d2d7977f343785e158ee" style="height: auto; width: 800px; left: 80px; top: 109.827px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>Next up - frontend routing</li>
+	<li>and... very soon lets start thinking about projects!</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a4786e" data-block-id="e4cf09770b83e116d9dee2f717f14c72" style="width: 495.025px; height: 388.67px; left: 232.488px; top: 250.699px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1778" data-natural-height="1396" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/25e2fc6cf4f9e630de831cbc709dc551.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ef42a9a37a26eb7dd8bb366939418c0b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next up</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="e3cc964b4c864e895d2479b1c90eb964" data-visibility="hidden">
+
+<div class="sl-block" data-block-type="image" data-name="image-dde8d6" data-block-id="aafe9f96ad4b32fee86d14705902f4ac" style="width: 708.957px; height: 524.198px; left: 191.464px; top: 131.525px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1650" data-natural-height="1220" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/4e3f0e729cb7ae7b1b0dd96626f9b1c7.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="421d81b318426d102c31f2e9f385ad24"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">questions about shorts</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="d8a892fc5928a6338df3483b1762f841" data-visibility="hidden">
+
+<div class="sl-block" data-block-type="image" data-name="image-450177" data-block-id="0517f99c6188774c99832649ef07f5b9" style="width: 634.384px; height: 586.069px; left: 162.808px; top: 94.4031px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1615" data-natural-height="1492" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/immutability-and-services-1768253205484/images/237cd1fb471974a3e4360a70a87e2047.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="6b25468b1eb37482473e08ecd76c5b50"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">questions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="5cedae66942a8763de826b9ab9483cb2">
+
+
+<div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 230.694px; left: 80px; top: 203.165px;" data-block-id="ed75894814bea934ebaa28cf294ee63d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Various React Playgrounds</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="52c29c9b9ab5de53ba247d0fad9d9613"><section data-id="3b000eb691a4f20243a29c84b5b816a6">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-221835" data-block-id="aee4c0bcfb72a41d8ec81d1de3a07af4" style="width: 785px; height: 461px; left: 87.5px; top: 149px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/2a117cd9e89d119ff929e921eb280df1?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="af5c380d8a35dd984454856aade352ce"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">function based component</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* also called functional
+* just a function, takes props, spits back JSX
+* used to be called a dumb component 
+
+</aside></section><section data-id="a300deb101a6c68df22105fbe1f6881b">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-ae6bd3" data-block-id="ce573dc196c019a005bfd226b763a603" style="width: 808px; height: 505px; left: 64px; top: 140px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/9cdfb283082fadae6152944f1f3ac506?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="b1fdfd2f249eb899099790f338f5adac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">class based component</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* es6 class based (doesn't have to be but better this way)
+* knows state
+* note, no poking of the DOM at all
+* no selectors, no getlementbyanything, no setting html or css
+* just state changes
+* and outputs
+</aside></section><section data-id="ccddf2b29402772c2cc9eec1d267cadd">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-a05f6a" data-block-id="f8692ec50b3ff65706b64ece083eb7b3" style="width: 888px; height: 571px; left: 36px; top: 104px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/2070d765fa76c9a0f71632344c8bff94?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="5d055e8285920efb72abefc81fe0c974"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">function+hook component</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* hooks are an easy way to upgrade a functional component to have some features of a class based component
+* hooks look like functions that give you some special functionality - functions that effect state or cause rerenders on fetching data etc
+* useState is for initializing and setting state
+* useEffect is for things like componentDidMount - a way to inform the component that we are asking for something external to happen that may cause a rerender
+</aside></section><section data-id="df49d1cb55d2b086a9cc1ca56fbb7b3c">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-a05f6a" style="width: 888px; height: 571px; left: 36px; top: 104px;" data-block-id="18504eaaeeff7abdebf96acc483b0949"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/4940f261bfe4feb77de31981597c4201?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="8fb682f68707f692cdf8e2d8d3c776d6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">class based tiny todo</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* putting it all together
+* change order in array?
+</aside></section><section data-id="5e7b12ec9211c7c5be3a7cbcb18eca19">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-a05f6a" style="width: 888px; height: 571px; left: 36px; top: 104px;" data-block-id="93656af7a547a0ff5edf887cd6d1b26d"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/14ef1048b53b14e95872ca94752870ff?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="bebc2832069be5b7f8a62af8ee84008e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">hook based mini todo</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* hooks let you use state and other React features without writing a full class
+* classes are here to stay so can use them as you prefer
+* useState - separate constants for setter and getter basically
+* don't replacing needing to know react concepts - supplement and simpler syntax
+* lots more here: https://reactjs.org/docs/hooks-reference.html
+* only two really useful in this class will useState and useEffect,   the useReducer one we'll not use as we'll use redux instead. </aside></section></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
