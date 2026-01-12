@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asynchronous Javascript</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section class="stack" data-id="3adb623df8ba0e03e8cd0fb56bce45f6"><section data-id="0c62ca79184df45c2d35da62750157bf"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 234.955px; left: 80px; top: 179.023px;" data-block-id="307abe0337f0f48a48e4ad9bb17ee9fd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Asynchronous Javascript</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="faeedd4dcf38042fd9fc77da3332d77c">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-11f571" data-block-id="a284707da342d8588daef2ec58c6c987" style="height: auto; width: 458.633px; left: 48.1835px; top: 194px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(255, 255, 255); border-style: solid; border-radius: 29px;"><ul style="color:rgb(58, 62, 64)">
+	<li>remember blocking io?</li>
+	<li>callbacks</li>
+	<li>promises</li>
+	<li>async/await</li>
+</ul></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-37e286" data-block-id="1e2f30178b781170545f942f4803f370" style="width: 413.633px; height: 518px; left: 526.367px; top: 129.302px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1078" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/75a9137a7af4a723e282a98071a014e3.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="d4cb798d987c39b4284ff0567d9a3a6f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">topics in asynchronicity</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="261804e90884d5390fb1e7e7cfecda39"><section data-id="5dbb6247120f1f8f603dc050ec52f66c" data-visibility="hidden">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-deae90" data-block-id="57f39bf4da14e9be09245d40471d97dc" style="width: 883.199px; height: 215.196px; left: 38.4005px; top: 166.176px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1576" data-natural-height="384" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/146fdb40147b3e2fcf3d5c11c7eb01d4.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-2eb472" data-block-id="d4e24334282dfc552df31b1562a19fe1" style="width: 755.583px; height: 175.593px; left: 102.209px; top: 420px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1704" data-natural-height="396" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/9980ca1d1e37ca8359d602cc49182e7f.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ac0a257997bdddee672a9d50e3546a91"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">javascript fatigue</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so if you are confused, thats ok, the whole world is confused about webdev!
+* proliferation of technologies
+* everybody trying to fix the problem different ways
+* new standards coming out all the time
+* but we've got the worlds most desired stack
+</aside></section><section data-id="6cbe289cf676152e83d6d432c6853ae0" data-visibility="hidden">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-25fb8e" data-block-id="2e1f73cfb55aa4ad62ffae07cfe75e08" style="width: 854.608px; height: 626px; left: 52.6955px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2000" data-natural-height="1465" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/d0ca4a18f42e124fca5999a9acdb0f17.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-0c7609" style="width: 951.976px; height: 188.213px; left: 4.012px; top: 246.177px; min-width: 1px; min-height: 1px;" data-block-id="bdfe39e0462d58796307ed1808917b3b"><div class="sl-block-content fragment" style="z-index: 11;" data-fragment-index="0"><img style="" data-natural-width="1396" data-natural-height="276" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/4ec31c3dabf31842ad381533a970cbcc.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ec354a3d57aef0eabd0c561b785efd2f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">too much?!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* some overlapping assignments but every year i think about and talk to ta team about trying to cut things out and we end up deciding not to.
+* used to be worse :-D 
+
+</aside></section><section data-id="798526e447bc628e0eefa1d9aeb58a1e" data-background-image="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/9588e7e5a14463be496766201160830c" data-visibility="hidden">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-f8c7d2" data-block-id="61507da52def26f2e51387366c63c0f6" style="height: auto; width: 600px; left: 180px; top: 94px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; background-color: rgb(255, 255, 255); color: rgb(58, 62, 64); border-style: solid; border-radius: 29px;">
+<ul>
+	<li><a href="https://phitau.onrender.com/" target="_blank">dark mode, scroll, carousel</a></li>
+	<li><a href="https://benevolent-cobbler-c6a3d4.netlify.app/" target="_blank">carousels and style</a></li>
+	<li><a href="https://harold-than-portfolio.onrender.com/" target="_blank">animations</a></li>
+	<li><a href="https://jocular-cobbler-dce0af.netlify.app/" target="_blank">nice squishiness</a></li>
+	<li><a href="https://a-lean-green-sustainable-machine.onrender.com/" target="_blank">animated title</a></li>
+	<li><a href="https://gregarious-chimera-f03b8c.netlify.app/" target="_blank">rotating carousel</a></li>
+	<li>
+<a href="https://cs52-lab1.onrender.com/" target="_blank">sliding image effec</a>t</li>
+	<li><a href="https://melodic-gingersnap-3d8b80.netlify.app/#" target="_blank">i'm so hungry</a></li>
+	<li><a href="https://precious-dango-5f7d9c.netlify.app/" target="_blank">aliens</a></li>
+	<li><a href="https://landing-page-1k2k.onrender.com/" target="_blank">perfect copy</a></li>
+	<li><a href="https://ktzn.onrender.com/" target="_blank">fixed bar, size scroll</a></li>
+	<li><a href="https://jamesfleminglab1.onrender.com/" target="_blank">the outdoors</a></li>
+	<li><a href="https://cs52-ke-lou-lab1.onrender.com/" target="_blank">carousel</a></li>
+	<li>
+<a href="https://candid-sherbet-906c20.netlify.app/" target="_blank">dartmouth</a>&nbsp;and <a href="https://jamesvlab1.onrender.com/" target="_blank">dartmouth</a>
+</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="fac6ddfad85992160b7882c2bb323228"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CS52: picks of the week</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* these are some staff selections, don't feel left out - somewhat random nomination process.  if you want to be featured poke your pod ta. 
+* these are selected for some of their cool features, but you all had awesome submissions and throughout the term each assignment highlights different strengths.  some code, some styling, some attention to detail, some technical, some conceptual. 
+</aside></section></section><section data-id="26856258a45a1bef872a065f38bf00ff"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 149.955px; left: 80px; top: 227.023px;" data-block-id="276ecbb952bcbb3fb3ce8593e4f0c0ed"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Callbacks</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="dec7f70745e10b9ed5e911d345ef3f10"><section data-id="a6f38078ae3765f1cd8dfd8e8dd5dbc6">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d172a0" data-block-id="5014d65eccf2fb8a5ff697583fbb18b6" style="width: 860.491px; height: 626px; left: 49.754px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1244" data-natural-height="905" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/cd38fd5499b1eae5c53bb65abd6bfdd0.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="96d5efd6a388b2b97bb39a503771af8f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">remember callbacks?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what is this callback thing
+* functions that you pass to other functions
+</aside></section><section data-id="79275617a950ccb2e41e7015b4261e2d">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-5c6c74" data-block-id="970dfb7a9acb5d828eae952cf6435bbf" style="width: 333.3px; height: 187.481px; left: 313.35px; top: 123.2px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="512" data-natural-height="288" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/ffc5b1efaa720d5efe571b2d31dcaf1b.gif"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-d5eedf" data-block-id="f5c94273e2159132a8725fb72e347433" style="width: 500px; height: 120.804px; left: 230px; top: 379.196px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>minionHandleClick = (event) {
+  setClickedTarget(event.target)
+}
+&lt;Component onClick=(minionHandleClick) /&gt;
+
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1755abfc34391ab3a42b8a3842bf1094"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">minions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this analogy will get old
+* they perform tasks for you 
+* in this case we have a minion handle a click event
+</aside></section><section data-id="4375f36b83d4f87588a2819e4ac9ed96">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-80e4a7" data-block-id="c080ec5fd321e709a909366de6a90657" style="height: auto; width: 519px; left: 0px; top: 124.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">the ideal minion</span>
+	<ul>
+		<li>tell them what to do</li>
+		<li>they do it and call back later</li>
+		<li>you don't wait for them</li>
+	</ul>
+	</li>
+	<li>highly rated for:
+	<ul>
+		<li>reading from network /</li>
+		<li>fetching data</li>
+		<li>handling clicks</li>
+		<li>handling inputs</li>
+		<li>handling users</li>
+		<li>etc</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-b31d81" data-block-id="31a08507af73a0988ad00ac194a853fb" style="width: 401.037px; height: 256.663px; left: 530.481px; top: 177px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="320" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/eb54cb8edabb95bfa6f49c6c3a600163.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="90bd9d7e3c737a9e6b9a1dea8c75c908"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">asynchronous non-blocking callback minions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what are some things that you might need to wait for?
+* not waiting enables you to keep doing stuff
+* whether evil or not
+</aside></section><section data-id="4f3a953ba26a3374de53952f1b05f4a0">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-f5024c" data-block-id="7b725922a066c53c16295824be36f5ff" style="width: 316.658px; height: 178.12px; left: 321.671px; top: 84.88px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="400" data-natural-height="225" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/5fe20ea8456ecf2e1ab47a5199b7293e.gif"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-074cdc" data-block-id="7888960628d0c3e15876df5a335f5fa6" style="width: 751.018px; height: 408.574px; left: 120.491px; top: 272.213px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>
+kevinHandleIt( (error, results) =&gt; {
+  if (error) sendMinionsToBedWithoutDinner()
+  else thankMinions()
+});
+
+function kevinHandleIt(callback) {
+  daveHelpMeOut( (error, results) =&gt; {
+    if (error) { callback("Tatata bala tu, Dave!", null);}
+    callback(null, "Para tu");  
+  });
+  
+}
+
+function daveHelpMeOut(callback) {
+  callback("don't wanna, poopaye!", null);
+}
+
+
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="e926db108c820b5a23d462b83ac8cb62"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">minions call their friends</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* functions can call other functions and define functions as arguments</aside></section><section data-id="d8b1b3f1dd0d87ccd1184e4fe345c20a">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-074cdc" style="width: 619.018px; height: 381.574px; left: 170.491px; top: 299.213px;" data-block-id="60094fdd8d2cbc5fc9fad4a20f91da9c"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>async function goForthAndFetch(callback) {
+  try {
+    await const result = fetch('http://a_drink');
+    callback(null, {message: 'success', payload: result});
+  } catch(error) {
+    callback(error, null);
+  }
+};
+
+goForthAndFetch((error,result) =&gt; console.log(error,result));
+// either null, stuff or 'error', null
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-af9bf4" data-block-id="3705f177745fb478e9791d5bc3dd44c2" style="width: 195.715px; height: 195.715px; left: 382.142px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="300" data-natural-height="300" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/4dc84eab5f1f81d99dec4578628a0e28.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="2c901918e802654f1fed72b515ea0882"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">(error, result)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* don't worry about the async await - getting there
+</aside></section><section data-id="3925a47dc116fa4bbadea18ab42368d3">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-074cdc" style="width: 619.018px; height: 182.319px; left: 170.491px; top: 468.841px;" data-block-id="f37861e1a2cb074b64fd5c3bd7f27c69"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>fetch('jello').then( jello =&gt; {
+  handleJello(null, jello)
+}).catch(error =&gt; {
+  handleJello(`sorry boss, ${error}`, null)
+});
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-309131" data-block-id="7c91d34350a041ce463637efcb53e07b" style="width: 359.437px; height: 194.649px; left: 300.281px; top: 85.351px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="325" data-natural-height="176" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/dba7c5579fa549982ab8a44b69801744.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-62dfbe" data-block-id="136168aebea02e67e5c02ba01b5d80f4" style="height: auto; width: 960px; left: 0px; top: 342px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul style="color:#3a3e40">
+	<li>remember with non-blocking io, need event handlers</li>
+	<li>and a new notation for callbacks called promises:</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="080cf4cde9c877b3fa82446127762206"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">tasks that only a minion can do</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* oooh some new notation here, promises
+* fetch takes time
+* then notation - if success then otherwise catch
+* what is drink here?
+
+</aside></section><section data-id="9e5dd5165cb610abc7fb82f4de1699fa">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-62dfbe" style="height: auto; width: 704.308px; left: 127.846px; top: 552px;" data-block-id="112724908dde9f9a0e5f8776e0bd6b97"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>nothing would happen in the right order</li>
+	<li>or everything would block</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-6f3afb" style="width: 806.4px; height: 382.638px; left: 76.8px; top: 123.082px; min-width: 1px; min-height: 1px;" data-block-id="d8fe93e4f686aaa0804837d45ccb6126"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="902" data-natural-height="428" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/90c2dfc18866278f4777f4e28aa184b5.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="7273e0f7bffc711b14c3ef2db1fd8715"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">in a world without callbacks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* lot of syntax but remember the concepts too
+</aside></section></section><section class="stack" data-id="fbb95f529e52624875ea4a7ca2d90cdd"><section data-id="db60054ff88112cea7d042803d7e944e">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-62dfbe" style="height: auto; width: 402.082px; left: 89.7757px; top: 101px;" data-block-id="fc2d8f58d19e1a6d3a7f40a50a636c32"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>lots of nested callbacks</li>
+	<li>unwieldy</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-b6c620" data-block-id="25fd03adc341fbe7952029972e7c5e27" style="width: 345.333px; height: 518px; left: 590.837px; top: 128.444px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="360" data-natural-height="540" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/ede511cb8c843bf2e28d1346a8a75ffa.gif"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-e4f383" data-block-id="2c01e709b0fd476c84f5da6ff542f67e" style="width: 587.176px; height: 518px; left: 3.661px; top: 182px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="2156" data-natural-height="1902" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/ea8d0402f85c299bfbdba0aa3ecfb609.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="f5b625c8a4deb6bf98959d56a180ecdc"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the problem of callback hell</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* callback hell is when you have lots of nested callbacks
+* functions that call other anonymous functions when they are done.
+* how might we fix this?
+</aside></section><section data-id="25affe84e0456ab0923e483669e72ca5">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-62dfbe" style="height: auto; width: 960px; left: 0px; top: 326.5px;" data-block-id="9b724d9785e002dca06cc388e0d61112"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>goal: keep code shallow
+	<ul>
+		<li>fewer nested levels are easier to read</li>
+		<li>less error prone</li>
+	</ul>
+	</li>
+	<li>some solutions for nested callbacks:
+	<ul>
+		<li><strong>use named functions</strong></li>
+		<li><strong>use modules</strong></li>
+		<li><strong>promises</strong></li>
+		<li><strong>async/await</strong></li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="f9a57d69d9afd7e8d2abfc994c6aba36"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">escaping callback hell?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-70ddb1" data-block-id="fe423ee803be236a02fd34ffa1e35af7" style="width: 584px; height: 181.857px; left: 188px; top: 94.0715px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1042" data-natural-height="362" data-crop-x="0.014901" data-crop-y="0.071429" data-crop-width="0.966887" data-crop-height="0.866667" style="left: -9px; top: -15px; width: 604px; height: 210px;" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/33907b20145da2123fc0b1ec4169413d.gif"></div></div><aside class="notes">* fewer levels is easier to read
+</aside></section></section><section data-id="8f91d1fdf06148860a74a4da4457fe07"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 160.955px; left: 80px; top: 248.023px;" data-block-id="8ea3bfc81170a2463ba6b2b8f24f77ad"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Promises</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="3bd05404a8f51257180f203930b7a887"><section data-id="65c999cd4b8a7d3434c7c698f7361dc4">
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-62dfbe" style="height: auto; width: 960px; left: 0px; top: 70px;" data-block-id="26e5979507bd290d8423edddc3c875e4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>rather than passing a callback:
+	<ul>
+		<li>return a promise that will be filled when done</li>
+	</ul>
+	</li>
+	<li>promise represents result of asynchronous operation:
+	<ul>
+		<li>
+<strong>pending</strong>&nbsp;- initial state of a promise</li>
+		<li>
+<strong>fulfilled</strong>&nbsp;- successful operation</li>
+		<li>
+<strong>rejected</strong>&nbsp;- failed operation</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-685e33" data-block-id="4ee5e8f810f281d63759d8a7f7c98920" style="width: 862.403px; height: auto; left: 80px; top: 334px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>//with promises
+doSomething(args).then( results =&gt; {
+  //handle results -- on success
+}).catch( error =&gt; {
+  //handle error
+});
+
+
+// vs callbacks
+doSomething(args, (error,result) =&gt;{
+  if (error) {
+    
+  } else {
+    
+  }
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9d6bd1a84e115a908177d4d2e74fd3bf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">promises</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* in some ways just a different notation for running a callback
+* who has used coroutines in unity? </aside></section><section data-id="67d6b1490e724f40f58e0ed81084912f">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-685e33" style="width: 862.403px; height: auto; left: 80px; top: 367px;" data-block-id="7f3715e9ad7daac6b9e6d610456cca4a"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>fetch('http://api.something.com/all-datas"').then( response =&gt; {
+	// do something with response, check for fields etc
+	return something;
+}).then( something =&gt; {
+	// ... argument to this function is the returned value from the first
+}).catch( err =&gt; {
+	// Error :(
+});
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-7ca95a" data-block-id="08a2e245303341a4d7bb4de7a99e5ad6" style="width: 315.59px; height: 219.786px; left: 322.205px; top: 100.107px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="336" data-natural-height="234" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/871fe1960829fe6c0da63f2c524f1732.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="7e2b3c61632a653ab0a8225878d7763a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">promises for data</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* fetch or axios returns a promise
+* most async functions these days can be used with promise notation
+</aside></section><section data-id="0e1b9834acf5c5e9341994cbb4354383">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-685e33" style="width: 862.403px; height: 230.982px; left: 80px; top: 384.486px;" data-block-id="f816bacced6038a451d9d85cc5feb7a7"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>const aPromisifiedFunction = new Promise( (resolve, reject) =&gt; {
+  // do a thing that takes a long time async, then…
+  goDoSomethingAsynchronous( (error, result) =&gt; {
+    if (error) { reject(Error('It broke')) }
+    else { resolve(`Stuff worked! ${result}`) }
+  });
+});
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-123160" data-block-id="e9828a6aba894c53f0af3080b0caa992" style="width: 269.995px; height: 259px; left: 345.002px; top: 97.5px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="442" data-natural-height="424" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/d042f4e14a9d96e67b14ca088c4bb9c2.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="74233f34c820ed22ec6d5d32145b0054"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">make a promise, wrap a callback</div>
+</div>
+</div>
+</div></div><aside class="notes">* here's how to  make a promise
+* return resolve if it worked
+* reject if not
+* this is wrapping a function that takes a callback and making it a promise
+</aside></section><section data-id="9eadc5139609425e86564441456d35fe">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-685e33" style="width: 399.326px; height: 481.054px; left: 40.337px; top: 158.491px;" data-block-id="32fc251fc7326d365c9ea3113285d8b4"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>asyncThing1().then(function() {
+  return asyncThing2();
+}).then(function() {
+  return asyncThing3();
+}).catch(function(err) {
+  return asyncRecovery1();
+}).then(function() {
+  return asyncThing4();
+}, function(err) {
+  return asyncRecovery2();
+}).catch(function(err) {
+  console.log("Don't worry about it");
+}).then(function() {
+  console.log("All done!");
+});
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-b2766e" data-block-id="24daae7745ea3752e1c6b3a7c6b6f3c5" style="width: 494.692px; height: 455.238px; left: 465.308px; top: 171.399px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="163" data-natural-height="150" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/560beaa68953720b8c29c175c17a916c.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="56fb9c95c6faea26d65cd009a64ac578"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">promises on promises</div>
+</div>
+</div>
+</div></div><aside class="notes">* more at http://www.html5rocks.com/en/tutorials/es6/promises/
+* go to nearest catch
+</aside></section><section data-id="3eb3b1ff6ddaf9052185b2df9f9283c0">
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1784ed16cb9b87ce0f4cb094bdaec5aa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">promises on a loop</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-302151" data-block-id="0767eb653a56b3686ee6bef1795b16e0" style="height: auto; width: 960px; left: 0px; top: 94.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>what if i want to map or loop over things that take time?</p></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2a2a5d" style="width: 960px; height: 478.963px; left: 0px; top: 172.23px;" data-block-id="d1dd7d8416aeada1c354426000125253"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/OJGEqpE?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div></section><section data-id="f90dd0d3b26f83369da0e653dedd0aef">
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="08fee87a4946f4905541e31c840e7179"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">promise model</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-df83a7" data-block-id="9d3cb1b6559918c33eaec406c4a25a71" style="width: 960px; height: 475.631px; left: 0px; top: 125.184px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1538" data-natural-height="762" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/d68f36c9dd2af3cb02a5f8958e99508a.png"></div></div><aside class="notes">* here is how promises work
+* create a promise with two callback functions
+* one to handle success .then
+* one to handle error .catch
+</aside></section></section><section data-id="3011313a09e39ded33fbead3623dc32a"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 160.955px; left: 80px; top: 248.023px;" data-block-id="c2874eeed5a4ee0d81c545f9d4bb1662"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Async/Await</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="f3db1066b3c257c5fdd03695d3913d3c"><section data-id="f0464e709d7634bf5ced0687b6b4525a">
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-d145c9" style="width: 822.285px; height: auto; left: 80px; top: 256px;" data-block-id="e13aaa7c4922b6af3339a9002184d2cd"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>async function f() {
+
+  try {
+    let response = await fetch('/no-user-here');
+    let user = await response.json();
+    // do something with user
+    setUser(user);
+  } catch(err) {
+    // catches errors both in fetch and response.json
+    alert(err);
+  }
+}
+
+f();
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ef2aad1dd8977075015bc2dd057395d9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">async and await</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-de53bf" style="height: auto; width: 960px; left: 0px; top: 120.5px;" data-block-id="e4146fa21a201b40dcacd45e26102e12"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li>imperative like syntax built on top of promises</li>
+	<li>await does NOT wait, but looks like it</li>
+</ul></div></div><aside class="notes">* can use familiar try/catch
+* i honestly prefer the promise then notation in some cases, but either is all good!
+</aside></section><section data-id="861dddbd7d04f6731597b6b2cf6f691b">
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="3f5c411ffd04318d01432afe0a35669e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">async and await</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-bc0bf4" style="width: 960px; height: 602.971px; left: 0px; top: 97.029px;" data-block-id="a2709f1bb9e0a582f28fe356f572f51e"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/RwxqWJE?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div></section><section data-id="a0818469611bb38a788c58d07ab0d0a2">
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ef1ed54846c7b4314747fd2c3644c9db"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">await on a loop</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-302151" style="height: auto; width: 960px; left: 0px; top: 94.5px;" data-block-id="70bcbfc9e3908f240b47e8904dbde277"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>what if i want to map or loop over things that take time?</p></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2a2a5d" style="width: 960px; height: 548.963px; left: 0px; top: 151.037px;" data-block-id="171df1444aadb248d6dd7f830bed26f1"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/RwOJdxQ?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div></section></section><section data-id="2d6ccd58901195c11222e164fcdb4ea7"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 226.955px; left: 80px; top: 248.023px;" data-block-id="d76c8ac43acd5bc1a58712cc528f37f7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Concurrent Syntax Comparison</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="e3fbaa413910217ec320ecde70d5db2e"><section data-id="c1a0867fe39d34ad491cee28d25a4308">
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-bc0bf4" data-block-id="799e9352920f837e29b3d9c0982bae90" style="width: 960px; height: 602.971px; left: 0px; top: 97.029px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/5ef024a7d5e3595af56d48584bf57502?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1d1519a9e5d7472ef79285df8158e24e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">callback chaos</div>
+</div>
+</div>
+</div></div></section><section data-id="77e0cc154af4571171c69d82252b8471">
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-bc0bf4" style="width: 960px; height: 602.971px; left: 0px; top: 97.029px;" data-block-id="5af799422d8072dc45f65d983fe9b16a"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e87ea2cfbdb8ad613194cb118aa46c23?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="cadbe0283fc9003a471cbfe0b398c4df"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">promises purgatory</div>
+</div>
+</div>
+</div></div></section><section data-id="5744257eb8e61a2ea4bdf0629b932562">
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-bc0bf4" style="width: 960px; height: 602.971px; left: 0px; top: 97.029px;" data-block-id="c914cacf8a8b85499f9e7701a6dbdca5"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/0240617bab028f0a88c829b4e1314b7f?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="5b00b35304434f5188f700e80b1da4f0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">async and await ascension</div>
+</div>
+</div>
+</div></div><aside class="notes">* the stupid shit i use chatGPT for: https://chat.openai.com/share/a5cead53-955e-4f69-9b08-b7307fd1863a
+
+</aside></section><section data-id="b329fb6529899ed4f72df70af892f4dd">
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-767036" data-block-id="e857ab53e97ee8d35653e3e97da18fbd" style="width: 806.399px; height: 293.236px; left: 76.8005px; top: 203.382px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="550" data-natural-height="200" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/f14b0d74456746824e8e24fa88479a00.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-40c8c6" data-block-id="7f60211a97950f7c7a487bf13a8efaf5" style="height: auto; width: 600px; left: 180px; top: 156.653px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p style="color:rgb(58, 62, 64)">Practice your asynch (chrome only):</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-da1200" data-block-id="c8e02c8e4a4f4ffe8b00dc60c64bf5ee" style="height: auto; width: 600px; left: 180px; top: 549.814px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p style="color:rgb(58, 62, 64)"><a href="http://boomsync.me/" target="_blank">http://boomsync.me/</a></p>
+
+<p style="color:rgb(58, 62, 64)">credit: Irene Feng'17, Ben Packer'17, Byrne Hollander'17, Jenny Seong'GR</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="04ee09f45e680b69cfcf195248a36603"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">game time!</div>
+</div>
+</div>
+</div></div><aside class="notes">* a react app
+* won dartmouth hackathon in '17
+</aside></section></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+<div class="sl-block" data-block-type="text" data-name="text-b1fae7" data-block-id="2628dc76f114d2d7977f343785e158ee" style="height: auto; width: 712.332px; left: 137.207px; top: 152.37px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>lab3!</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-1d5f34" data-block-id="71d6d89635499a769e1253f35608e9d2" style="width: 434.556px; height: 420.84px; left: 285.444px; top: 224.58px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1394" data-natural-height="1350" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/asynchronous-javascript-1768252652848/images/16256921effa2fa11237a371b8869a4d.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="4d4db3efac0b94faf032b3f20d78b88a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next up</div>
+</div>
+</div>
+</div></div><aside class="notes">this short provides a base for you to work off of</aside></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
