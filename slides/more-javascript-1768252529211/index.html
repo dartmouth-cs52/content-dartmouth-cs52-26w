@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Javascript</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section data-id="cc926bf1bb573ef0c1338e6dfb6b267d"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 700px; left: 2px; top: 0px;" data-name="snippet-3df089" data-block-id="335583fc07276d7eaa236bbcdc9c42f9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">More Javascript</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+
+<div class="sl-block" data-block-type="text" data-name="text-4501b6" data-block-id="fed6a358e4c5fcc3749a87fb8c4ad887" style="height: auto; width: 392.382px; left: 285.809px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>the quirky and strange,</p>
+
+<p>concepts vs practice</p>
+</div></div><aside class="notes">* sometimes people have complained that i talk too much about stuff you don't need to do the homework. 
+* there are two parts to this course, the practical i made a thing, and the i appreciate and understand the concepts in the tools i used</aside></section><section class="stack" data-id="3679f4e63ff98ea50197a56924385d05"><section data-id="cd0aaf7b78a9eb842f9e020862e2ed4d">
+
+<div class="sl-block" data-block-type="image" data-name="image-d00cdc" data-block-id="b367c973c2cfa8dfc85793ef6fd5641a" style="width: 704px; height: 528px; left: 128px; top: 113px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="448" data-natural-height="336" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/aa75e8e52529d056e944fde7e599b4a8.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="d19096718acab7a6c0f1f784c407b231"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">why so many syntaxes and practices?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* general confusion - don't worry
+* the idea is to immerse you in a bunch of stuff but then you go and try it and eventually by trying it it'll make sense
+* ask questions, learn good
+</aside></section><section data-id="03a02626187c8e9ce69aaf97545f07d0">
+
+<div class="sl-block" data-block-type="image" data-name="image-04caab" data-block-id="98851f10b37ee890a9145141518eeadf" style="width: 806.4px; height: 462.874px; left: 76.8px; top: 118.563px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2000" data-natural-height="1148" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/22dcb75587576a30388a84722ba2dc9c.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="e5d5ac56727969a73045de4be00f5092"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">es6, 202X, stage-X, etc</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* a bunch of cool new stuff that makes javascript not crappy
+* apologies, but i love programming language coolness and currently js is one of my favorites
+</aside></section><section data-id="bf503b489bf9526651ac548b0f294ed5" data-visibility="hidden">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-46f50f" data-block-id="81e10c7d644f88b992d5c1fdd5d6a11a" style="width: 892.991px; height: 490px; left: 33.5045px; top: 129px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/5148f089850cc7d7a5664aec709b9aed?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="3fe33a886f70b88ed6b1771d879260b1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">old syntax vs new syntax example</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* use the es6 template string constructions!
+</aside></section></section><section class="stack" data-id="e753ba7d43456b39d0bfeb33cd0d1a9c"><section data-id="772a3b1d742262bbd9f07b9b32d2a180">
+<div class="sl-block" data-block-type="text" data-name="text-7563c2" data-block-id="cc4f758f3672b006a864d78d8888b5e8" style="height: auto; width: 800px; left: 80px; top: 98.315px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>ability to reference a specific instance of local variables in an enclosing function</li>
+	<li>closure retains references even when outside function has returned</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7729d8" data-block-id="039fc4fb1402dcfbe0d41663aceea4a2" style="width: 918.345px; height: 380px; left: 20.8275px; top: 294px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/f6922ddc4cdfae582ede6dfa76fd1a01?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="af429211a0fb1d818ee98913d55515b6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what are closures?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* function “closes over” some local variables
+* A good mental model is to think of the function keyword as “freezing”
+  * the code in its body and wrapping it into a package (the function value).
+* can be very cool, enables callbacks, where whole functions are closed over
+* functions passed into other functions to call when they are done
+* much more on this next time
+* worth learning how this can be cool
+</aside></section><section data-id="d857e93c3fc2fbd1ffdebd31690b9e0c">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-7729d8" style="width: 918.345px; height: 572.642px; left: 20.8275px; top: 80.616px;" data-block-id="7e53e9bfca46016995875da18af0471f"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/xxybGor?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="5992ca6d01eea35f600b9b4e26ca9ddb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">another example</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* Closures are useful because they let you associate data (the lexical environment) with a function that operates on that data. 
+* basically data hiding in a way - private instance variable rather than global variable
+* This has obvious parallels to object-oriented programming, where objects allow you to associate data (the object's properties) with one or more methods.  but can do it without needing to create a class or anything
+</aside></section></section><section class="stack" data-id="1bfdd4f94a21ec764df92d748d77a4b2"><section data-id="7dde752bde9b20e5e5fd8f8da5bfe672">
+
+<div class="sl-block" data-block-type="text" data-name="text-c10486" data-block-id="ca2bd79e315c687241dd32a5a9990d7b" style="height: auto; width: 741.72px; left: 95.9191px; top: 95.43px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">OOP instance methods and variables</span>
+	<ul>
+		<li>property of an object can be a function</li>
+		<li>as well as an instance variable</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-329e8e" data-block-id="1d4755e8ec145efa060d76ed153437f8" style="width: 868.344px; height: 410.911px; left: 40px; top: 260px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/d87655b2fb7b6126d9ef769ec773055e?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="0b16897e76a3b7b24b76fb5a0a5daad0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">is javascript object oriented</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* everything is already an object
+* everything is a dictionary, hence...
+* can we have instance methods? 
+* a little similar to our counter right? except an object, and uses `this` keyword
+* count behaves like an instance variable
+</aside></section><section data-id="aa9714f5c079c354061db9f31f482ea6">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-329e8e" style="width: 868.344px; height: 530.911px; left: 40px; top: 140px;" data-block-id="63e873d35027e0f9d7568410897e71ba"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/b17abb9733304966bf1fa0cc5514df5b?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="5258ac0e7b58529bd318f435354a348f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">functions are objects</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* but wait functions are also objects so does that mean?
+* tracks how many times it was called
+* does this make sense? How does this work?
+* compare this to writing a class file in java, instantiating it, etc
+</aside></section></section><section data-id="51cbe1607831f9fcdfbb6b77424d9d09">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-c61740" style="width: 960px; height: 336px; left: 0px; top: 350px;" data-block-id="437dd47a53c113b4f85774c7ea6fcbf4"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/dadf05c77d90b147b9cb2a7b7f59d941?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-0daa84" data-block-id="a309f8a6946d9941d2aaf2c773585c3a" style="height: auto; width: 600px; left: 180px; top: 94px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">Try 1:</span>
+	<ul>
+		<li><span style="color:rgb(58, 62, 64); text-align:left">Functions as classes</span></li>
+		<li>Name the function after the class</li>
+		<li>use the <span style="color:#4757ff">new</span> keyword</li>
+		<li>functions used this way are constructors</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="af8af660af1bf3a83e80d87ed72aed6b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">does javascript have classes?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* anybody remember constructors in java? what do they do?  (function that returns an instance of the class -&gt; an object)
+* this is basically the constructor - setting everything including methods there
+* nifty keen! instance variables, instance methods - all in a function
+</aside></section><section class="stack" data-id="8daa12804f9f7fd8d52c9ee1d772ca36"><section data-id="388cb73ac4fad75a37c51f47c9d943ac">
+
+<div class="sl-block" data-block-type="text" data-name="text-c6c333" data-block-id="913d36f3c2b44e7b345181fdb6f62c07" style="height: auto; width: 960px; left: 0px; top: 74px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:#4757ff">this</span>&nbsp;is special keyword referring to 'owner' of function / context
+	<ul>
+		<li>when a function is executed not when defined</li>
+	</ul>
+	</li>
+	<li>in function properties of objects
+	<ul>
+		<li>
+<span style="color:#4757ff">this</span>&nbsp;is bound to object</li>
+	</ul>
+	</li>
+	<li>in other functions
+	<ul>
+		<li>
+<span style="color:#4757ff">this</span>&nbsp;refers to parent where the function is run</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-34ffbe" data-block-id="0aad3e327821e1a359521c84209e31f9" style="width: 960px; height: 347px; left: 0px; top: 353px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/15d3c9142109678664a7ec795d74d0ed?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="e9aa7e818edacb24fd43160ea9e13181"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is `this`?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* some examples, confusing yes
+* difference in object vs function
+* this will come back and haunt you sometimes
+* who (which object) is the runner of the function
+</aside></section><section data-id="8485d7b5e6b57447bf245d6c6478e2b5">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-34ffbe" style="width: 960px; height: 604px; left: 0px; top: 96px;" data-block-id="4d4767db3b80a108c08d4949d7bdd726"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/c2dc35a051d79e0e499072e69c15e3eb?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="b2e09577090f0f6675530eccf1a183a5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">`this` in objects vs scope</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* why do we care about `this`? - because you may run into it in the world
+* this won't run
+* setTimeout always runs in the context of window - just as an illustration where the caller is running in a different context - other async events can do this.  for instance the sorter function. 
+* window does not have a petalCount!
+</aside></section><section data-id="5cd45467e7c7529592ba52aa32668633">
+
+<div class="sl-block" data-block-type="text" data-name="text-bb33c1" data-block-id="e5fa5006cff0be938f7e92a0acae398a" style="height: auto; width: 926px; left: 17px; top: 514px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:#4757ff">bind</span> returns a new function with current <span style="color:#4757ff">this</span> tied to the function
+	<ul>
+		<li>on execute uses the bound <span style="color:#4757ff">this</span> instead</li>
+	</ul>
+	</li>
+	<li>arrow notation lexical scope! (more later)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-de13e2" data-block-id="1033ce51802b7a92564cae838c9d2f76" style="width: 695px; height: 300px; left: 132.5px; top: 190px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>setTimeout(this.bloom.bind(this),1000)
+
+//or
+setTimeout( ()=&gt; {this.bloom() }, 1000);
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="e68c485f805c69c0e94eec0bac22c219"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">`this` solutions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* setTimeout's "this" refers to window
+* needs `.bind(this)`
+* bind returns a new function where the context includes the variables passed in.
+* arrow notation we'll talk about more
+</aside></section><section data-id="00f4d56a0488133684766529d8125ae9">
+
+<div class="sl-block" data-block-type="text" data-name="text-bb33c1" style="height: auto; width: 926px; left: 17px; top: 534.355px;" data-block-id="b58e824fe7a0de1b4b2a5cc5c2698dcc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>assigning current <span style="color:#4757ff">this</span>&nbsp;to a variable first</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-de13e2" style="width: 695px; height: 300px; left: 132.5px; top: 166px;" data-block-id="649a22226f9d1cee724d9bfbd660ea73"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>
+var that = this;
+setTimeout( function() {
+  console.log(that);
+}, 1000);
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="8c48451859b1fe14bbc0e31e46adfe6e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">old school solutions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* anybody want to take a stab at why this works? 
+* sometimes you will see people fix this with a closure
+* reassigning the current this to another variable so that is closed over and included
+* rather than the magic keyword this
+* BAD
+</aside></section><section data-id="75048281f5039a80ca63dd96c0d1f606" data-visibility="hidden">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-c61740" data-block-id="78b70f909f02a78ea67776c607430717" style="width: 960px; height: 497px; left: 0px; top: 154px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/bfb452c42c0db26a08f23ebfcd6134bd?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="e77278abb7c10bad8e200aeff68979bf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">old school solutions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this is button -- but setTimeout scope is window
+* can .bind on the function inside the setTimeout
+* or can alias that above setTimeout
+</aside></section></section><section class="stack" data-id="240c7f7f9369c41fc395597f204a311e"><section data-id="bd24df99d9bf28ce7818c5ae30e0d7ae">
+
+<div class="sl-block" data-block-type="text" data-name="text-0daa84" style="height: auto; width: 960px; left: 0px; top: 94px;" data-block-id="abe847f2dd4f8b88a19b7cd6fa293d1f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">kindof! it is prototype based</span>
+	<ul>
+		<li>a prototype object for each object instance</li>
+		<li>can have other prototype objects forming a chain</li>
+		<li>will search up the prototype chain until the property is found</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-160ba2" data-block-id="e5bb56eaf32905a866dca5a1e0cb10fc" style="width: 615.058px; height: 420px; left: 172.471px; top: 280px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1523" data-natural-height="1040" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/69e074bc5a6611fad085c45640d3fbcf.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="0e0aed9ba253c753bba15910a5c2b1bb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">does javascript have inheritance?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* properties of an object are its own property in addition to all the properties up the prototype chain
+* more simply:  searches up the chain,  has the property no, ok lets check your prototype.
+* multiple can be done with mixins (copying over properties from one object to another...) using `Object.assign`!
+* img from http://yycjs.com/the-weird-parts/#slide19
+</aside></section><section data-id="a5c59ab512ab9081421371842a71967c">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-34072f" data-block-id="5e8669781055a410aa0641577417ac4c" style="width: 878px; height: 547px; left: 41px; top: 123px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/28ecb2e1b8b14a3af0cc4f11dcaf4b54?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="36143e7fd650e73cb0d3aef16ad34d3c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">adding to prototype</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* changing prototype will cause all instances to change - during runtime!
+* this is similar to just adding a property to a function buuut
+* adding to prototype will change all instances
+
+String.prototype.isPalindrome = function() {
+    return this == this.split('').reverse().join('');
+} 
+
+console.log("poop".isPalindrome());
+
+
+// radar, "live on time emit no evil"`
+</aside></section><section data-id="f397a76ea6daef7c49f7b1ff3fd4e11a">
+
+<div class="sl-block" data-block-type="code" data-name="code-d1ed86" data-block-id="45f90ee12c2b9ea9e6458f7277e7fa55" style="width: 500px; height: 300px; left: 240px; top: 190px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">Rectangle.prototype = new Shape(...);
+
+Square.prototype = new Rectangle();
+
+const mysquare=new Square(100,100);
+console.log(mysquare.area())
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a71d9d" data-block-id="cfcdfafeb124a0fa978d545aaadf289a" style="height: auto; width: 837px; left: 43px; top: 545px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>If desired property not in Rectangle.prototype</li>
+	<li>then look in Shape.prototype and so on</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="7d45578137fc39bf4fcfb75a89fa8dec"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">inheritance</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* can use Object.create() instead of constructor
+* don't need to memorize this stuff
+</aside></section><section data-id="3eed0e893b596a3839a9d3eb3f6f9c50">
+
+<div class="sl-block" data-block-type="code" data-name="code-d1ed86" style="width: 718px; height: 350px; left: 121px; top: 210px;" data-block-id="8db9eedeccb05219595b5ab745c798ac"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">var pile = {
+  elements: ["eggshell", "orange peel", "book"],
+  get height () {
+    return this.elements.length;
+  },
+  set height(value) {
+    throw Error("Ignoring attempt to set height to", value);
+  }
+};
+console.log(pile.height); // → 3
+pile.height = 100; // → Ignoring attempt to set height to 100
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="e35f104bb0ab5dc34cc58fab11dbbf2e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">getters and setters</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* want to include properties that are not methods but are computed?
+* sure we got that
+* anybody remember why properties are useful?
+  * properties are data (even computed properties)
+  * methods represent actions
+  * also potentially concurrency safety for access to altering data, but we won't need to worry about that so much
+</aside></section><section data-id="ed058d295c5408f7214eb102acc179e6">
+
+<div class="sl-block" data-block-type="text" data-name="text-393b5d" data-block-id="57d1d66d7273a174f2cbd5a0e9160776" style="height: auto; width: 800px; left: 80px; top: 77.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>newer JS has "real" classes</li>
+	<li>stop talking about prototypes</li>
+	<li>still really just an object / function</li>
+	<li>will we use classes? &nbsp;only a little.</li>
+	<li>js tried to embrace more OOP with classes,
+	<ul>
+		<li>but there was backlash (in the react community)</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-6207a2" data-block-id="2dd6bfc6779e86aaba84d308352b10f7" style="width: 490.667px; height: 368px; left: 229.333px; top: 326.5px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="512" data-natural-height="384" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/72a1381e9b87224b9768128da1b8907b.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="2fccebe63aa3716aae967ab67d240bdb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but wait</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* javascript tried to embrace more OOP with classes but there was backlash.</aside></section></section><section class="stack" data-id="c9d6415fbf63a18f0657b5afdd1d4b4a"><section data-id="c75f8c1fe20c6f6ebed3339d9696c0e7">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2fad46" data-block-id="7e9ff3d67668924453b687de69d6c077" style="width: 839px; height: 533px; left: 47px; top: 120px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/1f0e2aae766c85c829f55f77e0186ed1?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="4c973d8b599d9b52f46d3ba74d0081fb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but does javascript have actual classes?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* has constructor and methods
+* much nicer syntax
+* note: classes are *not* hoisted so need to declare it before using it
+</aside></section><section data-id="cc28e02fef448f628ebd53d3703240ec">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2fad46" style="width: 960px; height: 614px; left: 1px; top: 86px;" data-block-id="2d970885893729b80ffea3264ab6702a"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/acc03592170fdf576e1060c8052307a1?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="7b21a5d7e69d3672c48875ef36d73bd7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">class inheritance</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* as you would expect `extends` 
+* FYI if you have some familiarity with react you may be saying to yourself - wait but i know hooks not classes - i lost the battle with the internet - or rather dan abramov on twitter
+* super to invoke base class constructor *required*
+* note - you will not need class based inheritance in this course - but should know it exists
+</aside></section></section><section class="stack" data-id="43b9871f485e9df94b0e2b0a3afe0bde"><section data-id="519ab4e8d58d4567f6638b26199e7927">
+
+<div class="sl-block" data-block-type="text" data-name="text-de5b3f" data-block-id="386fd066e0885eb1e1905fada5af6ef8" style="height: auto; width: 600px; left: 190px; top: 96.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>everything is a function</li>
+	<li>no or minimal mutable objects</li>
+	<li>state is in stack vs heap</li>
+	<li>easier to: test, parallelize, debug</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-fa5e85" data-block-id="b7387b9230d7bd3c61537dc43116697b" style="width: 531.008px; height: 420px; left: 214.496px; top: 280px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="464" data-natural-height="367" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/306a5bbd53ebdbb8fad95a132a2aeaca.jpg"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="cd5cd90d3eacc26332c618417f0df751"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">does javascript do functional programming</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* why i love FP (i don't love math)
+  * easy to test a function
+  * parallelizable easily
+  * shorter but still readable code
+  * NO SIDE EFFECTS
+  * in fact it will make you happy rather than sad
+</aside></section><section data-id="b162b3ebc2e94563512a5b0e55d24051">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="a9160aa89604a402d1f17be0a1b70f9a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">imperative vs functional</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2fad46" style="width: 960px; height: 614px; left: 0px; top: 86px;" data-block-id="a7162b3f5b7ef6d1ddbee6d4bf7bcc0a"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/yLRyeyP?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* map example, map calls the function with value and index
+  * basically a for loop for populating/altering arrays
+* pass functions as arguments is key
+  * is possible because functions are first-class
+* note the array does not have to be mutable
+  * has anyone tried to change an array while inside of a for loop? 
+* fp premise:
+  * immutable is better
+  * functions take in arguments
+  * spit out new results
+  * no modification of things in place
+</aside></section><section data-id="6820104feb37a0b255650ceeeac9c146">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="59ffd0edace95e55486cd2418aeb2851"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">functions as arguments, 3 ways</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2fad46" style="width: 960px; height: 614px; left: 0px; top: 86px;" data-block-id="d70875212d94f4ef815e0287863198ec"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/LYgEGVv?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* passing functions as arguments
+* CAUTION: if you put in parens will execute immediately then what???
+* setInterval example
+</aside></section><section data-id="d64626930a2c2a8e67a6b2a34e114ddd">
+
+<div class="sl-block" data-block-type="code" data-name="code-6bcbf4" style="width: 808px; height: 420px; left: 44px; top: 161px;" data-block-id="31cc6f4bfea0c83d5244ae2fd663d4fd"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>let total = 0, count = 1;
+while (count &lt;= 10) {
+  total += count;
+  count += 1;
+}
+console.log(total);
+
+
+// could be more elegant and expressive
+console.log(sum(range(1, 10)));
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="acb4fa7a52eed90c4c0692329e71a316"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">elegance</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* fp can be elegant
+* given sum and range functions which js doesn't have builtin but could!
+* const range = (start, stop, step) =&gt; 
+  Array.from({ length: (stop - start) / step + 1}, (_, i) =&gt; start + (i * step))
+* const sum = (sums) =&gt; { sums.reduce((a, b) =&gt; a + b, 0) }</aside></section><section data-id="f50890b0f3764ec51fb8cf4f18ab3bae">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2381b3" data-block-id="fa888c91a14b8fe491325cf5400989dd" style="width: 872px; height: 440px; left: 44px; top: 167px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/578ed432b6ce8f4fb0f46c09f172110f?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="d6017fe4e5680cece11d503cc03181b8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">higher order functions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-602b40" data-block-id="de6688b2de257b22fbf6463680a2a84a" style="height: auto; width: 600px; left: 180px; top: 80px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>functions that return functions and functions as arguments</p></div></div><aside class="notes">* setTimeout is a higher order function also as it takes a function as an argument
+* later will build functions that return new functions as well as components that return new components 
+</aside></section><section data-id="8aa45efa7282817763cea1168a93f2f0">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2381b3" style="width: 960px; height: 607px; left: 0px; top: 93px;" data-block-id="a59d7712cf1ab5631bdb30588ed316b5"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e07c8a9f71a3b709a560781cec09c0bf?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="4b1f187082e1cb17bb58ed854f121f22"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">filter, map, reduce</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* things to try:
+  * change height (turns out we don't really know height that well)
+  * p.mass over 100
+  * p.eye_color == "yellow"
+  * also try watching episodes 4,5,6... 
+</aside></section><section data-id="c2929374f60d190f58c5c7542a3d59cd">
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-2381b3" style="width: 960px; height: 607px; left: 0px; top: 93px;" data-block-id="649c71182c1c65236f55bb7e7a4ad322"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/fd43663e5cd1754963bc5fc1cf9b7ef4?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="13154600eed4922598b0543e337dcf51"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">chaining</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* take away toTitleCase()
+* demonstrates chaining functions as well as prototype adding a method to string!
+</aside></section><section data-id="121f6a748019ff68edf4e088ec3a4691" data-visibility="hidden">
+
+
+<div class="sl-block" data-block-type="text" data-name="text-7af92b" data-block-id="7f803f438deee4db70f59751672c7281" style="height: auto; width: 841px; left: 59.5px; top: 85.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">pure functions:</span>
+	<ul>
+		<li>do not rely on external state, only parameters</li>
+		<li>do not change external state, only return values</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-b8b341" data-block-id="7a1a1e27e2c1e2a4caf97aee34d66b2e" style="width: 806.4px; height: 124.062px; left: 59.5px; top: 340.969px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="442" data-natural-height="68" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/8af5fa58d1150b8421c5d0de1e09dd4b.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="07027551c7ddd8a9018725ac645f5bf9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">pure functions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-84566c" data-block-id="1740b5c31d0c60f79d8de7ad7091df53" style="height: auto; width: 600px; left: 180px; top: 630px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>(react likes this)</p></div></div><aside class="notes">* why is good?
+  * easier to combine functions that don't rely on some global state
+  * easier to test functions where inputs are all declared
+  * more like math
+* more cool things --
+  * can replace a pure function in memory
+AND necessary concept to understand for React</aside></section><section data-id="03906048eec972af4a1cbbdcf5fe29f4" data-visibility="hidden">
+
+
+<div class="sl-block" data-block-type="text" data-name="text-7af92b" style="height: auto; width: 626px; left: 0px; top: 87.5px;" data-block-id="92dfc8f5b13f2609701ae4265041e1ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>when a function changes instance or global var</li>
+	<li>and other functions rely on them</li>
+	<li>can be hard to debug and test</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-be4fda" data-block-id="20f71b1f7206b6f4270e8c8c9d7cfdb4" style="width: 274.072px; height: 183px; left: 674.62px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="960" data-natural-height="641" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/5da918d508d5fe64d25870d57805a363.jpg"></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-42445e" data-block-id="b942bd3eb408c0d51e64f29072c186e1" style="width: 960px; height: 443px; left: 0px; top: 257px;"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/681a0c756ef3bc6ca177d5ba1075a192?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="3e2a04b1e63d86f2c8f45b9847534523"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">side effects</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* how do you test something when a function relies on global state + inputs
+</aside></section></section><section class="stack" data-id="c92a97149559a44f57e45d489d116699"><section data-id="0b327a85d471b4c0d324365f7f842b93">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 66.1149px; top: 100.677px;" data-name="text-0c269a" data-block-id="0c252183a1eb9f362982b1442ea2c502"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>Scope is the visibility of a variable - where it lives</li>
+	<li>Two scopes: global and function local</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-afc72e" data-block-id="d927507eaefeb42541bee0d8bc521eec" style="width: 866.035px; height: 472.792px; left: 46.9825px; top: 210px;"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/2f538910590e9799f464f63cc82005e0?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="d847c6488433e1ecc55813e6a182ef4a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is variable scope?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* **scope is the visibility of a variable**, etc
+* everything outside of function is global
+* inside of function is **function scope**
+* if declared
+* in second example just refers to global
+* shadowing is bad (redeclaring locally on purpose)
+* we'll explore this in more detail next class
+</aside></section><section data-id="6761be488ec22256a177c21749fecafe">
+<div class="sl-block" data-block-type="code" data-name="code-99c60e" data-block-id="751cca59740e1307e07147d5602bc6a3" style="width: 960px; height: 505.77px; left: 0px; top: 125.23px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">function foo() {
+  var x;
+  x = 2;
+}
+// is the same as:
+function foo() {
+  x = 2;
+  var x;
+}
+
+
+function foo() {
+  console.log(x); // → does not crash just returns undefined
+  var x = 2;
+}
+
+//whereas 
+
+function foo() {
+  console.log(x); // Throws ReferenceError exception as the variable value is uninitialized
+  let x = 6; // Initialization
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="b7bfe2cb712f38546faf072457e0a418"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">variable hoisting</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">if you use let and const - you won't really run into this much - language is attempting to be less weird
+* variable declarations only get hoisted not assignment
+* would log 'undefined'
+* careful because things can get hoisted to be global if you didn't do a var at all - ends up in window
+</aside></section><section data-id="68cd498cde58a698916e6685c3ca45e4">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-5e16d6" data-block-id="fe33d20f06df84eeab47bda5adbdaf97" style="width: 812.036px; height: 509.819px; left: 80px; top: 153.716px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/7a12451791067042efc1dbc912fa6c4f?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="ab65ce29617a7987721b759a446d2271"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">function hoisting</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* all functions are hoisted to the top of their scope
+* not just declaration but actual function
+* remember js can be an imperative scripting language
+* generally otherwise you have to define functions in order of use unless you were in a class (later)
+</aside></section><section data-id="57727b36b72bd71ffdb9f1c80a01095d">
+
+<div class="sl-block" data-block-type="text" data-name="text-0d635f" data-block-id="0fd8328aea7dc7b9a2b30793b1a09088" style="height: auto; width: 946.598px; left: 6.701px; top: 217px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>let variables are block-scoped (not just function -&gt; while, if, for)</li>
+	<li>global let variables are not properties on window</li>
+	<li>for (let x...) create a fresh binding for x in each iteration</li>
+	<li>error to use a let variable before declaration is reached</li>
+	<li>redeclaring a variable with let is a SyntaxError</li>
+	<li>use for variables that need reassigning</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="c21ce974f4ea0aa8852bbb44d2905e73"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">let</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* all good things
+* use let instead of var, kids
+* for variable that need reassigning
+</aside></section><section data-id="4ff2278bf3b22d4976415cc0be082ea3">
+
+<div class="sl-block" data-block-type="text" data-name="text-0d635f" style="height: auto; width: 946.598px; left: 6.701px; top: 217px;" data-block-id="22fa27508ebcec2b43426a6605975c03"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">simple:</span>
+	<ul>
+		<li>variables declared with <span style="color:#4757ff">const</span> are just like <span style="color:#4757ff">let</span>
+</li>
+		<li>except that you can only assign to them when you declare them</li>
+		<li>ie. no reassignment allowed</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="00cc5da4f19b1166e3397a8f8d1cfbec"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">const</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="1888fc7aaeebb219685ba8a1fc8e7544">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-afc72e" style="width: 866.035px; height: 592px; left: 46.9825px; top: 94.7694px;" data-block-id="1183bccdd35b94bb6ce25a2cc70acff2"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/c06446191b2ef012f4a34a94b99c952d?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="45dd119ff43d1fc1c22c0cbe7b42afae"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">scope trickiness</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* btw where you see "babel" that means we are using the latest features of javascript  - we'll learn what babel does next week/ in the next short assignment
+* note: easy way to fix this in es6, use let, or don't use for loops
+* DON"T USE var:
+  * i is hoisted above for loop
+  * i is available after for loop
+
+</aside></section></section><section class="stack" data-id="741e7c2e1574d3dbdc75ff2ccf112cea"><section data-id="2915160354905ea4f1c365e27c8f5ff1">
+<div class="sl-block" data-block-type="text" data-name="text-f7930f" data-block-id="5f592390e7dd6cd368ac7f5cf63aa01b" style="height: auto; width: 717.252px; left: 115.203px; top: 148.128px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>their own syntax</li>
+	<li>define pattern to search for in a string</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-a4b87b" data-block-id="d7b9442695a9b77b15d70ff72673adc7" style="width: 833.636px; height: 382.748px; left: 80px; top: 317.252px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/02f53d0a056bb6ff0cc2e72fbf33b0a6?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="dcd53a35e8a024422e2b1abd01f683dc"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">does javascript have regex?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* special text string for describing a search pattern
+* wildcards on steroids
+* test returns bool is regex is found anywhere in string
+</aside></section><section data-id="9b40699dd41433ed04804677b69015b8">
+<div class="sl-block" data-block-type="text" data-name="text-f7930f" style="height: auto; width: 717.252px; left: 119.831px; top: 148px;" data-block-id="80c8acde5cab90eb38163a848c91e3d9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>String: search(), match(), replace(), and split()</li>
+	<li>RegExp: exec(), test()</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-42e27b" data-block-id="b5ed9d09acc3d575c34d76eb152a0356" style="width: 783.873px; height: 335.484px; left: 86.5207px; top: 303.367px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">/HALT/.test("HALT or not");  // true
+/halt/i.test('HALT or not'); // true, ignore case
+/[Hh]alt [A-Z]/.test('Halt B');
+
+'foo abbbbbbc bar'.search(/ab+c/);// fount at 4 (position of ‘a’)
+'foo ac bar'.search(/ab+c/);      // not found,  -1
+'foo ac bar'.search(/ab*c/);      // found at 4
+'12e34'.search(/[^\d]/);          // found at 2
+'foo: bar;'.search(/...\s*:\s*...\s*;/); // found at 0
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="d4cd229e45f39be4d4bec3914b6a8d3c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">regular expressions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* regex are funny, take a while to perfect
+* + at least 1
+* * 0 or more
+* ^ invert
+* \d and digit
+* \s spaces
+* [] are a pattern
+* . any character
+
+</aside></section><section data-id="77e4162ea3efb658d84962dd1001929d">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 800px; height: 474.335px; left: 80px; top: 156.002px;" data-block-id="6b375a5f3ef4b0d8acdd15ae9464c351"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/09809cea414b849988269463154b91c3?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="c2783d09826f04083068e2f677603d9b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">match/replace</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* mostly you'll just google when you need this stuff
+* just be aware of what they are
+</aside></section><section data-id="af6502b3c7bd4f622aaf3721f38b67fa" data-visibility="hidden">
+
+
+<div class="sl-block" data-block-type="video" data-name="video-610d80" data-block-id="297ebc1072987ab52743428c89fb5957" style="min-width: 30px; min-height: 30px; width: 338.062px; height: 601px; left: 310.969px; top: 91px;"><div class="sl-block-content" style="z-index: 10;" data-media-id="8440058" data-video-thumb="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/46fa28667d99f22bf863832f0824e943.jpg"><video playsinline="" controls="controls" poster="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/more-javascript-1768252529211/images/46fa28667d99f22bf863832f0824e943.jpg" data-paused-by-reveal="" src="https://res.cloudinary.com/dali-lab/video/upload/f_auto,q_auto/v1/classmoji/slides/5c6d6af0-a963-44ad-92ea-0781f55a0e93/9fed56d0e6091dc52295d098a88ea61b?_a=BAMAMihK0"></video></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="baaf67fc74305e7bd9cf43a511eaddb2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">regex</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="a5a70e12544af3fc241b4dc75a4f9c1f">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-bf9b10" data-block-id="e12f82aabbe21520f7589edadb625d14" style="width: 762.668px; height: 549.932px; left: 98.666px; top: 115.372px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/aaf7c3df3b1eabacb3e051c3a80babe6?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-4b81bb" data-block-id="e98c86cd1cdb39fe2866a5b5c76448c6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">does javascript have error handling</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* how many people use this regularly? 
+* do not fail silently on the web...
+* expose errors that user need to know about
+</aside></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
