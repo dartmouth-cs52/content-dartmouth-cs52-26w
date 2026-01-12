@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication and Authorization</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section class="stack" data-id="7cc5bcbe3d0c09cb12b87a3dc24cb178"><section data-id="f8dddd3ac3cd37b8e06f82e7acfe21e6"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 892.304px; height: 318.972px; left: 33.848px; top: 171.028px;" data-block-id="7a1d2fb48fdf68b2bd8cf575c23490b1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Sessions &amp; Authentication &amp; Authorization</div>
+
+<div class="title">&nbsp;</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section data-id="faeedd4dcf38042fd9fc77da3332d77c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-1e931a" data-block-id="e5c8da73ba544c6b0ab259644c77f1be" style="height: auto; width: 877.101px; left: 29.0628px; top: 604.088px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>What is a Session?</li>
+	<li>How Do I do Authentication and Authorization?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-2771bc" data-block-id="5af2f3836ccc0bb436949c058810c7a3" style="width: 801.359px; height: 489.719px; left: 79.3205px; top: 103.6px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1692" data-natural-height="1034" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/d9ce145e9e907543c1a4d9ab83d6e26e.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" data-block-id="4f3e1c804adf93dcbd2056fe3b0e0d63" style="width: 960px; height: 70px; left: 0px; top: 0px;"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Sessions &amp; Authentication &amp; Authorization</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* adding auth to both is pretty short</aside></section></section><section class="stack" data-id="d2a5c1abddfeba8850a06913d9dc3e0b"><section data-id="6374c623597e11072d3c4294d58ab032">
+<div class="sl-block" data-block-type="text" data-name="text-90bb97" data-block-id="a7d29b1a647b4b86e76784bd5665e43b" style="height: auto; width: 600px; left: 180px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:rgb(58, 62, 64); text-align:left">So far:</span></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>in client memory state storage
+	<ul>
+		<li>component state</li>
+		<li>app state store</li>
+		<li>routes (a type of state awareness?)</li>
+	</ul>
+	</li>
+	<li>database storage
+	<ul>
+		<li>product content data</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="1aa7eb1212c27792c1efeac941dbd86d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Data Persistence and Sessions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* but this probably isn't all that we might need
+* what is some state storage/awareness that we haven't done yet?
+</aside></section><section data-id="f48d2d6e51dd00baeadb9025e1943ca9">
+<div class="sl-block" data-block-type="text" data-name="text-90bb97" style="height: auto; width: 800px; left: 80px; top: 432px;" data-block-id="8fadd5b756c9a4889561a2fdb6797bde"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>state between each request to server</li>
+	<li>who is logged in?</li>
+	<li>what have they done?</li>
+	<li>what page are they on?</li>
+	<li>fields they have filled in but not submitted?</li>
+	<li>what else?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a8e342" style="width: 662.021px; height: 279.704px; left: 148.99px; top: 98.648px; min-width: 1px; min-height: 1px;" data-block-id="91d6487c8e579c6fb3992e6badbb0488"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="400" data-natural-height="169" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/e6ff7f5a237604eabf4f6a6dfeb53259.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d8d28ab5426cbce36f8484047bba8b01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">still no answers for statelessness</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* stateless http
+* so far we've had client in-memory storage
+* and and some general database storage
+* but nothing about connecting a specific session or user client-server
+* **probably at a minimum what you need both client and server to know is who they are**
+* ideas for how one might go about doing this?
+</aside></section><section data-id="5750ba7ddb763c5af996ef7fda15ba74">
+
+<div class="sl-block" data-block-type="image" data-name="image-6d69cb" data-block-id="f5425be34fbf304ad556e88ba0f00dec" style="width: 635.733px; height: 357.6px; left: 164.267px; top: 195px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="400" data-natural-height="225" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/fb64eb92dc40e1022b29b26f5de6ee1e.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="79b25146274f3e7579b75f0fc5909cb7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">don't close that window</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* if you close that window all your work is gone
+* form fields empty -have to re-log in
+* was doing my taxes and turbotax logs you out after like 2 minutes - so every time you walk away to find some documents it logs you out and then make you do two factor every time - sooo annoying</aside></section><section data-id="e7e5e884f0394bcce1f7a6ed2201e860">
+<div class="sl-block" data-block-type="text" data-name="text-90bb97" style="height: auto; width: 800px; left: 80px; top: 490px;" data-block-id="fb02383fcdf6e08108e3f4007d4f1f92"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>keep some state in active browser</li>
+	<li>and between browser sessions</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-799bd7" data-block-id="6485ab843591f6b4726b9d9c66a102a9" style="width: 806.4px; height: 340.301px; left: 89.8px; top: 109.85px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="211" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/b57ee2c313d5ba3b1136dcd5f93bccda.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="758f2aac3ca6587f8ef7fa862b356efa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">session state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what we want to do
+* if you haven't seen memento... 
+* what might we want to store in between requests to connect them together? 
+
+
+
+</aside></section><section data-id="bf65298706ed0b4de4eb939f43722045">
+<div class="sl-block" data-block-type="text" data-name="text-d960e2" data-block-id="0606f698a2e5182ccdc08bc68a0a7aa9" style="height: auto; width: 600px; left: 172px; top: 412px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64); text-align:left">store session data:</span></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>client</li>
+	<li>web server</li>
+	<li>database</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-d32c95" data-block-id="2cb402f4f0a222ffc159b1b5546d9397" style="width: 324px; height: 271px; left: 310px; top: 86px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="left: -93px; top: -126px; width: 518px; height: 518px;" data-natural-width="480" data-natural-height="480" data-crop-x="0.179537" data-crop-y="0.243243" data-crop-width="0.625483" data-crop-height="0.523166" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/496bcbab7df274013eca3f333c13aa04.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="c319fc3680025e0a185debd668536588"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but where to store it?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* where to store some session data?
+* we've done in memory with our app state store - and now posts and stuff on the server
+* and what is this session 
+</aside></section><section data-id="fda56ffff6e7914c1279cc25822a61cf">
+<div class="sl-block" data-block-type="text" data-name="text-d960e2" style="height: auto; width: 600px; left: 180px; top: 483px;" data-block-id="8bdb3162aaee39a05401b0bc3b8fd6e6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64); text-align:left">HTTP request to server</span></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>how to identify?</li>
+	<li>need to tell the server who we are every time</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="8f8a52da3c1761399e5f9fb99fe8bf4e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">stateless HTTP now a problem?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9efa40" data-block-id="bad74cbe7df72bddbdb3943073825c1e" style="width: 601.084px; height: 301.544px; left: 179.458px; top: 118.456px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1200" data-natural-height="602" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/f5be16f80cbebbc66244f835412f9dca.png"></div></div></section></section><section class="stack" data-id="c80ebf19247b79980d8ed29307d7c912"><section data-id="f113169afd6e57f20310c2bda6889bca">
+<div class="sl-block" data-block-type="image" data-name="image-ce72be" data-block-id="6f0c0e6d88879cbfec2647230c62d6f0" style="width: 848.492px; height: 585px; left: 55.754px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1404" data-natural-height="968" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/9ec4bbac4ef5a7a24b49836c53e8e363.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="33b625cc2d699c05bf91d779c641937a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">cookies</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* one way to do this is to use cookies
+* a cookie is a bit of data that the SERVER leaves on your computer</aside></section><section data-id="4f443439efe518b7e289cbb0e9b12706">
+<div class="sl-block" data-block-type="image" data-name="image-2c4db6" data-block-id="faf39a61484fa0e63462bdd507dddc15" style="width: 451.593px; height: 361px; left: 453.69px; top: 90.2028px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="658" data-natural-height="526" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/b47c55ed4e5c0544a7fd6b8112fe85fd.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-e37e92" data-block-id="8c349724b67b2be3207b615d32a9b3dd" style="height: auto; width: 960px; left: -0.0005px; top: 412px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>cookies:
+	<ul>
+		<li>since early days of http</li>
+		<li>some state set by web server</li>
+		<li>browser includes in every request</li>
+		<li>key: value pairs</li>
+		<li>scoped domain: server, port (optional), URL prefix (optional)</li>
+		<li>limited data size &lt; 4kb, number per domain</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="392d90c9ab7db9fa836289bc56272243"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">cookies</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-53b2c0" data-block-id="9b999835cd81d6499631c026847b91e2" style="width: 377.115px; height: 171.587px; left: 51.4425px; top: 194.207px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 13;"><img class="" data-natural-width="800" data-natural-height="364" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/485d5ca16f0deb8b25a5501ea13b6c4c.gif"></div></div><aside class="notes">* comes from unix magic-cookie
+* which comes from fortune-cookie
+* a cookie with a message</aside></section><section data-id="41484078e9187a41332542d0fdb7ee9d">
+<div class="sl-block" data-block-type="code" data-name="code-c20156" data-block-id="15e8b93753ab38be188937cb64ef0e6f" style="width: 876px; height: 180px; left: 42px; top: 151px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 16px; line-height: 19px;"><code>// server
+HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: cookie_name2=cookie_value2; expires=Sun, 16 Jul 2016 06:23:41 GM
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="width: 876px; height: 180px; left: 49px; top: 408px;" data-block-id="7e272b307bbf898b27e2d95cf754003b" data-name="code-253a7c"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;"><code>// browser cookie header
+GET /index.html HTTP/1.1
+Host: www.example.org
+Cookie: cookie_name1=cookie_value1; cookie_name=cookie_value2;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="86e7b7c335cb49010d35841fc6f6d1e6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">cookies</div>
+</div>
+</div>
+</div></div><aside class="notes">* server sends cookie, client remembers it
+* client sends cookie automatically back with each request
+* browser and server implementation - not part of http specifically
+</aside></section><section data-id="a9225195cd1d953296cc371626390d27">
+<div class="sl-block" data-block-type="image" data-name="image-07d41a" data-block-id="2b973af9be6b9adf5f6db6e9bc40aa84" style="width: 862.955px; height: 289.915px; left: 41.5225px; top: 83.085px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2542" data-natural-height="854" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/32b071a80a4d340695a5370ab2dc3e54.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-5d0c65" data-block-id="41a88d216bd6da1896d20cba0af3a362" style="height: auto; width: 960px; left: 0px; top: 373px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>just a file on your computer that your browser reads/writes automatically</li>
+	<li>you can:
+	<ul>
+		<li>View cookies</li>
+		<li>Modify/corrupt cookies</li>
+		<li>Delete cookies</li>
+		<li>Create cookies</li>
+		<li>Allow them to be stolen</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d3e5da885550dd1bfc786f55b3e01550"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">cookies are, sadly, actually just files</div>
+</div>
+</div>
+</div></div><aside class="notes">* open inspector and look at cookies
+* user id in cookie
+* could be changed!
+</aside></section><section data-id="a0656317056fbd2c2b6be214bb6d007c">
+<div class="sl-block" data-block-type="text" data-name="text-5d0c65" style="height: auto; width: 395.5px; left: 560px; top: 303px;" data-block-id="2f6c7b6c0c97307251473fd88c547ef2"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>session cookie (memory)</li>
+	<li>persistent cookie (disk)</li>
+	<li>secure (over https)</li>
+	<li>HttpOnly (no js)</li>
+	<li>3d party (ads)</li>
+	<li>zombie (resurrects)</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-53097c" data-block-id="7e8e1ea99ed22fd3f6f01a415cd7b1d4" style="width: 539.264px; height: 373px; left: 12.079px; top: 133px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="986" data-natural-height="682" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/18065d39aad092ef83dfd7dcf8247eb3.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="454f963576a3192e5b969fbe7030d0e6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">variety of types</div>
+</div>
+</div>
+</div></div><aside class="notes">* zombie cookie is stored in a variety of different ways,  cached image in your browser, session storage, flash, etc, ip addr etc.
+* 3rd party are dropped by iframes from ads for instance
+* httponly don't allow js access from browser - so only via auto requests
+* secure - only work over https
+</aside></section><section data-id="d71e909e47ce52c7ea015aeaca89f50f">
+<div class="sl-block" data-block-type="image" data-name="image-b08502" data-block-id="728863d70b203c0015a1852b4930a477" style="width: 451px; height: 451px; left: 254.5px; top: 109px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="250" data-natural-height="250" alt="pusheen eating a cookie saying: me, i did" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/90e423b6e9c0f810de14abb59e5a16e4.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="b195eb0130a721af6448d6816569b506"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">cookies can be tracked and stolen</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-874bdb" data-block-id="23f60040bd3c9b8a37ea95a7df3900ec" style="height: auto; width: 960px; left: 0px; top: 583px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ol>
+	<li>webpage includes iframe of ad</li>
+	<li>ad drops cookie</li>
+	<li>every site that has this ad provider tracks you</li>
+</ol>
+</div></div><aside class="notes">* cookies can be used to track you
+* say you have an iframe and it loads foo.com
+  * this can now drop a cookie for domain foo.com
+  * but the iframe had some identifier that it was being shown on site y.com
+  * now every time you go to some site that also uses the advertising provider
+  * they know you've been there.
+* google plans to stop allowing 3rd party cookies (keeps delaying) - it the cookies that an iframe can drop - not from the main window basically</aside></section></section><section class="stack" data-id="c33ae69ec1dc9640ecf9551e0a69d6f5"><section data-id="89e641b3fdf1cdb6cba15f7a9fcc65c5">
+<div class="sl-block" data-block-type="text" data-name="text-986206" data-block-id="b2506c28100c61fdef601070204a9494" style="height: auto; width: 600px; left: 180px; top: 124.5px;">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="color:#3a3e40; text-align:left">sessionStorage</span></strong></p>
+
+<ul style="color:#3a3e40">
+	<li>set by client NOT server</li>
+	<li>per origin, per window</li>
+	<li><strong>only while window is open</strong></li>
+	<li>survives reloads but not closes</li>
+	<li><strong>javascript accessible</strong></li>
+</ul>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="code" data-name="code-bf5f61" data-block-id="d238315aca30461011362ade7dabb63c" style="width: 500px; height: 233.504px; left: 230px; top: 420px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre style="font-size: 16px; line-height: 19px;" class="javascript"><code data-line-numbers="">// Save data to sessionStorage
+sessionStorage.setItem('key', 'value');
+
+// Get saved data from sessionStorage
+const data = sessionStorage.getItem('key');
+
+// Remove saved data from sessionStorage
+sessionStorage.removeItem('key')
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="88a8c25852545c7cb2be8413f71116e7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">clientside webstorage: sessionStorage</div>
+</div>
+</div>
+</div></div><aside class="notes">* so maybe cookies have problems
+* and we don't have enough control
+* but we like javascript everything now right?
+* accessed only through javascripty goodness
+* still per origin - can't read another domains storage
+</aside></section><section data-id="c710d065f7e012674329e7412e8965bf">
+<div class="sl-block" data-block-type="image" data-name="image-552b9f" data-block-id="f35293990bb8b164b60cc7502dc2f818" style="width: 806.4px; height: 353.108px; left: 76.8px; top: 86.446px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1964" data-natural-height="860" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/1352abe11a21d242822f0e8dd662d59e.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-8347ea" data-block-id="5d6f250175368a58772e980436c3ea75" style="height: auto; width: 600px; left: 174px; top: 467.554px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="color:rgb(58, 62, 64); text-align:left">localStorage</span></strong></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>longer term per origin storage</li>
+	<li>10mb</li>
+	<li><strong>javascript accessible</strong></li>
+	<li>not automatic</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-af4ed5" data-block-id="3ce23a51dc96cfc81ed76666aa46b3e7" style="width: 490px; height: 109px; left: 438px; top: 342px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">localStorage.mode = 'light';
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="936589961cd4702f16d185713181fa66"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">
+<span style="color: rgb(22, 22, 22); font-family: &quot;Comic Neue Angular&quot;; font-size: 37.5px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; background-color: rgb(244, 244, 244);">clientside webstorage: </span>localStorage</div>
+</div>
+</div>
+</div></div><aside class="notes">* if the server needs to know anything in localStorage - we need to manually send it - unlike cookies
+</aside></section></section><section class="stack" data-id="262a59200ad27b0a349434e8d869fa26"><section data-id="3277f6dfea1502cb29c044175d9d812c">
+<div class="sl-block" data-block-type="text" data-name="text-e9c06d" data-block-id="05779bb81a6cb29fcb629348029f6cfc" style="height: auto; width: 600px; left: 180px; top: 259.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
+	<li>Both client and server are aware of shared state via cookies</li>
+	<li>Rails:
+	<ul>
+		<li>session[:user_id] = "pusheen"</li>
+		<li>cookie exists: get session data</li>
+		<li>otherwise: start new session</li>
+	</ul>
+	</li>
+	<li>manual encryption if any</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="cb11e18a948be17f0217b129d8ec60ac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">frameworks can provide sessions</div>
+</div>
+</div>
+</div></div><aside class="notes">* some frameworks automatically set on client and returned
+* typically no encryption but easy
+* typically use cookies
+</aside></section><section data-id="7056fd87d89f8908557d6b9487435159" data-visibility="hidden">
+<div class="sl-block" data-block-type="text" data-name="text-30aab5" data-block-id="16e174a0f316ab393ac7446269d74a70" style="height: auto; width: 600px; left: 141px; top: 91px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>storing session data on server</li>
+	<li>more common in SSR frameworks</li>
+	<li>storage mechanisms
+	<ul>
+		<li>memory:
+		<ul>
+			<li>fast</li>
+			<li>expensive</li>
+			<li>can't load balance</li>
+			<li>doesn't last</li>
+		</ul>
+		</li>
+		<li>database
+		<ul>
+			<li>scalable</li>
+			<li>excessive</li>
+		</ul>
+		</li>
+		<li>specialized
+		<ul>
+			<li>
+<em>memcached</em>, <em>redis</em>
+</li>
+			<li>fast key:value stores</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="bf5e5582612e8b9d627b88e1db58a762"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server session data storage</div>
+</div>
+</div>
+</div></div><aside class="notes">* frameworks might employ additional server session tracking
+* server tracking of session data
+* your client still needs to send data (like identifier) but the server could be storing session data to generate the pages you need</aside></section><section data-id="302c65f9e1f91d19be89a73d7a4a425f">
+<div class="sl-block" data-block-type="text" data-name="text-8fb4ff" data-block-id="ef60c463f41d4aece0396a1ca10a7b02" style="height: auto; width: 749px; left: 80px; top: 249px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>express.js has some built in session support
+	<ul>
+		<li>request.session through middlewares</li>
+		<li>is cookies based</li>
+		<li>but we'll write our own that is more secure!</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="bc278bd5e5a9b9f342d4ad2bab460ae1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">express.js sessions</div>
+</div>
+</div>
+</div></div></section></section><section class="stack" data-id="e9694121f67219a1099eee0ffd566ce7"><section data-id="21ccc53fb6785a2281ed5a30f5d296ca">
+<div class="sl-block" data-block-type="image" data-name="image-46f6d1" data-block-id="692712f881fa94320a4f9239cef5768b" style="width: 532.542px; height: 276.133px; left: 213.729px; top: 106.934px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="351" data-natural-height="182" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/1093b7b6ab5723e946b583674cb1a43a.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a75f38" data-block-id="dce630648795ab26d73f00c2378b81c2" style="height: auto; width: 600px; left: 160px; top: 610.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>🔓 security through obscurity ⚠️</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-b80302" data-block-id="71998d42ad68045c2a8cc14a084cac9d" style="width: 687px; height: 184px; left: 147px; top: 405px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// real bad
+Cookie: user.password='this is my plain text password'
+
+// still problematic
+Cookie: connect.sid=2398sf98792874hk2kjh23iu
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="75332e92498695cec541f2b23f708d40"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">session hijacking</div>
+</div>
+</div>
+</div></div><aside class="notes">* what should we store in a cookie?
+* if this could be guessed or stolen
+* then attacker could easily become you
+* **predictable session ids**
+* security through obscurity?</aside></section><section data-id="550308cdc40df8cec14cb7bf72132f25">
+<div class="sl-block" data-block-type="image" data-name="image-5af0d4" data-block-id="e8e57dcfa27d1b3140e36b812a5296a2" style="width: 381.72px; height: 284px; left: 289.14px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="250" data-natural-height="186" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/cdf4dcec38edb113fe798165fef8372a.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b514b1" data-block-id="d1e9ed05416b5b589ada111727d72332" style="height: auto; width: 750px; left: 105px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>even with good session id</li>
+	<li>traffic can be monitored if not over HTTPS</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="40cde52f83eec54fbef805b892eb991d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">HTTP(S) protect me</div>
+</div>
+</div>
+</div></div><aside class="notes">* internet cafe wifi
+* and even then can sometimes be hijacked by man-in-the-middle attacks</aside></section><section data-id="30ae388453d8d69943709f8de42fbe61">
+<div class="sl-block" data-block-type="image" data-name="image-ec2454" data-block-id="675f48fb268995a952ac2d3c4561f090" style="width: 521.043px; height: 338px; left: 219.479px; top: 82px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1076" data-natural-height="698" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/d86592f860f79c4058909e8b4cb7f1f4.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-40efb7" data-block-id="e50dbc0e0c81270c4ed5e16c4ff926c4" style="height: auto; width: 721px; left: 131px; top: 435.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:rgb(58, 62, 64); text-align:left">cross site request forgery</span></p>
+
+<ol style="color:rgb(58, 62, 64)">
+	<li>visit bank site and get session cookie</li>
+	<li>later visit bad site</li>
+	<li>bad site submits a form on your behalf to bank</li>
+	<li>since session still valid...</li>
+	<li>successful hacker transfers funds</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="5f26ba6e95f2e4d346a25dfc50dba2a1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CSRF</div>
+</div>
+</div>
+</div></div><aside class="notes">* these days such an attack is rarer but still needs to be protected against
+* cookies... are problematic because of the automatic include
+</aside></section><section data-id="f8409c2a68cca5436cf3d33d5c27d5ee">
+<div class="sl-block" data-block-type="text" data-name="text-b1c86f" data-block-id="f01b55c895dcf61c1e0d750ba3354b00" style="height: auto; width: 737px; left: 102px; top: 234.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64); text-align:left">many solutions</span></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>use secret form fields</li>
+	<li>use javascript to post JSON rather than forms</li>
+	<li>or just don't use cookies!</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e46f9fa4d8b517a236427655b38db14f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CSRF</div>
+</div>
+</div>
+</div></div><aside class="notes">* these days such an attack is rarer but still needs to be protected against
+* cookies... are problematic because of the automatic include
+* secret form fields with extra data for validation
+* cross origin resource sharing protections help with js but not with form elements
+
+</aside></section></section><section class="stack" data-id="cc3f22e66771bf658cf5366814cf2103"><section data-id="3ab97bdb452bde4bb50cf3ff37f95187">
+<div class="sl-block" data-block-type="image" data-name="image-bf468d" data-block-id="3dcede40b20ee4ebe748d659e1cdf1ce" style="width: 675.2px; height: 379.8px; left: 142.4px; top: 110.2px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="270" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/6b53d0bb86afb49d6ab36f194be5000b.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-2807aa" data-block-id="04ca7d261154df70363c23bde535866a" style="height: auto; width: 645px; left: 160px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>for sessions, for shared state, for identification, for permissions</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="82b09d6c2c2114fb1ab7c0a1a182aeb0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">authentication</div>
+</div>
+</div>
+</div></div><aside class="notes">* ok so we know some problems, if any shared state is required how do we guarantee identity? 
+* big topic
+* sa7 is about auth
+* auth isn't just about users but also about roles and permissions
+
+
+</aside></section><section data-id="b72c02b611633e1bf57ac412b0ee99e2">
+<div class="sl-block" data-block-type="image" data-name="image-d01349" data-block-id="fa57013cf130b5de292f0807053dd1a2" style="width: 667.306px; height: 376.472px; left: 146.347px; top: 89.528px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1200" data-natural-height="677" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/fd6c4005a67e1672ceaa6705969447fb.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-7b6e9c" data-block-id="aacf878ae61420f75f8367e72c58ae77" style="height: auto; width: 839px; left: 60.5px; top: 504.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>passwords still pretty much defacto</li>
+	<li>2 factor authentication helps
+	<ul>
+		<li>phone or email validation</li>
+		<li>what if you don't have a phone though?</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="2bc5868f7875436e6db637fbe1205957"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">usernames and passwords</div>
+</div>
+</div>
+</div></div><aside class="notes">* as a user you might store password on **sticky note**
+* 2 factor typically now is key sent to phone
+* for instance apple developer tools only support SMS 2fa.  that is a problem for someone who might not have a phone
+</aside></section><section data-id="d6f05f36572155ccacf8c4dbe10a8640">
+<div class="sl-block" data-block-type="image" data-name="image-a6b32c" data-block-id="e9c3307837f816d1efb7192473d09938" style="width: 806.4px; height: 420.923px; left: 76.8px; top: 139.538px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="728" data-natural-height="380" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/9d22241e7a468424694af985e6f63946.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="a605d7d4ab38fd63984e07e2342f9b8a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">how do we even store a password?</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-7d7bee" data-block-id="ca228c0466324e68ef40fcdac66bcc5d" style="height: auto; width: 600px; left: 180px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>side note: please, please, please use a password manager</p>
+</div></div><aside class="notes">* as a user you might store password on **sticky note**
+* computer should do better
+* certainly don't just store it in the database!
+</aside></section><section data-id="06cf3ef26f32e758ec8bda13a020fba0">
+<div class="sl-block" data-block-type="image" data-name="image-21d839" style="width: 910.8px; height: 569.25px; left: 24.6px; top: 105.375px; min-width: 1px; min-height: 1px;" data-block-id="5b096f2c35425d76ffd6172066e78bf5"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1728" data-natural-height="1080" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/66d9e46f7207c168dcffeb36e6a571fa.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="c1702a0a1a8bf9239e574b51c433538e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">how do we even store a password?</div>
+</div>
+</div>
+</div></div><aside class="notes">* generate random salt
+* hash the password with salt(where a hash is a one way crytographic function)
+* store salt + hash (cat together)
+* no way to decrypt password
+* on login pull out salt, attempt to hash, compare hashes
+* salt helps add some randomness so that an attacker couldn't do an easier lookup of hash to password -  would have to try all possibilities for the salt.</aside></section><section data-id="161a211d205e5bb5bd88eec70f52eb0a">
+<div class="sl-block" data-block-type="text" data-name="text-795676" data-block-id="c4c12e8bc3c5f9472825f64887cb79c0" style="height: auto; width: 796px; left: 80px; top: 121px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>once authenticated how to stay authenticated, if server forgets who we are?&nbsp; how does client remember who we are?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-039240" data-block-id="e4f0fddd4730b653d8ba8792739e0c7d" style="width: 806.4px; height: 403.2px; left: 80px; top: 261.4px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="480" data-natural-height="240" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/e10db276f4e6ace4c4ae61b06c2885aa.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="5e4e41202d2cacbee058ad41f1a52954"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but your computer forgets too</div>
+</div>
+</div>
+</div></div><aside class="notes">* probably need to send back something to include in future requests
+* dont' want to send password over and over / store password locally?
+</aside></section><section data-id="26db03955f35a0f3609fbab33bb9b1e4">
+<div class="sl-block" data-block-type="image" data-name="image-355e79" data-block-id="772bdb1e1cc957403a326e6fee8f80d7" style="width: 636.183px; height: 325.16px; left: 160px; top: 94.84px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="360" data-natural-height="184" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/b4a9a642af6d80cff6d7193a0203ca5c.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-5daa1a" data-block-id="337678a8fba8067e97d9e86725b3fe55" style="height: auto; width: 600px; left: 180px; top: 465.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>but stateless?</li>
+	<li>once auth'd
+	<ul>
+		<li>give back identifying bit of data</li>
+		<li>need to include that data on every request</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="638db441c91b3fecff743f204412a633"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">so what should we send back?</div>
+</div>
+</div>
+</div></div><aside class="notes">* wee could just say, yup authenticated; return true
+* but then next request is unauthenticated again?
+* need to send back some proof
+
+</aside></section></section><section class="stack" data-id="47a8d83f21ed75e76176f37b91eb4a2e"><section data-id="b77265f65c4d2ebc513536349d297707">
+<div class="sl-block" data-block-type="image" data-name="image-b16b14" data-block-id="e3126acfd5015547dca7d0774cdff529" style="width: 636.765px; height: 463px; left: 161.617px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1136" data-natural-height="826" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/c3e1c18121650e864953f2936ff262d2.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3ced55" data-block-id="93d7e1e2053a71ad35f75da23e40a0fc" style="height: auto; width: 600px; left: 170px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>can authenticate to another domain</li>
+	<li>allows separate API servers</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="adedff9816097158ee232a4723cc8c4e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">js controlled tokens&nbsp;</div>
+</div>
+</div>
+</div></div><aside class="notes">* cookies have problems
+* and we are all js anyway
+* separate servers for static and api
+* multiple domains responsible for site
+  * api1.domain
+  * api2.domain etc</aside></section><section data-id="6930c695d199fae4da34b4cff0c5fdaf">
+<div class="sl-block" data-block-type="image" data-name="image-50d170" data-block-id="fed98a331cc6322e672afb4f547559ff" style="width: 717.304px; height: 603.748px; left: 121.348px; top: 84px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="left: 0px; top: -29px; width: 717px; height: 726px;" data-natural-width="1422" data-natural-height="1440" data-crop-x="0" data-crop-y="0.040584" data-crop-width="1" data-crop-height="0.831169" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/ea7f4ba1d6d7e48b7fa61e9b138d12a2.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="5e4b2b3e17ecd38dcab0f1315a6be554"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">js accessible tokens &gt; cookies</div>
+</div>
+</div>
+</div></div><aside class="notes">* token:
+  * manual wiring
+  * somewhat cross-domain - by frontend domain not backend
+* cookie:
+  * automatically included
+  * unique per domain
+  * don't work across</aside></section><section data-id="0cbbbe66c2a9140eb6c65624a270ea71">
+<div class="sl-block" data-block-type="image" data-name="image-65c636" data-block-id="4f0d3bec2a55cc336c1ab9fdc50d2b89" style="width: 590px; height: 590px; left: 185px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="700" data-natural-height="700" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/094e629638be5ba7cc87913069a57619.jpeg"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="3a5341bded8ad0526ed3a17072dd0243"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">cookies are automatic</div>
+</div>
+</div>
+</div></div><aside class="notes">* included automatically
+</aside></section><section data-id="8fd5b9834573ae84dfdc2591986ed090">
+<div class="sl-block" data-block-type="image" data-name="image-50db68" data-block-id="b8d605509d1b994da90de55c6c685b26" style="width: 565.385px; height: 609px; left: 197.308px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="700" data-natural-height="754" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/8c2912a501810317bc12203a3e31429a.jpeg"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="65f9ad44f59b907ac54afa34ae474d35"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">while you control tokens</div>
+</div>
+</div>
+</div></div><aside class="notes">* multi server support
+* just need to include token for validation (stored salt+password == stored hash)
+
+</aside></section><section data-id="e4c24809ae18bd71e7b4f76ed2271aaf">
+<div class="sl-block" data-block-type="image" data-name="image-ac7a5e" data-block-id="83ed39459604ff4f2899155af309881e" style="width: 530.419px; height: 609px; left: 214.791px; top: 82px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1458" data-natural-height="1674" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/38253a7ec2f18323d61c94d523bfd5b3.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="9abc31358bf1048b32569c5e4363b2dd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">good auth flow</div>
+</div>
+</div>
+</div></div><aside class="notes">* more auth flow
+</aside></section></section><section class="stack" data-id="842c0d76e9b5f544b15fa56b1618063c"><section data-id="7389c79f5fe3244aefab2ffe925c96e1">
+<div class="sl-block" data-block-type="image" data-name="image-124fb5" data-block-id="da7944fac41c353eefbed8efe8d53c5a" style="width: 928.621px; height: 410.287px; left: 15.6895px; top: 133.713px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="636" data-natural-height="281" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/51ba7446d9bf528f73bdbbb81811ec12.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="a48e15edbd839f43afaa18c4d4900d0b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is this token?</div>
+</div>
+</div>
+</div></div><aside class="notes">* what should this token thing be?
+* this idea that a token, sometimes called bearer tokens (in that the bearer / person in possession of the token is authorized), requires that token to be somewhat special
+
+</aside></section><section data-id="4705b1949ec5702e5f6ed066e157ab68">
+<div class="sl-block" data-block-type="image" data-name="image-ec2acf" data-block-id="df5357ead980a7494fe59576aba835f0" style="width: 507.893px; height: 255.216px; left: 226.053px; top: 84.784px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="400" data-natural-height="201" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/604065c0a434307c8da7921c28414315.svg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-ffec86" data-block-id="86cf4d6a0c4f0d558ce488a5b7112b80" style="height: auto; width: 799px; left: 80px; top: 420px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
+	<li>JSON Web Token: <a href="http://jwt.io/" target="_blank">jwt.io</a>
+</li>
+	<li>a bit of encrypted JSON</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="48cb6a6f118965f7d097fe32a5d803c3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">JWT</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-e2d6f6" data-block-id="a828503f99d77c108ecd51a40826f469" style="width: 500px; height: 168px; left: 229.5px; top: 509.718px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 13;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">{
+  header: "type of token and hash algo",
+  payload: "{some fields like userid or email}",
+  signature: "hash( header + payload, secret)"
+}</code></pre></div></div><aside class="notes">* is a neat little bit of data
+* signature is the tricksy bit
+  * server side we take the header and payload and hash them with a secret key (known only on server)
+  * on return we do the same and make sure the signature matches
+  * if not deauth!
+  * can force signout by changing secret key</aside></section><section data-id="26ada8fdc1488b6e0306e2fdf5a64d86">
+<div class="sl-block" data-block-type="image" data-name="image-0e273f" data-block-id="e89ee73a08af2940eb56f0d20b5af176" style="width: 932.114px; height: 407.8px; left: 13.943px; top: 133.6px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1728" data-natural-height="756" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/445339d646ad8e2c12ebe21127acccf7.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d00c472f81c41288b2123d974e94ce98"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">JWT contents</div>
+</div>
+</div>
+</div></div><aside class="notes">* what should be inside the JWT
+* how about userid?</aside></section><section data-id="4356db8052e053500f76556604628b02">
+<div class="sl-block" data-block-type="image" data-name="image-707636" data-block-id="eaa3a52a652675105fb9313c4509620d" style="width: 924.105px; height: 518.164px; left: 17.9475px; top: 123.918px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1334" data-natural-height="748" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/d440ae5b0f35f5bd728599fb840d2a86.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="317f1ce64708e61ee7fa7566d6d1a582"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">JWT flow</div>
+</div>
+</div>
+</div></div><aside class="notes">* if we are reading the userid from jwt how can we be certain it wasn't changed?
+* it is after all just some JSON
+* clue: signature
+* what is in signature?
+* clue: header+payload one way hashed with secret</aside></section><section data-id="a871373879cf5110d7fd1ece379b9487">
+<div class="sl-block" data-block-type="image" data-name="image-7694b5" data-block-id="278aef3908b66ff1b63977ab0b5d962e" style="width: 948.177px; height: 581.836px; left: 5.9115px; top: 102.582px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1584" data-natural-height="972" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/08d235af0c449c32c26593198a93fac3.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="a0a7dcd2a360eacfb912733dd35e8b3d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">sign-up and sign-in</div>
+</div>
+</div>
+</div></div></section><section data-id="24993a5ef83fd17c7d4dddd4265a31df">
+<div class="sl-block" data-block-type="image" data-name="image-4687d8" data-block-id="47a3fff486fe8283137ec24d204827c2" style="width: 675.898px; height: 618px; left: 142.05px; top: 82px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="537" data-natural-height="491" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/ac7d445f46d3e9cdcd78212e7f1b8722.png"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="39a7d5dca90f2d8fd770d36ec0b2909d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">social auth -&gt; jwt token</div>
+</div>
+</div>
+</div></div><aside class="notes">* social is a little tricker
+* once user is logged in with fb on Frontend
+* send to backend which needs to validate with FB
+* then uses the fbid to either signin/signup and return jwt
+* jwt then works for some extended period of time without need to reauth to FB</aside></section><section data-id="2994eb26900bb96f07819131bcef5e6a">
+<div class="sl-block" data-block-type="text" data-name="text-a25b08" data-block-id="b88bd56268f8f63435ed91fcf268d7b3" style="height: auto; width: 960px; left: 0px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>But right now our token lasts forever
+	<ul>
+		<li>add an exp expiry time to the token, check for it on server</li>
+	</ul>
+	</li>
+	<li>What is a refresh token?
+	<ul>
+		<li>use case of granting permission from one platform to another
+		<ul>
+			<li>on first access grant permission and two tokens</li>
+			<li>if regular token expires, use refresh token to not have to grant permission again</li>
+			<li>refresh tokens can also expire/be invalidated</li>
+			<li>refresh tokens live on server, not in browser</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="4d77ca9dd50f9845c8ccb8aaf22af217"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">expiration?&nbsp; refresh token?</div>
+</div>
+</div>
+</div></div><aside class="notes">* like signing in with google and granting permissions to see calendar etc</aside></section></section><section class="stack" data-id="bfbe95ecdac581745323d732923f7f11"><section data-id="fe558105f0c5a54615f61a61f2ebdea2">
+<div class="sl-block" data-block-type="image" data-name="image-c0f33d" data-block-id="b8a7ae1722b88aed4bbb54c40cc3a23b" style="width: 826.923px; height: 559px; left: 66.5385px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="338" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/cdd1c2a6f7ef77c33b379a0898493130.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="765accf84ee46b189d52b28a9d6eed51"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">authentication -&gt; authorization</div>
+</div>
+</div>
+</div></div><aside class="notes">* so tokens give you access but to what?</aside></section><section data-id="cf42ca9a842cfa8e97aa2ba92ab5dbca">
+<div class="sl-block" data-block-type="text" data-name="text-cf53be" data-block-id="7782cc29dfaae5084ddabd070a6d028f" style="height: auto; width: 722px; left: 119px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>Authentication is knowing who you are<br>
+	&nbsp;</li>
+	<li>Authorization is what you allowed to see/do</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="bb920940aeb2233dd8d792a120709910"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">authorization</div>
+</div>
+</div>
+</div></div><aside class="notes">* we know now how to know who someone is
+* and how to know that they are authenticated</aside></section><section data-id="334c5e7bb0c550c47b4a8a24f2d0ab92">
+<div class="sl-block" data-block-type="code" data-name="code-51ce98" data-block-id="85367b96e5437b4c6dc0a80b3e3974cf" style="width: 786px; height: 450px; left: 87px; top: 173px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">app.put('/posts/:id', async (req, res) =&gt; {
+    // if you're not logged in, you can't create a post
+    if (!req.user) return res.sendStatus(401)
+    
+    const post = await Post.query().findById(req.params.id)
+    if (post.authorId === req.user) {
+        // can edit their own
+        await post.update(req.body)
+    } else if (req.user.role === 'moderator') {
+        // allow moderators to edit ONLY the visibility of posts
+        await post.update({visibility: req.body.visibility})
+    } else {
+      throw new Error('you aren't authorized!');
+    }
+  	res.json(post);
+})
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="a21cd239c35065836ee18330d432bd06"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">basic authorization checks</div>
+</div>
+</div>
+</div></div><aside class="notes">* check if the author is the same
+* check by role
+* need to remember to do this everywhere!</aside></section><section data-id="a55156e05866502bf33448663eecd545">
+<div class="sl-block" data-block-type="text" data-name="text-b793e3" data-block-id="0dd4b3de41bcec55eaa82dc43796504d" style="height: auto; width: 600px; left: 180px; top: 81px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Access Control Lists
+	<ul>
+		<li>route - resource?</li>
+		<li>by user and role?</li>
+		<li>configuration over code for ease?</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-b52475" data-block-id="3718287dcdce5f44913628dd3470af9b" style="width: 960px; height: 431px; left: 0px; top: 269px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://casl.js.org/v5/en/" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="b03c25f84df5af1dc55901403d642872"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">ACLs and more advanced controls</div>
+</div>
+</div>
+</div></div><aside class="notes">* tools exist to help with more complicated situations
+* but they are complicated themselves by nature
+* where do you store rules
+* how do you define rules</aside></section></section><section data-id="595daba8a588f3176070f7b6d8d153d7">
+<div class="sl-block" data-block-type="image" data-name="image-239a9e" data-block-id="53d1ac9dd8c35677a650bfde6c81de41" style="width: 609.067px; height: 342.6px; left: 175.466px; top: 92.2px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="450" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/a85a584cc2b72114d087a7b8696cc5af.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-18f17e" data-block-id="93d65adb364c9679769cab6fc77cd9a9" style="height: auto; width: 839px; left: 60.5px; top: 455px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:rgb(58, 62, 64); text-align:left">summary:</span></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>tokens help authenticate a user to server</li>
+	<li>store role / permissions in user object</li>
+	<li>use localStorage for any clientside across browser window data</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="5af8717bca70012b7750a8aea2fdee94"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">summary</div>
+</div>
+</div>
+</div></div></section><section data-id="d1764077817901f66cd07211b4ba16ac">
+<div class="sl-block" data-block-type="text" data-name="text-2a2efc" data-block-id="19a054364f71de87ba3e2f3ba236f1a6" style="height: auto; width: 960px; left: 0px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li style="color:#3a3e40">extra credit shorts</li>
+	<li style="color:#3a3e40">extra-credit auth short:</li>
+	<li style="color:#3a3e40">
+	<ul>
+		<li style="color:#3a3e40">update lab4 and lab5 repositories to support authentication</li>
+		<li>use passport library to handle authenticating server routes</li>
+		<li>store user objects with salted+hashed passwords</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 831.393px; left: 0px; top: 438.099px;" data-block-id="8d113237770a27f67e0c2d0ea6d6580c" data-name="text-9321a8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p style="color:#3a3e40">&nbsp;</p>
+
+<ul>
+	<li style="color:#3a3e40">projects: get that scaffolding</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="c467b139dcac838ab432cde9c6340fc5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next up!</div>
+</div>
+</div>
+</div></div></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
