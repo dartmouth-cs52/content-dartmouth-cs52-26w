@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployment</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section class="stack" data-id="7e29907c9439a035bd4bdcd2de31dafe"><section data-id="faeedd4dcf38042fd9fc77da3332d77c">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="13bb91841d42a0c1a0803909488716e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CS52: Intro to Scalable Systems</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">A brief tour from Lab 3 to ChatGPT</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* these are to help with things in your projects
+* often things that people ask for
+</aside></section><section data-id="54e7d4f5b57973e918d0d0def499460b">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="3f5021cb5381e14e22793501a58ef4bd">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">About Me</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 177.064px; height: 193px; left: 391.468px; top: 111px; min-width: 1px; min-height: 1px;" data-name="image-ac03af" data-block-id="925058888e01e86ec5622a102784e1f3"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="200" data-natural-height="218" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/0913d3aa930df09cf4bb05e9fe1e3a6c.jpg"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120px; height: 120px; left: 51.3295px; top: 549.944px; min-width: 1px; min-height: 1px;" data-name="image-6f8af9" data-block-id="d9361617d7d8c849945b6d22ebaa5ee3"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="240" data-natural-height="240" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/a6cfb122a4fc49bf9ba5b99a20244eb2.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 213.098px; height: 119.944px; left: 431.329px; top: 549.944px; min-width: 1px; min-height: 1px;" data-name="image-6922b9" data-block-id="533c3b799b4b09f42655584396c152e5"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="1050" data-natural-height="591" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/214a1d7594305e690e855b48d20f7c13.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120px; height: 120px; left: 241.329px; top: 549.944px; min-width: 1px; min-height: 1px;" data-name="image-2eac5a" data-block-id="5b6ca38695d1609718d1e3fee3735664"><div class="sl-block-content" style="z-index: 14;"><img class="" data-natural-width="280" data-natural-height="280" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/4a2795ae32a90f34c32d704fc91b3570.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 194.243px; height: 119.944px; left: 714.428px; top: 550px; min-width: 1px; min-height: 1px;" data-name="image-848e54" data-block-id="6cfa45e97bb5950f48babbcad3b35f5b"><div class="sl-block-content" style="z-index: 15;"><img class="" data-natural-width="583" data-natural-height="360" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/0e2f70894b881357271508bda54a8c52.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 180.439px; height: 138px; left: 332.422px; top: 358px; min-width: 1px; min-height: 1px;" data-name="image-fc9ddb" data-block-id="aa9b1451745dac10a9efaa603fa3b8b6"><div class="sl-block-content" style="z-index: 16;"><img class="" data-natural-width="1250" data-natural-height="956" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/e4198266c1c8f770b0273b6303281dfa.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 268.532px; top: 396px;" data-name="text-6b06ad" data-block-id="3dfdc32cee445b8f62f847e3422dd89a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;"><p><span style="font-size:1.6em"><strong>x 3</strong></span></p></div></div></section></section><section class="stack" data-id="9ac7b5545a10aa1273b69c82817b1931"><section data-id="ed7c006f06440fd9c68467fd64d84866">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 381.07px; height: 292.343px; left: 10.321px; top: 203.828px; min-width: 1px; min-height: 1px;" data-name="image-4f8699" data-block-id="7a1949f2e1de1cb986316592bbbfad18"><div class="sl-block-content" style="z-index: 10;"><img class="" data-natural-width="1340" data-natural-height="1028" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/ac2b2f112ab9ede6f62996f43d51c7e2.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 87.1286px; height: 57px; left: 419.397px; top: 321.5px;" data-name="shape-30da3c" data-block-id="44b68ac6b8a2e16e03cf8cadcdede455"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 11;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 87 57"><polygon points="0,17.099999999999998 43.5643,17.099999999999998 43.5643,0 87.1286,28.5 43.5643,57 43.5643,39.9 0,39.9" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 426.625px; height: 292.343px; left: 523.054px; top: 203.828px; min-width: 1px; min-height: 1px;" data-name="image-005155" data-block-id="95f2056edabac1d4fdd8c130c39c7b92"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1220" data-natural-height="836" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71f788e33f272bf3e629568614825d26.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="e8305220db59a8e903309a8717fc0291">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Spot the Difference?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div></section><section data-id="dd8f3e337b3cb02cc62e3ea936073854">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 381.07px; height: 292.343px; left: 10.321px; top: 154.828px; min-width: 1px; min-height: 1px;" data-name="image-4f8699" data-block-id="2ad1a7531ede37996bdbc396c41a21cb"><div class="sl-block-content" style="z-index: 10;"><img class="" data-natural-width="1340" data-natural-height="1028" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/ac2b2f112ab9ede6f62996f43d51c7e2.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 87.1286px; height: 57px; left: 419.397px; top: 272.5px;" data-name="shape-30da3c" data-block-id="ac417d0f34f6f26d4cbb47460fc97234"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 11;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 87 57"><polygon points="0,17.099999999999998 43.5643,17.099999999999998 43.5643,0 87.1286,28.5 43.5643,57 43.5643,39.9 0,39.9" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 426.625px; height: 292.343px; left: 523.054px; top: 154.828px; min-width: 1px; min-height: 1px;" data-name="image-005155" data-block-id="a5b711a097b6c33441b3c79ea44c5b17"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1220" data-natural-height="836" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71f788e33f272bf3e629568614825d26.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-eac8ed" data-block-id="44e3fd9fc6fd11b689b211eb95e04162">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Spot the Difference?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 692px; left: 134px; top: 531.5px;" data-name="text-91cf62" data-block-id="591ca878d5113582d02fc15844cc33e3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p>All things considered, React Notes is pretty cool</p></div></div></section><section data-id="d5f68fdce417ecc9ea01ee0ddc7de9b1">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 381.07px; height: 292.343px; left: 10.321px; top: 154.828px; min-width: 1px; min-height: 1px;" data-name="image-4f8699" data-block-id="0e69c2d3294a730ea8be3e75217801bc"><div class="sl-block-content" style="z-index: 10;"><img class="" data-natural-width="1340" data-natural-height="1028" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/ac2b2f112ab9ede6f62996f43d51c7e2.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 87.1286px; height: 57px; left: 419.397px; top: 272.5px;" data-name="shape-30da3c" data-block-id="8093542178b43916e422875a4bff10a3"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 11;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 87 57"><polygon points="0,17.099999999999998 43.5643,17.099999999999998 43.5643,0 87.1286,28.5 43.5643,57 43.5643,39.9 0,39.9" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 426.625px; height: 292.343px; left: 523.054px; top: 154.828px; min-width: 1px; min-height: 1px;" data-name="image-005155" data-block-id="4127ff4671af1c8f2fe2c4e448ea8ca6"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 8px; border-color: rgb(123, 212, 143);"><img class="" data-natural-width="1220" data-natural-height="836" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71f788e33f272bf3e629568614825d26.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-eac8ed" data-block-id="17b7f9e39047bcd6eca2321441a1fab2">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Spot the Difference?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 692px; left: 134px; top: 549.5px;" data-name="text-91cf62" data-block-id="c7e3b470d242b793a7581d869b4d829d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p>All things considered, React Notes is pretty cool</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 426.625px; left: 523.054px; top: 459.5px;" data-block-id="8537646949e618c466f771491e2c8a7d" data-name="text-a0285d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; border-style: solid; border-width: 5px; border-color: rgb(112, 200, 126);"><p>Where's the magic here?</p></div></div></section></section><section class="stack" data-id="181027f7d230eb21f6fb764705040f44"><section data-id="c2f4aaec5793e7047a8a4a2c3770addc">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="bbd81ec797c64c292cab924690db55e9">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a system?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="text" data-name="text-fb45c3" style="height: auto; width: 960px; left: 0px; top: 331.5px;" data-block-id="70747ecdd325c89960e6937b449632d4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>What's <em>not </em>a system?</p></div></div></section><section data-id="3ad379c9ef713cf5b08274bc7876281b">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="beeff32332d2ca58676a3c6aca1465a7">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a system?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-af3679" style="width: 677px; height: 546px; left: 141.5px; top: 128.5px;" data-block-id="d7c87702bb2ad1fb9ea83c0dd1da0a18"><div class="sl-block-content" data-has-custom-html="" style="z-index: 12;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">A System is:</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<blockquote>
+<div class="body">
+<span style="display: none;">&nbsp;</span><span style="color: rgb(34, 34, 34); font-family: &quot;Open Sans&quot;;  font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">the combination of elements that function together to produce the capability required to meet a need</span><span style="display: none;">&nbsp;</span>&nbsp;</div>
+
+<div class="body">--Nasa</div>
+</blockquote>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="f9fc416e78f5ac19010db68c6762a264">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="7b08678fe49f37aa671bf135ab36f83e">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is System Design?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 630px; left: 165px; top: 228.5px;" data-name="text-7d3cde" data-block-id="41eaf0f371cb380c2eaa5f2fbc5832db"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>In short, designing systems so that they are:</p></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-239b78" style="height: auto; width: 640px; left: 160px; top: 342px;" data-block-id="1a3ab72d220ee0e021483322003c051b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li>efficient</li>
+	<li>fault-tolerant</li>
+	<li>scalable</li>
+	<li>...</li>
+</ul></div></div></section><section data-id="97fd0500fd3a8968c889245307f608b4">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="cb5f551c08089d17c956676d3ecfed4f">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is System Design?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 630px; left: 165px; top: 228.5px;" data-name="text-7d3cde" data-block-id="7e992dfbb75af4a0f3a73cbe786a15d8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>In short, designing systems so that they are:</p></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-239b78" style="height: auto; width: 640px; left: 160px; top: 342px;" data-block-id="f8247c3469c14502fd11911e63b2df5e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li>efficient</li>
+	<li>fault-tolerant</li>
+	<li><strong>scalable</strong></li>
+	<li>...</li>
+</ul></div></div></section><section data-id="3bdbdf1373491cb0d9c4c930baef28dc">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="2123fd62defa143e2b814d5f18a51338">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Why Care?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="text" data-name="text-239b78" style="height: auto; width: 640px; left: 160px; top: 291.5px;" data-block-id="bd60446fbb747a6023414a021aa9d564"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li><span style="color:rgb(34, 34, 34)">Goal of CS52 is to make cool things that run on the web</span></li>
+	<li><span style="color:rgb(34, 34, 34)">If you make cool things, hopefully a lot of people may want to use them</span></li>
+</ul></div></div></section></section><section class="stack" data-id="2bdba1692c6fb8937c9e87ec63f5d425"><section data-id="ab0ea74e5e23ca7df9dd1f97b1f06148">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="e000a4163e6d59e2cbb7b83c341bdf3c">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 626.782px; height: 328.016px; left: 86.609px; top: 212.992px; min-width: 1px; min-height: 1px;" data-name="image-d29637" data-block-id="de33a5c6c5a8d3015f580a6a554fffd6"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1200" data-natural-height="628" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/8b88740a57544e7754da732b88dfe0c4.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 123px; left: 737px; top: 318.5px;" data-name="text-0cf094" data-block-id="ed3eb8d19ec97e5cbb4df79d8d50e230"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><span style="font-size:3.0em"><strong>?</strong></span></p></div></div></section><section data-id="176c164e09f49fb68d67765354ff6d80">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="c079f22c730fd3461b570766e4a69b66">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 330.715px; left: 76.8px; top: 154.643px; min-width: 1px; min-height: 1px;" data-name="image-bf4faf" data-block-id="b3d6ee7dd66c742dfdb8dde12b5abc4c"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="2136" data-natural-height="876" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/a1946bc9d7b0a9bd66a487d4080935fd.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 552.5px;" data-block-id="38a516f5981126fc9a903d4de07c043a" data-name="text-7f3d23"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>But just loading the parameters of GPT-3 requires 100+ GB of memory!</p></div></div></section><section data-id="c0d3058c0b3c0437a9659c62fbee95e0">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="2e4934f019ad8ee591920108575e0254">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 423.36px; left: 76.8px; top: 181.32px; min-width: 1px; min-height: 1px;" data-name="image-11c75a" data-block-id="9a8208520077e704ddbb275319e766d9"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1200" data-natural-height="630" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/712bd8ee8458a26027a3ab1bfe311f96.png"></div></div></section><section data-id="072c575cd014e7695ee239c3f2b9820d">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="1dbbf436b2eb5d2628ee206c6a052ad9">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 673.4px; height: 518px; left: 143.3px; top: 115px; min-width: 1px; min-height: 1px;" data-name="image-2733b3" data-block-id="0fa2ee5fc9c349e0507d7e0d3aa77832"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="650" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/29eb04b6c18b105e14ba51fd872d550c.png"></div></div></section><section data-id="c425f9de4cf975dc5210d08d648e9f5e">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="1a3958a7001e702fbfdf4e90b538efcc">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 301.511px; height: 169.6px; left: 230.489px; top: 265.2px; min-width: 1px; min-height: 1px;" data-name="image-a15f96" data-block-id="4063e54dd76b823ddaceacbf847f82cb"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 297px; top: 315px;" data-name="text-78adf4" data-block-id="f1ea179a25e367018657c200cfd41729"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><span style="font-size:1.8em"><strong>x n</strong></span></p></div></div></section><section data-id="26aa40e4246e9a73881b9a6459073b84">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="c8ad9bcfa791058bd37370ae167ed47f">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 301.511px; height: 169.6px; left: 230.489px; top: 265.2px; min-width: 1px; min-height: 1px;" data-name="image-a15f96" data-block-id="bc140b6db5a0310962b7dcb3f47174a1"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 297px; top: 315px;" data-name="text-78adf4" data-block-id="8cdd0ca7e5f42e619beab3647c92b6bd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><span style="font-size:1.8em"><strong>x n</strong></span></p></div></div>
+<div class="sl-block" data-block-type="image" style="width: 234.667px; height: 132px; left: 469.534px; top: 503px; min-width: 1px; min-height: 1px;" data-name="image-791ecd" data-block-id="3123d738823cad8e0491968a51545f0d"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/00ff30ce5f5ffa7a942ee50990be35a0.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 76px; top: 534px;" data-block-id="a206363b0f72dd140bb013b2fe1875bd" data-name="text-9d062d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p><span style="font-size:54px"><strong>+</strong></span></p></div></div></section><section data-id="e2c71373cd856157adc6c50d1374c983">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="d4331ae79f0d6b3a91489eea452fa021">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 423.36px; left: 76.8px; top: 181.32px; min-width: 1px; min-height: 1px;" data-name="image-11c75a" data-block-id="2c42ec9a697fdbb9289e985062d68992"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1200" data-natural-height="630" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/712bd8ee8458a26027a3ab1bfe311f96.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 440.533px; height: 247.8px; left: 250.444px; top: 299px; min-width: 1px; min-height: 1px;" data-name="image-01c18e" data-block-id="0ff3746300a6ec8cfeb4a511b72c9112"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="512" data-natural-height="288" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/e3c07569bc97711503184ec6615336e2.gif"></div></div></section><section data-id="bcfade6ae01bf91bc003d9156853a045">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="3ecb1fb6e4076ab700d8ff0cffa7db57">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 214.227px; top: 229.888px; min-width: 1px; min-height: 1px;" data-name="image-a15f96" data-block-id="0deed5ccbb0ee27beb1983b7327da1c4"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 960px; height: 588.688px; left: 0px; top: 86px; min-width: 1px; min-height: 1px;" data-name="image-c02a4d" data-block-id="9d8fcc19257873be9198eb113aade855"><div class="sl-block-content" style="z-index: 10;"><img class="" data-natural-width="2058" data-natural-height="1262" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/143a9fa022790d1ce61cde58bc383751.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 298.227px; top: 387.888px; min-width: 1px; min-height: 1px;" data-block-id="aeab3998584ce600c73a20c885a75990" data-name="image-693f33"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 465.227px; top: 281.338px; min-width: 1px; min-height: 1px;" data-block-id="42717650f09a72ed3c0ebc28e6faf8a3" data-name="image-b069b7"><div class="sl-block-content" style="z-index: 14;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 476.738px; top: 199.213px; min-width: 1px; min-height: 1px;" data-block-id="2ee20c545aecb671750544e64c4e9417" data-name="image-356466"><div class="sl-block-content" style="z-index: 15;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 769.227px; top: 447.888px; min-width: 1px; min-height: 1px;" data-block-id="15397d99f5ddd487afb76af9e49d6502" data-name="image-9e8a79"><div class="sl-block-content" style="z-index: 16;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 680.227px; top: 239.988px; min-width: 1px; min-height: 1px;" data-block-id="84b3289bf1f8e2ae352c4eb7b761fc5a" data-name="image-f985c2"><div class="sl-block-content" style="z-index: 17;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 73.511px; height: 41.3499px; left: 769.227px; top: 229.888px; min-width: 1px; min-height: 1px;" data-block-id="cee6d3ef213df68cc47387b910a1bdbe" data-name="image-ac22e3"><div class="sl-block-content" style="z-index: 18;"><img class="" data-natural-width="2400" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/71660ed64ebfd1f8eea9b07fb15519aa.png"></div></div>
+</section><section data-id="c0c09856ddefafaec6b1504107086a05">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="e4645b72318f1741e8adb041cca3e0d3">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 166.5px;" data-name="text-635668" data-block-id="6df5678a8a406117ee618859a8acb6eb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>But...GPUs are expensive!</p></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-239b78" style="height: auto; width: 912px; left: 24px; top: 291.5px;" data-block-id="7428c581b66b992bd729a0df1b69c14d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li>We want to <strong>balance the load</strong>&nbsp;of requests to use the GPUs efficiently</li>
+	<li>We can also divide a model across multiple machines instead of only scaling vertically (this is called "sharding")</li>
+	<li>Since GPUs are a scarce resource, "edge computing" is not as important for this system</li>
+</ul></div></div></section><section data-id="a5351228125b5e592004b3b1162db0d7">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="d385033d1d920c75be5deb2a08fadca0">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Case Study: How to Deploy GPT</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="text" data-name="text-239b78" style="height: auto; width: 912px; left: 8px; top: 290.5px;" data-block-id="ca036e64abf00139b646c803c86724bb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>model sharding ➡️ efficient/low-latency</li>
+	<li>redundancy ➡️ fault-tolerant</li>
+	<li>horizontal/vertical scaling &amp; load balancing <span style="color:rgb(34, 34, 34); text-align:left">➡️ scalable</span>
+</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-fb45c3" style="height: auto; width: 960px; left: 0px; top: 210px;" data-block-id="6c43bda74ea8ee499605c5fe2de6743e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>Each of these steps helps fulfill our system design goals:</p></div></div></section></section><section data-id="fd3c91885c5b1841d5577c8ddcd20421">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="54b76d72d477352853b0955685bc0643">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Not Easy...</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 690.687px; height: 232.787px; left: 134.656px; top: 250.107px; min-width: 1px; min-height: 1px;" data-name="image-6b028a" data-block-id="6af7ca58ac03e3c9a2139ae65dda94e7"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1080" data-natural-height="364" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/598b99008ededa700cf1b6d681379bfa.png"></div></div></section><section class="stack" data-id="6d0dca22eae76793994f28e186041d5d"><section data-id="cac08070958b7980105d1a861b454d25">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="b52665051b14ba6c90f51ca6202ab988">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">This is the "Tip of the Iceberg"</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="text" data-name="text-239b78" style="height: auto; width: 640px; left: 160px; top: 331.5px;" data-block-id="2d7580b1ef2be43a9fc335a9b45e3d79"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Other topics include:</p>
+
+<ul>
+	<li>architectures (monolith vs. microservice)</li>
+	<li>databases (SQL vs. NoSQL)</li>
+	<li>caching</li>
+	<li>proxies</li>
+	<li>etc.</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-fb45c3" style="height: auto; width: 960px; left: 0px; top: 203px;" data-block-id="0ba8d674ca85aa9aafc8a09a77c7992d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong>Disclaimer</strong>: This is an introduction</p>
+
+<p>System design is a vast field with well-compensated professionals</p>
+</div></div></section><section data-id="8c9277e34916caed9943872ba0fabcf5">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="9b2f020ca68e230fcb6e309395e85c2b">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Resources to Learn More</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 475.971px; height: 261.629px; left: 58.8005px; top: 88.371px; min-width: 1px; min-height: 1px;" data-name="image-3c8c0e" data-block-id="4c04edf29aca37559a964cba9fc08a1b"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="2456" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/9d3e17abd6e084a24ba673ada2146888.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 477.84px; height: 324px; left: 444.36px; top: 367px; min-width: 1px; min-height: 1px;" data-name="image-120228" data-block-id="46580b31f5d03046b6eac31dd596bdbd"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1991" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/bbec4caebb9c9ee5aa3dd1b87c3fb3fd.png"></div></div></section><section data-id="b3f1f12c9f03735d9642799ad7861ff3">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 1px;" data-name="snippet-eac8ed" data-block-id="9085186c362209cb0f11fd67012ff7a3">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Resources to Learn More</div>
+</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
+</div>
+
+<div class="sl-block" data-block-type="image" style="width: 475.971px; height: 261.629px; left: 58.8005px; top: 88.371px; min-width: 1px; min-height: 1px;" data-name="image-3c8c0e" data-block-id="0b955af987e99153da9462cceaab465a"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="2456" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/9d3e17abd6e084a24ba673ada2146888.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 477.84px; height: 324px; left: 444.36px; top: 367px; min-width: 1px; min-height: 1px;" data-name="image-120228" data-block-id="d6db30924eb3d3a8629183bac48b1aa8"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1991" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/bbec4caebb9c9ee5aa3dd1b87c3fb3fd.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 192.851px; height: 242px; left: 653.547px; top: 98.1855px; min-width: 1px; min-height: 1px;" data-name="image-4f96cc" data-block-id="a347e72aa12fad3e19c0d2b5683df8a3"><div class="sl-block-content" style="z-index: 13; border-width: 1px;"><img class="" data-natural-width="412" data-natural-height="517" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/8e21cdcb490e99fea041ebbcdeb6a8eb.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 395.271px; height: 161.736px; left: 20.721px; top: 448.132px; min-width: 1px; min-height: 1px;" data-name="image-08a580" data-block-id="66c50e1626ffb31989f7ad88634f7c4b"><div class="sl-block-content" style="z-index: 14;"><img class="" data-natural-width="2500" data-natural-height="1010" data-crop-x="0.001863" data-crop-y="0" data-crop-width="0.987347" data-crop-height="1" style="left: -1px; top: 0px; width: 400px; height: 162px;" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/deployment-1768254116511/images/c98c1f4825218cef442efed85bed271d.png"></div></div></section></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
