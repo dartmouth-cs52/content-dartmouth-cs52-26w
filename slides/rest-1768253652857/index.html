@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section data-id="ea121b9af6fcb83bafe235d0e73b5a7b"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 232.456px; left: 80px; top: 199.291px;" data-block-id="dda7f2befbb6eb0a098c97aa924ac32d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST API Architecture &amp; Data Persistence</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="edfa08bd6d080ed2904e2b5710351b26"><section data-id="faeedd4dcf38042fd9fc77da3332d77c">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-e5d978" data-block-id="6e0ca783e32fa6168ca2af6d19118a70" style="width: 544.668px; height: 518px; left: 37.332px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1348" data-natural-height="1282" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/e178bd89b16aa49172386db0355f2b4e.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-1e931a" data-block-id="e5c8da73ba544c6b0ab259644c77f1be" style="height: auto; width: 378px; left: 582px; top: 225.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>On the menu:
+	<ul>
+		<li>REST</li>
+		<li>Data persistence and databases</li>
+		<li>Serverside finally!</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 118px; left: 0px; top: 0px;" data-name="snippet-1f94e9" data-block-id="57cbbee2895ba92d9d8a08f5d8666b57"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST API Architecture &amp; Data Persistence</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* teams will be out later today and we'll do our first team meeting in class on weds - was hoping to have it out today but after spending some hours yesterday and today still don't quite have it down.</aside></section><section data-id="8a7ef2f540acc82c1fbaa9ed1d46908c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-bc0279" data-block-id="84f66a893b638a10246f1a273223cee5" style="width: 558.478px; height: 397px; left: 200.761px; top: 93px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1418" data-natural-height="1008" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/681a9b7b3e4caf223dd1628b7ba40aa7.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3f9b3d" data-block-id="e4f17a832669d4a78cbeeaf68b2034cb" style="height: auto; width: 600px; left: 171px; top: 525.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>be RESTful with expressjs</li>
+	<li>routes</li>
+	<li>HTTP verbs</li>
+	<li>JSON responses</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="be4b38342a6ceee5690a9904cb550f37"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Finally - SERVER SIDE STUFF!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* intro to lab 5
+* expressjs is a lightweight web framework on the server-side
+* webpack-dev-server is actually built on express
+</aside></section><section data-id="014d6354de62ac8b0ef1aa924c1ad005" data-visibility="hidden"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="3c4d9e1fd5237efe2d8c350defbdf569"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>to Improve</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-ca4a7f" data-block-id="dc85274344f9b2da188d8f6cf3349078" style="height: auto; width: 954px; left: 0px; top: 70px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; line-height: 0.715; font-size: 97%;" data-has-line-height="">
+<ul>
+	<li>
+	<p><span style="font-size:0.7em">extra credit system was confusing at the beginning</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I think from the lectures to the homeworks there's a big a jump maybe that could be improved.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">A bit more handholding for the assignments / labs.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">&nbsp;lot of Qs posed to TAs might be suited for an FAQ section</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">a few office hrs that are a bit more time zone friendly for students in international time zones / saturdays?</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Why not just make the extra-credit portion part of the required stuff?</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">more (simple and detailed) resources in doing extra credit bc thats where the fun stuff is at and the internet is big and scary</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I'd prefer a faster speed lecture</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">A quick one line summary for each topic would be helpful like a TLDR.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">it's just constantly overwhelming for me in labs</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Conceptual office hours w/ Prof. Tregubov; get lost because I do not understand what is going on conceptually</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">TA Office hours closer to deadline of assignments</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">make some of the labs partner assigments</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Normalizing slack to ask questions. It's really helpful to be able to scroll back in slack to see if other students in previous years had a similar, answered question.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Can we also put a limit on how long a TA can spend with a student? had to wait in a room of 5 other students, because the TA took almost 2 hours for one student.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Everyone video on in class!</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">x-hours as an optional class for getting more into the nitty gritty </span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">confused about file structure</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em"><span style="color:rgb(38, 38, 39); text-align:start">Please cover the server and host and all that map</span></span></p>
+	</li>
+</ul>
+</div></div><aside class="notes">* please suggest specific times for office hours
+* the extra credit portions usually are the parts that are varied and interest driven - i could rename it to choose your own adventure or something
+* good point about the one line summaries - I sadly hadn't the time to update the lexicon but that was the idea there
+* will keep adjusting TA office hours - if you have specific suggestions please reach out @thomas monfre
+* </aside></section><section data-id="658ad62194c62e28679ba0b707c0bcea" data-visibility="hidden"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="842d68e7cbc401e374819976a060e476"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>going well</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-f85259" data-block-id="0a229838bbd2f33f08a15b414d5d15a4" style="height: auto; width: 960px; left: 0px; top: 74px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; line-height: 0.715;" data-has-line-height="">
+<ul>
+	<li>
+	<p><span style="font-size:0.7em">The assignments explain the concepts very well</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The stuff we are learning feels very meaningful and useful.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I love the learn-by-doing part of the class. Lectures sometimes feel broad at the time and then once I start coding things start to fit together</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like how we're learning new tech that's relevant to the industry right now</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like the hands on approach and the SAs that really guide you through everything.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like how there is a lot of support to be creative and try new things!</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Though the course has been fast, I've appreciated how much we've been introduced to</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I liked that the pod activity/presentation was cut to allow more time for the project as well</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I have LOVED the assignments so far and have had so much fun working on evolving my style. I am really excited for each lab and for the final project</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like the pod structure. I'm more comfortable reaching out to my pod leader for questions.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like the content and all the help</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The breadth of material covered</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The creative freedom, I can implement my design skills / create personalized projects</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The lectures are usually pretty engaging</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The labs! I love that we're able to start from scratch, which really makes it feel like we're building something uniquely our own</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like how engaging our examples are and the shorts actually directly correlate with what we learned that week.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The EC opportunities to add in creativity</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">The energy of the class is so great. &nbsp;So much excitement and creativeness! Maybe I'm just hyped from the pitches..</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="9243ade5e2ab0e39a39da2db6d4fd246" data-visibility="hidden"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="232e98c32cb9466ccb76a6591e2d0e32"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Individual Tips</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-f85259" style="height: auto; width: 960px; left: 0px; top: 74px;" data-block-id="bcff43374856bb889f3de2f219b0e380"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; line-height: 0.715;" data-has-line-height="">
+<ul>
+	<li>
+	<p><span style="font-size:0.7em">Starting the labs earlier would help a lot</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">need to start labs a little earlier to give my self more time to ask questions</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Work with people on assignments</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">try to utilize the TAs more; keep seeking help</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Formalizing a sleep. Since this class is in the middle of the night , formalizing a framework that kind of works would make being alert / attending class / cooperating much easier.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Continue to start early and stop by as many office hrs as possible</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I can keep going to a lot of office hours, reach out to TAs + prof, and ask questions in slack</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">read through the descriptions carefully</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Do more reinforcement readings and make an effort to plan things out before jumping into coding</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">watch material online to keep up with the pace.</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">reach out to other's in my pod more</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I should start going to more office hours to get conceptual help on some of the topics taught in lecture</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Place more time for extra credit</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Stop copy pasting code from the short assignments just to complete them faster, and actually take the time to understand the concepts behind the code</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Revisit the class notes/lecture recording more to solidify understanding</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I need to spend more time with the code. If only cs52 was my only responsibility in life</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">I like to review the slides and take notes after class. I can also try to review our short assignments to reinforce my understanding</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Reach out when I get stuck to TAs, pod groups</span></p>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="da1963303122da951b854799ed5aa028"><section data-id="3e0780db241a7f4cd7445d071682b73c">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-a5fc79" data-block-id="2c96eaa9ca5e0eddc4ce51b346425f82" style="width: 891.871px; height: 396.521px; left: 34.0645px; top: 93.479px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="740" data-natural-height="329" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/368031cd973189acb78618719f6ed4f9.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a7cdf0" data-block-id="fb15b0f61f16bc731891cff12eea6c03" style="height: auto; width: 600px; left: 180px; top: 509px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:rgb(242, 125, 0); text-align:left">RE</span><span style="color:rgb(58, 62, 64); text-align:left">presentational </span><span style="color:rgb(242, 125, 0); text-align:left">S</span><span style="color:rgb(58, 62, 64); text-align:left">tate </span><span style="color:rgb(242, 125, 0); text-align:left">T</span><span style="color:rgb(58, 62, 64); text-align:left">ransfer</span></p>
+
+<ul style="color:rgb(58, 62, 64)">
+	<li>software architecture style</li>
+	<li>guidelines for web app to server communications</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 118px; left: 0px; top: 0px;" data-name="snippet-1f94e9" data-block-id="91bfb03eb9ebe75e16fb5b665abae8d2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a REST API?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what we are using for bloggy
+* transfer some state -&gt; from remote server to client
+* where state is data from server
+* api -&gt; application programming interface on the web
+* following some guidlines
+</aside></section><section data-id="e951231fb0d41cb30548946c80b4adea">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 118px; left: 0px; top: 0px;" data-name="snippet-1f94e9" data-block-id="ef154c5333e66b063a25e42bf84d1472"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">RESTful API design</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="b0b165d38fa5f76f868aa28446c8017f" data-name="snippet-1a93e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a REST API?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-be2bba" data-block-id="a83dbbda4e02259bb2d71f067b93d01c" style="width: 802.728px; height: 562.573px; left: 78.636px; top: 99.3574px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="1210" data-natural-height="848" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/eff6e5059d6ed31d20c6449132a7d263.png"></div></div><aside class="notes">* resources avaible via http
+* remember how we talked about frontend routes and clean URLs?
+* in file like paths
+* helps to organize and think in terms of **paths to resources** rather than actions or functions
+* why is this bad?
+* img from: https://medium.com/@MakeComputerScienceGreatAgain/understanding-rest-api-a-comprehensive-guide-52fc10f6c9ed
+</aside></section><section data-id="6d89bda36d75957ba41d8bc95f8dbcea">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-1c7420" style="height: auto; width: 960px; left: 0px; top: 179px;" data-block-id="43c82cbe1323f5c545845b90c005e490"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>&nbsp;</p>
+
+<ul style="color:#3a3e40">
+	<li>Remote resource</li>
+	<li>Routes as Resources</li>
+	<li>Server should export resources to clients using unique names (URIs)
+	<ul>
+		<li>
+<a href="http://api.domain.com/photo/" target="_blank">http://api.domain.com/photo/</a>&nbsp;is a collection</li>
+		<li>
+<a href="http://api.domain.com/photo/48s9c8s83j" target="_blank">http://api.domain.com/photo/48s9c8s83j</a>&nbsp;is a resource</li>
+	</ul>
+	</li>
+	<li>Server supports a set of HTTP verb mapping to CRUD</li>
+	<li>IE. NOT <span style="color:#c33851">http://api.domain.com/getPhotoByID</span>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 118px; left: 0px; top: 0px;" data-name="snippet-1f94e9" data-block-id="46694009e6e6f8cb449b05fdbf1904eb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">RESTful API design</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="b841d2ae37a6a7a41498c00c885d014d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a REST API?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="aada2295cc54a5a2b1da46a07308956f">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-289da7" data-block-id="976eaa0ad28caca88c671b79e99b8e42" style="width: 806.4px; height: 324.111px; left: 73.6px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="520" data-natural-height="209" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/bad6b60ecccc021cd84338209b068bba.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-2711d9" data-block-id="42c44eb6f113b9c40ff37989af40c15c" style="height: auto; width: 960px; left: 0px; top: 390px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>Server supports a set of HTTP verbs mapping to CRUD
+	<ul>
+		<li>
+<em>GET</em>&nbsp;method - Read resource - default on browser!</li>
+		<li>
+<em>PUT</em>&nbsp;method - Update resource</li>
+		<li>
+<em>POST</em>&nbsp;method - Create resource</li>
+		<li>
+<em>DELETE</em>&nbsp;method - Delete resource</li>
+	</ul>
+	</li>
+	<li>
+<span style="color:#a4c639"><strong>do</strong></span>: PUT api.com/posts/:id</li>
+	<li>
+<span style="color:#c33851"><strong>don't</strong></span>: POST api.com/updatePostByID</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="50908590f235b0538fa1c5e2c654e663"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a REST API?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="d8477c8a79c4cce2903fd8be1024d9f8" data-name="snippet-45be84"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">WTF is CRUD?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* endpoints are resources not actions
+* when you just type in a URL in the browser that is a default get
+* why would it be bad to have action endpoints?
+   * have hundreds potentially
+   * getUser, getUserProfile, getListViewAuthorized, etc</aside></section><section data-id="11b1d0d5ab442c78b2b2ff9a82f0e27c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-2711d9" style="height: auto; width: 960px; left: 0px; top: 321.556px;" data-block-id="93de2aab4ad7fd2d2322790954e5f4a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
+	<li><span style="font-size:1.6em"><span style="color:rgb(164, 198, 57)"><strong>do</strong></span>: PUT api.com/posts/:id</span></li>
+	<li><span style="font-size:1.6em"><span style="color:#c33851"><strong>don't</strong></span>: POST api.com/updatePostByID</span></li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="e228e61875fbb1dc41e67e6116218de7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is a REST API?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45be84" data-block-id="60fe73c5d63f9d2cf065f8449a5f6633"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">i don't want to see it ever</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* tell me back why is this bad?</aside></section><section data-id="9248277b8ff6ba09e54ef7a60fac119e">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-335ad0" data-block-id="d90bf74f076b6afc5924248f968391ff" style="width: 924.461px; height: 430.667px; left: 17.7695px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="659" data-natural-height="307" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/fc6f0fbc2e48da8831e4229b946f7779.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-4c6191" data-block-id="3bd854f66e48eb0bf27974ec6856f17f" style="height: auto; width: 954px; left: 0px; top: 536.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ol style="color:rgb(58, 62, 64)">
+	<li>define resources, give them unique names (URIs)</li>
+	<li>clients use CRUD operations via HTTP methods</li>
+	<li>keep abstractions clean: GET's don't delete, etc</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="d68451e590403c0a268173347fb68a94"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">WTF is CRUD?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* designing your API interface is important - especially if it is public
+* status codes with each response</aside></section><section data-id="88f0c56d0721b12ea55f22a28af72382">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-157bf0" data-block-id="4fcf2c64a5d2444117463c266e8b0a9d" style="height: auto; width: 600px; left: 180px; top: 366.983px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>We transfer state, but our servers are stateless you say?
+	<ul>
+		<li>that be HTTP</li>
+		<li>Control caching of resources</li>
+		<li>Load balancing</li>
+	</ul>
+	</li>
+	<li>stateful protocols more expensive</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="f916064165e2c8be094a8c1d0aec82eb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST embraces statelessness</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-c8728b" data-block-id="4821d8e53d704dbaa1a58ace33ee058f" style="width: 430.42px; height: 242.111px; left: 221.684px; top: 86.383px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="480" data-natural-height="270" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/fc445b4c616372356bb1f28f0e0c8011.gif"></div></div><aside class="notes">* remember we discussed that http is stateless 
+* doesn't remember who you are from API call to API call</aside></section><section data-id="30d50cde34d82e1fa0b022d85b8ec36c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-157bf0" style="height: auto; width: 800px; left: 80px; top: 169px;" data-block-id="3e05574bf7673a7381f7a7a6b193d603"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
+	<li>proposed in phd thesis circa 2000, Roy Fielding</li>
+	<li>been the standard for many years</li>
+	<li>used everywhere</li>
+	<li>https://restfulapi.net/</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-456897" data-block-id="64b793cee483c12ed81470975938e44d" style="width: 450.968px; height: 253.758px; left: 254.516px; top: 350px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="638" data-natural-height="359" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/6040710a4e377a2c1339d042883eaa77.jpeg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="637451e1830b194fa09c79887bbc7695"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST is the STANDARD</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* gotta know it
+</aside></section><section data-id="a7751cbc9c6fe72f00c8c2da03a377d4">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="294dc3a01ca96d5b6a2d3321dd4560cb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST guiding principles</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 186px;" data-name="text-3b651e" data-block-id="651dcc203fcc0ff296db8dbb81f8a9a1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#222222">
+	<li>
+<strong>Uniform Interface</strong>
+	<ul>
+		<li><span>Identification of resources</span></li>
+		<li><span>Manipulation of resources through representations</span></li>
+		<li>Self-descriptive messages</li>
+		<li>Hypermedia - everything is hyperlinks</li>
+	</ul>
+	</li>
+	<li>
+<strong>client-server</strong> design pattern enforces the separation of concerns</li>
+	<li>
+<strong>statelessness</strong>: every request includes everything necessary</li>
+	<li><strong>cacheable</strong></li>
+</ul></div></div><aside class="notes">Identification of resources – The interface must uniquely identify each resource involved in the interaction between the client and the server.
+Manipulation of resources through representations – The resources should have uniform representations in the server response. API consumers should use these representations to modify the resources state in the server.
+Self-descriptive messages – Each resource representation should carry enough information to describe how to process the message. It should also provide information of the additional actions that the client can perform on the resource.
+Hypermedia as the engine of application state – The client should have only the initial URI of the application. The client application should dynamically drive all other resources and interactions with the use of hyperlinks.
+</aside></section></section><section class="stack" data-id="9f71fbdf4eabc0b4b7e05c8f9c8025bb"><section data-id="7b4a4bcd960bac63cb79cb1788e15a1a">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-be83d8" data-block-id="99b5549deefd138fb502c29bdbc09310" style="width: 742.294px; height: 586.864px; left: 108.853px; top: 94.8905px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="788" data-natural-height="623" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/ef044a1825d4396785fe882126e69af2.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="eeddd5d6a58eaf28256bc6cee528be72"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Public, Private, Internal, External</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* why does API design matter?
+* you may not be the only one using it - internal company - but also maybe others
+* REST standard and RESTful design lead to predictable and easy to understand API docs
+</aside></section><section data-id="513b8b8d6dead143cc2c01668798640f">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-142c6b" data-block-id="f43bd90efb1a5f5b755ad43900f3898c" style="height: auto; width: 850px; left: 61px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>a public API usually:
+	<ul>
+		<li>documented for outside use</li>
+		<li>security designed in</li>
+		<li>monitoring</li>
+		<li>scaling</li>
+		<li style="color:#222222">personal tokens, oauth</li>
+		<li style="color:#222222">input validation</li>
+		<li style="color:#222222">throttling</li>
+	</ul>
+	</li>
+	<li>private API access can still be reverse-engineered so...</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="4b237c3798e25d01834ca3167022184d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Public APIs</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* your API is open whether you like it it or - others can use it
+* reverse engineering
+* can try to do security by obscurity - no docs + complicated + various keys and certificates</aside></section></section><section data-id="6dd741e40ee3e949e2b1e3ee969cf18c"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 157.595px; left: 80px; top: 199.291px;" data-block-id="aa21b9841f822494cd7e65f80197d09a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST Alternatives</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="5ac78c54970384060602521c78f92b98"><section data-id="932079c9d2a4f026389a19770e25dd75">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-16d685" data-block-id="f20811f0f69d679a2b36605842bc3f31" style="width: 666.976px; height: 277.462px; left: 160px; top: 92.269px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="208" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/1cb803f673bc552e630ce6ceb7ecd1ae.gif"></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-42a712" data-block-id="aed60f42b80be580a8f92bf68b003343" style="height: auto; width: 960px; left: 0px; top: 448px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>what about realtime?</li>
+	<li>what if the data isn't quite right?&nbsp; or in an annoying format?</li>
+	<li>what if we want to change the endpoints, add fields, remove stuff?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="f88ded98be3008cbf0e813e6d22a41d0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">REST Problems</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* but there are problems
+* what are some problems we ran into with blog?
+  * updates?
+  * how would you do chat?
+* back when tswifty had good song
+</aside></section><section data-id="42b01f3cd35bd340e06c6c44906c818f">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-42a712" style="height: auto; width: 585px; left: 27.5px; top: 213.5px;" data-block-id="ecfe9f53e399a84c53284a1015d34cd7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>complicated data might require multiple round trips to server</li>
+	<li>versioning with old clients breaking</li>
+	<li>variability in REST design</li>
+	<li>data returned may not be what exactly what is needed</li>
+	<li>client always has to initiate contact</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-ea2bf3" data-block-id="5beeac494e52630446b24216e37199bd" style="width: 243.254px; height: 354.999px; left: 640px; top: 210px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1920" data-natural-height="2802" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/d893f458d9c5e49f91c745c55dc6f8fd"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="7e0a4ec892874f9a8e6ffdce6d55738d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Some REST complications</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* too muchrest can leads to sleepiness
+* content not returned for posts? 
+* image size? 
+* posts have a userid - but don't know who that is?
+* have to think about versioning
+</aside></section></section><section class="stack" data-id="eacbfb78ac6c41b96103636a57520cb6"><section data-id="7a9a183f7e5b26025ba9612224d12444">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-42a712" style="height: auto; width: 918px; left: 21px; top: 530.5px;" data-block-id="5878daf469c47a4982a4cf36a53f1049"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li><span style="color:rgb(58, 62, 64); text-align:left">GraphQL</span></li>
+	<li>query "shape" determines response</li>
+	<li>multiple data stores</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-cd1914" data-block-id="bba3c9260848531281dc51f1caec030f" style="width: 701.048px; height: 405.917px; left: 107.476px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="3126" data-natural-height="1810" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/deb5e9dc74eca21445e4da4ad33e463e.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="6c406de18e90c1dc2b2e6772a2d9250d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">GraphQL vs REST</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* is an up and coming option - most public APIs are not graphql, but github is one example
+* can provide a layer on top of API / combine multiple data sources which is interesting</aside></section><section data-id="aae53100616d825527c16791757d07ad">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-c98d88" data-block-id="942d6a40d6c6d7d6a45c5072d8adae3b" style="width: 370px; height: auto; left: 80px; top: 134px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">//QUERY
+{
+  article(id: '2k3k3') {
+    id
+    title
+    image(width: 600) {
+      src
+    }
+  }
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="width: 384px; height: auto; left: 528px; top: 134px;" data-block-id="f79b3515fb197d8a159482467ca1e4de" data-name="code-08b3eb"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true" data-code-wrap="true"><pre style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">//RESPONSE
+{
+  "article": {
+    "id": "2k3k3",
+    "title": "Welcome to GraphQL",
+    "image": {
+      "src": "http:///..."
+    }
+  }
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-07baeb" data-block-id="d87678964e4cd28366ec0cf9edcb0745" style="height: auto; width: 600px; left: 180px; top: 498px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li>pros:
+	<ul>
+		<li>data in the shape you want</li>
+		<li>faster than multiple round trips</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="a87e258efa811d2e728b7e9c32c0d9b6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">GraphQL</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* cool, but still a bit complicated to design and use - 99% of apis are REST
+* function like query part
+* helps with getting the data you need
+* btws, if you read that redux is dead - it isn't, you still have the same frontend how to deal with complex data problem
+* you still want to manage your state in a smart way
+</aside></section><section data-id="9e25837e59d310cea7a689d00fbb1032">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-07baeb" style="height: auto; width: 600px; left: 0px; top: 490px;" data-block-id="463552864697c1b5918015cc3ac9fb07"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>cons:
+	<ul>
+		<li>more complicated queries / process</li>
+		<li>nodes, edges, oh my!</li>
+		<li>caching queries is harder</li>
+		<li>more complicated access control&nbsp;</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="0125ffcb579b69d9cc7bf4b2ab9726e8"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">GraphQL</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-68c69b" data-block-id="7b44334374beffe29ca861d32a69ba7a" style="width: 681.015px; height: 433.87px; left: 139.492px; top: 63.065px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 12;"><img class="" data-natural-width="2119" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/76e54e7888bbfdf4e3bbabba64bfa71c.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-990900" style="width: 342.341px; height: 191.711px; left: 617.659px; top: 508.289px; min-width: 1px; min-height: 1px;" data-block-id="2b58780b371c196b44e973acd27ad908"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="200" data-natural-height="112" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/7f82a436de54fd675a3828a584699898.gif"></div></div><aside class="notes">* in practice a bit of a nightmare to work with
+* has not seen as great adoption as predicted
+* overkill for many situations
+* and in personal experience, almost never ever worth it</aside></section></section><section data-id="c50633a40074a341ca5ec4a2a673774e">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-0d6bc8" data-block-id="d30c6c71e4323b7134db4b77b9f4edff" style="width: 664.344px; height: 355.424px; left: 147.828px; top: 76.288px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="600" data-natural-height="321" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/5ddf2edcaabd434fa2b357fb76127b7f.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-ae2222" data-block-id="c9b5fe91bc6cadb58f89ca0e6b2f3be7" style="height: auto; width: 960px; left: 0px; top: 444.712px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>firebase like subscriptions to data (see websockets EC SA)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="63ec1a9e3f9f69dc8076edfa4fd9f6d5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What about Websockets for that realtime?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 560px; left: 400px; top: 490px;" data-block-id="86ed9a628a2d98c766b08f5fa25ad05e" data-name="text-eb3334"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>cons:
+	<ul>
+		<li>not so good for complicated data</li>
+		<li>less structured process</li>
+		<li>stateful not horizontally scaleable</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 0px; top: 490px;" data-block-id="718f0c303b2df3604ab0259108c7e20e" data-name="text-17cbae"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>pros:
+	<ul>
+		<li>good for realtime</li>
+		<li>stateful</li>
+		<li>event based</li>
+	</ul>
+	</li>
+</ul>
+</div></div><aside class="notes">* less structured
+* will talk more about it in a later class</aside></section><section data-id="c8815ff57f4f5f66927079a92bc25566"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 157.595px; left: 80px; top: 199.291px;" data-block-id="c1f1480ba230c3e8aa1c03a2b6395977"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">DATA Persistence</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="bfe3d8ef09ad04ebe29b4ce08aa2ded8"><section data-id="f30289c73cd269a9257b554c55512716">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d12f1b" data-block-id="5fdd5bf7aaa84ea26fe7e66500ecba85" style="width: 538.72px; height: 421px; left: 210.64px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="270" data-natural-height="211" alt="warehouse with shelves falling down - storage fail" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/32a6f5fcf27e6a9c64cafbdfd87571dd.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-31aa7f" data-block-id="09d5e1e96c84fef110808cd2837c590a" style="height: auto; width: 836px; left: 62px; top: 578px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>How might we store data in a manageable way that is accessible from any client?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="8f2aac7ecad1d683976bd455778cc000"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Why do we need a server?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* how to store data in a manageable way
+* need to persist data to server
+
+</aside></section><section data-id="a05cc9c23d34deeb47cfc02d02d4d280">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-31aa7f" style="height: auto; width: 335px; left: 27px; top: 202px;" data-block-id="a16837e8668cec809ab1e2f65ed19987"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Need to persist data</li>
+	<li>central storage</li>
+	<li>options:
+	<ul>
+		<li>piles</li>
+		<li>files</li>
+		<li>tables</li>
+		<li>documents</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-643608" data-block-id="f894c05bdd5fcbe5f441c40529e4280f" style="width: 518px; height: 518px; left: 416px; top: 130px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="480" data-natural-height="480" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/754cd84475c691e2f295ae027a2d60bb.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="571c2a7e1d975710c7aac97dbd8195b2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Data Persistence</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* piles, files, tables, documents
+* need this to be remotely accessible
+* need it to be fast
+* structured maybe?
+* need to be able to query
+* ask specific questions
+* btw piles are a real thing - double ended priority queues - added to either end, if needs middle then new pile is started.
+</aside></section></section><section class="stack" data-id="69e711b48390c4946df63c4a25f3be04"><section data-id="f5c0b894551318242b3a0cb9de29cfd3">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-31aa7f" style="height: auto; width: 960px; left: 0px; top: 458.846px;" data-block-id="92a59c6c14a967161498dd8ecdde110b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>a process that runs on server (or dev machine)</li>
+	<li>code connects to database via library</li>
+	<li>queries are code -&gt; fetch or change data</li>
+	<li>⚠️ not designed for direct connections from web client code</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-20208c" data-block-id="82f5b99b2a37a20e35b65e122c81d83a" style="width: 454.087px; height: 255.197px; left: 252.957px; top: 131.401px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="281" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/2364766901d443bee06bf03974874364.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="971b5472dbcb80a16efb5e1004f7266e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Database Systems</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* are a process typically that runs on some machine
+* queries to ask the system specific questions
+* server talks to database not client
+* let's talk briefly about some options so you can choose db systems that fit your need
+</aside></section><section data-id="0bb796611db88ecc52cd888a68c38420">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-31aa7f" style="height: auto; width: 346.074px; left: 0px; top: 156px;" data-block-id="18b7dc22a03ec225ef6392846889917e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>series of tables
+	<ul>
+		<li>rows and columns</li>
+	</ul>
+	</li>
+	<li>connected by relations</li>
+	<li>columns are typed:
+	<ul>
+		<li>string, int, etc</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-6bac43" data-block-id="bff3d5ea3c436dc257889fdd7bce33be" style="width: 613.926px; height: 518px; left: 346.074px; top: 124px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="448" data-natural-height="378" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/0017e80a3f0e895e75b7f2a04ff62768.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="59ee4dda0c8eb562e0104fa68f71ca90"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Relational Database</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* excel pivot table
+</aside></section><section data-id="3a568f0f020196557dcc867c8b0d288f">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-31aa7f" style="height: auto; width: 414.074px; left: 0px; top: 206px;" data-block-id="7a74b25d480a8459fa5c4e82c4c9eafc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Relational DataBase Management Systems:
+	<ul>
+		<li>replication</li>
+		<li>fault tolerance</li>
+		<li>complex queries and optimizations</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-53ab8c" data-block-id="c1ea839ba34bc154f2d9ff25316a225c" style="width: 522.566px; height: 403.071px; left: 437.434px; top: 197.464px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="293" data-natural-height="226" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/5563c0859a2001c33cad2dfaf81b1f9b.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="8dde739b66d9563aefd054cb55b13c9c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">RDBMS</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="e677c71810ba576ba27f9c140b40540b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-833600" data-block-id="afffb96cf7cf86b9a487b0bd4a457fe4" style="width: 438.262px; height: 449px; left: 500.869px; top: 236px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="653" data-natural-height="669" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/89798aa8ab32d49605f6a062ef5585a6.gif"></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-b3e89e" data-block-id="2a5d572f347edf5b9d211db20f45f4bb" style="width: 589.4px; height: 331.538px; left: 25.3px; top: 114.231px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1920" data-natural-height="1080" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/dd9e8faf2a4f11a70f36973228fb7b10.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="5bce24f0a6305b188e0430a47f295f0a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is ACID?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* atomicity:  each transaction is all or nothing. (if a step in the process fails for whatever reason the whole thing doesn't happen)
+* consistency:  valid states of database by some rules. (non-negative inventory)
+* isolation:  steps in transactions don't affect other transactions. (can't interleave transaction components).
+* durability:  committed data never lost
+* also this is vitamin c
+</aside></section><section data-id="578831353917c9c78cb921423414735a">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-6a5813" data-block-id="85bea5fa11de5617facef6d6d7c0e1c4" style="width: 467.4px; height: 262.913px; left: 237.3px; top: 393.519px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1280" data-natural-height="720" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/c6f2ba0a6189ceec4e8212396275e028.jpg"></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-ac3d34" data-block-id="aedc187886d5343f1de48d75088e3e2a" style="height: auto; width: 462px; left: 9px; top: 158px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>description of the structure of the database</li>
+	<li>tables, columns and types</li>
+	<li>any additional constraints</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-c43c6e" data-block-id="37dd0448e1080c52e0e34af7febaa7d1" style="width: 500px; height: 203px; left: 460px; top: 147px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">{
+    id: Number,
+    name: String,
+    email: String,
+    birthday: Date,
+    comments: [ID]
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="15cb4f8e503276b15778bf5c54ea23b4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">The Concept of a SCHEMA</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* describes the structure of the db
+* this image is of a mental schema not a database schema. some cognition theories think our brain stores objects with schemas for recognition
+</aside></section><section data-id="715f4c381f28c80a75aeb24ed824d23e">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-ac3d34" style="height: auto; width: 462px; left: 53px; top: 456.5px;" data-block-id="bc0b8505d44a943683a1ca3e9dd01136"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><span style="color:rgb(58, 62, 64); text-align:left">Structured Query Language</span></li>
+	<li>relational algebra</li>
+	<li>complex queries</li>
+	<li>table joins</li>
+	<li>transactions</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-c43c6e" style="width: 617.22px; height: 263px; left: 171.39px; top: 125.5px;" data-block-id="b00ca38debf2345b97b92828f5f3f0a0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="python"><code data-line-numbers="">connection_string = ('SERVER=localhost;','DATABASE=mydb;')
+connection = pyodbc.connect(connection_string)
+cursor = connection.cursor()
+
+cmd = 'select * from tbl where name={name}'.format(name)
+cursor.execute(cmd)
+
+for result in cursor.fetchAll():
+   print(result)
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-ef1f36" data-block-id="bc8dc39f1ffe752712284a0685ce4501" style="width: 296.22px; height: 164.896px; left: 604.78px; top: 471.552px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="600" data-natural-height="334" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/343a00015ec3e0d1b357a31f444c1700.gif"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="765ea514912eafae7fb0635e65350dc3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">SQL</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* language to describe questions / operations to perform on the DB
+* database runs on server or you local machine!
+* query is in code that talks to server, not HTTP
+* this is server side, you would not connect to database directly from the web
+</aside></section><section data-id="3bb4a36ae4ac47aad4caa654ee6b5dbc">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-c203e1" data-block-id="a9c192ca1c6f172ef26a9916f3c657e4" style="width: 806.4px; height: 216.799px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1406" data-natural-height="378" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/1497b3d56b5a0dee1d9c64c7c9f3f764.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-dfab42" data-block-id="028e52728547130ffb6c37f424abc6d8" style="width: 485.424px; height: 52.9319px; left: 237.288px; top: 350px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="752" data-natural-height="82" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/3d1c99c7a1329f0f4b259699ac970126.png"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-9e92f0" data-block-id="830e66297de9102ce2417fdab499b36c" style="width: 500px; height: 202px; left: 240px; top: 452px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="sql" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">SELECT *
+FROM Employee
+JOIN Dept
+ON Employee.DeptName=dept.DeptName;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-e29b20" data-block-id="972691179e6f063b2bde24a75a78eaa7" style="height: auto; width: 822.4px; left: 73.6px; top: 90.701px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>set operations — unions, intersections, joins</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="7f2f1fda5839334a1373be88857e42d5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Relational Algebra</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* set operations, unions, intersections etc
+* right out join, left inner join
+* won't be needing this in this class
+* **natural join - all columns are kept from both but only where matching key**
+* btw - when i first proposed this course had a full week on databases and curriculum committee laughed
+</aside></section><section data-id="2583389d7e2f08fb9a06d5692934985c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d23948" data-block-id="eb613eb619936aca7efc506a92cbaf8e" style="width: 725.569px; height: 513px; left: 117.216px; top: 117px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1024" data-natural-height="724" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/61b790df23471ab252a261ee62c24c06.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="7e05fc46768503f4353d94c15841c563"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Joins</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* left/right: keeping rows of one side even if don't have matching keys in other for instance
+* generally full join or inner join are useful
+* oof
+</aside></section><section data-id="5a8224e35e53d755618818df096ebb9e">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-192414" data-block-id="698cf74912dd11703236a8b3abaaaacf" style="height: auto; width: 933px; left: 13.5px; top: 312px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>scan through rows if not keys (inefficient!)</li>
+	<li>lookup result from index instead</li>
+	<li>index maps:
+	<ul>
+		<li>value as hashkey to row</li>
+		<li>ideal lookup table <span><span class="katex" style="font-size:1.21em"><span class="katex-mathml">O(1)</span><span class="katex-html"><span class="base textstyle uncramped"><span class="mathit mord">O</span><span class="mopen">(</span><span class="mathrm mord">1</span><span class="mclose">)</span></span></span></span></span>
+</li>
+	</ul>
+	</li>
+	<li>
+<strong>primary key</strong>: unique row ID</li>
+	<li>
+<strong>secondary keys</strong>: other columns</li>
+	<li>
+<strong>foreign keys</strong>: refer to unique ids of other tables</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-5e7a95" data-block-id="ab1f73c68f207908a6dd4d15aa9427e7" style="width: 500px; height: 122px; left: 230px; top: 140px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="sql" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">SELECT * FROM Users WHERE id = 2
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="515bdf249ee7d51d71b1b481008475b1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Keys and Indexes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* cranking through rows is slow
+* hashmap
+* secondary keys *can* be set on other columns
+* foreign keys are for relationship lookups
+* each row/object has at least 1 unique identifier
+</aside></section></section><section class="stack" data-id="b69993d74466b98a47757c6f3d6ee204"><section data-id="a2b7aaeb7c974923e792bd66867dc44b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-dffea7" data-block-id="92123979ae552b70d8ecfbd41ada9e4e" style="width: 357.636px; height: 517.999px; left: 541.182px; top: 119.001px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="281" data-natural-height="407" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/b26da8aaa3028a32e54bfdb1f20dc407.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-e1dfe6" data-block-id="a88b557c6fb6ad62a534d6dbc2abfee8" style="height: auto; width: 463px; left: 17px; top: 119.001px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>but we're programmers, we just want objects everywhere.</li>
+	<li>don't care about columns and such.</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="afb5c1aa397e54a6b3186c149fdec90a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Objects VS Tables</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 464.382px; height: 233.488px; left: 32.1633px; top: 326.512px; min-width: 1px; min-height: 1px;" data-name="image-021068" data-block-id="9f0cc14b058dbc687eef911c496e1aa9"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="537" data-natural-height="270" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/41bd910a0eb72d10bc26bd3fe74f11c8.png"></div></div><aside class="notes">* cat object, has property claws and allergens</aside></section><section data-id="bccc26f2fe84bf72edc829d667171ad2">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-87eb00" data-block-id="6d08b18cf4602962a0f8b68ed0b7bbd1" style="width: 607.667px; height: 281.309px; left: 179.366px; top: 93.3455px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1214" data-natural-height="562" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/dd6c3794bfb60f7795173c77830806c8.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-2b2495" data-block-id="0f94ccee371797856528e1dbabcd75c9" style="height: auto; width: 600px; left: 183.2px; top: 420px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>Object Relational Mapping
+	<ul>
+		<li>Objects map to database records</li>
+		<li>A class for each table</li>
+		<li>Objects of class are rows</li>
+		<li>Attributes are columns</li>
+	</ul>
+	</li>
+	<li><strong>the less sql the better</strong></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="94411502af6c90415dc5a7dffc7c33da"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">In practice, use an ORM</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* dealing with SQL syntax is hard and UNSAFE
+* we can add abstraction layer!
+* we like objects better
+* also provides sanitization
+
+</aside></section><section data-id="95d020ccad30faaf45690e25a524866c"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: -109.112px; height: auto;" data-name="text-4ad971" data-block-id="9ce9fc49d7d08a92577d74356740e4ce"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Objects Queries vs SQL</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-2b2495" style="height: auto; width: 860px; left: 50px; top: 490px;" data-block-id="0ce10605a93a0e15a8676af338632107"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><span style="color:rgb(58, 62, 64); text-align:left">what if?</span></li>
+	<li><span style="color:#4757ff">name = '; update User set role="admin" where name="tim"'</span></li>
+	<li>sql injection for lunch anyone?</li>
+	<li>ORM greatly improves dealing with SQL</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-1af948" data-block-id="527bfefffbb4adf18d072272c453d48f" style="width: 684px; height: 145px; left: 160px; top: 111px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="sql" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">cmd = 'select * from User where name={name}'.format(name)
+cursor.execute(cmd)
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-ffd85a" data-block-id="fd5e0824712832849d2232d95673d096" style="width: 500px; height: 106px; left: 160px; top: 329px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 13;"><pre class="sql" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">User.find({name})
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-f65a27" data-block-id="3786dd07d0cb3f2fedbab236f1fa3533" style="height: auto; width: 600px; left: 180px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>vs</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="6a7acc602f1f9212131f82353d33c6d9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 15;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Object Queries VS SQL</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* ORM's greatly simplified dealing with sql
+* ActiveRecord was Ruby On Rails big win
+* what if we just stored objects in the database like we want
+* make live easier for developers
+* AND more secure
+* ; ends line
+</aside></section><section data-id="213b724523790b0a8fa32da0d5f43bc0"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: -110.352px; height: auto;" data-name="text-4ad971" data-block-id="5f77f37012e80ad79b5b27f314fd5bd4"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Little Bobby Tables</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-e81d6f" data-block-id="c1e2876f17ed913e25674039b5dab939" style="width: 960px; height: 295.495px; left: 0.0005px; top: 202.252px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="666" data-natural-height="205" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/1c452c5c8fbf8c2348357d14793847e1.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="276ed3e1d048e5d61e46fafbcd556bbe"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Little Bobby Tables</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="2005b2adafb8e8d34adc548cc81e0773"><section data-id="3a9345eda01e17a01f0a23a3e42b0d10">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-151587" data-block-id="ce58cb8adfc9ed22660ef419a2f715d8" style="height: auto; width: 815px; left: 80px; top: 151.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>what if we just stored objects / documents directly?!</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-78d640" data-block-id="3435b57d7e7a9505492470ac62570172" style="width: 451.411px; height: 360px; left: 254.295px; top: 240px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="400" data-natural-height="319" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/2d4478645b705076634f48a36a3c5238.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="7c07e54a11a5e3dc4d64e40d23a960eb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">NoSQL</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* people were like: let's start an SQL haters club! 
+* let's store objects directly, sure we can do that!</aside></section><section data-id="51bf34406f0752dcbceb04266b422f56">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-151587" style="height: auto; width: 815px; left: 80px; top: 140px;" data-block-id="b10466560d94fe578cffa01ae869281f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>key:value stores</li>
+	<li>graphs</li>
+	<li>documents</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-c965b7" data-block-id="3576f632367535f82837ffccce89d9dc" style="width: 806.4px; height: 386.355px; left: 84.3px; top: 296.822px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1125" data-natural-height="539" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/826ab290aa53a4c7437605d21aea0df8.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="06872b2bcd4c0f3102573db55c38900f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">NoSQL</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 289.327px; height: 148.28px; left: 66.3px; top: 264.72px; min-width: 1px; min-height: 1px;" data-name="image-5ebec8" data-block-id="a5009aad2e450015c121172a5b8e076f"><div class="sl-block-content plain" style="z-index: 13;"><img style="" data-natural-width="1200" data-natural-height="615" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/20cef9dd82bfeab0ff6fdd7a72a85fe1.png"></div></div><aside class="notes">* different pros and cons
+* documents are what we are going to be talking about
+* mongodb
+* no sql vs not only sql
+* some are specialized storage for different purposes
+</aside></section><section data-id="0467058175374c49dd3b85be76ba0343">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-151587" style="height: auto; width: 815px; left: 72.5px; top: 385px;" data-block-id="2bf37ee6b76161cfa0f6d786c76313dd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>Data model:
+	<ul>
+		<li>collections of documents (JSON)</li>
+	</ul>
+	</li>
+	<li>expressive query language</li>
+	<li>supports indexes</li>
+	<li>scalability</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-7ffc9a" data-block-id="0e4398d7b30fc6d4a57d582eac8500ed" style="width: 506.4px; height: 219.44px; left: 226.8px; top: 122.005px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="300" data-natural-height="130" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/301d8301e8b3ad9c3ee342f1dbb7ba4f.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="934ce133ac797cf1fcf7025322db1cad"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">MongoDB</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* mongodb has supporters and haters
+* largely just need to understand limitations
+* and use appropriately
+* when first came out people misused and misunderstood leading to data loss and hate
+* story of tassel used postgres for 2 terms but this term rewrote entire backend back to mongo in 2 weeks
+</aside></section><section data-id="090a5c4ef4ebb9526bf2eeecf9049888">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d9927b" data-block-id="0b217701e6154d99dbbf98df16d90561" style="width: 424.651px; height: 462px; left: 267.675px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1660" data-natural-height="1806" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/d8df9bd839a69bedbc8cb00d4be85a3f.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-704aa1" data-block-id="4aa1de684129c95b356fbf7069ff2dd0" style="height: auto; width: 600px; left: 180px; top: 584.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>isn't ACID</li>
+	<li>but sometimes that isn't what you need</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="0e93fdc710c6a473be94fca321d9b035"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">MongoDB</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* more coolaid - mongo is cool
+* sure it doesn't provide as many guarantees, but you may not need them
+</aside></section><section data-id="c677ef0fd4a3b0b4b0f2d8a0a6b1fac6"><div class="sl-block" data-block-type="text" style="width: 960px; left: 12.3991px; top: -130.191px; height: auto;" data-name="text-4ad971" data-block-id="523c5cb871ce625c8cceacf2eb294fa5"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Stores: Freeform JSON</h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-704aa1" style="height: auto; width: 876px; left: 42px; top: 566.5px;" data-block-id="3df90f2f5d20f88fed88b698f2eb1d23"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>with great flexibility comes great responsibility</li>
+	<li>unstructured data up to dev to enforce structure</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-7c92a3" data-block-id="4dccccf21ef73773289371c6b0d2f799" style="width: 398.551px; height: 275px; left: 280.724px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="500" data-natural-height="345" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/07b38b871f7ca3e3e3393314b6d6eb5b.gif"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-fe800c" data-block-id="dec951478e448d619c7985e4a5edb545" style="width: 960px; height: 154px; left: 0px; top: 386px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 13;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">users = [
+  {id:1, name: 'Captain Marvel', posts: [3,4]},
+  {id:2, full_name: 'Jeannie Leavitt', callsign: 'Tally', posts: [1,2], birthday: '1967', },
+]
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="772ba748ed3b1aaa73e539484d95cea7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Stores Freeform JSON</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* up to you to make it work
+* background jobs etc
+* make sure to rollback if a chain of queries fails
+* does this look a bit familiar to realtime firestore
+</aside></section><section data-id="be986b350bcb3c9d2eb543926911de31">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-704aa1" style="height: auto; width: 390px; left: 0px; top: 451px;" data-block-id="294d14bc55feec14f3a6ac2f335c0f8f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">ACID vs BASE</span>
+	<ul>
+		<li>
+<strong>B</strong>asically: <strong>A</strong>vailable,</li>
+		<li>
+<strong>S</strong>calable,</li>
+		<li>
+<strong>E</strong>ventually Consistent</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-6bc460" data-block-id="f5d67275961829f84c4c45a8afe4755b" style="width: 368.652px; height: 336px; left: 295.674px; top: 84px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="350" data-natural-height="319" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/a7eec3e7530afe20e2493981ee48965e.gif"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 494px; left: 458px; top: 451px;" data-block-id="76ba6acf70cb6b9970a10596299c65ea" data-name="text-e216fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<ul>
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">NOSQL != ACID</span>
+	<ul>
+		<li>programmer managed</li>
+		<li>transactions more complicated</li>
+		<li>data duplication</li>
+		<li>eventual consistency</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="6117f33430606ad42317654b7e5415f5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">NoSQL Need To Know</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* newish support for packaging up transactions
+* different use case
+* basically available: **availability more important than consistency**
+* scalable:  fast and simple
+* eventually consistent:  duplicate data ok, no complex ops like joins
+* acid:
+  * atomicity
+  * consistency
+  * isolation
+  * durability
+</aside></section><section data-id="c701d9d8db9aedf1867cf150052d73f2">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-dede16" data-block-id="616e143eb59a1ab644bc09f209957b14" style="width: 500px; height: 331px; left: 210px; top: 125px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">post: {
+  PostID,
+  FullName, //duplicated
+  AuthorID,
+  Title,
+  Content,
+}
+author: {
+  AuthorID,
+  FullName,
+  Email,
+  Birthday,
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-990860" data-block-id="3b8a018840284f074b1610cf7e2c6433" style="height: auto; width: 600px; left: 180px; top: 511.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>if you update author, how to handle post?
+	<ul>
+		<li>no transactions</li>
+		<li>background job</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="ccea84fabd82d5b785aa10956395f29e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">eventually consistent</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* data eventual consistency
+* but also across servers sometimes
+* facebook example, cassandra as store
+</aside></section><section data-id="2cfef528936a702b44549355673503ab">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-990860" style="height: auto; width: 926px; left: 27px; top: 489.956px;" data-block-id="0feb9532fcb94daf6cd33d027c5a2b76"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>what if we wanted help with schema enforcement?
+	<ul>
+		<li>
+<strong>O</strong>bject <strong>D</strong>efinition <strong>M</strong>odel</li>
+		<li>You thought documents were already friendly?</li>
+		<li>But need a bit of tooling to keep us safe</li>
+		<li>Prisma or Mongoose</li>
+	</ul>
+	</li>
+</ul></div></div>
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="4ff8a48557ab3efad3747d59e37d39ef"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Object Definition/Relational Model</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="video" data-name="video-0d84cf" data-block-id="4176d53b7ff66dc1fe3e63c9eb855211" style="min-width: 30px; min-height: 30px; width: 640px; height: 333.913px; left: 181.389px; top: 113.043px;"><div class="sl-block-content" style="z-index: 12;"><video playsinline="" data-paused-by-reveal="" data-autoplay="" muted="" loop="loop" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/609fad134bb213d9533aeae718fe4410.avif"></video></div></div><aside class="notes">* we had ORM's for sql is that a thing?
+* just another tool
+</aside></section><section data-id="ee0fe617d7d67e53259a4ce848611093" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-990860" style="height: auto; width: 926px; left: 26px; top: 455px;" data-block-id="ecefbba2e82df8b135c83f00a2472f96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">Types:</span>
+	<ul>
+		<li>String, Int, Date, Boolean, etc</li>
+		<li>Array: []</li>
+		<li>references to other documents (relation)</li>
+	</ul>
+	</li>
+	<li>Relations</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-3d7969" data-block-id="67ec53c45450b97941990a3beb5244de" style="width: 765.22px; height: auto; left: 97.39px; top: 80px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">model User {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String?
+  role      Role     @default(USER)
+  posts     Post[]
+}
+
+
+model Post {
+  title       String
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String     @db.ObjectId
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="5fb0c3e086c11842cf9c5702dade6caa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Prisma Schema</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* schema defines the documents in a collection
+</aside></section><section data-id="dfff5db90e1eb3226ff78a695af9a84c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-990860" style="height: auto; width: 926px; left: 17px; top: 490px;" data-block-id="7bb31c579c7fccbac5f75021c027460a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">Types:</span>
+	<ul>
+		<li>String, Int, Date, Boolean, etc</li>
+		<li>Array: []</li>
+		<li>references to other documents (relation)</li>
+	</ul>
+	</li>
+	<li>Relations</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-3d7969" style="width: 765.22px; height: auto; left: 97.39px; top: 80px;" data-block-id="07cfd8fbe8b51efe352f5e6c4f5d0ad4"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">import mongoose, { Schema } from 'mongoose';
+
+export const SubmissionSchema = new Schema({
+  roomId: { type: Schema.Types.ObjectId, ref: 'Room' },
+  player: { type: String, required: true },
+  response: { type: String, required: true },
+  questionNumber: { type: Number, required: true },
+  correct: { type: Boolean, required: true },
+}, {
+  timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+});
+
+const SubmissionModel = mongoose.model('Submission', SubmissionSchema);
+
+export default SubmissionModel;</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="31962b031f8763e15158416312e18fe7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Mongoose Schema</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="4141b57e5e6652fb6d6d8fa550bb5d07">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-3d7969" style="width: 671px; height: 281.622px; left: 144.5px; top: 114.189px;" data-block-id="1b70c3215e584abf557671ece240d2af"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">var User = new Schema({
+    name: { type: String, index: true }
+})
+
+//unique value
+var User = new Schema({
+    name: { type: String, index: { unique: true } }
+})
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-12b17f" data-block-id="1c4f397e814cb71ed393fb228f0c8d8b" style="height: auto; width: 800px; left: 80px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>&nbsp;secondary indexes can be specified.</li>
+	<li>still need to define which fields to index on if you want that sweet lookup time</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="97a192d27f1d19e5261fc446c0c97a95"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Still need indexing</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* secondary indexes
+* some data rules
+* virtual fields (computed)
+</aside></section><section data-id="736b9f93b8f1afa9ccf4a6ae82702707">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-12b17f" style="height: auto; width: 960px; left: 0px; top: 397px;" data-block-id="35d99d9edf9ad6c21d457cc7ce902108"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li>pros
+	<ul>
+		<li>faster queries</li>
+		<li>no scanning</li>
+	</ul>
+	</li>
+	<li>cons:
+	<ul>
+		<li>mutating ops like update, add, delete slightly slower</li>
+		<li>storage space (need to fit into RAM)</li>
+	</ul>
+	</li>
+	<li>use indexes for common queries</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-584619" data-block-id="193d1688c1d371e87da8ddc42c1f8feb" style="width: 448.703px; height: 319px; left: 255.648px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="512" data-natural-height="364" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/c668e3b3638a9dc57f413cc46e637502.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="99ecbd5150d78e5db86ddd9215c01f0b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Still need indexing</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="52b93f4f7217ce4378704aa2522956e7" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-47cb80" data-block-id="dd0ef0771990d109bd20896174fd197a" style="width: 960px; height: auto; left: 0px; top: 82.5697px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">const user = await prisma.user.create({
+  data: {
+    email: 'elsa@prisma.io',
+    name: 'Elsa Prisma',
+  },
+})
+
+const user = await prisma.user.findUnique({
+  where: {
+    email: 'emma@prisma.io',
+  }
+})
+
+const updateUser = await prisma.user.update({
+  where: {
+    email: 'viola@prisma.io',
+  },
+  data: {
+    name: 'Viola the Magnificent',
+  },
+})
+
+const deleteUser = await prisma.user.delete({
+  where: {
+    email: 'bert@prisma.io',
+  },
+})</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="d75c8e049d912a5a84fe4c9b03d48386"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">model operations</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="3a4da6948540b6b79b8e9a2be024ed43">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-47cb80" style="width: 960px; height: auto; left: 0px; top: 151.649px;" data-block-id="e67fe6b4d23d614b7d86fef9d6f3f1db"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 18px; line-height: 22px; tab-size: 4;"><code data-line-numbers="">const user = new User({
+  email: 'elsa@prisma.io',
+  name: 'Elsa Prisma',
+});
+
+await user.save();
+
+
+
+const user = await User.findOne({ email: 'emma@prisma.io' });
+
+
+
+const updateUser = await User.findOneAndUpdate(
+  { email: 'viola@prisma.io' },
+  { name: 'Viola the Magnificent' },
+  { new: true } // Returns the updated document
+);
+
+
+
+const deleteUser = await User.findOneAndDelete({ email: 'bert@prisma.io' });</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="fdd419ae3cc7246e4cc5e792de403f8c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">model operations</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="ec5a430a55242f4aeed90fb35d8c70be"><section data-id="4a037b4776cce29d1c840525aff0d771">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="6d14e033a3718fdc0eb18f08922a9856"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Building a REST API for Kahoots</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+
+<div class="sl-block" data-block-type="code" style="width: 857px; height: 316.444px; left: 51.5px; top: 375px;" data-name="code-a4a9a5" data-block-id="e85946793ecdcd7e910d365454b74e28"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="python" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">{
+	"roomId": "6273cba034b548dbf8cd19bb",
+	"status": "in progress",
+	"numSubmissions": 1,
+	"yourRank": 1,
+	"top3": [
+		[
+			"Tim",
+		]
+	],
+	"currentQuestionNumber": 1,
+	"currentQuestion": "Best class you've ever had?"
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="width: 635.168px; height: 259.66px; left: 165.615px; top: 90.34px; min-width: 1px; min-height: 1px;" data-name="image-ffc6cc" data-block-id="d54d8029408636f8f9cd4cd5f7381369"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1590" data-natural-height="650" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/73b12fbdfffbeb1532d42250e54742d9.png"></div></div><aside class="notes">* game state</aside></section><section data-id="0b7fa3ae1f3aa11352c390e93d95affb">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="dd130ec77911fd0d48b30db6e55a92c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Building a REST API for Kahoots</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 108px;" data-name="text-f80421" data-block-id="e4e9697e7c5f7647a876b2bdafab64ea"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ol>
+	<li>admin creates some questions and answer options</li>
+	<li>players gets room info and available question</li>
+	<li>players answer question</li>
+	<li>system allows next question once all players have submitted answers</li>
+	<li>repeat</li>
+	<li>get score</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 857px; height: 185px; left: 51.5px; top: 445px;" data-name="code-a4a9a5" data-block-id="caa25432c16b27e816fed9682139aeeb"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="python" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">curl --request POST 'http://localhost:9090/rooms/%YOUR_ROOM_ID%' \
+--header 'Content-Type: application/json' \
+--data '{
+    "player": "Player 2",
+    "response": "42"
+}'</code></pre></div></div><aside class="notes">* slightly simplified structure - but pretty full featured</aside></section></section><section class="stack" data-id="88ae9f8293f297c153ef7756d68abcc4"><section data-id="8866c1909c2ae4ac4758bfbf4a3daf06">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e621ea" data-block-id="2ddf1ac970f62474118607c70029a508" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://expressjs.com/" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="30052558f98a77ecdc9f38f2d5cd46e4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">express.js</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* express is a 3rd gen server side framework
+* flexible - is in javascript so we don't need to learn another language for this</aside></section><section data-id="97f9305a35bb2e7f6b496698d35ddf46">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-1e2694" style="height: auto; width: 960px; left: 0px; top: 505px;" data-block-id="3e7fe5b6cb391bbb4e27e492f0fe9a08"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+	<li><span style="color:rgb(58, 62, 64); text-align:left">server compute hosting</span></li>
+	<li>small virtual machines (containers)</li>
+	<li>dynos == processes</li>
+	<li>git push and it is all deployed for you</li>
+	<li>provides computation - not ideal for static file hosting</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 665.394px; height: 403.722px; left: 134.606px; top: 78.139px; min-width: 1px; min-height: 1px;" data-name="image-2e88be" data-block-id="ddf83dd7212f32b72ca38ce8ec79578f"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="2225" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/277c1e032f9bf8911bf45aaddc4f15c5.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="928c8e729519e02b7a1d9d868eed6ab1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">powered by render.com</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we can't use netlify for this as it is primarily for hosting static files - you push and it builds your site package and hosts the files - it does not run code on servers (well it has some support for lambda function - functions in the cloud - but we won't be using those for now
+* we need server that compute something every time you access them. heroku is a platform that does this for us</aside></section></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+<div class="sl-block" data-block-type="text" data-name="text-b1fae7" data-block-id="2628dc76f114d2d7977f343785e158ee" style="height: auto; width: 492.716px; left: 227.284px; top: 216.472px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>server short next</li>
+	<li>labbylablab</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="17f188ac91d0f2a8d7273eeec2cc2af6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next up!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we'll do a short that introduces redux
+* then a lab that builds up on what you've done so far - integrating your react knowledge with redux and making calls to an api</aside></section><section data-id="4146e8a036b0191bdf877298a69e6a7a" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-935777" data-block-id="e798153971040e09e76630310ef7dc84" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codesandbox.io/embed/cs52-react-redux-example-ezknf?fontsize=14&amp;theme=light" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="de3909a64586ed32cb5acb1c20d8be10"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">todo with extra redux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="e9b08981b0bb90d5cc8ae6313d09793a"><section data-id="470d0bf74ebda3535f7fb087071f2673" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="video" data-name="video-37c765" style="width: 903.09px; height: 429.08px; left: 28.455px; top: 174.92px;" data-block-id="f6b71226b4257e01b175a0d0a4fd07e9"><div class="sl-block-content" style="z-index: 10;"><video playsinline="" controls="controls" data-paused-by-reveal="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/videos/1f353ee60eadbe70a7bd73efef1558ae.webm"></video></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="89dc3709235c9b50bfea43533305611a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server-side rendering short</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="d4ba744ffdc7f70c9a99adceaf90e8f8" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-c221e7" data-block-id="a810f6d59d3a89098bbbe0a9e09bf812" style="width: 518.828px; height: 384px; left: 250.525px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1393" data-natural-height="1031" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/af9bc46740b42a167faf241d76a6be21.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-665e9b" data-block-id="6048821035830dadc1ff93fb05d8e0c9" style="height: auto; width: 600px; left: 200px; top: 516px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>build expressjs routes</li>
+	<li>return server side rendered html</li>
+	<li>use mongoDB for data persistence</li>
+	<li>use mongoose for <em>ORM</em>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="8647a82d81cff53ef098a3cd825d5b57"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server-side rendering short</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* if you need a short break from redux and react!
+* build a server side rendered app
+* anyone remember what server rendered is?
+</aside></section><section data-id="d4e5a5b07085239d9e407cdee0cc047a" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-959f2e" data-block-id="36c2bc1d6db706d12418db4d7117fbae" style="width: 851.521px; height: 585px; left: 54.24px; top: 85px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1770" data-natural-height="1216" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/113cf54b44a0b76116d565a8f65eb3ca.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="b68f4bf819c2cb09158024a9d1177cd0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server-side rendering</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* server in this case will generate some views</aside></section><section data-id="75c5a928e7f6a9c8d1d1fd90d036f4b9" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-1e2694" style="height: auto; width: 960px; left: 0px; top: 94.5px;" data-block-id="419553ebb54a7c8401b2c2bcdeabbc2f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>populate some html with database content</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-58888e" data-block-id="c10755167be33c52a45f1ef54204fc8e" style="height: auto; width: 600px; left: 180px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>take in form submissions</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-feaacb" data-block-id="c337ae21b45cbacf1da27079f1490e09" style="height: auto; width: 600px; left: 190px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>listen for ajax post calls and return json</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-d390c0" data-block-id="39723bf791953ac032a2fa74232cb869" style="width: 596px; height: 113px; left: 166px; top: 147.5px;"><div class="sl-block-style" style="z-index: 14; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 14;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code style="padding: 12px;">app.get('/', (req, res) =&gt; {
+  DBContent.find({author: req.params.author}).then((content) =&gt; {
+    res.render('index', { content });
+  })
+});
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" style="width: 704px; height: 113px; left: 138px; top: 339px;" data-block-id="b06d5de7c739d7102554137bb933aa20" data-name="code-ec074a"><div class="sl-block-style" style="z-index: 15; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 15;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code style="padding: 12px;">app.post('/survey', (req, res) =&gt; {
+  DBContent.create({content: req.body.content}).then((result) =&gt; {
+    res.render('thankyou');
+  });
+});
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" style="width: 885px; height: 113px; left: 37.5px; top: 566px;" data-block-id="c98bcd98c7d0f5bface585ae08d7b51a" data-name="code-547655"><div class="sl-block-style" style="z-index: 16; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 16;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code style="padding: 12px;">app.put('/ajaxcall/:id', (req, res) =&gt; {
+  DBContent.findOneAndUpdate({_id: req.params.id}, req.body.fields).then((result) =&gt; {
+    res.json(result);
+  });
+});</code></pre></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="38b948947eaeb9851e89e152ee12b320"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 17;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server side routes with templating</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
