@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intro to Web Frameworks</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section class="stack" data-id="3adb623df8ba0e03e8cd0fb56bce45f6"><section data-id="d4b941823d1c2763d2ed320d46b6d9cb"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 589.487px; left: 0px; top: 55.2565px;" data-name="snippet-3df089" data-block-id="5132a02365701cea65591f43e3091f3f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Web Frameworks Intro</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p style="text-align: left;">What are Web Frameworks?</p>
+
+<p style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 37.5px; font-family: &quot;Open Sans&quot;; color: rgb(34, 34, 34); background-color: rgb(244, 244, 244); text-align: left;">What is a StarterPack?</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="video" data-name="video-5506e2" style="min-width: 30px; min-height: 30px; width: 323.154px; height: 392.401px; left: 572.932px; top: 201.599px;" data-block-id="71749433a0883c1df8ce1a46006551c4"><div class="sl-block-content" style="z-index: 11;"><video playsinline="" controls="controls" data-paused-by-reveal="" muted="" data-autoplay="" loop="loop" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/videos/271a5c0c5e19e6cba98c694e2c289806.webm"></video></div></div><aside class="notes">* what is this startpack thing and why do i want it?
+* the idea is provide some tooling to help with the dev process
+* AND enable us to use react next class
+</aside></section><section data-id="2c2ad668ba682290763ae5099400a4c2">
+<div class="sl-block" data-block-type="image" data-name="image-de6769" data-block-id="95d1ab0e940d6349ff4151d853da9104" style="width: 757.447px; height: 538.559px; left: 93.505px; top: 133.426px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="left: -41px; top: -63px; width: 798px; height: 602px;" data-natural-width="1791" data-natural-height="1350" data-crop-x="0.050819" data-crop-y="0.104651" data-crop-width="0.949181" data-crop-height="0.895349" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/5b09db160868ff0d0df696413c336d29.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a52b9297ae4cdfc298fecbef8c0c80c2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
+  <div class="left">
+     <div class="logo"></div>
+     <div class="title">Where in the stack?</div>
+  </div>
+  <div class="spacer"></div>
+</div></div></div><aside class="notes">adding in some more tooling around a frontend starterpack and a little react!</aside></section></section><section class="stack" data-id="d1f3b4ed713d8aac9a1e16fbca78949d"><section data-id="d8c2c8ac02b0c4abc77e39b965c8a1e7"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="83d0063bc41c12a3d245141f38826ba6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is a web framework, what does it do?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 508px; left: 12px; top: 85.5px;" data-name="text-940e13" data-block-id="b0579e884c593893746db1c408732f0d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<span style="font-size:0.7em"><strong>handle http requests</strong></span>
+	<ul>
+		<li><span style="font-size:0.7em">respond with computed pages</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="font-size:0.7em"><strong>templating</strong></span>
+	<ul>
+		<li><span style="font-size:0.7em">fill in data</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="font-size:0.7em"><strong>url mapping</strong></span>
+	<ul>
+		<li><span style="font-size:0.7em">route /path -&gt; function</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="font-size:0.7em"><strong>database access</strong></span>
+	<ul>
+		<li><span style="font-size:0.7em">content from database</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="font-size:0.7em"><strong>security</strong></span>
+	<ul>
+		<li><span style="font-size:0.7em">handle authorization and authentication</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="font-size:0.7em"><strong>caching</strong></span>
+	<ul>
+		<li><span style="font-size:0.7em">​optimize responses for scale</span></li>
+	</ul>
+	</li>
+	<li><span style="font-size:0.7em"><strong>API data to clients</strong></span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 331.758px; height: 209.043px; left: 618.242px; top: 473.457px; min-width: 1px; min-height: 1px;" data-name="image-99766e" data-block-id="b191651074391306643fd56766511737"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="930" data-natural-height="586" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/f9ef12ba615d6ce899b82e5a1cbf84ea.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 482.667px; height: 362px; left: 467.333px; top: 84px; min-width: 1px; min-height: 1px;" data-name="image-3ae9a3" data-block-id="ca3ec4ead88f4de513ce477e6b21755e"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1400" data-natural-height="1050" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/46cc3532422cc1473cba7ffd60b85658.png"></div></div><aside class="notes">* so right now we've done some coding in some files and those files get shown on the internet
+* but imagine coding up some complex site like a news site this same way?  no way! 
+* you need help. 
+* handle http requests - respond with pages - send actual HTML back - perhaps computed rather than hardcoded
+* templating - provide a way to abstract out design of page from content - fill in data
+* url mapping -  handle many route /path -&gt; functions that generate responses
+* database access - serve content from database
+* security - handle authorization and authentication -&gt; how do we even begin to think about this?
+* caching - optimize responses so they are appropriately cached - refresh when content is changed etc.
+​* API data to clients</aside></section><section data-id="b3e97c6e3776eb02ab7a25a872c64277">
+<div class="sl-block" data-block-type="image" data-name="image-93cf6f" data-block-id="2034a8802112814edf35bce9f78bb699" style="width: 912.133px; height: 599.643px; left: 23.9335px; top: 92.541px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1944" data-natural-height="1278" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/aba69ff769e9414d97f0351559d52ac3.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="f36a12baa8438ffd4ac420c34577cb16"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">model view controller (MVC)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* mvc is common code architecture pattern - specifically for UIs
+* model stores your datas, objects
+* controller operates on the datas, the logic
+* view presents it, webpage
+* can be both frontend and backend
+  * often both!
+  * frontend for managing data objects loaded in browsers
+  * server for database
+  * servers views are JSON api (but very minimal mostly just controller)
+* lots of variants mvvc mcp etc etc, but the core idea is pretty similar. an abstraction to help deal with data, display, functionality 
+
+
+</aside></section><section data-id="7a8426ef53f470be086d6a2abfe02c48">
+<div class="sl-block" data-block-type="image" data-name="image-a1a3b9" data-block-id="364281072a32c668936bf636f1731f0e" style="width: 806.4px; height: 454.262px; left: 76.8px; top: 89.738px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1903" data-natural-height="1072" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/d0ada7b47f9e28c3b9fa73830a8365af.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-5fc395" data-block-id="9d2bfbdc2f973cb8f5be31207882631a" style="height: auto; width: 960px; left: 1px; top: 545px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>all frameworks — end product html/css</li>
+	<li>write html for parts of page that don't change</li>
+	<li>code for dynamic parts</li>
+	<li>execute template to fill in code parts</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="d257bb435f92b1f7dac8ca5d40bf5d53"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">templating for views</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* some frameworks do MVT - with controller as a template
+* code/data
+* benefits of templates
+* designer friendly
+* easy to test
+</aside></section><section data-id="f1979d61782c49ca0c3d1875ae5dd742">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="1b28f375afd94e0ea45112af27832880"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server-side &amp; frontend framework mess!</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 214px; left: 126px; top: 129.75px;" data-name="text-648af9" data-block-id="66e81e31ce9ed80deaff1ae6aca3a254"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; background-color: rgb(252, 160, 160);">
+<p>browser</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 24px; height: 68.8087px; left: 471px; top: 501.459px;" data-name="shape-db8f1e" data-block-id="0f934bd100a6e7383f9b4351f5bc3718"><div class="sl-block-style" style="z-index: 13; transform: rotate(135deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 24 69"><polygon points="12,68.8087 24,34.40435 16.799999999999997,34.40435 16.799999999999997,0 7.199999999999999,0 7.199999999999999,34.40435 0,34.40435 12,68.8087" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 237px; top: 350px;" data-block-id="de1416493f482c4b8236c42f9670672c" data-name="text-cf9d8e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; background-color: rgb(255, 214, 116);">
+<p>url mapping</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 27px; top: 420px;" data-block-id="29905de29eaf705bd73ec609b1f6eb65" data-name="text-7c3ed2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; background-color: rgb(255, 214, 116);">
+<p>view</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 27px; top: 560px;" data-block-id="3f6d09fff63c86bd0789dbe4095c0b97" data-name="text-9a04b1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; background-color: rgb(255, 214, 116);">
+<p>model</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 27px; top: 630px;" data-block-id="d25f5e3846f3e5293d464c8e24cbc494" data-name="text-c0bac1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; background-color: rgb(255, 214, 116);">
+<p>database</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 25.5px; top: 295.5px;" data-name="text-eb04ee" data-block-id="5ae8ab2bc77d62c346b3148b652518de"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>server</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 27px; top: 490px;" data-block-id="0b9ed05b1b47f2185080ccfc945f6d02" data-name="text-4b7b50"><div class="sl-block-style" style="z-index: 19; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; background-color: rgb(255, 214, 116);">
+<p>controller</p>
+</div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 447px; height: 420px; left: 2px; top: 280px;" data-name="shape-08909f" data-block-id="02f9486d96bdccd0708389a12e9cf939"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 10;" data-shape-stroke-color="#01b0fc" data-shape-stroke-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 447 420"><defs><clipPath id="shape-mask-1-1649699525252"><rect width="447" height="420" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#01b0fc" stroke-width="6"></rect></clipPath></defs><rect width="447" height="420" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#01b0fc" stroke-width="6" clip-path="url(#shape-mask-1-1649699525252)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 294px; top: 389px;" data-block-id="cbb582c010dc1fd7f0dcc5dcf2577e44" data-name="shape-742d9d"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 294px; top: 459px;" data-block-id="fc136c46a6ea58329b5adc1fc5179a20" data-name="shape-bfba6b"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 21;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 294px; top: 529px;" data-block-id="bf44225def04b785a008f379afebc84b" data-name="shape-951049"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 22;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 294px; top: 599px;" data-block-id="2e1c2ff628c5db212f65b10e70624d4f" data-name="shape-5b29ff"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 23;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 122px; left: 327px; top: 238.25px;" data-name="text-888165" data-block-id="fa0feee25aae64c1a61bbc2be7ca030a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24;">
+<p>request</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 132px; top: 389px;" data-block-id="914e5e7c9d542aa5bca3a99fe5ecbe96" data-name="shape-499db0"><div class="sl-block-style" style="z-index: 25; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 25;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 132px; top: 459px;" data-block-id="ce216d11b6a0739b95dd8c7b0d1245d4" data-name="shape-d3d7d2"><div class="sl-block-style" style="z-index: 26; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 26;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 132px; top: 529px;" data-block-id="6dc38331b3d1136e5367a146fffa2a60" data-name="shape-a2730d"><div class="sl-block-style" style="z-index: 27; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 27;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 132px; top: 599px;" data-block-id="4f28cbaeee74bf2b1aa641ae1bb4b1a2" data-name="shape-848c97"><div class="sl-block-style" style="z-index: 28; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 28;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 22px; height: 90px; left: 152px; top: 179.25px;" data-block-id="6cc3054467eb5523deae272423ff3872" data-name="shape-7caa7f"><div class="sl-block-style" style="z-index: 29; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 29;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 22 90"><polygon points="11,90 22,45 15.399999999999999,45 15.399999999999999,0 6.6,0 6.6,45 0,45 11,90" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 163px; left: 2px; top: 238.25px;" data-block-id="df7d064df61c6efabb3af8782ceb91c1" data-name="text-09c77c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 30;">
+<p>response</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 27px; top: 350px;" data-block-id="35c2a0246e4c37b8bece9c7df8b3e5a7" data-name="text-a23fba"><div class="sl-block-style" style="z-index: 31; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 31; background-color: rgb(255, 214, 116);">
+<p>templates</p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 748px; top: 280px;" data-block-id="f6ce2993c1be2597b20e6f05a2ee957b" data-name="text-fb39df"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 33; background-color: rgb(116, 202, 255);">
+<p>url mapping</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 538px; top: 350px;" data-block-id="8ecb3a6fa01fe0bc042c02408a1b51a3" data-name="text-99e27f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 34; background-color: rgb(116, 202, 255);">
+<p>view</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 538px; top: 490px;" data-block-id="d71f045445248aa7c511ffe4245e0efe" data-name="text-fea761"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 35; background-color: rgb(116, 202, 255);">
+<p>model</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 538px; top: 560px;" data-block-id="9b14c273f10e918f1b98af6a8a4baea3" data-name="text-d434bb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 36; background-color: rgb(116, 202, 255);">
+<p>api request to server</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 538px; top: 420px;" data-block-id="fa956211f8a4a47949a60cd7151b9a84" data-name="text-52c6bd"><div class="sl-block-style" style="z-index: 37; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 37; background-color: rgb(116, 202, 255);">
+<p>controller</p>
+</div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 447px; height: 420px; left: 513px; top: 210px;" data-block-id="fabe9e9537a0d9551b5b99bb39ea4132" data-name="shape-60c2be"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 32;" data-shape-stroke-color="#01b0fc" data-shape-stroke-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 447 420"><defs><clipPath id="shape-mask-2-1649699888740"><rect width="447" height="420" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#01b0fc" stroke-width="6"></rect></clipPath></defs><rect width="447" height="420" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#01b0fc" stroke-width="6" clip-path="url(#shape-mask-2-1649699888740)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 805px; top: 319px;" data-block-id="bdba3ad59a50596c7e00c6e177704d37" data-name="shape-90ab4e"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 38;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 805px; top: 389px;" data-block-id="a01eb334294c01a688c3c8d36ee9d6d7" data-name="shape-473d90"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 39;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 805px; top: 459px;" data-block-id="3159b928441d4c4c80fbcdf6b728dd92" data-name="shape-73db25"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 40;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 805px; top: 529px;" data-block-id="229b6318facf66b10b700a06092793d0" data-name="shape-f7bb6f"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 41;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 643px; top: 319px;" data-block-id="ddd8adb0cbabb2694c6129904f376ad4" data-name="shape-47632c"><div class="sl-block-style" style="z-index: 42; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 42;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 643px; top: 389px;" data-block-id="ca3b99974cc620e18fe54892d29a96aa" data-name="shape-5c0c56"><div class="sl-block-style" style="z-index: 43; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 43;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 643px; top: 459px;" data-block-id="97b4afe8d67c94bdc5a42c3331dbcdb2" data-name="shape-03a800"><div class="sl-block-style" style="z-index: 44; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 44;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 31px; left: 643px; top: 529px;" data-block-id="afecea98acf603bbe1436ca490764b9f" data-name="shape-52a331"><div class="sl-block-style" style="z-index: 45; transform: rotate(180deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 45;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 26 31"><polygon points="13,31 26,15.5 18.2,15.5 18.2,0 7.8,0 7.8,15.5 0,15.5 13,31" class="shape-element" fill="#000000"></polygon></svg></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 538px; top: 280px;" data-block-id="6ce89257df50226d63d027170691d7b2" data-name="text-aecd4d"><div class="sl-block-style" style="z-index: 46; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 46; background-color: rgb(116, 202, 255);">
+<p>templates</p>
+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 214px; left: 629px; top: 94px;" data-block-id="75249d3326adf2bfecb8ee8180aea66f" data-name="text-c37264"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 47; background-color: rgb(252, 160, 160);">
+<p>browser</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 538px; top: 211.5px;" data-block-id="1e0e8fbfb62a3d462b5dcad7cbab86d8" data-name="text-dfd1fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 48;">
+<p>code in browser</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 24px; height: 63.229px; left: 724px; top: 140.271px;" data-block-id="e03dd7ee9676fbfb559afbbb115f3e56" data-name="shape-b0294b"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 49;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 24 63"><polygon points="12,63.229 24,31.6145 16.799999999999997,31.6145 16.799999999999997,0 7.199999999999999,0 7.199999999999999,31.6145 0,31.6145 12,63.229" class="shape-element" fill="#000000"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 22px; height: 90px; left: 300px; top: 179.25px;" data-block-id="6fb7f96319b4aac506dd1fb72fc09886" data-name="shape-51204e"><div class="sl-block-style" style="z-index: 50; transform: rotate(0deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 50;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 22 90"><polygon points="11,90 22,45 15.399999999999999,45 15.399999999999999,0 6.6,0 6.6,45 0,45 11,90" class="shape-element" fill="#000000"></polygon></svg></div></div></div><aside class="notes">* all the mvc everywhere</aside></section><section data-id="06d67f3c0ed46c58b83a81294c6f721a">
+<div class="sl-block" data-block-type="text" data-name="text-5fc395" style="height: auto; width: 960px; left: 0px; top: 263.641px;" data-block-id="7814afded4609095779c0d85892976da"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>invented in the 70s</li>
+	<li>helps organize architecture</li>
+	<li>modern applications <strong>need more scalability</strong>
+</li>
+	<li>traditional mvc for frontend <strong>can be heavy</strong>
+</li>
+	<li>
+<strong>too much data</strong> loaded, <strong>too many views</strong>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="e170fa6ddf2618b455db1b1078765b4a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">mvc popular but</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we'll keep talking about mvc and using it, more next week!
+* BUT we're also going to talk about some simplifications and scaleability concerns and the react way
+</aside></section><section data-id="371e50d02ee76acbc984ef5c02c735e5">
+<div class="sl-block" data-block-type="image" data-name="image-fb1e34" data-block-id="f63b12c871ed8d54e621e2bc1d28f9ae" style="width: 936.934px; height: 342.762px; left: 10.533px; top: 213.238px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1200" data-natural-height="439" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2a9bb33caec7e27035759062469f5bd9.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="337afb06473c89750e463d6358d2ac75"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">framework timeline</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* timeline of web frameworks
+* you'd think webdev  has been around for a long time, but tooling keeps evolving rapidly
+</aside></section></section><section data-id="003a21b60ebe50ee9b6660aa10b5a3d7"><div class="sl-block" data-block-type="snippet" style="width: 767px; height: 294.743px; left: 96.5px; top: 195.257px;" data-name="snippet-3df089" data-block-id="b4ebacd580389f32aa166206050818c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">A Brief History Of Web Frameworks</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p style="text-align: left;">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+<aside class="notes">i think it is helpful to know the history - if you don't know your past how can you understand the present and invent the future</aside></section><section class="stack" data-id="2857ec1dec787b2e8ab79942c4a94bba"><section data-id="5881d5b1afce1a04451ca6c0ffa7e9dd">
+<div class="sl-block" data-block-type="image" data-name="image-17d5dc" data-block-id="2b80e38c4d72ecca3605f9bcc75e6c87" style="width: 583.029px; height: 269.391px; left: 188.486px; top: 93.7px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="448" data-natural-height="207" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/a55d5436a34bb1bf55fac96c9b50a761.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-d4b873" data-block-id="3514ad5ec757455d3b155574a6590d22" style="height: auto; width: 960px; left: 0px; top: 381px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>web v0: static HTML files only</li>
+	<li>web v1: Common Gateway Interface (CGI)
+	<ul>
+		<li>URLs map to executable programs that return HTML</li>
+		<li>exits after returning page</li>
+		<li>stateless</li>
+		<li>original LAMP stack -- linux+apache+mysql+perl</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-bd934b" data-block-id="971fb11daad1c911665219c21cd2e492" style="width: 500px; height: auto; left: 209.217px; top: 641.849px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="bash" style="font-size: 16px; line-height: 19px;"><code>perl -e 'print "&lt;html&gt;Hello World&lt;/html&gt;"'
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="6b615d42b73850372950d71cb8236bb1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">brief history of frameworks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* cgi not computer-generated imagery
+* frameworks help
+* bash cgi
+* server spits out full display html
+```
+echo "Content-type: text/html"
+echo ""
+echo '&lt;html&gt;'
+```
+</aside></section><section data-id="0754800ad93ee569c536cadabb23476d">
+<div class="sl-block" data-block-type="image" data-name="image-c5466c" data-block-id="320fb4f8b4f970af934a40c63a2e0542" style="width: 334.811px; height: 242.262px; left: 312.595px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="492" data-natural-height="356" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/c404d0ab0e63be2b817705505cdaeec4.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-03ba74" data-block-id="8826f9b62a3941991967144b4ef3ca27" style="height: auto; width: 960px; left: 0px; top: 333.262px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>"Help me generate my html and talk to db!"</strong></li>
+	<li>php, asp.net, java</li>
+	<li>template: mix code and HTML</li>
+	<li>web specific libraries:
+	<ul>
+		<li>url handling</li>
+		<li>html generation</li>
+		<li>sessions</li>
+		<li>database interfaces</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-e944c1" data-block-id="0c34171a4b07ae9389973f8ec6ded7a9" style="width: 500px; height: auto; left: 240px; top: 660.262px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="php" style="font-size: 16px; line-height: 19px;"><code>&lt;?php echo '&lt;h1&gt;Hello World&lt;/h1&gt;'; ?&gt;
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="eddcaeac94e9c675a12c63fd043ffe01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">1st gen serverside web frameworks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* server side rendering
+* basically  utility libraries for formating and generating html
+* language runtime directly in web server (faster)
+</aside></section><section data-id="79b6f5d7d568a913124c5a451388a408">
+<div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 960px; left: 0px; top: 327px;" data-block-id="a2d1403b29aca14e9a78fe76245eedf8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>"We need more abstraction - tell us exactly what to do!"</strong></li>
+	<li>Ruby on Rails, Django</li>
+	<li>Model-View-Controller:
+	<ul>
+		<li>abstracted structure</li>
+	</ul>
+	</li>
+	<li>Object Relational Mapping (ORM):
+	<ul>
+		<li>simplify database use</li>
+		<li>use objects instead of SQL</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-e944c1" style="width: 500px; height: auto; left: 240px; top: 633px;" data-block-id="0ef97cc03b1ae247b6ede0455cf9352a"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 11;" data-code-autoheight="true"><pre class="ruby" style="font-size: 16px; line-height: 19px;"><code>def home
+  @greeting = "howdy"
+end
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a9aa1b" data-block-id="cdafd7564ebbc7f54e2aef52fc8dfdce" style="width: 331.044px; height: 220.696px; left: 314.478px; top: 84.838px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1800" data-natural-height="1200" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/4a8f2587c20a43e9392ed4e55c835270.jpeg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="de14ae36d85252663e7c617877e921d4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">2nd gen serverside web frameworks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* note these all fit in to Server Side Rendering
+* fairly heavyweight and opinionated - do lots of magic for you
+</aside></section><section data-id="def63421e6d2580b1691dcc35f989c81">
+<div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 960px; left: 0px; top: 297.732px;" data-block-id="96418a9ee69f79d1d413b222664e6f34"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>"Too much magic, I want to be in control!"</strong></li>
+	<li>Express, Flask, Sinatra</li>
+	<li>lightweight</li>
+	<li>optional mvc but less rigid</li>
+	<li>module based rather than monolothic
+	<ul>
+		<li>ex: use any templating engine</li>
+	</ul>
+	</li>
+	<li>options vs the one way</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-e944c1" style="width: 500px; height: auto; left: 240px; top: 620.757px;" data-block-id="76bf94f0db1ed85edf2b02ada59bdf16"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 11;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>app.get('/', (req, res) =&gt; {
+  res.send('hi');
+});
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-88e15e" data-block-id="412e18ebeb6d9d0b23806f27fb897f81" style="width: 498.841px; height: 199.88px; left: 230.579px; top: 80.12px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="871" data-natural-height="349" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/568e75bc45c6068fdbb9fd6d367dd4e1.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="036a4538ffc8c4fd456189874f29ec7d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">3rd gen serverside frameworks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we'll use express later in the term
+* somewhat more geared toward api than templating
+</aside></section></section><section class="stack" data-id="08f952b72c4fa7420aa0d8b656262a7b"><section data-id="1e8becbf2b687829b046764941b099e4">
+<div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 770.652px; left: 0px; top: 112.98px;" data-block-id="d9fe9f9bfb192b70bd9553cbba578814"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li><strong>"I want framework on frontend TOO!"</strong></li>
+	<li>Backbone.js, Ember, Angular, etc</li>
+	<li>clientside javascript frameworks, more than jQuery</li>
+	<li>handle dynamic data on frontend</li>
+	<li>templates</li>
+	<li>optional mvc</li>
+	<li>api architecture</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-e944c1" style="width: 555px; height: auto; left: 33px; top: 428.98px;" data-block-id="ae631192895711677c8749593da1ab9a"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>var AppView = Backbone.View.extend({
+  template: _.template("&lt;h3&gt;Hello &lt;%= who %&gt;&lt;/h3&gt;"),
+  render: function(){
+    this.$el.html(this.template({who: 'world!'}));
+  }
+});</code></pre></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-f65bec" data-block-id="528c17e37fa6ff2d83aece29f9672cf7" style="width: 218.563px; height: 286px; left: 610.477px; top: 258px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="left: -217px; top: 0px; width: 436px; height: 286px;" data-natural-width="1000" data-natural-height="656" data-crop-x="0.498681" data-crop-y="0" data-crop-width="0.501319" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/995a79a4206b02a94b9212c78a4cc9fa.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="d485e34be56f743080ec4334b7189854"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">rise of frontend frameworks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* the idea was to provide more interaction and functionality on the clientside, more structure than jquery
+* easier to handle data parsing and display - abstracting out because otherwise a mess of jquery
+* some of these have gone through multiple generations themselves
+* and then there is REACT!   4th gen - but also not fullstack
+
+</aside></section><section data-id="b7c058a0c1335d501ac40d268382a9a2">
+<div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 770.652px; left: 0px; top: 112.98px;" data-block-id="a73e3a09447c75060cc4897ef4c9654b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>Backbone.js
+	<ul>
+		<li>Simple views with some data fields</li>
+	</ul>
+	</li>
+	<li>AngularJS 1, 2
+	<ul>
+		<li>Preferred to add attributes to HTML</li>
+	</ul>
+	</li>
+	<li>Ember
+	<ul>
+		<li>Tried too much</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-e944c1" style="width: 599px; height: auto; left: 67.5px; top: 401.54px;" data-block-id="f05547c8fc1b2413292a20231545a911"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>&lt;body ng-app="simpleApp" ng-controller="SimpleController"&gt;
+    &lt;label&gt;Name:&lt;/label&gt;
+    &lt;input type="text" ng-model="user.name" /&gt;
+    &lt;h3&gt;Hello, {{user.name}}!&lt;/h3&gt;
+
+    &lt;script&gt;
+        angular.module('simpleApp', [])
+          .controller('SimpleController', function($scope) {
+              $scope.user = { name: 'AngularJS User' };
+          });
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-f65bec" style="width: 229.965px; height: 304.121px; left: 685.017px; top: 249.48px; min-width: 1px; min-height: 1px;" data-block-id="372ec0068083ddbb30e730f8ca03703f"><div class="sl-block-content" style="z-index: 12;"><img style="left: 0px; top: 0px; width: 464px; height: 304px;" data-natural-width="1000" data-natural-height="656" data-crop-x="0" data-crop-y="0" data-crop-width="0.496042" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/995a79a4206b02a94b9212c78a4cc9fa.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="9e05cb54d2c3b617f3021ee1e16a0cc3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">rise of frontend frameworks -- more</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="8abd5244a4770f96745f15fd47b4284f">
+<div class="sl-block" data-block-type="image" data-name="image-7ce58f" data-block-id="0fef900d31504fcdff4fcb7ebcf330b5" style="width: 691.557px; height: 518px; left: 134.221px; top: 103px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="259" data-natural-height="194" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/b250f56eeb6538d018452dde1d773f27.jpeg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="acd6068bf1767f93ddaa8c0b1f4027e1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">react!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-57f81a" data-block-id="4cb83b2cc269861776b0e8304097ce37" style="height: auto; width: 686px; left: 134.221px; top: 630px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>evolution leading up to React conceptual model</p></div></div><aside class="notes">* all of this is building up to react -&gt; we'll see how all this comes together later! 
+* react solves a piece of this puzzle but not the full solution
+* react also has influences future frameworks and currently most still build off of it
+* hence why we learn it</aside></section></section><section data-id="10fd660025a477f7ce37da0db19ab61d"><div class="sl-block" data-block-type="snippet" style="width: 783px; height: 155.487px; left: 88.5px; top: 252.256px;" data-name="snippet-3df089" data-block-id="7be307ccf32f4580113bab0c95857e49"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Web Architectures</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p style="text-align: left;">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+</section><section class="stack" data-id="393ca094a14dd34b67f9ef4a4ed12380"><section data-id="d3d12750449aab8174b903c380cd6353">
+<div class="sl-block" data-block-type="image" data-name="image-3544f2" data-block-id="c977f3f510db322f4c43791204097256" style="width: 806.4px; height: 510.518px; left: 76.8px; top: 94.741px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img data-natural-width="665" data-natural-height="421" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/e0ef5700522f1c338b6612ccb5e0b0ec.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0040b383d936b97f1d1821d444ed4504"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">intro to web architectures</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* lots of different ways to structure data flow and processing when structuring a modern web app
+* let's talk about a few of them and we'll keep expanding our map of understanding as we go</aside></section><section data-id="af370a2ae821778722d90258766d3a27">
+<div class="sl-block" data-block-type="image" data-name="image-b049a6" data-block-id="270a94ab608def85c0f48134d24f9f88" style="width: 941.368px; height: 598.272px; left: 9.316px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1756" data-natural-height="1116" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/266ecf2356aa43155a6a0c737dae3a60.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="f66aafad4c58aa1f1bf6c81ce8c82c60"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">web architectures: static sites&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* an overview of different web architectures
+* we'll go over these more in-depth also
+* static sites
+  * just files, transmitted on the network
+  * what we've been doing so far
+</aside></section><section data-id="bc7430f44c7729cf040c86d15a2283aa">
+<div class="sl-block" data-block-type="image" data-name="image-9656b2" data-block-id="5a4eb8cb76a92b2653fc66934d281793" style="width: 845.929px; height: 581.158px; left: 57.036px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1770" data-natural-height="1216" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/113cf54b44a0b76116d565a8f65eb3ca.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="9c5e794fa3a203d93859590984514113"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">web architectures: server side rendered (SSR)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* server side rendering
+  * server is running code
+  * server constructs custom response for every page
+  * uses template and results from database
+</aside></section><section data-id="4297d55a3155fe89283d3b0b84b8acfa">
+<div class="sl-block" data-block-type="image" data-name="image-c3982d" data-block-id="edafa1cb7a3c3b6c44ae2ba288526cb1" style="width: 885.955px; height: 591.941px; left: 37.0225px; top: 101.783px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1811" data-natural-height="1210" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/0d0d7372dbb8bf37e49e371dce5ee89d.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a1ef54f3c30a6b91ed72520701090f40"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">web architectures: SPA</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* single page app
+  * 1 index html file that loads javascript
+  * javascript then handles all content and urls
+  * loads all content asynchronously and inserts into page
+  * DOM manipulation + frontend framework
+  * largely the architecture we'll be using
+* is **more like an application** than a series of pages -&gt; loads app into browser
+* from then on does not reload that page - app runs and gets any further data it needs. no contact.html, blogpost1.html etc
+</aside></section><section data-id="c90aedad308e318ec5ed30af371e4f5b">
+<div class="sl-block" data-block-type="image" data-name="image-35b534" data-block-id="b17c2c72b865becce92138f6fd0b71c3" style="width: 927.854px; height: 576.638px; left: 16.073px; top: 99.4215px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1844" data-natural-height="1146" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/71d6296af743bf00c619d56540ea87b5.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="b849fcf46bf6e3d711a058f673c69e41"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">web architectures: isomorphic</div>
+</div>
+</div>
+</div></div><aside class="notes">* isomorphic app
+  * does both server side rendering
+  * AND javascript client side content fetching and display
+  * this is useful in a few cases where say you want bots to read your page better or for SEO, so we'll learn about it but not have to inmplement it.
+* we'll mostly build single page apps in this class, but there are easy ways to enable this more isomorphic rendering as react can be rendered server side!
+</aside></section></section><section data-id="0fb886e4c991dbd7a950b443b2671949"><div class="sl-block" data-block-type="snippet" style="width: 783px; height: 224.487px; left: 88.5px; top: 252.256px;" data-name="snippet-3df089" data-block-id="58d6755e8324c8a46deb877ea06e4fc1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Serverside Javascript</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p style="text-align: left;">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+</section><section class="stack" data-id="b58cb3f36bb13edbfaece1b57ceecc7e"><section data-id="14cfac498a81ab7ed1dd79068fb1bf5e">
+<div class="sl-block" data-block-type="text" data-name="text-a437d4" data-block-id="dd98131a9447d25142303a1f474ecd26" style="height: auto; width: 781.309px; left: 117.346px; top: 410px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>Why, yes!</li>
+	<li>There exist javascript interpreters that can be executed outside of the browser and can be used to:
+	<ul>
+		<li>build and run commandline interfaces</li>
+		<li>build and run servers that respond to requests that are not necessarily HTML</li>
+	</ul>
+	</li>
+</ul></div></div>
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="b43eaaace64173c1b1e410beb84f4799"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">can we run javascript without a browser?&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-de1961" data-block-id="5ac30001031b8f7a92bf5ea20a135a39" style="width: 525.282px; height: 288px; left: 217.714px; top: 106.838px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="706" data-natural-height="382" data-crop-x="0.007505" data-crop-y="0" data-crop-width="0.986867" data-crop-height="1" style="left: -4px; top: 0px; width: 532px; height: 288px;" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/859cc15cacb372b874948a902183ab79.gif"></div></div><aside class="notes">* we'll be using lots of node later for server side stuff
+</aside></section><section data-id="e3671d20d9943fa4522930c6293ae8d1">
+<div class="sl-block" data-block-type="text" data-name="text-a437d4" style="height: auto; width: 781.309px; left: 0px; top: 280px;" data-block-id="15c07c0641987e89424d7b6b450a0ad4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>Node.js is javascript interpreter without a browser</li>
+	<li>used for server side processing</li>
+	<li>used for desktop js apps like Atom/VSCode</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a8a1b3" style="width: 582.892px; height: 291.446px; left: 188.554px; top: 39.054px; min-width: 1px; min-height: 1px;" data-block-id="18adaef5cb7f47138317662c489909ef"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="600" data-natural-height="300" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/3b58363511a2110a21465a057c29306e.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-e8721c" style="width: 373.333px; height: 280px; left: 586.667px; top: 420px; min-width: 1px; min-height: 1px;" data-block-id="c37a25f16c8c3de30b0b7dbc81b9a50d"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="800" data-natural-height="600" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/bd7bb8933c82218deae321654010100b.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="1092433e00f832a39976440686956fc9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">node.js</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="8f577b593b00e9a3187bb17c8ca2a235">
+<div class="sl-block" data-block-type="image" data-name="image-6df96c" data-block-id="6a1af1fc013ae5d00da1acf51dce2856" style="width: 416.986px; height: 317.743px; left: 271.507px; top: 113.129px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="381" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/308a4c2871b60c5ad81e82fdb3fe1622.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-33ceb7" data-block-id="7aa61e1e7165d261c5ad3297d23e0fc7" style="height: auto; width: 960px; left: 1px; top: 473.566px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>
+<span style="text-align:left">npm</span><span style="color:#3a3e40; text-align:left">&nbsp;is package manager</span>
+	<ul style="color:#3a3e40">
+		<li>downloads javascript modules</li>
+		<li>uses <span style="color:#942323">package.json</span>&nbsp;file to keep track of dependencies</li>
+		<li>can share project with <span style="color:#942323">package.json</span>&nbsp;file</li>
+		<li>must add <span style="color:#942323">node_modules </span>to <span style="color:#942323">.gitignore</span>
+</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="52a858e0f8b93071d1db228878c5f26b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is the node package manager (aka npm)?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* package.json file allows other devs or Heroku to load your project
+* no need to include the giant amounts of dependencies in your actual project git
+</aside></section><section data-id="d9925efed486dd29ea15544e44800479">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="e8653772afd956605a31f25eb2bf0980"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">are there other ways to run server javascript?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-6bb88d" data-block-id="2c9da227b8a2bfc7963e4bad2bed3f96" style="height: auto; width: 560px; left: 33px; top: 90.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>Sure!</p></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-61d704" data-block-id="437dadc02650072e66c9d5eddd01bf42" style="width: 350.659px; height: 197.246px; left: 609.808px; top: 99.6px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1600" data-natural-height="900" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/3c6bd07f99bb003b58211156816b667d.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-1963da" data-block-id="98f4c8e5db4fd0070374f083f117d2a7" style="height: auto; width: 430px; left: 105px; top: 159.223px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p><a href="https://deno.com/" target="_blank">deno</a>: &nbsp; new, secure, all in one node.js replacement</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 430px; left: 105px; top: 472px;" data-block-id="229562d54ef5929ace85cac0ba4a3f2a" data-name="text-28c924"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p><a href="https://bun.sh/" target="_blank">bun</a>: &nbsp; new, secure, all in one, drop-in node.js replacement</p></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-509c63" data-block-id="0f4ea3c76b5a252d1bd35102cc718dfa" style="width: 350.192px; height: 344px; left: 609.808px; top: 356px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 15;"><img class="" data-natural-width="509" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2cb19178bb94bdcaf8975187a1c4fad1.jpg"></div></div></section></section><section data-id="e25b80429131babc9276397e9f54951d"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 367.487px; left: 0px; top: 140px;" data-name="snippet-3df089" data-block-id="8ceadbdf332622137666e328a2af7aac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Event Driven &amp; Asynchronous &nbsp;Programming</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p>(and why javascript)</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+</section><section class="stack" data-id="1b6fd84a0a9ccd6a5bb109841892c7f0"><section data-id="63bffb991d24e2b2f1e8d7f20e125240">
+<div class="sl-block" data-block-type="text" data-name="text-496226" data-block-id="c38075da2019038c286a8b0ad426bbfb" style="height: auto; width: 960px; left: 0px; top: 114.445px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>in many languages such as java, python, ruby, perl, C
+	<ul>
+		<li>when you run input/output (I/O) functions</li>
+		<li>they block</li>
+		<li>the main program has to wait</li>
+		<li>things like waiting for a file</li>
+		<li>or waiting for a network request to finish loading</li>
+	</ul>
+	</li>
+</ul></div></div>
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="8e5748405819e5fb844e2e8fecf08558"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the problem of non-blocking io</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-fc7640" data-block-id="64e81940533b1d96eb2b341895a99b17" style="width: 654.824px; height: 324.007px; left: 131.576px; top: 375.993px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="2500" data-natural-height="1237" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/c0db5abeed9d6a78cf0cde755b75320e.png"></div></div><aside class="notes">* javascript in your browser is basically single-threaded - does one thing at a time
+* but how can that work when you are presenting a user interface where user inputs can come in at any time anywhere? 
+* and how can you make that work fast?
+* non-blocking - majority of functions that take time are asynch
+* nice animations here: https://www.youtube.com/watch?v=wB9tIg209-8 
+</aside></section><section data-id="3b986ce483ba4ea5d424751ce31a68e6">
+<div class="sl-block" data-block-type="text" data-name="text-496226" style="height: auto; width: 960px; left: 0px; top: 114.445px;" data-block-id="997e26b72c954095292c2eec3e094abb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>In your browser:
+	<ul>
+		<li>webpages are constantly making web requests</li>
+		<li>if that blocked the page would freeze</li>
+		<li>why doesn't it?</li>
+	</ul>
+	</li>
+	<li>javascript is non-blocking!
+	<ul>
+		<li>how it do?!</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-58dcc5" style="width: 685.06px; height: 287.003px; left: 137.47px; top: 397.808px; min-width: 1px; min-height: 1px;" data-block-id="89f913066279bba6656f241c1bbeec69"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="2048" data-natural-height="858" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/1ae28f0da272ac0e6f52eea93d7479bc.jpg"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="16bd307a281bb7d89b07fbbc738636c9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the problem of non-blocking io</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="af92e725ae6295702673fb30aceb0d65">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-394a3c" data-block-id="ebdf115844de0d9bc1d30325206fc1a1" style="width: 849.131px; height: 490.529px; left: 55.4345px; top: 139.471px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/6d870399304f95ff9b57a62d54a80f0b?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0f9bfcf3658a22d758f3bd153650a029"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">how would blocking vs non-blocking look like?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* alert is an exception and is blocking - why might it be bad to litter your code with alerts?
+* we set this request to explicitly be synchronous - maybe isn't clear from this example but if it took a long time... the whole page would be frozen
+* can you imagine if other things were blocking - say an image loading - so you couldn't click anything till it finished loading
+* or the network requests that a page makes in the background?  if the page froze every time it had to do anything like fetch more items in a list?
+</aside></section></section><section class="stack" data-id="a0a507b66a03d66226175f5543dbc380"><section data-id="b0baf39f4ef2e47d45441becca9ae4e5">
+<div class="sl-block" data-block-type="image" data-name="image-807e6b" data-block-id="d6854f90cc4e223c344f07218ccc9e32" style="width: 734.689px; height: 509px; left: 112.656px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1530" data-natural-height="1060" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/dd6767d9c89601c4ccbe65793d135591.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-cd545e" data-block-id="7682112a209ee82f97c088575acd735d" style="height: auto; width: 960px; left: 0px; top: 583px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>application flow control driven by events/changes in state</li>
+	<li>central mechanism that listens for events</li>
+	<li>calls callback function once event is detected</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="4ae115cdba187a5cbd7a16629e952a5f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">event driven programming</div>
+
+<div class="title">&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* event driven programming is used when you have inputs that can come at any time - interrupts if you will
+* you may have seen this dealt with as a game while loop - did that happen in 1/10?
+* events trigger changes in state
+* in js there is a built in event loop
+</aside></section><section data-id="b0d29596dc4bf321e1b90982ec397564">
+<div class="sl-block" data-block-type="image" data-name="image-607cb9" data-block-id="8ed8b4f7c3ba50b121625f95584f0cd4" style="width: 806.4px; height: 405.903px; left: 76.8px; top: 84.097px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1790" data-natural-height="901" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8f53b03ae519e00fbca71410aee3dc4f.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-15e3c9" data-block-id="66bbc45089f3e98c32ca8f17dc5353a6" style="height: auto; width: 960px; left: 0px; top: 502.323px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">some functions take time</span>
+	<ul>
+		<li>making network requests (talking to a server)</li>
+		<li>any io really</li>
+		<li>or setInterval / setTimeout</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="03844323da5333d080aaa4436b75419d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">asynchronous javascript</div>
+
+<div class="title">&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so far all the functions we have passed in have pretty much run instantly
+* this is not always the case!
+* setInterval
+</aside></section><section data-id="53532c58e28f590587a378a459960c04">
+<div class="sl-block" data-block-type="image" data-name="image-0a11ad" data-block-id="d5f72eb02665e719ae296fe6c878affe" style="width: 806.4px; height: 457.127px; left: 76.8px; top: 152.087px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1129" data-natural-height="640" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/747b90789c1d846cff8cff41dff5bba4.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="5bb012f2e411c649d096ebbbee43c7cb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">single-threaded event loop</div>
+
+<div class="title">&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* you've used this by registering an event with setTimeout/interval (doesn't have to be user input)
+* we register an event listener
+* so that on a particular event a function gets executed
+* in a particular context (remember this)
+* how might setTimeout actually be implemented in this system? 
+  * while loop checking timestamp.
+  * so setTimeout technically is MIN time, not guaranteed time
+</aside></section><section data-id="ad2f9d71c61b6886dab694d9dd2f1d93">
+
+
+<div class="sl-block" data-block-type="image" data-name="image-679a41" data-block-id="3e46fb7b7673a36ca4c39ca6effd9bee" style="width: 821.402px; height: 615.047px; left: 69.299px; top: 84.953px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1023" data-natural-height="766" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2dc1dee2da5d78747a5151985125a9e1.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="38acc43d991eb317e2f0969677f67067"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">event loop with threading (server side node.js)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* a queue of tasks to complete/check in with
+* depending on javascript engine can either be threaded of single - node is multi, browser is single
+</aside></section></section><section class="stack" data-id="ca090583bbadaed6347e3621f5cd0f20"><section data-id="ac936c35cee6520f72eefda4f57589dd">
+<div class="sl-block" data-block-type="text" data-name="text-cd545e" style="height: auto; width: 465.414px; left: 53.0935px; top: 210px;" data-block-id="5fa0a7a9d16fa6f152d8b6a8fd1edde8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
+	<li>any time data is fetched in the background&nbsp;</li>
+	<li>often called AJAX:
+	<ul>
+		<li>asynchronous javascript and XML</li>
+	</ul>
+	</li>
+	<li>people no longer really fetch xml/html</li>
+	<li>JSON data format</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-eefd1d" data-block-id="b0f7c9e1e97a31cf435fccef622bf6c2" style="width: 433.136px; height: 638.154px; left: 526.864px; top: 61.846px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="300" data-natural-height="442" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8195d95af419c8c2e029db867e5cccc8.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="61f33fe5c54739e206ab733f9be2f71f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Where does asynchronous stuff happen?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* example for asynch loading: can't load all data in world
+* load js and then fetch data asynchronously into the page
+* you click a button to "show more"
+* you scroll and more data is loaded
+* this is interactive content being loaded into the page
+* but also,  your page doesn't stop scrolling just because you are waiting to load content
+</aside></section><section data-id="efdfebaef682b9cfd39aa8080e97c33d">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-f17555" data-block-id="80373f382eadccf9564f996e37f035cc" style="width: 903.774px; height: 549.551px; left: 27.3427px; top: 124.519px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/51bf707301001c5a5d87bc9e5db85d41?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="8605cd4fd193ce2b0d0ffb9a0dd7c396"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">why is asynch js tricky?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this uses jquery ajax for readability
+* this is super common mistakes!
+* what is happening here?
+* what is going to be printed out?
+
+</aside></section><section data-id="fad1fbe803462d507cbca7dc301d6995">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="3af377684df66f6b9bc522c0efb34092"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">some asynch codes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-5b3e34" style="width: 801.926px; height: 214.553px; left: 78.074px; top: 111.071px;" data-block-id="160736b8f838cd3d633b059308847269"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>//vanilla version
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (xhttp.readyState == 4 &amp;&amp; xhttp.status == 200) {
+   document.getElementById("demo").innerHTML = xhttp.responseText;
+  }
+};
+xhttp.open("GET", "http://api.something.com/all-datas", true);
+xhttp.send();
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" style="width: 801.926px; height: 153.291px; left: 78.074px; top: 342.355px;" data-name="code-32e350" data-block-id="25f19a859c28fffa25f632b01fb6fab2"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>//modern fetch
+fetch('http://api.something.com/all-datas').then( data =&gt; {
+  console.log(data)
+})
+</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" style="width: 801.926px; height: 153.291px; left: 76.148px; top: 510.973px;" data-name="code-e8fe69" data-block-id="556b523fa8a207919605e9dd26e041fe"><div class="sl-block-style" style="z-index: 13; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 13;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>//axios library
+axios.get('http://api.something.com/all-datas').then( data =&gt; {
+  console.log(data)
+})
+</code></pre></div></div></div><aside class="notes">* now what if we needed to make further callbacks and requests based on the response?
+
+</aside></section></section><section class="stack" data-id="cef9fd3b36eb612a5ace04a69f6cb8c1"><section data-id="29e02a614bb23d4b07a6963c800bb611">
+<div class="sl-block" data-block-type="image" data-name="image-a53b7c" data-block-id="4815ec5c0bf1cbb494956cb973a0ecad" style="width: 930.99px; height: 391.366px; left: 14.505px; top: 182.906px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1011" data-natural-height="425" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/42d9712d6451927ec17441393e99c0ab.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0d2d00a133faed2953e21a7194848636"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">asynchronous javascript and xml</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* ajax is how we talk to api's
+* process by which a page loads new data via javascript rather than html
+* if we're talking abstaction - this allows the server to only worry about data - not about display
+&lt;!--http://stackoverflow.com/questions/25336156/how-to-immediately-invoke-jquery-upon-clicking-remote-link-in-rails--&gt;
+&lt;!--https://realpython.com/blog/python/django-and-ajax-form-submissions-more-practice/--&gt;</aside></section><section data-id="1f0a003d99b453410d324a1895bbeafc">
+<div class="sl-block" data-block-type="image" data-name="image-1cb358" data-block-id="ef22837f820e8587d1f8af538cb91337" style="width: 767.257px; height: 598.103px; left: 96.371px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1202" data-natural-height="937" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/fbc2fe686e95af9c674d34e0a181b0ff.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="665c696adf21d519fbfa42abb9b2944a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">asynchronous javascript and xml</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* more grownup view without unicorns
+* javascript modifying the page is powerful
+* more ajax
+  * page updates happen in background separate from full page loads
+  * we will use JSON isntead of XML, but note that new html only happens once the data is fetched
+  * different pics of the same thing
+
+</aside></section><section data-id="56379ab9e747f3b9f319decceeb4e5a5">
+<div class="sl-block" data-block-type="image" data-name="image-a9df47" data-block-id="f4298be1c7e1fc1ea2176d563a99d469" style="width: 752.143px; height: 363.035px; left: 100.729px; top: 321.576px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1500" data-natural-height="724" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/502b11bb667bbd42dca7da79adcafb4a.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-dfcc4b" data-block-id="49000eaa9909289cc0cc2d85cc7941c5" style="height: auto; width: 960px; left: 0px; top: 85.389px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>data only server</li>
+	<li>http/s requests
+	<ul>
+		<li>GET, POST, etc</li>
+	</ul>
+	</li>
+	<li>return JSON format data</li>
+	<li><a href="https://insomnia.rest/" target="_blank">https://insomnia.rest/</a></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="fa12d7365fcbd1a839b77aa14f2f6047"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">application programming interfaces (APIs)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so what might we call this DATA ONLY server?
+* when people say apis - application program interface
+* what they mean is often:
+  * a server that returns/mutates data
+  * based on http get/post requests
+* we'll be playing lots with apis - and defining and building them - so more on this later
+</aside></section></section><section data-id="ac11847246fdbe9f79468b8da46f63aa"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 367.487px; left: 0px; top: 140px;" data-name="snippet-3df089" data-block-id="e3fb07567a72c14dc6cddb11282c284e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Frontend Framework Tools</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">
+<p>(and starterpacks oh my!)</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div>
+</section><section class="stack" data-id="508e3af961ce5ddba7b9052b5785976c"><section data-id="f2325e80d17b9f6478268f61628d2172">
+<div class="sl-block" data-block-type="image" data-name="image-0aa78a" data-block-id="a3df576bb451f334faaf2464a3246559" style="width: 439.209px; height: 159.989px; left: 247.395px; top: 540.011px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img data-natural-width="722" data-natural-height="263" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/13ca597a26ad5fb72c8f9aef1065e565.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-75ae6d" data-block-id="fbf5e06108db14df6744b3f956514de1" style="width: 518px; height: 518px; left: 240px; top: 147px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 12;"><img data-natural-width="512" data-natural-height="512" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/d9991710ba42025fcecc8ee3d5175bd2.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-aa5af5" data-block-id="8e9f97b0c967f5aaf55ccc67a636f1e5" style="width: 914.094px; height: 681px; left: 22.953px; top: -140.989px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img data-natural-width="800" data-natural-height="596" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/f2e9c70818cdb329d331c4fcc05635ce.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="029ea187f3e08b33737d4741e63604b4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">frontend tools</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* to enable us to write modern scaleable applications 
+* with better syntax, with react
+* taking all our code and compacting it into a single application - we need some tooling!</aside></section><section data-id="79c71531c499347c7b8869924328dd3c">
+<div class="sl-block" data-block-type="image" data-name="image-414d47" data-block-id="7b5b0f46a3848792b511627f554d2ec4" style="width: 806.4px; height: 124.149px; left: 73.6px; top: 173.933px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2137" data-natural-height="329" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8085c502b3eec4a3f543785b9b577495.png"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-fb9e0d" data-block-id="ba30dd403b579d42d26d8f6ad15eb103" style="width: 424.518px; height: 300px; left: 16.5597px; top: 366.47px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="css" style="font-size: 16px; line-height: 19px;"><code>
+.question {
+  background-color: #95c34c;
+}
+
+.question h1 {
+  font-size: 1.2em;
+  color: #658534
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-9f0dd9" data-block-id="5a99df1ea8116962dbbe133ca7a47050" style="width: 426.059px; height: 300px; left: 490.886px; top: 366.47px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="scss" style="font-size: 16px; line-height: 19px;"><code>$theme: #95c34c;
+
+.question {
+ background-color: $theme;
+ h1 {
+  font-size: 1.2em;
+  color: darken($theme,10%);
+ }
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="9f56d1e8f0cb7c2e21a0b31c7355dd83"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">sass</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* preprocessor/transpiler - takes this better syntax and compiles it down to regular compatible css
+* nesting,  variables, imports other stuff
+</aside></section><section data-id="d9842fe54a4e757c6b55f8a75e0f2f8b">
+<div class="sl-block" data-block-type="image" data-name="image-afc40d" data-block-id="7781d9893ea4fb88bf928b33e8574edc" style="width: 893.137px; height: 348.969px; left: 33.4315px; top: 175.515px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2242" data-natural-height="876" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/3b4099de3e90962feefbe415aa3c141f.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="c4186e530bf3dd51b47803f24cffbac9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">babel</div>
+
+<div class="title">&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* transpiles latest and greatest js into compatible old code
+* also enables this thing called jsx which we'll be learning soon
+* show tab wtih babeljs.com example of react class
+
+</aside></section><section data-id="1b68bf7f7c7a54032541cba7b3f72c2d">
+<div class="sl-block" data-block-type="image" data-name="image-cd972b" data-block-id="f31f31178c8ff97212372e2e7334596d" style="width: 806.4px; height: 241.92px; left: 76.8px; top: 89.04px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1080" data-natural-height="324" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/7cef3c4fa30489bdad6dae1293198945.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-113586" data-block-id="2b7afb042d948ac02b341527b115c156" style="width: 882.995px; height: 350px; left: 38.502px; top: 350px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="497" data-natural-height="197" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8a37c21cd898070b7528e7ef34e841d8.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="6fcdf036674108e4833a4bfa4eb25a58"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">eslint with airbnb styles</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* checks your bad code and makes it good
+* fyi, semicolons are optional although i use them
+* https://github.com/airbnb/javascript
+
+</aside></section><section data-id="d09d9938a521c4c5715770fd2c07136e">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="6f6cab944e71911ec0944df8d3150676"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">we will add more as we go</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-357bbd" data-block-id="846599eb7360169f6aba1214882ae879" style="height: auto; width: 600px; left: 180px; top: 181.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>Our little starterpack will be full featured with:
+	<ul>
+		<li>React</li>
+		<li>State management Library</li>
+		<li>Routing</li>
+		<li>Image Uploading</li>
+		<li>etc</li>
+	</ul>
+	</li>
+</ul></div></div></section></section><section class="stack" data-id="59189523ec6eaa31809c45095f85d76c"><section data-id="6f296e1c3e9d6fa36f3ab106b2d4ab56">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e1bca4" data-block-id="9fc9870d129784ce7d4a72f3c34ce28a" style="width: 560px; height: 296.92px; left: 200px; top: 140px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="//giphy.com/embed/3o84U6421OOWegpQhq?hideSocial=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-c0ecbd" data-block-id="23141c66627e31d3983b1a42630c87ac" style="height: auto; width: 600px; left: 180px; top: 521px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>Putting all the tooling together and building an application out of it all</p></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="1775741fbf354e5ae3646ec58b987987"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Put it all together: VITE and/or webpack</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="2e9f23bd24eefb8b3d6187ecd679f1a7">
+<div class="sl-block" data-block-type="code" data-name="code-fdfc0c" data-block-id="4a1fe2d4b89a09c6de2cc66617d9d2d6" style="width: 420px; height: 198.331px; left: 270px; top: 500.783px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="bash" style="font-size: 16px; line-height: 19px;"><code>babel app -d dist
+uglify dist
+sass app/sass:dist/css
+# reload server
+# refresh browser
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-320732" data-block-id="844b20f4250c6119b4c3f4a23fe04fcb" style="width: 628.368px; height: 375.896px; left: 165.816px; top: 87.2359px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="2347" data-natural-height="1404" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/0ceb9c34de9f4e6623112c1191e6a6ff.jpg"></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-d3ce17" data-block-id="c0585c3ab069f4d7413f7a814a7c7915" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 262.927px; top: 500.783px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="199.21699999999998" data-line-x2="427.073" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 12;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid" width="427.073" height="199.21699999999998" viewBox="0 0 427.073 199.21699999999998"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#ff0000" stroke-width="3" d="M0 199.217 L427.073 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 199.217 L427.073 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 199.217 L427.073 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 262.927px; top: 500.783px;" data-block-id="0c2741772c95a0a84a7f1683b69f9e99" data-name="line-f52123"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="427.0725635430038" data-line-y2="198.3307329910141" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;" data-line-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid" width="427.0725635430038" height="198.3307329910141" viewBox="0 0 427.0725635430038 198.3307329910141"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#ff0000" stroke-width="3" d="M0 0 L427.073 198.331"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L427.073 198.331"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L427.073 198.331"></path></svg></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="4b90b5bb809578215a458757608f885c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what webpack does</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* es6 transpilation
+* sass compilation
+* only necessary modules
+* builds all the things for you!
+* hot reloads modules - you change some js it can reload just that module.  
+</aside></section><section data-id="81a6d637a28de2d703bdd487d5e3284d">
+<div class="sl-block" data-block-type="image" data-name="image-bbf1f3" data-block-id="ee086f3a79afeaeffceae3dbe661ddb8" style="width: 924.247px; height: 529.461px; left: 17.8765px; top: 123.055px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1400" data-natural-height="802" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/e847126eb018c6a0d52d71d0769b24ef.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="93bb38042d93dd32c809d676fd93047e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">webpack bundles application</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* analyzes all import statements
+* follows them and includes everything that is actually linked
+* can do other stuff like delete unused code - tree shaking 
+* akin to the linker step when compiling a c program
+
+</aside></section><section data-id="4ccf6b06f3ff7027010d85985804212c">
+<div class="sl-block" data-block-type="image" data-name="image-3ca9f4" data-block-id="c4b1235b300ccb4e2700cb8935b878cb" style="width: 960px; height: 420px; left: 0px; top: 280px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1312" data-natural-height="574" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/f6ff0a49b9ce0876453ccdcb129af746.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-dc5fc1" data-block-id="931a906d6c63a25f69cafafa9e625cb3" style="width: 335.341px; height: 251.506px; left: 412.182px; top: 114.22px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="312" data-natural-height="234" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/925e4b4d1fbe0f0d34cb9465401f5193.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0832976f6a86803d00ce02ad30a27c74"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">webpack optimizes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* nice clean bundle via treeshaking
+</aside></section><section data-id="96dcc9f4e46ac1ce07954fe8856ba7a3">
+<div class="sl-block" data-block-type="image" data-name="image-4a35b9" data-block-id="717a7bd40211adfa39683cc862589fe7" style="width: 900.873px; height: 367.235px; left: 29.5635px; top: 91.276px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="942" data-natural-height="384" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/dc1f317449601a917998e22a9844fc72.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-af9573" data-block-id="c8d3a7bd4423ac071f28be162383de9e" style="height: auto; width: 960px; left: 0px; top: 505px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><span style="color:rgb(58, 62, 64); text-align:left">just a local http server</span></li>
+	<li>picks up changes and builds</li>
+	<li>with magic reload-only-certain-modules powers</li>
+	<li>injects modules and css into page</li>
+	<li>for <strong>development mode</strong>&nbsp;only</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="77d681c8a1de1f7186d9166a84de1c40"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">webpack dev server</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what is a potential downside of injecting css with javascript?
+</aside></section><section data-id="215cdd83ec16bb056e065dc99897b11f">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="386e05e81f40ffdf09a8f24621cf5c10"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">VITE</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-5b2f17" data-block-id="455fd74fc0db2180b95279aa12cf3d71" style="width: 806.4px; height: 372.059px; left: 76.8px; top: 93.9705px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1968" data-natural-height="908" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/e55165ec66fcf45a079e7b0aefbc8efe.png"></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-46ff9d" style="width: 490px; height: 185.523px; left: 240px; top: 499.449px;" data-block-id="e761b125dd9ab40f0a683217258ee6ed"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;"><pre class="bash" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
+💻&gt; vite
+
+  VITE v4.2.1  ready in 637 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help</code></pre></div></div><aside class="notes">* faster than webpack
+* does more things automatically rather than having to configure - simpler</aside></section><section data-id="4893d6cde51a040bf2bdcaf65d4460f1">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="b968c639ca876f7fb53d94a1607030e9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">why VITE? - webpack bundles</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-d50b62" data-block-id="9b2126ac4b72aa53d97e8cbbf850ff71" style="width: 806.4px; height: 470.114px; left: 76.8px; top: 131.066px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1410" data-natural-height="822" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/81e4d70d7715fd7ec060931ae0759bc1.png"></div></div><aside class="notes">* webpack needs to compile everything into a bundle and serve that - so takes a bit of time to run through every bit of code</aside></section><section data-id="2937ece143695aeab55e0bec293e46d4">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="21b2e48891f2eccabf50fdec6ce3a136"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">why VITE? vite serves modules</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-43e261" style="width: 806.4px; height: 469.535px; left: 80px; top: 160.465px; min-width: 1px; min-height: 1px;" data-block-id="7ccc0474a160d702fb62781e20b51d8f"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1398" data-natural-height="814" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/c814f2472de7fd4b0efb6ab535319f53.png"></div></div><aside class="notes">* vite still processes the files needed - but only the modules you need as you need them replying on es modules
+* at least in DEV mode - when you build for production VITE still bundles it all just like webpack would
+* only works in browsers that support ESM,  didn't exist when webpack starter</aside></section><section data-id="3075c7ac75328f78fd74e2fb5b7afbf6">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a0068c5271ce0048cf8c35ddd8417c23"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">background commonjs vs esm</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-f98e40" data-block-id="82798ab2d89429c30eaf3a97f51028ff" style="width: 806.4px; height: 433.125px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1024" data-natural-height="550" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/a7e56afdcd720e400ffc73648957bf17.png"></div></div><aside class="notes">* we'll dive in more on this later
+* but basic is that ESM is the future, 
+* commonjs was node, but browsers prefer ESM as it is literally more modular better for web clients</aside></section><section data-id="8cc5e03c1f66c342db69db7d2ed01720">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="e2184a4dafcb5d31afd3e23aca555a74"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">VITE in production</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-3ef2f0" data-block-id="3a328fc350a91a6ff68996ca5628e68b" style="width: 806.4px; height: 311.517px; left: 76.8px; top: 169.815px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="2366" data-natural-height="914" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/09076aca0227c96d08e567da75d5a9a5.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-90e0dc" data-block-id="18c7f442e5c033202a9edcc04f37a6fd" style="height: auto; width: 960px; left: 0px; top: 527.938px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Vite replaces webpack for development mode</p>
+
+<p>Vite uses rollup to replace webpack for building for production</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-46ff9d" data-block-id="e957bdc31f182daf49d74c7fad2890c7" style="width: 490px; height: 33.9629px; left: 230px; top: 93.1383px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 13;"><pre class="bash" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">vite build</code></pre></div></div><aside class="notes">* used Rollup to bundle! 
+* does tree shaking and all that jazz too 
+* slightly less powerful than webpack but up and coming</aside></section></section><section data-id="36bffe722526188271b1176a0f749957">
+<div class="sl-block" data-block-type="image" data-name="image-5e7431" data-block-id="02ff9193201b9528180afd493b55a0b1" style="width: 463.303px; height: 260.062px; left: 248.348px; top: 124.596px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="636" data-natural-height="357" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/aec4d2151cb6b537c9e2a28c3a04488e.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-257e83" data-block-id="528e43a00a5ec804afbe2c989b32736d" style="height: auto; width: 960px; left: 0px; top: 451.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
+	<li>
+	<p>for production</p>
+
+	<ul>
+		<li>need to build outputs to files</li>
+		<li>host static output files</li>
+		<li>would not be running webpack-dev-server or vite</li>
+	</ul>
+	</li>
+	<li>
+	<p>ghpages, netlify, render.com etc for static files</p>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="274efd1da641b3f2698f58d8206bd76a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">frontend starterpack deployment</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+<div class="sl-block" data-block-type="text" data-name="text-b1fae7" data-block-id="2628dc76f114d2d7977f343785e158ee" style="height: auto; width: 600px; left: 180px; top: 196.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
+	<li>Next: More Asynchronous Javascript</li>
+	<li>Next: React and State Management</li>
+	<li>Lab2</li>
+	<li>SA2 starterpack</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="cc09a2e201d19ba4469abe412cf9b0c9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next up</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
