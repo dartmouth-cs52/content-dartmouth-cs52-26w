@@ -35,6 +35,34 @@ The manifest organizes content into modules with pages, slides (reveal.js), and 
 
 This is a static content repository. Content is authored in Notion and exported to HTML by classmoji.
 
+## For AI Assistants (Syllabusmoji)
+
+### Content Structure
+- `pages/{slug}/` - HTML pages with index.html
+- `slides/{slug}-{timestamp}/` - Reveal.js slide decks (e.g., `html-1767722677121/`)
+- `.classmoji/manifest.json` - Maps short slugs to content locations
+
+### Draft vs Published Content
+Content exists in this repo but may not be **published** yet in the database.
+- You can READ content here to answer questions about it
+- But when creating LINKS, you must check publish status first
+- **Use `query_available_content` tool** to get published content IDs
+
+### When Asked About Slides/Pages/Assignments
+1. **To answer questions about content**: Read from this repo (secure_read, secure_glob)
+2. **To create clickable links**: Use `query_available_content` to get published IDs
+   - For pages: use page ID (UUID) with referenceType='page'
+   - For slides: use slide ID (UUID) with referenceType='slides'
+   - For assignments: get linkedPageIds and use referenceType='page'
+3. **Never fabricate paths or IDs** - always use exact ID values from query_available_content
+4. If content exists here but isn't published, you can describe it but say "link not yet available"
+
+### Reading the Manifest
+The manifest at `.classmoji/manifest.json` shows the content structure:
+- `modules.{module}.assignments.{slug}.slides` - slides linked to assignments
+- `general.slides` - standalone slides
+Use these slugs for understanding content, but get IDs from `query_available_content` for links.
+
 ## AI Code Citation
 
 When generating or modifying code in student assignments, always include a citation comment:
