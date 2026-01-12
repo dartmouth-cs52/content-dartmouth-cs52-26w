@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State Management</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section data-id="227b26f26b7bdff09797bae9f14a1d0c"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="54a836d0169308531dd0c277225b7cd2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">State Management</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">What is it, and why is it?</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="995d3355ed5f6955a726ef89635b7908"><section data-id="c29230c3228cfc3e490d16b9030b0111">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-7c0d87" data-block-id="b3dfd4c035781a62aee9fa4ecf3c9568" style="height: auto; width: 600px; left: 180px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li class="fragment" data-fragment-index="0">components</li>
+	<li class="fragment" data-fragment-index="1">unidirectional data flow</li>
+	<li class="fragment" data-fragment-index="2">events and callbacks</li>
+	<li class="fragment" data-fragment-index="3">state and props</li>
+	<li class="fragment" data-fragment-index="4">rendering jsx</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="ea06b9ae8c3a4defa68624de1618f38d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What do we know about React so far?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="daaebfec6afca3ab7d8790e9619c44f5">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d0306f" style="width: 653.201px; height: 518px; left: 146.799px; top: 112px; min-width: 1px; min-height: 1px;" data-block-id="1c0a41f015d262299a2939030bbcf34f"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="802" data-natural-height="636" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/1adce8b2ca37cfc12079ffec854e578e.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="9dd95bcd062f83554dc0a54866a5249d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">but we've had some problems also</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* look familiar? we will fix it
+* props all over the place, sometimes you rename them as you pass them down, super hard to track
+</aside></section><section data-id="cdd10dadeb79653e0f37238370940242">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-7962bf" data-block-id="936a568fe6f992910b972f853132131e" style="height: auto; width: 960px; left: 0.0005px; top: 127.416px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>
+<strong><em>presentational component</em></strong>&nbsp;(just a function)
+	<ul>
+		<li>concerned with how things look</li>
+		<li>have state for ui things but not data</li>
+		<li>generally get data as props</li>
+		<li>real view</li>
+		<li>reusable</li>
+	</ul>
+	</li>
+	<li>
+<strong><em>container component</em></strong>&nbsp;(with state hooks)
+	<ul>
+		<li>concerned with data - have state or connected to state</li>
+		<li>pass data to presentational components</li>
+		<li>bind callbacks to self (if class)</li>
+		<li>and now with extra state management sprinkles 🎉</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="616460784b8131a7f5cf24c692ebe603"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">components with state or without</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so far we'd had both
+* we've not really talked about this abstraction - we won't be labelling these in code but useful distinction in your own minds
+* but will have a bit more of it soon with redux!
+
+</aside></section></section><section data-id="442a36d1d36726462d6705fa870a42ac"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="6f494a5c57f80c652e23d7d170230a20"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Application State</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">An idea to help make our app predictable and testable&nbsp;</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="1c87b3a9923ed00ffd4bc96095f6ebe4"><section data-id="c43955fe0f16f7a273d57e7cf4cbec48">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-ea5f0a" data-block-id="672a326bc965454ede1000a6665af8f7" style="width: 900.183px; height: 506.353px; left: 37.6606px; top: 96.8235px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1024" data-natural-height="576" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/12044ed71e3595d89a72fd4dac8a3b98.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="d6dd36cb0c5f3363feac75ba8dc435ea"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">application level state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* backing up a sec - whats the issue again?
+* having consistent state which drives everything
+* take this OS screenshot
+</aside></section><section data-id="99be7cec7160c5996ba98a686bbc28ff">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-63e8c5" data-block-id="7a657daf4688cecb6aa36138e629e6c7" style="width: 806.4px; height: 453.6px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1024" data-natural-height="576" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/105c71fdc775b4a5d6770c50400aa43b.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="bfb1a9b81fcb7d6fa95b5ed76e04a923"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">application level state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* could store in one place
+* or multiple places
+* most likely a combo. 
+</aside></section><section data-id="ac8c8edea6d8575eb0ef41ab3371602d">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-d3c3b3" data-block-id="365c0d924ee7128333e1c8a0d4b8797f" style="width: 942.717px; height: 294.208px; left: 8.6415px; top: 125.792px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="753" data-natural-height="235" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/d57a13372da015db3a36e250d687c4be.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-e4bd06" data-block-id="4f123c3aeeec6b500b0f3c3ab73cf01a" style="height: auto; width: 600px; left: 180px; top: 455px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
+	<li>react is great</li>
+	<li>but could use better data management</li>
+	<li>flux state management
+	<ul>
+		<li>data, model, controller</li>
+		<li>single object stores app state!</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="b5ece5680af5db3deb5c52b89b8cf987"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">application level state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so far we've done component level state vs application level state
+* we've used components to allow us to pass down component level state in props but what we wanted was application level state
+* not ideal solution</aside></section><section data-id="faeedd4dcf38042fd9fc77da3332d77c">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-874083" data-block-id="53d4cae7e2a217ca653502e7775cf759" style="width: 960px; height: 533.333px; left: 0px; top: 119.759px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="720" data-natural-height="400" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/c0e7f541644267e67568803c3f23eb3a.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e011501920c9d486a6e7d46d9bd876e7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Imagine, interactive global state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="5eb0d4b0beae1a826d114c134a21f52f"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="b6bd4df7be3fe5fe8d74df1ed6e0f511"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Flux Pattern</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">Where it started</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="d3d72620dcd39bb44bfa1e317397e7c0"><section data-id="2c97dca03721913871eab0d18c048011">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-6ea9f2" data-block-id="72fb20014b37388c2dedac39ae663c73" style="width: 894.469px; height: 543.162px; left: 32.7655px; top: 116.869px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://www.youtube.com/embed/nYkdrAPrdcw?enablejsapi=1" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="3cdb4090f0be1b179625decffdb3d165"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">in a state of flux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* facebook's answer to scalability
+* interesting worth watching, but we'll do a cliffnotes version here now
+</aside></section><section data-id="d82c51e71ef6f7f13bdac7293697022c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-f866ba" data-block-id="0f896c23be892ea24e668f2759bb12ea" style="width: 806.4px; height: 454.4px; left: 64.2164px; top: 157.754px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1764" data-natural-height="994" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/8f53e78b2e760a320202c64748cf61c6.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="268166adea25ae9fb911052b6a51ab08"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the beginning</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* oh no not another one of tim's history rants
+* as yuval noah harari says - you need to know history to understand the present/future
+* multiple parts of webpage that tracked messages in different ways
+* had a messenger window but also unread count
+</aside></section><section data-id="a6ed05ba694f71d8fc9c23ea499a766f">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-9d916a" data-block-id="74141f547f35322efe38df959395c61a" style="width: 912.562px; height: 513.9px; left: 23.719px; top: 107.562px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1758" data-natural-height="990" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/616664e5a5bb937821ed7b8e601c3d1c.png"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="25dc559c0e513fcf1940cfee258a8385"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">questionable design notwithstanding</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* solving what was really a design issue with engineering
+* bugs were insidious
+* how do you handle both staying in synch - read in one meant mark as read in another
+* had multiple data models responsible for each view
+* updating one model would need to update another
+  * unread thread count
+  * unread messages
+* had unread counts that were false positive
+</aside></section><section data-id="a6945690d12111b25a595f44bde8620b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-2a545c" data-block-id="22ce2261f9dd597bc1da8f0c76fa8186" style="width: 916.145px; height: 511.41px; left: 21.9275px; top: 124.926px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1752" data-natural-height="978" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/626c43157453c695cf083cdb0792022d.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="f543b1b30d4b1db66ba36d3a8e52a7d5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">how might study work</div>
+</div>
+</div>
+</div></div><aside class="notes">* increment unseen
+* append message in chat
+* if open append message in messages Views
+* if chat tab is focused or messages is open - decrement unseen
+* complex login living in multiple places
+* imperative code with lots of steps with checks
+</aside></section><section data-id="a67a10d31ba46aafa4a3cc176d42c943">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-7e974c" data-block-id="026eafa6c796e0b98d0e2ceb32832ce5" style="width: 903.444px; height: 505.682px; left: 28.278px; top: 124.318px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1758" data-natural-height="984" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/b8f4a3b14044d88e0ed31829affb3fb6.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="6eb487fba000483c22922801bef15079"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">chat case study</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* attempt 1:
+  * problem kept coming back as they fixed things due to complexity
+  * here's what the basic logic looked like
+  * handler had too much to do
+  * large amount of centralized logic is one solution but have to code for consistency problems
+  * chat tabs is easy - get a new message - append it
+  * less clear about unseen count logic
+* realizations:
+  * use **explicit data** - actual unseen threads, not just counter
+  * **perhaps storing unseen as a list by threadID would be better**
+  * moving display logic to each component so it can decide based on data how to render (sound familiar?)
+  * separating data from view
+  * wanted to move these decisions closer to the actual views.
+</aside></section><section data-id="6d4f7ba2de201be78ae76ae89c4b17e8">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-9244d5" data-block-id="455a8504eeb7fc4209b1a1783a6367fe" style="width: 806.4px; height: 450.771px; left: 76.8px; top: 124.614px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1746" data-natural-height="976" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/018d4cea9d456d01ff5a4652fa056662.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="35748f0482d1a2b991e54cf8c9a8c17f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">MVC data binding</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* taking a step back to look at mvc and data binding
+* perhaps this way of thinking was part of the problem
+* two way binding here
+</aside></section><section data-id="2d7eaadec06a4504941d5bef7b4269f4">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-99c6e4" data-block-id="f2adcebeb40f0e074725c0049a59be05" style="width: 806.4px; height: 453.715px; left: 76.8px; top: 169.283px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1756" data-natural-height="988" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/aa48949d7305d46be4dd9e5a878130e5.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="9584f11a896b0d298b586e351e320cdd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">mvc problems</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* too much stuff to keep track off
+* data changing over time
+* would you be able to tell if there is an infinite loop - one model updating another and back
+</aside></section></section><section class="stack" data-id="52e6f48c710e8ee9b6a3382790d44ccc"><section data-id="060d465f3b9464136821b315a176f8c9">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-af71a7" data-block-id="c2b90b1e3829cc5f8a52f406e5ea057c" style="width: 931.276px; height: 281.532px; left: 14.362px; top: 152.608px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1300" data-natural-height="393" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/7d1f57931a0853391705ba67d7237b7b.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-79dadd" data-block-id="370944df63734559b152f246132f072d" style="height: auto; width: 600px; left: 180px; top: 496.884px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>MORE unidirectional flow!</li>
+	<li>Yay! &nbsp;</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="50bf50cb71e609612e78688255c08221"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">enter flux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* unidirectional data flow
+* thanks facebook - these dev tools might be facebook biggest positive contribution to society
+* predictable - no multiple arrows
+* finish a layer you are done
+* with multiple Views easy as arrows go in one direction
+* easy to reason about
+* data changes - views update
+* except that is more global and neat
+</aside></section><section data-id="8083868ce90d1b1f114e717828915d56">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-cedb0f" data-block-id="10cc75595d7d1ad0defa0626bb0c3fbf" style="width: 806.4px; height: 453.715px; left: 76.8px; top: 165.686px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1756" data-natural-height="988" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/721f00960d0b129ad91c559d3375885f.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="92fe8c2eeb5d8915f41e734c6800cf4f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what if we attempted distributed control?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* not the full system - but if we had to list some of actions we had to take before
+* track an action through the system
+* what if each of these systems was responsible for its own responses to data changes? 
+</aside></section><section data-id="284e3f38bb13ff2d4bbfe26a5198ea20">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-e100ee" data-block-id="afe77ffe327b84c451811bfb242e09c8" style="width: 806.4px; height: 450.041px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1756" data-natural-height="980" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/35b7b27529bff480262f1b3835df9255.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="07f66c617cd10b934c2852bef7239d8a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">flow based programming</div>
+
+<div class="title">&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* the dark grey models are the actual data
+* so unseen count is list size rather than a counter
+* can imagine testing is easy
+
+</aside></section></section><section class="stack" data-id="af3c4c8a7625bce2e36e5631bb10d4ac"><section data-id="294b6db6578bf165971c01c513a144f7">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-6b7197" data-block-id="df56420e6202e2b15643d558fdbf3b20" style="height: auto; width: 800px; left: 80px; top: 235.204px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">loosely:</span>
+	<ul>
+		<li>Views -&gt; Views (React Components)</li>
+		<li>Controllers -&gt; Views (Container Components/Data Connected Components)</li>
+		<li>Model -&gt; Store (also ~state)</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="a5f3c81e6b82de9e6d404b9396d19095"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">MVC → Flux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* how do we convert one way of reasoning to another?
+</aside></section><section data-id="2e75ba9fe426582f8e434bb54a4a1d8f">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-a00904" data-block-id="0aa880de5ce5c8534e42328bb0a15148" style="width: 667.388px; height: 626px; left: 146.306px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1548" data-natural-height="1452" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/24356b8265adbae7e1b98b4fc8705d28.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="28e191d08c65e1ca0fe03e451d53d68f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">reception</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* flux was a bit tricky
+* dan abramov comes up with answer - REDUX
+</aside></section></section><section data-id="25e0795b7beabee4795e0c67b970f6ff"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="380a62668526d9ee9a86ae89412f15e1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Redux</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">Flux for the masses, version 1</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="b93b79297acd753edb0a002dd438242c"><section data-id="3e64e3c51f3108b9779e4e7db2c4aa9b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-7cbfe9" data-block-id="7008c2a82a507009c53abfd012ff6326" style="width: 377.496px; height: 51.013px; left: 13.602px; top: 108.487px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="148" data-natural-height="20" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/adebdc4376a96468113c12a9c1a448f1.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-59e71c" data-block-id="a28c48daff9f725641552faae37cd362" style="width: 384.214px; height: 56.502px; left: 13.602px; top: 171.749px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="136" data-natural-height="20" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/949577497125c7f68533ed7c1c59a869.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a038cf" data-block-id="90c743b149b58571a6ce6a0d1a4e5d1e" style="width: 402.274px; height: 59.158px; left: 13.602px; top: 240.342px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="136" data-natural-height="20" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/fdadd220f925dd24774c9a0a789983d8.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-afd226" data-block-id="264bb5e1a0d5a6735363db2680871d31" style="width: 467.398px; height: 65.4357px; left: 12.602px; top: 311.5px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="300" data-natural-height="42" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/23d4e1e0bb17989be7711cb9bb7bd118.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-6953a1" data-block-id="f7396f6e651e4d08c50d88fa9eccc0b2" style="width: 511.975px; height: 72.1092px; left: 13.602px; top: 388.936px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="142" data-natural-height="20" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/3644e51df3dee5241cf0fbe9740aea27.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-841cb2" data-block-id="44dc9ee902f060e2d7617fd88d3b0304" style="width: 533.501px; height: 75.141px; left: 13.602px; top: 473.446px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="142" data-natural-height="20" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/cc64725f0c000efebff21468257ca043.svg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-c93f50" data-block-id="49740298524ce937bf88a957063869d5" style="height: auto; width: 248.963px; left: 408.648px; top: 114.493px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; text-align: left;">
+<p>7/2016</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248.963px; left: 415.876px; top: 181.5px;" data-block-id="58de60764edde43bc2b10d43696ad892" data-name="text-141ee9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left;">
+<p>4/2017</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248.963px; left: 435.519px; top: 249.418px;" data-block-id="52793cfe0cdb7289b1d3b72dc0fd76a1" data-name="text-72c774"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left;">
+<p>4/2018</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248.963px; left: 498.006px; top: 324.718px;" data-block-id="6d2f5a1a1e31e6bcc8784dcc10a830b1" data-name="text-f2175d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: left;">
+<p>4/2019</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248.963px; left: 547.103px; top: 405.491px;" data-block-id="a3beaac3d6ac83165dd1bcbd089162b1" data-name="text-fa64d3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left;">
+<p>4/2020</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 107.159px; left: 852.841px; top: 600.647px;" data-block-id="a1e4cefb6b224f5005fd89d721202060" data-name="text-0bdb93"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; text-align: left;">
+<p>current</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-8760b3" data-block-id="5c70aedf4235dd1aa50acb4009479885" style="width: 386.401px; height: 190.987px; left: 547.103px; top: 77.9315px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 22;"><img style="left: 0px; top: 0px; width: 463px; height: 191px;" data-natural-width="800" data-natural-height="330" data-crop-x="0" data-crop-y="0" data-crop-width="0.834559" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/a9c0ea6700cf53348c526978cb7ecef0.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="4a3bc482b4dac632f490e643f3371072"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 23;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">redux, an easier but still hard flux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248.963px; left: 567.547px; top: 491.517px;" data-block-id="d704e5b29b342011567882fb8d6b14ee" data-name="text-2954d7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24; text-align: left;">
+<p>4/2021</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-7d137c" data-block-id="f0655a2d60ec42ab25e670a1d2554f44" style="width: 816.286px; height: 134.491px; left: 12.602px; top: 560px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 25;"><img class="" data-natural-width="874" data-natural-height="144" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/6ae27f232e85644b67aea6f1a7a5d5f5.png"></div></div><aside class="notes">* Redux - a flux framework for the rest of us
+* flux was more a paradigm
+* redux takes those principles and makes them functional and awesome
+</aside></section><section data-id="2d73ca71e93264595b55eb0f6de7fdb6">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-e4bd06" style="height: auto; width: 942.716px; left: 8.642px; top: 349px;" data-block-id="922e16fdc5461d28600a65425c7861a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
+	<li>
+<strong>Single source of truth</strong><br>
+	One tree of state for entire application - not spread out over state variables all over the place</li>
+	<li>
+<strong>State is read-only</strong><br>
+	To change state emit an action, which are centrally processed, generating new state.</li>
+	<li>
+<strong>Changes are made with pure functions</strong><br>
+	No side effects or mutations. Reducers take existing state+action emit new state.</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-9cad55" data-block-id="9cd70f930e8c76cb41907eed4db017fc" style="height: auto; width: 933px; left: 27px; top: 101.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p style="text-align:left"><span style="color:#942323"><strong>what is react state</strong><br>
+render(state)</span><br>
+&nbsp;</p>
+
+<p style="text-align:left"><span style="color:#942323"><strong>what is redux</strong><br>
+redux(prevState, action)<span style="text-align:left">→newState→</span>render(newState)</span></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="967534eaa4301456cf3c820a7aee7c52"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">redux principles</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="4945b47fbda187498134ffc234cbc7f8">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-165a6c" data-block-id="431b041dbfa9affd9528711ebcdbb682" style="width: 806.4px; height: 504px; left: 73.6px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/ed9dd7f5fc0f2125d2bbeb1789680a08.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="2a6a15f34cd55e8242f184e57f2ead3c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">react component probs</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* not ideal, why do the parents need to know for instance?
+</aside></section><section data-id="f01a7b719753f62f6569f65623d935cd">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-b07bcb" data-block-id="75a97e9871b3cb6d220f699e2cb70cd5" style="width: 806.4px; height: 504px; left: 76.8px; top: 126px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/238edb381221735d38e7fb24eb638ddd.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="52ac5a803faca619f1883787bfb4f53f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">add a dash of redux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what if we had an application-level store of data
+* where a component can dispatch an action
+* and others can subscribe to data - NOT EVENTS BUT ACTUAL DATA
+</aside></section><section data-id="4a6ff6bf74a7d08f3f2154c69b7d368b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-384edc" data-block-id="d6fe0997bd8cee679d206f71997a0e67" style="width: 806.4px; height: 504px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/c197c1853d2f5a24611aacddce404c21.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="bdecee03686f38c8f529942905066870"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">together at last</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="e008ac82f5352b2736e232c4785f5768">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-2ec9d1" data-block-id="b0dc6e4ae624fe02e0248c3a3732896a" style="width: 914.282px; height: 302.856px; left: 22.859px; top: 187.144px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="265" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/e6226e9a8a3bcbc60b68b8d2141ba312.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e3054bee114b10170cf6c47305ad80c3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">state &amp; actions: redux flow</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* dispatch sends actions to reducers which return new state given old state
+</aside></section><section data-id="6df6034b1187158d54ed3bb5fb73763c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-486e09" data-block-id="bfa6c69a09996cd134d1265308436c8a" style="width: 904.008px; height: 299.453px; left: 24.796px; top: 184.107px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="265" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/f72cdd58b28faf67c074863a7ac2fbdf.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="03cc7742b0fc0000012629ae5d18d81d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">multiple reducers</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-48802a" data-block-id="a99bfe7e0082448119cc4461f4449073" style="height: auto; width: 344.299px; left: 307.851px; top: 511.753px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul>
+	<li>can have multiple reducers responsible for different parts of data called in parallel</li>
+</ul></div></div><aside class="notes">* lets dance
+* technically they aren't called in series but in parallel 
+</aside></section><section data-id="2b1d6e4e5ffdf5fdb97ffc5fae00e349">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-2e12ee" data-block-id="2fadbde438986b05bf4b9b493556838f" style="width: 888.418px; height: 599.682px; left: 35.791px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1600" data-natural-height="1080" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/2d277bc5eea279791453d8a66f82dbdf.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="69712c559d268297d9a2241c1d59142c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">redux in motion</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* and here's how it all moves Together
+* state comes in together with action to form new state
+
+</aside></section><section data-id="4aa9e110573137464b246b5d0805227a">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-6e04b4" data-block-id="ffd7b13765beaf2752f123627d9c9663" style="width: 635.72px; height: 592.875px; left: 162.14px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1647" data-natural-height="1536" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/4f647599405712ca6665b97463b47b9f.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="04f488423ca58d4759342c86d83bacd2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">example pre-redux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* lets take youtube app
+* had some complicated double layer wiring
+* would have been nice not to pass so much stuff in props right?
+</aside></section><section data-id="1424c1ad0b50bd242adab33ab1c69f4b">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-name="text-4ad971" data-block-id="704abac7091e08bdc3203fa54c52400f"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>example+redux</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9fae68" data-block-id="acefa1ec0db73af588fdf54f05f985f7" style="width: 942.394px; height: 577.825px; left: 8.803px; top: 95.9731px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="1065" data-natural-height="653" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/6312f06e0805ae9a03c170161f6c4d12.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="df2def9f5bad3a93f5ee470f5f9bc36b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">example +redux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* heres a version with redux
+* this drawing is pretty much what you'll be doing is the redux short - refer back to this - not all things are named the same, this has 2 reducers but you'll be combining the state into 1 - this is purposeful, understand the concepts not the specifics.
+
+</aside></section></section><section class="stack" data-id="f6975edb01818ba0f7c54af107b03877"><section data-id="9951f69a8787c58cf46c379dc9f8e69b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-849030" data-block-id="6ae9ae3476dccb249ae49a39c1f96b61" style="width: 634.435px; height: auto; left: 151px; top: 102.562px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true"><pre style="font-size: 25px; line-height: 30px;"><code>{
+    type: 'VIDEO_SELECTED',
+    selected: video,
+}
+
+// is then dispatched to reducer
+// dispatch( { type: _, etc })
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" data-block-id="4ba695ef3e6d21309f2b424a2dfa3c36" style="height: auto; width: 600px; left: 167.217px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>is just an object</li>
+	<li>has a mandatory type property</li>
+	<li>other properties as needed</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e64f9f2afbb07129a20b68b9d63454aa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is a redux action</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* can use a const or dict to have types not accessed as strings 
+* all Redux events trigger actions
+* remeber only way to change applicaiton state is through actions
+
+</aside></section><section data-id="c159c50187bae05e28588cc6c431d667">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-849030" style="width: 869.541px; height: 335.736px; left: 42.792px; top: 92.352px;" data-block-id="f3b48f7b30e3a93798cb25c2a6a4f2c1"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 25px; line-height: 30px;"><code>export function selectVideo(video) {
+  return {
+    type: 'VIDEO_SELECTED',
+    selected: video };
+  }
+}
+
+// must be `connect`ed to redux or dispatched
+// dispatch( selectVideo(video) )
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 837.208px; left: 42.792px; top: 474.5px;" data-block-id="5855bc3ae45ded834839910959326041"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>is called in an event
+	<ul>
+		<li>user or ajax callback</li>
+	</ul>
+	</li>
+	<li>is a function that returns an action object</li>
+	<li>action is sent to all reducers</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="78b844a7c20c89261c0b2549aea7f8ea"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is a redux action creator?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* CAVEAT + MUST CONNECT TO REDUX or be dispatched manually
+</aside></section><section data-id="ec3184e05cb528fec800ea0c25f399de">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-849030" style="width: 903.575px; height: 364.665px; left: 42.792px; top: 92.352px;" data-block-id="a6ea30be614eba854fbf0b8c5f1af984"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 25px; line-height: 30px;"><code>const initialState = { selected: null, all: [] }
+
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case 'VIDEO_SELECTED':
+      return { all: state.all, selected: action.video };
+    default:
+      return state;
+  }
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 837.208px; left: 42.792px; top: 501.5px;" data-block-id="72b2b2251eb199b73cdc6d1856e77fa6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>reducer pure function produces new state</li>
+	<li>based on current state + action</li>
+	<li>return is assigned to key in main state</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="b9c5d28bae004ffe73785f3b8fc7519e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what is a redux reducer?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we're going to use multiple reducers in most projects
+* each reducer is responsible for one piece of the state object
+* draw out what your state looks like - this is important!
+
+</aside></section><section data-id="8802f8ad5ad0c6d9978472eb34efb15c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 585.354px; left: 374.646px; top: 158.35px;" data-block-id="aa3014d232e80a877177ae4c1bb19af5"><div class="sl-block-style" style="z-index: 10; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>must be a pure function!</li>
+	<li>receive:
+	<ul>
+		<li>current state</li>
+		<li>action and any payload</li>
+	</ul>
+	</li>
+	<li>return:
+	<ul>
+		<li>new state</li>
+	</ul>
+	</li>
+	<li>do not have access to anything else</li>
+	<li>shape MUST stay consistent</li>
+	<li>what is a tool we learned to help keep this pure?</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-e55408" data-block-id="ce3c08eb45494f9525ecbb2fdd2fbdd1" style="width: 360.954px; height: 250.631px; left: 13.692px; top: 224.685px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="638" data-natural-height="443" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/ac09dc397d62e2825e7ba87240939b1a.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="4ecbdd665d56ed26f0a820281595316a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">reducers, more pure functions</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* side effects again
+* anybody remember what a side effect is?
+* has anyone tried hooks with useEffect?
+* do we need to hash this out? 
+* immer and produce! use it!</aside></section><section data-id="e063732c586945a4b846975a6bfcb01c">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 508.777px; left: 385.611px; top: 171.964px;" data-block-id="1246324f636eefb49f215a8a6d920dfb"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>all reducers get called hence <span style="color:#4757ff">switch</span> on action</li>
+	<li>return state for particular key</li>
+	<li>must return some state, always merged</li>
+	<li>default action must return existing state</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-4055b6" data-block-id="a182e9fca8652208379fd4ff1a07d5eb" style="width: 400.14px; height: 517.999px; left: 26.2782px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 12;"><img style="" data-natural-width="550" data-natural-height="712" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/00b2675fa2421521ac76ded6909c1b52.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="7b42b9225ebfc623b0f2a2db60129d8b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the shape of data</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* REMEMBER  component state is different and can and should still be used
+</aside></section></section><section class="stack" data-id="aad068fa3c52748962be0ef2a8fbc953"><section data-id="0e2d8b6f09bf0716e6f624ed9effd044">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 800px; left: 80px; top: 478.267px;" data-block-id="972a5b94548f55f0ac3ac56344a31be2"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>components that control data</li>
+	<li>need to trigger actions (could use props though)</li>
+	<li>need access to global state</li>
+	<li>may pass data to presentational children components</li>
+	<li>don't overuse</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-0fbce6" data-block-id="99f27925923cb32b4a2dec679077e548" style="width: 644.737px; height: 376.526px; left: 157.632px; top: 85.974px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1000" data-natural-height="584" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/47bd33aac3f64a3d54824c098917a9c6.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="b0d224687beb14fcc1f29f2dad5fda68"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">ok... and connecting a component?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* some components, presentational ones don't need it
+* here we call them container components - since they contain presentatinal components and pass data to them
+* just props based
+* no need to overuse
+</aside></section><section data-id="d884d95a53ff1b55d58e24ebac702261">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-16c47c" style="width: 592.613px; height: auto; left: 183.693px; top: 543px;" data-block-id="2a07ce602e13bfac42e4209596b7470a"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true" data-code-wrap="true"><pre style="font-size: 16px; line-height: 19px; tab-size: 4;" class="javascript"><code>import { configureStore } from '@reduxjs/toolkit';
+
+const store = configureStore({
+  reducer: rootReducer,
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-ab335a" data-block-id="fda92bb9bfbfe068decfb1891697ba98" style="width: 960px; height: 542.083px; left: 0px; top: 2.5885px;"><div class="sl-block-content" style="z-index: 12;"><iframe allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay" data-src="https://redux-toolkit.js.org/" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation"></iframe></div></div></section><section data-id="a513b87722b1c9f96ea25de1d4521fe9">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 800px; left: 80px; top: 501.5px;" data-block-id="0dccb0c2d5f332e1c0af45f13894157f"><div class="sl-block-style" style="z-index: 10; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>global state selection as variable</li>
+	<li>takes function that parses out the bit of state needed</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-16c47c" style="width: 891.394px; height: 337.123px; left: 34.303px; top: 97.8773px;" data-block-id="ef75c6508e3f78a4d4507fac90033213"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 18px; line-height: 22px;" class="javascript"><code>// in your connected function based component with hooks
+
+import { useSelector } from 'react-redux';
+
+function myComponent(props) {
+  const video = useSelector((reduxState) =&gt; reduxState.video.selected);
+  return (
+    &lt;div&gt;{video.snippet.title}&lt;/div&gt;
+  )
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="c449f4f593b833bc089bab7f59ef58cd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">useSelector hook</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="e0192c3bf6681a1d63aa3d9880035e8f">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 960px; left: 0px; top: 560px;" data-block-id="7002a41e177acd1c25d492e18e629af6"><div class="sl-block-style" style="z-index: 10; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>component must be connected to ActionCreator functions</li>
+	<li>if called directly won't trigger reducer!</li>
+	<li>lots of short hand <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank">here</a>
+</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-16c47c" style="width: 891.394px; height: 430.718px; left: 34.303px; top: 84.2636px;" data-block-id="d5b293a28ca6b351b9d322a6a134a80c"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="javascript"><code>// import 1 action
+import {selectVideo} from './actions';
+
+
+function myComponent(props) {
+  const dispatch = useDispatch();
+
+  return (
+      &lt;button onClick={() =&gt; dispatch(selectVideo(props.video))}&gt;video&lt;/button&gt;
+  )
+}
+
+
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-26b630" data-block-id="0db2248f528f9abef396b093b62b0ad6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">useDispatch hook</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="2b2fb2b58bcb4c45c1732aa818e5c30b">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 960px; left: -7.10543e-14px; top: 528.685px;" data-block-id="dd14867850b7ae583de46cc5c9c5909f"><div class="sl-block-style" style="z-index: 10; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>To provide access to the store to all</li>
+	<li>Wrap root App in a Provider tag at top level</li>
+</ul>
+</div></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-16c47c" style="width: 592.613px; height: 352.838px; left: 16.7283px; top: 137.162px;" data-block-id="76503099e4bafc8f6608e0e2f6d7ebfb"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="javascript"><code>import { configureStore } from '@reduxjs/toolkit';
+
+const store = configureStore({
+  reducer: rootReducer,
+});
+
+
+const root = createRoot(document.getElementById('main'));
+root.render(
+  &lt;Provider store={store}&gt;
+    &lt;MyRootComponent /&gt;
+  &lt;/Provider&gt;
+);</code></pre></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-29bd82" data-block-id="742ffd755c59b6deb754d04444569a82" style="width: 336.438px; height: 402.283px; left: 592.719px; top: 70px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 12;"><img style="" data-natural-width="700" data-natural-height="837" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/a6c9e2484c859957fe7724597383b382.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="f94a65b56271e1259410b3306813d345"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">provider</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* last thing, provides access to store to connected components
+* required boilerplate
+</aside></section><section data-id="b5c4e975e81bb80b0684330fd50e58bc">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-a0ddb4" style="height: auto; width: 959px; left: 1px; top: 140px;" data-block-id="5e84a8c2da15ef0d4161acdd40b78612"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
+	<li>
+	<p style="color:rgb(58, 62, 64)">But all that seems complicated, actions, reducers, providers, actionCreators, thunks?!</p>
+	</li>
+</ul></div></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-3f6a6c" data-block-id="f76e410a6df783acc4809fb7134de551" style="width: 711.86px; height: 384.404px; left: 124.07px; top: 245.596px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="500" data-natural-height="270" alt="totoro looking confused" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/2bfbab700d6f1a18db21fe80e065200b.gif"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 1px; top: 0px;" data-name="snippet-26b630" data-block-id="b7bfe4e3f4b1aa2685967bebed459c82"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">all fine and dandy</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="02cd13cc26e9d1ce47903fe8fdcee8ce"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 259.912px; left: 80px; top: 179.023px;" data-block-id="a18b76cffb57975e4c799d59b6891ca8">
+<div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Zustand</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">A simpler redux</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div>
+<grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 10;"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 10;"></grammarly-extension>
+</div></section><section class="stack" data-id="38ec6ea1f09d5bd7b2816799ff04110d"><section data-id="94a01b71265126ffaf850361d90e2fcb"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="ddfebb443fee5c76181e8be6f496947a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Zustand</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-cb781a" data-block-id="2ff0e22f40993eb4e427c5c542bbce27" style="width: 806.4px; height: 403.2px; left: 76.8px; top: 86.8px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1200" data-natural-height="600" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/4ca6eecac6a50e716a26cb52af0c01c9.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-20ecbe" data-block-id="5080e1e6b2743f07b5b75e60a4e2ce5d" style="height: auto; width: 600px; left: 180px; top: 517.324px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>A small, fast and scalable bearbones state-management solution using simplified flux principles. Has a comfy API based on hooks, isn't boilerplatey or opinionated.</p></div></div><aside class="notes">* it is unopinionated, hence we'll have to bring our own opinions!</aside></section><section data-id="4f4ff97968f4a3e3562ea1ad2d4c2968"><div class="sl-block" data-block-type="text" data-name="text-d197b9" data-block-id="2448e604e7f2792c985a9f450d7ac5f5" style="height: auto; width: 960px; left: 5.68434e-14px; top: 401.067px;"><div class="sl-block-style" style="z-index: 10; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>Why zustand over redux?</p>
+
+<ul>
+	<li>Simple and un-opinionated</li>
+	<li>Makes hooks the primary means of consuming state</li>
+	<li>Doesn't wrap your app in context providers</li>
+	<li>Can inform components transiently (without causing render)</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="ccc0100d3c1feb43adb7ac7791a90bea"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">main premises</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-2ba2df" data-block-id="565831d53546c703e9c44c46fb83d564" style="width: 454.147px; height: 255.458px; left: 265.853px; top: 108.271px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1280" data-natural-height="720" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/cb8d006515e873f4568de61143b94a50.png"></div></div><aside class="notes">* this last one mostly means that it can operate outside of react if you want to,  we most likely never will but for very fast paced updates for instance where you might have say a game loop triggering re-renders anyway, but mouse events happening much faster you can update state and not trigger a cascade of re-rendering </aside></section><section data-id="87b7e41ffb97e3d00c878635021a7a1d"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="35a8d8653001df570688e842ebf337df"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Step 1: create a store</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-849030" style="width: 960px; height: auto; left: 0px; top: 197px;" data-block-id="411d3f1d6c82194ffdcf5f3a96dfdbb0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true" data-code-wrap="true"><pre style="font-size: 19px; line-height: 23px; tab-size: 4;"><code>import { create } from 'zustand'
+
+const useBearStore = create((set) =&gt; ({
+  bears: 0,
+  increasePopulation: () =&gt; set((state) =&gt; ({ bears: state.bears + 1 })),
+  removeAllBears: () =&gt; set({ bears: 0 }),
+}))
+</code></pre></div></div></section><section data-id="ea0af520a3775ad83070f029da9dc929"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="3e7d0615a30cab5c3b350f754e2f9210"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Step 2: use the store hook to filter state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-849030" style="width: 960px; height: auto; left: 4.9738e-14px; top: 184px;" data-block-id="4aaa0640f99fe788a642d86172a6e1ac"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true" data-code-wrap="true"><pre style="font-size: 18px; line-height: 22px; tab-size: 4;"><code>function BearCounter() {
+  const bears = useBearStore((state) =&gt; state.bears)
+  return &lt;h1&gt;{bears} around here ...&lt;/h1&gt;
+}
+
+function Controls() {
+  const increasePopulation = useBearStore((state) =&gt; state.increasePopulation)
+  return &lt;button onClick={increasePopulation}&gt;one up&lt;/button&gt;
+}
+</code></pre></div></div></section><section data-id="3d9278303b8188c7d57a08d0dc34a7d8"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="b6a87a59cc9636e00ffebc79e695bee6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Immer middleware for immutability</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-849030" style="width: 960px; height: auto; left: 4.9738e-14px; top: 184px;" data-block-id="00c1389d434aef9f4639a6f7e0c3fa74"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-autoheight="true" data-code-wrap="true"><pre style="font-size: 19px; line-height: 23px; tab-size: 4;"><code>const useBearStore = create((set) =&gt; ({
+  bears: 0,
+  increasePopulation: () =&gt; set((state) =&gt; ({ bears: state.bears + 1 })),
+}))
+
+
+const useBearStore = create(immer(set) =&gt; ({
+  bears: 0,
+  increasePopulation: () =&gt; set((draft) =&gt; { draft.bears += 1 }),
+})))
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3c4e04" data-block-id="6da5b9781d4c3aa11900ec563bd32d24" style="height: auto; width: 600px; left: 180px; top: 576.532px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>ie: use immer and like it</p></div></div><aside class="notes">* immer middleware - no need for produce</aside></section><section data-id="c3249854282c54a4a3f6775c60c6643d"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="9f823c578e1f16ef8c9bc2f9985a5cc1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Summary</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-812058" data-block-id="6940b39b8782e3984422d877fd3a454f" style="width: 476.582px; height: 350.817px; left: 243.418px; top: 104.591px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1080" data-natural-height="795" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/da1a0093183429261c1333de5aba5ca3.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-e8018f" data-block-id="c520a490237142770b44eccbbef7115c" style="height: auto; width: 960px; left: 5.68434e-14px; top: 506.971px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>No dispatch, reducers, actionCreators, createAsyncThunks, etc</p>
+
+<p>BUT</p>
+
+<p>a central store with actions collocated in the store</p>
+
+<p>currently top npm package for state manegment</p>
+</div></div><aside class="notes">* docs need help keeping updated, seems like an active community so if you like it, contribute to it. </aside></section></section><section class="stack" data-id="81d5e6865d9da0fe407174a3cb6d4e4d"><section data-id="9b5ff0afce396bed67cde9a534273ebb">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-e80216" data-block-id="301481784c478bb1c21446a32f911236" style="width: 663.845px; height: 617.509px; left: 148.077px; top: 70px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10; transition-duration: 0.6s; transition-delay: 0.6s;" data-animation-type="fade-in"><img style="left: -35px; top: 0px; width: 733px; height: 618px;" data-natural-width="882" data-natural-height="743" data-crop-x="0.047192" data-crop-y="0" data-crop-width="0.905615" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/e909c439ba1bfbeb8d26c0de3a1460f0.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="8566573fb7bfe5bf01bc16c052357763"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">redux map</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* forever will redux confuse you
+</aside></section><section data-id="3cbfeac464d294bf84391962c37643a5">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="6a55b08df8c5bc9f960a71e7f224303c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">zustand map</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-1dfeba" data-block-id="33e6e9f54047f797cd10b8e1404d3075" style="width: 555.193px; height: 630px; left: 202.404px; top: 35px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img class="" data-natural-width="616" data-natural-height="699" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/608e72aa1a9945a4977f68e938cac1f5.png"></div></div></section><section data-id="af886d056f9a285f2dacf766a124c1ac">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="dbce5232c6711df4de87d5280986d4cd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Redux deconstructed</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 616.84px; left: 0px; top: 83.1602px;" data-block-id="6c1ee5738ea89cdef6d9c17fb26afccb"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/BaEvZmz?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div></section><section data-id="1e810960adcd1bce8569746458bc1bf1">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="df47fac96029acb672d02253def15507"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Zustand deconstructed</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 616.84px; left: 0px; top: 83.1602px;" data-block-id="0a2cdb7db0dc1c786729e503fd4c517f"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/zYXywwN?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div></section></section><section class="stack" data-id="a007192944cdedd1effbb64529df29ae"><section data-id="006451a612affc2f55ebd599057ecd9d"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 227.404px; left: 80px; top: 179.023px;" data-block-id="cc1d56410b031d3ed0fbce5d2bb54eaf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Jotai is to Recoil what Zustand is to Redux</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section data-id="5bf71bd8dafac310402711c908c6eeff"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="690f31a93327e354f6f9648e300272e9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">a different ideology but same problem</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3d8135" data-block-id="41f45a7cbe61850b25e185703c428b33" style="height: auto; width: 600px; left: 180px; top: 124px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>recoil - meta/facebook&nbsp;</p>
+
+<p>jotai - community</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-d95169" data-block-id="5e1d33e33be6888c4c0dd2d30915bd11" style="width: 700.651px; height: 329.773px; left: 129.674px; top: 230.227px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="750" data-natural-height="353" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/aa5cdeba645453a408f905d187f3e768.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-7bd116" data-block-id="e22d9f2cf459bf1516d207b8ec9088a8" style="height: auto; width: 600px; left: 180px; top: 610.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>jotai slightly simpler with hooks</p></div></div></section><section data-id="be3983f23d0bce2f29aa82dcc891e284"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="784c6721b391b40a6a582bea88bf9ff7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">atoms vs store</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-82587b" data-block-id="4e3c3e8b3fdc4f13865e10fe77575e44" style="width: 806.4px; height: 417.387px; left: 80px; top: 87.1267px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1080" data-natural-height="559" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/6c93dd9bd5d280b0f6a5b5c280fb7150.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-cd10d9" data-block-id="d3a4039c57aed7dc6e1303d0bcae018c" style="height: auto; width: 960px; left: 5.68434e-14px; top: 544px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>individual bits of data called atoms</p>
+
+<p>selectors that derive data from multiple atoms</p>
+</div></div><aside class="notes">* personally while this seems simple for small use cases, i didn't like that you can just create an atom anywhere at all
+* i prefer the idea of a single store without weird inheritance derivation</aside></section><section data-id="01cd8158300078665f15e8c6c5de0ddc"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="08058c136a091cfa0846c7fdd30fb4be"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">many state management options</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-770c1f" data-block-id="b9e21a435a497f3ea79494a0dd68bb22" style="width: 533.348px; height: 518px; left: 213.326px; top: 112px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1390" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/42f9f3fbd13d8ab0f7705193c17b3614.png"></div></div><aside class="notes">many options exist - the trend is towards more minimal and simpler. 
+we'll stick with zustand this time around - should help simplify. </aside></section></section><section class="stack" data-id="322ccd61e6138a42d4e6a4d6ac7f16d8"><section data-id="d60b0776b8e25a5fe4f3c7e0409dd3d5" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-eaba8d" data-block-id="b44a1847c1ddb3a60d9643aaab0656b8" style="width: 375.056px; height: 375.056px; left: 292.472px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1007" data-natural-height="1007" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/c0341d66a97c42787777f608c92a1d0e.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-9b3456" data-block-id="4fa90d7a9b15e0fd7034d2405becf8a1" style="height: auto; width: 600px; left: 180px; top: 529.601px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul style="color:rgb(58, 62, 64)">
+	<li>what about asynch stuff like api calls?!?!</li>
+	<li>can these state management tools deal with that?</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 1px; top: 0px;" data-name="snippet-26b630" data-block-id="18f3cf3a5fe9e09489a0b53fd688c669"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what about data network async calls?&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* yes!</aside></section><section data-id="6ce7c4fbf9dfbf0cdb94c31b0e2f3f8a" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="bbdc8829ee9cac6971ea663f297a2a1d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">redux thunks vs zustand simplicity</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-a5a59e" data-block-id="24c37eb62de5539196844fedd78673e2" style="width: 500px; height: 300px; left: 16.3777px; top: 85.9443px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">// super simple in zustand
+
+const useFishStore = create((set) =&gt; ({
+  fishies: {},
+  fetch: async (pond) =&gt; {
+    const response = await fetch(pond)
+    set({ fishies: await response.json() })
+  },
+}))</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-6a68c2" data-block-id="d77f37beb2eddf728e267b79028f2755" style="width: 500px; height: 300px; left: 425.047px; top: 365.634px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">// userAPI. fetchById has to be defined somewhere
+
+
+const fetchUserById = createAsyncThunk(
+  'users/fetchByIdStatus',
+  async (userId: number, thunkAPI) =&gt; {
+    const response = await userAPI.fetchById(userId)
+    return response.data
+  },
+)
+
+
+</code></pre></div></div><aside class="notes">* in CS a thunk is a method that is created, often automatically, to assist a call to another method.
+* what if we need to make an api call that takes time
+* there a way we can fix that also
+* we'll work with these in SA6
+
+</aside></section></section><section class="stack" data-id="fe59f3384c72bb884dae0088fd845ada"><section data-id="51d7d4bbb6c1c99d6e5e17a2922ce636">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-4fedee" data-block-id="600fed20ef9205bc423bd28b0b50a968" style="width: 660.623px; height: 518px; left: 149.688px; top: 112px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="667" data-natural-height="523" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/d283d7734074774d0d66d46a5d3b8920.gif"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="3d9761e164826eb4ec31551e6725a7c0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">are there dev tools for this?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* react devtools, hopefully you've all been using this
+</aside></section><section data-id="dde19b3e8f16b897680b0029b8368f77">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-c6bd87" data-block-id="1a59b781a6634d1e4cfea12fd20eede0" style="width: 685.116px; height: 607.423px; left: 137.442px; top: 80.1575px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="776" data-natural-height="688" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/6e7993990a913b1738cbb5c13a18cb4b.gif"></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="f89ccc3a9fe8d3da14757da93214a398"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">are there dev tools for this?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* redux devtools give you state timemachine
+* and you can just set the state, and import and export the state!
+</aside></section></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+<div class="sl-block" data-block-type="text" data-name="text-b1fae7" data-block-id="2628dc76f114d2d7977f343785e158ee" style="height: auto; width: 492.716px; left: 413.141px; top: 228.472px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>state management short - ease you in to frontend state management</li>
+	<li>lab4 - coming soon platform frontend</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-0f7ab0" data-block-id="d9ede363cb31fb79f82c7d5203645f9b" style="width: 337.826px; height: 518px; left: 23.7391px; top: 132.05px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1020" data-natural-height="1564" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/a4a45faa6eb183fcee0b511f5aa6f754.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e69a49744fdae8b59728b52c6d6d39a7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">next up</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we'll do a short that introduces redux
+* then a lab that builds up on what you've done so far - integrating your react knowledge with redux and making calls to an api</aside></section><section data-id="4146e8a036b0191bdf877298a69e6a7a" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-935777" data-block-id="e798153971040e09e76630310ef7dc84" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codesandbox.io/embed/cs52-react-redux-example-ezknf?fontsize=14&amp;theme=light" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="a0b04242fc2b06da481d3d13e881ac28"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">todo with redux</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
