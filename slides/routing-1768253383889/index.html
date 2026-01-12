@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routing</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
+  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
+  <style>
+    /* Override slides.com animation system - make all elements fully visible */
+    .sl-block-content,
+    .sl-block-content[data-animation-type],
+    .sl-block-content[data-animation-type="fade-in"],
+    .sl-block-content[data-animation-type="fade-out"] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</head>
+<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+  <div class="reveal" data-theme="shared:cs52-theme">
+    <div class="slides">
+
+				<section data-id="cc92c84d236e3a9d428e0ab4ce861eda"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 161.418px; left: 80px; top: 219.291px;" data-block-id="3bb52678f66578fb736bed888da8a590"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Frontend Routing</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">&nbsp;</div>
+</div>
+</div></div></section><section data-id="faeedd4dcf38042fd9fc77da3332d77c">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-2a209d" data-block-id="31c15d9b96c02ef03aac548d8ceaf0fb" style="width: 666.517px; height: 583px; left: 146.741px; top: 99px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1644" data-natural-height="1438" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/94ba2d9db4050eaeb7d33ce84cf817dc.jpg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="3fb3535534ae05e3c1129c818e03e17a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Frontend Routing and App Navigation</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* hopefully JS is starting to make a little bit of sense
+* anything we should go over?
+* how many of you played boomsync.me? 
+* lab3 coming along, sounds like a lot of you have started it
+</aside></section><section data-id="ce368c310f33a9fe34105f6d3c28ff75" data-visibility="hidden">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-610243" style="height: auto; width: 960px; left: 0px; top: 155px;" data-block-id="eba5f3cf6bda10968ec3dac8c0074035"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li><a href="https://the-dartmouth-trail.onrender.com/" target="_blank">The Dartmouth Trail</a></li>
+	<li><a href="https://pirate-encounter.onrender.com/" target="_blank">Pirate Encounter</a></li>
+	<li><a href="https://lab2-quiz-platform-yawenx2004.onrender.com/" target="_blank">Gothic Novel</a></li>
+	<li><a href="https://lab2-quiz-platform-dejanaypinto.onrender.com/" target="_blank">College Major</a></li>
+	<li><a href="https://lab2-quiz-platform-manzi-fabrice.onrender.com/" target="_blank">CS52 Survival</a></li>
+	<li><a href="https://ishanvprasad-lab2.onrender.com/" target="_blank">Soccer</a></li>
+	<li><a href="https://lab2.jonahbard.com/" target="_blank">Dartmouth Professor</a></li>
+	<li><a href="https://lab2-quiz-platform-maddyslater.onrender.com/" target="_blank">JellyCat</a></li>
+	<li><a href="https://dog-match-buzzfeed-quiz0.onrender.com/" target="_blank">Doggies</a></li>
+	<li><a href="https://buzz-feed-quiz.onrender.com/" target="_blank">OCEAN</a></li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="dd4093b7ba301f455668a167685c2f85"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">🔥 Lab2 Staff Picks! 🔥</div>
+
+<div class="title">&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="deaec88dae73073d79ca0acf42577159"><section data-id="348b3cd44633ff22686f3f1ce5137a05">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-180e37" data-block-id="491af394c0c9cce2ad88ed5f472ace4e" style="height: auto; width: 826.545px; left: 80px; top: 110.82px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:#2aa198">http://yummyserver.com/food/id/#/section?id=23j32j3j</span></p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-e8f861" data-block-id="29f48b67e6dd0c24a06b2a47dd775944" style="width: 547.172px; height: 524.865px; left: 206.413px; top: 175.135px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 12;"><img style="" data-natural-width="417" data-natural-height="400" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/ff75af69646b7fcae2a811b72329b04a.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="66220fbd20082272779ff5372f336ad1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">URLs are routes to resources</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* originally - routes were just file resources in folders
+* what if you want to **pass some state via the url**
+* or **have a url that is meaningful** to the user to help indicate where they are
+* who keeps track of all that junk
+* tracking where a link was clicked and who shared it for instance
+* what news article to show
+* https://ed.fnal.gov/lincon/tech_web_links_types.shtml
+* https://www.slideshare.net/rfreebern/the-ux-of-urls
+</aside></section><section data-id="2eb6de1207a244ea53aaa5e644b951c1">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-ceb1f1" data-block-id="c482509050d3771319d699b72d99cb16" style="height: auto; width: 600px; left: 180px; top: 195.82px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:#859900">people spent 25% of their time looking at the URL in navigational tasks vs 22% in informational tasks --E. Cutrell, et al 2007</span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#859900">searchers are particularly interested in the URL when they are assessing the credibility of a destination --J Nielssen, 2007</span></p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-87376d" data-block-id="15cdd232eb06fdae2a1d23901441ecf8" style="height: auto; width: 600px; left: 180px; top: 619.974px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>the <a href="https://www.slideshare.net/rfreebern/the-ux-of-urls" target="_blank">UX of routes</a></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a186d275f3b1471b0351766990914ee0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">ux or routes/urls</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* URLS that you see in the browser  - can be frontend or server side rendered routes
+* regardless the URLs that you do see in the browser because they are visible are part of the UX of the product
+* what are some affordances of having a URL that is visible to the user? 
+* you judge a site by its urls
+* we will separately talk about server side routes - bu
+</aside></section></section><section class="stack" data-id="f02db048186a1b847034e5fb5f9993cf"><section data-id="8890d339a48bdd5c86f2c8d9cbe394a0">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-581c3e" data-block-id="5d1946d2409322847fd2f6e4cbc64eb8" style="width: 897px; height: 605.22px; left: 31.5px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="left: 0px; top: -62px; width: 897px; height: 667px;" data-natural-width="585" data-natural-height="435" data-crop-x="0" data-crop-y="0.092624" data-crop-width="1" data-crop-height="0.907376" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/f151eb4a4029351e4125fd2aced21dd3.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="35df8fc355d4b89de200a37b96e478cc"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">SSRA vs SPA</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* http://www.slideshare.net/3scale/the-api-and-appification-of-the-web
+* https://eager.io/blog/the-history-of-the-url-path-fragment-query-auth/?h</aside></section><section data-id="76d3576ccdb44af3914b00eadd56b61e">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-40aac1" data-block-id="58179ebc8c4ef59b6884dfa0aa92ebc0" style="width: 611.349px; height: 420px; left: 188.651px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="1770" data-natural-height="1216" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/7e90032473bba5deff22c2df1b65d9bd.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-9d44e9" data-block-id="618ca9514661aaa254adf6ff1f8ad6d0" style="height: auto; width: 960px; left: 0px; top: 544px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ol>
+	<li>http://mysite/?user=12&amp;name=panda</li>
+	<li><span style="color:rgb(34, 34, 34)">cgi script runs, parses&nbsp; arguments, spits back next page</span></li>
+	<li>http://mysite/?user=12&amp;name=panda&amp;form_field1=password</li>
+	<li style="color:rgb(34, 34, 34)">cgi script runs, parses&nbsp; arguments, spits back next page</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-74ef21" data-block-id="9ef8db9ce63c00be93ba9345216d6978" style="height: auto; width: 960px; left: 0px; top: 470.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>can use url for state or form fields (POST) or hidden form fields!</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a61690f09bc326bfda73259cb9a89109"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 14;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">server side rendered state handling</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="0c8aad9caf8054b78a2ad2c501c75886">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-e5ea60" data-block-id="d4b260866e54525f7573a5680944db1c" style="width: 775.288px; height: 518px; left: 92.356px; top: 80.1693px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1811" data-natural-height="1210" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/bbc153d4814382eba282ff89215765aa.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a4505d" data-block-id="fc99dfc9dd80f4b4ffd8d894eeb7fb71" style="height: auto; width: 600px; left: 180px; top: 598.169px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>app in browser</li>
+	<li>routes? serverside vs clientside</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a2325fc6cb6929dd8aaa9a4f62ed4688"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">SPA problems</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* remember single page apps?
+* lives in the browser  - javascript application basically
+* what are some pros/cons:
+  * serverside cons: page reloads, background flash, slow
+  * serverside pros: no js needed, directory structure?
+  * clientside cons: not sure how it would work not builtin, js needed
+  * clientside pros: fast, no page reload, only fetching data needed</aside></section><section data-id="1fb4e2ae0590e320f8d6821be19bdbbb">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="shape" data-name="shape-181777" data-block-id="29b203207da82222735165a3619fb205" style="width: 402px; height: 309px; left: 60px; top: 181px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 11;" data-shape-stroke-color="#3a3e40" data-shape-stroke-width="3px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 402 309"><defs><clipPath id="shape-mask-1-1619197805985"><rect width="402" height="309" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#3a3e40" stroke-width="6"></rect></clipPath></defs><rect width="402" height="309" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#3a3e40" stroke-width="6" clip-path="url(#shape-mask-1-1619197805985)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-4af8ca" data-block-id="d7273b5207c741b7c0f8cbb44b7a7685" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 61px; top: 238px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="401" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid" width="401" height="1" viewBox="0 0 401 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#000000" stroke-width="2" d="M0 0 L401 0"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L401 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L401 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-233530" data-block-id="8300f9abe83a3c9e1daacec88c979624" style="height: auto; width: 401px; left: 61px; top: 190.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>http://<span style="color:#4757ff">mysite/posts/123</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-58d6e4" data-block-id="f79be48c87d582201de474f08f2d49f5" style="width: 221.584px; height: 234px; left: 675.416px; top: 350px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="928" data-natural-height="980" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/cceefbac26528647c52e12354c437c09.png"></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7d212a" data-block-id="a2468df232896044869da0087e928b7d" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 183.416px; top: 335.5px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="492.2080000000001" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 15;" data-line-width="7px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid" width="492.2080000000001" height="1" viewBox="0 0 492.2080000000001 1"><path class="line-element" fill="rgba(0,0,0,0)" stroke="#000000" stroke-width="7" d="M0 0 L485.208 0"></path><path stroke="#000000" stroke-width="7" d="M 472.208 -15.75 L 487.958 0 L 472.208 15.75 L 487.958 0" class="line-end"></path><path class="line-skeleton" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" d="M0 0 L492.208 0"></path><path class="line-hitarea" fill="rgba(0,0,0,0)" stroke="rgba(0,0,0,0)" stroke-width="15" d="M0 0 L492.208 0"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-7da632" data-block-id="14bcdf7519d53dcf65cc51b73c86b348" style="height: auto; width: 626px; left: 247px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; background-color: rgb(255, 255, 255);">
+<p>put('<span style="color:#4757ff">api.mysite/post/123</span>', { txt: 'update',})</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="bbf370049d3e522c051d5ab6f74dae12"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 17;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">SPA frontend → backend routes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* what you see in the browser with our architecture - is not going to be necessarily where the application is getting the data from
+* difference between frontend and backend route - but often they can match - but shouldn't be confused  - they are two separate products</aside></section></section><section class="stack" data-id="bfec7823d5e84beec0dee7e4337a785b"><section data-id="3d9428dd3b4dddf5c389529b16110681">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-5f73de" data-block-id="af9d7e637c0b132646a4f3c67df14dc0" style="width: 572.018px; height: 378.412px; left: 193.991px; top: 90.794px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="455" data-natural-height="301" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/c1b3d94ef4a82d569d7bbf861f417242.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-d624a1" data-block-id="e29ec175b4ec9b5b304745c2eda29a1b" style="height: auto; width: 960px; left: 0px; top: 475px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>maintains a history of URLs visited
+	<ul>
+		<li>back</li>
+		<li>forward</li>
+	</ul>
+	</li>
+	<li>loads/reloads page on navigation/submission
+	<ul>
+		<li>(problem as this reloads javascript)</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="feebf84d7e694aaecc2afda503e71be7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">core browser functionality</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* stepping back a sec to basic browser functionality
+* default browser actions
+* loading pages/resources from scratch
+* cookies we'll dive into later</aside></section><section data-id="69eb60517eed95f0e080790f2e30a135">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-d624a1" style="height: auto; width: 960px; left: -0.0005px; top: 442.945px;" data-block-id="1b9e352cb59e293bde4ae7dcb1f75c41"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">loading/reloading triggered by:</span>
+	<ul>
+		<li>location bar typing</li>
+		<li>forward/back buttons</li>
+		<li>page refresh operation</li>
+		<li>javascript assignments to window.location</li>
+		<li>form submission</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a5eef5" data-block-id="dced8d6f4ab02dc73f456cbb379e00fe" style="width: 470.593px; height: 352.945px; left: 244.703px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="800" data-natural-height="600" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/f42509d5f9cf455670bcb2397c73d22c.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a9733644cf4a02ef5011940dd37a1d03"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">reloads kill my vibe</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* BUT what we want is to change url *without* refresh
+</aside></section><section data-id="cb06ea98e9bc830e34aa36bef0a8ce49">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-4386d2" data-block-id="3b96f0ed89f9578fe1ae25f2e95311c7" style="width: 598.398px; height: 220px; left: 180.801px; top: 240px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="javascript"><code>
+window.onbeforeunload = function(e) {
+  alert('are you sure you want to leave this page?');
+}
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="6fdc428c5530642e9b9be40dfc9be2ec"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">navigation away -&gt; loss of state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* another reason why we want this
+* the problem of loss of state on navigation away from page
+* and we don't want to lose state
+</aside></section></section><section class="stack" data-id="78f4d22ec4a5a8aa7d7e78dbc90b4d73"><section data-id="3403dd67190d37accbc7a2fb7708deb1">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-1e801c" data-block-id="6f8dac27c6a2bf669deb1ea7719a4b38" style="height: auto; width: 600px; left: 180px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><span style="color:#2aa198">http://cs52-notes.cool/research</span></p></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3f0c1b" data-block-id="180ee5a3d4df00e65f840eebb07b12a4" style="height: auto; width: 749.886px; left: 105.057px; top: 249px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<em><strong>Clean</strong></em> Frontend Urls
+	<ul>
+		<li><span style="color:#942323">/posts/super_interesting_post</span></li>
+		<li><span style="color:#942323">/boardId/postId&nbsp; --&nbsp; /todos/1427</span></li>
+		<li><span style="color:#942323">/blog/date -- /blog/03-17-22</span></li>
+		<li>somehow our app needs to know about this</li>
+	</ul>
+	</li>
+	<li>
+<span style="color:rgb(34, 34, 34); text-align:left">Server Side Routes</span>
+	<ul>
+		<li>separate topic called REST</li>
+		<li>next week</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="4a41e58ee7c75aa6bcf66c6f9937daab"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">bring back routes for SPA!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* lets call this thing a route
+* now our javascript app needs to know about this
+* remember what we have currently been building are basically fully js apps
+* we will separately talk about server side routes - the UX of those is important TOO! that is called REST
+</aside></section><section data-id="385ef3a5934d6739234b83c573610aab">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-3f0641" data-block-id="24ad37c4878cdd58f9c01a9ac1c8ee6f" style="width: 960px; height: 345.863px; left: 0px; top: 177.068px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="730" data-natural-height="263" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/26cfb1f4797ef92b34bc7abdbcece292.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="3195dc94f6844c45b0d7778afb4500b3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">anatomy of a route</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* remember parts of the url again
+* if we had to choose between path, query and fragment for making a url that looks nice which?
+</aside></section><section data-id="78b9036b7c6959e4c3984336d7e45087">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-d624a1" style="height: auto; width: 937.117px; left: 11.4415px; top: 210px;" data-block-id="762b18ee13dbe4031cb2bcc5c66427e9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li><a href="http://example.com/" target="_blank">http://example.com</a></li>
+	<li>
+	<p><a href="http://example.com/#fragment" target="_blank">http://example.com<span style="color:#ff7e47">#fragment</span></a></p>
+	</li>
+	<li>
+	<p><a href="http://example.com/?id=3535" target="_blank">http://example.com?id=3535</a></p>
+	</li>
+	<li><a href="http://example.com/?id=3535#fragment" target="_blank">http://example.com?id=3535<span style="color:#ff7e47">#fragment</span></a></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-c3bb02" data-block-id="61fc9085f9ddda60c49410554636e49a" style="height: auto; width: 600px; left: 167px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>problematic - confusing between scroll to id and functionality</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="99495170b880e7a4c854cf1868ed9562"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">frontend routing attempt 1: hash history</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* can already change fragments without reload
+* some early frontend frameworks only used hash history
+* one problem is that now there is some confusion between scrolling to a place on a page by ID vs something that javascript is using to indicate what page you are on!
+
+</aside></section></section><section class="stack" data-id="c7d2f234e2d0170cd1263a9dc4694083"><section data-id="a1127f278d34977d575ad1662feede57">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-d8457c" data-block-id="e51c6fe9b12d757281a897a3bb691ba4" style="height: auto; width: 807px; left: 73px; top: 220px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">all that we want:</span>
+	<ul>
+		<li>browser page history</li>
+		<li>navigate with forward and back buttons</li>
+		<li>navigate away and come back to the app</li>
+		<li>navigate between parts of the app</li>
+		<li>bookmark a place in the app</li>
+		<li>copy the URL and share it</li>
+		<li>refresh reloads to same place</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-dfc48c" data-block-id="1685ed668fc6833f304944b8baa80506" style="height: auto; width: 600px; left: 180px; top: 74px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>from browser navigation?</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="6446ffa6ff7610a3dd2c17cfd78ea8fa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">step back, what do we really need?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* dont' want loss of state on navigation away from page
+* urls that are meaningful to allow bookmarking etc
+* some of these imply some serious functionality - bookmarking / sharing</aside></section><section data-id="d3f84e434915baa53ed9337775f739cc">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-4b33c6" data-block-id="577a6dac3075af584925e3d7157e13c5" style="width: 698.873px; height: 393.116px; left: 130.563px; top: 166.884px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="450" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/8562094ae8e9d7e5248e990c5232bc68.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="5f6cd301f10795f20b74872fbf1f0d55"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">that would be perfect, thanks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* owls are so cool
+</aside></section><section data-id="56f3260aac30659978523da2156368f7">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-35e51b" data-block-id="f7b64d5bb01f3c6e147a9a15bbe2d6ea" style="height: auto; width: 960px; left: 0px; top: 100.523px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><span style="color:#2aa198">https://www.amazon.com/Building-Isomorphic-JavaScript-Apps-Implementation/dp/1491932937/ref=sr_1_5?ie=UTF8&amp;qid=1493142393&amp;sr=8-5&amp;keywords=react</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-01aff0" data-block-id="4712b5bb91bf02cf0b85c2b29689e1f9" style="height: auto; width: 600px; left: 180px; top: 315px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>state in urls:
+	<ul>
+		<li>how much state/ui context to encode?</li>
+		<li>url sharing is standard</li>
+	</ul>
+	</li>
+	<li>share buttons to generate special urls</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="032531eeb1b7d04cce9b08758317cddb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">tracking/analytics/deep links -ie app state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* it sounds like we want to encode some app state in the URL - to be shared etc
+* how much of app state to include?
+* state/ui context meaning if in app, do you have menus open? editing some field?
+* probably not everthing
+* notice amazon links have a lot of stuff encoded in them
+* these days on mobile you can deep link into an application not just web
+</aside></section><section data-id="5ba16fba62c112ce4e27fa2572435417">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-c8b983" data-block-id="bfa05c8783bf879d66bbaafe220d7580" style="height: auto; width: 960px; left: -2.84217e-14px; top: 236.679px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>ugly url: <a href="http://www.example.org/?show=posts?id=s987s9d&amp;type=today&amp;user=320s9s8" target="_blank">http://www.example.org/?show=posts?id=s987s9d&amp;type=today&amp;user=320s9s8</a></p>
+
+<p>&nbsp;</p>
+
+<p>clean url: <a href="http://www.example.org/posts/07-22-16" target="_blank">http://www.example.org/posts/07-22-16</a></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="451793611e21f762f4889b6dccedb474"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">initialize the application from the url</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* clean urls better!
+* maybe less encoded but user shouldn't be in the url!
+</aside></section><section data-id="ad8522e55266e57e86ed456bac678211">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-c8b983" style="height: auto; width: 960px; left: -2.84217e-14px; top: 236.679px;" data-block-id="7dda3b5dc0cd99e09b0303e044256f9f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><a href="http://www.example.org/?show=posts?id=s987s9d&amp;type=today&amp;user=320s9s8" target="_blank">http://www.n</a>otion.so/asdfa;dkjaf;dksjfa;sdkfjasdf</p>
+
+<p>&nbsp;</p>
+
+<p>always points to&nbsp; where the notion resource is&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9bd2959361447821fe317c4057e44a11"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">FILL ME IN! Persistent share links</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section data-id="b216c4295c6a871f3ad12ce8dbbb366f">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-5c6da1" data-block-id="ea1f51f6014938b89f42b3724aba1817" style="width: 537.757px; height: 237.162px; left: 211.122px; top: 231.419px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
+history.forward();
+history.back();
+
+history.pushState([data], [title], [url]);
+
+// and others
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="049216178d07978716d5147159165cd0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">javascript history api</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* allow JS access to history
+* change url with history without! reloading page
+* http://diveintohtml5.info/history.html
+
+</aside></section><section class="stack" data-id="29946b406dddd1c191c4a9d8da026967"><section data-id="fbd907bb9feb07c7386b6000eb04b22e">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-c6271d" style="height: auto; width: 722.426px; left: 118.787px; top: 307px;" data-block-id="eb334bcaf0a7b09831e2c36741bdbc8c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>"React Router keeps your UI in sync with the URL."</p>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="4e5400caf5eac08e9fb5be7b8e6217c1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Do we need to manually manage our routes?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* react wraps all that js-dom history stuff
+* and allows us to define routes more easily!
+</aside></section><section data-id="4db437c6bc4d0b42c84710c8cc20c670">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-27e013" style="width: 960px; height: 626px; left: 0px; top: 74px;" data-block-id="05a95af758cf476c7e01b3ea03df9046"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://reactrouter.com/" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="8bc9d2b3948eba58830679db2be04b7d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">how to router in react SPA?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="db07e5c06fadf342a907b982f23b89f9">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-234f4f" data-block-id="0d3cd082b2bc2b82ec6bfb8d7e22d169" style="height: auto; width: 641.72px; left: 220.347px; top: 230.646px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
+	<li>reusable layout</li>
+	<li>url routes</li>
+	<li>nested routes</li>
+	<li>matching</li>
+	<li>declarative jsx</li>
+	<li>composable</li>
+	<li>and actually much much more — see remix/router framework</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1e351bafa7cb8c3747271919f8ca5085"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">what react router provides</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="b94c8e966ea8057f74c92decf8c6f46d"><section data-id="bbc6816c55612952ff813f112e4c4de8">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-1afd7e" data-block-id="bbf37905821b88fb42783932474ae7b7" style="width: 946.087px; height: 544px; left: 6.9565px; top: 104.631px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="460" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/5e6ff6f5a3311b32234a96bf1c986806.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="5899f5dd507bcbdfefec4e278de01715"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">routing in an application: <span style="color: rgb(22, 22, 22); font-family: &quot;Comic Neue Angular&quot;; font-size: 37.5px; font-style: italic; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; background-color: rgb(244, 244, 244);">➠http://domain</span>
+</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* here's a common layout with some components
+* got that navbar
+* maybe a sidebar - who doesn' love a good sidebar 
+
+</aside></section><section data-id="c6b0a5d78800ba26fad7be31354d4813">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-cd75bc" data-block-id="82208ecef09d1ff4bcd666f84badc314" style="width: 942.537px; height: 541.959px; left: 8.7315px; top: 100.861px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="460" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/4f8838098edfa86f3321d45cc012b92b.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="b38563ae82df1bae8be81953f7c02cf7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;➠http://domain/users</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* nav
+* sidebar
+* and some inner components
+</aside></section><section data-id="0299f477fb9608bd6a782a011c1e67ce">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-920dd3" data-block-id="7f6a94053e50427c45c13b05976debd9" style="width: 948.456px; height: 545.362px; left: 5.772px; top: 124.007px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="460" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/4379668da4c10d5baa8b87c86786ad2f.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="16a7a28469b830d7ea5cef4227961182"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;➠http://domain/search/widgets</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* and maybe we can search users, or widgets
+</aside></section><section data-id="969568e9ed0c9fcaff935b6309c96df9">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-920dd3" style="width: 948.456px; height: 545.362px; left: 5.772px; top: 120.604px; min-width: 1px; min-height: 1px;" data-block-id="7ed7c2113915a3f2f6c143a2939766fe"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="800" data-natural-height="460" data-crop-x="0" data-crop-y="0" data-crop-width="1" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/03eced25efd5a7aaa3462b999374eff8.svg"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="e799931c8bef03016172d555094935d0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;➠http://domain/other</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* or even replace the search with some other view
+</aside></section><section data-id="8e9eae7b6a2646ba30de4251a019f96e">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" data-block-id="b4e964269b86e2bfd548923fa24b20dd" style="width: 758.661px; height: 425.927px; left: 121.339px; top: 175.036px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">renderInner() {
+  if (showUsers) {
+  // or if(window.location.search.indexOf("users") &gt; -1))
+    return &lt;ShowUsers /&gt;;
+  } else {
+    return &lt;ShowWidgets /&gt;;
+  }
+}
+
+return (
+  &lt;div id="main"&gt;
+    &lt;Nav /&gt;
+    {renderInner()}
+    &lt;Footer /&gt;
+  &lt;/div&gt;
+)
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="d10aa099c668824af7067b382b44ed6f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;can we achieve this layout with what we already know?&nbsp;</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* given our current state of information
+* we might do something like this no?
+* but what if we wanted to have multiple layouts?
+* and especially if we wanted to change this based on url?
+* could just read the url in - and use that as a bit of state?
+* but lots of checking
+</aside></section><section data-id="e49b65baa372ef1534264ae803d4e9c7">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-76d489" data-block-id="aae2fde72cf22529bb91b2b5d0186b9b" style="width: 960px; height: 599.238px; left: 0px; top: 100.762px;"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/c8c6ceb9615dd7ba64100a342b58bff5?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="d350ad3cd85fcc1c01499fb006386ef7"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;components as parents and children</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* your components too can have children! tangent
+* all there is to it. this.props.children will contain all the components that are nested.
+* Route components do something similar in that they wrap a component and add some functionality - higher-order component
+* you can do this with other components also if you want to add functionality for instance
+</aside></section></section><section class="stack" data-id="d47bc81d7aa7c997f9fb84dbf0c0edf1"><section data-id="c2587a742047b57878407bcea9e0c738">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-e40fa6" data-block-id="a1599da2ef328231dda3d352c1997505" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codesandbox.io/embed/react-router-basic-forked-yhlct?fontsize=14&amp;hidenavigation=1&amp;module=%2Fexample.js&amp;theme=light" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="97ef4f11c1a8aa435c1cecb11a96e02b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;react router</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* more declarative
+* connected to urls
+* just same old JSX notation!
+* yeah - you feel *that* comfortable with jsx!
+* what is cool about this? where are these components coming from?
+
+</aside></section><section data-id="e6f3495929f080deddb91824eb10f118">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 511.912px; height: 231.932px; left: 224.044px; top: 164.034px;" data-block-id="a3cdf020a7f0fe3e2273ebe42205ca17"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="xml" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;Route path='/' element={&lt;Home /&gt;} /&gt;
+&lt;Route path='/users' element={&lt;Users/&gt;} /&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3a18ce" data-block-id="462c711225ba9568803544d759333856" style="height: auto; width: 600px; left: 180px; top: 456.886px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>path + component</p>
+
+<p>pattern matching</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="7285e63a35e98fc2b5c071eced7b1fbf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;defining a route</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* basic route definition
+* component and path -
+* match can be exact or substring
+* router 6 does smart matching
+* what might happen if we left that off?
+
+</aside></section><section data-id="6da566561d4eef542abc84000c1b5df8">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 708.709px; height: 620.509px; left: 160px; top: 79.491px;" data-block-id="671b74d9e79119f036a64b5d3aa6ba86"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="xml" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
+// in index.js
+render() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;App /&gt;}&gt;
+          &lt;Route path="feed" element={&lt;Feed /&gt;} /&gt;
+          &lt;Route path="profile" element={&lt;Profile /&gt;} /&gt;
+      	&lt;/Route&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+
+
+// in app need Outlet which says there the children will render
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Website&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;Link to="/feed"&gt;Feed&lt;/Link&gt; |{" "}
+        &lt;Link to="/profile"&gt;Profile&lt;/Link&gt;
+      &lt;/nav&gt;
+      &lt;Outlet /&gt;
+    &lt;/div&gt;
+  );
+}
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9fc912d8cee2e3af77848949518f913d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;nesting routes</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* can nest components
+* can extract url for instance
+* but also parameters
+* crazy stuff
+</aside></section><section data-id="91ed4bd160c0445735c2eb3d3559c8de">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 708.709px; height: 317.018px; left: 160px; top: 191.491px;" data-block-id="7ce93829577e118ef139fb6042862f99"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;Nav /&gt;
+&lt;Routes&gt;
+  &lt;Route path="/" element={&lt;App/&gt;}&gt;
+    &lt;Route path='/users/*' element={&lt;Users/&gt;} /&gt;
+    &lt;Route path='/widgets' element={&lt;Widgets/&gt;} /&gt;
+    &lt;Route path="*" element={&lt;div&gt; page not found &lt;/div&gt;} /&gt;
+  &lt;/Route&gt;
+&lt;/Routes&gt;
+&lt;Footer /&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a7aa7ea37c5abe6aa43df2a7aada46e6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;fallback route</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* can define a route that matches if all other routes fail
+* matches when all other routes fail</aside></section><section data-id="bda309c157d90b50c1c46f1aea794a06">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 708.709px; height: 401.692px; left: 125.645px; top: 158.308px;" data-block-id="55aec6666df1411d52314f7ff677ac86"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">/* do this instead of &lt;a href="/"&gt;! */
+
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;Link to="/"&gt;Home&lt;/Link&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;NavLink to="/users"&gt;Users&lt;/NavLink&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;NavLink to="/widgets"&gt;Widgets&lt;/NavLink&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+/* prefer Link / NavLink to onClick - why? */
+let navigate = useNavigate();
+&lt;button onClick = {
+  ()=&gt; { navigate('/some/path');}&gt;Navigate&lt;/button&gt;
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="0f0361035319a7b7aab2f8709d63c942"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;linking and navigating</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* use Link or NavLink to avoid reloads and use router
+* NavLink will add an 'active' class to current match
+</aside></section><section data-id="d1685a66cc86709181a5452bf37bdc73">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 815.917px; height: 587.385px; left: 88.5284px; top: 85.308px;" data-block-id="8e8457c25be1907593c089261a21c7b3"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// :paramName pattern matches and extracts into props.match.params.paramName
+
+&lt;Route path="users/:userId" element={UserProfile} /&gt;
+
+  
+  
+//UserProfile
+function UserProfile() {
+  const params = useParams();
+  const [user, setUser] = useState({});
+
+  useEffect(() =&gt; {
+    const fetchData = async () =&gt; {
+      const result = await axios(
+        `https://api.com/users/${props.params.userId}`;,
+      );
+      setUser(result.data.user);
+    };
+
+    fetchData();
+  }, []);
+  
+  return (
+  	&lt;h2&gt;User: {user.name}&lt;/h2&gt;
+  )
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="7e1e6df265c4de399040d6c9af129020"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;route matching and params</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* available in params
+* pretty common, posts, users, etc
+* we'll use this for next hw
+* but can use for multiple boards for instance
+</aside></section><section data-id="5a4585ed2f7be554d587d6cac631c008">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-872813" data-block-id="3f0faa4887e31a9bae7832eac334cdec" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codesandbox.io/embed/react-router-url-parameters-forked-yzcbc?fontsize=14&amp;hidenavigation=1&amp;module=%2Fexample.js&amp;theme=light" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="eaaf8230d7789a02cf40e5f454e6b8dc"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;route matching and params</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="4d89abfc1e6499a5a4400d6ca673f8c0" data-visibility="hidden">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-f74739" data-block-id="60f69fb2cd39a93b0838952ac7039c9d" style="width: 960px; height: 626px; left: 0px; top: 74px;"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codesandbox.io/embed/react-router-url-parameters-forked-rd6kd?fontsize=14&amp;hidenavigation=1&amp;module=%2Fexample.js&amp;theme=light" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="ac711415f92f446342b6e4b089820d49"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;routing access in class</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="ef6835a9e6d6f0ce183c3a7eab03272e">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-f74739" style="width: 960px; height: 626px; left: 0px; top: 74px;" data-block-id="c93a739cf1b360c08320fd1651c2d458"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codesandbox.io/embed/react-router-url-parameters-forked-4z10h?fontsize=14&amp;hidenavigation=1&amp;module=%2Fexample.js&amp;theme=light" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="755e6b4ca38fb2d2a8d60bd95425d04f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;routing access via hooks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="7ca783412b9dea7733a1c58972e0739d"><section data-id="bcd91b15454a5a5a229b1254d8dfb30d">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-62563e" data-block-id="a3f29dbdaecec5e6f79130921e9a5ca1" style="width: 806.4px; height: 339.037px; left: 73.6px; top: 250.482px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1018" data-natural-height="428" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/d5a604451b480461002d3a143e2eb208.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-e14611" data-block-id="f41464aba0ceae111277a0c8b789a53e" style="height: auto; width: 748.049px; left: 105.976px; top: 127.307px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>but we have a problem, these aren't real files!</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0.0005px; top: 0px;" data-name="snippet-ad5a13" data-block-id="6c6661781636c2f9c3e070c9bf3475cf"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;404!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* when you run npm run build - you get a folder with just index.html and main.js
+* no requests being made to the server except first app load
+* BUT if first load is to specific resource...
+</aside></section><section data-id="a1955d69d8a6423fef82a283157b264b">
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-938f38" data-block-id="a40f36a10a08bab045ff0bbe37ce6e01" style="width: 500px; height: 175.775px; left: 230px; top: 114.474px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">my-project.netlify.app/
+  ├─some.css
+  ├─index.html
+  └─main.js
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-edb3b6" data-block-id="6dc526aaf5e8a2809642bc3bcc2b5f3b" style="width: 500px; height: 116.215px; left: 230px; top: 321.032px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;script src="app.js"&gt;&lt;/script&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-62dae6" data-block-id="9fe2bc59d4904b02872a0de3554728fe" style="height: auto; width: 960px; left: 0px; top: 474.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>solution:
+	<ul>
+		<li>server needs to return index.html for all server side routes</li>
+		<li>can't do this on gh-pages... sadly</li>
+		<li>do sa4:routing to add some things to your starterpack!</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0.0005px; top: 0px;" data-name="snippet-ad5a13" data-block-id="8b4fb431cb360adb929d8abf6dd3d037"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;404!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section><section data-id="b22ad0c894b70799703394246c2c7550" data-visibility="hidden">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0.0005px; top: 0px;" data-name="snippet-ad5a13" data-block-id="e7e773ab56fc36f0c107d87fea2f1bc6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;redirects when hosting for SPA</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-01dfa0" data-block-id="26e547a020cff624b9f26c8f5455efa8" style="width: 941px; height: 515.983px; left: 9.5px; top: 103.911px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="2462" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/70243c9fa909ead3b3c9ef8e467e2c7a.png"></div></div></section></section><section data-id="0f4a19125d2c395efaa2588247be38fe">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0.0005px; top: 0px;" data-name="snippet-ad5a13" data-block-id="a38b1c0412f012a39462772a3a193133"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;what about the new direction of react router?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-35bfd9" data-block-id="e92ea0764e7964d28f572b2f7de04d9a" style="width: 806.4px; height: 205.591px; left: 76.8005px; top: 129.603px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1667" data-natural-height="425" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/47e3120db1faa7fc78e58b20c8ead72d.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a4a030" data-block-id="4cb4eeca92f2bc7d464744cfc8e68d6c" style="width: 806.4px; height: 224.806px; left: 76.8px; top: 345.194px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1668" data-natural-height="465" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/b6651342cc431b25d13b349e2633e840.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 80.5px;" data-block-id="82883659e33dfdd10f543245b88a290c" data-name="text-251ff1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p>providing a smarter data fetching layer</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 587px;" data-block-id="b96c7a7ae60e4a77626c7062307f2fbe" data-name="text-04d7be"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>great but messy idea - we'll use the regular syntax for now&nbsp;</p>
+
+<p>and explore data fetching in a later module!</p>
+</div></div><aside class="notes">https://reactrouter.com/en/main/upgrading/v6-data#migrating-to-routerprovider</aside></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+
+<div class="sl-block" data-block-type="text" data-name="text-610243" style="height: auto; width: 600px; left: 172px; top: 148px;" data-block-id="46f13c79e09960c7de15e639ae88f1ae"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li style="color:#3a3e40">SA4 routing out</li>
+	<li style="color:#3a3e40">Lab3&nbsp;</li>
+	<li style="color:#3a3e40">next:
+	<ul>
+		<li style="color:#3a3e40">Better frontend state management</li>
+		<li style="color:#3a3e40">projects</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0.0005px; top: 0px;" data-name="snippet-ad5a13" data-block-id="67490799506c288c74cd1ce5b05b2519"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">&nbsp;next up!</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* we're adjusting ta schedule </aside></section>
+			
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: false,
+      transition: 'slide',
+      width: 960,
+      height: 700,
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
