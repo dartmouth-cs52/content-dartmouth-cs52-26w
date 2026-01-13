@@ -76,20 +76,20 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "landing-page-part-2": {
-          "pages": [
-            "lab-1-part-2-build-a-landing-page-css"
-          ],
-          "slides": [
-            "css"
-          ]
-        },
         "landing-page-part-1": {
           "pages": [
             "lab-1-part-1-build-a-landing-page-html"
           ],
           "slides": [
             "html"
+          ]
+        },
+        "landing-page-part-2": {
+          "pages": [
+            "lab-1-part-2-build-a-landing-page-css"
+          ],
+          "slides": [
+            "css"
           ]
         }
       }
@@ -262,12 +262,30 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
-      "logistics",
       "project-0-pitch-ideas",
-      "dartmouth-cs52"
+      "dartmouth-cs52",
+      "logistics"
     ],
     "slides": [
-      "welcome"
+      "welcome",
+      "authentication-and-authorization",
+      "project-extras",
+      "the-interwebs",
+      "the-dom",
+      "javascript-intro",
+      "more-javascript",
+      "asynchronous-javascript",
+      "intro-to-web-frameworks",
+      "intro-to-react",
+      "intro-to-frontend-testing",
+      "immutability-and-services",
+      "project-intro",
+      "routing",
+      "state-management",
+      "design",
+      "rest",
+      "deployment",
+      "wrap-up"
     ]
   }
 }
