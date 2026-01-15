@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The DOM</title>
-  <!-- Reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <!-- Shared theme lib CSS (fonts, base styles) -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
-  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <!-- Shared theme custom CSS -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
   <style>
-    /* Override slides.com animation system - make all elements fully visible */
+    /* Override slides.com animation system - make all elements visible */
     .sl-block-content,
     .sl-block-content[data-animation-type],
     .sl-block-content[data-animation-type="fade-in"],
@@ -21,12 +20,13 @@
       pointer-events: auto !important;
     }
   </style>
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
 </head>
 <body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
-  <div class="reveal" data-theme="shared:cs52-theme">
+  <div class="reveal" data-theme="shared:cs52-theme" data-code-theme="github">
     <div class="slides">
-
-				<section class="stack" data-id="1261e1c1dfda563ba3f05355d5d013ad"><section data-id="f82b531092beca54b30fd1838527ca25">
+<section class="stack editing-mode" data-id="1261e1c1dfda563ba3f05355d5d013ad" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="f82b531092beca54b30fd1838527ca25" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-83e189" data-block-id="673f5090e53db4b4ebf6678102b4c9ed" style="width: 520px; height: 520px; left: 220px; top: 110px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="480" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/8d7f8d43ecf1656296e6e7ffb50962ab.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-1d687c" data-block-id="19286e9e16038a00f1dc8e2577b33ea3" style="height: auto; width: 600px; left: 160px; top: 641.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>pretty animation - but what is it?</p>
@@ -41,7 +41,7 @@
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="1dd340647350a9a97091da0912da59e8">
+</div></div></section><section data-id="1dd340647350a9a97091da0912da59e8" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-6b5fad" data-block-id="b87012787685f25929630987b287dcca" style="width: 960.02px; height: 377.581px; left: -0.02px; top: 182.419px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1434" data-natural-height="564" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/152a06447fe4a4a287308f00599040d0.jpg"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="eca099758ff51ac7bdbba037e2cede5d"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -53,7 +53,7 @@
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="fc5a6f97958100c034d68f2bc676237c">
+</div></div></section><section data-id="fc5a6f97958100c034d68f2bc676237c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-f8e4c9" data-block-id="4ef104a2c63bfa7e8df15942679d5f1e" style="width: 653.536px; height: 518px; left: 153.232px; top: 147.996px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1543" data-natural-height="1223" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/98c68e8c37924a14098dfbe9bb740c05.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="b4db99761d32ff7bb9634be8193b0436"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -67,14 +67,15 @@
 </div>
 </div></div><aside class="notes">* today in browser only! javascript was made for this
 * later we'll do server side js with node
-</aside></section></section><section class="stack" data-id="7a0dc05c2f385d66f425e98079a91b5e"><section data-id="73f0af18a78d4037e5f9c245656bd989">
+</aside></section></section>
+<section class="stack editing-mode" data-id="7a0dc05c2f385d66f425e98079a91b5e" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="73f0af18a78d4037e5f9c245656bd989" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-dbef39" data-block-id="b101d7c25ead5f7b59022c8fca41da3f" style="width: 444.794px; height: 518px; left: 257.603px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="559" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/5787f15c63fec773bc2c8f0ca9b9517b.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-c7d3ff" data-block-id="cfaad0caff63a678da1e5a6baa110c64" style="height: auto; width: 600px; left: 180px; top: 614px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>Document Object Model</p>
 
 <p>&nbsp;</p>
 </div></div>
-<div class="sl-block" data-block-type="image" data-name="image-a502da" data-block-id="84d2897add2e06a10ad1c4d8d7bb8cf7" style="width: 240px; height: 240px; left: 0px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content fragment plain" style="z-index: 12;" data-fragment-index="0"><img style="" data-natural-width="480" data-natural-height="480" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/a23af94f3adce3ee323fc1da96f8aebe.gif"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-a502da" data-block-id="84d2897add2e06a10ad1c4d8d7bb8cf7" style="width: 240px; height: 240px; left: 0px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content fragment plain visible" style="z-index: 12;" data-fragment-index="0"><img style="" data-natural-width="480" data-natural-height="480" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/a23af94f3adce3ee323fc1da96f8aebe.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="1d5deec0137e3733d881262f5b1eb92c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
 <div id="header-title">
 <div class="left">
@@ -88,7 +89,7 @@
 </div></div><aside class="notes">* ok so we know a little javascript - but how does this help us make web things??
 * because javascript is the sunlight that powers the tree that is the document
 * we'll be working directly with the DOM in lab2 but later will move into the react *shadow DOM* instead...
-</aside></section><section data-id="454186488585172f503050e38d1bca5f">
+</aside></section><section data-id="454186488585172f503050e38d1bca5f" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="image" data-name="image-a29931" data-block-id="582e53c2df01b520d695f887abb359da" style="width: 751.732px; height: 518px; left: 104.134px; top: 125.443px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="833" data-natural-height="574" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/4509e87aad71d263114cc2ba1ff49249.png"></div></div>
@@ -102,7 +103,7 @@
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">* it gets parsed into an in-memory graph representation + css + js +etc </aside></section><section data-id="1a674e3f6072adae077f76261fcb016d">
+</div></div><aside class="notes">* it gets parsed into an in-memory graph representation + css + js +etc </aside></section><section data-id="1a674e3f6072adae077f76261fcb016d" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="image" data-name="image-59f2c1" data-block-id="de79b65828aec40d1fd73aa7c75cc0e4" style="width: 751.732px; height: 518px; left: 104.134px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="833" data-natural-height="574" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/1b88aa036c1083d8a7ba5111f40b74d6.png"></div></div>
@@ -116,7 +117,7 @@
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">* view source just shows the html of the file - not all the other complexity like css etc</aside></section><section data-id="f6bd6e1aefad5121ccdfad9fabf8e6f8">
+</div></div><aside class="notes">* view source just shows the html of the file - not all the other complexity like css etc</aside></section><section data-id="f6bd6e1aefad5121ccdfad9fabf8e6f8" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="image" data-name="image-737f02" data-block-id="e6449463f418ae979292d804d09d222d" style="width: 751.732px; height: 518px; left: 104.134px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="833" data-natural-height="574" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/52b2f95d158b37fa8c7a6a762cbdff36.png"></div></div>
@@ -132,7 +133,7 @@
 </div>
 </div></div><aside class="notes">* it is a visual representation of the dom - the various tabs in right show the various properties - css rules, event listeners, etc. 
 * pretty pictures from css-tricks.com/dom
-</aside></section><section data-id="f73bd99a9ca169f810104a20e36fa08b">
+</aside></section><section data-id="f73bd99a9ca169f810104a20e36fa08b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-fe77bc" data-block-id="33ccecf6153d681e2a36606f814073ac" style="width: 462.199px; height: 253.054px; left: 248.9px; top: 446.946px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="400" data-natural-height="219" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/8c42626fe006891ff686c9d6ddd8d70d.png"></div></div>
 <div class="sl-block" data-block-type="code" data-name="code-cb62ec" data-block-id="ef338c815e3f9d0872ec10d640216f20" style="width: 500px; height: 300px; left: 230px; top: 130px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">&lt;html&gt;
   &lt;body&gt;
@@ -156,7 +157,7 @@
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* simple example
-</aside></section><section data-id="009f6c471fedcfaa22e9ce10e253b3d9">
+</aside></section><section data-id="009f6c471fedcfaa22e9ce10e253b3d9" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-95e602" data-block-id="eb9ef44d7e151f11fdb26368f975acb9" style="width: 806.4px; height: 88.704px; left: 76.8px; top: 121.296px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="600" data-natural-height="66" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/91e82f3ff102066fdbac1119f8511523.png"></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-fa2e92" data-block-id="5d0fae020ade9fa951afa1a3756f084f" style="width: 806.4px; height: 373.477px; left: 76.8px; top: 263.543px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="624" data-natural-height="289" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/0be30797193f8e1556bdf70c15f4d884.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="31309a2b388a7040c5c33f2905d087c5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -178,7 +179,7 @@
 * **painting**: traverse the render tree and display pixels on screen
 * gradual process with lots of updates and repaints
 * https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#DOM
-</aside></section><section data-id="ce636460658d6552dc72772db4c743ee">
+</aside></section><section data-id="ce636460658d6552dc72772db4c743ee" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-9e5c9d" data-block-id="05f7b90ee9896f65912d15f11ee96f00" style="width: 941.86px; height: 439.808px; left: 9.07px; top: 155.552px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1150" data-natural-height="537" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/d6797d68ddde8680ee95eb2e78d5f652.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="4aaa7b95f3521c7cf94702cdc215d3b6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -195,7 +196,7 @@
 * prepping for paint which outputs only visible nodes with content and their computed styles.
 * so what happens if you change the visibility of an element? needs to recompute!
 * https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction
-</aside></section><section data-id="4976887322df087660fdcf03a935bcf8">
+</aside></section><section data-id="4976887322df087660fdcf03a935bcf8" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-adbe9d" data-block-id="654f82a019f455cbb10f038a0a19c2b3" style="width: 806.4px; height: 367.855px; left: 76.8px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="616" data-natural-height="281" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/0170d3e4104dcbbd9f04d12f437e3ab8.png"></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-8bfdca" data-block-id="ac6d770f54e98d3e049528c0be7a778e" style="width: 806.398px; height: 189.493px; left: 76.8px; top: 472.787px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="766" data-natural-height="180" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/07edddb4a6c3b0ee2357b5b9eee78746.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="770995c91f9dced8e82b9b4eb8286b79"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -212,7 +213,7 @@
 * the layout phase precisely captures the exact position and size of each element within the viewport
 * all of the relative units and measurements are converted to absolute pixels on the screen and elements that jostle each around are taken into account
 * in Chrome DevTools if you look at the Timeline tab you inspect how long it all takes
-</aside></section><section data-id="5f5d7fab901b39819505368c044c663b">
+</aside></section><section data-id="5f5d7fab901b39819505368c044c663b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-28b40e" data-block-id="50e61bde6278863315de954ef9cc08bb" style="width: 686.096px; height: 422.33px; left: 136.952px; top: 92.5513px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="450" data-natural-height="277" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/b024be2b2642df9d5c2c2a36b3728709.jpg"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-dbd855" data-block-id="c2ada6970f0345ab55dd20ef8693dc4c" style="height: auto; width: 960px; left: 0px; top: 548.033px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -235,7 +236,7 @@
 </div></div><aside class="notes">* dom nodes have lots of private methods, if you are looking through dev tools can be a little daunting if you print them out
 * document is under window technically
 * open inspector and print out document and window
-</aside></section><section data-id="4814e7cecbb0d0ed24b2aa27fc9bae7d">
+</aside></section><section data-id="4814e7cecbb0d0ed24b2aa27fc9bae7d" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-7e1f36" data-block-id="cd261794c4369ab125756914e6e12e0b" style="width: 806.4px; height: 495.499px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="996" data-natural-height="612" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/4339cb2f9e03296b382c12e7f4e27e78.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="5c28c8202627238e2262055396147791"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -249,7 +250,7 @@
 </div>
 </div></div><aside class="notes">* tree is directed and acyclic graph with 1 parent
 * text inner nodes are leaves
-</aside></section><section data-id="487a18129ed344b40d066b0344186705">
+</aside></section><section data-id="487a18129ed344b40d066b0344186705" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="code" style="width: 720.675px; height: 140px; left: 125.833px; top: 516.689px;" data-name="code-fdd7d4" data-block-id="e3e35e3f92e3248406faca161a4d80c0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">element = document.body.firstChild.nextSibling.firstChild;
 </code></pre></div></div>
@@ -270,7 +271,7 @@
 * other ways are possible
 
 
-</aside></section><section data-id="9e7884d8d545731befa22c28d7f3f261">
+</aside></section><section data-id="9e7884d8d545731befa22c28d7f3f261" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 800px; height: 490.337px; left: 80px; top: 139.663px;" data-block-id="62740f89ece382c5191d36d865e3505a"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/11648cbb4db344f78ba92edeb6f0ee84?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="79f8e4a37881b363db66f8b8566feb22"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -284,7 +285,8 @@
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* but we have nice helper methods to do things like index / search the tree
-</aside></section></section><section class="stack" data-id="638cc3cbee40b804e4403731f370fcf9"><section data-id="c61bd247ceda961afdce7d8ef3709109">
+</aside></section></section>
+<section class="stack editing-mode" data-id="638cc3cbee40b804e4403731f370fcf9" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="c61bd247ceda961afdce7d8ef3709109" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-adf12f" data-block-id="c8769e9c6285f8b3262bf05b29a7fc7c" style="width: 398.476px; height: 97.9588px; left: 280.762px; top: 101.23px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="480" data-natural-height="118" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/7e6edf9fe8dc2d08c229e54008d0c5cd.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-401a24" data-block-id="b710d47b212a5f030c6a230bfec99e8f" style="height: auto; width: 800.762px; left: 79.238px; top: 365px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><ul style="color:#3a3e40">
 	<li>small library to make DOM traversal and manipulation standard and easy</li>
@@ -311,7 +313,7 @@
 * i'll show both syntaxes for some stuff
 * selector syntax identical to CSS
 
-</aside></section><section data-id="fe0c4ef0648876b6a7f0f164824b9f69">
+</aside></section><section data-id="fe0c4ef0648876b6a7f0f164824b9f69" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="code" style="width: 760.787px; height: 416.159px; left: 99.6065px; top: 140px;" data-name="code-fdd7d4" data-block-id="2148dc9860cb0deaaf9d0b30a8b3ccb7"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code>
 document.getElementById('main');
@@ -345,7 +347,7 @@ $('nav li .selected')
 </div></div><aside class="notes">* note querySelectorAll might seem cool, but it returns copies of nodes that won't update
 * jquery selector returns a nice collection
 * NOTE - when we start react we will not use either of these methods
-</aside></section><section data-id="411309ab80fea2ffe2e3d054a9c75bf2">
+</aside></section><section data-id="411309ab80fea2ffe2e3d054a9c75bf2" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="code" style="width: 760.787px; height: 416.159px; left: 99.6065px; top: 140px;" data-name="code-fdd7d4" data-block-id="26b9f5888ec5d14808b5cd55e5479abf"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code>document.createElement('p');
 
@@ -371,7 +373,7 @@ node.removeChild(oldNode)
 </div></div><aside class="notes">* again most of these are easier with jquery although not shown
 * jquery docs are excellent
 * for simple sites, i think its a perfectly fine way to go for basic functionality
-</aside></section><section data-id="6fcda5aca5f1958fb4c2c2bce690e013">
+</aside></section><section data-id="6fcda5aca5f1958fb4c2c2bce690e013" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-b166fd" data-block-id="586a425ab3bb5bf024f31c3e6dadf37f" style="width: 911px; height: 554px; left: 24.5px; top: 116px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/5e498bca06a14c23824b80becd544004?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="26f9b86d13c4b5c418b6871d4c1449af"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -385,7 +387,8 @@ node.removeChild(oldNode)
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">  $(this).animate({'margin-left': '250px'}, 4000)
-something like this might be helpful in your next lab</aside></section></section><section class="stack" data-id="219c70cc0437f4af70bb76806f239288"><section data-id="5f934a754170e73b80b49ad2eb27c47c">
+something like this might be helpful in your next lab</aside></section></section>
+<section class="stack editing-mode" data-id="219c70cc0437f4af70bb76806f239288" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="5f934a754170e73b80b49ad2eb27c47c" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-e9cce9" data-block-id="31947677c70641a3cc93054b63522df1" style="width: 806.4px; height: 453.6px; left: 76.8px; top: 123.2px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="270" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/5e8d5580ea38f01ddf7b8446aef3e232.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="51d041c89337b68452918fa60edd8dea"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -399,7 +402,7 @@ something like this might be helpful in your next lab</aside></section></section
 </div>
 </div></div><aside class="notes">* ok great can do stuff, but what about mouse clicks
 * what about user interaction?
-</aside></section><section data-id="6157bf986141645686f097daed6045c7">
+</aside></section><section data-id="6157bf986141645686f097daed6045c7" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-34e4fe" data-block-id="29dcf5d49d58d6ea5c666d7546df018d" style="height: auto; width: 960px; left: 0px; top: 175.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>DOM communicates <a href="http://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank"><span style="color:#61afef">events</span></a>&nbsp;to JS</li>
@@ -433,7 +436,7 @@ something like this might be helpful in your next lab</aside></section></section
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* lots of events
-</aside></section><section data-id="d77772e0ece39d8bcb57a37c2f209490">
+</aside></section><section data-id="d77772e0ece39d8bcb57a37c2f209490" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-339c7f" data-block-id="31de007a7a29efb0e9569666bc38362a" style="width: 572.188px; height: 417.719px; left: 193.906px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="263" data-natural-height="192" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/72445182afeb2f3e8a5765feddba49a8.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-0e8f96" data-block-id="4700cc28b3961c8e7f0e1a864ca135c8" style="height: auto; width: 600px; left: 166.094px; top: 515.635px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p><span style="color:rgb(58, 62, 64); text-align:left">to handle an event one needs:</span></p>
@@ -456,7 +459,7 @@ something like this might be helpful in your next lab</aside></section></section
 </div>
 </div></div><aside class="notes">* ok lets see how to set that up
 * what do you need to handle an event? 
-</aside></section><section data-id="41903800eb742d1e5582fce4418f3fdf">
+</aside></section><section data-id="41903800eb742d1e5582fce4418f3fdf" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="code" data-name="code-56f48a" data-block-id="daf5c79fa3d4345f514349a7be310571" style="width: 725.247px; height: 404.91px; left: 117.377px; top: 155.09px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">//DOM level 0 events:
 &lt;button onclick="alert('hello!');"&gt; Say Hello! &lt;/button&gt;
 
@@ -494,7 +497,7 @@ document.getElementById('myButton').addEventListener( 'click',
   * bubble or capture ?!
 
 
-</aside></section><section data-id="ba7ce51ccaaf45c8d42605a23c130889">
+</aside></section><section data-id="ba7ce51ccaaf45c8d42605a23c130889" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-2a2a5d" data-block-id="388cf8eb76c4cf6a7537d99e2ecc8ab3" style="width: 745.697px; height: 478.963px; left: 80px; top: 172.23px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/6b47e4a5cbd33a08d0f203c9f2974095?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="e08cad315d7e25620017c31fe14c40e4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -508,7 +511,7 @@ document.getElementById('myButton').addEventListener( 'click',
 </div>
 </div></div><aside class="notes">* what is this `e` argument we keep seeing?
 * it is a refernce to event object triggered
-</aside></section><section data-id="edc38b0e86e30f56c9345245373bd613">
+</aside></section><section data-id="edc38b0e86e30f56c9345245373bd613" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-766201" data-block-id="fbceb2a39af796a292915c894b293ef7" style="height: auto; width: 600px; left: 180px; top: 242.561px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>event object properties:</li>
@@ -539,7 +542,7 @@ document.getElementById('myButton').addEventListener( 'click',
 * target is the thing that was clicked for instance.
 * how can they be different?!
 * next slide shows nested elements
-</aside></section><section data-id="fd1e4ee585cd751529621c36a72a299c">
+</aside></section><section data-id="fd1e4ee585cd751529621c36a72a299c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 887.939px; height: 525.247px; left: 34.7164px; top: 155.46px;" data-block-id="1230114b9db578c45aa5183eb379401e"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/OPLZmPq?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="945ac61b2c7c6e8e9d6cafc107b52822"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -559,7 +562,7 @@ document.getElementById('myButton').addEventListener( 'click',
 * try with #div-one as the parent and see the difference in currentTarget vs target
 * but this depends on which direction the event was set to trigger at at?
 * direction!?!?
-</aside></section><section data-id="cdc02fa24f40313c8d51f3beb27120bb">
+</aside></section><section data-id="cdc02fa24f40313c8d51f3beb27120bb" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 887.939px; height: 525.247px; left: 34.7164px; top: 155.46px;" data-block-id="1c3d9f8c187457b7847a06d505ef7aeb"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/77d9899dd95752c748504d497001c5fe?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="1c57d167b48baf94f757ee375b7af58c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -572,7 +575,7 @@ document.getElementById('myButton').addEventListener( 'click',
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="335e0c2bd8edb3ef5b767384ee8404ee">
+</div></div></section><section data-id="335e0c2bd8edb3ef5b767384ee8404ee" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-500aa1" data-block-id="9f74ed6314304fe29197925d2c89e621" style="width: 565.5px; height: 609px; left: 197.75px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="520" data-natural-height="560" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/c943b13fcc500b2d82524540a2e6d3cb.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="ca5f192bdf910793152d418826e8bfd5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -591,7 +594,7 @@ document.getElementById('myButton').addEventListener( 'click',
 * examples:
   * disallowing saving of images (event on capture + stopProgagation)
   * click outside of modal to close it
-</aside></section><section data-id="34b2dd3d61bc951e9946306e740ee10f">
+</aside></section><section data-id="34b2dd3d61bc951e9946306e740ee10f" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="code" data-name="code-9ea397" data-block-id="0fe8bd38481810ae6cf91424d6149de6" style="width: 500px; height: 253.716px; left: 230px; top: 158.345px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">
 &lt;input type="submit" value="Submit" /&gt;
 
@@ -621,19 +624,8 @@ $([type=submit]).on('click', (event) = {
 * if you are using JS for actions - this will often be something you need to do!
 * if your page is flashing - might be doing something like this - in react your page should never flash
 * note: while this is standard practice - it does cause accessibility confusion - more on that later
-</aside></section></section><section class="stack" data-id="4431705d8bdfae8ccd33fe2b51ba1cb0"><section data-id="f24cfb43e80627a12b7e868b94e773c6" data-visibility="hidden">
-<div class="sl-block" data-block-type="video" data-name="video-03182b" data-block-id="6ca41b97df63668b54745453b4e9d7d9" style="min-width: 30px; min-height: 30px; width: 318.094px; height: 577.533px; left: 320px; top: 100px;"><div class="sl-block-content" style="z-index: 10;"><video playsinline="" controls="controls" data-paused-by-reveal="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/videos/83e93f2855343a4177d9aad5b0d6669c.webm"></video></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="1b240a2f8e2db3f7f48fde6e722f934e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">magic</div>
-</div>
-
-<div class="spacer">&nbsp;</div>
-</div>
-</div></div></section><section data-id="65c71cfadd83da4d5d68a7ae48d2331a">
+</aside></section></section>
+<section class="stack editing-mode" data-id="4431705d8bdfae8ccd33fe2b51ba1cb0" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="65c71cfadd83da4d5d68a7ae48d2331a" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-3ffb3c" data-block-id="ee32651e51dad950d72c4c5145878a99" style="width: 477.273px; height: 518px; left: 242.727px; top: 84.8288px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="375" data-natural-height="407" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/df7936ab302ab397b2bb5e8f69307c39.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-abbd3e" data-block-id="32c40e39918654e55a79b4fa1ad032c3" style="height: auto; width: 600px; left: 206.227px; top: 615.916px;">
 <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -691,7 +683,8 @@ game.tick();
 //max resources
 game.resPool.resources.forEach(function(resource) { resource.value = 100000000; })
 
-</aside></section></section><section data-id="786936d692e4c4d3e1e3b593a9e02696">
+</aside></section></section>
+<section data-id="786936d692e4c4d3e1e3b593a9e02696" style="top: 350px; display: block;" hidden="" aria-hidden="true" class="editing-mode">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 800px; height: 420.337px; left: 71.3892px; top: 241.983px;" data-block-id="c84becaa043290a3d776df3c948323f6"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/4767131cda74bf9f360088a351fc1a00?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="5104d4c50e051b27fc4891b1df5ea065"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -718,7 +711,8 @@ game.resPool.resources.forEach(function(resource) { resource.value = 100000000; 
 * might be useful in lab2
 * is the preferred interchange format between many web services and apis
 * serialization is when you take some data structure or object - and convert it into a format that can be saved - ie maybe a serial sequence of characters or bytes or 
-https://www.json.org/json-en.html</aside></section><section data-id="9b0f4f2a57b5f534aeea8f676ef88323">
+https://www.json.org/json-en.html</aside></section>
+<section data-id="9b0f4f2a57b5f534aeea8f676ef88323" style="top: 350px; display: block;" hidden="" aria-hidden="true" class="editing-mode">
 
 
 <div class="sl-block" data-block-type="text" data-name="text-1ff271" data-block-id="4b15f29adf2a14284feaea832ccf49c0" style="height: auto; width: 794px; left: 73px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
@@ -734,15 +728,16 @@ https://www.json.org/json-en.html</aside></section><section data-id="9b0f4f2a57b
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
-<div class="sl-block" data-block-type="text" data-name="text-813f2a" data-block-id="b7418c2ce2b5fbb5fb40b655c72b0ca9" style="height: auto; width: 600px; left: 180px; top: 101.992px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
-<p>Lab1 due</p>
+</div></div></section>
+<section data-id="fa977095bed0c0cab8eaeb523d1d2afd" style="top: 0px; display: block;" class="editing-mode">
+<div class="sl-block editing" data-block-type="text" data-name="text-813f2a" data-block-id="b7418c2ce2b5fbb5fb40b655c72b0ca9" style="height: auto; width: 600px; left: 180px; top: 101.992px;" data-column-label="Column 1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>Lab1 done - yay!</p>
 
-<p>Lab2 Soon</p>
+<p>Lab2 out</p>
 
 <p>more javascript learning this week!</p>
 </div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="bce1d705913cffc9b43d42079bfcd736"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-45ca42" data-block-id="bce1d705913cffc9b43d42079bfcd736" data-column-label="Column 2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
@@ -753,8 +748,7 @@ https://www.json.org/json-en.html</aside></section><section data-id="9b0f4f2a57b
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 448.338px; left: 76.8px; top: 251.662px; min-width: 1px; min-height: 1px;" data-name="image-7e150e" data-block-id="3d6e5761ed28c5a73a86d5e393e6cf4e"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1590" data-natural-height="884" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/49659fe121dbc86128ec34ee87eedbda.png"></div></div><aside class="notes">trying to decide whether we should do xhouror not - depends on how much we covered today</aside></section>
-			
+<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 448.338px; left: 76.8px; top: 251.662px; min-width: 1px; min-height: 1px;" data-name="image-7e150e" data-block-id="3d6e5761ed28c5a73a86d5e393e6cf4e" data-column-label="Column 3"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1590" data-natural-height="884" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/the-dom-1768252267794/images/49659fe121dbc86128ec34ee87eedbda.png"></div></div><aside class="notes">trying to decide whether we should do xhouror not - depends on how much we covered today</aside></section>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -764,10 +758,8 @@ https://www.json.org/json-en.html</aside></section><section data-id="9b0f4f2a57b
       hash: true,
       controls: true,
       progress: true,
-      center: false,
+      center: true,
       transition: 'slide',
-      width: 960,
-      height: 700,
       plugins: [RevealHighlight]
     });
   </script>
