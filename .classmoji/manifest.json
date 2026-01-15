@@ -1,5 +1,10 @@
 {
   "modules": {
+    "ai-code-agents-intro": {
+      "pages": [],
+      "slides": [],
+      "assignments": {}
+    },
     "extra-credit-shorts": {
       "pages": [],
       "slides": [],
