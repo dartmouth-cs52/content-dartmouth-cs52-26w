@@ -1,5 +1,12 @@
 {
   "modules": {
+    "ai-code-agents-intro": {
+      "pages": [
+        "sa-ai-coding-agents"
+      ],
+      "slides": [],
+      "assignments": {}
+    },
     "extra-credit-shorts": {
       "pages": [],
       "slides": [],
@@ -265,15 +272,13 @@
       "project-0-pitch-ideas",
       "dartmouth-cs52",
       "logistics",
-      "lab-2-v2-build-a-buzzfeed-quiz",
-      "sa-ai-coding-agents"
+      "lab-2-v2-build-a-buzzfeed-quiz"
     ],
     "slides": [
       "welcome",
       "authentication-and-authorization",
       "project-extras",
       "the-interwebs",
-      "the-dom",
       "javascript-intro",
       "more-javascript",
       "asynchronous-javascript",
@@ -287,7 +292,8 @@
       "design",
       "rest",
       "deployment",
-      "wrap-up"
+      "wrap-up",
+      "the-dom"
     ]
   }
 }
