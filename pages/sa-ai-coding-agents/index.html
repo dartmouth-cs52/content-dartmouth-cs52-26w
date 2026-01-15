@@ -13,7 +13,10 @@
       padding: 2rem;
       color: #333;
     }
-    h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0; }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
     h1 {
       font-size: 2em;
       margin-top: 2rem;
@@ -31,17 +34,29 @@
       display: inline-block;
     }
     h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
     .heading-block { margin: 0; padding: 0; }
     .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
     .h1-block { margin-top: 2rem; }
     .h2-block { margin-top: 1.5rem; }
     .h3-block { margin-top: 1rem; }
     p { margin-bottom: 1em; font-size: 16px; }
-    ul, ol { margin-bottom: 1em; padding-left: 1.5em; list-style-position: outside; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
     ul { list-style-type: disc; }
     ol { list-style-type: decimal; }
-    li { margin-bottom: 0.25em; display: list-item; font-size: 16px; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
     ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
     code {
       background: #f6f8fa;
       padding: 0.2em 0.4em;
@@ -56,7 +71,12 @@
       overflow-x: auto;
       margin-bottom: 1em;
     }
-    pre code { background: none; padding: 0; font-size: 100%; }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
     .code-block {
       background: #1e1e1e;
       border-radius: 8px;
@@ -76,7 +96,10 @@
       font-size: 0.75rem;
       font-weight: 500;
     }
-    .code-block .code-body { display: flex; padding: 1rem 0; }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
     .code-block .line-numbers {
       display: flex;
       flex-direction: column;
@@ -88,7 +111,9 @@
       font-size: 1rem;
       line-height: 1.625;
     }
-    .code-block .line-numbers .line-number { display: block; }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
     .code-block pre {
       flex: 1;
       background: transparent;
@@ -116,8 +141,15 @@
       gap: 0.5rem;
       border-bottom: 1px solid #1a1a1a;
     }
-    .terminal-block .terminal-dots { display: flex; gap: 8px; }
-    .terminal-block .terminal-dots span { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
     .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
     .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
     .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
@@ -146,9 +178,61 @@
       font-size: inherit;
       font-family: inherit;
     }
-    a { color: #0969da; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; height: auto; }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -157,7 +241,9 @@
       gap: 0.75em;
       margin-bottom: 1em;
     }
-    .callout-emoji { font-size: 1.25em; }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
     .alert {
       padding: 1rem;
       border-radius: 6px;
@@ -166,13 +252,35 @@
       display: flex;
       gap: 0.75rem;
     }
-    .alert-info { background: #dbeafe; border-left-color: #3b82f6; }
-    .alert-warning { background: #fef3c7; border-left-color: #f59e0b; }
-    .alert-success { background: #d1fae5; border-left-color: #10b981; }
-    .alert::before { content: ''; font-size: 1.25em; }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
     .alert-info::before { content: '💡'; }
     .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
     .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
     .checklist-item {
       display: flex;
       align-items: start;
@@ -185,190 +293,232 @@
       height: 1rem;
       cursor: not-allowed;
     }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
-    th, td { border: 1px solid #ddd; padding: 0.75em; text-align: left; }
-    th { background: #f6f8fa; font-weight: 600; }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .file-download {
+      background: #f6f8fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    .file-download a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #0969da;
+      font-weight: 500;
+    }
+    .file-download a::before {
+      content: '📎';
+    }
+    .page-link-block {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0 -0.5rem 1em -0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+      cursor: pointer;
+    }
+    .page-link-block:hover {
+      background-color: #f3f4f6;
+    }
+    .page-link-block a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .page-link-block a:hover {
+      text-decoration: underline;
+    }
+    .page-link-block a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      background: white;
+      width: 100%;
+    }
+    .columns .profile-card {
+      max-width: 100%;
+    }
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #f3f4f6;
+      margin: 0;
+    }
+    .profile-card > div {
+      padding: 1rem;
+    }
+    .profile-card strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+    .profile-card em {
+      display: block;
+      font-size: 14px;
+      font-style: normal;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #e1e4e8;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
-
-<div class="heading-block h1-block"><h1>SA: AI Coding Agents - Learning jQuery with Claude</h1></div>
-
-<p><strong>Format:</strong> In-class paired activity<br>
-<strong>Time:</strong> ~45 minutes<br>
-<strong>Goal:</strong> Set up Claude as a learning agent and explore jQuery basics</p>
-
+<p></p>
 <div class="callout"><span class="callout-emoji">💡</span><span>In this activity, you'll configure Claude Code to act as a <strong>teaching assistant</strong> that explains concepts as it writes code. This is preparation for Lab 2, where you'll build a Buzzfeed-style quiz using jQuery.</span></div>
-
 <div class="callout"><span class="callout-emoji">📌</span><span>This activity will largely be in the terminal. If you don't have a good terminal app, consider: <a href="https://ghostty.org">Ghostty</a>, <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a>, or <a href="https://www.warp.dev">Warp</a>.</span></div>
-
-<div class="heading-block h2-block"><h2>What is Claude Code?</h2></div>
-
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">What is Claude Code?</h2></div>
 <p>Claude Code is an <strong>agentic coding tool</strong> that runs in your terminal. Unlike the web chat interface, Claude Code can read and edit files in your project, run commands, and help you build things directly in your codebase.</p>
-
-<video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+<p></p>
+<p>Here's what it looks like when you run&nbsp;<code class="inline-code">claude</code>&nbsp;in a project directory:</p>
+<p></p>
+<div class="video-embed"><iframe src="https://res.cloudinary.com/dali-lab/video/upload/v1768500512/cs52/claude-code-demo.mp4" frameborder="0" allowfullscreen></iframe></div>
+<p>
   <source src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-ai-coding-agents/assets/claude-code-demo.mp4" type="video/mp4">
-</video>
-
-<p>Here's what it looks like when you run <code>claude</code> in a project directory:</p>
-
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>$ cd my-project
-$ claude
-
-╭─────────────────────────────────────────────────────────────╮
-│ ✻ Welcome to Claude Code!                                   │
-│                                                             │
-│   /help for commands, /status for your plan quota           │
-│                                                             │
-│   cwd: /Users/you/my-project                                │
-╰─────────────────────────────────────────────────────────────╯
-
-> What would you like to build today?
-</code></pre></div>
-
+</p>
 <p>You type prompts, Claude responds, and it can edit your files directly. Think of it as pair programming with an AI partner.</p>
-
-<div class="heading-block h2-block"><h2>To Start</h2></div>
-
-<ul>
-  <li>Find a partner to work with</li>
-  <li>Clone the starter repo provided in Classmoji</li>
-  <li>Submit by commenting on the GitHub issue, then close it</li>
-</ul>
-
-<div class="heading-block h2-block"><h2>Setup Claude Code</h2></div>
-
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">To Start</h2></div>
+<ul><li>Find a partner to work with</li><li>Clone the starter repo provided in Classmoji</li><li>Submit by commenting on the GitHub issue, then close it</li></ul>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Setup Claude Code</h2></div>
 <p>You should have received an invite to Claude Console. Follow these steps to get set up:</p>
-
-<ol>
-  <li><strong>Accept the invite</strong> sent to your Dartmouth email</li>
-  <li><strong>Log into Claude Console</strong> at <a href="https://console.anthropic.com">console.anthropic.com</a></li>
-  <li><strong>Install Claude Code CLI</strong>:</li>
-</ol>
-
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>npm install -g @anthropic-ai/claude-code</code></pre></div>
-
+<ol start="1"><li><strong>Accept the invite</strong> sent to your Dartmouth email</li><li><strong>Log into Claude Console</strong> at <a href="https://console.anthropic.com">console.anthropic.com</a></li><li><strong>Install Claude Code CLI</strong>:</li></ol>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -g @anthropic-ai/claude-code</code></pre></div>
 <p>Or download from: <a href="https://claude.ai/code">claude.ai/code</a></p>
-
-<ol start="4">
-  <li><strong>Authenticate</strong> by running <code>claude</code> and following the prompts</li>
-</ol>
-
-<div class="heading-block h2-block"><h2>Setup Chrome Integration</h2></div>
-
+<ol start="4"><li><strong>Authenticate</strong> by running <code>claude</code> and following the prompts</li></ol>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Setup Chrome Integration</h2></div>
 <div class="callout"><span class="callout-emoji">⚠️</span><span>This step is helpful! Chrome integration lets Claude open and test your code in the browser as it builds.</span></div>
-
 <p>We'll use the <strong>Chrome DevTools MCP server</strong> to let Claude control Chrome:</p>
-
-<ol>
-  <li><strong>Add the MCP server to Claude Code</strong>:</li>
-</ol>
-
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>claude mcp add chrome-devtools --scope user -- npx chrome-devtools-mcp@latest</code></pre></div>
-
-<ol start="2">
-  <li><strong>Restart Claude Code</strong> to load the new server</li>
-  <li><strong>Test it</strong> by asking Claude to open a browser and navigate to a website</li>
-</ol>
-
+<ol start="1"><li><strong>Add the MCP server to Claude Code</strong>:</li></ol>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">claude mcp add chrome-devtools --scope user -- npx chrome-devtools-mcp@latest</code></pre></div>
+<ol start="2"><li><strong>Restart Claude Code</strong> to load the new server</li><li><strong>Test it</strong> by asking Claude to open a browser and navigate to a website</li></ol>
 <p>Docs: <a href="https://github.com/anthropics/anthropic-quickstarts/tree/main/chrome-devtools-mcp">GitHub</a> · <a href="https://www.npmjs.com/package/chrome-devtools-mcp">npm</a></p>
-
-<div class="heading-block h2-block"><h2>Part 1: Configure Your Learning Agent</h2></div>
-
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Part 1: Configure Your Learning Agent</h2></div>
 <p>The starter repo includes a <code>CLAUDE.md</code> file. This is a special file that Claude reads at the start of every conversation — it's like giving Claude instructions about how to work with you.</p>
-
 <p>Open it and take a look. It tells Claude to:</p>
-<ul>
-  <li>Explain concepts before and after writing code</li>
-  <li>Use analogies to CSS selectors you already know</li>
-  <li>Focus on teaching, not just producing code</li>
-  <li>Check in to make sure you understand</li>
-</ul>
-
+<ul><li>Explain concepts before and after writing code</li><li>Use analogies to CSS selectors you already know</li><li>Focus on teaching, not just producing code</li><li>Check in to make sure you understand</li></ul>
 <div class="callout"><span class="callout-emoji">💬</span><span>Feel free to customize the CLAUDE.md! Want Claude to be more concise? Add that. Prefer more examples? Tell it. This is your learning agent.</span></div>
-
-
-<div class="heading-block h2-block"><h2>Part 2: Learn jQuery with Claude</h2></div>
-
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Part 2: Learn jQuery with Claude</h2></div>
 <p>Now for the fun part! Open Claude Code in your cloned repo:</p>
-
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>cd your-repo-name
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">cd your-repo-name
 claude</code></pre></div>
-
 <p>Try these prompts in order. Claude will build something with you while explaining each concept:</p>
-
-<div class="heading-block h3-block"><h3>Prompt 1: Getting Started</h3></div>
-
+<div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Prompt 1: Getting Started</h3></div>
 <div class="callout"><span class="callout-emoji">💬</span><span>"I'm new to JavaScript and jQuery. Walk me through creating a simple HTML page with a button. When I click the button, it should add a new item to a list. Explain each concept as you go."</span></div>
-
-<div class="heading-block h3-block"><h3>Prompt 2: Understanding Selectors</h3></div>
-
+<div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Prompt 2: Understanding Selectors</h3></div>
 <div class="callout"><span class="callout-emoji">💬</span><span>"Now help me understand how jQuery selectors work. Show me how they're similar to CSS selectors I already know."</span></div>
-
-<div class="heading-block h3-block"><h3>Prompt 3: Event Handling</h3></div>
-
+<div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Prompt 3: Event Handling</h3></div>
 <div class="callout"><span class="callout-emoji">💬</span><span>"Add a feature where clicking on any list item removes it. Explain how event handling works."</span></div>
-
-<div class="heading-block h3-block"><h3>Prompt 4: Loading Data (if time)</h3></div>
-
+<div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Prompt 4: Loading Data (if time)</h3></div>
 <div class="callout"><span class="callout-emoji">💬</span><span>"How would I load data from a JSON file and display it on the page? This is prep for my quiz assignment."</span></div>
-
-<div class="heading-block h2-block"><h2>Tips for Working with Claude Code</h2></div>
-
-<ul>
-  <li><strong>Use plan mode</strong> - Type <code>/plan</code> or ask Claude to "plan this out first" before building. This helps you understand the approach before code gets written.</li>
-  <li><strong>Ask questions!</strong> - If Claude writes something you don't understand, stop and ask. That's the whole point.</li>
-  <li><strong>Use CLAUDE.md for memory</strong> - If you want Claude to remember something for future sessions, ask it to add notes to CLAUDE.md.</li>
-  <li><strong>Test in browser</strong> - If you set up Chrome integration, ask Claude to open your page and test it.</li>
-</ul>
-
-<div class="heading-block h2-block"><h2>What You Should Learn</h2></div>
-
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">Tips for Working with Claude Code</h2></div>
+<ul><li><strong>Use plan mode</strong> - Type <code>/plan</code> or ask Claude to "plan this out first" before building. This helps you understand the approach before code gets written.</li><li><strong>Ask questions!</strong> - If Claude writes something you don't understand, stop and ask. That's the whole point.</li><li><strong>Use CLAUDE.md for memory</strong> - If you want Claude to remember something for future sessions, ask it to add notes to CLAUDE.md.</li><li><strong>Test in browser</strong> - If you set up Chrome integration, ask Claude to open your page and test it.</li></ul>
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">What You Should Learn</h2></div>
 <p>By the end of this activity, you should understand:</p>
-
-<table>
-  <tr>
-    <th>Concept</th>
-    <th>What it means</th>
-  </tr>
-  <tr>
-    <td><code>$()</code></td>
-    <td>jQuery's way of selecting elements — works just like CSS selectors</td>
-  </tr>
-  <tr>
-    <td><code>.append()</code></td>
-    <td>Add new content inside an element</td>
-  </tr>
-  <tr>
-    <td><code>.on('click', ...)</code></td>
-    <td>Run code when something is clicked</td>
-  </tr>
-  <tr>
-    <td><code>.text()</code> / <code>.html()</code></td>
-    <td>Get or change the content of an element</td>
-  </tr>
-  <tr>
-    <td><code>.addClass()</code> / <code>.toggleClass()</code></td>
-    <td>Add or toggle CSS classes on elements — great for selected states</td>
-  </tr>
-  <tr>
-    <td>DOM manipulation</td>
-    <td>Changing the page after it loads — this is what makes sites interactive!</td>
-  </tr>
-</table>
-
-<div class="alert alert-info">
-  <div>These are the same concepts you'll use in <strong>Lab 2</strong> to build your Buzzfeed-style quiz. The quiz loads questions, displays them dynamically, and responds to user clicks — all using jQuery!</div>
-</div>
-
-<div class="heading-block h2-block"><h2>To Turn In</h2></div>
-
+<table><thead><tr></tr></thead><tbody><tr><td>$()</td><td>jQuery's way of selecting elements — works just like CSS selectors</td></tr><tr><td>.append()</td><td>Add new content inside an element</td></tr><tr><td>.on('click', ...)</td><td>Run code when something is clicked</td></tr><tr><td>.text() / .html()</td><td>Get or change the content of an element</td></tr><tr><td>.addClass() / .toggleClass()</td><td>Add or toggle CSS classes on elements — great for selected states</td></tr><tr><td>DOM manipulation</td><td>Changing the page after it loads — this is what makes sites interactive!</td></tr></tbody></table>
+<div class="alert alert-info" data-type="info"><span></span></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">To Turn In</h2></div>
 <p>Close the GitHub issue with a comment that includes:</p>
-
-<div class="checklist-item"><input type="checkbox" disabled><span>What jQuery concepts did you learn?</span></div>
-<div class="checklist-item"><input type="checkbox" disabled><span>What was confusing or surprising?</span></div>
-<div class="checklist-item"><input type="checkbox" disabled><span>Screenshot of what you built</span></div>
-<div class="checklist-item"><input type="checkbox" disabled><span>Your partner's name/GitHub username</span></div>
-
+<div class="checklist-item"><input type="checkbox"  disabled><span>What jQuery concepts did you learn?</span></div>
+<div class="checklist-item"><input type="checkbox"  disabled><span>What was confusing or surprising?</span></div>
+<div class="checklist-item"><input type="checkbox"  disabled><span>Screenshot of what you built</span></div>
+<div class="checklist-item"><input type="checkbox"  disabled><span>Your partner's name/GitHub username</span></div>
 </body>
 </html>
