@@ -1,11 +1,16 @@
 {
   "modules": {
     "ai-code-agents-intro": {
-      "pages": [
-        "sa-ai-coding-agents"
-      ],
+      "pages": [],
       "slides": [],
-      "assignments": {}
+      "assignments": {
+        "ai-agents-intro-part-1": {
+          "pages": [
+            "sa-ai-coding-agents"
+          ],
+          "slides": []
+        }
+      }
     },
     "extra-credit-shorts": {
       "pages": [],
