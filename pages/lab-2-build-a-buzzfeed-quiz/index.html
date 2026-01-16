@@ -471,7 +471,7 @@
 <p><strong>Note:</strong> You are allowed to use HTML5/CSS3/JS/jQuery in this assignment but no other javascript libraries or frameworks. You may use CSS libraries to help with styling but it is recommended to practice your CSS skills and try to do it from scratch. 🔩</p>
 <div class="heading-block h2-block"><h2>Plan</h2></div>
 <p>You have a lot of flexibility in this assignment. This is your content, so be creative. Here's the recommended workflow:</p>
-<ol><li><strong>Start by hard-coding</strong> your questions and answers in HTML to get the basic quiz working</li><li><strong>Then abstract to JSON</strong> (Part 1) - load your quiz data from a file and generate the HTML dynamically</li><li><strong>Finally polish the styling</strong> (Part 2) - add animations, transitions, and mobile support</li></ol>
+<ol start="1"><li><strong>Start by hard-coding</strong> your questions and answers in HTML to get the basic quiz working</li><li><strong>Then abstract to JSON</strong> (Part 1) - load your quiz data from a file and generate the HTML dynamically</li><li><strong>Finally polish the styling</strong> (Part 2) - add animations, transitions, and mobile support</li></ol>
 <p>How you score the quiz is up to you. Just a counter is sufficient but you could try something more complicated with different weights. There are just a few minimum requirements:</p>
 <div class="heading-block h3-block"><h3>Minimal Functional Specs:</h3></div>
 <ul><li><strong>Quiz Page:</strong><ul><li><strong>Questions:</strong><ul><li>display several questions (enough for this to be interesting)</li><li>have a header image and some text</li><li>have some number of potential answers</li></ul></li><li><strong>Question Answers:</strong><ul><li>be either text or an image (demonstrate some of both)<ul><li><em>text answers are just clickable text boxes (not an image)</em></li></ul></li><li>have 4 potential display states:<ul><li>initial none selected state</li><li>have a <code>:hover</code> effect</li><li>have a clicked/selected state</li><li>when one answer is chosen all other answers should change to a not-selected state (different from the initial no answer chosen state).</li></ul></li><li>have an associated value to be used to calculate the overall quiz output.</li></ul></li><li><strong>Done Button:</strong><ul><li>calculate the quiz output</li></ul></li><li><strong>Output Display:</strong><ul><li>should have text and an image</li><li>should not show unless the calculations are finished</li><li>should display an error if not all questions were answered</li></ul></li></ul></li></ul>
@@ -480,9 +480,7 @@
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/state-1-initial.png" alt="Initial state - no selection"></figure>
 <ol start="2"><li>An example hover effect:</li></ol>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/state-2-hover.png" alt="Hover state"></figure>
-<ol start="3"><li>An answer selected:</li></ol>
-<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/state-3-selected.png" alt="Selected state"></figure>
-<ol start="4"><li>Other answers dimmed when one is selected:</li></ol>
+<ol start="4"><li>The states of a selected answer and the other answers dimmed when one is selected:</li></ol>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/state-4-dimmed.png" alt="Dimmed state"></figure>
 <ol start="5"><li>Results display:</li></ol>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/results-mockup.png" alt="Results page"></figure>
@@ -608,7 +606,7 @@ label:has(input:checked) {
 <p>For now here is what I'd like your project to look like:</p>
 <ul><li>a <code>main</code> branch - the one you have been working on so far</li><li>a <code>json_data</code> branch for Part 1</li><li>a <code>styling_polish</code> branch for Part 2</li><li>two closed pull requests - one for each feature branch merged back into <code>main</code></li></ul>
 <div class="heading-block h2-block"><h2>Part 1: Load Quiz from JSON</h2></div>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>git commit -am "basic quiz working"
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">git commit -am "basic quiz working"
 git checkout -b json_data</code></pre></div>
 <p>Create a generalized framework for quizzes. This will help you understand frontend frameworks and get a better feel for javascript and how to work with the DOM.</p>
 <p>This will involve reading in quiz questions and answers from a <a href="http://api.jquery.com/jquery.getjson/">JSON file</a> and then looping through them and <a href="http://api.jquery.com/append/">appending</a> to the html of the page with javascript.</p>
@@ -655,7 +653,7 @@ git checkout -b json_data</code></pre></div>
 });</code></pre></div></div>
 <p>💰 Most likely you'll want to take your already working hardcoded HTML, abstract out some section, and output it from a javascript loop that constructs a big string of all the html you need and then append it to some element in the page.</p>
 <p>You may find it irritating to do string concatenation like <code>"&lt;div&gt;"+question.title+"&lt;/div&gt;"</code>. Instead, use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">template literals</a> (backticks) which let you embed variables directly:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">$.getJSON('data.json', function(data) {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span></div><pre><code class="language-javascript">$.getJSON('data.json', function(data) {
   let questionsHTML = '';
 
   // Loop through each question
@@ -675,7 +673,7 @@ git checkout -b json_data</code></pre></div>
 <div class="callout"><span class="callout-emoji">⚠️</span><span><strong>Async Timing:</strong> Notice that all your code must be <em>inside</em> the callback function. Code outside runs before the JSON loads! This is a common source of bugs — if your quiz isn't showing up, check if your code is inside the callback.</span></div>
 <div class="heading-block h2-block"><h2>Part 2: Polish Your Styling</h2></div>
 <p>Once you've merged the <code>json_data</code> branch into main, create a new branch for styling:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>git checkout main
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">git checkout main
 git pull origin main
 git checkout -b styling_polish</code></pre></div>
 <p>Now make your quiz site as beautiful as possible with as much fancy CSS as you can muster.</p>
