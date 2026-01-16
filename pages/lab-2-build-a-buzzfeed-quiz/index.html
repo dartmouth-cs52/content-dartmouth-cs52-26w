@@ -471,7 +471,9 @@
 <p><strong>Note:</strong> You are allowed to use HTML5/CSS3/JS/jQuery in this assignment but no other javascript libraries or frameworks. You may use CSS libraries to help with styling but it is recommended to practice your CSS skills and try to do it from scratch. 🔩</p>
 <p><strong>Note:</strong> You can and should use the <a href="https://developer.chrome.com/devtools">inspector 🔍</a> to examine the structure pages you see. Although it is a good idea to inspect individual elements (for instance: a button to see how they styled the borders) you’ll find that the way they do things is ugly anyway and I would recommend not imitating them at all. If your code blatantly includes <a href="https://cs52.me/logistics/#citation-format">un-cited code</a> copied from buzzfeed.com, or any other source, that will be considered an honor code violation <a href="https://emojikeyboard.org/copy/Warning_Sign_Emoji_%E2%9A%A0%EF%B8%8F">⚠️</a> </p>
 <div class="heading-block h2-block"><h2>Plan</h2></div>
-<p>You have a lot of flexibility in this assignment. This is your content, so be creative. How much you abstract out the problem is up to you. You can start by hard-coding every question and answers in HTML, that is 100% acceptable. If you choose, you could implement reading the questions from say a separate JSON file. More about this later. How you score the quiz is completely up to you. Just a counter is sufficient but you could try something more complicated with different weights associated with the various answers. And finally, the look and feel is all up to you. There are just a few minimum requirements.</p>
+<p>You have a lot of flexibility in this assignment. This is your content, so be creative. Here's the recommended workflow:</p>
+<ol><li><strong>Start by hard-coding</strong> your questions and answers in HTML to get the basic quiz working</li><li><strong>Then abstract to JSON</strong> (Part 1) - load your quiz data from a file and generate the HTML dynamically</li><li><strong>Finally polish the styling</strong> (Part 2) - add animations, transitions, and mobile support</li></ol>
+<p>How you score the quiz is up to you. Just a counter is sufficient but you could try something more complicated with different weights. There are just a few minimum requirements:</p>
 <div class="heading-block h3-block"><h3>Minimal Functional Specs:</h3></div>
 <ul><li><strong>Quiz Page:</strong><ul><li><strong>Questions:</strong><ul><li>display several questions (enough for this to be interesting)</li><li>have a header image and some text</li><li>have some number of potential answers</li></ul></li><li><strong>Question Answers:</strong><ul><li>be either text or an image (demonstrate some of both)<ul><li><em>text answers are just clickable text boxes (not an image)</em></li></ul></li><li>have 4 potential display states:<ul><li>initial none selected state</li><li>have a <code>:hover</code> effect</li><li>have a clicked/selected state</li><li>when one answer is chosen all other answers should change to a not-selected state (different from the initial no answer chosen state).</li></ul></li><li>have an associated value to be used to calculate the overall quiz output.</li></ul></li><li><strong>Done Button:</strong><ul><li>calculate the quiz output</li></ul></li><li><strong>Output Display:</strong><ul><li>should have text and an image</li><li>should not show unless the calculations are finished</li><li>should display an error if not all questions were answered</li></ul></li></ul></li></ul>
 <p>Here’s some design specs thrown together in <a href="https://www.figma.com/">Figma</a></p>
@@ -491,7 +493,14 @@
 <p>🚀 Link in your <code>main.js</code> file. Best place for this is right before your closing <code>&lt;/body&gt;</code> tag.</p>
 <p>Extra credit question (add to submission comment): why might it be better for this to be placed at the bottom rather than in <code>&lt;head&gt; ... &lt;/head&gt;</code>?</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-html">&lt;script src="main.js"&gt;&lt;/script&gt;</code></pre></div></div>
-<div class="heading-block h2-block"><h2>HTML</h2></div>
+<p>For this assignment you are allowed to use <a href="https://jquery.com/">jQuery</a> if you wish. Just load it before your own javascript in your <code>index.html</code> file:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-html">&lt;script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"
+&gt;&lt;/script&gt;</code></pre></div></div>
+<p>jQuery is purely a personal choice. It helps simplify some things. If you have used it before, challenge yourself and use plain vanilla JS this time around. Many sites on the internet use jQuery so it doesn't hurt to be familiar with it.</p>
+<div class="heading-block h2-block"><h2>HTML &amp; Basic CSS</h2></div>
 <p>Start with coding up a single question and answer - then use flexboxes to arrange them. At this point using flexboxes for this should be almost second nature. You don’t need any of those fancy grid frameworks.</p>
 <p>One thing you may have noticed is that when you select an answer it is a exclusive selection. There is an input type that already does that automatically. Yup, <a href="http://learn.shayhowe.com/html-css/building-forms/#radio-buttons">radio boxes</a>!</p>
 <p>But the default styling of radio boxes is so ugly! Sure, but you can do something similar to the checkbox hack and hide the actual radio box but use it for some display logic.</p>
@@ -510,7 +519,41 @@
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-css">input[type='radio'] {
   display: none;
 }</code></pre></div></div>
-<p>It is important to note that the way that you group radio buttons together (i.e make it so clicking one de-clicks/de-selects the others) is by their ‘name’ property. Giving two radio buttons the same name groups them together.</p>
+<p>But how do you style the different states? Remember, the specs require 4 states: initial, hover, selected, and not-selected-when-another-is-chosen. The first two are straightforward:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-css">/* 1. Initial state - style the label */
+label {
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 2. Hover effect */
+label:hover {
+  border-color: #007bff;
+  transform: scale(1.02);
+}</code></pre></div></div>
+<div class="heading-block h3-block"><h3>States 3 &amp; 4: Selected and Unselected Styling</h3></div>
+<p>States 3 (highlight selected) and 4 (dim unselected) are trickier with nested inputs. CSS traditionally can't "look up" the DOM tree to style a label based on its child input's state. Two approaches:</p>
+<p><strong>Option 1: JavaScript class toggle</strong></p>
+<p>Manage selection state entirely through classes — the radio button just stores the value. Note: <a href="https://api.jquery.com/closest/">.closest()</a> traverses up the DOM to find the first ancestor matching the selector.</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-javascript">$('label').on('click', function() {
+  const $question = $(this).closest('.question');
+  $question.find('label').removeClass('selected');
+  $(this).addClass('selected');
+});</code></pre></div></div>
+<p><strong>Option 2: CSS <code>:has()</code> selector</strong></p>
+<p>Modern CSS has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has">:has()</a> which selects elements based on their children. Here's state 3 (selected):</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-css">/* Label containing a checked radio */
+label:has(input:checked) {
+  border-color: #28a745;
+}</code></pre></div></div>
+<p>For state 4 (dim unselected), you need to target labels that are inside a question with a selection, but don't contain the checked input. Hint:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-css">/* Question has a selection, but this label doesn't have it */
+.question:has(input:checked) label:not(/* what goes here? */) {
+  opacity: 0.5;
+}</code></pre></div></div>
+<div class="heading-block h3-block"><h3>Grouping Radio Buttons</h3></div>
+<p>The way you group radio buttons together (so clicking one de-selects the others) is via the <code>name</code> attribute. Radio buttons with the same name are mutually exclusive.</p>
 <p>For example, these two radio buttons could both be selected at the same time (you can have a favorite dog and a favorite cat):</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-html">&lt;label&gt;
   &lt;img src="http://onlines/someimage.png" /&gt;
@@ -531,14 +574,7 @@
 &lt;/label&gt;</code></pre></div></div>
 <div class="heading-block h2-block"><h2>Javascript Logic</h2></div>
 <p>Once you have the basic structure up you can dive into getting the logic working. At this point you should have some radio boxes on the screen that are checkable. But how do you collect the input from them?</p>
-<p>For this assignment you are allowed to use <a href="https://jquery.com/">jQuery</a> if you wish. Just load it before your own javascript in your <code>index.html</code> file:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-html">&lt;script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"
-&gt;&lt;/script&gt;</code></pre></div></div>
-<p>jQuery is purely a personal choice. It helps simplify some things. If you have used it before, challenge yourself and use plain vanilla JS this time around. Many sites on the internet use jQuery so it doesn’t hurt to be familiar with it.</p>
-<p>Most likely you have a button that you would like to attach a javascript action to. Here’s a tiny bit of code to get you started:</p>
+<p>Most likely you have a button that you would like to attach a javascript action to. Here's a tiny bit of code to get you started:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">$('#idOfYourButton').on('click', function (e) {
   // gather all checked radio-button values
   var choices = $("input[type='radio']:checked")
@@ -562,7 +598,8 @@
 <p>Git Feature Flow is a branching strategy that helps teams manage feature development in a structured way.  We aren’t yet working in a team, but we’re going to start using feature branches to keep track of our work.</p>
 <p>In Git Feature Flow, you would normally:</p>
 <ul><li><code>git checkout -b my_new_feature</code>  create a new branch</li><li>work on branch, <code>git commit</code>, etc</li><li><code>git push origin my_new_feature</code>  push your new branch to github</li><li>go to github and create pull request comparing main branch to my_new_feature</li><li>(optionally) tag someone to review</li><li>(once they approve) - go back on GitHub and merge it in</li></ul>
-<p>This workflow helps keep the main branch stable while allowing parallel feature development. It also provides a nice history for your project with a distinct timeline for when certain features were added. </p>
+<p>This workflow helps keep the main branch stable while allowing parallel feature development. It also provides a nice history for your project with a distinct timeline for when certain features were added.</p>
+<p>This is also how you might work with AI coding agents in the future — assigning them a feature branch to work on while you work on another, then reviewing their PR before merging.</p>
 <p>If you would like more practice with this try out: </p>
 <p><a href="https://www.notion.so/ECSA-Git-Map-029087af71764896a7246445074002c0?pvs=21">ECSA: Git Map</a></p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/image-1767548500125.png" alt="image.png"></figure>
@@ -614,7 +651,26 @@ git checkout -b json_data</code></pre></div>
   // data.title has the title
   // maybe you want to loop through data.questions?
 });</code></pre></div></div>
-<p>💰 Most likely you’ll want to take your already working hardcoded HTML, abstract out some section, and output it from a javascript loop that constructs a big string of all the html you need and then append it to some element in the page. You may find it irritating to do: <code>"&lt;div&gt;"+question.title+"&lt;/div&gt;"</code>… as such if you don’t care about backwards compatibility (Internet Explorer) you may find <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">template literals</a> useful.</p>
+<p>💰 Most likely you'll want to take your already working hardcoded HTML, abstract out some section, and output it from a javascript loop that constructs a big string of all the html you need and then append it to some element in the page.</p>
+<p>You may find it irritating to do string concatenation like <code>"&lt;div&gt;"+question.title+"&lt;/div&gt;"</code>. Instead, use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">template literals</a> (backticks) which let you embed variables directly:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">$.getJSON('data.json', function(data) {
+  let questionsHTML = '';
+
+  // Loop through each question
+  data.questions.forEach(function(question, index) {
+    questionsHTML += `
+      &lt;div class="question"&gt;
+        &lt;h2&gt;${question.question_name}&lt;/h2&gt;
+        &lt;img src="${question.question_img_url}" /&gt;
+        &lt;!-- you'd loop through question.answers here too --&gt;
+      &lt;/div&gt;
+    `;
+  });
+
+  // Append all the generated HTML to a container
+  $('#quiz-container').html(questionsHTML);
+});</code></pre></div></div>
+<div class="callout"><span class="callout-emoji">⚠️</span><span><strong>Async Timing:</strong> Notice that all your code must be <em>inside</em> the callback function. Code outside runs before the JSON loads! This is a common source of bugs — if your quiz isn't showing up, check if your code is inside the callback.</span></div>
 <div class="heading-block h2-block"><h2>Part 2: Polish Your Styling</h2></div>
 <p>Once you've merged the <code>json_data</code> branch into main, create a new branch for styling:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code>git checkout main
@@ -637,7 +693,7 @@ git checkout -b styling_polish</code></pre></div>
 <p>You have some options for how to host this. Github Pages is soon going to be too simple for us once we start using frameworks so we’ll need to move to another static hosting platform.  You could use <a href="http://Render.com">Render.com</a> or any other hosting platform that you like.  We’ll use Render later for hosting web services, so that one might be easiest if you want to only use 1 platform for the class going forward. </p>
 <div class="heading-block h3-block"><h3><a href="http://Render.com">Render.com</a></h3></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/untitled-1767548500125.png" alt="Untitled"></figure>
-<ol start="1"><li>Create account / Use github to sign in</li><li>New → Static Site</li><li>Connect Github</li><li>dartmouth-cs52-TERM/</li><li>Choose defaults and deploy</li><li>Deploy - it will automatically update when you push new changes to GitHub</li></ol>
+<ol start="1"><li>Create account / Use github to sign in</li><li>New → Static Site</li><li>Connect Github</li><li>dartmouth-cs52/</li><li>Choose defaults and deploy</li><li>Deploy - it will automatically update when you push new changes to GitHub</li></ol>
 <div class="heading-block h2-block"><h2>And done!</h2></div>
 <p>Remember to have fun with this. We’ll share the quizzes in class!</p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/scar-1767548500125.png" alt=""></figure>
