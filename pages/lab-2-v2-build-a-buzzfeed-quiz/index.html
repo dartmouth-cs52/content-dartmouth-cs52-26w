@@ -1,3 +1,530 @@
-# Lab 2-v2: Build a Buzzfeed Quiz
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 0; }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol { margin-bottom: 1em; padding-left: 1.5em; list-style-position: outside; }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li { margin-bottom: 0.25em; display: list-item; font-size: 16px; }
+    ul ul, ol ul { list-style-type: circle; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code { background: none; padding: 0; font-size: 100%; }
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body { display: flex; padding: 1rem 0; }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number { display: block; }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots { display: flex; gap: 8px; }
+    .terminal-block .terminal-dots span { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; }
+    .image-block { margin: 1em 0; padding: 0; }
+    .image-block img { display: block; }
+    .image-align-center { text-align: center; }
+    .image-align-center img { margin-left: auto; margin-right: auto; }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji { font-size: 1.25em; }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info { background: #dbeafe; border-left-color: #3b82f6; }
+    .alert-warning { background: #fef3c7; border-left-color: #f59e0b; }
+    .alert-success { background: #d1fae5; border-left-color: #10b981; }
+    .alert::before { content: ''; font-size: 1.25em; }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-success::before { content: '✅'; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1em; }
+    th, td { border: 1px solid #ddd; padding: 0.75em; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+  </style>
+</head>
+<body>
 
-Add your content here...
+<figure class="image-block image-align-center"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/quiz-1767548500125.gif" alt="" style="width: 334px" width="334" data-align="center"></figure>
+
+<div class="heading-block h1-block"><h1>Lab 2: Build a Buzzfeed Quiz (Paired Edition)</h1></div>
+
+<p><strong>Format:</strong> In-class paired programming with AI assistance<br>
+<strong>Time:</strong> ~75 minutes<br>
+<strong>Goal:</strong> Build a personality quiz while learning about JavaScript async timing</p>
+
+<p>All the kids are doing it these days. This is where we'll learn a little bit about making interactive sites. We won't need to deal with any backend servers, just some nice clientside code to build up a fun quiz and show some calculated results.</p>
+
+<p>Head over to buzzfeed and take <a href="https://www.buzzfeed.com/justkatiejoy/what-disney-animal-are-you-9bf0kqt6pd">this quiz</a>. I'll wait.</p>
+
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/buzzfeed-1767548500125.png" alt=""></figure>
+
+<p>Doesn't that make you want to make your own quiz? Ok, you could use buzzfeed to do this, but you want to make one that doesn't have ugly ads. And looks classier too!</p>
+
+<div class="alert alert-info">
+  <div>This is a <strong>paired programming</strong> exercise. One computer, two people, taking turns driving. You'll be using Claude Code to help build the quiz - but pay attention, it might not always write perfect code on the first try!</div>
+</div>
+
+<div class="heading-block h2-block"><h2>How This Lab Works</h2></div>
+
+<p>This lab is designed differently than most. Here's the flow:</p>
+
+<table>
+  <tr>
+    <th>Phase</th>
+    <th>Time</th>
+    <th>What You'll Do</th>
+  </tr>
+  <tr>
+    <td><strong>1. Build</strong></td>
+    <td>~25 min</td>
+    <td>Work with Claude to implement the quiz functionality</td>
+  </tr>
+  <tr>
+    <td><strong>2. Debug</strong></td>
+    <td>~30 min</td>
+    <td>When things break (they will!), investigate why with Claude's help</td>
+  </tr>
+  <tr>
+    <td><strong>3. Fix & Polish</strong></td>
+    <td>~15 min</td>
+    <td>Apply fixes, understand the concepts, add finishing touches</td>
+  </tr>
+  <tr>
+    <td><strong>4. Share</strong></td>
+    <td>~5 min</td>
+    <td>Try another pair's quiz!</td>
+  </tr>
+</table>
+
+<div class="alert alert-warning">
+  <div><strong>Important:</strong> When you hit bugs, don't just ask Claude to fix them immediately. Take time to understand <em>why</em> the code isn't working. Use <code>console.log</code> to trace what's happening. This debugging experience is the actual learning!</div>
+</div>
+
+<div class="heading-block h2-block"><h2>Minimal Functional Specs</h2></div>
+
+<ul>
+  <li>Quiz Page:
+    <ul>
+      <li>Questions:
+        <ul>
+          <li>display several questions (enough for this to be interesting)</li>
+          <li>have a header image and some text</li>
+          <li>have some number of potential answers</li>
+        </ul>
+      </li>
+      <li>Question Answers:
+        <ul>
+          <li>be either text or an image (demonstrate some of both)</li>
+          <li>have 4 potential display states:
+            <ul>
+              <li>initial none selected state</li>
+              <li>have a <code>:hover</code> effect</li>
+              <li>have a clicked/selected state</li>
+              <li>when one answer is chosen all other answers should change to a not-selected state</li>
+            </ul>
+          </li>
+          <li>have an associated value to be used to calculate the overall quiz output</li>
+        </ul>
+      </li>
+      <li>Done Button:
+        <ul>
+          <li>calculate the quiz output</li>
+        </ul>
+      </li>
+      <li>Output Display:
+        <ul>
+          <li>should have text and an image</li>
+          <li>should not show unless the calculations are finished</li>
+          <li>should display an error if not all questions were answered</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Here's some design specs thrown together in <a href="https://www.figma.com/">Figma</a>:</p>
+
+<p><strong>1. Quiz page with a question and some image answers - nothing selected:</strong></p>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/main-1767548500125.png" alt=""></figure>
+
+<p><strong>2. An example hover effect:</strong></p>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/hover-1767548500125.png" alt=""></figure>
+
+<p><strong>3. An answer selected:</strong></p>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/checked-1767548500125.png" alt=""></figure>
+
+<p><strong>4. Answer display:</strong></p>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/done-1767548500125.png" alt=""></figure>
+
+<div class="heading-block h2-block"><h2>Setup</h2></div>
+
+<p>Clone your assigned repository and open it in your editor:</p>
+
+<div class="terminal-block">
+  <div class="terminal-header">
+    <div class="terminal-dots"><span></span><span></span><span></span></div>
+    <div class="terminal-title">Terminal</div>
+  </div>
+  <pre><code>git clone [your-repo-url]
+cd lab2-quiz
+code .</code></pre>
+</div>
+
+<p>You'll find starter files:</p>
+<ul>
+  <li><code>index.html</code> - basic HTML structure</li>
+  <li><code>style.css</code> - minimal starter styles</li>
+  <li><code>main.js</code> - empty, you'll build this</li>
+  <li><code>quiz.json</code> - sample quiz data</li>
+</ul>
+
+<p>Open Claude Code in your project directory:</p>
+
+<div class="terminal-block">
+  <div class="terminal-header">
+    <div class="terminal-dots"><span></span><span></span><span></span></div>
+    <div class="terminal-title">Terminal</div>
+  </div>
+  <pre><code>claude</code></pre>
+</div>
+
+<p>Start by asking Claude to help you build the quiz. Something like:</p>
+
+<div class="callout">
+  <span class="callout-emoji">💬</span>
+  <div>"Help us build a personality quiz. We need to load questions from quiz.json and display them on the page with clickable answers. When the user clicks submit, calculate which outcome they got based on their answers."</div>
+</div>
+
+<p>As you work:</p>
+<ul>
+  <li><strong>Driver</strong> types and runs commands</li>
+  <li><strong>Navigator</strong> watches, thinks ahead, spots issues</li>
+  <li><strong>Swap roles</strong> every 10-15 minutes</li>
+</ul>
+
+<div class="heading-block h2-block"><h2>HTML Tips: Radio Buttons</h2></div>
+
+<p>One thing you may have noticed is that when you select an answer it is an exclusive selection. There is an input type that already does that automatically. Yup, <a href="http://learn.shayhowe.com/html-css/building-forms/#radio-buttons">radio boxes</a>!</p>
+
+<p>But the default styling of radio boxes is so ugly! Sure, but you can hide the actual radio box and use it for display logic.</p>
+
+<p>Here is the basic syntax for a radio button with an image label:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-html">&lt;label for="puppy_question"&gt;&lt;img src="someimage.png" /&gt;&lt;/label&gt;
+&lt;input type="radio" id="puppy_question" value="puppy" /&gt;</code></pre></div></div>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-css">input[type='radio'] {
+  display: none;
+}</code></pre></div></div>
+
+<p>You can nest the input inside of the label and then you don't have to do the <code>for="elementID"</code> part:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-html">&lt;label&gt;
+  &lt;img src="someimage.png" /&gt;
+  &lt;input type="radio" value="puppy" /&gt;
+&lt;/label&gt;</code></pre></div></div>
+
+<p><strong>Important:</strong> The way you group radio buttons together (clicking one de-selects the others) is by their <code>name</code> property. Same name = same group.</p>
+
+<p>These two can both be selected (different groups):</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-html">&lt;label&gt;
+  &lt;img src="dog.png" /&gt;
+  &lt;input type="radio" name="favorite_dog" value="dalmation" /&gt;
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;img src="cat.png" /&gt;
+  &lt;input type="radio" name="favorite_cat" value="tiger" /&gt;
+&lt;/label&gt;</code></pre></div></div>
+
+<p>These two will auto-unselect each other (same group):</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-html">&lt;label&gt;
+  &lt;img src="dalmation.png" /&gt;
+  &lt;input type="radio" name="favorite_dog" value="dalmation" /&gt;
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;img src="retriever.png" /&gt;
+  &lt;input type="radio" name="favorite_dog" value="retriever" /&gt;
+&lt;/label&gt;</code></pre></div></div>
+
+<div class="heading-block h2-block"><h2>JSON Data Structure</h2></div>
+
+<p>Your quiz data will be loaded from a JSON file. Here's an example structure:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span></div><pre><code class="language-json">{
+  "title": "What Programming Language Are You?",
+  "outcomes": {
+    "python": { "img": "img/python.png", "text": "You're Python!" },
+    "javascript": { "img": "img/js.png", "text": "You're JavaScript!" }
+  },
+  "questions": [
+    {
+      "question_name": "question1",
+      "question_text": "How do you like your morning coffee?",
+      "question_img_url": "img/coffee.jpg",
+      "answers": [
+        {
+          "text": "Simple and clean",
+          "img_url": "img/black-coffee.jpg",
+          "outcome": "python"
+        },
+        {
+          "text": "Complicated with lots of options",
+          "img_url": "img/fancy-coffee.jpg",
+          "outcome": "javascript"
+        }
+      ]
+    }
+  ]
+}</code></pre></div></div>
+
+<div class="heading-block h2-block"><h2>JavaScript: Loading Data with Fetch</h2></div>
+
+<p>You'll need to load the JSON data using <code>fetch</code>. Here's the basic pattern:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">fetch('quiz.json')
+  .then(response => response.json())
+  .then(data => {
+    // Now you can work with data
+    console.log(data.title);
+  });</code></pre></div></div>
+
+<p>To gather all selected radio button values when the user clicks submit:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span></div><pre><code class="language-javascript">document.getElementById('submit-btn').addEventListener('click', () => {
+  const checked = document.querySelectorAll("input[type='radio']:checked");
+  const choices = Array.from(checked).map(radio => radio.value);
+
+  // choices is now an array like ["python", "javascript", "python"]
+  // Calculate the most common outcome
+  console.log(choices);
+});</code></pre></div></div>
+
+<p>Some useful vanilla JS methods:</p>
+<ul>
+  <li><code>element.style.display = 'none'</code> - hide an element</li>
+  <li><code>element.style.display = 'block'</code> - show an element</li>
+  <li><code>element.textContent = 'new text'</code> - change text</li>
+  <li><code>element.innerHTML = '&lt;p&gt;html&lt;/p&gt;'</code> - change HTML content</li>
+</ul>
+
+<div class="heading-block h2-block"><h2>When Things Break</h2></div>
+
+<p>JavaScript timing can be tricky. You might encounter situations where:</p>
+<ul>
+  <li>Data seems to be missing when you try to use it</li>
+  <li>Elements can't be found even though they're in your HTML</li>
+  <li>Click handlers behave unexpectedly</li>
+</ul>
+
+<p>When this happens:</p>
+<ol>
+  <li>Open the browser DevTools console (F12 or Cmd+Option+I)</li>
+  <li>Look for error messages</li>
+  <li>Add <code>console.log()</code> statements to trace execution order</li>
+  <li>Ask Claude questions like "Why might this variable be undefined here?"</li>
+</ol>
+
+<div class="heading-block h2-block"><h2>Learning Goals</h2></div>
+
+<p>By the end of this lab, you should understand:</p>
+<ul>
+  <li><strong>Async execution:</strong> Why JavaScript doesn't always run top-to-bottom</li>
+  <li><strong>Promises & fetch:</strong> How to properly wait for data to load</li>
+  <li><strong>DOM ready:</strong> When it's safe to access HTML elements</li>
+  <li><strong>Debugging:</strong> How to use console.log and DevTools to trace issues</li>
+</ul>
+
+<div class="heading-block h2-block"><h2>Submission</h2></div>
+
+<p>Before time is up:</p>
+<ol>
+  <li>Make sure your code is committed and pushed</li>
+  <li>Verify your quiz works in the browser</li>
+  <li>Be ready to share with another pair!</li>
+</ol>
+
+<div class="terminal-block">
+  <div class="terminal-header">
+    <div class="terminal-dots"><span></span><span></span><span></span></div>
+    <div class="terminal-title">Terminal</div>
+  </div>
+  <pre><code>git add .
+git commit -m "Quiz complete!"
+git push</code></pre>
+</div>
+
+<div class="heading-block h2-block"><h2>Reflection (After Class)</h2></div>
+
+<p>In your repo's README, briefly answer:</p>
+<ol>
+  <li>What timing/async bugs did you encounter?</li>
+  <li>How did you figure out what was wrong?</li>
+  <li>What's one thing you learned about JavaScript execution order?</li>
+</ol>
+
+<div class="heading-block h2-block"><h2>Extra Credit</h2></div>
+
+<p><em>Feel free to suggest other possibilities; always mention extra credit in your submission.</em></p>
+<ul>
+  <li>More complex quiz scoring (weighted options, probabilities)</li>
+  <li>Fancy CSS animations for results display</li>
+  <li>Mobile-responsive design</li>
+  <li>Multiple quizzes on different pages</li>
+</ul>
+
+<div class="heading-block h2-block"><h2>Resources</h2></div>
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous">MDN: Asynchronous JavaScript</a></li>
+  <li><a href="https://javascript.info/async">JavaScript.info: Promises, async/await</a></li>
+  <li><a href="https://developer.chrome.com/docs/devtools/">Chrome DevTools</a></li>
+  <li><a href="https://css-tricks.com/">https://css-tricks.com</a></li>
+  <li><a href="http://learn.shayhowe.com/html-css/building-forms/#radio-buttons">Radio Buttons Tutorial</a></li>
+  <li><a href="https://javascript.info/">https://javascript.info</a></li>
+</ul>
+
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-2-build-a-buzzfeed-quiz/assets/scar-1767548500125.png" alt=""></figure>
+
+<p>Remember to have fun with this. We'll share the quizzes in class!</p>
+
+</body>
+</html>
