@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Javascript Intro</title>
-  <!-- Reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <!-- Shared theme lib CSS (fonts, base styles) -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
-  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <!-- Shared theme custom CSS -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
   <style>
-    /* Override slides.com animation system - make all elements fully visible */
+    /* Override slides.com animation system - make all elements visible */
     .sl-block-content,
     .sl-block-content[data-animation-type],
     .sl-block-content[data-animation-type="fade-in"],
@@ -21,14 +20,15 @@
       pointer-events: auto !important;
     }
   </style>
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
 </head>
 <body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
-  <div class="reveal" data-theme="shared:cs52-theme">
+  <div class="reveal" data-theme="shared:cs52-theme" data-code-theme="github">
     <div class="slides">
-
-				<section class="stack" data-id="1261e1c1dfda563ba3f05355d5d013ad"><section data-id="f82b531092beca54b30fd1838527ca25">
-<div class="sl-block" data-block-type="image" data-name="image-2c63f1" data-block-id="b80430478a460393d3789e650dc50565" style="width: 693.54px; height: 585.213px; left: 133.23px; top: 114.787px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="1114" data-natural-height="940" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/91baf17d99b2c3e60a5fdb5b938fe5f0.png"></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 2px;" data-name="snippet-eac8ed" data-block-id="10b8207e6012551787217bb7046e9303">
+<section class="stack editing-mode" data-id="1261e1c1dfda563ba3f05355d5d013ad" style="top: 0px; display: block;" data-previous-indexv="0"><section data-id="f82b531092beca54b30fd1838527ca25" style="top: 0px; display: block;" class="editing-mode">
+<div class="sl-block" data-block-type="image" data-name="image-2c63f1" data-block-id="b80430478a460393d3789e650dc50565" style="width: 693.54px; height: 585.213px; left: 133.23px; top: 114.787px; min-width: 1px; min-height: 1px;" data-column-label="Column 1"><div class="sl-block-content plain" style="z-index: 11;"><img style="" data-natural-width="1114" data-natural-height="940" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/91baf17d99b2c3e60a5fdb5b938fe5f0.png"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 2px;" data-name="snippet-eac8ed" data-block-id="10b8207e6012551787217bb7046e9303" data-column-label="Column 2">
 <div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
 <div id="header-title">
 <div class="left">
@@ -41,7 +41,7 @@
 </div>
 </div>
 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
-</div></section><section data-id="1520d0de11dc3fe8e3e916ee23bda680">
+</div></section><section data-id="1520d0de11dc3fe8e3e916ee23bda680" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-aa6ca9" data-block-id="f8ac54dd2ae81be3c9884a3ab2a3041d" style="width: 960px; height: 441.6px; left: 0px; top: -10.8px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="230" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/fbc01418f3e639e23c2e5b77bcaa8b49.gif"></div></div>
 <div class="sl-block" data-block-type="iframe" data-name="iframe-298dec" data-block-id="28bb2e7195abdbfd2ee5c039267739a0" style="width: 960px; height: 338px; left: 1.42109e-14px; top: 362px;"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://en.wikipedia.org/wiki/JavaScript" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 2px;" data-name="snippet-eac8ed" data-block-id="9aece9b02014602487fdc973bbef1822">
@@ -62,12 +62,12 @@
 * let it all wash over you, a meditative javascript rain
 * later in the class, if you are asking for help and we ask something like, what does this code do?  we most likely want a step-through of,  this is a variable with the value x and we are passing the variable reference to function b. 
 * understanding what you think the code is doing is key to us helping, but is also the key to being a coder - be the machine
-</aside></section><section data-id="fc5a6f97958100c034d68f2bc676237c"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-block-id="9ce3e86b76f01464d42d0ce80c3f6595"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+</aside></section><section data-id="fc5a6f97958100c034d68f2bc676237c" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true"><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 0px; height: auto;" data-block-id="9ce3e86b76f01464d42d0ce80c3f6595"><div class="sl-block-content title" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h2>Where in the Stack?</h2>
 </div></div>
 <div class="sl-block" data-block-type="image" data-name="image-f8e4c9" data-block-id="4ef104a2c63bfa7e8df15942679d5f1e" style="width: 653.536px; height: 518px; left: 153.232px; top: 147.996px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1543" data-natural-height="1223" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/98c68e8c37924a14098dfbe9bb740c05.png"></div></div><aside class="notes">* today in browser only! javascript was made for this
 * later we'll do server side js with node
-</aside></section><section data-id="f4aded45b1b09afb18a436764f717903">
+</aside></section><section data-id="f4aded45b1b09afb18a436764f717903" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-8ec8ab" data-block-id="0caf3d64b83f6f105a569f9be9bd1201" style="width: 764.012px; height: 518px; left: 97.994px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="339" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/413df550a8be4fe26fddc5917cf8a5da.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-eac8ed" data-block-id="3949c937956b0ee202f60baabad91d20">
 <div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -91,7 +91,8 @@
 * **JavaScript interpreter**. Used to parse and execute JavaScript code.
 * **Data storage**. Browser local storage like Cookies
 
-</aside></section></section><section class="stack" data-id="f3a3fba9a5cc858fc8b8b64f6638d8bc"><section data-id="acdc2e7624c610696cb0bdde3cc58719">
+</aside></section></section>
+<section class="stack editing-mode" data-id="f3a3fba9a5cc858fc8b8b64f6638d8bc" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="acdc2e7624c610696cb0bdde3cc58719" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-86cce8" data-block-id="7cc2d459308a5a10d903c8363f3e2de1" style="width: 806.399px; height: 353.981px; left: 76.8005px; top: 206.019px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="2048" data-natural-height="899" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/8db29456317f1b02c40036c5bd4359c8.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-034e59" data-block-id="225acc5d03280906216a29dcb55035a4" style="height: auto; width: 139px; left: 101px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>structure</p>
@@ -124,7 +125,7 @@
 * a **scripting language for coding inside of the browser** - the browser has a JS interpreter and runtime
 * only real way to do interactive stuff in browser is through js
 * otherwise need plugins RIP flash
-</aside></section><section data-id="f8d7ce54e7fc22fe9b5b598709d9bbad">
+</aside></section><section data-id="f8d7ce54e7fc22fe9b5b598709d9bbad" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-94f094" data-block-id="4a2b9b44b92121d9e0d69d643f9a3019" style="width: 189px; height: 189px; left: 385.5px; top: 81.7574px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="400" data-natural-height="400" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/484387915ec9b7d287eae9cf4bf6ccdc.gif"></div></div>
 
 <div class="sl-block" data-block-type="text" data-name="text-fc5f67" data-block-id="e61d99093fb1970e4254ae423f5e27ee" style="height: auto; width: 960px; left: 0px; top: 282.757px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
@@ -150,7 +151,7 @@
 * originally mocha by netscape,  thought that java was famous so put java in the name even though no similarities
 * partially interactivity to be able to do styling
 * has gone from trivial to powering the internet -- the third age
-</aside></section><section data-id="902159e5fef072803590e7f6135b36f3">
+</aside></section><section data-id="902159e5fef072803590e7f6135b36f3" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 
 
@@ -169,7 +170,7 @@
 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 11;" class="cGcvT"></grammarly-extension>
 </div>
 
-<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 330.5px;" data-name="text-a9be4d" data-block-id="71132c36512486e0a3d43491987a8fa4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>https://deno.com/blog/history-of-javascript?ck_subscriber_id=2197205025</p></div></div></section><section data-id="71aa3210a0fe1b744517c50312d4c3cf">
+<div class="sl-block editing" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 330px;" data-name="text-a9be4d" data-block-id="71132c36512486e0a3d43491987a8fa4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>https://deno.com/blog/history-of-javascript?ck_subscriber_id=2197205025</p></div></div></section><section data-id="71aa3210a0fe1b744517c50312d4c3cf" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="image" data-name="image-063a22" data-block-id="0ae1e11f16f5bbf0c851506a597d9717" style="width: 438.096px; height: 329px; left: 260.952px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2048" data-natural-height="1538" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/d8e6c37645a3056a3caa82790750e00d.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-867c4c" data-block-id="b88705bf09bf4388e18a48c6b82f879e" style="height: auto; width: 960px; left: 0px; top: 443.298px;">
 <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -193,7 +194,7 @@
 </div>
 </div></div><aside class="notes">* first-class function: functions are objects
 * * ECMA (standards organization) was originally **European Computer Manufacturers Association**, but then decided to just stop being an acronym for anything. Still in **Geneva**. Meet periodically to plan how to make things better.
-* some things I like about js:  **functional paradigm, first-class functions, ie everything is a dictionary**</aside></section><section data-id="9cdb8925071537daa1ed6f1717a82049" data-background-color="#232528"><div class="sl-block" data-block-type="iframe" data-name="iframe-d08e92" data-block-id="7905afadd6200e16bae2d75fc19bc4ed" style="width: 960px; height: 621px; left: 0px; top: 79px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+* some things I like about js:  **functional paradigm, first-class functions, ie everything is a dictionary**</aside></section><section data-id="9cdb8925071537daa1ed6f1717a82049" data-background-color="#232528" class="has-dark-background editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true"><div class="sl-block" data-block-type="iframe" data-name="iframe-d08e92" data-block-id="7905afadd6200e16bae2d75fc19bc4ed" style="width: 960px; height: 621px; left: 0px; top: 79px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://insights.stackoverflow.com/survey/2020#technology-programming-scripting-and-markup-languages" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="4ae8d69f5b3733dd471d33a2cb0cc9b5"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -206,7 +207,7 @@
 * love it, hate it
 * sure is popular though
 * the "joke" is that javascript will run the world - and I think it can happen
-</aside></section><section data-id="9fdca2896a9954b08e83c6e4ac6140f9">
+</aside></section><section data-id="9fdca2896a9954b08e83c6e4ac6140f9" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-2ffb7d" data-block-id="05837ad9eb0ffaa1cb8d91acf114d11e" style="height: auto; width: 960px; left: 0px; top: 159.773px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p>What are all these versions?<br>
 I'm confused what we are doing here?</p>
@@ -219,7 +220,7 @@ I'm confused what we are doing here?</p>
 	<li>
 <strong>ES5</strong>: &nbsp;2015 or so version of javascript that works in pretty much all browsers</li>
 	<li>
-<strong>ES6, ES202x, ES.Next, etc:</strong>&nbsp; Newer versions that have less browser compatibility</li>
+<strong>ES6+, ES202x, ES.Next, etc:</strong>&nbsp; Newer versions that have less browser compatibility</li>
 	<li>
 <strong>BABEL</strong>: &nbsp;a tool to make newer JS compatible with any browser</li>
 </ul>
@@ -233,7 +234,7 @@ I'm confused what we are doing here?</p>
 </div>
 </div>
 </div></div><aside class="notes">today we'll talk about generally compatible things - next time we'll upgrade
-but we'll be using the latest and greatest features later and will use BABEL for everything!</aside></section><section data-id="15e513d0291ae2f96a4a620dfd3c5d0c">
+but we'll be using the latest and greatest features later and will use BABEL for everything!</aside></section><section data-id="15e513d0291ae2f96a4a620dfd3c5d0c" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-7e37f7" data-block-id="8749ea5dcb3900080f2ab7795c9f266d" style="height: auto; width: 669px; left: 291px; top: 122.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>Pros:
@@ -270,7 +271,7 @@ but we'll be using the latest and greatest features later and will use BABEL for
 * i tried to find some fun learn js game but not much out there, most of them seem overly complicated if anybody knows of one though!
 * event loop to handle asynchronous actions - we'll dig into that a lot
 * basically events come in and go into a queue to be processed
-</aside></section><section data-id="1ea7d10d0471a3fc2e6ff12bbd55fec3">
+</aside></section><section data-id="1ea7d10d0471a3fc2e6ff12bbd55fec3" class="editing-mode" style="top: 350px; display: block;" aria-hidden="true">
 <div class="sl-block" data-block-type="code" data-name="code-e458c4" data-block-id="8b416d7e3aa4ad033d7d4987138b7be4" style="width: 529.5px; height: 540px; left: 30.5px; top: 128px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre style="font-size: 16px; line-height: 19px;" class="javascript"><code>// can look a little like c
 
 function foobar(i) { return i; }
@@ -311,25 +312,16 @@ if (i &lt; 3 &amp;&amp; i &gt; 0) {
 * c style for loop badness
 * these are all JS! but NOT IDIOMATIC javascript.
 * we will learn next class how to not use these syntaxes
-</aside></section></section><section class="stack" data-id="7bc6412ba74a4072014a9a16001142b6"><section data-id="c89ed81391a6894a6cd963d5ceed98cc">
+</aside></section></section>
+<section class="stack editing-mode" data-id="7bc6412ba74a4072014a9a16001142b6" style="top: 0px; display: block;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="c89ed81391a6894a6cd963d5ceed98cc" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 
-<div class="sl-block" data-block-type="sandpack" data-name="iframe-fcd088" style="width: 960px; height: 490px; left: 0px; top: 210px;" data-block-id="4d9b777ce84636547bb97a24749b0f52">
-  <div class="sl-block-content" style="z-index: 10;">
-    <div class="sandpack-embed"
-         data-template="vanilla"
-         data-theme="auto"
-         data-layout="editor-only"
-         data-show-console="true"
-         data-show-line-numbers="true"
-         data-visible-files='["/index.js"]'>
-      <script type="application/json" data-sandpack-files>
-{
+<div class="sl-block" data-block-type="sandpack" data-name="iframe-fcd088" style="width: 960px; height: 336px; left: 0px; top: 210px;" data-block-id="4d9b777ce84636547bb97a24749b0f52">
+  <div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="vanilla" data-theme="auto" data-layout="editor-only" data-show-console="true"><script type="application/json" data-sandpack-files="">{
+  "/styles.css": "body {\n  font-family: sans-serif;\n  -webkit-font-smoothing: auto;\n  -moz-font-smoothing: auto;\n  -moz-osx-font-smoothing: grayscale;\n  font-smoothing: auto;\n  text-rendering: optimizeLegibility;\n  font-smooth: always;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n}\n\nh1 {\n  font-size: 1.5rem;\n}",
   "/index.js": "var test = 5;\nconsole.log(typeof(5));\n\nconsole.log(5 * null)    // → 0\nconsole.log(\"5\" - 1)     // → 4\nconsole.log(\"5\" + 1)     // → 51\nconsole.log(\"five\" * 2)  // → NaN\nconsole.log(false == 0)  // → true",
-  "/index.html": "<!DOCTYPE html>\n<html>\n<head></head>\n<body>\n  <p>Check the console for output!</p>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>"
-}
-      </script>
-    </div>
-  </div>
+  "/index.html": "<!DOCTYPE html>\n<html>\n<head></head>\n<body>\n  <p>Check the console for output!</p>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>",
+  "/package.json": "{\n  \"dependencies\": {},\n  \"main\": \"/index.js\",\n  \"devDependencies\": {}\n}"
+}</script></div></div>
 </div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="368bee38b9d2908518ac6f6aa58f15aa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
@@ -365,7 +357,7 @@ if (i &lt; 3 &amp;&amp; i &gt; 0) {
 * `console.log(false == "")` is true etc
 *  for the == comparison is there a way to not have this happen?
 
-</aside></section><section data-id="db6c5a3756a26e81b5026de83586bcc7">
+</aside></section><section data-id="db6c5a3756a26e81b5026de83586bcc7" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="text" data-name="text-348c17" data-block-id="4ae06a59e41542074e314490c0440878" style="height: auto; width: 960px; left: 5.32907e-14px; top: 182.392px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
 	<li>number type is a <span style="color:#942323">double</span>
@@ -404,7 +396,7 @@ if (i &lt; 3 &amp;&amp; i &gt; 0) {
 </div>
 </div>
 </div></div><aside class="notes">* lots of crazy you probably won't run into but you might when things are NaN and you forget that checking for it is difficult
-</aside></section><section data-id="1e5ac6b04b22e0665c26d43949b6cd04">
+</aside></section><section data-id="1e5ac6b04b22e0665c26d43949b6cd04" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 420.337px; left: 0px; top: 210px;" data-block-id="98b898e427e0e60c11e0a40991d2e1ad"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/63c2a5576268c96372263d8d9583cc85?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="ca80c54fe4dfa9178126a617ebf70965">
@@ -420,10 +412,10 @@ if (i &lt; 3 &amp;&amp; i &gt; 0) {
 </div>
 </div>
 </div></div><aside class="notes">* will introduce various newer javascript syntax along the way
-</aside></section><section data-id="7ecace8a91e5f78fd272b03f923d9f98">
+</aside></section><section data-id="7ecace8a91e5f78fd272b03f923d9f98" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 
-<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="ae3f6b4cd4c8aeedd9d774ae80e4cfc0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="ae3f6b4cd4c8aeedd9d774ae80e4cfc0" data-column-label="Column 1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul>
 	<li>
 	<p><span style="color:#4757ff">true</span>, <span style="color:#4757ff">false</span></p>
@@ -437,7 +429,7 @@ if (i &lt; 3 &amp;&amp; i &gt; 0) {
 
 <p>&nbsp;</p>
 </div></div>
-<div class="sl-block" data-block-type="code" data-name="code-7d5f13" data-block-id="481da5b43d6d6d494a79f217e35f502d" style="width: 800px; height: 375.597px; left: 80px; top: 280px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">
+<div class="sl-block editing" data-block-type="code" data-name="code-7d5f13" data-block-id="481da5b43d6d6d494a79f217e35f502d" style="width: 800px; height: 375.597px; left: 80px; top: 280px;" data-column-label="Column 2"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">
 //falsy
 false == 0 == '' == null == undefined == NaN
 
@@ -451,7 +443,7 @@ if (variable) {
   //useful - but can be trouble! if variable == 0, or [] or ''
 }
 </code></pre></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="2ec099f327b57d457922af073e3de11f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="2ec099f327b57d457922af073e3de11f" data-column-label="Column 3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
@@ -464,7 +456,7 @@ if (variable) {
 * non-empty string
 * can anyone think of a problem you might encounter here?
   * what if you are checking if a variable is set to a number or not
-</aside></section><section data-id="fd9aa76d756aa7e332e8a85955e3eb82">
+</aside></section><section data-id="fd9aa76d756aa7e332e8a85955e3eb82" class="editing-mode" style="top: 350px; display: block;" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="19dac91c660691ce888336825fae4cd0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
@@ -496,7 +488,8 @@ null === undefined // false
 </div></div><aside class="notes">* undefined — does not have a value assigned
 * null — value to represent whatever coder wants (like a sentinel)
 
-</aside></section></section><section class="stack" data-id="eb02f88eb09c38089709d0bbf3594b58"><section data-id="6d0f881d2f036a67d8a97e777d0b5b8d">
+</aside></section></section>
+<section class="stack editing-mode" data-id="eb02f88eb09c38089709d0bbf3594b58" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="6d0f881d2f036a67d8a97e777d0b5b8d" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 357.481px; left: 0px; top: 342.519px;" data-block-id="3d035607b5618af93a627c549550392b"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e06365a4b654b19efd7ef2c5e21a13dd?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 74px;" data-block-id="7ff1885f6c821df424b73813767763fb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
@@ -526,7 +519,7 @@ null === undefined // false
 * this will be explained
 * also functions -- everything is really just a dictionary
 * this is very beautiful if you think about it
-</aside></section><section data-id="368d55ca4d8ee89a0f29661898f82284">
+</aside></section><section data-id="368d55ca4d8ee89a0f29661898f82284" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="164c988538bc607a580aead8dea810a0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -538,7 +531,7 @@ null === undefined // false
 </div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 601.239px; left: 0px; top: 98.761px;" data-block-id="4b969d6a8d687f23639d20d17e5e473d"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/xxyKNNp?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* you CAN iterate through an object - it makes sense in some cases, but not in others</aside></section><section data-id="770617d4eb5f8aa1023430daa7ec2d19">
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 601.239px; left: 0px; top: 98.761px;" data-block-id="4b969d6a8d687f23639d20d17e5e473d"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/xxyKNNp?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* you CAN iterate through an object - it makes sense in some cases, but not in others</aside></section><section data-id="770617d4eb5f8aa1023430daa7ec2d19" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 454.516px; left: 0px; top: 244.484px;" data-block-id="49dd725869faaa8817df0368b08c7aa8"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/poxzXar?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="056900ac873c76bf71acfa10395ded50"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -560,7 +553,7 @@ null === undefined // false
 </div>
 </div></div><aside class="notes">* console.log(list[4]) // returns undefined and prints hi - whyfor?
 * powerful but also confusing
-* funkadelic but also why we love javascript so much</aside></section><section data-id="a6f172b1659b0819339ad7ee4e9473b4">
+* funkadelic but also why we love javascript so much</aside></section><section data-id="a6f172b1659b0819339ad7ee4e9473b4" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 <div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 87.0176px; top: 420px;" data-name="text-0c269a" data-block-id="7dae4c92d0d4e78503aac0ae86ab5963"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
 	<li>special type of ...</li>
 	<li>epoch time (1/1/1970 UTC)</li>
@@ -589,7 +582,8 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div>
 </div>
 </div></div><aside class="notes">* date is a special type of object!
-</aside></section></section><section class="stack" data-id="js-expression-shooter-game-stack"><section data-id="js-expression-shooter-slide" data-background-color="#0a0a1a">
+</aside></section></section>
+<section class="stack editing-mode" data-id="js-expression-shooter-game-stack" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="js-expression-shooter-slide" data-background-color="#0a0a1a" style="top: 350px; display: none;" class="has-dark-background editing-mode" aria-hidden="true">
 <div class="sl-block" data-block-type="iframe" data-name="game-embed" style="width: 960px; height: 700px; left: 0px; top: 0px;">
 <div class="sl-block-content" style="z-index: 10;">
 <iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/games/js-expression-shooter/index.html" allow="fullscreen" style="width: 100%; height: 100%; border: none;"></iframe>
@@ -600,7 +594,8 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 * Categories unlock as you progress: type coercion, truthy/falsy, equality, typeof, arrays, objects
 * Learn mode shows explanations after each question
 </aside>
-</section></section><section class="stack" data-id="e65d62dd8fc2f9f9bc6bfba8466f85c9"><section data-id="0e49c93030acd87eb323dc7bf11652be">
+</section></section>
+<section class="stack editing-mode" data-id="e65d62dd8fc2f9f9bc6bfba8466f85c9" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="0e49c93030acd87eb323dc7bf11652be" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 78.4272px;" data-block-id="4dfd72cd942f2bc8a96beefddad9284e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
@@ -630,7 +625,7 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 * also actually is an object will dig in a bit later
 * in function declaration you name the argument
 * can have default value
-</aside></section><section data-id="c9c4bb6c01e0df2ac8bfac7ec0a519d8">
+</aside></section><section data-id="c9c4bb6c01e0df2ac8bfac7ec0a519d8" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 490.337px; left: 0px; top: 139.663px;" data-block-id="7940f9c93790ebc2ce1550d9fedfe1cf"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/0551de5f70449c82d114fcdf34d1ec01?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="1bee54b1f054a8033fe0d958da5dda57"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -646,7 +641,7 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 * point out arguments[2]
 * what is the last console.log doing? undefined?
 * you can also pass in an object if you want - an options object if you will
-</aside></section><section data-id="024ecdd7bbb3de253663fd2429059212">
+</aside></section><section data-id="024ecdd7bbb3de253663fd2429059212" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 
 <div class="sl-block" data-block-type="image" data-name="image-432c33" data-block-id="71aaba3de6d45eaa08ddad27bd9d511b" style="width: 298.13px; height: 223.598px; left: 570.935px; top: 161.234px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1600" data-natural-height="1200" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/76b26de60ed690cccba1398ca6a180ca.jpg"></div></div>
@@ -662,7 +657,7 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 630px; left: 0px; top: 70px;" data-block-id="393eff2e1115a591ad61c61e20be6ada"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/qBJWGam?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* if there is anything you remember today, its that you can pass functions around
 * that is the way of javascript
 * setTimeout runs a function at point in the future
-</aside></section><section data-id="c1887d843e0492ef1a6dc178bc288c0c">
+</aside></section><section data-id="c1887d843e0492ef1a6dc178bc288c0c" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 490.337px; left: 0px; top: 140px;" data-block-id="4c40a578da48729b60c3e48980e4934b"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/68cb37db18696d031d07f251e31fe64d?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="a07c1d8e2c0be221b398d78f548442e6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -676,7 +671,7 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div></div><aside class="notes">* this is a bug i see ALL the time
 * call by value for all - for primitive types is the thing itself, for objects is the reference - hence it has a copy of the reference but the object itself is therefore mutable.  points to the same location. however if you overwrite the reference to point to something else, function will continue to point to old object
 * try bar() and then bar()() 
-</aside></section><section data-id="a5b114d76f53fb8af3c6162b7cb25791">
+</aside></section><section data-id="a5b114d76f53fb8af3c6162b7cb25791" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 548px; left: 0px; top: 152px;" data-block-id="8f07c436ba2942eae19bbf5f3e65ae1a"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e6f2b417f3b6d6ae78a341a97b62b650?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="c032f11d715ca670ce991c85cbfc0b4c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -696,7 +691,8 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div>
 </div></div><aside class="notes">* why is it helpful to pass in a function? 
 * in this case fadeToggle - as 1 arg take in duration of fade, as 2 arg takes in callback function to run when done
-* something like this might come in handly in lab2!</aside></section></section><section class="stack" data-id="355da4064caae36868b6b40574a610fc"><section data-id="e00050a40c7e3c7e7c6bbcf329f92f5c">
+* something like this might come in handly in lab2!</aside></section></section>
+<section class="stack editing-mode" data-id="355da4064caae36868b6b40574a610fc" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="e00050a40c7e3c7e7c6bbcf329f92f5c" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 490px; left: 0px; top: 140px;" data-block-id="e7db03228452af17eb259835edf5f80e"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/041798e2d7f478cc5e2d314c9e12bd73?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 
@@ -710,7 +706,7 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div>
 </div></div><aside class="notes">* i'm a fan of ternary -- dumb python
 * they come in handy when you want an easy way to evaluate and return a changing value - used a lot in react -&gt; return loading component if something doesn't exist yet for instance
-</aside></section><section data-id="fe9b02fd6076bc60a1dc6f469d8ab6ca">
+</aside></section><section data-id="fe9b02fd6076bc60a1dc6f469d8ab6ca" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" data-block-id="c9a219b600be0c8db896fe7d8810201c" style="width: 800px; height: 420.337px; left: 80px; top: 261.712px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/KKaqpMv?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" data-block-id="99e70135b8f76b19552b4f16439476e8" style="height: auto; width: 960px; left: 0px; top: 98.712px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -731,7 +727,7 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div>
 </div></div><aside class="notes">* variables aren't assigned a type
 * but primitive values do have a type, even though they are special objects really
-</aside></section><section data-id="589f827a3f3e40dcdc2d33646283117c">
+</aside></section><section data-id="589f827a3f3e40dcdc2d33646283117c" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 800px; height: 399.706px; left: 80px; top: 280px;" data-block-id="9d6e92f81649c16145a005661900bcdf"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/489aea5b6e9968afcf8db2b29dcfd9a4?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="6fad5be15722dd9103ec6b5a9edee327"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
@@ -759,9 +755,9 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div></div><aside class="notes">* because of the falsy booleans coercion
 * useful to set default values if the first thing failed
 * say username if exists otherwise "username string"
-</aside></section><section data-id="3b8d72fd95f7779c3c04057b62452325">
-<div class="sl-block" data-block-type="image" data-name="image-8ab316" data-block-id="c02c8066e13ec44c07d4bbe0ea70c55f" style="width: 806.4px; height: 517.675px; left: 76.8px; top: 91.1625px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="715" data-natural-height="459" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/f4af9191cf716e9468d791c6c1f49cb0.webp"></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="4dc94121be8ebae226ba13f5790a8aa1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+</aside></section><section data-id="3b8d72fd95f7779c3c04057b62452325" class="editing-mode" style="top: 350px; display: none;" aria-hidden="true">
+<div class="sl-block" data-block-type="image" data-name="image-8ab316" data-block-id="c02c8066e13ec44c07d4bbe0ea70c55f" style="width: 806.4px; height: 517.675px; left: 76.8px; top: 91.1625px; min-width: 1px; min-height: 1px;" data-column-label="Column 1"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="715" data-natural-height="459" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/f4af9191cf716e9468d791c6c1f49cb0.webp"></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="4dc94121be8ebae226ba13f5790a8aa1" data-column-label="Column 2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
@@ -770,116 +766,8 @@ date.toLocaleString() = '1/9/2016, 9:08:36 AM'
 </div>
 </div>
 </div></div><aside class="notes">* the horizontal lines are all parallel - your poor brain
-</aside></section><section data-id="71a905a936326e6038e18dd182aba9f8" data-visibility="hidden">
-
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="4d1bf06474adefcc2cb0687c59313b9e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">mini quiz</div>
-</div>
-</div>
-</div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 606.758px; left: 0px; top: 93.242px;" data-block-id="afe3c597791439862852db1d0ce4456e"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/NWOKQwY?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div></section></section><section class="stack" data-id="2f09b7166671556fd2ce54e4a37e1aeb"><section data-id="56ed1ab2ac1dd0ac9eb6c060f93a43e8" data-visibility="hidden">
-<div class="sl-block" data-block-type="image" data-name="image-18450f" data-block-id="31358a9e8e8db77afb1b71c4361f8354" style="width: 724.795px; height: 518px; left: 117.603px; top: 112px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="715" data-natural-height="511" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/c1142f1e3d845d81f1c7742994ede57f.webp"></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="d1218a1ad54dacd09880d12e9f0ea603"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">short circuit</div>
-</div>
-</div>
-</div></div><aside class="notes">* speaking of short circuiting
-* are these the same image?
-</aside></section><section data-id="5e8d146f57f4a2150df437a31abbbbd0" data-visibility="hidden">
-<div class="sl-block" data-block-type="image" data-name="image-e26bb2" data-block-id="0d2673d094f4370814d31e25634ed12f" style="width: 806.4px; height: 514.806px; left: 76.8px; top: 103.397px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="625" data-natural-height="399" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/56260b6a5083b87d4d347301a5d10cd3.gif"></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="12ccfd101abf23bbecc47166afe09920"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">short circuit</div>
-</div>
-</div>
-</div></div><aside class="notes">* brain  is trying to perceive as single image
-</aside></section></section><section data-id="65c71cfadd83da4d5d68a7ae48d2331a" data-visibility="hidden">
-<div class="sl-block" data-block-type="image" data-name="image-3ffb3c" data-block-id="ee32651e51dad950d72c4c5145878a99" style="width: 477.273px; height: 518px; left: 242.727px; top: 84.8288px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="375" data-natural-height="407" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/javascript-intro-1768252347308/images/df7936ab302ab397b2bb5e8f69307c39.gif"></div></div>
-<div class="sl-block" data-block-type="text" data-name="text-abbd3e" data-block-id="32c40e39918654e55a79b4fa1ad032c3" style="height: auto; width: 600px; left: 206.227px; top: 615.916px;">
-<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
-<li>play:&nbsp;<a href="http://bloodrizer.ru/games/kittens/" target="_blank">http://bloodrizer.ru/games/kittens/</a>
-</li>
-<li>all code is non-minified - UTSL</li>
-</ul></div>
-<grammarly-extension data-grammarly-shadow-root="true" class="cGcvT" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 12;"></grammarly-extension>
-</div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="7a9a3d1168ad9d094b8ab26714255c86"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">kittens game</div>
-</div>
-</div>
-</div></div><aside class="notes">// inspect buttons
-
-// find btnContent first
-$('.btnContent').hide();
-$('.btnContent').show();
-
-$('.btnContent').css('background-color', 'pink');
-
-// click it!
-var gather = setInterval(function() { $('.btnContent')[0].click(); }, 2 * 1000);
-var gatherB = setInterval(function() {$( "span:contains('Gather catnip')").click();}, 2*1000);
-
-//set a background iamge
-$('#midColumn').css('background-image', 'url(//cs52.me/mythical.gif)');
-
-// add a click event to something random
-// create a selected class with background: blue
-$('.console-intro').on('click', function(e) {
-  $(this).toggleClass('selected');
-});
-
-// global objects:
-// game;
-
-game.resPool.resources // change some up
-//change titles
-// get some unicorns!
-
-game.tick();
-
-//max resources
-game.resPool.resources.forEach(function(resource) { resource.value = 100000000; })
-
-</aside></section><section data-id="786936d692e4c4d3e1e3b593a9e02696" data-visibility="hidden">
-
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 800px; height: 420.337px; left: 80px; top: 210px;" data-block-id="c84becaa043290a3d776df3c948323f6"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/4767131cda74bf9f360088a351fc1a00?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
-<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="5104d4c50e051b27fc4891b1df5ea065"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
-<ul>
-	<li>
-	<p>standard interchange format for sending data to and from a browser</p>
-
-	<p>&nbsp;</p>
-	</li>
-</ul>
-
-<p>&nbsp;</p>
-</div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="3a12b9c2f4004d442b4f4cc831c0586f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">javascript object notation</div>
-</div>
-</div>
-</div></div><aside class="notes">* json is what the map used, you'll be using a lot of JSON
-* is the preferred interchange format between many web services and apis
-</aside></section><section data-id="96918c77cdedbe8f051e26002bb89771">
+</aside></section></section>
+<section data-id="96918c77cdedbe8f051e26002bb89771" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-ed8508" data-block-id="195c5f3e6a608e889d2db3617f731017" style="height: auto; width: 600px; left: 180px; top: 264.16px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li><a href="https://javascript.info/" target="_blank">https://javascript.info</a></li>
@@ -896,9 +784,10 @@ game.resPool.resources.forEach(function(resource) { resource.value = 100000000; 
 </div>
 </div>
 </div></div><aside class="notes">some resources for learning more JS
-</aside></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
-<div class="sl-block" data-block-type="text" data-name="text-813f2a" data-block-id="b7418c2ce2b5fbb5fb40b655c72b0ca9" style="height: auto; width: 600px; left: 180px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
-<p>Lab2 out</p>
+</aside></section>
+<section data-id="fa977095bed0c0cab8eaeb523d1d2afd" style="top: 350px; display: none;" class="editing-mode" hidden="" aria-hidden="true">
+<div class="sl-block" data-block-type="text" data-name="text-813f2a" data-block-id="b7418c2ce2b5fbb5fb40b655c72b0ca9" style="height: auto; width: 600px; left: 180px; top: 210px;" data-column-label="Column 1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>Lab2?</p>
 
 <p>SA2 not yet out</p>
 
@@ -910,7 +799,7 @@ game.resPool.resources.forEach(function(resource) { resource.value = 100000000; 
 
 <p>Lots more javascript and all that it can do with it coming up! &nbsp;including asynchronous javascript!</p>
 </div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="a976de1363bf7ec046440a185cb9c20b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="a976de1363bf7ec046440a185cb9c20b" data-column-label="Column 2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
@@ -919,7 +808,6 @@ game.resPool.resources.forEach(function(resource) { resource.value = 100000000; 
 </div>
 </div>
 </div></div></section>
-			
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -929,10 +817,8 @@ game.resPool.resources.forEach(function(resource) { resource.value = 100000000; 
       hash: true,
       controls: true,
       progress: true,
-      center: false,
+      center: true,
       transition: 'slide',
-      width: 960,
-      height: 700,
       plugins: [RevealHighlight]
     });
   </script>
