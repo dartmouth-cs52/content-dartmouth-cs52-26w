@@ -313,7 +313,24 @@ if (i &lt; 3 &amp;&amp; i &gt; 0) {
 * we will learn next class how to not use these syntaxes
 </aside></section></section><section class="stack" data-id="7bc6412ba74a4072014a9a16001142b6"><section data-id="c89ed81391a6894a6cd963d5ceed98cc">
 
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 490px; left: 0px; top: 210px;" data-block-id="4d9b777ce84636547bb97a24749b0f52"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/de956fb8b1cd2836df39abfe2d546bba?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="iframe-fcd088" style="width: 960px; height: 490px; left: 0px; top: 210px;" data-block-id="4d9b777ce84636547bb97a24749b0f52">
+  <div class="sl-block-content" style="z-index: 10;">
+    <div class="sandpack-embed"
+         data-template="vanilla"
+         data-theme="auto"
+         data-layout="editor-only"
+         data-show-console="true"
+         data-show-line-numbers="true"
+         data-visible-files='["/index.js"]'>
+      <script type="application/json" data-sandpack-files>
+{
+  "/index.js": "var test = 5;\nconsole.log(typeof(5));\n\nconsole.log(5 * null)    // → 0\nconsole.log(\"5\" - 1)     // → 4\nconsole.log(\"5\" + 1)     // → 51\nconsole.log(\"five\" * 2)  // → NaN\nconsole.log(false == 0)  // → true",
+  "/index.html": "<!DOCTYPE html>\n<html>\n<head></head>\n<body>\n  <p>Check the console for output!</p>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>"
+}
+      </script>
+    </div>
+  </div>
+</div>
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="368bee38b9d2908518ac6f6aa58f15aa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul>
 	<li>
@@ -479,7 +496,18 @@ null === undefined // false
 </div></div><aside class="notes">* undefined — does not have a value assigned
 * null — value to represent whatever coder wants (like a sentinel)
 
-</aside></section></section><section class="stack" data-id="e65d62dd8fc2f9f9bc6bfba8466f85c9"><section data-id="0e49c93030acd87eb323dc7bf11652be">
+</aside></section></section><section class="stack" data-id="js-expression-shooter-game-stack"><section data-id="js-expression-shooter-slide" data-background-color="#0a0a1a">
+<div class="sl-block" data-block-type="iframe" data-name="game-embed" style="width: 960px; height: 700px; left: 0px; top: 0px;">
+<div class="sl-block-content" style="z-index: 10;">
+<iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/games/js-expression-shooter/index.html" allow="fullscreen" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>
+</div>
+<aside class="notes">* Interactive game to practice JavaScript type coercion and other quirks
+* Click the correct answer to shoot - build combos for bonus points
+* Categories unlock as you progress: type coercion, truthy/falsy, equality, typeof, arrays, objects
+* Learn mode shows explanations after each question
+</aside>
+</section></section><section class="stack" data-id="e65d62dd8fc2f9f9bc6bfba8466f85c9"><section data-id="0e49c93030acd87eb323dc7bf11652be">
 
 
 <div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 78.4272px;" data-block-id="4dfd72cd942f2bc8a96beefddad9284e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>

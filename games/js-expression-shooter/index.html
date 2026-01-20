@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Expression Shooter</title>
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+      <h1>JS Expression<br>Shooter</h1>
+      <p class="subtitle">Master JavaScript by blasting expressions!</p>
+      <div class="menu-options">
+        <button id="start-btn" class="menu-btn">START GAME</button>
+        <button id="scores-btn" class="menu-btn">HIGH SCORES</button>
+        <label class="toggle-option">
+          <input type="checkbox" id="learn-mode-toggle" checked>
+          <span>Learn Mode</span>
+        </label>
+      </div>
+      <div class="instructions">
+        <p>Expressions fall from above. Click the correct output to shoot!</p>
+        <p>Build combos for bonus points. Don't let them reach the bottom!</p>
+      </div>
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD Overlay -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <span class="score-label">SCORE</span>
+        <span id="score">0</span>
+      </div>
+      <div class="hud-center">
+        <span id="combo" class="hidden"></span>
+      </div>
+      <div class="hud-right">
+        <span id="lives"></span>
+      </div>
+    </div>
+
+    <!-- Answer Buttons -->
+    <div id="answers" class="hidden">
+      <button class="answer-btn" data-index="0"></button>
+      <button class="answer-btn" data-index="1"></button>
+      <button class="answer-btn" data-index="2"></button>
+    </div>
+
+    <!-- Learn Mode Popup -->
+    <div id="learn-popup" class="hidden">
+      <div class="learn-content">
+        <code id="learn-expression"></code>
+        <div id="learn-result"></div>
+        <p id="learn-explanation"></p>
+        <small id="learn-hint" class="hidden">Click to continue</small>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" class="screen hidden">
+      <h1>GAME OVER</h1>
+      <div class="final-score">
+        <span>Final Score</span>
+        <span id="final-score-value">0</span>
+      </div>
+      <div id="highscore-entry" class="hidden">
+        <p>NEW HIGH SCORE!</p>
+        <input type="text" id="initials-input" maxlength="3" placeholder="AAA">
+        <button id="save-score-btn" class="menu-btn">SAVE</button>
+      </div>
+      <div class="menu-options">
+        <button id="restart-btn" class="menu-btn">PLAY AGAIN</button>
+        <button id="menu-btn" class="menu-btn">MAIN MENU</button>
+      </div>
+    </div>
+
+    <!-- High Scores Screen -->
+    <div id="scores-screen" class="screen hidden">
+      <h1>HIGH SCORES</h1>
+      <ol id="scores-list"></ol>
+      <button id="back-btn" class="menu-btn">BACK</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/questions.js?v=2"></script>
+  <script src="js/wrong-generator.js?v=2"></script>
+  <script src="js/particles.js?v=2"></script>
+  <script src="js/entities.js?v=4"></script>
+  <script src="js/renderer.js?v=2"></script>
+  <script src="js/scores.js?v=2"></script>
+  <script src="js/game.js?v=3"></script>
+</body>
+</html>
