@@ -496,6 +496,99 @@ null === undefined // false
 </div></div><aside class="notes">* undefined — does not have a value assigned
 * null — value to represent whatever coder wants (like a sentinel)
 
+</aside></section></section><section class="stack" data-id="eb02f88eb09c38089709d0bbf3594b58"><section data-id="6d0f881d2f036a67d8a97e777d0b5b8d">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 357.481px; left: 0px; top: 342.519px;" data-block-id="3d035607b5618af93a627c549550392b"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e06365a4b654b19efd7ef2c5e21a13dd?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 74px;" data-block-id="7ff1885f6c821df424b73813767763fb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
+	<li>EVERYTHING in JavaScript is an Object</li>
+	<li>and objects are <span style="color:#d74646"><span class="orange">hashmaps</span></span>&nbsp;aka <span style="color:#d74646"><span class="blue">dictionaries</span></span>&nbsp;of:</li>
+	<li>
+	<ul>
+		<li>key-value pairs called properties</li>
+	</ul>
+	</li>
+	<li>global scope is just an object (in browser <span style="color:#616161">window</span>)</li>
+	<li>can have functions as properties (called methods)</li>
+	<li>so everything is our favorite datastructure</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="27181f53652a707c0f80e5a26c3b8ccd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">objects</div>
+</div>
+</div>
+</div></div><aside class="notes">* EVERYTHING is basically an object / dictionary in JS, string, functions, classes, EVERYTHING
+* what it all boils down to though is objects and what they are
+* note es6 arrow function
+* note es6 template string builder
+* this will be explained
+* also functions -- everything is really just a dictionary
+* this is very beautiful if you think about it
+</aside></section><section data-id="368d55ca4d8ee89a0f29661898f82284">
+
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="164c988538bc607a580aead8dea810a0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">object properties</div>
+</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 601.239px; left: 0px; top: 98.761px;" data-block-id="4b969d6a8d687f23639d20d17e5e473d"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/xxyKNNp?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* you CAN iterate through an object - it makes sense in some cases, but not in others</aside></section><section data-id="770617d4eb5f8aa1023430daa7ec2d19">
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 454.516px; left: 0px; top: 244.484px;" data-block-id="49dd725869faaa8817df0368b08c7aa8"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/poxzXar?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="056900ac873c76bf71acfa10395ded50"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>are also special objects!</li>
+	<li>polymorphic and sparse</li>
+	<li>oddity: can have properties ?!</li>
+</ul>
+
+<p>&nbsp;</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="8a4f77878bb73ea1f583456b9ca6119f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">arrays</div>
+</div>
+</div>
+</div></div><aside class="notes">* console.log(list[4]) // returns undefined and prints hi - whyfor?
+* powerful but also confusing
+* funkadelic but also why we love javascript so much</aside></section><section data-id="a6f172b1659b0819339ad7ee4e9473b4">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 87.0176px; top: 420px;" data-name="text-0c269a" data-block-id="7dae4c92d0d4e78503aac0ae86ab5963"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>special type of ...</li>
+	<li>epoch time (1/1/1970 UTC)</li>
+	<li>no timezones</li>
+	<li><strong>use <a href="https://moment.github.io/luxon/#/" target="_blank">luxon</a>&nbsp;instead for any actual date/time stuff</strong></li>
+	<li>
+<strong>new JS API Temporal in the works </strong>
+	<pre style="color:rgb(13, 18, 20)"><code style="color:inherit; font-size:var(--text-sm-2)">npm install @js-temporal/polyfil
+</code></pre>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" style="width: 623.479px; height: 257.252px; left: 168.26px; top: 140px;" data-name="code-fdd7d4" data-block-id="2f6754e366a505d236292060937d85e0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">let date = new Date();
+
+typeof date == 'object';
+
+date.valueOf() = 1452359316314
+date.toISOString() = '2016-01-09T17:08:36.314Z'
+date.toLocaleString() = '1/9/2016, 9:08:36 AM'
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="fd720b0cbc1cb96981068bebdf23fcfa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">dates - problematic handling</div>
+</div>
+</div>
+</div></div><aside class="notes">* date is a special type of object!
 </aside></section></section><section class="stack" data-id="js-expression-shooter-game-stack"><section data-id="js-expression-shooter-slide" data-background-color="#0a0a1a">
 <div class="sl-block" data-block-type="iframe" data-name="game-embed" style="width: 960px; height: 700px; left: 0px; top: 0px;">
 <div class="sl-block-content" style="z-index: 10;">
@@ -603,100 +696,7 @@ null === undefined // false
 </div>
 </div></div><aside class="notes">* why is it helpful to pass in a function? 
 * in this case fadeToggle - as 1 arg take in duration of fade, as 2 arg takes in callback function to run when done
-* something like this might come in handly in lab2!</aside></section></section><section class="stack" data-id="eb02f88eb09c38089709d0bbf3594b58"><section data-id="6d0f881d2f036a67d8a97e777d0b5b8d">
-
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 357.481px; left: 0px; top: 342.519px;" data-block-id="3d035607b5618af93a627c549550392b"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/e06365a4b654b19efd7ef2c5e21a13dd?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
-<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 74px;" data-block-id="7ff1885f6c821df424b73813767763fb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
-	<li>EVERYTHING in JavaScript is an Object</li>
-	<li>and objects are <span style="color:#d74646"><span class="orange">hashmaps</span></span>&nbsp;aka <span style="color:#d74646"><span class="blue">dictionaries</span></span>&nbsp;of:</li>
-	<li>
-	<ul>
-		<li>key-value pairs called properties</li>
-	</ul>
-	</li>
-	<li>global scope is just an object (in browser <span style="color:#616161">window</span>)</li>
-	<li>can have functions as properties (called methods)</li>
-	<li>so everything is our favorite datastructure</li>
-</ul></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="27181f53652a707c0f80e5a26c3b8ccd"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">objects</div>
-</div>
-</div>
-</div></div><aside class="notes">* EVERYTHING is basically an object / dictionary in JS, string, functions, classes, EVERYTHING
-* what it all boils down to though is objects and what they are
-* note es6 arrow function
-* note es6 template string builder
-* this will be explained
-* also functions -- everything is really just a dictionary
-* this is very beautiful if you think about it
-</aside></section><section data-id="368d55ca4d8ee89a0f29661898f82284">
-
-
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="164c988538bc607a580aead8dea810a0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">object properties</div>
-</div>
-</div>
-</div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 601.239px; left: 0px; top: 98.761px;" data-block-id="4b969d6a8d687f23639d20d17e5e473d"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/xxyKNNp?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* you CAN iterate through an object - it makes sense in some cases, but not in others</aside></section><section data-id="770617d4eb5f8aa1023430daa7ec2d19">
-
-<div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 454.516px; left: 0px; top: 244.484px;" data-block-id="49dd725869faaa8817df0368b08c7aa8"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/poxzXar?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
-<div class="sl-block" data-block-type="text" data-name="text-a31955" style="height: auto; width: 960px; left: 0px; top: 98.712px;" data-block-id="056900ac873c76bf71acfa10395ded50"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
-<ul>
-	<li>are also special objects!</li>
-	<li>polymorphic and sparse</li>
-	<li>oddity: can have properties ?!</li>
-</ul>
-
-<p>&nbsp;</p>
-</div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="8a4f77878bb73ea1f583456b9ca6119f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">arrays</div>
-</div>
-</div>
-</div></div><aside class="notes">* console.log(list[4]) // returns undefined and prints hi - whyfor?
-* powerful but also confusing
-* funkadelic but also why we love javascript so much</aside></section><section data-id="a6f172b1659b0819339ad7ee4e9473b4">
-<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 87.0176px; top: 420px;" data-name="text-0c269a" data-block-id="7dae4c92d0d4e78503aac0ae86ab5963"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
-	<li>special type of ...</li>
-	<li>epoch time (1/1/1970 UTC)</li>
-	<li>no timezones</li>
-	<li><strong>use <a href="https://moment.github.io/luxon/#/" target="_blank">luxon</a>&nbsp;instead for any actual date/time stuff</strong></li>
-	<li>
-<strong>new JS API Temporal in the works </strong>
-	<pre style="color:rgb(13, 18, 20)"><code style="color:inherit; font-size:var(--text-sm-2)">npm install @js-temporal/polyfil
-</code></pre>
-	</li>
-</ul></div></div>
-<div class="sl-block" data-block-type="code" style="width: 623.479px; height: 257.252px; left: 168.26px; top: 140px;" data-name="code-fdd7d4" data-block-id="2f6754e366a505d236292060937d85e0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="none" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">let date = new Date();
-
-typeof date == 'object';
-
-date.valueOf() = 1452359316314
-date.toISOString() = '2016-01-09T17:08:36.314Z'
-date.toLocaleString() = '1/9/2016, 9:08:36 AM'
-</code></pre></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-c200d6" data-block-id="fd720b0cbc1cb96981068bebdf23fcfa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">dates - problematic handling</div>
-</div>
-</div>
-</div></div><aside class="notes">* date is a special type of object!
-</aside></section></section><section class="stack" data-id="355da4064caae36868b6b40574a610fc"><section data-id="e00050a40c7e3c7e7c6bbcf329f92f5c">
+* something like this might come in handly in lab2!</aside></section></section><section class="stack" data-id="355da4064caae36868b6b40574a610fc"><section data-id="e00050a40c7e3c7e7c6bbcf329f92f5c">
 
 <div class="sl-block" data-block-type="iframe" data-name="iframe-fcd088" style="width: 960px; height: 490px; left: 0px; top: 140px;" data-block-id="e7db03228452af17eb259835edf5f80e"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/041798e2d7f478cc5e2d314c9e12bd73?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 
