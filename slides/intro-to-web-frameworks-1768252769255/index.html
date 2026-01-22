@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intro to Web Frameworks</title>
-  <!-- Reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <!-- slides.com full CSS (includes fonts, themes, sl-block styles) -->
+  <!-- Shared theme lib CSS (fonts, base styles) -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/lib/offline-v2.css">
-  <!-- Custom theme CSS (user customizations from slides.com) -->
+  <!-- Shared theme custom CSS -->
   <link rel="stylesheet" href="/content/dartmouth-cs52/content-dartmouth-cs52-26w/.slidesthemes/cs52-theme/custom-theme.css">
   <style>
-    /* Override slides.com animation system - make all elements fully visible */
+    /* Override slides.com animation system - make all elements visible */
     .sl-block-content,
     .sl-block-content[data-animation-type],
     .sl-block-content[data-animation-type="fade-in"],
@@ -21,12 +20,13 @@
       pointer-events: auto !important;
     }
   </style>
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
 </head>
 <body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
-  <div class="reveal" data-theme="shared:cs52-theme">
+  <div class="reveal" data-theme="shared:cs52-theme" data-code-theme="github">
     <div class="slides">
-
-				<section class="stack" data-id="3adb623df8ba0e03e8cd0fb56bce45f6"><section data-id="d4b941823d1c2763d2ed320d46b6d9cb"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 589.487px; left: 0px; top: 55.2565px;" data-name="snippet-3df089" data-block-id="5132a02365701cea65591f43e3091f3f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<section class="stack editing-mode" data-id="3adb623df8ba0e03e8cd0fb56bce45f6" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="d4b941823d1c2763d2ed320d46b6d9cb" style="top: 350px; display: none;" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 589.487px; left: 0px; top: 55.2565px;" data-name="snippet-3df089" data-block-id="5132a02365701cea65591f43e3091f3f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -54,7 +54,7 @@
 <div class="sl-block" data-block-type="video" data-name="video-5506e2" style="min-width: 30px; min-height: 30px; width: 323.154px; height: 392.401px; left: 572.932px; top: 201.599px;" data-block-id="71749433a0883c1df8ce1a46006551c4"><div class="sl-block-content" style="z-index: 11;"><video playsinline="" controls="controls" data-paused-by-reveal="" muted="" data-autoplay="" loop="loop" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/videos/271a5c0c5e19e6cba98c694e2c289806.webm"></video></div></div><aside class="notes">* what is this startpack thing and why do i want it?
 * the idea is provide some tooling to help with the dev process
 * AND enable us to use react next class
-</aside></section><section data-id="2c2ad668ba682290763ae5099400a4c2">
+</aside></section><section data-id="2c2ad668ba682290763ae5099400a4c2" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-de6769" data-block-id="95d1ab0e940d6349ff4151d853da9104" style="width: 757.447px; height: 538.559px; left: 93.505px; top: 133.426px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="left: -41px; top: -63px; width: 798px; height: 602px;" data-natural-width="1791" data-natural-height="1350" data-crop-x="0.050819" data-crop-y="0.104651" data-crop-width="0.949181" data-crop-height="0.895349" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/5b09db160868ff0d0df696413c336d29.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a52b9297ae4cdfc298fecbef8c0c80c2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;"><div id="header-title">
   <div class="left">
@@ -62,7 +62,8 @@
      <div class="title">Where in the stack?</div>
   </div>
   <div class="spacer"></div>
-</div></div></div><aside class="notes">adding in some more tooling around a frontend starterpack and a little react!</aside></section></section><section class="stack" data-id="d1f3b4ed713d8aac9a1e16fbca78949d"><section data-id="d8c2c8ac02b0c4abc77e39b965c8a1e7"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="83d0063bc41c12a3d245141f38826ba6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+</div></div></div><aside class="notes">adding in some more tooling around a frontend starterpack and a little react!</aside></section></section>
+<section class="stack editing-mode" data-id="d1f3b4ed713d8aac9a1e16fbca78949d" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="d8c2c8ac02b0c4abc77e39b965c8a1e7" style="top: 350px; display: none;" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="83d0063bc41c12a3d245141f38826ba6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
@@ -124,7 +125,7 @@
 * database access - serve content from database
 * security - handle authorization and authentication -&gt; how do we even begin to think about this?
 * caching - optimize responses so they are appropriately cached - refresh when content is changed etc.
-​* API data to clients</aside></section><section data-id="b3e97c6e3776eb02ab7a25a872c64277">
+​* API data to clients</aside></section><section data-id="b3e97c6e3776eb02ab7a25a872c64277" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-93cf6f" data-block-id="2034a8802112814edf35bce9f78bb699" style="width: 912.133px; height: 599.643px; left: 23.9335px; top: 92.541px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1944" data-natural-height="1278" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/aba69ff769e9414d97f0351559d52ac3.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="f36a12baa8438ffd4ac420c34577cb16"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -148,7 +149,7 @@
 * lots of variants mvvc mcp etc etc, but the core idea is pretty similar. an abstraction to help deal with data, display, functionality 
 
 
-</aside></section><section data-id="7a8426ef53f470be086d6a2abfe02c48">
+</aside></section><section data-id="7a8426ef53f470be086d6a2abfe02c48" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-a1a3b9" data-block-id="364281072a32c668936bf636f1731f0e" style="width: 806.4px; height: 454.262px; left: 76.8px; top: 89.738px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1903" data-natural-height="1072" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/d0ada7b47f9e28c3b9fa73830a8365af.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-5fc395" data-block-id="9d2bfbdc2f973cb8f5be31207882631a" style="height: auto; width: 960px; left: 1px; top: 545px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -173,7 +174,7 @@
 * benefits of templates
 * designer friendly
 * easy to test
-</aside></section><section data-id="f1979d61782c49ca0c3d1875ae5dd742">
+</aside></section><section data-id="f1979d61782c49ca0c3d1875ae5dd742" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="1b28f375afd94e0ea45112af27832880"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -259,7 +260,7 @@
 <p>code in browser</p>
 </div></div>
 <div class="sl-block" data-block-type="shape" style="width: 24px; height: 63.229px; left: 724px; top: 140.271px;" data-block-id="e03dd7ee9676fbfb559afbbb115f3e56" data-name="shape-b0294b"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 49;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 24 63"><polygon points="12,63.229 24,31.6145 16.799999999999997,31.6145 16.799999999999997,0 7.199999999999999,0 7.199999999999999,31.6145 0,31.6145 12,63.229" class="shape-element" fill="#000000"></polygon></svg></div></div>
-<div class="sl-block" data-block-type="shape" style="width: 22px; height: 90px; left: 300px; top: 179.25px;" data-block-id="6fb7f96319b4aac506dd1fb72fc09886" data-name="shape-51204e"><div class="sl-block-style" style="z-index: 50; transform: rotate(0deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 50;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 22 90"><polygon points="11,90 22,45 15.399999999999999,45 15.399999999999999,0 6.6,0 6.6,45 0,45 11,90" class="shape-element" fill="#000000"></polygon></svg></div></div></div><aside class="notes">* all the mvc everywhere</aside></section><section data-id="06d67f3c0ed46c58b83a81294c6f721a">
+<div class="sl-block" data-block-type="shape" style="width: 22px; height: 90px; left: 300px; top: 179.25px;" data-block-id="6fb7f96319b4aac506dd1fb72fc09886" data-name="shape-51204e"><div class="sl-block-style" style="z-index: 50; transform: rotate(0deg);"><div class="sl-block-content" data-shape-type="arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 50;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 22 90"><polygon points="11,90 22,45 15.399999999999999,45 15.399999999999999,0 6.6,0 6.6,45 0,45 11,90" class="shape-element" fill="#000000"></polygon></svg></div></div></div><aside class="notes">* all the mvc everywhere</aside></section><section data-id="06d67f3c0ed46c58b83a81294c6f721a" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-5fc395" style="height: auto; width: 960px; left: 0px; top: 263.641px;" data-block-id="7814afded4609095779c0d85892976da"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li>invented in the 70s</li>
@@ -285,7 +286,7 @@
 </div>
 </div></div><aside class="notes">* we'll keep talking about mvc and using it, more next week!
 * BUT we're also going to talk about some simplifications and scaleability concerns and the react way
-</aside></section><section data-id="371e50d02ee76acbc984ef5c02c735e5">
+</aside></section><section data-id="371e50d02ee76acbc984ef5c02c735e5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-fb1e34" data-block-id="f63b12c871ed8d54e621e2bc1d28f9ae" style="width: 936.934px; height: 342.762px; left: 10.533px; top: 213.238px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1200" data-natural-height="439" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2a9bb33caec7e27035759062469f5bd9.jpg"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="337afb06473c89750e463d6358d2ac75"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -299,7 +300,8 @@
 </div>
 </div></div><aside class="notes">* timeline of web frameworks
 * you'd think webdev  has been around for a long time, but tooling keeps evolving rapidly
-</aside></section></section><section data-id="003a21b60ebe50ee9b6660aa10b5a3d7"><div class="sl-block" data-block-type="snippet" style="width: 767px; height: 294.743px; left: 96.5px; top: 195.257px;" data-name="snippet-3df089" data-block-id="b4ebacd580389f32aa166206050818c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+</aside></section></section>
+<section data-id="003a21b60ebe50ee9b6660aa10b5a3d7" style="top: 350px; display: block;" hidden="" aria-hidden="true" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 767px; height: 294.743px; left: 96.5px; top: 195.257px;" data-name="snippet-3df089" data-block-id="b4ebacd580389f32aa166206050818c4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -322,7 +324,8 @@
 <div class="logo-spacer">&nbsp;</div>
 </div>
 </div></div>
-<aside class="notes">i think it is helpful to know the history - if you don't know your past how can you understand the present and invent the future</aside></section><section class="stack" data-id="2857ec1dec787b2e8ab79942c4a94bba"><section data-id="5881d5b1afce1a04451ca6c0ffa7e9dd">
+<aside class="notes">i think it is helpful to know the history - if you don't know your past how can you understand the present and invent the future</aside></section>
+<section class="stack editing-mode" data-id="2857ec1dec787b2e8ab79942c4a94bba" style="top: 0px; display: block;" hidden="" aria-hidden="true"><section data-id="5881d5b1afce1a04451ca6c0ffa7e9dd" style="top: 350px; display: block;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-17d5dc" data-block-id="2b80e38c4d72ecca3605f9bcc75e6c87" style="width: 583.029px; height: 269.391px; left: 188.486px; top: 93.7px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="448" data-natural-height="207" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/a55d5436a34bb1bf55fac96c9b50a761.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-d4b873" data-block-id="3514ad5ec757455d3b155574a6590d22" style="height: auto; width: 960px; left: 0px; top: 381px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -358,7 +361,7 @@ echo "Content-type: text/html"
 echo ""
 echo '&lt;html&gt;'
 ```
-</aside></section><section data-id="0754800ad93ee569c536cadabb23476d">
+</aside></section><section data-id="0754800ad93ee569c536cadabb23476d" class="editing-mode" aria-hidden="true" style="top: 350px; display: block;">
 <div class="sl-block" data-block-type="image" data-name="image-c5466c" data-block-id="320fb4f8b4f970af934a40c63a2e0542" style="width: 334.811px; height: 242.262px; left: 312.595px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="492" data-natural-height="356" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/c404d0ab0e63be2b817705505cdaeec4.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-03ba74" data-block-id="8826f9b62a3941991967144b4ef3ca27" style="height: auto; width: 960px; left: 0px; top: 333.262px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -390,7 +393,7 @@ echo '&lt;html&gt;'
 </div></div><aside class="notes">* server side rendering
 * basically  utility libraries for formating and generating html
 * language runtime directly in web server (faster)
-</aside></section><section data-id="79b6f5d7d568a913124c5a451388a408">
+</aside></section><section data-id="79b6f5d7d568a913124c5a451388a408" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 960px; left: 0px; top: 327px;" data-block-id="a2d1403b29aca14e9a78fe76245eedf8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li><strong>"We need more abstraction - tell us exactly what to do!"</strong></li>
@@ -425,7 +428,7 @@ end
 </div>
 </div></div><aside class="notes">* note these all fit in to Server Side Rendering
 * fairly heavyweight and opinionated - do lots of magic for you
-</aside></section><section data-id="def63421e6d2580b1691dcc35f989c81">
+</aside></section><section data-id="def63421e6d2580b1691dcc35f989c81" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 960px; left: 0px; top: 297.732px;" data-block-id="96418a9ee69f79d1d413b222664e6f34"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
 <ul style="color:rgb(58, 62, 64)">
 	<li><strong>"Too much magic, I want to be in control!"</strong></li>
@@ -457,7 +460,8 @@ end
 </div>
 </div></div><aside class="notes">* we'll use express later in the term
 * somewhat more geared toward api than templating
-</aside></section></section><section class="stack" data-id="08f952b72c4fa7420aa0d8b656262a7b"><section data-id="1e8becbf2b687829b046764941b099e4">
+</aside></section></section>
+<section class="stack editing-mode" data-id="08f952b72c4fa7420aa0d8b656262a7b" style="top: 0px; display: block;" data-previous-indexv="3"><section data-id="1e8becbf2b687829b046764941b099e4" style="top: 350px; display: block;" class="editing-mode" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 770.652px; left: 0px; top: 112.98px;" data-block-id="d9fe9f9bfb192b70bd9553cbba578814"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
 	<li><strong>"I want framework on frontend TOO!"</strong></li>
 	<li>Backbone.js, Ember, Angular, etc</li>
@@ -489,7 +493,7 @@ end
 * some of these have gone through multiple generations themselves
 * and then there is REACT!   4th gen - but also not fullstack
 
-</aside></section><section data-id="b7c058a0c1335d501ac40d268382a9a2">
+</aside></section><section data-id="b7c058a0c1335d501ac40d268382a9a2" class="editing-mode" style="top: 350px; display: block;" hidden="" aria-hidden="true">
 <div class="sl-block" data-block-type="text" data-name="text-03ba74" style="height: auto; width: 770.652px; left: 0px; top: 112.98px;" data-block-id="a73e3a09447c75060cc4897ef4c9654b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
 	<li>Backbone.js
 	<ul>
@@ -521,24 +525,24 @@ end
 &lt;/body&gt;
 </code></pre></div></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-f65bec" style="width: 229.965px; height: 304.121px; left: 685.017px; top: 249.48px; min-width: 1px; min-height: 1px;" data-block-id="372ec0068083ddbb30e730f8ca03703f"><div class="sl-block-content" style="z-index: 12;"><img style="left: 0px; top: 0px; width: 464px; height: 304px;" data-natural-width="1000" data-natural-height="656" data-crop-x="0" data-crop-y="0" data-crop-width="0.496042" data-crop-height="1" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/995a79a4206b02a94b9212c78a4cc9fa.jpg"></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="9e05cb54d2c3b617f3021ee1e16a0cc3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div class="sl-block editing" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="9e05cb54d2c3b617f3021ee1e16a0cc3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
 
-<div class="title">rise of frontend frameworks -- more</div>
+<div class="title">rise of frontend frameworks -- gen1,gen2</div>
 </div>
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="8abd5244a4770f96745f15fd47b4284f">
+</div></div></section><section data-id="8abd5244a4770f96745f15fd47b4284f" class="editing-mode" style="top: 0px; display: block;">
 <div class="sl-block" data-block-type="image" data-name="image-7ce58f" data-block-id="0fef900d31504fcdff4fcb7ebcf330b5" style="width: 691.557px; height: 518px; left: 134.221px; top: 103px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="259" data-natural-height="194" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/b250f56eeb6538d018452dde1d773f27.jpeg"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="acd6068bf1767f93ddaa8c0b1f4027e1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
 
-<div class="title">react!</div>
+<div class="title">gen3 - react!</div>
 </div>
 
 <div class="spacer">&nbsp;</div>
@@ -547,7 +551,8 @@ end
 <div class="sl-block" data-block-type="text" data-name="text-57f81a" data-block-id="4cb83b2cc269861776b0e8304097ce37" style="height: auto; width: 686px; left: 134.221px; top: 630px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p>evolution leading up to React conceptual model</p></div></div><aside class="notes">* all of this is building up to react -&gt; we'll see how all this comes together later! 
 * react solves a piece of this puzzle but not the full solution
 * react also has influences future frameworks and currently most still build off of it
-* hence why we learn it</aside></section></section><section data-id="10fd660025a477f7ce37da0db19ab61d"><div class="sl-block" data-block-type="snippet" style="width: 783px; height: 155.487px; left: 88.5px; top: 252.256px;" data-name="snippet-3df089" data-block-id="7be307ccf32f4580113bab0c95857e49"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+* hence why we learn it</aside></section></section>
+<section data-id="10fd660025a477f7ce37da0db19ab61d" style="top: 350px; display: block;" hidden="" aria-hidden="true" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 783px; height: 155.487px; left: 88.5px; top: 252.256px;" data-name="snippet-3df089" data-block-id="7be307ccf32f4580113bab0c95857e49"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -570,7 +575,8 @@ end
 <div class="logo-spacer">&nbsp;</div>
 </div>
 </div></div>
-</section><section class="stack" data-id="393ca094a14dd34b67f9ef4a4ed12380"><section data-id="d3d12750449aab8174b903c380cd6353">
+</section>
+<section class="stack editing-mode" data-id="393ca094a14dd34b67f9ef4a4ed12380" style="top: 0px; display: block;" hidden="" aria-hidden="true"><section data-id="d3d12750449aab8174b903c380cd6353" style="top: 350px; display: block;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-3544f2" data-block-id="c977f3f510db322f4c43791204097256" style="width: 806.4px; height: 510.518px; left: 76.8px; top: 94.741px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img data-natural-width="665" data-natural-height="421" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/e0ef5700522f1c338b6612ccb5e0b0ec.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0040b383d936b97f1d1821d444ed4504"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -583,7 +589,7 @@ end
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* lots of different ways to structure data flow and processing when structuring a modern web app
-* let's talk about a few of them and we'll keep expanding our map of understanding as we go</aside></section><section data-id="af370a2ae821778722d90258766d3a27">
+* let's talk about a few of them and we'll keep expanding our map of understanding as we go</aside></section><section data-id="af370a2ae821778722d90258766d3a27" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-b049a6" data-block-id="270a94ab608def85c0f48134d24f9f88" style="width: 941.368px; height: 598.272px; left: 9.316px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1756" data-natural-height="1116" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/266ecf2356aa43155a6a0c737dae3a60.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="f66aafad4c58aa1f1bf6c81ce8c82c60"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -600,7 +606,7 @@ end
 * static sites
   * just files, transmitted on the network
   * what we've been doing so far
-</aside></section><section data-id="bc7430f44c7729cf040c86d15a2283aa">
+</aside></section><section data-id="bc7430f44c7729cf040c86d15a2283aa" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-9656b2" data-block-id="5a4eb8cb76a92b2653fc66934d281793" style="width: 845.929px; height: 581.158px; left: 57.036px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1770" data-natural-height="1216" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/113cf54b44a0b76116d565a8f65eb3ca.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="9c5e794fa3a203d93859590984514113"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -616,7 +622,7 @@ end
   * server is running code
   * server constructs custom response for every page
   * uses template and results from database
-</aside></section><section data-id="4297d55a3155fe89283d3b0b84b8acfa">
+</aside></section><section data-id="4297d55a3155fe89283d3b0b84b8acfa" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-c3982d" data-block-id="edafa1cb7a3c3b6c44ae2ba288526cb1" style="width: 885.955px; height: 591.941px; left: 37.0225px; top: 101.783px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1811" data-natural-height="1210" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/0d0d7372dbb8bf37e49e371dce5ee89d.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a1ef54f3c30a6b91ed72520701090f40"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -636,7 +642,7 @@ end
   * largely the architecture we'll be using
 * is **more like an application** than a series of pages -&gt; loads app into browser
 * from then on does not reload that page - app runs and gets any further data it needs. no contact.html, blogpost1.html etc
-</aside></section><section data-id="c90aedad308e318ec5ed30af371e4f5b">
+</aside></section><section data-id="c90aedad308e318ec5ed30af371e4f5b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-35b534" data-block-id="b17c2c72b865becce92138f6fd0b71c3" style="width: 927.854px; height: 576.638px; left: 16.073px; top: 99.4215px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1844" data-natural-height="1146" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/71d6296af743bf00c619d56540ea87b5.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="b849fcf46bf6e3d711a058f673c69e41"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -651,7 +657,8 @@ end
   * AND javascript client side content fetching and display
   * this is useful in a few cases where say you want bots to read your page better or for SEO, so we'll learn about it but not have to inmplement it.
 * we'll mostly build single page apps in this class, but there are easy ways to enable this more isomorphic rendering as react can be rendered server side!
-</aside></section></section><section data-id="0fb886e4c991dbd7a950b443b2671949"><div class="sl-block" data-block-type="snippet" style="width: 783px; height: 224.487px; left: 88.5px; top: 252.256px;" data-name="snippet-3df089" data-block-id="58d6755e8324c8a46deb877ea06e4fc1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+</aside></section></section>
+<section data-id="0fb886e4c991dbd7a950b443b2671949" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 783px; height: 224.487px; left: 88.5px; top: 252.256px;" data-name="snippet-3df089" data-block-id="58d6755e8324c8a46deb877ea06e4fc1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -674,7 +681,8 @@ end
 <div class="logo-spacer">&nbsp;</div>
 </div>
 </div></div>
-</section><section class="stack" data-id="b58cb3f36bb13edbfaece1b57ceecc7e"><section data-id="14cfac498a81ab7ed1dd79068fb1bf5e">
+</section>
+<section class="stack editing-mode" data-id="b58cb3f36bb13edbfaece1b57ceecc7e" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="14cfac498a81ab7ed1dd79068fb1bf5e" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="text" data-name="text-a437d4" data-block-id="dd98131a9447d25142303a1f474ecd26" style="height: auto; width: 781.309px; left: 117.346px; top: 410px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
 	<li>Why, yes!</li>
 	<li>There exist javascript interpreters that can be executed outside of the browser and can be used to:
@@ -698,7 +706,7 @@ end
 </div>
 </div></div>
 <div class="sl-block" data-block-type="image" data-name="image-de1961" data-block-id="5ac30001031b8f7a92bf5ea20a135a39" style="width: 525.282px; height: 288px; left: 217.714px; top: 106.838px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="706" data-natural-height="382" data-crop-x="0.007505" data-crop-y="0" data-crop-width="0.986867" data-crop-height="1" style="left: -4px; top: 0px; width: 532px; height: 288px;" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/859cc15cacb372b874948a902183ab79.gif"></div></div><aside class="notes">* we'll be using lots of node later for server side stuff
-</aside></section><section data-id="e3671d20d9943fa4522930c6293ae8d1">
+</aside></section><section data-id="e3671d20d9943fa4522930c6293ae8d1" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-a437d4" style="height: auto; width: 781.309px; left: 0px; top: 280px;" data-block-id="15c07c0641987e89424d7b6b450a0ad4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
 	<li>Node.js is javascript interpreter without a browser</li>
 	<li>used for server side processing</li>
@@ -716,7 +724,7 @@ end
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="8f577b593b00e9a3187bb17c8ca2a235">
+</div></div></section><section data-id="8f577b593b00e9a3187bb17c8ca2a235" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-6df96c" data-block-id="6a1af1fc013ae5d00da1acf51dce2856" style="width: 416.986px; height: 317.743px; left: 271.507px; top: 113.129px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="500" data-natural-height="381" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/308a4c2871b60c5ad81e82fdb3fe1622.jpg"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-33ceb7" data-block-id="7aa61e1e7165d261c5ad3297d23e0fc7" style="height: auto; width: 960px; left: 1px; top: 473.566px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
 	<li>
@@ -742,7 +750,7 @@ end
 </div>
 </div></div><aside class="notes">* package.json file allows other devs or Heroku to load your project
 * no need to include the giant amounts of dependencies in your actual project git
-</aside></section><section data-id="d9925efed486dd29ea15544e44800479">
+</aside></section><section data-id="d9925efed486dd29ea15544e44800479" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="e8653772afd956605a31f25eb2bf0980"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -760,7 +768,8 @@ end
 <div class="sl-block" data-block-type="image" data-name="image-61d704" data-block-id="437dadc02650072e66c9d5eddd01bf42" style="width: 350.659px; height: 197.246px; left: 609.808px; top: 99.6px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1600" data-natural-height="900" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/3c6bd07f99bb003b58211156816b667d.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-1963da" data-block-id="98f4c8e5db4fd0070374f083f117d2a7" style="height: auto; width: 430px; left: 105px; top: 159.223px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p><a href="https://deno.com/" target="_blank">deno</a>: &nbsp; new, secure, all in one node.js replacement</p></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 430px; left: 105px; top: 472px;" data-block-id="229562d54ef5929ace85cac0ba4a3f2a" data-name="text-28c924"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p><a href="https://bun.sh/" target="_blank">bun</a>: &nbsp; new, secure, all in one, drop-in node.js replacement</p></div></div>
-<div class="sl-block" data-block-type="image" data-name="image-509c63" data-block-id="0f4ea3c76b5a252d1bd35102cc718dfa" style="width: 350.192px; height: 344px; left: 609.808px; top: 356px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 15;"><img class="" data-natural-width="509" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2cb19178bb94bdcaf8975187a1c4fad1.jpg"></div></div></section></section><section data-id="e25b80429131babc9276397e9f54951d"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 367.487px; left: 0px; top: 140px;" data-name="snippet-3df089" data-block-id="8ceadbdf332622137666e328a2af7aac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div class="sl-block" data-block-type="image" data-name="image-509c63" data-block-id="0f4ea3c76b5a252d1bd35102cc718dfa" style="width: 350.192px; height: 344px; left: 609.808px; top: 356px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 15;"><img class="" data-natural-width="509" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2cb19178bb94bdcaf8975187a1c4fad1.jpg"></div></div></section></section>
+<section data-id="e25b80429131babc9276397e9f54951d" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 367.487px; left: 0px; top: 140px;" data-name="snippet-3df089" data-block-id="8ceadbdf332622137666e328a2af7aac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -783,7 +792,8 @@ end
 <div class="logo-spacer">&nbsp;</div>
 </div>
 </div></div>
-</section><section class="stack" data-id="1b6fd84a0a9ccd6a5bb109841892c7f0"><section data-id="63bffb991d24e2b2f1e8d7f20e125240">
+</section>
+<section class="stack editing-mode" data-id="1b6fd84a0a9ccd6a5bb109841892c7f0" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="63bffb991d24e2b2f1e8d7f20e125240" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="text" data-name="text-496226" data-block-id="c38075da2019038c286a8b0ad426bbfb" style="height: auto; width: 960px; left: 0px; top: 114.445px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
 	<li>in many languages such as java, python, ruby, perl, C
 	<ul>
@@ -812,7 +822,7 @@ end
 * and how can you make that work fast?
 * non-blocking - majority of functions that take time are asynch
 * nice animations here: https://www.youtube.com/watch?v=wB9tIg209-8 
-</aside></section><section data-id="3b986ce483ba4ea5d424751ce31a68e6">
+</aside></section><section data-id="3b986ce483ba4ea5d424751ce31a68e6" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="text" data-name="text-496226" style="height: auto; width: 960px; left: 0px; top: 114.445px;" data-block-id="997e26b72c954095292c2eec3e094abb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:rgb(58, 62, 64)">
 	<li>In your browser:
 	<ul>
@@ -838,7 +848,7 @@ end
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="af92e725ae6295702673fb30aceb0d65">
+</div></div></section><section data-id="af92e725ae6295702673fb30aceb0d65" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-394a3c" data-block-id="ebdf115844de0d9bc1d30325206fc1a1" style="width: 849.131px; height: 490.529px; left: 55.4345px; top: 139.471px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/6d870399304f95ff9b57a62d54a80f0b?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0f9bfcf3658a22d758f3bd153650a029"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -854,7 +864,8 @@ end
 * we set this request to explicitly be synchronous - maybe isn't clear from this example but if it took a long time... the whole page would be frozen
 * can you imagine if other things were blocking - say an image loading - so you couldn't click anything till it finished loading
 * or the network requests that a page makes in the background?  if the page froze every time it had to do anything like fetch more items in a list?
-</aside></section></section><section class="stack" data-id="a0a507b66a03d66226175f5543dbc380"><section data-id="b0baf39f4ef2e47d45441becca9ae4e5">
+</aside></section></section>
+<section class="stack editing-mode" data-id="a0a507b66a03d66226175f5543dbc380" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="b0baf39f4ef2e47d45441becca9ae4e5" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-807e6b" data-block-id="d6854f90cc4e223c344f07218ccc9e32" style="width: 734.689px; height: 509px; left: 112.656px; top: 74px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1530" data-natural-height="1060" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/dd6767d9c89601c4ccbe65793d135591.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-cd545e" data-block-id="7682112a209ee82f97c088575acd735d" style="height: auto; width: 960px; left: 0px; top: 583px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -879,7 +890,7 @@ end
 * you may have seen this dealt with as a game while loop - did that happen in 1/10?
 * events trigger changes in state
 * in js there is a built in event loop
-</aside></section><section data-id="b0d29596dc4bf321e1b90982ec397564">
+</aside></section><section data-id="b0d29596dc4bf321e1b90982ec397564" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-607cb9" data-block-id="8ed8b4f7c3ba50b121625f95584f0cd4" style="width: 806.4px; height: 405.903px; left: 76.8px; top: 84.097px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1790" data-natural-height="901" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8f53b03ae519e00fbca71410aee3dc4f.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-15e3c9" data-block-id="66bbc45089f3e98c32ca8f17dc5353a6" style="height: auto; width: 960px; left: 0px; top: 502.323px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -908,7 +919,7 @@ end
 </div></div><aside class="notes">* so far all the functions we have passed in have pretty much run instantly
 * this is not always the case!
 * setInterval
-</aside></section><section data-id="53532c58e28f590587a378a459960c04">
+</aside></section><section data-id="53532c58e28f590587a378a459960c04" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-0a11ad" data-block-id="d5f72eb02665e719ae296fe6c878affe" style="width: 806.4px; height: 457.127px; left: 76.8px; top: 152.087px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1129" data-natural-height="640" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/747b90789c1d846cff8cff41dff5bba4.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="5bb012f2e411c649d096ebbbee43c7cb"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -929,7 +940,7 @@ end
 * how might setTimeout actually be implemented in this system? 
   * while loop checking timestamp.
   * so setTimeout technically is MIN time, not guaranteed time
-</aside></section><section data-id="ad2f9d71c61b6886dab694d9dd2f1d93">
+</aside></section><section data-id="ad2f9d71c61b6886dab694d9dd2f1d93" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="image" data-name="image-679a41" data-block-id="3e46fb7b7673a36ca4c39ca6effd9bee" style="width: 821.402px; height: 615.047px; left: 69.299px; top: 84.953px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1023" data-natural-height="766" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/2dc1dee2da5d78747a5151985125a9e1.png"></div></div>
@@ -945,7 +956,8 @@ end
 </div>
 </div></div><aside class="notes">* a queue of tasks to complete/check in with
 * depending on javascript engine can either be threaded of single - node is multi, browser is single
-</aside></section></section><section class="stack" data-id="ca090583bbadaed6347e3621f5cd0f20"><section data-id="ac936c35cee6520f72eefda4f57589dd">
+</aside></section></section>
+<section class="stack editing-mode" data-id="ca090583bbadaed6347e3621f5cd0f20" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="ac936c35cee6520f72eefda4f57589dd" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="text" data-name="text-cd545e" style="height: auto; width: 465.414px; left: 53.0935px; top: 210px;" data-block-id="5fa0a7a9d16fa6f152d8b6a8fd1edde8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:rgb(58, 62, 64)">
 	<li>any time data is fetched in the background&nbsp;</li>
 	<li>often called AJAX:
@@ -973,7 +985,7 @@ end
 * you scroll and more data is loaded
 * this is interactive content being loaded into the page
 * but also,  your page doesn't stop scrolling just because you are waiting to load content
-</aside></section><section data-id="efdfebaef682b9cfd39aa8080e97c33d">
+</aside></section><section data-id="efdfebaef682b9cfd39aa8080e97c33d" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-f17555" data-block-id="80373f382eadccf9564f996e37f035cc" style="width: 903.774px; height: 549.551px; left: 27.3427px; top: 124.519px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/51bf707301001c5a5d87bc9e5db85d41?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="8605cd4fd193ce2b0d0ffb9a0dd7c396"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -990,7 +1002,7 @@ end
 * what is happening here?
 * what is going to be printed out?
 
-</aside></section><section data-id="fad1fbe803462d507cbca7dc301d6995">
+</aside></section><section data-id="fad1fbe803462d507cbca7dc301d6995" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="3af377684df66f6b9bc522c0efb34092"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="header-title">
 <div class="left">
@@ -1023,7 +1035,8 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 })
 </code></pre></div></div></div><aside class="notes">* now what if we needed to make further callbacks and requests based on the response?
 
-</aside></section></section><section class="stack" data-id="cef9fd3b36eb612a5ace04a69f6cb8c1"><section data-id="29e02a614bb23d4b07a6963c800bb611">
+</aside></section></section>
+<section class="stack editing-mode" data-id="cef9fd3b36eb612a5ace04a69f6cb8c1" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="29e02a614bb23d4b07a6963c800bb611" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-a53b7c" data-block-id="4815ec5c0bf1cbb494956cb973a0ecad" style="width: 930.99px; height: 391.366px; left: 14.505px; top: 182.906px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1011" data-natural-height="425" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/42d9712d6451927ec17441393e99c0ab.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0d2d00a133faed2953e21a7194848636"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1039,7 +1052,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 * process by which a page loads new data via javascript rather than html
 * if we're talking abstaction - this allows the server to only worry about data - not about display
 &lt;!--http://stackoverflow.com/questions/25336156/how-to-immediately-invoke-jquery-upon-clicking-remote-link-in-rails--&gt;
-&lt;!--https://realpython.com/blog/python/django-and-ajax-form-submissions-more-practice/--&gt;</aside></section><section data-id="1f0a003d99b453410d324a1895bbeafc">
+&lt;!--https://realpython.com/blog/python/django-and-ajax-form-submissions-more-practice/--&gt;</aside></section><section data-id="1f0a003d99b453410d324a1895bbeafc" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-1cb358" data-block-id="ef22837f820e8587d1f8af538cb91337" style="width: 767.257px; height: 598.103px; left: 96.371px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1202" data-natural-height="937" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/fbc2fe686e95af9c674d34e0a181b0ff.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="665c696adf21d519fbfa42abb9b2944a"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1058,7 +1071,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
   * we will use JSON isntead of XML, but note that new html only happens once the data is fetched
   * different pics of the same thing
 
-</aside></section><section data-id="56379ab9e747f3b9f319decceeb4e5a5">
+</aside></section><section data-id="56379ab9e747f3b9f319decceeb4e5a5" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-a9df47" data-block-id="f4298be1c7e1fc1ea2176d563a99d469" style="width: 752.143px; height: 363.035px; left: 100.729px; top: 321.576px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1500" data-natural-height="724" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/502b11bb667bbd42dca7da79adcafb4a.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-dfcc4b" data-block-id="49000eaa9909289cc0cc2d85cc7941c5" style="height: auto; width: 960px; left: 0px; top: 85.389px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -1088,7 +1101,8 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
   * a server that returns/mutates data
   * based on http get/post requests
 * we'll be playing lots with apis - and defining and building them - so more on this later
-</aside></section></section><section data-id="ac11847246fdbe9f79468b8da46f63aa"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 367.487px; left: 0px; top: 140px;" data-name="snippet-3df089" data-block-id="e3fb07567a72c14dc6cddb11282c284e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+</aside></section></section>
+<section data-id="ac11847246fdbe9f79468b8da46f63aa" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode"><div class="sl-block" data-block-type="snippet" style="width: 960px; height: 367.487px; left: 0px; top: 140px;" data-name="snippet-3df089" data-block-id="e3fb07567a72c14dc6cddb11282c284e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
@@ -1111,7 +1125,8 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 <div class="logo-spacer">&nbsp;</div>
 </div>
 </div></div>
-</section><section class="stack" data-id="508e3af961ce5ddba7b9052b5785976c"><section data-id="f2325e80d17b9f6478268f61628d2172">
+</section>
+<section class="stack editing-mode" data-id="508e3af961ce5ddba7b9052b5785976c" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="f2325e80d17b9f6478268f61628d2172" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-0aa78a" data-block-id="a3df576bb451f334faaf2464a3246559" style="width: 439.209px; height: 159.989px; left: 247.395px; top: 540.011px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 11;"><img data-natural-width="722" data-natural-height="263" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/13ca597a26ad5fb72c8f9aef1065e565.png"></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-75ae6d" data-block-id="fbf5e06108db14df6744b3f956514de1" style="width: 518px; height: 518px; left: 240px; top: 147px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 12;"><img data-natural-width="512" data-natural-height="512" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/d9991710ba42025fcecc8ee3d5175bd2.png"></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-aa5af5" data-block-id="8e9f97b0c967f5aaf55ccc67a636f1e5" style="width: 914.094px; height: 681px; left: 22.953px; top: -140.989px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img data-natural-width="800" data-natural-height="596" style="" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/f2e9c70818cdb329d331c4fcc05635ce.png"></div></div>
@@ -1127,7 +1142,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 </div>
 </div></div><aside class="notes">* to enable us to write modern scaleable applications 
 * with better syntax, with react
-* taking all our code and compacting it into a single application - we need some tooling!</aside></section><section data-id="79c71531c499347c7b8869924328dd3c">
+* taking all our code and compacting it into a single application - we need some tooling!</aside></section><section data-id="79c71531c499347c7b8869924328dd3c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-414d47" data-block-id="7b5b0f46a3848792b511627f554d2ec4" style="width: 806.4px; height: 124.149px; left: 73.6px; top: 173.933px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2137" data-natural-height="329" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8085c502b3eec4a3f543785b9b577495.png"></div></div>
 <div class="sl-block" data-block-type="code" data-name="code-fb9e0d" data-block-id="ba30dd403b579d42d26d8f6ad15eb103" style="width: 424.518px; height: 300px; left: 16.5597px; top: 366.47px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="css" style="font-size: 16px; line-height: 19px;"><code>
 .question {
@@ -1161,7 +1176,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 </div>
 </div></div><aside class="notes">* preprocessor/transpiler - takes this better syntax and compiles it down to regular compatible css
 * nesting,  variables, imports other stuff
-</aside></section><section data-id="d9842fe54a4e757c6b55f8a75e0f2f8b">
+</aside></section><section data-id="d9842fe54a4e757c6b55f8a75e0f2f8b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-afc40d" data-block-id="7781d9893ea4fb88bf928b33e8574edc" style="width: 893.137px; height: 348.969px; left: 33.4315px; top: 175.515px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2242" data-natural-height="876" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/3b4099de3e90962feefbe415aa3c141f.png"></div></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="c4186e530bf3dd51b47803f24cffbac9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1179,7 +1194,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 * also enables this thing called jsx which we'll be learning soon
 * show tab wtih babeljs.com example of react class
 
-</aside></section><section data-id="1b68bf7f7c7a54032541cba7b3f72c2d">
+</aside></section><section data-id="1b68bf7f7c7a54032541cba7b3f72c2d" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-cd972b" data-block-id="f31f31178c8ff97212372e2e7334596d" style="width: 806.4px; height: 241.92px; left: 76.8px; top: 89.04px; min-width: 1px; min-height: 1px;"><div class="sl-block-content plain" style="z-index: 10;"><img style="" data-natural-width="1080" data-natural-height="324" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/7cef3c4fa30489bdad6dae1293198945.png"></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-113586" data-block-id="2b7afb042d948ac02b341527b115c156" style="width: 882.995px; height: 350px; left: 38.502px; top: 350px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="497" data-natural-height="197" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/8a37c21cd898070b7528e7ef34e841d8.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="6fcdf036674108e4833a4bfa4eb25a58"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1196,7 +1211,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 * fyi, semicolons are optional although i use them
 * https://github.com/airbnb/javascript
 
-</aside></section><section data-id="d09d9938a521c4c5715770fd2c07136e">
+</aside></section><section data-id="d09d9938a521c4c5715770fd2c07136e" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="6f6cab944e71911ec0944df8d3150676"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1220,7 +1235,8 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 		<li>etc</li>
 	</ul>
 	</li>
-</ul></div></div></section></section><section class="stack" data-id="59189523ec6eaa31809c45095f85d76c"><section data-id="6f296e1c3e9d6fa36f3ab106b2d4ab56">
+</ul></div></div></section></section>
+<section class="stack editing-mode" data-id="59189523ec6eaa31809c45095f85d76c" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="6f296e1c3e9d6fa36f3ab106b2d4ab56" style="top: 350px; display: none;" class="editing-mode">
 <div class="sl-block" data-block-type="iframe" data-name="iframe-e1bca4" data-block-id="9fc9870d129784ce7d4a72f3c34ce28a" style="width: 560px; height: 296.92px; left: 200px; top: 140px;"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="//giphy.com/embed/3o84U6421OOWegpQhq?hideSocial=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-c0ecbd" data-block-id="23141c66627e31d3983b1a42630c87ac" style="height: auto; width: 600px; left: 180px; top: 521px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>Putting all the tooling together and building an application out of it all</p></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="1775741fbf354e5ae3646ec58b987987"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1233,7 +1249,7 @@ axios.get('http://api.something.com/all-datas').then( data =&gt; {
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="2e9f23bd24eefb8b3d6187ecd679f1a7">
+</div></div></section><section data-id="2e9f23bd24eefb8b3d6187ecd679f1a7" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="code" data-name="code-fdfc0c" data-block-id="4a1fe2d4b89a09c6de2cc66617d9d2d6" style="width: 420px; height: 198.331px; left: 270px; top: 500.783px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="bash" style="font-size: 16px; line-height: 19px;"><code>babel app -d dist
 uglify dist
 sass app/sass:dist/css
@@ -1258,7 +1274,7 @@ sass app/sass:dist/css
 * only necessary modules
 * builds all the things for you!
 * hot reloads modules - you change some js it can reload just that module.  
-</aside></section><section data-id="81a6d637a28de2d703bdd487d5e3284d">
+</aside></section><section data-id="81a6d637a28de2d703bdd487d5e3284d" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-bbf1f3" data-block-id="ee086f3a79afeaeffceae3dbe661ddb8" style="width: 924.247px; height: 529.461px; left: 17.8765px; top: 123.055px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1400" data-natural-height="802" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/e847126eb018c6a0d52d71d0769b24ef.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="93bb38042d93dd32c809d676fd93047e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1275,7 +1291,7 @@ sass app/sass:dist/css
 * can do other stuff like delete unused code - tree shaking 
 * akin to the linker step when compiling a c program
 
-</aside></section><section data-id="4ccf6b06f3ff7027010d85985804212c">
+</aside></section><section data-id="4ccf6b06f3ff7027010d85985804212c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-3ca9f4" data-block-id="c4b1235b300ccb4e2700cb8935b878cb" style="width: 960px; height: 420px; left: 0px; top: 280px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1312" data-natural-height="574" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/f6ff0a49b9ce0876453ccdcb129af746.png"></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-dc5fc1" data-block-id="931a906d6c63a25f69cafafa9e625cb3" style="width: 335.341px; height: 251.506px; left: 412.182px; top: 114.22px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="312" data-natural-height="234" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/925e4b4d1fbe0f0d34cb9465401f5193.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="0832976f6a86803d00ce02ad30a27c74"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
@@ -1289,7 +1305,7 @@ sass app/sass:dist/css
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* nice clean bundle via treeshaking
-</aside></section><section data-id="96dcc9f4e46ac1ce07954fe8856ba7a3">
+</aside></section><section data-id="96dcc9f4e46ac1ce07954fe8856ba7a3" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 <div class="sl-block" data-block-type="image" data-name="image-4a35b9" data-block-id="717a7bd40211adfa39683cc862589fe7" style="width: 900.873px; height: 367.235px; left: 29.5635px; top: 91.276px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="942" data-natural-height="384" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/dc1f317449601a917998e22a9844fc72.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-af9573" data-block-id="c8d3a7bd4423ac071f28be162383de9e" style="height: auto; width: 960px; left: 0px; top: 505px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color:rgb(58, 62, 64)">
@@ -1311,7 +1327,7 @@ sass app/sass:dist/css
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* what is a potential downside of injecting css with javascript?
-</aside></section><section data-id="215cdd83ec16bb056e065dc99897b11f">
+</aside></section><section data-id="215cdd83ec16bb056e065dc99897b11f" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="386e05e81f40ffdf09a8f24621cf5c10"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1334,7 +1350,7 @@ sass app/sass:dist/css
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
   ➜  press h to show help</code></pre></div></div><aside class="notes">* faster than webpack
-* does more things automatically rather than having to configure - simpler</aside></section><section data-id="4893d6cde51a040bf2bdcaf65d4460f1">
+* does more things automatically rather than having to configure - simpler</aside></section><section data-id="4893d6cde51a040bf2bdcaf65d4460f1" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="b968c639ca876f7fb53d94a1607030e9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1348,7 +1364,7 @@ sass app/sass:dist/css
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="image" data-name="image-d50b62" data-block-id="9b2126ac4b72aa53d97e8cbbf850ff71" style="width: 806.4px; height: 470.114px; left: 76.8px; top: 131.066px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1410" data-natural-height="822" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/81e4d70d7715fd7ec060931ae0759bc1.png"></div></div><aside class="notes">* webpack needs to compile everything into a bundle and serve that - so takes a bit of time to run through every bit of code</aside></section><section data-id="2937ece143695aeab55e0bec293e46d4">
+<div class="sl-block" data-block-type="image" data-name="image-d50b62" data-block-id="9b2126ac4b72aa53d97e8cbbf850ff71" style="width: 806.4px; height: 470.114px; left: 76.8px; top: 131.066px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1410" data-natural-height="822" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/81e4d70d7715fd7ec060931ae0759bc1.png"></div></div><aside class="notes">* webpack needs to compile everything into a bundle and serve that - so takes a bit of time to run through every bit of code</aside></section><section data-id="2937ece143695aeab55e0bec293e46d4" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="21b2e48891f2eccabf50fdec6ce3a136"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1364,7 +1380,7 @@ sass app/sass:dist/css
 </div></div>
 <div class="sl-block" data-block-type="image" data-name="image-43e261" style="width: 806.4px; height: 469.535px; left: 80px; top: 160.465px; min-width: 1px; min-height: 1px;" data-block-id="7ccc0474a160d702fb62781e20b51d8f"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1398" data-natural-height="814" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/c814f2472de7fd4b0efb6ab535319f53.png"></div></div><aside class="notes">* vite still processes the files needed - but only the modules you need as you need them replying on es modules
 * at least in DEV mode - when you build for production VITE still bundles it all just like webpack would
-* only works in browsers that support ESM,  didn't exist when webpack starter</aside></section><section data-id="3075c7ac75328f78fd74e2fb5b7afbf6">
+* only works in browsers that support ESM,  didn't exist when webpack starter</aside></section><section data-id="3075c7ac75328f78fd74e2fb5b7afbf6" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a0068c5271ce0048cf8c35ddd8417c23"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1380,7 +1396,7 @@ sass app/sass:dist/css
 </div></div>
 <div class="sl-block" data-block-type="image" data-name="image-f98e40" data-block-id="82798ab2d89429c30eaf3a97f51028ff" style="width: 806.4px; height: 433.125px; left: 76.8px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1024" data-natural-height="550" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/a7e56afdcd720e400ffc73648957bf17.png"></div></div><aside class="notes">* we'll dive in more on this later
 * but basic is that ESM is the future, 
-* commonjs was node, but browsers prefer ESM as it is literally more modular better for web clients</aside></section><section data-id="8cc5e03c1f66c342db69db7d2ed01720">
+* commonjs was node, but browsers prefer ESM as it is literally more modular better for web clients</aside></section><section data-id="8cc5e03c1f66c342db69db7d2ed01720" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="e2184a4dafcb5d31afd3e23aca555a74"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1402,7 +1418,8 @@ sass app/sass:dist/css
 </div></div>
 <div class="sl-block" data-block-type="code" data-name="code-46ff9d" data-block-id="e957bdc31f182daf49d74c7fad2890c7" style="width: 490px; height: 33.9629px; left: 230px; top: 93.1383px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 13;"><pre class="bash" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">vite build</code></pre></div></div><aside class="notes">* used Rollup to bundle! 
 * does tree shaking and all that jazz too 
-* slightly less powerful than webpack but up and coming</aside></section></section><section data-id="36bffe722526188271b1176a0f749957">
+* slightly less powerful than webpack but up and coming</aside></section></section>
+<section data-id="36bffe722526188271b1176a0f749957" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode">
 <div class="sl-block" data-block-type="image" data-name="image-5e7431" data-block-id="02ff9193201b9528180afd493b55a0b1" style="width: 463.303px; height: 260.062px; left: 248.348px; top: 124.596px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="636" data-natural-height="357" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-web-frameworks-1768252769255/images/aec4d2151cb6b537c9e2a28c3a04488e.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-257e83" data-block-id="528e43a00a5ec804afbe2c989b32736d" style="height: auto; width: 960px; left: 0px; top: 451.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul style="color:#3a3e40">
 	<li>
@@ -1428,7 +1445,8 @@ sass app/sass:dist/css
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+</div></div></section>
+<section data-id="fa977095bed0c0cab8eaeb523d1d2afd" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode">
 <div class="sl-block" data-block-type="text" data-name="text-b1fae7" data-block-id="2628dc76f114d2d7977f343785e158ee" style="height: auto; width: 600px; left: 180px; top: 196.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul style="color:#3a3e40">
 	<li>Next: More Asynchronous Javascript</li>
 	<li>Next: React and State Management</li>
@@ -1446,7 +1464,6 @@ sass app/sass:dist/css
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div></section>
-			
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -1456,10 +1473,8 @@ sass app/sass:dist/css
       hash: true,
       controls: true,
       progress: true,
-      center: false,
+      center: true,
       transition: 'slide',
-      width: 960,
-      height: 700,
       plugins: [RevealHighlight]
     });
   </script>
