@@ -176,7 +176,16 @@
     "pre-project": {
       "pages": [],
       "slides": [],
-      "assignments": {}
+      "assignments": {
+        "pitch": {
+          "pages": [
+            "project-0-pitch-ideas"
+          ],
+          "slides": [
+            "project-intro"
+          ]
+        }
+      }
     },
     "project": {
       "pages": [
@@ -281,7 +290,6 @@
       "intro-to-cypress-and-web-testing",
       "dartmouth-cs52",
       "logistics",
-      "project-0-pitch-ideas",
       "lab-2-v2-build-a-buzzfeed-quiz"
     ],
     "slides": [
@@ -292,7 +300,6 @@
       "asynchronous-javascript",
       "javascript-intro",
       "deployment",
-      "project-intro",
       "more-javascript",
       "intro-to-react",
       "intro-to-web-frameworks",
