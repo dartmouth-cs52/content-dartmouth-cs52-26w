@@ -88,20 +88,20 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "landing-page-part-2": {
-          "pages": [
-            "lab-1-part-2-build-a-landing-page-css"
-          ],
-          "slides": [
-            "css"
-          ]
-        },
         "landing-page-part-1": {
           "pages": [
             "lab-1-part-1-build-a-landing-page-html"
           ],
           "slides": [
             "html"
+          ]
+        },
+        "landing-page-part-2": {
+          "pages": [
+            "lab-1-part-2-build-a-landing-page-css"
+          ],
+          "slides": [
+            "css"
           ]
         }
       }
@@ -274,31 +274,31 @@
   "general": {
     "pages": [
       "intro-to-cypress-and-web-testing",
-      "project-0-pitch-ideas",
       "dartmouth-cs52",
       "logistics",
+      "project-0-pitch-ideas",
       "lab-2-v2-build-a-buzzfeed-quiz"
     ],
     "slides": [
       "welcome",
-      "authentication-and-authorization",
-      "project-extras",
       "the-interwebs",
-      "intro-to-web-frameworks",
-      "intro-to-react",
-      "intro-to-frontend-testing",
-      "immutability-and-services",
-      "project-intro",
-      "routing",
-      "state-management",
-      "design",
-      "rest",
-      "wrap-up",
       "the-dom",
-      "deployment",
-      "more-javascript",
+      "project-extras",
+      "asynchronous-javascript",
       "javascript-intro",
-      "asynchronous-javascript"
+      "deployment",
+      "project-intro",
+      "more-javascript",
+      "intro-to-react",
+      "intro-to-web-frameworks",
+      "wrap-up",
+      "authentication-and-authorization",
+      "rest",
+      "design",
+      "state-management",
+      "routing",
+      "immutability-and-services",
+      "intro-to-frontend-testing"
     ]
   }
 }
