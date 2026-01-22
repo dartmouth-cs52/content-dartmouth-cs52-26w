@@ -12,6 +12,11 @@
         }
       }
     },
+    "pre-project": {
+      "pages": [],
+      "slides": [],
+      "assignments": {}
+    },
     "extra-credit-shorts": {
       "pages": [],
       "slides": [],
