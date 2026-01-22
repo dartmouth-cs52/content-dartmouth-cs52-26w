@@ -88,20 +88,20 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "landing-page-part-1": {
-          "pages": [
-            "lab-1-part-1-build-a-landing-page-html"
-          ],
-          "slides": [
-            "html"
-          ]
-        },
         "landing-page-part-2": {
           "pages": [
             "lab-1-part-2-build-a-landing-page-css"
           ],
           "slides": [
             "css"
+          ]
+        },
+        "landing-page-part-1": {
+          "pages": [
+            "lab-1-part-1-build-a-landing-page-html"
+          ],
+          "slides": [
+            "html"
           ]
         }
       }
@@ -284,9 +284,6 @@
       "authentication-and-authorization",
       "project-extras",
       "the-interwebs",
-      "javascript-intro",
-      "more-javascript",
-      "asynchronous-javascript",
       "intro-to-web-frameworks",
       "intro-to-react",
       "intro-to-frontend-testing",
@@ -296,9 +293,12 @@
       "state-management",
       "design",
       "rest",
-      "deployment",
       "wrap-up",
-      "the-dom"
+      "the-dom",
+      "deployment",
+      "more-javascript",
+      "javascript-intro",
+      "asynchronous-javascript"
     ]
   }
 }
