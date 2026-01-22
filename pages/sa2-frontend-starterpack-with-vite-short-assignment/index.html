@@ -486,7 +486,7 @@ brew upgrade
 brew install node</code></pre></div>
 <p>Make sure you have reasonably up-to-date versions of node/npm/yarn:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">node --version
-# vv22.13.1
+# v24.13.0
 npm --version
 # 11.0.0</code></pre></div>
 <p>Newer than these is fine, but if you have older ones, you might need to force uninstall/reinstall:</p>
@@ -645,7 +645,7 @@ import stylistic from '@stylistic/eslint-plugin';
 export default [
   js.configs.recommended,
   pluginReact.configs.flat.recommended,
-  pluginReactHooks.configs['recommended-latest'],
+  pluginReactHooks.configs.flat.recommended,
   pluginJsxA11y.flatConfigs.recommended,
   pluginImport.flatConfigs.recommended,
   stylistic.configs.recommended,
@@ -761,7 +761,7 @@ export default defineConfig({
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.35.33 PM.png"></figure>
 <div class="heading-block h2-block"><h2>Project Structure</h2></div>
 <p>At this point your project structure should look something like:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">.eslintrc.json
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">eslint.config.js
 .git
 .gitignore
 node_modules/
