@@ -622,8 +622,8 @@ VITE v6.0.11  ready in 394 ms
 <div class="heading-block h2-block"><h2>Main Functionality</h2></div>
 <p>🚀 Now write some JavaScript that updates the <code>#main</code> element every second to: <code>You've been on this page for ${num} seconds.</code>. This will be a simple counter.</p>
 <ul><li>you could use <code>setInterval</code> to call a function</li><li>avoid using <code>var</code> (remember <code>let</code> and <code>const</code>)</li></ul>
-<p>Excellent, now your page is keeping count of how long it has been since you loaded/reloaded it.<br><strong>SUPER USEFUL</strong>🤷**!**</p>
-<div class="heading-block h2-block"><h2>Linting</h2></div>
+<p>Excellent, now your page is keeping count of how long it has been since you loaded/reloaded it.<br><strong>SUPER USEFUL</strong>🤷</p>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Linting</h2></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-1767548419532.png" alt="" style="width: 325px" width="325"></figure>
 <p>Ok, how about we add in linting. Linters are code parsers that check your code for syntax errors, common style mistakes, and make sure that your code is clean and follows some best practices. Linters help save time, detect bugs, and improve code quality. Linters exist for all types of languages and even languages such as HTML, CSS, and JSON. Linters are especially helpful for detecting syntax errors when using dynamically typed languages in lightweight editors like VSCode.</p>
 <p>In VSCode, install the <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a> extension.</p>
@@ -700,7 +700,7 @@ export default [
   ],</code></pre></div></div>
 <p>This will run your code through eslint before processing it – thus making sure it is all good and giving you warnings and errors otherwise. Not only will your editor show the errors - but the browser console will as well.</p>
 <p>From here on <strong>all assignments</strong> will all use eslint and you can customize it per project as you need.  Adhering to a code style will at first seem annoying, but over time, you will grow to appreciate the linting rules as they keep you from making mistakes. This is also pretty much industry standard.</p>
-<div class="heading-block h2-block"><h2>SASS with Vite</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FAEBDD"><h2 style="background-color: #FAEBDD">SASS with Vite</h2></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/sass-1767548419532.png" alt="sass.png"></figure>
 <p>Vite comes with built-in <a href="http://sass-lang.com/guide">SASS</a> support! SASS is a bit nicer than vanilla css - and demonstrates some of the power of using a builder/packager like Vite.</p>
 <p>🚀 Does this mean we need to npm install something? Yup!</p>
@@ -713,7 +713,7 @@ html {
   height: 100%;
 }</code></pre></div></div>
 <p>🚀 Now, you need to have Vite include it in your build, so add <code>import './style.scss'</code> to your <code>index.js</code> file! Remember Vite won’t include anything that isn’t used by your app directly - and the way to tell it is to import it into your app somewhere. Your whole app right now is <code>index.js</code> so let’s import it there.</p>
-<div class="heading-block h2-block"><h2>Hot reloading</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Hot reloading</h2></div>
 <p>Wait, we were promised hot-reloading, whatever that means!</p>
 <p>You got it! Try changing your <code>style.scss</code> file – you should see changes as soon as you hit save, but your counter doesn’t restart!</p>
 <p>On the terminal, you’ll see anytime you change your project files that Vite recompiles/hot reloads automatically - and in your browser console log as well.</p>
@@ -731,7 +731,7 @@ html {
 }</code></pre></div></div>
 <p>Yeah, can you see it?</p>
 <p>⚠️&nbsp;<em>Always make sure your file naming is case sensitive - don’t name a file <code>MyImage.jpg</code> and then reference with as <code>myimage.jpg</code>. That might work on your personal computer but it won’t work on the internet where most machines are linux and are case-sensitive.</em></p>
-<div class="heading-block h2-block"><h2>AutoPrefixing!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">AutoPrefixing!</h2></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/autoprefix-1767548419532.gif" alt="" style="width: 416px" width="416"></figure>
 <p>As you’ve been playing with CSS you’ve probably noticed the internet mentioning vendor prefixes such as:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-css">-webkit-transition: all 4s ease;
@@ -759,7 +759,7 @@ export default defineConfig({
 }</code></pre></div></div>
 <p>and then look to see if you can see the prefixed versioned in your devtools. Yay!</p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.35.33 PM.png"></figure>
-<div class="heading-block h2-block"><h2>Project Structure</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FAEBDD"><h2 style="background-color: #FAEBDD">Project Structure</h2></div>
 <p>At this point your project structure should look something like:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">eslint.config.js
 .git
@@ -773,10 +773,10 @@ src/
     index.js
     style.scss
 vite.config.js</code></pre></div></div>
-<div class="heading-block h2-block"><h2>Deployment</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Deployment</h2></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/deploy-1767548419532.gif" alt=""></figure>
-<p>How would you <a href="https://vitejs.dev/guide/static-deploy.html">deploy a Vite setup such as this</a>?</p>
-<p>We’re prepping this to be our SPA (single-page-app) starter pack, and unfortunately, GitHub Pages doesn’t have good SPA support. So we’re going to be using another service to host our pages. Super easy though.</p>
+<p>How would you <a href="https://vitejs.dev/guide/static-deploy.html">deploy a Vite setup such as this</a>?&nbsp; &nbsp;&lt;- you are welcome to use any of the services listed here.&nbsp;</p>
+<p>We’re prepping this to be our SPA (single-page-app) starter pack, and unfortunately, GitHub Pages doesn’t have good SPA support. So we’re going to be using another service to host our pages. Super easy though.&nbsp;</p>
 <div class="heading-block h3-block"><h3>Test Build</h3></div>
 <p>What if we could automatically deploy our main branch whenever it was updated on GitHub. That is exactly what we are going to do!</p>
 <p>Let’s test locally first though.</p>
@@ -801,9 +801,9 @@ git push origin --tags</code></pre></div></div>
 <p>As always, you should use Chrome Dev Tools with the console as the first line of defense. Checking for errors there is the first thing you should look for. You can also use breakpoints. The recommended method is to use DevTools and click the line number in your source code to add a breakpoint. Because of Vite’s magic all sources end up in <em>(Sources -&gt; localhost:xxx . -&gt; src)</em></p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.43.01 PM.png"></figure>
 <p>You can also use the statement <code>debugger;</code> in your code, but that is somewhat frowned upon as you might forget and leave one in a piece of code that doesn’t get executed often — causing mayhem for yourself later.</p>
-<div class="heading-block h2-block"><h2>Frontend Starter Pack is ready to go!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Frontend Starter Pack is ready to go!</h2></div>
 <p>You now have a nicely set up starter pack that you can use for all your cool projects. We will use this in most of the future assignments and build up on it too, so it is worth getting this all working.</p>
-<div class="heading-block h3-block"><h3>To Turn In</h3></div>
+<div class="heading-block h3-block" data-bg-color="#FBF3DB"><h3 style="background-color: #FBF3DB">To Turn In</h3></div>
 <ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li></ul>
 <ol start="1"><li>Checklist:<ul><li><input disabled="" type="checkbox"> vite dev server starts and serves pages</li><li><input disabled="" type="checkbox"> eslint is configured - it complains if there is bad code / autocorrects indents etc</li><li><input disabled="" type="checkbox"> webpage displays and counts seconds</li><li><input disabled="" type="checkbox"> image displays and is loaded via vite</li><li><input disabled="" type="checkbox"> js is linted without errors!</li></ul></li></ol>
 <div class="heading-block h3-block"><h3>Extra Credit</h3></div>
