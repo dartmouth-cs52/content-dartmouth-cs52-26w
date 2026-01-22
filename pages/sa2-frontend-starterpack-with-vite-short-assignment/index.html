@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -442,26 +462,23 @@
   </style>
 </head>
 <body>
-<p><em>Note: We will use <strong>Vite</strong> this term. While it is perhaps less advanced than the previous champion, webpack, it is the up and coming bundler/builder that is taking over.</em> </p>
-<p><em>Changing from webpack to vite approximately halved this assignment, you are welcome.</em> </p>
 <div class="heading-block h2-block"><h2>Overview</h2></div>
 <p>Today, we’ll be learning about a set of tools for making your code compact and pretty. So far, you’ve been using html and css in separate files, and the sites have been fairly compact — but as your sites grow more complex and include more and more libraries, there has to be a way to manage it all. We’ll introduce a set of tools to help you build complex sites with many module dependencies easily.</p>
 <p></p>
 <p>💻️ run in Termninal</p>
 <p>🚀 a step to not forget</p>
-<p></p>
-<div class="heading-block h2-block"><h2>Today’s Stack</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Today’s Stack</h2></div>
 <p>We’ll build a starter package that will use:</p>
 <ul><li>vite</li><li>sass</li><li>babel</li><li>eslint</li><li>as well as a suite of cool tools: node, npm</li></ul>
 <p>Don’t worry; we’ll learn allllll about it.</p>
 <p>🌵 Note: This <em>short</em> is a little on the long side, but it’s important. Try to read the explanations so you understand what is happening — you will be using and building up from this starterpack for the next month.</p>
 <p>🚨&nbsp;<em>There is a way to generate a similar starterpack that some of you may have played around with: <code>create-react-app</code>. This is generally a fine way to do a quick start react project. However, it hides all the magic it does in a complex set of hidden config files, and is difficult to extend. We want to have the confidence to do that and to understand what is actually happening — so we’re going to start from scratch.</em> ✊</p>
-<div class="heading-block h2-block"><h2>To Start</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">To Start</h2></div>
 <p>🚀  Get your repo from <a href="https://classmoji.io/">Classm🎯ji</a> in the <code>main</code> branch for now, you’ll see why later. The GitHub Issue for this assignment is named <code>Vite React StarterPack</code>. </p>
 <div class="heading-block h2-block"><h2><a href="https://www.npmjs.com/">NPM</a></h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/npm-1767548419532.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/npm-1767548419532.jpg" alt="" style="width: 355px" width="355"></figure>
 <p><a href="https://www.npmjs.com/">NPM</a> is the dependency package manager for Node.js and the JavaScript ecosystem in general. While we won’t exactly be using Node just yet today, we will be using the package manager to install various JavaScript tools. Node.js is a JavaScript platform for running JavaScript outside of a browser for developing server-side applications, and we will be using it extensively later on. You can do things like <code>npm install somepackage</code> , and it will download that package and add it to your project. Great.</p>
-<div class="heading-block h3-block"><h3>Installation</h3></div>
+<div class="heading-block h3-block" data-bg-color="#FBF3DB"><h3 style="background-color: #FBF3DB">Installation</h3></div>
 <p>🚀 Let’s install some Node.js!</p>
 <div class="heading-block h3-block"><h3>os x:</h3></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">brew update
@@ -482,7 +499,7 @@ brew install node</code></pre></div>
 <div class="heading-block h3-block"><h3>Node Version Manager (optional)</h3></div>
 <p>If you want to get fancy, install a node version manager.  This will enable you to easily keep up to date with node versions and use different ones across different projects. It is a bit extra, and you won’t need it for this class, but it is best practice. <em>Mention it in your submission and screenshot in use.</em></p>
 <p><a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
-<div class="heading-block h2-block"><h2>start a node project</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">start a node project</h2></div>
 <p>🚀 We will start a Node.js project even though we will only be using the Node Package Manager.</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are cd'd into your cloned workspace
 
@@ -505,7 +522,7 @@ touch src/index.js   #creates an empty file</code></pre></div>
 &gt; node src/index.js</code></pre></div>
 <p>Great, you just ran a little bit of JavaScript on the computer without a browser.</p>
 <p>But, we want to actually make a webpage, right?</p>
-<div class="heading-block h2-block"><h2>Index HTML</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Index HTML</h2></div>
 <p>Let’s set up a simple <code>index.html</code> to act as our main html page.</p>
 <p>🚀 Create an <code>index.html</code> in your project folder <em>(NOT src, just in the project root)</em>.</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">HTML</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -526,9 +543,8 @@ touch src/index.js   #creates an empty file</code></pre></div>
 &lt;/html&gt;</code></pre></div></div>
 <p>Sweet, a page that probably says “loading”. We rock. But you probably want to be able to view it, and maybe we can do it better than with that Python module we used last week.</p>
 <p>🔔&nbsp;Notice a strange line in there?  the <code>&lt;script&gt;</code> tag that loads in <code>/src/index.js</code>.. That is the key line - that tells Vite what the entry point is to our JavaScript application!  </p>
-<div class="heading-block h2-block"><h2>VITE</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/image-1767548419532.png" alt="image.png">
-<p><a href="https://vitejs.dev/">Vite</a> is a powerful development server and build tool. What it does is take all your dependencies (all the various files and libraries that your project is using), processes them, and then either serves them in dev mode or builds them for production. It does this in a smart way, where it will only bundle up the things you need (<a href="https://rollupjs.org/">with Rollup</a>). It can do any preprocessing that you need, such as converting various code syntax, and supports hot-reloading, so you never have to refresh the page manually again. Most cleverly, it actually analyzes your code and figures out what you are doing and only includes what is necessary. </p>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">VITE</h2></div>
+<div class="columns" data-columns="2"><div class="column"><figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/image-1767548419532.png" alt="image.png" style="width: 368px" width="368"></figure></div><div class="column"><p><a href="https://vitejs.dev/">Vite</a> is a powerful development server and build tool. What it does is take all your dependencies (all the various files and libraries that your project is using), processes them, and then either serves them in dev mode or builds them for production. It does this in a smart way, where it will only bundle up the things you need (<a href="https://rollupjs.org/">with Rollup</a>). It can do any preprocessing that you need, such as converting various code syntax, and supports hot-reloading, so you never have to refresh the page manually again. Most cleverly, it actually analyzes your code and figures out what you are doing and only includes what is necessary. </p></div></div>
 <div class="heading-block h3-block"><h3>Install Vite for the project</h3></div>
 <p>🚀 Let’s add Vite to our 🚼 project:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -D vite</code></pre></div>
@@ -543,7 +559,7 @@ node_modules
 .DS_Store</pre></div>
 <p>🚀 Let’s add things to git while we are at it: <code>git add * .gitignore</code>, <code>git commit -am "we have some files in our project now"</code></p>
 <p>Whenever there are files in your project that you don’t want git tracking, you can add them to your <code>.gitignore</code> file.</p>
-<div class="heading-block h3-block"><h3>First JS On The Web</h3></div>
+<div class="heading-block h3-block" data-bg-color="#FBF3DB"><h3 style="background-color: #FBF3DB">Our First Build</h3></div>
 <p>🚀 Let’s add in <a href="http://jquery.com/">JQuery</a> really quick. We won’t really be using much jquery this term, but for a quick example it will suffice.</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code class="language-powershell">💻 npm install jquery   #notice there is no -D</code></pre></div></div>
 <p>🚀 Change your <code>src/index.js</code> to the following:</p>
@@ -579,7 +595,7 @@ dist/assets/index-0c5f68e6.js   184.17 kB │ gzip: 59.42 kB
 <p>Great! Vite is building our <code>index.js</code> file and all the required dependencies and packaging it up as a bundle for the web. How’d it know what to include? Well it started with <code>index.html</code> saw that we wanted to load in <code>index.js</code> and saw our <code>require</code> statement, then it also located the jQuery module in <code>node_modules</code> and included it. 😎</p>
 <p>🚀  If you want you can delete <code>dist</code> for now. <code>rm -rf dist</code> But, since it is in our .gitignore you can also just leave it.</p>
 <div class="heading-block h3-block"><h3>Running Vite in dev mode</h3></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/js-engine-1767548419532.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/js-engine-1767548419532.gif" alt="" style="width: 254px" width="254"></figure>
 <p>This is where Vite really shines. We could start up a python webserver to load the files, but Vite comes with a dev server built in and it is much better.</p>
 <p>🚀 Edit your <code>package.json</code> and set up some scripts.  Node package scripts are the section in the <code>package.json</code> that define how to run your project. </p>
 <p>Change this entire section to be:</p>
@@ -596,11 +612,11 @@ VITE v6.0.11  ready in 394 ms
   ➜  Local:   http://127.0.0.1:5173/
   ➜  Network: use --host to expose
   ➜  press h to show help</code></pre></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-8-1767548419532.png" alt="Screenshot 2023-04-10 at 8.54.16 PM.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-8-1767548419532.png" alt="Screenshot 2023-04-10 at 8.54.16 PM.png"></figure>
 <div class="heading-block h3-block"><h3>Vite Plugins</h3></div>
 <p>Vite supports a concept of  plugins that extend the basic functionality.  It already comes out of the box with some support though that we should mention. </p>
 <div class="heading-block h2-block"><h2>Babel</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/babel-1767548419532.png" alt="babel.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/babel-1767548419532.png" alt="babel.png"></figure>
 <p>We’ve discussed various JavaScript versions. Babel is a transpiler that converts newer es20XX javascript syntax to more compatible syntax that browsers actually understand (browsers are typically behind in their ECMAScript support). If you are curious, you can try it out at <a href="https://babeljs.io/repl/">babeljs</a></p>
 <p>Vite includes transpiling newer syntax for us automatically and uses Babel under the hood with React once we get there, so we don’t have to configure this manually.  </p>
 <div class="heading-block h2-block"><h2>Main Functionality</h2></div>
@@ -608,10 +624,10 @@ VITE v6.0.11  ready in 394 ms
 <ul><li>you could use <code>setInterval</code> to call a function</li><li>avoid using <code>var</code> (remember <code>let</code> and <code>const</code>)</li></ul>
 <p>Excellent, now your page is keeping count of how long it has been since you loaded/reloaded it.<br><strong>SUPER USEFUL</strong>🤷**!**</p>
 <div class="heading-block h2-block"><h2>Linting</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-1767548419532.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-1767548419532.png" alt="" style="width: 325px" width="325"></figure>
 <p>Ok, how about we add in linting. Linters are code parsers that check your code for syntax errors, common style mistakes, and make sure that your code is clean and follows some best practices. Linters help save time, detect bugs, and improve code quality. Linters exist for all types of languages and even languages such as HTML, CSS, and JSON. Linters are especially helpful for detecting syntax errors when using dynamically typed languages in lightweight editors like VSCode.</p>
 <p>In VSCode, install the <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a> extension.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/vscode-eslint-1767548419532.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/vscode-eslint-1767548419532.jpg" alt=""></figure>
 <p>🚨&nbsp;<em><strong>Always open your entire project in VSCode rather than just single files or other folders. This will prevent failure due to VSCode not picking up the project-wide config files.</strong></em></p>
 <p>We’ll be using <a href="http://eslint.org/">Eslint</a> in every assignment!</p>
 <p>🚀 Install <code>eslint</code>:</p>
@@ -673,8 +689,8 @@ export default [
 <p>👍 Super useful. This will fix indentation problems and some other things automatically whenever you save! Now restart your editor. Test it out - put in some extra spaces at the beginning of a line of javascript, make sure it highlights and when you save the file it should automatically fix any indentation and semi-colons etc.</p>
 <p>‼️&nbsp;If this isn’t working, make sure that your editor is open to the root directory of your repository! This is necessary for the settings in <code>eslint.config.js</code> to be applied!</p>
 <p>When you see errors such as below:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/linter-error-1767548419532.png" alt="linter-error.png">
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-learn-more-1767548419532.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/linter-error-1767548419532.png" alt="linter-error.png" style="width: 518px" width="518"></figure>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/eslint-learn-more-1767548419532.jpg" alt="" style="width: 521px" width="521"></figure>
 <p>You can click on the definition of the error to learn more. Note: many of these show up as errors but are not compiler errors like you might be used to with Java or C. The browser or node may still run the code fine — however it is recommended that you fix these errors or learn about what the errors mean and disable them only if you disagree with that particular rule stylistically.</p>
 <p>🚀 Now we add a plugin to Vite so that it automatically tests with eslint while you code. </p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -D vite-plugin-eslint2</code></pre></div>
@@ -685,7 +701,7 @@ export default [
 <p>This will run your code through eslint before processing it – thus making sure it is all good and giving you warnings and errors otherwise. Not only will your editor show the errors - but the browser console will as well.</p>
 <p>From here on <strong>all assignments</strong> will all use eslint and you can customize it per project as you need.  Adhering to a code style will at first seem annoying, but over time, you will grow to appreciate the linting rules as they keep you from making mistakes. This is also pretty much industry standard.</p>
 <div class="heading-block h2-block"><h2>SASS with Vite</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/sass-1767548419532.png" alt="sass.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/sass-1767548419532.png" alt="sass.png"></figure>
 <p>Vite comes with built-in <a href="http://sass-lang.com/guide">SASS</a> support! SASS is a bit nicer than vanilla css - and demonstrates some of the power of using a builder/packager like Vite.</p>
 <p>🚀 Does this mean we need to npm install something? Yup!</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -D sass</code></pre></div>
@@ -702,9 +718,9 @@ html {
 <p>You got it! Try changing your <code>style.scss</code> file – you should see changes as soon as you hit save, but your counter doesn’t restart!</p>
 <p>On the terminal, you’ll see anytime you change your project files that Vite recompiles/hot reloads automatically - and in your browser console log as well.</p>
 <div class="heading-block h2-block"><h2>Image Files</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/compiler-bot-1767548419532.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/compiler-bot-1767548419532.gif" alt="" style="width: 304px" width="304"></figure>
 <p>Ok, so now Vite understands html, js, sass, and css. But what if we want to include an image? Vite handles image files out of the box, no configuration necessary.  </p>
-<p>🚀 Try adding an image to your <code>src/img</code> folder maybe, and then showing it in the logo div. </p>
+<p>🚀 Try adding an image to a&nbsp;<code>src/img</code> folder, and then showing it in the logo div. </p>
 <p>In your <code>style.scss</code> file, add:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-css">.logo {
   background-image: url('img/MYIMAGE.jpg');
@@ -716,7 +732,7 @@ html {
 <p>Yeah, can you see it?</p>
 <p>⚠️&nbsp;<em>Always make sure your file naming is case sensitive - don’t name a file <code>MyImage.jpg</code> and then reference with as <code>myimage.jpg</code>. That might work on your personal computer but it won’t work on the internet where most machines are linux and are case-sensitive.</em></p>
 <div class="heading-block h2-block"><h2>AutoPrefixing!</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/autoprefix-1767548419532.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/autoprefix-1767548419532.gif" alt="" style="width: 416px" width="416"></figure>
 <p>As you’ve been playing with CSS you’ve probably noticed the internet mentioning vendor prefixes such as:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">CSS</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span></div><pre><code class="language-css">-webkit-transition: all 4s ease;
 -moz-transition: all 4s ease;
@@ -742,7 +758,7 @@ export default defineConfig({
   text-size-adjust: 100%;
 }</code></pre></div></div>
 <p>and then look to see if you can see the prefixed versioned in your devtools. Yay!</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.35.33 PM.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.35.33 PM.png"></figure>
 <div class="heading-block h2-block"><h2>Project Structure</h2></div>
 <p>At this point your project structure should look something like:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">.eslintrc.json
@@ -758,7 +774,7 @@ src/
     style.scss
 vite.config.js</code></pre></div></div>
 <div class="heading-block h2-block"><h2>Deployment</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/deploy-1767548419532.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/deploy-1767548419532.gif" alt=""></figure>
 <p>How would you <a href="https://vitejs.dev/guide/static-deploy.html">deploy a Vite setup such as this</a>?</p>
 <p>We’re prepping this to be our SPA (single-page-app) starter pack, and unfortunately, GitHub Pages doesn’t have good SPA support. So we’re going to be using another service to host our pages. Super easy though.</p>
 <div class="heading-block h3-block"><h3>Test Build</h3></div>
@@ -772,18 +788,18 @@ vite.config.js</code></pre></div></div>
 <p>🚀 Now git <code>add</code>, <code>commit</code>, <code>push</code> all the code that is currently in your <code>main</code> branch to your <code>origin main</code> branch. You should now have: <code>main</code> branch with <code>/src</code> and all your vite and package files. We won’t be using ghpages for this, so all your source code will simply be in a <code>main</code> branch.</p>
 <div class="heading-block h3-block"><h3><a href="http://Render.com">Render.com</a></h3></div>
 <p><a href="https://vitejs.dev/guide/static-deploy.html#render">(official Vite+render docs)</a></p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/untitled-1767548419532.png" alt="Untitled">
-<ol start="1"><li>Create account / Use GitHub to sign in</li><li>New → Static Site</li><li>Connect Github</li><li>dartmouth-cs52-TERM/</li><li>Set it to deploy your <code>main</code> branch, use <code>npm install &amp;&amp; npm run build</code> as the build setting and <code>dist</code> as the build folder.</li><li>and Deploy - it will automatically update when you push new changes to GitHub</li></ol>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/untitled-1767548419532.png" alt="Untitled" style="width: 352px" width="352"></figure>
+<ol start="1"><li>Create account / Use GitHub to sign in</li><li>New → Static Site</li><li>Connect Github</li><li>dartmouth-cs52/</li><li>Set it to deploy your <code>main</code> branch, use <code>npm install &amp;&amp; npm run build</code> as the build setting and <code>dist</code> as the build folder.</li><li>and Deploy - it will automatically update when you push new changes to GitHub</li></ol>
 <div class="heading-block h2-block"><h2>Release Version</h2></div>
 <p>🐙 Before we finish let’s tag our repo so that there is a <em>release version</em> associated with our starterpack. This is convenient so you can keep track of how your starterpack progresses and for us to grade as well.</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-powershell">git tag starterpack.v1
 git push origin --tags</code></pre></div></div>
 <p>Now on github you can look at official releases of your startpack! So official. ⚠️&nbsp;<em>Note: you have to push commit and push code and <code>--tags</code> separately, so don’t assume that because you tagged something that it was also pushed to the remote!</em></p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/record-1767548419532.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/record-1767548419532.gif" alt="" style="width: 470px" width="470"></figure>
 <div class="heading-block h2-block"><h2>A word about debugging</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/debugging-code-1767548419532.gif" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/debugging-code-1767548419532.gif" alt="" style="width: 480px" width="480"></figure>
 <p>As always, you should use Chrome Dev Tools with the console as the first line of defense. Checking for errors there is the first thing you should look for. You can also use breakpoints. The recommended method is to use DevTools and click the line number in your source code to add a breakpoint. Because of Vite’s magic all sources end up in <em>(Sources -&gt; localhost:xxx . -&gt; src)</em></p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.43.01 PM.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa2-frontend-starterpack-with-vite-short-assignment/assets/screenshot-2023-04-10-at-9-1767548419532.png" alt="Screenshot 2023-04-10 at 9.43.01 PM.png"></figure>
 <p>You can also use the statement <code>debugger;</code> in your code, but that is somewhat frowned upon as you might forget and leave one in a piece of code that doesn’t get executed often — causing mayhem for yourself later.</p>
 <div class="heading-block h2-block"><h2>Frontend Starter Pack is ready to go!</h2></div>
 <p>You now have a nicely set up starter pack that you can use for all your cool projects. We will use this in most of the future assignments and build up on it too, so it is worth getting this all working.</p>
