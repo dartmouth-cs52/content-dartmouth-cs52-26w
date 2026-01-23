@@ -302,7 +302,6 @@
       "deployment",
       "more-javascript",
       "intro-to-react",
-      "intro-to-web-frameworks",
       "wrap-up",
       "authentication-and-authorization",
       "rest",
@@ -310,7 +309,8 @@
       "state-management",
       "routing",
       "immutability-and-services",
-      "intro-to-frontend-testing"
+      "intro-to-frontend-testing",
+      "intro-to-web-frameworks"
     ]
   }
 }
