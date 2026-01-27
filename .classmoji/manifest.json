@@ -88,20 +88,20 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "landing-page-part-1": {
-          "pages": [
-            "lab-1-part-1-build-a-landing-page-html"
-          ],
-          "slides": [
-            "html"
-          ]
-        },
         "landing-page-part-2": {
           "pages": [
             "lab-1-part-2-build-a-landing-page-css"
           ],
           "slides": [
             "css"
+          ]
+        },
+        "landing-page-part-1": {
+          "pages": [
+            "lab-1-part-1-build-a-landing-page-html"
+          ],
+          "slides": [
+            "html"
           ]
         }
       }
@@ -173,20 +173,6 @@
         }
       }
     },
-    "pre-project": {
-      "pages": [],
-      "slides": [],
-      "assignments": {
-        "pitch": {
-          "pages": [
-            "project-0-pitch-ideas"
-          ],
-          "slides": [
-            "project-intro"
-          ]
-        }
-      }
-    },
     "project": {
       "pages": [
         "projects"
@@ -246,15 +232,15 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "react-intro": {
-          "pages": [
-            "sa3-intro-react-short-assignment"
-          ],
-          "slides": []
-        },
         "state-management-part-2-refactor-videos": {
           "pages": [
             "sa-state-management-short-assignment"
+          ],
+          "slides": []
+        },
+        "react-intro": {
+          "pages": [
+            "sa3-intro-react-short-assignment"
           ],
           "slides": []
         }
@@ -290,7 +276,8 @@
       "intro-to-cypress-and-web-testing",
       "dartmouth-cs52",
       "logistics",
-      "lab-2-v2-build-a-buzzfeed-quiz"
+      "lab-2-v2-build-a-buzzfeed-quiz",
+      "project-0-pitch-ideas"
     ],
     "slides": [
       "welcome",
@@ -300,6 +287,7 @@
       "asynchronous-javascript",
       "javascript-intro",
       "deployment",
+      "project-intro",
       "more-javascript",
       "intro-to-react",
       "wrap-up",
