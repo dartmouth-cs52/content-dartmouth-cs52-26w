@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -442,7 +462,7 @@
   </style>
 </head>
 <body>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/react-logo-1767548392745.png" alt="">
+<figure class="image-block image-align-center"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/react-logo-1767548392745.png" alt="" style="width: 426px" width="426" data-align="center"></figure>
 <div class="heading-block h2-block"><h2>Overview</h2></div>
 <p>Today we’ll be learning about <a href="https://facebook.github.io/react/">React</a>! So far you’ve been using html and css to build static sites. Sites that do not have much going on in terms of content that changes. React is a javascript frontend framework for making dynamic sites. In this workshop we will build a video chooser. We will also work with the vite+babel+eslint starter code that you worked on in the previous short assignment.</p>
 <div class="heading-block h1-block"><h1>StarterPack React Update</h1></div>
@@ -516,13 +536,13 @@ remote: https://github.com/dartmouth-cs52-TERM/GITUSERNAME-starterpack/pull/new/
 <div class="heading-block h1-block"><h1>Video Search App</h1></div>
 <p>Let’s build something a little more complicated with multiple components.</p>
 <p>Here’s a mockup of our soon to be amazing app:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/app-design-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/app-design-1767548392746.png" alt=""></figure>
 <p>This web app will search the YouTube api and list the top results as well as have one select video from the list highlighted with a video embed as well as some of the description and more data about the video.</p>
 <p>What components do you think compose this app?</p>
 <div class="heading-block h3-block"><h3>Components</h3></div>
 <p>A component is a logical unit that packages up some functionality or some part of the display that can potentially be reused. React is basically just a tree of components. 🌴</p>
 <p>Let’s break up our app into some components.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/app-components-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/app-components-1767548392746.png" alt=""></figure>
 <p>Here we have identified a few components:</p>
 <ul><li>Main App: this is the top level component. In the future we might call such a component a <strong>container</strong>, as it only has custom child components in it, not html components.</li><li>Search Bar: this is the search bar at the top</li><li>Video Detail: the highlight larger video display</li><li>Video List: the list of videos found</li><li>Video List Item: an item in the list of videos</li></ul>
 <div class="heading-block h2-block"><h2>To Start</h2></div>
@@ -573,7 +593,7 @@ export default App;</code></pre></div></div>
 <p>We defined a new React component <code>SearchBar</code> and imported and added it to the main App render function. Note for multiline JSX we put it all in <code>()</code> for easier legibility.</p>
 <p>Remember that this is a tree — React expects a component to be <strong>one</strong> top level element. You can also return an array of elements/components but not in your top level React App container.</p>
 <p>This is the tree that we are growing:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/video-tree-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/video-tree-1767548392746.png" alt=""></figure>
 <p>Great, now you should see a search bar on your page.</p>
 <div class="heading-block h2-block"><h2>Functional + Hooks vs Class Components</h2></div>
 <p>So far we’ve made 2 components and they have both been very simple, just a simple function that returns some <em>JSX</em>.  Earlier React best practice was to use Class components in cases when a component started to get complicated with state.  However, there has been an attempt to simplify with a concept called hooks.  Here we will show a Class component based structure but we will do our implementation with hooks. </p>
@@ -592,7 +612,7 @@ return (
 );</code></pre></div></div>
 <p>We’ve created a function <code>onInputChange</code> which we are registering as a callback for the builtin <code>onChange</code> event on the input element.</p>
 <p>🚀&nbsp;Try it out</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/oninput-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/oninput-1767548392746.png" alt=""></figure>
 <p>Great, it works. 🙌</p>
 <div class="heading-block h2-block"><h2>useState Hook</h2></div>
 <p>Each React component can have it’s own internal state which is used to react to and track events. Whenever this state changes React re-renders the component! </p>
@@ -624,7 +644,7 @@ setSearchTerm(event.target.value);</code></pre></div></div>
   &lt;/div&gt;
 );</code></pre></div></div>
 <p>Now you have something like this:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/state-value-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/state-value-1767548392746.png" alt=""></figure>
 <p>Nice! 🌟</p>
 <div class="heading-block h2-block"><h2>Controlled/Driven Input Field</h2></div>
 <p>Great, we’re now updating some random text on the page.</p>
@@ -680,7 +700,7 @@ export default youtubeSearch;</code></pre></div></div>
   console.log(videos);
 });</code></pre></div></div>
 <p>We’re just console logging the response, open up inspector to examine!</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/youtube-results-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/youtube-results-1767548392746.png" alt=""></figure>
 <p>Cool!</p>
 <p><em>Note: In the above you may have noticed we used a <code>.then</code> that is the syntax for calling a <code>Promise</code>. <a href="https://www.digitalocean.com/community/tutorials/understanding-javascript-promises">Promises</a> are a way of dealing with asynchronous callbacks in a more elegant fashion.</em></p>
 <div class="heading-block h2-block"><h2>Results and State</h2></div>
@@ -753,7 +773,7 @@ const VideoList = (props) =&gt; {
 export default VideoList;</code></pre></div></div>
 <p>Note: how props are passed into this functional component as an argument. These are the props from the parent, which in our case is <em>App</em> passign down the list of video objects.</p>
 <p>Are you getting console log errors?</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/key-error-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/key-error-1767548392746.png" alt=""></figure>
 <p>This is because React needs each component in a list to have a <code>key</code> property. If you click on an element React needs to have more information about that element, which it is in the list etc and it uses the unique identifier key property to do so.</p>
 <p>But, since we were just testing let’s fix this when we create the <em>VideoListItem</em> component. But <strong>do</strong> fix this generally when you see it — key errors will have points taken off. <strong>Keys must be <a href="https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js#answer-43892905">unique and unchanging ids</a> associated with every component that is in a list</strong> — that is whenever you have react elements that are siblings. Lots of weirdness can happen when keys are not set or not set correctly, list items won’t appear in the right order, some may not display, or they may not update.</p>
 <div class="heading-block h2-block"><h2>VideoListItem</h2></div>
@@ -809,7 +829,7 @@ import VideoDetail from './components/video_detail';
 &lt;VideoDetail video={selectedVideo} /&gt;;
 // finally selectedVideo comes into play!</code></pre></div></div>
 <p>Take a look at your page, what is happening? Oh wait, it’s crashing! Why?</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/sa3-error-1-1767548392746.png" alt="sa3-error-1.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/sa3-error-1-1767548392746.png" alt="sa3-error-1.png"></figure>
 <p>Hmm, looks like for some reason <code>video</code> is undefined!</p>
 <p>This is because <code>videos[0]</code> which we are using for the state of <code>selectedVideo</code> is actually undefined for a little bit of time when we first load the page. WHAT?!</p>
 <p>The videos array is empty (initialized that way by us) until the API request to youtube completes, but that takes a few milliseconds at least. In the meantime, React just goes and renders all the components right away. As soon as the state changes, it will re-render with all the data there, but for a brief moment the data isn’t there yet.</p>
@@ -825,7 +845,7 @@ if (!video) {
 <p>In our case <em>VideoListItem</em> needs to be clickable. We want the user to be able to click on it to select it and then show that video in the <em>VideoDetail</em> view. How should we structure this?</p>
 <p>This is where a tricky part of React comes in. It is a tiny bit tricky to pass an event from one component to another. We want the <em>onClick</em> event in <em>VideoListItem</em> to trigger a change in the state of the top level <em>App</em> component. That is, we want to change the state <code>selectedVideo</code> in <code>app.jsx</code>.</p>
 <p>So far what we’ve been doing is implementing downwards data flow. Our toplevel component is the one that knows about videos and passes that data onto its children. What we want to do now is pass events or actions back up the chain. When there is an event in one of the child components that other components need to be aware of we would pass that event upwards to the parent, and then back downwards to any component that ‘needs to know’.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/down-data-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/down-data-1767548392746.png" alt=""></figure>
 <p>Solution! We create a callback function in the parent and pass it down to the children in <code>props</code>! We’re just passing a function around, we know how to do that.</p>
 <p>🚀 Let’s change where we instantiate <em>VideoList</em> in <code>app.jsx</code> and pass in a callback function. It can even be an anonymous function. Another great use for arrow functions!</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span></div><pre><code class="language-javascript">&lt;VideoList
@@ -937,7 +957,7 @@ body {
 <div class="heading-block h2-block"><h2>Debugging</h2></div>
 <p>🚀 You&nbsp;<strong>MUST install</strong>:&nbsp;<a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a></p>
 <p>This adds a tab to your Chrome Dev Tools which allows you to inspect state in your React app and more!</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/react-dev-tools-1767548392746.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/react-dev-tools-1767548392746.png" alt=""></figure>
 <div class="heading-block h2-block"><h2>Git</h2></div>
 <p>Now don’t forget to git add, commit, and push to <code>origin main</code></p>
 <p>Since this is just the beginning of our codes, for this one we were just working in the <code>main</code> branch. </p>
