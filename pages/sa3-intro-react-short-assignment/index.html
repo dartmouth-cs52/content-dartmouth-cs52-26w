@@ -464,7 +464,34 @@
 <body>
 <figure class="image-block image-align-center"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/react-logo-1767548392745.png" alt="" style="width: 426px" width="426" data-align="center"></figure>
 <div class="heading-block h2-block"><h2>Overview</h2></div>
-<p>Today we’ll be learning about <a href="https://facebook.github.io/react/">React</a>! So far you’ve been using html and css to build static sites. Sites that do not have much going on in terms of content that changes. React is a javascript frontend framework for making dynamic sites. In this workshop we will build a video chooser. We will also work with the vite+babel+eslint starter code that you worked on in the previous short assignment.</p>
+<p>Today we'll be learning about <a href="https://facebook.github.io/react/">React</a>! So far you've been using html and css to build static sites. Sites that do not have much going on in terms of content that changes. React is a javascript frontend framework for making dynamic sites. In this workshop we will build a media search app that queries an API and displays results. We will also work with the vite+babel+eslint starter code that you worked on in the previous short assignment.</p>
+<div class="heading-block h2-block"><h2>Choose Your API</h2></div>
+<p>For this assignment, you'll pick an API to build your search app around. The tutorial uses YouTube as the example, but you are encouraged to choose something different! Here are some great options:</p>
+<div class="heading-block h3-block"><h3>No API Key Required</h3></div>
+<p>These APIs are the easiest to get started with - no signup needed:</p>
+<ul>
+<li><strong><a href="https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html">iTunes Search API</a></strong> - Search music, movies, podcasts, audiobooks. Returns album art, previews, and descriptions. ~20 requests/minute limit.</li>
+<li><strong><a href="https://openlibrary.org/developers/api">Open Library API</a></strong> - Search millions of books. Returns covers, authors, publish dates, and descriptions.</li>
+<li><strong><a href="https://pokeapi.co/docs/v2">PokeAPI</a></strong> - All Pokemon data you could want. Images, stats, abilities, evolutions. Fun and well-documented.</li>
+<li><strong><a href="https://rickandmortyapi.com/documentation/">Rick and Morty API</a></strong> - Characters, locations, and episodes from the show. Great images and data. 10,000 requests/day.</li>
+<li><strong><a href="https://www.artic.edu/open-access/public-api">Art Institute of Chicago API</a></strong> - Search 50,000+ artworks. High-quality images, artist info, and descriptions. All public domain.</li>
+<li><strong><a href="https://dog.ceo/dog-api/documentation/">Dog CEO API</a></strong> - 20,000+ images across 120+ dog breeds. Random dogs, breed-specific searches, and sub-breeds.</li>
+<li><strong><a href="https://github.com/Zmalski/NHL-API-Reference">NHL Web API</a></strong> - Official (unofficial) hockey API. Teams, players, stats, schedules. No key needed.</li>
+<li><strong><a href="https://open-meteo.com/">Open-Meteo</a></strong> - Weather forecasts, temperature, precipitation, wind. Location-based (not search-based) - a different but rewarding challenge. No key needed.</li>
+</ul>
+<div class="heading-block h3-block"><h3>Simple API Key (Free Tier)</h3></div>
+<p>These require a quick signup to get an API key, but have generous free tiers:</p>
+<ul>
+<li><strong><a href="https://developers.google.com/youtube/v3">YouTube Data API</a></strong> - The example used in this tutorial. Search videos, get thumbnails, embed players.</li>
+<li><strong><a href="https://developers.giphy.com/docs/api/">Giphy API</a></strong> - Search GIFs and stickers. Easy to embed, fun results. 100 requests/hour on free tier.</li>
+<li><strong><a href="https://developer.themoviedb.org/docs/getting-started">TMDB (The Movie Database)</a></strong> - Search movies and TV shows. Posters, cast, ratings, trailers. Very rich data.</li>
+<li><strong><a href="https://www.pexels.com/api/">Pexels API</a></strong> - Beautiful stock photos and videos. 200 requests/hour, 20,000/month free.</li>
+<li><strong><a href="https://pixabay.com/api/docs/">Pixabay API</a></strong> - 1.9 million free photos, illustrations, and videos. Unlimited requests.</li>
+<li><strong><a href="https://api.nasa.gov/">NASA APIs</a></strong> - Astronomy Picture of the Day, Mars rover photos, Earth imagery. Educational and stunning visuals.</li>
+<li><strong><a href="https://developer.vimeo.com/">Vimeo API</a></strong> - Search and embed videos. Similar to YouTube but different content library. OAuth 2.0 authentication.</li>
+<li><strong><a href="https://docs.thecatapi.com/">The Cat API</a></strong> - Thousands of cat images, breed info, and cat facts. 10,000 requests/month free.</li>
+</ul>
+<p>Pick one that interests you! The core React concepts (components, state, props, effects) work the same regardless of which API you choose. The tutorial will walk through YouTube, but you should adapt the code to your chosen API.</p>
 <div class="heading-block h1-block"><h1>StarterPack React Update</h1></div>
 <p>First we are going to update our starterpack</p>
 <p>🚀&nbsp;reclone or simply <code>cd</code> into the directory with your previous starterpack</p>
@@ -481,7 +508,6 @@
     "rules": {
         "react/jsx-uses-react": 2,
         "react/jsx-uses-vars": 2,
-        "react/react-in-jsx-scope": 2,
         "react/prop-types": 0,
         "react/destructuring-assignment": 0,
         "react/jsx-first-prop-new-line": 0,
@@ -553,11 +579,12 @@ remote: https://github.com/dartmouth-cs52-TERM/GITUSERNAME-starterpack/pull/new/
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">
 git remote add starter git@github.com:dartmouth-cs52-CURRENT_TERM/frontend-starterpack-YOUR-GITHUB-USERNAME.git
 # might be easiest to grab the git url from github directly :-)
-git pull starter main *--allow-unrelated-histories*</code></pre></div>
+git pull starter main --allow-unrelated-histories</code></pre></div>
 <p>What just happened? You merged in the git tree from another repo (the remote we named starter) into your own! Hopefully you’ll build on your starter repo and use it for lots of projects.</p>
 <p>⚠️  <em>What are you doing here is a bit unorthodox, we are merging two unrelated git repositories together.  Without the <code>--allow-unrelated-histories</code> flag you would get an error about unrelated histories.  If it complains about un-merged files but there aren’t any conflicts you may need to: <code>git add</code> those files and then <code>git commit</code>. What is cool here is that we’re avoiding copy/pasting all those files in and in theory could update the starter and then pull in the changes here later as well.</em></p>
 <p>❗&nbsp;If you get merge conflicts during any of this and you may, now is a good chance to <a href="https://www.freecodecamp.org/news/resolve-merge-conflicts-in-git-a-practical-guide/">learn to resolve them</a>.  </p>
-<p>🚀 Let’s make a folder and start empty files for these:</p>
+<p>🌿&nbsp;<strong>Feature Branches:</strong> As you work on this assignment, use feature branches and pull requests - even when working alone! This is good practice for team projects and keeps your <code>main</code> branch clean. At least one feature branch + PR is required, but you can organize your work however you like (one branch for everything, or multiple smaller branches). Also, when you're working with an AI assistant, think of it like a coworker - you'll want to commit regularly so you can track when features were added and by whom.</p>
+<p>🚀 Let's make a folder and start empty files for these:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">mkdir src/components
 cd src/components
 touch search_bar.jsx video_detail.jsx video_list.jsx video_list_item.jsx</code></pre></div>
@@ -958,16 +985,17 @@ body {
 <p>🚀 You&nbsp;<strong>MUST install</strong>:&nbsp;<a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a></p>
 <p>This adds a tab to your Chrome Dev Tools which allows you to inspect state in your React app and more!</p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa3-intro-react-short-assignment/assets/react-dev-tools-1767548392746.png" alt=""></figure>
-<div class="heading-block h2-block"><h2>Git</h2></div>
-<p>Now don’t forget to git add, commit, and push to <code>origin main</code></p>
-<p>Since this is just the beginning of our codes, for this one we were just working in the <code>main</code> branch. </p>
+<div class="heading-block h2-block"><h2>Git &amp; Pull Request</h2></div>
+<p>🚀&nbsp;Make sure all your work is committed and pushed to your feature branch(es).</p>
+<p>🚀&nbsp;Create a Pull Request on GitHub to merge your work into <code>main</code>. Give it a descriptive title and summary.</p>
+<p>🚀&nbsp;Merge your PR! Get in the habit of always using feature branches and PRs, even when working solo.</p>
 <div class="heading-block h2-block"><h2>Deployment</h2></div>
 <p>And don’t forget to set up your <a href="http://render.com">render.com</a> deployment!</p>
 <div class="heading-block h2-block"><h2>To Turn In</h2></div>
 <ul><li>👉&nbsp;The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>🙏&nbsp;In your comment please include:<ul><li><strong>link to deployed hosted version of the page (render.com)</strong></li><li>brief summary of what worked and what didn’t</li><li>remember you must cite external sources when you include other people’s code, chatGPT, etc</li></ul></li></ul>
 <ol start="1"><li>Your App should have the following working:<ul><li>search, with new videos loading</li><li>clicking on a list item changes state and the main detail view</li><li>js is linted without errors</li><li>video in the detail view is playable</li></ul></li><li>A short answer response in your submission github comment to:<ul><li>describe what you think React is and how you can imagine using it?</li><li>any questions about what/why/how that you feel are unresolved?</li></ul></li></ol>
 <div class="heading-block h2-block"><h2>Extra Credit</h2></div>
-<ul><li>add in other video / media sources such as vimeo, giphy, etc</li><li>pull in the weather or other data sources</li><li>write your own debounce function</li></ul>
+<ul><li>add a second API source alongside your primary one (e.g., search both YouTube and Giphy simultaneously)</li><li>implement pagination or infinite scroll for your results</li><li>add localStorage to save favorites that persist across page reloads</li><li>write your own debounce function instead of using lodash</li><li>integrate AI image generation (Gemini or OpenAI) to generate images based on search terms</li></ul>
 <p><a href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAxNiIgdmVyc2lvbj0iMS4xIj48cGF0aCBmaWxsPSJyZ2IoMTc5LDE3OSwxNzkpIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDEwLjVMOSAxNEg1bDEtMy41TDUuMjUgOWgzLjVMOCAxMC41ek0xMCA2SDRMMiA3aDEwbC0yLTF6TTkgMkw3IDMgNSAyIDQgNWg2TDkgMnptNC4wMyA3Ljc1TDEwIDlsMSAyLTIgM2gzLjIyYy40NSAwIC44Ni0uMzEuOTctLjc1bC41Ni0yLjI4Yy4xNC0uNTMtLjE5LTEuMDgtLjcyLTEuMjJ6TTQgOWwtMy4wMy43NWMtLjUzLjE0LS44Ni42OS0uNzIgMS4yMmwuNTYgMi4yOGMuMTEuNDQuNTIuNzUuOTcuNzVINWwtMi0zIDEtMnoiPjwvcGF0aD48L3N2Zz4="></a></p>
 </body>
 </html>
