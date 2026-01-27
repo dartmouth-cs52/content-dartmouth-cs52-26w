@@ -317,7 +317,8 @@ removing this example for now
 </div></div>
 <div class="sl-block" data-block-type="text" data-name="text-69beea" data-block-id="ff0162187b8f36b23d870f4b8d80c166" style="height: auto; width: 600px; left: 180px; top: 120.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p>states for stateless / classless components</p></div></div>
 <div class="sl-block" data-block-type="image" data-name="image-48f00a" data-block-id="f1a8982f2286e65f06add616b1816c79" style="width: 806.4px; height: 349.212px; left: 73.6px; top: 175.394px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1531" data-natural-height="663" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-react-1768253051631/images/11e526170b7161ea678afeb7edff9f6d.png"></div></div>
-<div class="sl-block" data-block-type="text" data-name="text-9fc510" data-block-id="f65518cb50b0572f9f8d9dc299420c96" style="height: auto; width: 960px; left: 0px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>a bit of cheating on the purity of functions</p></div></div><aside class="notes">* confusing? yes a little - we'll get a better intuition as we go. </aside></section></section><section class="stack" data-id="6b1291d8b7fbff01c3e630fcee7fbb2c"><section data-id="d2b023bff48857e484a47bbab02750f6">
+<div class="sl-block" data-block-type="text" data-name="text-9fc510" data-block-id="f65518cb50b0572f9f8d9dc299420c96" style="height: auto; width: 960px; left: 0px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>a bit of cheating on the purity of functions</p></div></div><aside class="notes">* confusing? yes a little - we'll get a better intuition as we go. </aside></section></section>
+<section class="stack" data-id="6b1291d8b7fbff01c3e630fcee7fbb2c"><section data-id="d2b023bff48857e484a47bbab02750f6">
 
 <div class="sl-block" data-block-type="image" data-name="image-08217e" data-block-id="461fca58d3c7304066d8022a56470ad0" style="width: 663.924px; height: 616.699px; left: 148.038px; top: 83.301px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="717" data-natural-height="666" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-react-1768253051631/images/745d052ffe017f79e00a1ab08db1a8e4.png"></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="a4b8ef6bb9401452760af38e0ff3e744"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -1034,7 +1035,548 @@ setCount(prevCount =&gt; {return prevCount+1});
 </div>
 </div></div><aside class="notes">* what could go dreadfully wrong here?
 * silly example but see it a lot
-</aside></section></section><section class="stack" data-id="866ec1ba89158b59f67e7e9551087309"><section data-id="7e1613b419f7832965eeb80b9c6ffda6">
+</aside></section></section>
+
+
+<!-- REACT HOOKS VERTICAL STACK -->
+<section class="stack" data-id="hooks-deep-dive-stack">
+
+<!-- Hooks Title Slide -->
+<section data-id="hooks-title">
+<div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 200px; left: 80px; top: 250px;" data-block-id="hooks-title-box"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+<div class="title">React Hooks</div>
+<div class="logo-spacer">&nbsp;</div>
+</div>
+<div class="body">useState, useEffect, useCallback</div>
+</div>
+</div></div>
+</section>
+
+<!-- What are Hooks? -->
+<section data-id="hooks-what-are-they">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="hooks-what-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">what are hooks?</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-hooks-what" data-block-id="hooks-what-text" style="height: auto; width: 900px; left: 30px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color: rgb(58, 62, 64);">
+	<li><strong>special functions</strong> that let you "hook into" React features</li>
+	<li>give functional components <strong>superpowers</strong> (state, side effects, etc.)</li>
+	<li>all start with <code>use</code> prefix: useState, useEffect, useCallback...</li>
+	<li>replaced the need for class-based components in most cases</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-hooks-basic" data-block-id="hooks-basic-code" style="width: 700px; height: auto; left: 130px; top: 420px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 18px; line-height: 22px;"><code>// hooks give functional components memory and effects
+function Counter() {
+  const [count, setCount] = useState(0);  // memory!
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;   // side effect!
+  }, [count]);
+
+  return &lt;button onClick={() => setCount(count + 1)}&gt;{count}&lt;/button&gt;;
+}</code></pre></div></div></div>
+<aside class="notes">* hooks were introduced in React 16.8 (2019)
+* before hooks, you needed class components for state
+* now functional components can do everything
+* much cleaner, more composable code
+</aside>
+</section>
+
+<!-- useState: The Memory Hook -->
+<section data-id="hooks-usestate-concept">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="usestate-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useState: component memory</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-usestate-why" data-block-id="usestate-why-text" style="height: auto; width: 450px; left: 20px; top: 90px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong>Why regular variables don't work:</strong></p>
+<ul style="color: rgb(58, 62, 64); font-size: 0.85em;">
+	<li>local vars don't persist between renders</li>
+	<li>changing them doesn't trigger re-render</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-usestate-bad" data-block-id="usestate-bad-code" style="width: 440px; height: auto; left: 20px; top: 260px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// ❌ doesn't work!
+let index = 0;
+
+function handleClick() {
+  index = index + 1;
+  // React doesn't know to re-render
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-usestate-solution" data-block-id="usestate-solution-text" style="height: auto; width: 450px; left: 490px; top: 90px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong>useState provides:</strong></p>
+<ul style="color: rgb(58, 62, 64); font-size: 0.85em;">
+	<li>state variable that <em>persists</em> between renders</li>
+	<li>setter function that <em>triggers</em> re-render</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-usestate-good" data-block-id="usestate-good-code" style="width: 440px; height: auto; left: 490px; top: 260px;"><div class="sl-block-style" style="z-index: 14; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 14;" data-code-autoheight="true"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// ✅ works!
+const [index, setIndex] = useState(0);
+
+function handleClick() {
+  setIndex(index + 1);
+  // React re-renders component
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-usestate-anatomy" data-block-id="usestate-anatomy-code" style="width: 800px; height: auto; left: 80px; top: 470px;"><div class="sl-block-style" style="z-index: 15; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 15;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 20px;"><code>//  state variable    setter function    initial value
+//        ↓                 ↓                  ↓
+const [searchTerm, setSearchTerm] = useState('');</code></pre></div></div></div>
+<aside class="notes">* array destructuring syntax - returns [value, setter]
+* naming convention: [thing, setThing]
+* initial value only used on first render
+* can have multiple useState calls for different pieces of state
+</aside>
+</section>
+
+<!-- useState Interactive Example -->
+<section data-id="hooks-usestate-example">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="usestate-example-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useState in action</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="sandpack" style="left: 30px; top: 90px; width: 900px; height: 520px;" data-block-id="usestate-sandpack">
+<div class="sl-block-content">
+<div class="sandpack-embed" data-template="react" data-theme="light" data-layout="preview-right" data-show-line-numbers="true" data-visible-files='["/App.js"]'>
+<script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import { useState } from 'react';\n\nexport default function App() {\n  const [count, setCount] = useState(0);\n  const [name, setName] = useState('');\n\n  return (\n    <div style={{ padding: 20 }}>\n      <h2>useState Demo</h2>\n      \n      {/* Counter example */}\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n      <button onClick={() => setCount(0)}>\n        Reset\n      </button>\n      \n      <hr />\n      \n      {/* Input example */}\n      <input\n        value={name}\n        onChange={(e) => setName(e.target.value)}\n        placeholder=\"Type your name\"\n      />\n      <p>Hello, {name || 'stranger'}!</p>\n    </div>\n  );\n}"
+}
+</script>
+</div>
+</div>
+</div>
+<aside class="notes">* try changing the count, typing in the input
+* notice how each state is independent
+* the setter triggers a re-render, which calls the function again
+* useState returns the CURRENT value on each render
+</aside>
+</section>
+
+<!-- useEffect: Side Effects -->
+<section data-id="hooks-useeffect-concept">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="useeffect-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useEffect: side effects</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-useeffect-what" data-block-id="useeffect-what-text" style="height: auto; width: 900px; left: 30px; top: 85px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong>useEffect</strong> runs code <em>after</em> rendering to sync with external systems:</p>
+<ul style="color: rgb(58, 62, 64); font-size: 0.9em;">
+	<li>fetching data from APIs</li>
+	<li>setting up event listeners</li>
+	<li>updating document title</li>
+	<li>connecting to websockets, timers, etc.</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-useeffect-basic" data-block-id="useeffect-basic-code" style="width: 850px; height: auto; left: 55px; top: 340px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 20px;"><code>useEffect(() => {
+  // This code runs AFTER the component renders
+
+  async function fetchData() {
+    const response = await axios.get(`/api/search?q=${searchTerm}`);
+    setResults(response.data);
+  }
+
+  fetchData();
+
+}, [searchTerm]);  // <-- dependency array: re-run when searchTerm changes</code></pre></div></div></div>
+<aside class="notes">* effects are an "escape hatch" from React's pure rendering
+* they let you sync with things outside React
+* the dependency array is CRITICAL - tells React when to re-run
+* we'll look at dependency arrays next
+</aside>
+</section>
+
+<!-- useEffect: Dependency Arrays -->
+<section data-id="hooks-useeffect-deps">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="useeffect-deps-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useEffect: dependency arrays</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-deps-intro" data-block-id="deps-intro-text" style="height: auto; width: 900px; left: 30px; top: 80px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>The dependency array controls <strong>when</strong> your effect runs:</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-deps-examples" data-block-id="deps-examples-code" style="width: 900px; height: auto; left: 30px; top: 140px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 15px; line-height: 19px;"><code>// Runs after EVERY render (rarely needed, can cause loops!)
+useEffect(() => {
+  console.log('rendered!');
+});
+
+// Runs ONLY on mount (empty array = no dependencies)
+useEffect(() => {
+  console.log('component mounted!');
+}, []);
+
+// Runs on mount AND when searchTerm changes
+useEffect(() => {
+  console.log('searching for:', searchTerm);
+}, [searchTerm]);
+
+// Runs on mount AND when either value changes
+useEffect(() => {
+  console.log('filters changed');
+}, [searchTerm, category]);</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-deps-rule" data-block-id="deps-rule-text" style="height: auto; width: 900px; left: 30px; top: 530px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p style="background: #fff3cd; padding: 10px; border-radius: 8px;">⚠️ <strong>Rule:</strong> Include ALL values from component scope that the effect uses. ESLint will help!</p>
+</div></div>
+<aside class="notes">* empty array = run once on mount, like componentDidMount
+* with dependencies = run when those values change
+* no array = run every render (usually a bug!)
+* the linter helps catch missing dependencies
+</aside>
+</section>
+
+<!-- useEffect: Cleanup -->
+<section data-id="hooks-useeffect-cleanup">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="useeffect-cleanup-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useEffect: cleanup functions</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-cleanup-what" data-block-id="cleanup-what-text" style="height: auto; width: 900px; left: 30px; top: 85px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Return a function to <strong>clean up</strong> when component unmounts or before re-running:</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-cleanup-examples" data-block-id="cleanup-examples-code" style="width: 900px; height: auto; left: 30px; top: 145px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 15px; line-height: 19px;"><code>// Event listener cleanup
+useEffect(() => {
+  function handleScroll() { console.log(window.scrollY); }
+  window.addEventListener('scroll', handleScroll);
+
+  return () => window.removeEventListener('scroll', handleScroll);  // cleanup!
+}, []);
+
+// Timer cleanup
+useEffect(() => {
+  const timer = setInterval(() => console.log('tick'), 1000);
+
+  return () => clearInterval(timer);  // cleanup!
+}, []);
+
+// API fetch with race condition prevention
+useEffect(() => {
+  let ignore = false;
+
+  async function fetchData() {
+    const data = await fetch(`/api/user/${userId}`);
+    if (!ignore) setUser(data);  // only update if not stale
+  }
+  fetchData();
+
+  return () => { ignore = true; };  // cleanup: ignore stale responses
+}, [userId]);</code></pre></div></div></div>
+<aside class="notes">* cleanup runs BEFORE the effect runs again
+* also runs when component unmounts
+* critical for preventing memory leaks
+* the fetch example prevents updating state with stale data
+</aside>
+</section>
+
+<!-- useEffect Interactive Example -->
+<section data-id="hooks-useeffect-example">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="useeffect-example-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useEffect in action</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="sandpack" style="left: 30px; top: 90px; width: 900px; height: 520px;" data-block-id="useeffect-sandpack">
+<div class="sl-block-content">
+<div class="sandpack-embed" data-template="react" data-theme="light" data-layout="preview-right" data-show-line-numbers="true" data-show-console="true" data-visible-files='["/App.js"]'>
+<script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import { useState, useEffect } from 'react';\n\nexport default function App() {\n  const [count, setCount] = useState(0);\n  const [userId, setUserId] = useState(1);\n  const [user, setUser] = useState(null);\n  const [lastEffect, setLastEffect] = useState('');\n\n  // Effect 1: Runs when count changes\n  useEffect(() => {\n    console.log('Count effect ran! count =', count);\n    setLastEffect(`Count changed to ${count}`);\n  }, [count]);\n\n  // Effect 2: Fetch user data from JSONPlaceholder API\n  useEffect(() => {\n    let ignore = false;\n    setUser(null);\n    console.log('Fetching user', userId);\n    \n    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)\n      .then(res => res.json())\n      .then(data => {\n        if (!ignore) {\n          console.log('Got user:', data.name);\n          setUser(data);\n        }\n      });\n    \n    // Cleanup: ignore stale responses\n    return () => { ignore = true; };\n  }, [userId]);\n\n  return (\n    <div style={{ padding: 20 }}>\n      <h2>useEffect Demo</h2>\n      \n      <p>Count: {count}</p>\n      <button onClick={() => setCount(c => c + 1)}>+1</button>\n      \n      <hr />\n      \n      <p>User ID: {userId}</p>\n      <button onClick={() => setUserId(u => u < 10 ? u + 1 : 1)}>Next User</button>\n      <p>Loaded: {user ? user.name : 'loading...'}</p>\n      \n      <hr />\n      <p><em>Last effect: {lastEffect}</em></p>\n      <p><em>Open console to see effects run</em></p>\n    </div>\n  );\n}"
+}
+</script>
+</div>
+</div>
+</div>
+<aside class="notes">* watch the console as you click buttons
+* count effect only runs when count changes
+* user fetch effect only runs when userId changes
+* try clicking "Next User" rapidly - cleanup prevents stale updates
+* EXPLAIN ignore = true pattern:
+  - each effect run creates its own `ignore` variable (closure)
+  - when userId changes, cleanup runs FIRST, setting ignore = true for the OLD effect
+  - then the new effect starts with its own ignore = false
+  - if old fetch completes after new one started, it checks ignore and skips setUser
+  - prevents race condition where slower response overwrites correct data
+</aside>
+</section>
+
+<!-- useCallback: Memoizing Functions -->
+<section data-id="hooks-usecallback">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="usecallback-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">useCallback: memoizing functions</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-usecallback-what" data-block-id="usecallback-what-text" style="height: auto; width: 900px; left: 30px; top: 85px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong>useCallback</strong> caches a function so it's not recreated on every render:</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-usecallback-problem" data-block-id="usecallback-problem-code" style="width: 440px; height: auto; left: 20px; top: 150px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 13px; line-height: 17px;"><code>// ❌ new function every render
+function SearchBox({ onSearch }) {
+  const handleChange = (e) => {
+    onSearch(e.target.value);
+  };
+  // handleChange is recreated each time!
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-usecallback-solution" data-block-id="usecallback-solution-code" style="width: 480px; height: auto; left: 480px; top: 150px;"><div class="sl-block-style" style="z-index: 13; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 13;" data-code-autoheight="true"><pre class="javascript" style="font-size: 13px; line-height: 17px;"><code>// ✅ cached function
+function SearchBox({ onSearch }) {
+  const handleChange = useCallback((e) => {
+    onSearch(e.target.value);
+  }, [onSearch]); // only recreate if onSearch changes
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-usecallback-when" data-block-id="usecallback-when-text" style="height: auto; width: 900px; left: 30px; top: 340px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><strong>When to use useCallback:</strong></p>
+<ul style="color: rgb(58, 62, 64); font-size: 0.85em;">
+	<li>passing callbacks to optimized child components (wrapped in memo)</li>
+	<li>when function is a dependency of useEffect</li>
+	<li>with debounced functions (like in your short assignment!)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-usecallback-debounce" data-block-id="usecallback-debounce-code" style="width: 850px; height: auto; left: 55px; top: 500px;"><div class="sl-block-style" style="z-index: 15; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 15;" data-code-autoheight="true"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Debounced search - useCallback keeps the same debounced function!
+const debouncedSearch = useCallback(
+  debounce((term) => fetchResults(term), 300),
+  []  // empty deps = create once, never recreate
+);</code></pre></div></div></div>
+<aside class="notes">* functions are recreated on every render by default
+* useCallback returns the SAME function if deps haven't changed
+* critical for debounce - you need the SAME debounced function
+* otherwise each keystroke creates a new debounce timer!
+</aside>
+</section>
+
+<!-- How Hooks Work Under the Hood -->
+<section data-id="hooks-under-hood">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="hooks-hood-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">how hooks work under the hood</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-hooks-hood-intro" data-block-id="hooks-hood-intro-text" style="height: auto; width: 420px; left: 20px; top: 85px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>React stores hook values in an <strong>array</strong>, accessed by <strong>position</strong>:</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-hooks-hood" data-block-id="hooks-hood-code" style="width: 420px; height: auto; left: 20px; top: 155px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 12px; line-height: 15px;"><code>// Simplified - not real React!
+let hooks = [];   // values
+let idx = 0;      // cursor
+
+function useState(initial) {
+  const i = idx;
+  if (hooks[i] === undefined) {
+    hooks[i] = initial;
+  }
+  const setState = (val) => {
+    hooks[i] = val;
+    rerender();
+  };
+  idx++;
+  return [hooks[i], setState];
+}
+
+// Before each render: idx = 0</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-hooks-hood-example" data-block-id="hooks-hood-example-text" style="height: auto; width: 500px; left: 460px; top: 85px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong>Each render, hooks called in same order:</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-hooks-order" data-block-id="hooks-order-code" style="width: 480px; height: auto; left: 460px; top: 140px;"><div class="sl-block-style" style="z-index: 14; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 14;" data-code-autoheight="true"><pre class="javascript" style="font-size: 12px; line-height: 15px;"><code>function MyComponent() {
+  const [name, setName] = useState('');   // hooks[0]
+  const [age, setAge] = useState(0);      // hooks[1]
+  const [items, setItems] = useState([]); // hooks[2]
+}
+
+// Render 1:  hooks = ['', 0, []]
+//            idx:      0  1  2
+
+// Render 2:  hooks = ['', 0, []]  <- same order
+//            idx:      0  1  2      <- same values!
+
+// What if useState was in a condition that
+// doesn't run on render 2?
+//
+// Render 2:  [skip]  useState  useState
+//            idx:       0         1
+//            age gets ''! items gets 0! 💥</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-hooks-hood-why" data-block-id="hooks-hood-why-text" style="height: auto; width: 900px; left: 30px; top: 540px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p style="background: #e7f3ff; padding: 10px; border-radius: 8px;">💡 React finds hooks by <strong>call order</strong>, not by name. This is why hooks must always be called in the same order!</p>
+</div></div>
+<aside class="notes">* this is a simplified model but captures the essence
+* React keeps an array of hook values per component instance
+* each render, it resets the index to 0 and walks through hooks in order
+* useState at position 0 always gets hooks[0], position 1 gets hooks[1], etc.
+* if you put a hook in a conditional, sometimes it runs, sometimes it doesn't
+* this shifts all the indices and you get the WRONG state values
+* this is the fundamental reason for the "rules of hooks"
+</aside>
+</section>
+
+<!-- Rules of Hooks -->
+<section data-id="hooks-rules">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="rules-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">rules of hooks</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-rules" data-block-id="rules-text" style="height: auto; width: 900px; left: 30px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p style="font-size: 1.1em;"><strong>Two essential rules:</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-rule1-bad" data-block-id="rule1-bad-code" style="width: 440px; height: auto; left: 20px; top: 180px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 13px; line-height: 17px;"><code>// ❌ WRONG: hook inside condition
+if (loggedIn) {
+  const [user, setUser] = useState(null);
+}
+
+// ❌ WRONG: hook inside loop
+for (let i = 0; i < items.length; i++) {
+  useEffect(() => {});
+}
+
+// ❌ WRONG: hook in nested function
+function handleClick() {
+  const [clicked, setClicked] = useState(false);
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-rule1-good" data-block-id="rule1-good-code" style="width: 480px; height: auto; left: 480px; top: 180px;"><div class="sl-block-style" style="z-index: 13; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 13;" data-code-autoheight="true"><pre class="javascript" style="font-size: 13px; line-height: 17px;"><code>// ✅ CORRECT: hooks at top level
+function MyComponent() {
+  const [user, setUser] = useState(null);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // conditionals go INSIDE the hook
+    if (user) {
+      fetchUserData(user.id);
+    }
+  }, [user]);
+
+  // ...
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-rules-summary" data-block-id="rules-summary-text" style="height: auto; width: 900px; left: 30px; top: 480px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<ol style="color: rgb(58, 62, 64);">
+	<li><strong>Only call hooks at the top level</strong> — not in loops, conditions, or nested functions</li>
+	<li><strong>Only call hooks from React functions</strong> — components or custom hooks</li>
+</ol>
+<p style="margin-top: 15px; background: #d4edda; padding: 10px; border-radius: 8px;">💡 ESLint plugin <code>eslint-plugin-react-hooks</code> enforces these rules automatically!</p>
+</div></div>
+<aside class="notes">* WHY these rules exist:
+  - React doesn't use names to track hooks - it uses CALL ORDER
+  - internally React keeps an array of hook values per component
+  - on each render, it walks through hooks in order: hook 0, hook 1, hook 2...
+  - if a hook is inside an `if`, sometimes it runs, sometimes it doesn't
+  - this shifts the array and React gives you the wrong state!
+* EXAMPLE of what goes wrong:
+  - render 1: useState(name), useState(age) -> [name, age]
+  - render 2: if skips first useState -> useState(age) gets name's value!
+* the eslint plugin catches this at dev time - highly recommend installing it
+* "only from React functions" means no hooks in regular JS functions
+  - custom hooks (functions starting with "use") are fine
+</aside>
+</section>
+
+<!-- Hooks Summary -->
+<section data-id="hooks-summary">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-890bde" data-block-id="summary-header"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">hooks cheat sheet</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-summary-table" data-block-id="summary-table-text" style="height: auto; width: 920px; left: 20px; top: 90px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<table style="width: 100%; font-size: 0.75em; border-collapse: collapse;">
+<tr style="background: #e9ecef;">
+<th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">Hook</th>
+<th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">Purpose</th>
+<th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">Example Use Case</th>
+</tr>
+<tr>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><code>useState</code></td>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Component memory</td>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Form inputs, counters, toggles</td>
+</tr>
+<tr>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><code>useEffect</code></td>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Side effects after render</td>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;">API calls, event listeners, timers</td>
+</tr>
+<tr>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><code>useCallback</code></td>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Memoize functions</td>
+<td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Debounced handlers, stable callbacks</td>
+</tr>
+</table>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-summary-pattern" data-block-id="summary-pattern-code" style="width: 900px; height: auto; left: 30px; top: 320px;"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="none" style="z-index: 12;" data-code-autoheight="true"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Common pattern: search with API
+function SearchApp() {
+  const [query, setQuery] = useState('');           // track input
+  const [results, setResults] = useState([]);       // track results
+
+  const debouncedFetch = useCallback(               // stable debounced fn
+    debounce((q) => fetchResults(q).then(setResults), 300),
+    []
+  );
+
+  useEffect(() => {                                 // trigger on query change
+    if (query) debouncedFetch(query);
+  }, [query, debouncedFetch]);
+
+  return /* JSX */;
+}</code></pre></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-summary-docs" data-block-id="summary-docs-text" style="height: auto; width: 900px; left: 30px; top: 580px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>📚 More hooks: <a href="https://react.dev/reference/react/hooks" target="_blank">react.dev/reference/react/hooks</a></p>
+</div></div>
+<aside class="notes">* this pattern is basically what you'll build in the short assignment
+* useState for tracking user input and results
+* useCallback for the debounced function
+* useEffect to trigger the fetch when query changes
+* react.dev has excellent documentation on all hooks
+</aside>
+</section>
+
+</section>
+<!-- END REACT HOOKS VERTICAL STACK -->
+
+
+<section class="stack" data-id="866ec1ba89158b59f67e7e9551087309"><section data-id="7e1613b419f7832965eeb80b9c6ffda6">
 <div class="sl-block" data-block-type="image" data-name="image-8becc3" data-block-id="5fff1cb2e29157d4db366cc49840fecc" style="width: 669.409px; height: 434px; left: 145.296px; top: 91px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="600" data-natural-height="389" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/intro-to-react-1768253051631/images/0895729c3724ced31d3c29814ec37564.png"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-bdb169" data-block-id="61ea08dcb1860a5591d1e58c9778f738" style="height: auto; width: 941.281px; left: 9.3595px; top: 564px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <ul style="color: rgb(58, 62, 64); --darkreader-inline-color: var(--darkreader-text-3a3e40, #c1bcb4);" data-darkreader-inline-color="">
