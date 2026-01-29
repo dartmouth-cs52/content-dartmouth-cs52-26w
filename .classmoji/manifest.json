@@ -179,21 +179,15 @@
       ],
       "slides": [],
       "assignments": {
-        "project-7-final-project-submission": {
-          "pages": [
-            "project-7-final-project-submission"
-          ],
-          "slides": []
-        },
         "project-4-scaffolding": {
           "pages": [
             "project-4-scaffolding"
           ],
           "slides": []
         },
-        "project-1-first-team-meeting-worksheet": {
+        "project-7-final-project-submission": {
           "pages": [
-            "project-1-first-team-meeting"
+            "project-7-final-project-submission"
           ],
           "slides": []
         },
@@ -218,6 +212,12 @@
         "project-2-feature-spec": {
           "pages": [
             "project-2-feature-spec"
+          ],
+          "slides": []
+        },
+        "project-1-first-team-meeting-worksheet": {
+          "pages": [
+            "project-1-first-team-meeting"
           ],
           "slides": []
         }
