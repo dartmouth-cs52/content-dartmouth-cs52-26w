@@ -484,23 +484,12 @@
 <div class="heading-block h3-block"><h3>babel</h3></div>
 <p>All set - Vite takes care of us.</p>
 <div class="heading-block h3-block"><h3>eslint</h3></div>
-<p>Let’s modify your <code>.eslint.config.js</code> to add in some React support.</p>
-<p>🚀 Change your <code>eslint.config.js</code> file. Here we only show the things to <strong>add</strong> or <strong>update</strong>. Do not delete any existing lines just add the following in the right locations:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-json">{
-    "rules": {
-        "react/jsx-uses-react": 2,
-        "react/jsx-uses-vars": 2,
-        "react/prop-types": 0,
-        "react/destructuring-assignment": 0,
-        "react/jsx-first-prop-new-line": 0,
-        "react/jsx-filename-extension": 0,
-        "jsx-a11y/click-events-have-key-events": 0,
-        "jsx-a11y/no-noninteractive-element-interactions": 0,
-        "react/jsx-one-expression-per-line":0
-    },
-    "plugins": [
-        "react"
-    ]</code></pre></div></div>
+<p>Your starterpack already has React linting configured. You may want to add these rule overrides to the <code>rules</code> object in your <code>eslint.config.js</code>:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">// add to the rules: { } section
+'react/destructuring-assignment': 'off',
+'react/jsx-one-expression-per-line': 'off',
+'jsx-a11y/click-events-have-key-events': 'off',
+'jsx-a11y/no-noninteractive-element-interactions': 'off',</code></pre></div></div>
 <div class="heading-block h3-block"><h3>Get at those Dependencies</h3></div>
 <p>🚀 Let’s just take care of all our dependencies up front so we can just dig into all of the codes without distraction. </p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install lodash.debounce @vitejs/plugin-react react react-dom react-router axios</code></pre></div>
