@@ -119,13 +119,15 @@
       }
     },
     "lab3-react-notes": {
-      "pages": [],
+      "pages": [
+        "prelab-3-react-notes",
+        "lab-3-react-notes"
+      ],
       "slides": [],
       "assignments": {
         "react-notes-part-2": {
           "pages": [
-            "lab-3-react-notes",
-            "lab-5-platform-api"
+            "lab-3-react-notes"
           ],
           "slides": []
         },
