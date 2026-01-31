@@ -471,7 +471,7 @@
 <p>Then we will add in Firebase for persistent storage. Firebase is a backend as a service (BAAS). It provides a simple JSON data store (<a href="https://firebase.google.com/docs/database/">Firebase Realtime Database</a>) that has some nice realtime properties. You can subscribe to change events on collections of objects, this is perfect to use with React!</p>
 <p>This will involve a small bit of refactoring, but will demonstrate how you can prototype frontend and then add in server side later.</p>
 <p>In this version your notes will persist and will synchronize in real-time so multiple people can collaborate.</p>
-<div class="heading-block h2-block"><h2>Let’s Start</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Let’s Start</h2></div>
 <p>🚀 Assuming you did the pre-lab, then you have already started! </p>
 <p>If not then remember to use the repo provided for you by Classmoji.  Then you’ll pull in your vite+babel+eslint+(with the prior short react additions) starter code like so:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your project directory
@@ -479,11 +479,11 @@ git remote add starter your-starterpack-github-url
 git pull starter main --allow-unrelated-histories</code></pre></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
 npm install #to fetch all your package dependencies</code></pre></div>
-<div class="heading-block h2-block"><h2>The Workflow: Feature Branches + Plan Files</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">The Workflow: Feature Branches + Plan Files</h2></div>
 <p>For each feature you add:</p>
 <ol start="1"><li><strong>Create a feature branch</strong> (e.g., <code>git checkout -b add-notes</code>)</li><li><strong>Enter plan mode</strong> and create a plan for that feature</li><li><strong>Copy the plan file</strong> from <code>~/.claude/plans/</code> to <code>plans/feature-name.md</code></li><li><strong>Implement the feature</strong> following the plan</li><li><strong>Commit and merge</strong> the feature branch</li><li><strong>Repeat</strong> for the next feature</li></ol>
 <div class="alert alert-warning" data-type="warning"><span><strong>If working with AI: Do not one-shot this assignment.</strong> We want to see your thinking process as you build incrementally. Each feature should have its own plan file.<br><br><b>If you are not working with AI:</b>&nbsp;then you don't need the plan files, but you may still find it helpful to discuss ahead of time with claude.&nbsp;</span></div>
-<div class="heading-block h2-block"><h2>What are we building?!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">What are we building?!</h2></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-3-react-notes/assets/double-window-1767548477530.png" alt=""></figure>
 <p>A post-it note style app where users can add notes, move them around, edit them, and delete them. This React app will use Firebase as its backend to store collections of notes. The position of notes will also be stored, so people in multiple browsers can edit and arrange them in real-time. The notes themselves will support markdown notation and editing.</p>
 <p>For Part 1, the app will store state in memory only and won’t use Firebase yet. But here are the overall specs of the full project.</p>
@@ -500,7 +500,7 @@ npm install #to fetch all your package dependencies</code></pre></div>
   y: 12,
   zIndex: 26,
 }</code></pre></div></div>
-<div class="heading-block h2-block"><h2>Immer JS</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FAEBDD"><h2 style="background-color: #FAEBDD">Immer JS</h2></div>
 <p>Before we go on, we should talk about <a href="https://immerjs.github.io/immer/">Immer</a>. And immutable data structures in general!</p>
 <p>We’ve discussed how mutable data structures can be dangerous and unpleasant — data changing without you knowing about, etc. React is built around the idea that state in particular should be immutable. You have <strong>new</strong> states, but you don’t alter existing state. As we dig deeper into react and functional programming we’ll see the insistence on <strong>pure</strong> functions and immutable data more and more.</p>
 <p>For this assignment we’re going to play with a library for making our state immutable and easier to work with at the same time.</p>
@@ -527,7 +527,7 @@ setNotes(
 <p>⚠️&nbsp;You will most likely get eslint yelling at you for assigning to a parameter.  That is it doesn’t like that you have a function with draftState as an argument that you are then reassigning.  That is what Immer does though so I would recommend ignoring it like so:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-javascript">// add this rule to your eslintrc
 "no-param-reassign": ["error",{ "props": true, "ignorePropertyModificationsForRegex": [ "^draft"]}]</code></pre></div></div>
-<div class="heading-block h2-block"><h2>Notes State</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FAEBDD"><h2 style="background-color: #FAEBDD">Notes State</h2></div>
 <p>Our main state object (note you may also have react components that have local state for things like editing or for driven fields) is going to simply be a javascript object that looks something like this:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span></div><pre><code class="language-javascript">// assuming our state starts with
 const [notes, setNotes] = useState({});
@@ -694,7 +694,7 @@ return (
 <p>🐙 Before we continue let’s make sure we’ve committed and pushed everything. </p>
 <div class="code-block"><div class="code-header"><span class="code-lang">powershell</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span></div><pre><code class="language-powershell">git commit
 git push</code></pre></div></div>
-<div class="heading-block h1-block"><h1>Part 2 (where we add in persistent storage)</h1></div>
+<div class="heading-block h1-block" data-bg-color="#FAEBDD"><h1 style="background-color: #FAEBDD">Part 2 (where we add in persistent storage)</h1></div>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-3-react-notes/assets/react-notes-architecture-1767548477530.jpg" alt=""></figure>
 <p>Now that we have a working stand-alone app, we should connect it to backend to make it cool and collaborative, MULTI-USER and COLLABORATIVE! We need persistent storage to enable our notes to not go away on reload and to synchronize the notes across different instances of the app.</p>
 <p>One way to add persistent storage is to use a backend as a service (BAAS) platform. Firebase is one such platform that provides a JSON based database (<a href="https://firebase.google.com/docs/database/">Firebase Realtime Database</a>) that has some nice realtime properties. For instance you can subscribe to change events on collections of objects. Can we use Firebase with our React app? You bet!</p>
