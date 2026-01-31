@@ -469,7 +469,7 @@
 <p>People who simply delegated tasks to AI ("just generate the code") scored lowest on skill assessments — even though they completed the task just fine. Those who practiced <strong>continuous curiosity</strong> — asking the AI to explain, questioning its choices, and understanding before moving on — developed significantly stronger skills in the same amount of time.</p>
 <div class="alert alert-warning" data-type="warning"><span><strong>The goal isn't to get code faster. It's to learn while you build.</strong></span></div>
 <p>This guide is designed around that principle. You'll configure Claude Code to act as a <b>mentor </b>that&nbsp;explains concepts as it writes code — and you'll build the habit of asking "why?" at every step.</p>
-<div class="callout"><span class="callout-emoji">📌</span><span>This activity will largely be in the terminal. If you don't have a good terminal app, consider: <a href="https://ghostty.org">Ghostty</a>, <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a>, or <a href="https://www.warp.dev">Warp</a>.</span></div>
+<div class="callout"><span class="callout-emoji">📌</span><span>If you don't have a good terminal app for claude, consider: <a href="https://ghostty.org">Ghostty</a>, <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a>, or <a href="https://www.warp.dev">Warp</a>.</span></div>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">What is Claude Code?</h2></div>
 <p>Claude Code is an <strong>agentic coding tool</strong> that runs in your terminal. Unlike the web chat interface, Claude Code can read and edit files in your project, run commands, and help you build things directly in your codebase.</p>
 <p></p>
@@ -497,7 +497,7 @@ cd claude-template</code></pre></div>
 <div class="alert alert-info" data-type="info"><span>This option requires an <strong>individual claude.ai Pro/Max subscription</strong>. If you're using a Claude Console API account, skip to Option B.</span></div>
 <p><strong>Claude in Chrome</strong> is a browser extension that lets Claude Code control Chrome directly:</p>
 <ol start="1"><li><strong>Install the extension</strong> from the <a href="https://chromewebstore.google.com/detail/claude-in-chrome/bdlgkbkpbdhmiehjbnplhbdjepkadpip">Chrome Web Store</a></li><li><strong>Add the MCP server to Claude Code</strong>:</li></ol>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">claude mcp add claude-in-chrome -- npx -y claude-in-chrome-mcp@latest</code></pre></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">claude mcp add claude-in-chrome --scope user -- npx -y claude-in-chrome-mcp@latest</code></pre></div>
 <ol start="3"><li><strong>Restart Claude Code</strong> to load the new server</li><li><strong>Test it</strong> by asking Claude to open a browser and navigate to a website</li></ol>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Option B: Chrome DevTools MCP</h3></div>
 <p>If you're using a <strong>Claude Console API account</strong>, use the Chrome DevTools MCP server instead:</p>
@@ -527,13 +527,13 @@ cd claude-template</code></pre></div>
 claude</code></pre></div>
 <p>Try prompts like these to get started. Claude will build with you while explaining each concept:</p>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Start Simple</h3></div>
-<div class="callout"><span class="callout-emoji">💬</span><span>"I want to build [your idea]. Let's start with the simplest possible version. Walk me through it step by step and explain each concept as you go."</span></div>
+<div class="callout"><span class="callout-emoji">💬</span><span>"i want to build [idea].&nbsp; walk me through planning it step by step and explain each concept as you go."</span></div>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Understand What You Built</h3></div>
-<div class="callout"><span class="callout-emoji">💬</span><span>"Explain how [specific part] works. I want to understand it, not just have working code."</span></div>
+<div class="callout"><span class="callout-emoji">💬</span><span>"explain how [specific part] works. i want to understand it, not just have working code."</span></div>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Add Features Incrementally</h3></div>
-<div class="callout"><span class="callout-emoji">💬</span><span>"Now let's add [feature]. Before you write code, explain the approach you'd take."</span></div>
+<div class="callout"><span class="callout-emoji">💬</span><span>"now let's add [feature]. before you write code, explain the approach you'd take."</span></div>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Debug Together</h3></div>
-<div class="callout"><span class="callout-emoji">💬</span><span>"This isn't working: [paste error message or describe issue]. Help me understand what's wrong."</span></div>
+<div class="callout"><span class="callout-emoji">💬</span><span>"this isn't working: [paste error message or describe issue]. help me understand what's wrong."</span></div>
 <div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">Tips for Working with Claude Code</h2></div>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Essential Commands</h3></div>
 <table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td>/plan</td><td>Have Claude plan before coding — great for understanding the approach first</td></tr><tr><td>/compact</td><td>Summarize the conversation when context gets long</td></tr><tr><td>/clear</td><td>Start fresh when switching to a different task</td></tr><tr><td>Escape</td><td>Cancel Claude mid-response if it's going the wrong direction</td></tr></tbody></table>
