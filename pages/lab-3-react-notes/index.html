@@ -459,6 +459,10 @@ git remote add starter your-starterpack-github-url
 git pull starter main --allow-unrelated-histories</code></pre></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
 npm install #to fetch all your package dependencies</code></pre></div>
+<div class="heading-block h2-block"><h2>The Workflow: Feature Branches + Plan Files</h2></div>
+<p>For each feature you add:</p>
+<ol><li><strong>Create a feature branch</strong> (e.g., <code>git checkout -b add-notes</code>)</li><li><strong>Enter plan mode</strong> and create a plan for that feature</li><li><strong>Copy the plan file</strong> from <code>~/.claude/plans/</code> to <code>plans/feature-name.md</code></li><li><strong>Implement the feature</strong> following the plan</li><li><strong>Commit and merge</strong> the feature branch</li><li><strong>Repeat</strong> for the next feature</li></ol>
+<div class="alert alert-warning" data-type="warning"><span><strong>Do not one-shot this assignment.</strong> We want to see your thinking process as you build incrementally. Each feature should have its own plan file.</span></div>
 <div class="heading-block h2-block"><h2>What are we building?!</h2></div>
 <img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-3-react-notes/assets/double-window-1767548477530.png" alt="">
 <p>A post-it note style app where users can add notes, move them around, edit them, and delete them. This React app will use Firebase as its backend to store collections of notes. The position of notes will also be stored, so people in multiple browsers can edit and arrange them in real-time. The notes themselves will support markdown notation and editing.</p>
@@ -772,9 +776,7 @@ import 'firebase/compat/database';
 <p>Test it out! Open multiple browsers and see how adding and moving notes in one instantly reflects in the other. Pretty cool!  ⚠️&nbsp;DO NOT FORGET TO TEST WITH MULTIPLE BROWSER WINDOWS THAT IS THE WHOLE POINT.</p>
 <div class="heading-block h2-block"><h2>Merge your Branch!</h2></div>
 <p>And don't forget to merge your <code>add_firebase</code> branch into main! </p>
-<p>Now try some extra credit! For each feature you add:</p>
-<ol><li>Create a feature branch</li><li>If using AI: create a plan, then copy it from <code>~/.claude/plans/</code> to your project's <code>plans/</code> folder</li><li>Implement the feature</li><li>Merge to main</li></ol>
-<p>Do the git feature flow!</p>
+<p>Now try some extra credit! Remember the workflow: feature branch, plan file, implement, merge. One feature at a time.</p>
 <div class="heading-block h2-block"><h2>Optional Cypress End2End and Component testing</h2></div>
 <p>There is a test suite written for this assignment. It makes some assumptions:</p>
 <ul><li>input for adding notes has classname: <code>noteinput</code></li><li>each note has a class <code>note</code> and an <code>h1</code> with the title</li><li>edit button has an aria label <code>aria-label=edit</code></li><li>save button has an aria label <code>aria-label=done-editing</code></li><li>delete button has an aria label <code>aria-label=delete</code></li><li>that your firebase configs are in <code>src/services/datastore.js</code></li></ul>
