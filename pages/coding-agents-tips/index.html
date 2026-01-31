@@ -466,7 +466,7 @@
 <div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">Why This Matters: Continuous Curiosity</h2></div>
 <p>AI coding tools are powerful — but how you use them determines whether you're building skills or outsourcing them.</p>
 <p><a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Recent research from Anthropic</a> studied how different modes of AI interaction affect skill development. The results are striking:</p>
-<div class="image-block image-align-center"><img src="assets/ai-interaction-modes.jpeg" alt="Modes of AI interaction showing skill development vs completion time"></div>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/coding-agents-tips/assets/1769854617812-anthropic-ai-assistance.jpeg" alt=""></figure>
 <p>People who simply delegated tasks to AI ("just generate the code") scored lowest on skill assessments — even though they completed the task. Those who practiced <strong>continuous curiosity</strong> — asking the AI to explain, questioning its choices, and understanding before moving on — developed significantly stronger skills in the same amount of time.</p>
 <div class="alert alert-warning" data-type="warning"><span><strong>The goal isn't to get code faster. It's to learn while you build.</strong></span></div>
 <p>This guide is designed around that principle. You'll configure Claude Code to act as a <strong>teaching assistant</strong> that explains concepts as it writes code — and you'll build the habit of asking "why?" at every step.</p>
@@ -510,12 +510,12 @@ cd claude-template</code></pre></div>
 <p>These plugins enhance Claude Code's capabilities. Install them from the plugin marketplace:</p>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Frontend Design</h3></div>
 <p>Helps Claude create polished, production-quality web interfaces that avoid the generic "AI look":</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal (inside Claude Code)</span></div><pre><code class="language-bash">/plugin marketplace add anthropics/claude-code
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">/plugin marketplace add anthropics/claude-code
 /plugin install frontend-design@claude-code-plugins</code></pre></div>
 <p>Invoke with <code>/frontend-design</code> when you want Claude to build UI components.</p>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Context7</h3></div>
 <p>Gives Claude access to up-to-date documentation for libraries and frameworks:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal (inside Claude Code)</span></div><pre><code class="language-bash">/plugin install context7@claude-plugins-official</code></pre></div>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">/plugin install context7@claude-plugins-official</code></pre></div>
 <div class="callout"><span class="callout-emoji">💡</span><span>Context7 automatically fetches current library docs when Claude detects you're working with frameworks — no need to ask for it.</span></div>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Part 1: Review Your Learning Agent Config</h2></div>
 <p>The starter repo includes a <code>CLAUDE.md</code> file. This is a special file that Claude reads at the start of every conversation — it's like giving Claude instructions about how to work with you.</p>
@@ -537,7 +537,7 @@ claude</code></pre></div>
 <div class="callout"><span class="callout-emoji">💬</span><span>"This isn't working: [paste error message or describe issue]. Help me understand what's wrong."</span></div>
 <div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">Tips for Working with Claude Code</h2></div>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Essential Commands</h3></div>
-<table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/plan</code></td><td>Have Claude plan before coding — great for understanding the approach first</td></tr><tr><td><code>/compact</code></td><td>Summarize the conversation when context gets long</td></tr><tr><td><code>/clear</code></td><td>Start fresh when switching to a different task</td></tr><tr><td><code>Escape</code></td><td>Cancel Claude mid-response if it's going the wrong direction</td></tr></tbody></table>
+<table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td>/plan</td><td>Have Claude plan before coding — great for understanding the approach first</td></tr><tr><td>/compact</td><td>Summarize the conversation when context gets long</td></tr><tr><td>/clear</td><td>Start fresh when switching to a different task</td></tr><tr><td>Escape</td><td>Cancel Claude mid-response if it's going the wrong direction</td></tr></tbody></table>
 <div class="heading-block h3-block" data-bg-color="#FBE4E4"><h3 style="background-color: #FBE4E4">Use Plan Mode — Seriously</h3></div>
 <div class="alert alert-warning" data-type="warning"><span><strong>This is the most important habit to build.</strong></span></div>
 <p>When you give Claude a task, it wants to start coding immediately. That's often a mistake. Plan mode (<code>/plan</code>) forces Claude to think through the approach first:</p>
