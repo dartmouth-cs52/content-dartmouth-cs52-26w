@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -442,41 +462,40 @@
   </style>
 </head>
 <body>
-<div class="heading-block h1-block"><h1>React Notes</h1></div>
 <p>Where we dive deeper into React and construct a realtime collaborative post-it note app with React!</p>
 <div class="video-embed"><iframe src="https://res.cloudinary.com/dali-lab/video/upload/ac_none,w_800,h_510/v1546203223/cs52/live-notes-1080p.webm" frameborder="0" allowfullscreen></iframe></div>
 <p>We’ll be building something like the above. A collaborative platform where multiple people can create and edit content together.  What that content is, and how it all looks, is all up to you!  The basic functionality though is demonstrated above. </p>
 <div class="heading-block h2-block"><h2>Let’s Start</h2></div>
-<p>🚀 To start grab the <a href="http://classmoji.brunchlabs.com">classmoji.brunchlabs.com</a> repository. Then you’ll pull in your vite+babel+eslint+(with the prior short react additions) starter code like so:</p>
+<p>🚀 To start grab the Classmoji repo.&nbsp;Then you’ll pull in your vite+babel+eslint+(with the prior short react additions) starter code like so (or just copy paste the files in):</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your new github project created for you by classroom
 git remote add starter your-starterpack-github-url
 git pull starter main --allow-unrelated-histories</code></pre></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
 npm install #to fetch all your webpack dependencies</code></pre></div>
 <div class="heading-block h2-block"><h2>What are we building?!</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/double-window-1767548342071.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/double-window-1767548342071.png" alt=""></figure>
 <p>A post it note style app where users can add notes, move them around, edit them, and delete them. This React app will use Firebase as its backend to store collections of notes. The position of notes will also be stored, so people in multiple browsers can edit and arrange them in realtime. The notes themselves will support markdown notation and editing.</p>
 <p>Here are the overall specs of the full project.</p>
 <div class="heading-block h3-block"><h3>Minimal Functional Specs</h3></div>
-<ul><li>Notes App:<ul><li>Add a note:<ul><li>can either be a single title input + create button</li><li>or a modal if you prefer with all fields</li></ul></li><li>Delete a note</li><li>Move a note in x, y<ul><li>optionally in z <em>(zIndex)</em></li></ul></li><li>Edit a note:<ul><li>title, content</li></ul></li><li>Notes:<ul><li>have title and content</li><li>display with some formatting</li></ul></li><li>Persists all changes to Firebase in realtime</li><li>Updates based on Firebase events</li><li>is at least as stylish as these mockups</li></ul></li></ul>
+<ul><li>Notes App:<ul><li>Add a note:<ul><li>can either be a single title input + create button</li><li>or a modal if you prefer with all fields</li></ul></li><li>Delete a note</li><li>Move a note in x, y, and z via zIndex</li><li>Edit a note:<ul><li>title, content</li></ul></li><li>Notes:<ul><li>have title and content</li><li>display with some formatting</li></ul></li><li>Persists all changes to Firebase in realtime</li><li>Updates based on Firebase events</li><li>is at least as stylish as these mockups</li></ul></li></ul>
 <p><em>Note: you are welcome to use CSS frameworks to help with styling (but be careful as the JS that comes with some of them does not play nice with react).</em></p>
 <div class="heading-block h2-block"><h2>Plan</h2></div>
 <p>Ok, so what’s the plan?</p>
 <p>You tell me!</p>
 <p>The goal of this pre-lab is to come up with a game plan.  Layout your components and think a little bit about data flow. This is a checkpoint of sorts. It makes sure you start on the assignment early, but also research has shown that planning out paper leads to better outcomes. </p>
 <div class="heading-block h2-block"><h2>Component Sketch</h2></div>
-<p>Remember this? </p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/app-components-1767548342071.png" alt="">
+<p>Remember this component sketch? </p>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/app-components-1767548342071.png" alt="" style="width: 609px" width="609"></figure>
 <p>Let’s do that with this application.   Sketch it out on paper or if you prefer in Figma (we’ll be using that for projects!). </p>
 <p>🚀 Sketch out the React components you will need. You probably need a general <em>App</em> component to wrap everything, a <em>Note</em> component, a component for adding notes (say a text input bar similar to <em>SearchBar</em>!), and potentially other components.</p>
 <div class="heading-block h2-block"><h2>Component Graph</h2></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/video-tree-1767548342071.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/video-tree-1767548342071.png" alt=""></figure>
 <p>🚀 Now that you've sketched out your components, let's build up what we think the component graph will look like.  Again, sketch it out on paper or in Figma. </p>
 <p>The level of detail you choose can be the minimal above, or you can go into more details like the one below. </p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/videos-components-1767548342071.png" alt="videos-components.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/videos-components-1767548342071.png" alt="videos-components.png"></figure>
 <p>At this point - something in the middle is the most useful. You don't need the function names or anything in there yet, but drawing out the initial dataflow is useful.</p>
 <p>🚀&nbsp;Refer to the full assignment with further details here!</p>
-<p><a href="https://www.notion.so/Lab-3-React-Notes-8a34798087ab469797c2aadd9a42f800?pvs=21">Lab 3: React Notes</a></p>
+<div class="page-link-block"><a href="/dartmouth-cs52-26w/pages/4559a8c2-c83c-46ba-a1ba-60dac6c1afde" data-page-id="4559a8c2-c83c-46ba-a1ba-60dac6c1afde">Lab 3: React Notes</a></div>
 <div class="heading-block h3-block"><h3>Part 1: Local State Dataflow</h3></div>
 <p>🚀&nbsp;For Part 1, draw out the dataflow for a <strong>single-user, local state</strong> version of the app. This is where notes live in React state only — no backend, no persistence. Think about:</p>
 <ul><li>Where does the notes state live?</li><li>How do components communicate updates (add, delete, edit, move)?</li><li>What props flow down? What callbacks flow up?</li></ul>
@@ -488,14 +507,11 @@ npm install #to fetch all your webpack dependencies</code></pre></div>
 <div class="heading-block h2-block"><h2>Note Component</h2></div>
 <p>You might need a <em>Note</em> component. What might a <em>Note</em> do?</p>
 <ul><li>A Note:<ul><li>displays title</li><li>displays content</li><li>is draggable</li><li>is editable</li><li>is deletable</li></ul></li></ul>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-1767548342071.png" alt="">
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-edit-1767548342071.png" alt="note-edit.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-1767548342071.png" alt="" style="width: 258px" width="258"></figure>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-edit-1767548342071.png" alt="note-edit.png" style="width: 268px" width="268"></figure>
 <div class="heading-block h2-block"><h2>Optional: AI-Assisted Planning with Claude</h2></div>
-<div class="alert alert-info" data-type="info"><span>This section is <strong>optional</strong> — only if you're choosing to use AI assistance for the lab. If you're handcrafting your code without AI, skip this section.</span></div>
-<p>If you're using Claude Code to help build your React Notes app, we want you to be intentional about it. No one-shotting the entire assignment. Instead, you'll build incrementally: <strong>one feature branch at a time, with a plan file for each feature</strong>.</p>
-<div class="heading-block h3-block"><h3>The Workflow: Feature Branches + Plan Files</h3></div>
-<p>For each feature you add:</p>
-<ol><li><strong>Create a feature branch</strong> (e.g., <code>git checkout -b add-notes</code>)</li><li><strong>Enter plan mode</strong> and create a plan for that feature</li><li><strong>Copy the plan file</strong> from <code>~/.claude/plans/</code> to <code>plans/feature-name.md</code></li><li><strong>Implement the feature</strong> following the plan</li><li><strong>Commit and merge</strong> the feature branch</li><li><strong>Repeat</strong> for the next feature</li></ol>
+<div class="alert alert-info" data-type="info"><span>This section is <strong>optional</strong> — only if you're choosing to use AI assistance for the lab. If you're handcrafting your code without AI, this is still helpful to do!</span></div>
+<p>If you're using Claude Code to help build your React Notes app, we want you to be intentional about it. No one-shotting the entire assignment. Instead, you'll build incrementally: <strong>one feature branch at a time, with a plan file for each feature</strong>.<br><br></p>
 <div class="alert alert-warning" data-type="warning"><span><strong>Do not one-shot this assignment.</strong> We want to see your thinking process as you build incrementally. Each feature should have its own plan file.</span></div>
 <div class="heading-block h3-block"><h3>What is Plan Mode?</h3></div>
 <p>Plan Mode is a special mode in Claude Code where Claude can only read and analyze your codebase — it cannot make changes. This forces you to think through the approach before any code gets written.</p>
@@ -515,20 +531,20 @@ cp ~/.claude/plans/your-plan-file.md plans/add-notes.md
 ls ~/.claude/plans/</code></pre></div>
 <div class="heading-block h3-block"><h3>Example Feature Breakdown</h3></div>
 <p>Here's how you might break down the assignment into feature branches, each with its own plan:</p>
-<table><thead><tr><th>Feature Branch</th><th>Plan File</th><th>What it covers</th></tr></thead><tbody><tr><td><code>basic-app-structure</code></td><td><code>plans/01-basic-structure.md</code></td><td>App component, Note component, basic rendering</td></tr><tr><td><code>add-notes</code></td><td><code>plans/02-add-notes.md</code></td><td>Input component, creating notes, state management</td></tr><tr><td><code>delete-notes</code></td><td><code>plans/03-delete-notes.md</code></td><td>Delete button, removing from state</td></tr><tr><td><code>drag-notes</code></td><td><code>plans/04-drag-notes.md</code></td><td>react-draggable, position state, zIndex</td></tr><tr><td><code>edit-notes</code></td><td><code>plans/05-edit-notes.md</code></td><td>Edit mode toggle, inline editing, markdown</td></tr><tr><td><code>add-firebase</code></td><td><code>plans/06-firebase.md</code></td><td>Firebase setup, datastore module, real-time sync</td></tr></tbody></table>
+<table><thead><tr><th>Feature Branch</th><th>Plan File</th><th>What it covers</th></tr></thead><tbody><tr><td>basic-app-structure</td><td>plans/01-basic-structure.md</td><td>App component, Note component, basic rendering</td></tr><tr><td>add-notes</td><td>plans/02-add-notes.md</td><td>Input component, creating notes, state management</td></tr><tr><td>delete-notes</td><td>plans/03-delete-notes.md</td><td>Delete button, removing from state</td></tr><tr><td>drag-notes</td><td>plans/04-drag-notes.md</td><td>react-draggable, position state, zIndex</td></tr><tr><td>edit-notes</td><td>plans/05-edit-notes.md</td><td>Edit mode toggle, inline editing, markdown</td></tr><tr><td>add-firebase</td><td>plans/06-firebase.md</td><td>Firebase setup, datastore module, real-time sync</td></tr></tbody></table>
 <p>You don't have to follow this exact breakdown — organize it in a way that makes sense to you. The point is: <strong>plan before you build, one feature at a time</strong>.</p>
 <div class="heading-block h3-block"><h3>What Each Plan File Should Include</h3></div>
 <ul><li>What problem/feature this branch addresses</li><li>What components or files will be created/modified</li><li>Key implementation decisions and why</li><li>How this feature connects to existing code</li></ul>
 <div class="alert alert-note" data-type="note"><span>The goal is to <strong>understand the plan</strong>, not just generate it. Ask Claude "why?" at each step. If something doesn't make sense, dig in before moving on.</span></div>
 <div class="heading-block h3-block"><h3>If you sketch it, Scan it</h3></div>
 <p>Use an app like <a href="https://readdle.com/scannerpro">Scanner Pro</a> or <a href="https://play.google.com/store/apps/details?id=com.adobe.scan.android&amp;hl=en_US&amp;gl=US&amp;pli=1">Adobe Scan</a> to take a high quality photo scan of your sketches.   We don’t want to see low res night time barely readable yellow photos… always use a scanner app.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/dropbox-scan-1767548342071.gif" alt="dropbox-scan.gif">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/dropbox-scan-1767548342071.gif" alt="dropbox-scan.gif" style="width: 399px" width="399"></figure>
 <div class="heading-block h3-block"><h3>If you Figma it, get a shareable link</h3></div>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/screenshot-2023-04-15-at-8-1767548342071.png" alt="Screenshot 2023-04-15 at 8.10.19 AM.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/screenshot-2023-04-15-at-8-1767548342071.png" alt="Screenshot 2023-04-15 at 8.10.19 AM.png" style="width: 546px" width="546"></figure>
 <div class="heading-block h3-block"><h3>If you already started coding it all up</h3></div>
-<p>That is great, jump in now, do all the codes, this is an important one to start early. Still submit the component graph sketches though.</p>
+<p>That is great, BUT submit this first.&nbsp; Then work on all the coding. This is an important one to start early.&nbsp; Just don't forget to submit the component graph sketches and plan files before you start.</p>
 <div class="heading-block h3-block"><h3>To Turn In</h3></div>
-<ul><li>👉&nbsp;The GitHub Issue is your official assignment.  <strong>To officially turn it in, please comment on the issue in the repository when you have completed the assignment.</strong></li><li>🙏&nbsp;In your comment please include (either scanned or figma link):<ul><li>sketch of your components</li><li>your component graph with dataflow for <strong>Part 1</strong> (local state)</li><li>your component graph with dataflow for <strong>Part 2</strong> (with Firebase)</li></ul></li><li>🤖&nbsp;<strong>If using AI assistance:</strong> commit your plan files to <code>plans/</code><ul><li>Copy from <code>~/.claude/plans/</code> and name each file after its feature branch</li><li>One plan file per feature branch shows your incremental thinking process</li></ul></li></ul>
+<ul><li>👉&nbsp;The GitHub Issue is your official assignment.  <strong>To officially turn it in, please comment on the issue in the repository when you have completed the assignment.</strong></li><li>🙏&nbsp;In your comment please include (either scanned or figma link):<ul><li>sketch of your components</li><li>your component graph with dataflow for <strong>Part 1</strong> (local state)</li><li>your component graph with dataflow for <strong>Part 2</strong> (with Firebase)</li></ul></li><li>🤖&nbsp;<strong>If using AI assistance attach your initial exploratory plan file.</strong></li></ul>
 <div class="heading-block h3-block"><h3>Extra Credit</h3></div>
 <p><em>always mention your extra credit in your submission comment</em></p>
 <ul><li>create your schematic and a lightweight design for your product in Figma!</li></ul>
