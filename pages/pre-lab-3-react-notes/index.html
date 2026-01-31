@@ -509,33 +509,23 @@ npm install #to fetch all your webpack dependencies</code></pre></div>
 <ul><li>A Note:<ul><li>displays title</li><li>displays content</li><li>is draggable</li><li>is editable</li><li>is deletable</li></ul></li></ul>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-1767548342071.png" alt="" style="width: 258px" width="258"></figure>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/note-edit-1767548342071.png" alt="note-edit.png" style="width: 268px" width="268"></figure>
-<div class="heading-block h2-block"><h2>Optional: AI-Assisted Planning with Claude</h2></div>
-<div class="alert alert-info" data-type="info"><span>This section is <strong>optional</strong> — only if you're choosing to use AI assistance for the lab. If you're handcrafting your code without AI, this is still helpful to do!</span></div>
-<p>If you're using Claude Code to help build your React Notes app, we want you to be intentional about it. No one-shotting the entire assignment. Instead, you'll build incrementally: <strong>one feature branch at a time, with a plan file for each feature</strong>.<br><br></p>
-<div class="alert alert-warning" data-type="warning"><span><strong>Do not one-shot this assignment.</strong> We want to see your thinking process as you build incrementally. Each feature should have its own plan file.</span></div>
-<div class="heading-block h3-block"><h3>What is Plan Mode?</h3></div>
-<p>Plan Mode is a special mode in Claude Code where Claude can only read and analyze your codebase — it cannot make changes. This forces you to think through the approach before any code gets written.</p>
+<div class="heading-block h2-block"><h2>Optional: Exploratory Planning with Claude</h2></div>
+<div class="alert alert-info" data-type="info"><span>This section is <strong>optional</strong> — only if you're planning to use AI assistance for the lab. If you're handcrafting your code without AI, skip to "To Turn In".</span></div>
+<p>Before diving into implementation, create <strong>one exploratory plan</strong> to understand the overall architecture. This is about getting your head around the problem — not a plan you'll follow step-by-step during implementation.</p>
+<div class="alert alert-note" data-type="note"><span>This exploratory plan is for <strong>understanding the big picture</strong>. During the actual lab, you'll create separate plan files for each feature as you implement incrementally.</span></div>
+<div class="heading-block h3-block"><h3>How to Create Your Exploratory Plan</h3></div>
+<p>🚀&nbsp;Start Claude Code and enter plan mode:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">claude
 # then type:
 /plan</code></pre></div>
-<div class="heading-block h3-block"><h3>Saving Your Plan Files</h3></div>
-<p>Claude Code stores plan files <strong>globally</strong> in <code>~/.claude/plans/</code>, not in your project. To include them in your repo, copy them to a <code>plans/</code> folder and name them after your feature branch:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># Create a plans folder in your project
-mkdir -p plans
-
-# Copy your plan file, naming it after the feature branch
-cp ~/.claude/plans/your-plan-file.md plans/add-notes.md
-
-# You can view your current plan with /plan in Claude Code
-# Or list all plans with:
-ls ~/.claude/plans/</code></pre></div>
-<div class="heading-block h3-block"><h3>Example Feature Breakdown</h3></div>
-<p>Here's how you might break down the assignment into feature branches, each with its own plan:</p>
-<table><thead><tr><th>Feature Branch</th><th>Plan File</th><th>What it covers</th></tr></thead><tbody><tr><td>basic-app-structure</td><td>plans/01-basic-structure.md</td><td>App component, Note component, basic rendering</td></tr><tr><td>add-notes</td><td>plans/02-add-notes.md</td><td>Input component, creating notes, state management</td></tr><tr><td>delete-notes</td><td>plans/03-delete-notes.md</td><td>Delete button, removing from state</td></tr><tr><td>drag-notes</td><td>plans/04-drag-notes.md</td><td>react-draggable, position state, zIndex</td></tr><tr><td>edit-notes</td><td>plans/05-edit-notes.md</td><td>Edit mode toggle, inline editing, markdown</td></tr><tr><td>add-firebase</td><td>plans/06-firebase.md</td><td>Firebase setup, datastore module, real-time sync</td></tr></tbody></table>
-<p>You don't have to follow this exact breakdown — organize it in a way that makes sense to you. The point is: <strong>plan before you build, one feature at a time</strong>.</p>
-<div class="heading-block h3-block"><h3>What Each Plan File Should Include</h3></div>
-<ul><li>What problem/feature this branch addresses</li><li>What components or files will be created/modified</li><li>Key implementation decisions and why</li><li>How this feature connects to existing code</li></ul>
-<div class="alert alert-note" data-type="note"><span>The goal is to <strong>understand the plan</strong>, not just generate it. Ask Claude "why?" at each step. If something doesn't make sense, dig in before moving on.</span></div>
+<p>🚀&nbsp;Ask Claude to help you think through the full assignment:</p>
+<div class="callout"><span class="callout-emoji">💬</span><span>"I'm building a React Notes app. Help me understand the overall architecture — what components will I need? How should state flow? What changes when I add Firebase in Part 2?"</span></div>
+<p>🚀&nbsp;Claude creates a plan file in <code>~/.claude/plans/</code>. Copy it to your project:</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">mkdir -p plans
+cp ~/.claude/plans/your-plan-file.md plans/00-exploratory.md</code></pre></div>
+<div class="heading-block h3-block"><h3>What Your Exploratory Plan Should Cover</h3></div>
+<ul><li>Overall component structure (App, Note, input components)</li><li>State shape and where it lives</li><li>Data flow for Part 1 (local state)</li><li>How Firebase changes things in Part 2</li><li>Key libraries you'll need (react-draggable, react-markdown, firebase)</li></ul>
+<div class="alert alert-warning" data-type="warning"><span>This exploratory plan helps you understand the big picture. When you start the actual lab, you'll create <strong>separate plan files for each feature branch</strong> as you implement incrementally — see the lab assignment for that workflow.</span></div>
 <div class="heading-block h3-block"><h3>If you sketch it, Scan it</h3></div>
 <p>Use an app like <a href="https://readdle.com/scannerpro">Scanner Pro</a> or <a href="https://play.google.com/store/apps/details?id=com.adobe.scan.android&amp;hl=en_US&amp;gl=US&amp;pli=1">Adobe Scan</a> to take a high quality photo scan of your sketches.   We don’t want to see low res night time barely readable yellow photos… always use a scanner app.</p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/pre-lab-3-react-notes/assets/dropbox-scan-1767548342071.gif" alt="dropbox-scan.gif" style="width: 399px" width="399"></figure>
