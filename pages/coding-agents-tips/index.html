@@ -462,13 +462,14 @@
   </style>
 </head>
 <body>
-<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">Why This Matters: Continuous Curiosity</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">GOAL: Continuous Curiosity</h2></div>
 <p>AI coding tools are powerful — but how you use them determines whether you're building skills or outsourcing them.</p>
 <p><a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Recent research from Anthropic</a> studied how different modes of AI interaction affect skill development.&nbsp;</p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/coding-agents-tips/assets/1769854617812-anthropic-ai-assistance.jpeg" alt=""></figure>
-<p>People who simply delegated tasks to AI ("just generate the code") scored lowest on skill assessments — even though they completed the task just fine. Those who practiced <strong>continuous curiosity</strong> — asking the AI to explain, questioning its choices, and understanding before moving on — developed significantly stronger skills in the same amount of time.</p>
-<div class="alert alert-warning" data-type="warning"><span><strong>The goal isn't to get code faster. It's to learn while you build.</strong></span></div>
-<p>This guide is designed around that principle. You'll configure Claude Code to act as a <b>mentor </b>that&nbsp;explains concepts as it writes code — and you'll build the habit of asking "why?" at every step.</p>
+<p><b>Turns out:</b>&nbsp; <br>People who simply delegated tasks to AI ("just generate the code") scored lowest on skill assessments after completing a coding task — even though they did the task just fine. <br>Those who practiced <strong>continuous curiosity</strong> — asking the AI to explain, questioning its choices, and understanding before moving on — developed significantly stronger skills in the same amount of time.</p>
+<p></p>
+<div class="alert alert-warning" data-type="warning"><span>You can use AI and <b>not learn anything</b>, or you can use it and <b>learn more than you would have doing in manually</b>.&nbsp;</span></div>
+<p>This guide is designed around this principle. You'll configure Claude Code to act as a <b>mentor </b>that&nbsp;explains concepts as it writes code — and you'll build the habit of asking "why?" at every step.</p>
 <div class="callout"><span class="callout-emoji">📌</span><span>If you don't have a good terminal app for claude, consider: <a href="https://ghostty.org">Ghostty</a>, <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a>, or <a href="https://www.warp.dev">Warp</a>.</span></div>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">What is Claude Code?</h2></div>
 <p>Claude Code is an <strong>agentic coding tool</strong> that runs in your terminal. Unlike the web chat interface, Claude Code can read and edit files in your project, run commands, and help you build things directly in your codebase.</p>
@@ -481,17 +482,16 @@
 </p>
 <p>You type prompts, Claude responds, and it can edit your files directly. Think of it as pair programming with an AI partner.</p>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">To Start</h2></div>
-<p>Clone the starter repo:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">git clone git@github.com:dali-lab/claude-template.git
-cd claude-template</code></pre></div>
+<p>Grab the <code class="inline-code">CLAUDE.md</code> file from here:&nbsp;<a href="https://github.com/dali-lab/claude-template/blob/main/CLAUDE.md">https://github.com/dali-lab/claude-template/blob/main/CLAUDE.md&nbsp;</a></p>
+<p>and add it to a project directory or empty folder if you are just starting out.&nbsp;</p>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Setup Claude Code</h2></div>
 <p>Follow these steps to get set up:</p>
-<ol start="1"><li><strong>Log into Claude Console</strong> at <a href="https://console.anthropic.com">console.anthropic.com</a></li><li><strong>Install Claude Code CLI</strong>:</li></ol>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install -g @anthropic-ai/claude-code</code></pre></div>
-<p>Or download from: <a href="https://claude.ai/code">claude.ai/code</a></p>
-<ol start="3"><li><strong>Authenticate</strong> by running <code>claude</code> and following the prompts</li></ol>
+<ol start="2"><li><strong>Install Claude Code CLI</strong>:</li></ol>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">curl -fsSL https://claude.ai/install.sh | bash</code></pre></div>
+<p>Or <a href="https://claude.com/product/claude-code">download here</a></p>
+<ol start="3"><li><strong>Authenticate</strong> by running <code>claude</code> and following the prompts.&nbsp; (you may have a Claude console account from CS52/CS98 otherwise you'll need a claude.ai subscription).&nbsp;</li></ol>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Setup Chrome Integration</h2></div>
-<div class="callout"><span class="callout-emoji">⚠️</span><span>This step is helpful! Chrome integration lets Claude open and test your code in the browser as it builds.</span></div>
+<div class="callout"><span class="callout-emoji">⚠️</span><span>This step is really important for web-dev in particular! Chrome integration lets Claude open and test your code in the browser as it builds.&nbsp; It closes the loop so you don't have to tell it that its code didn't work, it can see for itself.&nbsp; A common prompt I use: "test this in browser and debug until it works".&nbsp;</span></div>
 <p>There are two options for Chrome integration:</p>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Option A: Claude in Chrome (Recommended)</h3></div>
 <div class="alert alert-info" data-type="info"><span>This option requires an <strong>individual claude.ai Pro/Max subscription</strong>. If you're using a Claude Console API account, skip to Option B.</span></div>
@@ -517,13 +517,14 @@ cd claude-template</code></pre></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">/plugin install context7@claude-plugins-official</code></pre></div>
 <div class="callout"><span class="callout-emoji">💡</span><span>Context7 automatically fetches current library docs when Claude detects you're working with frameworks — no need to ask for it.</span></div>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Part 1: Review Your Learning Agent Config</h2></div>
-<p>The starter repo includes a <code>CLAUDE.md</code> file. This is a special file that Claude reads at the start of every conversation — it's like giving Claude instructions about how to work with you.</p>
+<p>Check out the&nbsp;<code>CLAUDE.md</code> file from above. This is a special file that Claude reads at the start of every conversation — it's like giving Claude instructions about how to work with you.</p>
 <p>Open it and take a look. It tells Claude to:</p>
 <ul><li>Break problems into conceptual blocks</li><li>Explain concepts before writing code</li><li>Focus on teaching, not just producing code</li><li>Check in to make sure you understand</li></ul>
 <div class="callout"><span class="callout-emoji">💬</span><span>Feel free to customize the CLAUDE.md! Want Claude to be more concise? Add that. Prefer more examples? Tell it. This is your learning agent.</span></div>
+<p>Once you start working on your project you should also keep very succinct details about your project in this file.&nbsp; How to run it,&nbsp; does it have a database, how to test, where to put shared code and abstractions to use.&nbsp;</p>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Part 2: Start Building with Claude</h2></div>
-<p>Now for the fun part! Open Claude Code in your cloned repo:</p>
-<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">cd claude-template
+<p>Now for the fun part! Open Claude Code in your terminal from your project.</p>
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">cd your-project
 claude</code></pre></div>
 <p>Try prompts like these to get started. Claude will build with you while explaining each concept:</p>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Start Simple</h3></div>
@@ -541,10 +542,11 @@ claude</code></pre></div>
 <div class="alert alert-warning" data-type="warning"><span><strong>This is the most important habit to build.</strong></span></div>
 <p>When you give Claude a task, it wants to start coding immediately. That's often a mistake. Plan mode (<code>/plan</code>) forces Claude to think through the approach first:</p>
 <ul><li><strong>You see the strategy before any code is written</strong> - Catch bad approaches early, not after 500 lines of code.</li><li><strong>You can ask questions about the plan</strong> - "Why this library?" or "What about edge case X?"</li><li><strong>You learn how to break down problems</strong> - Watching Claude decompose a task teaches you to think the same way.</li><li><strong>You stay in control</strong> - Approve each phase before Claude moves on.</li></ul>
-<p>Without plan mode, Claude might build something that technically works but uses the wrong approach, wrong libraries, or wrong architecture. By then, you're either stuck with it or starting over.</p>
-<div class="callout"><span class="callout-emoji">💬</span><span>Try: "Let's plan this out before writing any code. What are the main pieces we need to build?"</span></div>
+<p>Without plan mode, Claude might build something that technically works but uses the wrong approach, wrong libraries, or wrong architecture.&nbsp;</p>
+<div class="callout"><span class="callout-emoji">💬</span><span>Try: "let's plan this out before writing any code. what are the main pieces we need to build?"</span></div>
+<p>Plan mode uses exploration subagents and it does a great job figuring out where in the project you already are.</p>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Effective Prompting</h3></div>
-<ul><li><strong>Paste error messages directly</strong> - Claude reads stack traces well. Copy the whole thing.</li><li><strong>Share screenshots</strong> - Claude can see images. Great for debugging UI issues.</li><li><strong>Be specific</strong> - "Fix the bug" is vague. "The button click handler isn't firing" is actionable.</li><li><strong>Ask for explanations</strong> - If Claude writes something you don't understand, stop and ask. That's the whole point.</li></ul>
+<ul><li><strong>Paste error messages directly</strong> - Claude reads stack traces well. Copy the whole thing.</li><li><strong>Share screenshots</strong> - Claude can see images. Great for debugging UI issues. Just paste in.</li><li><strong>Be specific</strong> - "Fix the bug" is vague. "The button click handler isn't firing" is actionable.</li><li><strong>Ask for explanations</strong> - If Claude writes something you don't understand, stop and ask. That's the whole point.</li></ul>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Project Workflow</h3></div>
 <ul><li><strong>Claude can use git</strong> - Ask it to commit changes, create branches, even open PRs.</li><li><strong>Review diffs before accepting</strong> - Claude shows you what it's about to change. Read it.</li><li><strong>Start new conversations</strong> - When switching tasks, use <code>/clear</code>. Old context can confuse things.</li><li><strong>Use CLAUDE.md for memory</strong> - Want Claude to remember something? Ask it to add notes to CLAUDE.md.</li></ul>
 <div class="heading-block h3-block" data-bg-color="#DDEBF1"><h3 style="background-color: #DDEBF1">Efficiency Tips</h3></div>
