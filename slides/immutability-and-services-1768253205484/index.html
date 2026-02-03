@@ -165,7 +165,7 @@ fetch(url, (newVideos) =&gt; {
 		<li>re-run render often manually (backbonejs)</li>
 		<li>embrace the chaos?</li>
 		<li>react state</li>
-		<li>immutable data scructures</li>
+		<li>immutable data structures</li>
 	</ul>
 	</li>
 </ul></div></div>
@@ -860,7 +860,311 @@ fb.ref('users').child(id).remove();
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div><aside class="notes">https://console.firebase.google.com/u/1/project/cs52-codepen-aea3a/database/cs52-codepen-aea3a/data/~2Fcomments </aside></section></section><section data-id="5c6bbba44f8fe2595eb55d2fdee3ff06"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 160.369px; left: 80px; top: 38.5588px;" data-block-id="4552faa1c4ade668d909dbc07be8191e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+</div></div><aside class="notes">https://console.firebase.google.com/u/1/project/cs52-codepen-aea3a/database/cs52-codepen-aea3a/data/~2Fcomments </aside></section></section><section class="stack" data-id="baas-alternatives-stack"><section data-id="baas-alternatives-intro">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Firebase Alternatives</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 120px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p style="color:#3a3e40">Firebase is great, but there are other BAAS options worth knowing:</p>
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>Supabase</strong> — Open-source, PostgreSQL-based</li>
+	<li><strong>Convex</strong> — TypeScript-first with automatic realtime</li>
+	<li><strong>Liveblocks</strong> — Collaboration infrastructure with CRDTs</li>
+	<li><strong>PartyKit</strong> — Edge-first realtime with WebSocket rooms</li>
+</ul>
+<p style="color:#3a3e40; margin-top: 20px;">All support realtime updates and would work for Lab 3!</p>
+</div></div>
+<aside class="notes">* each platform has different strengths
+* you're welcome to explore alternatives for lab3
+* document your experience if you try something different</aside></section><section data-id="baas-supabase">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Supabase</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="font-size: 1.5em; color: #3ECF8E; font-weight: bold;">🐘 "The Open Source Firebase Alternative"</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong>PostgreSQL</strong> — full SQL support, not just JSON</li>
+	<li><strong>Row Level Security</strong> — fine-grained access control</li>
+	<li><strong>Realtime subscriptions</strong> — listen to database changes</li>
+	<li><strong>Self-hostable</strong> — run your own instance</li>
+	<li><strong>Auth, Storage, Edge Functions</strong> — full platform</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 180px; left: 130px; top: 420px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Supabase realtime subscription
+const channel = supabase
+  .channel('notes')
+  .on('postgres_changes', { event: '*', schema: 'public', table: 'notes' },
+    (payload) => setNotes(prev => [...prev, payload.new])
+  )
+  .subscribe();</code></pre></div></div>
+<aside class="notes">* great if you already know SQL
+* more traditional relational data model
+* very popular, good docs</aside></section><section data-id="baas-convex">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Convex</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="font-size: 1.5em; color: #F97316; font-weight: bold;">⚡ TypeScript-First Realtime Backend</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong>Automatic realtime</strong> — queries auto-update, no subscriptions needed</li>
+	<li><strong>ACID transactions</strong> — proper database guarantees</li>
+	<li><strong>TypeScript end-to-end</strong> — type-safe from DB to UI</li>
+	<li><strong>Serverless functions</strong> — write backend logic in TS</li>
+	<li><strong>No infrastructure</strong> — fully managed</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 180px; left: 130px; top: 420px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Convex - queries are automatically realtime!
+const notes = useQuery(api.notes.list);
+
+// Mutations are type-safe
+const addNote = useMutation(api.notes.create);
+await addNote({ title: "New note", content: "..." });</code></pre></div></div>
+<aside class="notes">* really nice developer experience
+* queries just work - no manual subscriptions
+* great for TypeScript fans</aside></section><section data-id="baas-liveblocks">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Liveblocks</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="font-size: 1.5em; color: #7C3AED; font-weight: bold;">👥 Collaboration Infrastructure</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong>Presence</strong> — see who's online, cursor positions</li>
+	<li><strong>CRDT storage</strong> — conflict-free collaborative editing</li>
+	<li><strong>Comments &amp; notifications</strong> — built-in collaboration features</li>
+	<li><strong>Room-based</strong> — natural for document/board collaboration</li>
+	<li>Used by <strong>Figma-like</strong> apps</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 180px; left: 130px; top: 420px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Liveblocks - presence and storage
+const others = useOthers(); // see other users
+const [notes, setNotes] = useStorage(root => root.notes);
+
+// Updates automatically sync & merge across clients
+setNotes(notes => notes.push({ title: "New note" }));</code></pre></div></div>
+<aside class="notes">* built specifically for collaborative apps
+* presence is really cool for multiplayer experiences
+* CRDT support means no conflicts</aside></section><section data-id="baas-partykit">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">PartyKit</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="font-size: 1.5em; color: #FF6B6B; font-weight: bold;">🎉 Edge-First Multiplayer</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong>WebSocket rooms</strong> — built for multiplayer</li>
+	<li><strong>Edge deployment</strong> — low latency globally</li>
+	<li><strong>Stateful servers</strong> — each room has its own server instance</li>
+	<li><strong>Y.js integration</strong> — CRDT support built-in</li>
+	<li>Great for <strong>games, whiteboards, live experiences</strong></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 180px; left: 130px; top: 420px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// PartyKit server - runs at the edge
+export default class NoteRoom implements Party.Server {
+  onMessage(message, sender) {
+    // Broadcast to all connected clients
+    this.room.broadcast(message);
+  }
+}</code></pre></div></div>
+<aside class="notes">* very cool for real-time multiplayer
+* think game servers but for web apps
+* Y.js gives you CRDTs</aside></section></section><section class="stack" data-id="crdt-stack"><section data-id="crdt-intro">
+
+<div class="sl-block" data-block-type="snippet" style="width: 800px; height: 161.418px; left: 80px; top: 199.291px;" data-name="snippet-31e5c6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CRDTs</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">Conflict-free Replicated Data Types</div>
+</div>
+</div></div>
+<aside class="notes">* advanced topic but important for understanding collaborative editing
+* used by Figma, Linear, Notion</aside></section><section data-id="crdt-problem">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">The Problem: Last Write Wins</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="color:#3a3e40">What happens when two users edit the same note simultaneously?</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li>User A changes title to "Meeting Notes"</li>
+	<li>User B changes title to "Project Ideas"</li>
+	<li>Both send updates at the same time...</li>
+</ul>
+<p style="color:#E53E3E; font-weight: bold; margin-top: 30px; font-size: 1.3em;">⚠️ With Firebase: One user's changes get <strong>overwritten</strong>!</p>
+<p style="color:#3a3e40; margin-top: 20px;">This is called "Last Write Wins" — whoever's update arrives last, wins.</p>
+</div></div>
+<aside class="notes">* this is actually a huge problem in collaborative apps
+* imagine losing your work because someone else saved
+* Firebase doesn't solve this automatically</aside></section><section data-id="crdt-solution">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CRDTs: The Solution</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="color:#38A169; font-weight: bold; font-size: 1.3em;">CRDTs = data structures where concurrent edits <strong>always merge automatically</strong></p>
+<ul style="color:rgb(58, 62, 64); margin-top: 30px;">
+	<li><strong>No conflicts</strong> — mathematically impossible to have conflicts</li>
+	<li><strong>No coordination</strong> — each client edits independently</li>
+	<li><strong>Eventually consistent</strong> — all clients converge to same state</li>
+	<li><strong>Offline-first</strong> — works without network, syncs later</li>
+</ul>
+<p style="color:#3a3e40; margin-top: 30px;">The CRDT handles merging locally, then you use Firebase (or any transport) to sync changes between clients.</p>
+</div></div>
+<aside class="notes">* this is actually really elegant computer science
+* the math guarantees no conflicts
+* offline support comes for free</aside></section><section data-id="crdt-how">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">How CRDTs Work (simplified)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="color:#3a3e40">Instead of storing just the value, CRDTs track <strong>operations</strong> with metadata:</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong>Unique IDs</strong> — every operation has a globally unique identifier</li>
+	<li><strong>Timestamps/Vector clocks</strong> — ordering information</li>
+	<li><strong>Merge rules</strong> — deterministic way to combine concurrent edits</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 200px; left: 130px; top: 380px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Conceptually, instead of:
+note.title = "New Title"
+
+// CRDTs track:
+{ op: "set", field: "title", value: "New Title",
+  id: "abc123", timestamp: 1234567890, author: "user-A" }</code></pre></div></div>
+<aside class="notes">* this is a simplification but captures the idea
+* the metadata lets you merge deterministically
+* same operations in any order = same result</aside></section><section data-id="crdt-libraries">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CRDT Libraries</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 100px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="color:#3a3e40">You don't have to implement CRDTs yourself! Libraries do the hard work:</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong><a href="https://yjs.dev/">Y.js</a></strong> — most popular, great ecosystem, used by many editors</li>
+	<li><strong><a href="https://automerge.org/">Automerge</a></strong> — JSON-like API, great for documents</li>
+	<li><strong><a href="https://jsonjoy.com/">json-joy</a></strong> — JSON CRDT implementation</li>
+</ul>
+<p style="color:#3a3e40; margin-top: 30px;">These handle the complexity — you just use familiar APIs and they sync automatically.</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 160px; left: 130px; top: 430px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Y.js example - just use it like a Map!
+const ymap = ydoc.getMap('notes');
+ymap.set('note1', { title: 'Hello', content: '...' });
+
+// Changes automatically sync with other clients!</code></pre></div></div>
+<aside class="notes">* Y.js is probably the most used
+* Automerge has a really nice API
+* fun fact: Automerge uses Immutable.js under the hood! full circle back to our immutability discussion
+* extra credit to add this to your notes app!</aside></section><section data-id="crdt-resources">
+
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">CRDT Resources</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 90px;"><div class="sl-block-content" style="z-index: 11;">
+<p style="color:#3a3e40; font-size: 1.1em;">Want to go deeper? These are excellent resources:</p>
+<ul style="color:rgb(58, 62, 64); margin-top: 20px;">
+	<li><strong><a href="https://josephg.com/blog/crdts-go-brrr/">CRDTs Go Brrr</a></strong> — great visual explanation of how text CRDTs work under the hood (tree diagrams, performance comparisons)</li>
+	<li><strong><a href="https://www.inkandswitch.com/local-first/">Local-first Software</a></strong> — the philosophy behind CRDTs by Ink &amp; Switch</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 860px; left: 50px; top: 290px;"><div class="sl-block-content" style="z-index: 12;">
+<p style="color:#3a3e40; font-size: 1.1em;">📺 Must-watch talk:</p>
+<p style="margin-top: 10px;"><a href="https://www.youtube.com/watch?v=PMVBuMK_pJY" style="color: #E53E3E; font-weight: bold; font-size: 1.2em;">Martin Kleppmann — "CRDTs: The Hard Parts"</a></p>
+<p style="color:#6b7280; font-size: 0.9em;">Hydra Conference 2020 • Covers the tricky edge cases in collaborative editing</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 500px; height: 80px; left: 230px; top: 480px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 13;"><pre class="text" style="font-size: 14px; line-height: 18px;"><code>youtube.com/watch?v=PMVBuMK_pJY</code></pre></div></div>
+<aside class="notes">* Martin Kleppmann is one of the foremost experts on distributed systems
+* His talk covers edge cases like cursor positions, undo, etc
+* The josephg blog has great tree diagrams showing how it all works</aside></section></section><section data-id="5c6bbba44f8fe2595eb55d2fdee3ff06"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 160.369px; left: 80px; top: 38.5588px;" data-block-id="4552faa1c4ade668d909dbc07be8191e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
 <div class="logo">&nbsp;</div>
