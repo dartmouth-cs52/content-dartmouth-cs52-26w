@@ -207,8 +207,14 @@ fetch(url, (newVideos) =&gt; {
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 791.306px; height: 468.13px; left: 84.347px; top: 200.041px;" data-block-id="d2b1f2f037ebe6c2f94f8c40b538ae3e"><div class="sl-block-style" style="z-index: 12; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 12;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/QWZEOdQ?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* great, you've all already worked with immutable data structures!
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-immutable-strings" style="width: 791.306px; height: 468.13px; left: 84.347px; top: 200.041px;" data-block-id="d2b1f2f037ebe6c2f94f8c40b538ae3e"><div class="sl-block-content" style="z-index: 12;"><div class="sandpack-embed" data-template="vanilla" data-theme="auto" data-layout="preview-right" data-show-console="true" data-visible-files='["/index.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/index.js": "let foo = 'I am a string';\nfoo.toUpperCase();\nconsole.log(foo);\n\nlet bar = foo.toUpperCase();\nconsole.log(bar);",
+  "/index.html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Immutable Strings</title>\n</head>\n<body>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>"
+}
+</script></div></div></div><aside class="notes">* great, you've all already worked with immutable data structures!
 * the string methods all return a new string rather than modify the existing  one
+* Original CodePen: https://codepen.io/timofei/pen/QWZEOdQ
 </aside></section><section data-id="d07f76579d2487ab219df509c0bf9b75" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;" hidden="">
 
 
@@ -226,8 +232,14 @@ fetch(url, (newVideos) =&gt; {
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 791.306px; height: 468.13px; left: 84.347px; top: 200.041px;" data-block-id="ed23503490eb153bfa75744645a8898e"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/QWZEOpQ?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* original array is gonezo
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-arrays-not-immutable" style="width: 791.306px; height: 468.13px; left: 84.347px; top: 200.041px;" data-block-id="ed23503490eb153bfa75744645a8898e"><div class="sl-block-content" style="z-index: 11;"><div class="sandpack-embed" data-template="vanilla" data-theme="auto" data-layout="preview-right" data-show-console="true" data-visible-files='["/index.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/index.js": "let arr = [1];\narr.push(2);\n\n// what does Array.prototype.push return?\n\nconsole.log(arr);",
+  "/index.html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Arrays Not Immutable</title>\n</head>\n<body>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>"
+}
+</script></div></div></div><aside class="notes">* original array is gonezo
 * what if you needed it?
+* Original CodePen: https://codepen.io/timofei/pen/QWZEOpQ
 </aside></section></section>
 <section class="stack editing-mode" data-id="397684726be41a8754fbda0b42e1cff4" style="top: 0px; display: block;" hidden="" aria-hidden="true"><section data-id="12fac598c16eaf8fc77a9c9fbe0ed8ae" style="top: 350px; display: block;" class="editing-mode">
 
@@ -290,7 +302,14 @@ setNumbers(newNumbers);
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="70b48993e66b85bb77edf206b5bf2abd"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/RwxELqp?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">setItems([...items, item]);  </aside></section><section data-id="008a723b286b37cdcf334b2c8ad05387" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-todo-mutation" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="70b48993e66b85bb77edf206b5bf2abd"><div class="sl-block-content" style="z-index: 11;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import { useState } from 'react';\n\nconst TodoList = (props) => {\n  const renderItem = (item) => {\n    return <li key={item.id}>{item.text}<\/li>;\n  };\n  return <ul>{props.items.map(renderItem)}<\/ul>;\n}\n\nexport default function App() {\n  const [items, setItems] = useState([]);\n  const [text, setText] = useState('');\n\n  const handleChange = (e) => {\n    setText(e.target.value);\n  }\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    const item = {text: text, id: Date.now()};\n    items.push(item);\n    setItems(items);\n    //setItems(prevItems => { return [...prevItems, item] });\n  }\n\n  return (\n    <div>\n      <h3>TODO<\/h3>\n      <TodoList items={items} />\n      <form onSubmit={handleSubmit}>\n        <input onChange={handleChange} value={text} />\n        <button>{'Add #' + (items.length + 1)}<\/button>\n      <\/form>\n    <\/div>\n  );\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}"
+}
+</script></div></div></div><aside class="notes">setItems([...items, item]);
+* Original CodePen: https://codepen.io/timofei/pen/RwxELqp
+</aside></section><section data-id="008a723b286b37cdcf334b2c8ad05387" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
 
@@ -588,8 +607,16 @@ post = post.set({content: 'real import stuff'});
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="35a44a51e0ef5e5e2a56fd74751627fd"><div class="sl-block-style" style="z-index: 11; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 11;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/popqVjb?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div><aside class="notes">* immer is slightly more challenging but still pretty easy
-* here's a complete example of a todo</aside></section></section>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-immer-undo" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;" data-block-id="35a44a51e0ef5e5e2a56fd74751627fd"><div class="sl-block-content" style="z-index: 11;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import { useState } from 'react';\nimport { produce, applyPatches, enablePatches } from 'immer';\n\nenablePatches();\n\nconst TodoList = (props) => {\n  const renderItem = (item) => {\n    return <li key={item.id}>{item.text}<\/li>;\n  };\n  return <ul>{props.items.map(renderItem)}<\/ul>;\n}\n\nexport default function App() {\n  const [items, setItems] = useState([]);\n  const [text, setText] = useState('');\n  const [undoStack, setUndoStack] = useState([]);\n\n  const addUndo = (patches, inversePatches) => {\n    setUndoStack(prev => [...prev, inversePatches]);\n  };\n\n  const handleChange = (e) => {\n    setText(e.target.value);\n  }\n\n  const handleUndo = () => {\n    if (undoStack.length === 0) return;\n    const inversePatches = undoStack[undoStack.length - 1];\n    setUndoStack(prev => prev.slice(0, -1));\n    setItems(prev => applyPatches(prev, inversePatches));\n  }\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    const item = {text: text, id: Date.now()};\n    const nextState = produce(items, (draft) => {\n      draft.push(item);\n    }, addUndo);\n    // addUndo passed in as callback to produce to record inversePatches\n    setItems(nextState);\n    setText('');\n  }\n\n  return (\n    <div>\n      <h3>TODO<\/h3>\n      <TodoList items={items} />\n      <form onSubmit={handleSubmit}>\n        <input onChange={handleChange} value={text} />\n        <button>{'Add #' + (items.length + 1)}<\/button>\n        <button type=\"button\" onClick={handleUndo}>undo<\/button>\n      <\/form>\n    <\/div>\n  );\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}",
+  "/package.json": "{\n  \"dependencies\": {\n    \"react\": \"^18.0.0\",\n    \"react-dom\": \"^18.0.0\",\n    \"immer\": \"^10.0.0\"\n  }\n}"
+}
+</script></div></div></div><aside class="notes">* immer is slightly more challenging but still pretty easy
+* here's a complete example of a todo
+* Original CodePen: https://codepen.io/timofei/pen/popqVjb
+</aside></section></section>
 <section data-id="9b5fd5e3e22dd5a80b1c6685d5c7d20e" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode">
 
 
@@ -763,7 +790,14 @@ fb.ref('users').child(id).remove();
 
 
 
-<div class="sl-block" data-block-type="iframe" data-name="iframe-7d2e79" data-block-id="712065266048418b32b6cb1f18e897c3" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/QwwNbKg?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-firebase-comments" data-block-id="712065266048418b32b6cb1f18e897c3" style="width: 960px; height: 582.714px; left: 0px; top: 117.286px;"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import React, { useState, useEffect } from 'react';\nimport firebase from 'firebase/compat/app';\nimport 'firebase/compat/database';\nimport './styles.css';\n\n// Initialize Firebase\nconst config = {\n  apiKey: \"AIzaSyD2FK5pXUCm6q0hwh_yy3KKKxHDQK8v0-M\",\n  authDomain: \"cs52-codepen-aea3a.firebaseapp.com\",\n  databaseURL: \"https://cs52-codepen-aea3a.firebaseio.com\",\n  projectId: \"cs52-codepen-aea3a\",\n  storageBucket: \"\",\n  messagingSenderId: \"261174617709\"\n};\n\nif (!firebase.apps.length) {\n  firebase.initializeApp(config);\n}\n\nconst commentsDB = firebase.database().ref('comments');\n\nfunction AddComment() {\n  const [text, setText] = useState(\"\");\n\n  function onFormSubmit(event) {\n    event.preventDefault();\n    commentsDB.push(text);\n    setText(\"\");\n  }\n\n  return (\n    <form className=\"comment-form\" onSubmit={onFormSubmit}>\n      <div className=\"input-group\">\n        <input\n          placeholder=\"new comment\"\n          value={text}\n          onChange={(event) => setText(event.target.value)}\n        />\n        <button type=\"submit\">Submit<\/button>\n      <\/div>\n    <\/form>\n  );\n}\n\nfunction AllComments() {\n  const [comments, setComments] = useState({});\n\n  useEffect(() => {\n    commentsDB.on('value', (snapshot) => {\n      setComments(snapshot.val() || {});\n    });\n  }, []);\n\n  const allComments = Object.entries(comments).map(([key, value]) => {\n    return (\n      <div className=\"comment\" key={key}>\n        {value}\n      <\/div>\n    );\n  });\n\n  return <div className=\"comment-list\">{allComments}<\/div>;\n}\n\nexport default function App() {\n  return (\n    <div id=\"app\">\n      <AddComment />\n      <AllComments />\n    <\/div>\n  );\n}",
+  "/styles.css": "#app {\n  padding: 20px;\n}\n\n.comment {\n  margin: 10px;\n  padding: 8px;\n  background: #f5f5f5;\n  border-radius: 4px;\n}\n\n.comment-form {\n  width: 500px;\n}\n\n.comment-form .input-group {\n  margin: 10px 0;\n  display: flex;\n  gap: 8px;\n}\n\n.comment-form input {\n  flex: 1;\n  padding: 8px;\n}",
+  "/package.json": "{\n  \"dependencies\": {\n    \"react\": \"^18.0.0\",\n    \"react-dom\": \"^18.0.0\",\n    \"firebase\": \"^9.0.0\"\n  }\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/QwwNbKg -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="bbb4bd54fa529974d140c089f290c05f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1210,7 +1244,12 @@ coolCode.someCoolFunction();
 </code></pre></div></div></div><aside class="notes">what if props here changes for some reason - say it is coming from firebase?  what would happen? </aside></section><section data-id="cc6e0d71e27cf718788e5b239b2503b2" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
-<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" data-block-id="eedee076278cba5bd23aaae87e4b539f" style="width: 960px; height: 570px; left: 0px; top: 109.579px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/015ae54386f2d04e7eb4702d134f4791?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-optional-chaining" data-block-id="eedee076278cba5bd23aaae87e4b539f" style="width: 960px; height: 570px; left: 0px; top: 109.579px;"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="vanilla-ts" data-theme="auto" data-layout="preview-right" data-show-console="true" data-visible-files='["/index.ts"]'><script type="application/json" data-sandpack-files>
+{
+  "/index.ts": "const adventurer = {\n  name: 'Alice',\n  cat: {\n    name: 'Dinah'\n  }\n} as any;\n\ntry {\n  const dogName = adventurer.dog.name; // add ?. for optional chaining to not have runtime crash\n  console.log(dogName);\n  if (dogName) console.log(`render out ${dogName}`);\n} catch (e) {\n  console.log(`error: ${e}`);\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/JjEaBwG/015ae54386f2d04e7eb4702d134f4791 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="53d71756dde00b77fe2842cc35b5e7ec"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1224,7 +1263,13 @@ coolCode.someCoolFunction();
 </div></div><aside class="notes">* super useful if you are for instance checking if a video.id exists but video does not exist - so the code crashes!</aside></section><section data-id="6caa830b0c3709699c7716619e2c79a0" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
-<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="e7cb34e13b60a6fbd9b6e117ba657eda"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/07ba5b15407c27ff4c171bee8f41da18?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-spread-syntax" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="e7cb34e13b60a6fbd9b6e117ba657eda"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="vanilla" data-theme="auto" data-layout="preview-right" data-show-console="true" data-visible-files='["/index.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/index.js": "let arr1 = [0, 1, 2];\nlet arr2 = [3, 4, 5];\n\nconsole.log([...arr2, ...arr1]);\n\nlet obj1 = { name: 'tim', lastname: 'tregubov', data: { test: 'test'} };\n\nconst clonedObj = { ...obj1 };\nconsole.log('shallow equality: ', obj1 === clonedObj);\nconsole.log('nested obj equality: ', obj1.data === clonedObj.data);\n\nlet obj2 = { name: 'timothy'};\nconst mergedObj = { ...obj1, ...obj2 };\nconsole.log('merged: ', mergedObj);\n\nconst mergedObj2 = { ...mergedObj, location: 'hanover' };\nconsole.log('with new key: ', mergedObj2);",
+  "/index.html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Spread Syntax</title>\n</head>\n<body>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/BapOONO/07ba5b15407c27ff4c171bee8f41da18 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="aca2837ee53f690e3510a0ed63ba877e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1238,7 +1283,12 @@ coolCode.someCoolFunction();
 </div></div><aside class="notes">* allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.</aside></section><section data-id="61856d82cf7343ed447dc3c539505493" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
-<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="d2d576e450f0d71fc58407c111f199e9"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/0f93ba8eaf64a0f32b05a5c724558445?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-nullish-coalescing" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="d2d576e450f0d71fc58407c111f199e9"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="vanilla-ts" data-theme="auto" data-layout="preview-right" data-show-console="true" data-visible-files='["/index.ts"]'><script type="application/json" data-sandpack-files>
+{
+  "/index.ts": "let count = 0;\nlet text = \"\";\n\nconsole.log('or: ', count || 42);\nconsole.log('or: ', text || \"hi!\");\n\nconsole.log('nullish: ', count ?? 42);\nconsole.log('nullish: ', text ?? \"hi!\");\n\n//combine with optional chaining\nlet foo: any = { existing: \"hi\" };\n\nconsole.log(foo.existing?.toUpperCase() ?? \"not available\"); // \"HI\"\nconsole.log(foo.nonexisting?.toUpperCase() ?? \"not available\"); // \"not available\""
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/mdRGGxG/0f93ba8eaf64a0f32b05a5c724558445 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="9a69187967360c114b969630bcb35991"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1252,7 +1302,13 @@ coolCode.someCoolFunction();
 </div></div><aside class="notes">* is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.</aside></section><section data-id="6a6f3d390d358f353cb5f615147f4b72" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
 
 
-<div class="sl-block" data-block-type="iframe" data-name="iframe-e00b15" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="2337dfe155cecb62a081bf53360ab319"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/9f67634b89490352bb74b3c4bc0ac25f?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-destructuring" style="width: 960px; height: 570px; left: 0px; top: 109.579px;" data-block-id="2337dfe155cecb62a081bf53360ab319"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="vanilla" data-theme="auto" data-layout="preview-right" data-show-console="true" data-visible-files='["/index.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/index.js": "const video = {\n  title: \"my cool vid\",\n  id: {\n    kind: 'mp4',\n    videoId: 'a1',\n    playlistId: 'coolvids',\n  },\n  snippet: {\n    publishedAt: '01/01/01',\n    thumbnail_url: 'https://url',\n  }\n}\n\n//pull out key\nlet { id: { videoId: vid }, title } = video;\nconsole.log('id: ', vid);\nconsole.log('title: ', title);\n\n// nested\nlet { id: { playlistId: pl } } = video;\nconsole.log('playlist: ', pl);\n\n//in function argument\nfunction doSomethingToVideo({snippet: {thumbnail_url}}) {\n  console.log('thumbnail_url: ', thumbnail_url)\n}\ndoSomethingToVideo(video);\n\n// combine with spread operator\nlet {a, b, e = \"default\", ...rest} = {a: 10, b: 20, c: 30, d: 40}\nconsole.log(b, rest, e);\n\n// more useful default example (doesn't crash)\nconst { idbad: { kind } = {} } = video;\nconsole.log('kind: ', kind);",
+  "/index.html": "<!DOCTYPE html>\n<html>\n<head>\n  <title>Destructuring</title>\n</head>\n<body>\n  <script src=\"index.js\"><\/script>\n</body>\n</html>"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/YzNOJvm/9f67634b89490352bb74b3c4bc0ac25f -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1bf6734fc949cf464333f56beadf6dce"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1322,7 +1378,13 @@ coolCode.someCoolFunction();
 </div>
 </div></div></section>
 <section class="stack editing-mode" data-id="52c29c9b9ab5de53ba247d0fad9d9613" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="3b000eb691a4f20243a29c84b5b816a6" style="top: 350px; display: none;" class="editing-mode">
-<div class="sl-block" data-block-type="iframe" data-name="iframe-221835" data-block-id="aee4c0bcfb72a41d8ec81d1de3a07af4" style="width: 785px; height: 461px; left: 87.5px; top: 149px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/2a117cd9e89d119ff929e921eb280df1?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-function-component" data-block-id="aee4c0bcfb72a41d8ec81d1de3a07af4" style="width: 785px; height: 461px; left: 87.5px; top: 149px;"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "const HelloMessage = (props) => {\n  return <div>Why hello there, {props.name}!<\/div>;\n}\n\nexport default function App() {\n  return <HelloMessage name=\"CS52\" />;\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/zBPqqO/2a117cd9e89d119ff929e921eb280df1 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="af5c380d8a35dd984454856aade352ce"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1338,7 +1400,13 @@ coolCode.someCoolFunction();
 * used to be called a dumb component 
 
 </aside></section><section data-id="a300deb101a6c68df22105fbe1f6881b" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
-<div class="sl-block" data-block-type="iframe" data-name="iframe-ae6bd3" data-block-id="ce573dc196c019a005bfd226b763a603" style="width: 808px; height: 505px; left: 64px; top: 140px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/9cdfb283082fadae6152944f1f3ac506?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-class-component" data-block-id="ce573dc196c019a005bfd226b763a603" style="width: 808px; height: 505px; left: 64px; top: 140px;"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import React from 'react';\n\nclass Timer extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {secondsElapsed: 0};\n  }\n\n  tick() {\n    this.setState({secondsElapsed: this.state.secondsElapsed + 1});\n  }\n\n  componentDidMount() {\n    this.interval = setInterval(this.tick.bind(this), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.interval);\n  }\n\n  render() {\n    return (\n      <div>\n        <div>Seconds Elapsed: {this.state.secondsElapsed}<\/div>\n        <div>Minutes Elapsed: {Math.floor(this.state.secondsElapsed / 60)}<\/div>\n      <\/div>\n    );\n  }\n}\n\nexport default function App() {\n  return <Timer />;\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/beYExo/9cdfb283082fadae6152944f1f3ac506 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="b1fdfd2f249eb899099790f338f5adac"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1356,7 +1424,13 @@ coolCode.someCoolFunction();
 * just state changes
 * and outputs
 </aside></section><section data-id="ccddf2b29402772c2cc9eec1d267cadd" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
-<div class="sl-block" data-block-type="iframe" data-name="iframe-a05f6a" data-block-id="f8692ec50b3ff65706b64ece083eb7b3" style="width: 888px; height: 571px; left: 36px; top: 104px;"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/2070d765fa76c9a0f71632344c8bff94?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-hook-timer" data-block-id="f8692ec50b3ff65706b64ece083eb7b3" style="width: 888px; height: 571px; left: 36px; top: 104px;"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import { useState, useEffect } from 'react';\n\nconst Timer = (props) => {\n  //use state setter and state variable\n  const [secondsElapsed, setSeconds] = useState(0);\n\n  const tick = () => {\n    setSeconds((secondsElapsed) => { return secondsElapsed + 1 });\n  }\n\n  useEffect(() => {\n    const interval = setInterval(tick, 1000);\n    return () => clearInterval(interval);\n  }, []);\n\n  return (\n    <div>\n      <div>Seconds Elapsed: {secondsElapsed}<\/div>\n      <div>Minutes Elapsed: {Math.floor(secondsElapsed / 60)}<\/div>\n    <\/div>\n  );\n}\n\nexport default function App() {\n  return <Timer />;\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/RwKQzqm/2070d765fa76c9a0f71632344c8bff94 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="5d055e8285920efb72abefc81fe0c974"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1372,7 +1446,13 @@ coolCode.someCoolFunction();
 * useState is for initializing and setting state
 * useEffect is for things like componentDidMount - a way to inform the component that we are asking for something external to happen that may cause a rerender
 </aside></section><section data-id="df49d1cb55d2b086a9cc1ca56fbb7b3c" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
-<div class="sl-block" data-block-type="iframe" data-name="iframe-a05f6a" style="width: 888px; height: 571px; left: 36px; top: 104px;" data-block-id="18504eaaeeff7abdebf96acc483b0949"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/4940f261bfe4feb77de31981597c4201?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-class-todo" style="width: 888px; height: 571px; left: 36px; top: 104px;" data-block-id="18504eaaeeff7abdebf96acc483b0949"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import React, { Component } from 'react';\n\nconst TodoList = (props) => {\n  const renderItem = (item) => {\n    return <li key={item.id}>{item.text}<\/li>;\n  };\n  return <ul>{props.items.map(renderItem)}<\/ul>;\n}\n\nclass TodoApp extends Component {\n  constructor(props) {\n    super(props);\n    this.state = { items: [], text: '' };\n  }\n\n  handleChange = (e) => {\n    this.setState({ text: e.target.value });\n  }\n\n  handleSubmit = (e) => {\n    e.preventDefault();\n    const item = { text: this.state.text, id: Date.now() };\n    this.setState(prevState => ({\n      items: [...prevState.items, item],\n      text: ''\n    }));\n  }\n\n  render() {\n    return (\n      <div>\n        <h3>TODO<\/h3>\n        <TodoList items={this.state.items} />\n        <form onSubmit={this.handleSubmit}>\n          <input onChange={this.handleChange} value={this.state.text} />\n          <button>{'Add #' + (this.state.items.length + 1)}<\/button>\n        <\/form>\n      <\/div>\n    );\n  }\n}\n\nexport default function App() {\n  return <TodoApp />;\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/ezeZmo/4940f261bfe4feb77de31981597c4201 -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="8fb682f68707f692cdf8e2d8d3c776d6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
@@ -1386,7 +1466,13 @@ coolCode.someCoolFunction();
 </div></div><aside class="notes">* putting it all together
 * change order in array?
 </aside></section><section data-id="5e7b12ec9211c7c5be3a7cbcb18eca19" class="editing-mode" aria-hidden="true" style="top: 350px; display: none;">
-<div class="sl-block" data-block-type="iframe" data-name="iframe-a05f6a" style="width: 888px; height: 571px; left: 36px; top: 104px;" data-block-id="93656af7a547a0ff5edf887cd6d1b26d"><div class="sl-block-style" style="z-index: 10; filter: drop-shadow(rgba(0, 0, 0, 0.5) 2px 2px 5px);"><div class="sl-block-content" style="z-index: 10;"><iframe sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-src="https://codepen.io/timofei/embed/14ef1048b53b14e95872ca94752870ff?height=300&amp;theme-id=24117&amp;default-tab=js,result&amp;editable=true" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi; autoplay"></iframe></div></div></div>
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-hook-todo" style="width: 888px; height: 571px; left: 36px; top: 104px;" data-block-id="93656af7a547a0ff5edf887cd6d1b26d"><div class="sl-block-content" style="z-index: 10;"><div class="sandpack-embed" data-template="react" data-theme="auto" data-layout="preview-right" data-visible-files='["/App.js"]'><script type="application/json" data-sandpack-files>
+{
+  "/App.js": "import React, { useState } from 'react';\n\nconst TodoList = (props) => {\n  const renderItem = (item) => {\n    return <li key={item.id}>{item.text}<\/li>;\n  };\n  return <ul>{props.items.map(renderItem)}<\/ul>;\n}\n\nconst TodoApp = () => {\n  const [items, setItems] = useState([]);\n  const [text, setText] = useState('');\n\n  const handleChange = (e) => {\n    setText(e.target.value);\n  }\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    const item = { text: text, id: Date.now() };\n    setItems(prevItems => [...prevItems, item]);\n    setText('');\n  }\n\n  return (\n    <div>\n      <h3>TODO<\/h3>\n      <TodoList items={items} />\n      <form onSubmit={handleSubmit}>\n        <input onChange={handleChange} value={text} />\n        <button>{'Add #' + (items.length + 1)}<\/button>\n      <\/form>\n    <\/div>\n  );\n}\n\nexport default function App() {\n  return <TodoApp />;\n}",
+  "/styles.css": "body {\n  padding: 20px;\n}"
+}
+</script></div></div></div>
+<!-- Original CodePen: https://codepen.io/timofei/pen/VwPQojo/14ef1048b53b14e95872ca94752870ff -->
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="bebc2832069be5b7f8a62af8ee84008e"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
