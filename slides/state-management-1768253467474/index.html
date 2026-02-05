@@ -1557,7 +1557,304 @@ const useBearStore = create(immer(set) =&gt; ({
 </div>
 </div></div>
 <div class="sl-block" data-block-type="image" data-name="image-770c1f" data-block-id="b9e21a435a497f3ea79494a0dd68bb22" style="width: 533.348px; height: 518px; left: 213.326px; top: 112px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1390" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/state-management-1768253467474/images/42f9f3fbd13d8ab0f7705193c17b3614.png"></div></div><aside class="notes">many options exist - the trend is towards more minimal and simpler. 
-we'll stick with zustand this time around - should help simplify. </aside></section></section><section class="stack" data-id="322ccd61e6138a42d4e6a4d6ac7f16d8"><section data-id="d60b0776b8e25a5fe4f3c7e0409dd3d5" data-visibility="hidden">
+we'll stick with zustand this time around - should help simplify. </aside></section></section><section data-id="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
+<div id="box-title">
+<div class="top">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Server State vs Client State</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+
+<div class="body">Not all state is created equal</div>
+
+<div class="logo-spacer">&nbsp;</div>
+</div>
+</div></div></section><section class="stack" data-id="b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7"><section data-id="c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">two kinds of state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv01" data-block-id="f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7" style="height: auto; width: 430px; left: 30px; top: 120px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong>Client State</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>UI state (modals, tabs, sidebar)</li>
+	<li>form input values</li>
+	<li>user preferences (theme)</li>
+	<li>synchronous, local, ephemeral</li>
+	<li><strong>you own this data</strong></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv02" data-block-id="a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8" style="height: auto; width: 430px; left: 500px; top: 120px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong>Server State</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>data from your API / database</li>
+	<li>shared across users</li>
+	<li>can become stale</li>
+	<li>asynchronous, remote, persisted</li>
+	<li><strong>you are borrowing this data</strong></li>
+</ul>
+</div></div>
+<aside class="notes">* this is a really important distinction that's emerged in the react ecosystem
+* zustand/redux are great for client state - UI things that live in the browser
+* but data from your API is fundamentally different - it lives on the server, can change without you knowing, other users might modify it
+* treating both the same way leads to bugs: stale data, cache invalidation issues, loading waterfalls</aside>
+</section><section data-id="d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">the classic useEffect pattern</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-srv01" style="width: 500px; height: auto; left: 20px; top: 100px;" data-block-id="c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre class="javascript" style="font-size: 15px; line-height: 19px; tab-size: 4;"><code data-line-numbers>function Posts() {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() =&gt; {
+    fetch('/api/posts')
+      .then(res =&gt; res.json())
+      .then(data =&gt; setPosts(data))
+      .catch(err =&gt; setError(err))
+      .finally(() =&gt; setLoading(false))
+  }, [])
+
+  // what about caching?
+  // refetching on focus?
+  // race conditions?
+  // deduplication?
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv03" data-block-id="d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1" style="height: auto; width: 400px; left: 540px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>problems with this approach:</p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>no caching - refetches every mount</li>
+	<li>no background refetch</li>
+	<li>race conditions possible</li>
+	<li>duplicate requests across components</li>
+	<li>lots of boilerplate per request</li>
+	<li>data goes stale silently</li>
+</ul>
+</div></div>
+<aside class="notes">* this is what we've been doing - useEffect + useState for every API call
+* it works but you end up reinventing caching, loading states, error handling everywhere
+* and you miss things: what if the user tabs away and comes back? data might be stale
+* what if two components need the same data? you fetch it twice
+* this is where server state libraries come in</aside>
+</section><section data-id="e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">TanStack Query (React Query)</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-srv02" style="width: 520px; height: auto; left: 20px; top: 95px;" data-block-id="f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre class="javascript" style="font-size: 15px; line-height: 19px; tab-size: 4;"><code data-line-numbers>import { useQuery } from '@tanstack/react-query'
+
+function Posts() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['posts'],
+    queryFn: () =&gt;
+      fetch('/api/posts').then(r =&gt; r.json()),
+    staleTime: 5 * 60 * 1000, // 5 min
+  })
+
+  if (isLoading) return &lt;Spinner /&gt;
+  if (error) return &lt;Error msg={error} /&gt;
+
+  return data.map(p =&gt; &lt;Post key={p.id} {...p} /&gt;)
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv04" data-block-id="a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4" style="height: auto; width: 390px; left: 555px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>gives you for free:</p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>automatic caching by queryKey</li>
+	<li>background refetching</li>
+	<li>stale-while-revalidate</li>
+	<li>request deduplication</li>
+	<li>retry on failure</li>
+	<li>refetch on window focus</li>
+	<li>loading/error states</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv05" data-block-id="b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5" style="height: auto; width: 900px; left: 30px; top: 590px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p><a href="https://tanstack.com/query" target="_blank">tanstack.com/query</a> - also has useMutation for write operations</p></div></div>
+<aside class="notes">* TanStack Query is the most popular server state library
+* queryKey is like a cache key - same key across components = shared cache
+* staleTime controls how long before data is considered stale
+* it returns cached data immediately while refetching in the background
+* also has useMutation for POST/PUT/DELETE with optimistic updates
+* wraps your app in a QueryClientProvider similar to how redux had Provider</aside>
+</section><section data-id="f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">SWR - stale while revalidate</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-srv03" style="width: 520px; height: auto; left: 20px; top: 95px;" data-block-id="d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre class="javascript" style="font-size: 15px; line-height: 19px; tab-size: 4;"><code data-line-numbers>import useSWR from 'swr'
+
+const fetcher = (...args) =&gt;
+  fetch(...args).then(r =&gt; r.json())
+
+function Posts() {
+  const { data, error, isLoading } = useSWR(
+    '/api/posts',
+    fetcher
+  )
+
+  if (isLoading) return &lt;Spinner /&gt;
+  if (error) return &lt;Error msg={error} /&gt;
+
+  return data.map(p =&gt; &lt;Post key={p.id} {...p} /&gt;)
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv06" data-block-id="e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8" style="height: auto; width: 390px; left: 555px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>SWR by Vercel (Next.js team)</p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>simpler API - just key + fetcher</li>
+	<li>~5KB vs ~10KB for React Query</li>
+	<li>same stale-while-revalidate strategy</li>
+	<li>auto refetch on focus/reconnect</li>
+	<li>request deduplication</li>
+</ul>
+<p>&nbsp;</p>
+<p>named after the HTTP cache strategy <br>(RFC 5861)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv07" data-block-id="f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9" style="height: auto; width: 900px; left: 30px; top: 590px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p><a href="https://swr.vercel.app" target="_blank">swr.vercel.app</a> - lighter alternative, great for simpler use cases</p></div></div>
+<aside class="notes">* SWR is Vercel's take on the same problem - simpler, smaller
+* the key IS the URL by convention, fetcher is a separate function
+* same core idea: return cached data first, revalidate in background
+* if you're using Next.js this pairs naturally
+* React Query has more features (mutations, infinite queries, devtools) but SWR is often enough</aside>
+</section><section data-id="a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">React Router 7 - framework mode</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-srv04" style="width: 520px; height: auto; left: 20px; top: 90px;" data-block-id="b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre class="javascript" style="font-size: 15px; line-height: 19px; tab-size: 4;"><code data-line-numbers>// route module: routes/posts.tsx
+
+export async function loader() {
+  const posts = await db.getPosts()
+  return { posts }
+}
+
+export async function action({ request }) {
+  const formData = await request.formData()
+  await db.createPost({
+    title: formData.get('title')
+  })
+  return { ok: true }
+}
+
+export default function Posts({ loaderData }) {
+  return (
+    &lt;div&gt;
+      {loaderData.posts.map(p =&gt;
+        &lt;Post key={p.id} {...p} /&gt;
+      )}
+      &lt;Form method="post"&gt;
+        &lt;input name="title" /&gt;
+        &lt;button&gt;Add Post&lt;/button&gt;
+      &lt;/Form&gt;
+    &lt;/div&gt;
+  )
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv08" data-block-id="c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2" style="height: auto; width: 390px; left: 555px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p>a different paradigm entirely:</p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>data fetching at the <strong>route level</strong></li>
+	<li>loaders run <strong>before</strong> render</li>
+	<li>actions handle mutations</li>
+	<li>auto-revalidates after actions</li>
+	<li>loaders removed from client bundle</li>
+	<li>no useEffect, no loading spinners</li>
+</ul>
+<p>&nbsp;</p>
+<p>inherited from Remix's architecture</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv09" data-block-id="d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3" style="height: auto; width: 900px; left: 30px; top: 620px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><p><a href="https://reactrouter.com/start/framework/data-loading" target="_blank">reactrouter.com</a> - framework mode bakes data fetching into routing</p></div></div>
+<aside class="notes">* this is a completely different approach - data fetching happens at the route level, not component level
+* loader runs on the server before the component renders, so no loading spinner needed
+* action handles form submissions and mutations, then loaders auto-revalidate
+* this is the Remix pattern now built into React Router 7
+* the loader code is stripped from the client bundle - safe to use server-only code
+* we'll see this pattern more when we look at full-stack frameworks</aside>
+</section><section data-id="b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">when to use what</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-srv10" data-block-id="f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5" style="height: auto; width: 900px; left: 30px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<table>
+<thead>
+<tr>
+<th>&nbsp;</th>
+<th>Tool</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client State</strong></td>
+<td>Zustand, Redux, Jotai</td>
+<td>UI state, forms, auth status, local preferences</td>
+</tr>
+<tr>
+<td><strong>Server State</strong></td>
+<td>TanStack Query, SWR</td>
+<td>API data, caching, background sync, deduplication</td>
+</tr>
+<tr>
+<td><strong>Route Data</strong></td>
+<td>React Router loaders</td>
+<td>page-level data, SSR, form actions</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>common combo: <strong>Zustand</strong> (client) + <strong>TanStack Query</strong> (server)</p>
+<p>we'll use zustand for client state and fetch API data in our actions</p>
+</div></div>
+<aside class="notes">* the key insight: use the right tool for the right kind of state
+* zustand is great for client state - sidebar open, current theme, auth token
+* tanstack query or swr are great for server state - posts, users, comments from your API
+* react router loaders are great if you're already using react router in framework mode
+* many production apps combine zustand + react query - each handles what it's good at
+* for this class we'll keep it simpler with zustand and direct API fetching in our store actions, but know these tools exist for when your apps grow</aside>
+</section></section><section class="stack" data-id="322ccd61e6138a42d4e6a4d6ac7f16d8"><section data-id="d60b0776b8e25a5fe4f3c7e0409dd3d5" data-visibility="hidden">
 
 
 
