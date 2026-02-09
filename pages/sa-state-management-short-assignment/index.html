@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -442,15 +462,15 @@
   </style>
 </head>
 <body>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/untitled-1767548385857.png" alt="Untitled">
-<div class="heading-block h2-block"><h2>Overview</h2></div>
+<figure class="image-block image-align-center"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/untitled-1767548385857.png" alt="Untitled" style="width: 483px" width="483" data-align="center"></figure>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Overview</h2></div>
 <p>React StarterPack + <a href="https://zustand-demo.pmnd.rs/">Zustand</a></p>
 <p>For this workshop we’re just going to add Zustand to our starter pack and our YouTube video Short Assignment!</p>
 <p>Zustand is a fancy state management system that we’ll be using to build our various next assignments. It will allow us to simplify our code and have a global state in our app with fewer callbacks!  It is a successor to Redux, which is a popular state management tool you may have heard of. Zustand follows the same <a href="https://docs.pmnd.rs/zustand/guides/flux-inspired-practice">Flux pattern</a> but simplifies it significantly.  Instead of Actions, ActionCreators, Dispatch, Reducers, createAsyncThunk, createSlice, etc,  we have a store, and action functions, well and a bit of slices. </p>
 <p></p>
 <p>💻️ run in Terminal</p>
 <p>🚀 a step to not forget</p>
-<div class="heading-block h2-block"><h2>Part 1:  starterpack update</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Part 1:  starterpack update</h2></div>
 <p>🚀 We’re going to keep working on your <strong>frontend-starterpack</strong> for this assignment. </p>
 <p>So just dig up that repo and work there! At this point you should have a starterpack that has vite+babel+eslint+sass+react+reactrouter. Remember to just push your new stuff to this. For grading we’ll know which commits to look at. You want to keep building this up.</p>
 <p>Now we’re going to add in Zustand to your personal starter repository so now you’ll have vite+babel+eslint+sass+react+reactrouter+zustand! Wow.</p>
@@ -509,7 +529,7 @@ export default useStore;</code></pre></div></div>
 </blockquote>
 <p>True, but Zustand maintains a store that turns out to be compatible with Redux and the Redux devtools work pretty seamlessly with it, so we’ll do that. </p>
 <p>✔️ Now you can open redux dev tools in your browser and confirm that the redux store is initialized:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/confirm-store-1767548385857.jpg" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-state-management-short-assignment/assets/confirm-store-1767548385857.jpg" alt=""></figure>
 <div class="heading-block h2-block"><h2>Connected components</h2></div>
 <p>Now we have the basics done, we should create some connected components. A connected component is one that is literally connected to the store for some bit of state.</p>
 <p>Let’s create some components that make use of our setup! These will be toy examples, and don’t particularly need app state management. But they’ll demonstrate the various wirings needed for setting up a much more complicated app.</p>
@@ -619,7 +639,7 @@ export default useStore;</code></pre></div></div>
 git commit 
 git push origin add_state_management
 # then make a PR and merge it in to your main branch!</code></pre></div>
-<div class="heading-block h1-block"><h1>Part 2: YouTube!</h1></div>
+<div class="heading-block h1-block" data-bg-color="#FBF3DB"><h1 style="background-color: #FBF3DB">Part 2: YouTube!</h1></div>
 <p>Currently our React YouTube search app works great, but maybe we can learn some state management and refactor it! If you remember, we had to pass props down multiple levels, can we now use our new State Management Skills to select the video to show in Detail View without having to pass properties down multiple levels and to keep our state beautifully coherent?</p>
 <p><a href="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_800,h_762/v1546203223/cs52/videos-redux.webm">videos-redux.webm</a></p>
 <div class="heading-block h2-block"><h2>Prepare the Repo</h2></div>
