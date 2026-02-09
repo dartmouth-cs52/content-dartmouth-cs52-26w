@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -442,14 +462,14 @@
   </style>
 </head>
 <body>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screenshot-2025-01-27-at-10-1767548380008.png" alt="Screenshot 2025-01-27 at 10.15.13 AM.png">
-<div class="heading-block h2-block"><h2>Overview</h2></div>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screenshot-2025-01-27-at-10-1767548380008.png" alt="Screenshot 2025-01-27 at 10.15.13 AM.png"></figure>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Overview</h2></div>
 <p>React + Routing</p>
 <p>What if you want your frontend to have routes — different URLs that map to different components and layouts of components? We’re going to add React Router to our starterpack so all your future projects can have it!</p>
 <p></p>
 <p>💻️ run in Terminal</p>
 <p>🚀 a step to not forget</p>
-<div class="heading-block h2-block"><h2>Let’s Update our StarterPack!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Let’s Update our StarterPack!</h2></div>
 <p>🚀 We’re going to keep working on your starterpack for this assignment. So just dig up that repo and work there! At this point you should have a starterpack that has vite+babel+eslint+sass+react.</p>
 <p>For this workshop we’re just going to add React Router to your personal starter repository so now you’ll have vite+babel+eslint+sass+react+reactrouter! Wow.</p>
 <p><em>Note: if you forgot to push the react stuff from the first few steps of the <a href="https://cs52.me/assignments/sa/react-videos">React Videos assignment</a> to your starterpack, you should go back and do that now! You can simply do those steps now directly in your starterpack repo.</em>  </p>
@@ -463,7 +483,7 @@ git checkout -b add_routing</code></pre></div>
 <div class="heading-block h2-block"><h2>Done</h2></div>
 <p>Now you have added React Router to your starter package!</p>
 <p><a href="https://reacttraining.com/react-router/web/example/basic">React Router</a> has undergone some major rewrites and the current version 7 is a complete overhaul. It has gone from single route definition, to composable routes, to hooks based smart routing, as well as data fetching. We’ll be using it in <a href="https://reactrouter.com/start/declarative/installation">Declarative Mode</a> rather than as a Framework for now.  <em>But, Framework mode is pretty cool, check it out once you are comfortable.</em> </p>
-<div class="heading-block h2-block"><h2>Route setup</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Route setup</h2></div>
 <p>What we want to do is have the following URL structure:</p>
 <ul><li><code>/</code> displays <code>Welcome</code> component and <code>Nav</code> component.</li><li><code>/about</code> displays <code>About</code> component + <code>Nav</code>.</li><li><code>/test/id</code> displays <code>Test</code> component and shows ID from url + <code>Nav</code></li></ul>
 <p>This will demonstrate the power of routing and we’ll be using this in our next lab as well.</p>
@@ -514,7 +534,7 @@ const Welcome = (props) =&gt; {
 <p>(don’t forget <code>import '../style.scss';</code> in app)</p>
 <p>Ok, test this out. What you should have when you first load the page is some links in the top nav that show up on every page, but when you click them they navigate the page and also change to the highlighted color. </p>
 <p>Great, ok let’s add in one more component to test with. 👍</p>
-<div class="heading-block h2-block"><h2>URL Parameters</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">URL Parameters</h2></div>
 <p>So what if you want is to be able to pass in a URL parameter. Something like <code>profile/some_id</code> where <code>some_id</code> might be how Facebook does your profile url: <code>profile/username</code></p>
 <p>Turns out we can do that!</p>
 <p>🚀 Add in a new route:</p>
@@ -532,7 +552,7 @@ const Welcome = (props) =&gt; {
   &lt;NavLink to="/test/id2"&gt;test id2&lt;/NavLink&gt;
 &lt;/li&gt;</code></pre></div></div>
 <p>Try it out. Cool. The “/path/:parameter” style of defining a http route is very common and used in many frameworks.</p>
-<div class="heading-block h2-block"><h2>Unknown Routes</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Unknown Routes</h2></div>
 <p>What happens if we type in a route that is unknown to the router. Currently that would mean that it would not match any of existing <code>Route</code> components and so will display the <code>Nav</code> and nothing else. But what if we wanted a fallback route?</p>
 <p>React-Router let’s us do this with a <code>Routes</code> component – this component wraps <code>Route</code> components and returns ones that match the path. <em>By default if multiple Routes match they will all render.</em></p>
 <p>🚀 Wrap your <code>Route</code>s in a <code>Routes</code> element and add in a <code>FallBack</code> component that will always match (with no <code>path</code> specified):</p>
@@ -545,13 +565,13 @@ const Welcome = (props) =&gt; {
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code class="language-javascript">const FallBack = (props) =&gt; {
   return &lt;div&gt;URL Not Found&lt;/div&gt;;
 };</code></pre></div></div>
-<div class="heading-block h2-block"><h2>Root Path</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Root Path</h2></div>
 <p>There is one tricky bit with paths that we have to contend with. The problem is that say you go to your <code>yoursite.com/posts/id</code> when in point of fact the resource <code>/posts/id/index.html</code> does not exist on the server.  This is a single page app, so there is only 1 index.html file at the root.  Vite happens to know that it should serve up <code>/index.html</code> file for every resource URL that it can’t find, but various hosting providers may not do this automatically.  </p>
 <div class="heading-block h3-block"><h3>RENDER.com</h3></div>
 <p><em>Note: simply update your previous hosting setup - you don’t need to have a new link since we’re just updating the starterpack we did previously.</em></p>
 <p>We would like <a href="http://render.com">render.com</a> to set up <a href="https://render.com/docs/redirects-rewrites">redirects and rewrites</a> to help use route all urls to our <code>index.html</code> file. </p>
 <p>🚀&nbsp;go to Redirects/Rewrites and add in <code>/*</code> pointing to <code>/index.html</code> as a rewrite.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screen-shot-2022-04-21-at-8-1767548380008.png" alt="Screen Shot 2022-04-21 at 8.26.40 AM.png">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/sa-routing-short-assignment/assets/screen-shot-2022-04-21-at-8-1767548380008.png" alt="Screen Shot 2022-04-21 at 8.26.40 AM.png" style="width: 611px" width="611"></figure>
 <p>And you are done!</p>
 <div class="heading-block h2-block"><h2>Test Your Deployed URL</h2></div>
 <p>Check it out in your browser. Try changing the url to <code>/badlink</code>, it should load your test app and hit the fallback route!</p>
