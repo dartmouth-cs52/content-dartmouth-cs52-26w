@@ -16,12 +16,6 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "ecsa-git-map": {
-          "pages": [
-            "ecsa-git-map"
-          ],
-          "slides": []
-        },
         "ecsa-websockets": {
           "pages": [
             "ecsa-websockets"
@@ -55,6 +49,12 @@
         "ecsa-frontend-and-backend-authentication": {
           "pages": [
             "ecsa-frontend-and-backend-authentication"
+          ],
+          "slides": []
+        },
+        "ecsa-git-map": {
+          "pages": [
+            "ecsa-git-map"
           ],
           "slides": []
         }
@@ -131,15 +131,15 @@
           ],
           "slides": []
         },
-        "react-notes-prelab": {
-          "pages": [
-            "prelab-3-react-notes"
-          ],
-          "slides": []
-        },
         "react-notes-part-1": {
           "pages": [
             "lab-3-react-notes"
+          ],
+          "slides": []
+        },
+        "react-notes-prelab": {
+          "pages": [
+            "prelab-3-react-notes"
           ],
           "slides": []
         }
@@ -187,21 +187,9 @@
           ],
           "slides": []
         },
-        "project-7-final-project-submission": {
-          "pages": [
-            "project-7-final-project-submission"
-          ],
-          "slides": []
-        },
         "project-5-dev-site-and-wiring": {
           "pages": [
             "project-5-dev-site-and-wiring"
-          ],
-          "slides": []
-        },
-        "project-6-final-demos": {
-          "pages": [
-            "project-6-final-demos"
           ],
           "slides": []
         },
@@ -211,15 +199,27 @@
           ],
           "slides": []
         },
+        "project-1-first-team-meeting-worksheet": {
+          "pages": [
+            "project-1-first-team-meeting"
+          ],
+          "slides": []
+        },
         "project-2-feature-spec": {
           "pages": [
             "project-2-feature-spec"
           ],
           "slides": []
         },
-        "project-1-first-team-meeting-worksheet": {
+        "project-6-final-demos": {
           "pages": [
-            "project-1-first-team-meeting"
+            "project-6-final-demos"
+          ],
+          "slides": []
+        },
+        "project-7-final-project-submission": {
+          "pages": [
+            "project-7-final-project-submission"
           ],
           "slides": []
         }
@@ -297,11 +297,11 @@
       "authentication-and-authorization",
       "rest",
       "design",
-      "state-management",
       "routing",
-      "immutability-and-services",
+      "state-management",
       "intro-to-frontend-testing",
-      "intro-to-web-frameworks"
+      "intro-to-web-frameworks",
+      "immutability-and-services"
     ]
   }
 }
