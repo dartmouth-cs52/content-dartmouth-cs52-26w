@@ -253,6 +253,143 @@
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div></section></section>
+<section class="stack editing-mode" data-id="builtinstate01" style="top: 0px; display: none;" hidden="" aria-hidden="true"><section data-id="keeplocal01" style="top: 350px; display: none;" class="editing-mode">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="keeplocalhdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">not everything needs global state</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-keeplocal01" data-block-id="keeplocaltxt01" style="height: auto; width: 900px; left: 30px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong>before reaching for any state library, ask:</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>one component needs it?</strong> &rarr; <code>useState</code></li>
+	<li><strong>parent + a few children?</strong> &rarr; lift state up + pass as props</li>
+	<li><strong>deeply nested or distant components?</strong> &rarr; consider Context or a store</li>
+</ul>
+<p>&nbsp;</p>
+<p style="color:#942323"><strong>rule of thumb:</strong> start local, go global only when the pain is real</p>
+<p>&nbsp;</p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>UI state (form inputs, modals, tabs) &rarr; almost always local</li>
+	<li>data shared across routes/pages &rarr; probably global</li>
+	<li>over-globalizing makes debugging <em>harder</em>, not easier</li>
+</ul>
+</div></div>
+<aside class="notes">* students tend to put everything in global state once they learn about stores
+* resist the urge - useState is perfectly fine for most things
+* global state adds indirection and makes components harder to test in isolation
+* if only one component reads and writes a piece of state, keep it local</aside>
+</section><section data-id="reactcontext01" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="contexthdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">React Context — built-in state sharing</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-context01" style="width: 520px; height: auto; left: 20px; top: 95px;" data-block-id="contextcode01"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre class="javascript" style="font-size: 15px; line-height: 19px; tab-size: 4;"><code>const ThemeCtx = createContext('light')
+
+function App() {
+  const [theme, setTheme] = useState('light')
+  return (
+    &lt;ThemeCtx.Provider value={theme}&gt;
+      &lt;Toolbar /&gt;
+    &lt;/ThemeCtx.Provider&gt;
+  )
+}
+
+// any descendant can read it:
+function Button() {
+  const theme = useContext(ThemeCtx)
+  return &lt;button className={theme}&gt;Hi&lt;/button&gt;
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-context01" data-block-id="contexttxt01" style="height: auto; width: 390px; left: 555px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong>solves prop drilling!</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>createContext + Provider + useContext</li>
+	<li>any descendant can read the value</li>
+	<li>no extra libraries needed</li>
+</ul>
+<p>&nbsp;</p>
+<p style="color:#942323"><strong>limitation:</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li><em>all</em> consumers re-render when value changes</li>
+	<li>no built-in selector to pick a slice</li>
+	<li>fine for theme, auth, locale</li>
+	<li>gets painful for frequently updating data</li>
+</ul>
+</div></div>
+<aside class="notes">* this is React's built-in answer to prop drilling
+* wrap a subtree in a Provider, any descendant can useContext to read it
+* great for things that change rarely: theme, locale, auth status
+* the problem is performance - when the value changes, EVERY consumer re-renders
+* no way to say "I only care about one field" like useSelector in redux
+* this is why external state libraries exist - they solve the re-render problem</aside>
+</section><section data-id="usereducer01" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 5.68434e-14px; top: 0px;" data-name="snippet-26b630" data-block-id="reducerhdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">useReducer — Redux pattern built into React</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-reducer01" style="width: 520px; height: auto; left: 20px; top: 95px;" data-block-id="reducercode01"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-autoheight="true" data-code-wrap="true"><pre class="javascript" style="font-size: 15px; line-height: 19px; tab-size: 4;"><code>function reducer(state, action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state, action.payload]
+    case 'REMOVE_TODO':
+      return state.filter(t =&gt; t.id !== action.id)
+    default:
+      return state
+  }
+}
+
+function TodoApp() {
+  const [todos, dispatch] = useReducer(reducer, [])
+  return (
+    &lt;button onClick={() =&gt;
+      dispatch({ type: 'ADD_TODO', payload: todo })
+    }&gt;Add&lt;/button&gt;
+  )
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-reducer01" data-block-id="reducertxt01" style="height: auto; width: 390px; left: 555px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong>like useState but with actions</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>same reducer pattern as Redux</li>
+	<li>dispatch actions &rarr; reducer returns new state</li>
+	<li>great for complex local state logic</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Context + useReducer = "poor man's Redux"</strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>works for small apps</li>
+	<li>still has Context's re-render problem</li>
+	<li>no devtools, no middleware</li>
+	<li>this is why we use Zustand/Redux</li>
+</ul>
+</div></div>
+<aside class="notes">* useReducer gives you the same dispatch + reducer pattern that Redux uses
+* so when you see Redux's switch/case it should feel familiar
+* combine with Context and you get a basic global state solution
+* people call this "poor man's Redux" and it works fine for small apps
+* but once your app grows, the re-render problem from Context bites you
+* also no devtools, no middleware for async, no selectors
+* that's the gap Zustand and Redux fill - same pattern, better performance and tooling</aside>
+</section></section>
 <section data-id="5eb0d4b0beae1a826d114c134a21f52f" style="top: 350px; display: none;" hidden="" aria-hidden="true" class="editing-mode"><div class="sl-block" data-block-type="snippet" data-name="snippet-31e5c6" style="width: 800px; height: 341.955px; left: 80px; top: 179.023px;" data-block-id="b6bd4df7be3fe5fe8d74df1ed6e0f511"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
 <div id="box-title">
 <div class="top">
@@ -1399,7 +1536,7 @@ function Controls() {
 }))
 
 
-const useBearStore = create(immer(set) =&gt; ({
+const useBearStore = create(immer((set) =&gt; ({
   bears: 0,
   increasePopulation: () =&gt; set((draft) =&gt; { draft.bears += 1 }),
 })))
@@ -1421,7 +1558,7 @@ const useBearStore = create(immer(set) =&gt; ({
 
 <p>a central store with actions collocated in the store</p>
 
-<p>currently top npm package for state manegment</p>
+<p>currently top npm package for state management</p>
 </div></div><aside class="notes">* docs need help keeping updated, seems like an active community so if you like it, contribute to it. </aside></section></section>
 <section class="stack editing-mode" data-id="81d5e6865d9da0fe407174a3cb6d4e4d" style="top: 0px; display: none;" data-previous-indexv="0" hidden="" aria-hidden="true"><section data-id="9b5ff0afce396bed67cde9a534273ebb" style="top: 350px; display: none;" class="editing-mode" aria-hidden="true">
 
