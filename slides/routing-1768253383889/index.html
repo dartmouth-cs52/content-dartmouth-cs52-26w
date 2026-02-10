@@ -709,7 +709,7 @@ history.pushState([data], [title], [url]);
 	<li>matching</li>
 	<li>declarative jsx</li>
 	<li>composable</li>
-	<li>and actually much much more — see remix/router framework</li>
+	<li>and much more — v7 adds data mode and framework mode!</li>
 </ul></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="1e351bafa7cb8c3747271919f8ca5085"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -1052,28 +1052,27 @@ let navigate = useNavigate();
 
 
 
-<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 815.917px; height: 587.385px; left: 88.5284px; top: 85.308px;" data-block-id="8e8457c25be1907593c089261a21c7b3"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// :paramName pattern matches and extracts into props.match.params.paramName
+<div class="sl-block" data-block-type="code" data-name="code-ffce62" style="width: 815.917px; height: 587.385px; left: 88.5284px; top: 85.308px;" data-block-id="8e8457c25be1907593c089261a21c7b3"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 16px; line-height: 19px;"><code data-line-numbers="">// :paramName — useParams() returns { paramName: value }
 
-&lt;Route path="users/:userId" element={UserProfile} /&gt;
+&lt;Route path="users/:userId" element={&lt;UserProfile /&gt;} /&gt;
 
-  
-  
-//UserProfile
+
+// UserProfile
 function UserProfile() {
-  const params = useParams();
+  const { userId } = useParams();
   const [user, setUser] = useState({});
 
   useEffect(() =&gt; {
     const fetchData = async () =&gt; {
       const result = await axios(
-        `https://api.com/users/${props.params.userId}`;,
+        `https://api.com/users/${userId}`,
       );
       setUser(result.data.user);
     };
 
     fetchData();
-  }, []);
-  
+  }, [userId]);
+
   return (
   	&lt;h2&gt;User: {user.name}&lt;/h2&gt;
   )
@@ -1230,7 +1229,7 @@ function UserProfile() {
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="image" data-name="image-01dfa0" data-block-id="26e547a020cff624b9f26c8f5455efa8" style="width: 941px; height: 515.983px; left: 9.5px; top: 103.911px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="2462" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/70243c9fa909ead3b3c9ef8e467e2c7a.png"></div></div></section></section><section data-id="0f4a19125d2c395efaa2588247be38fe">
+<div class="sl-block" data-block-type="image" data-name="image-01dfa0" data-block-id="26e547a020cff624b9f26c8f5455efa8" style="width: 941px; height: 515.983px; left: 9.5px; top: 103.911px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="2462" data-natural-height="1350" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/70243c9fa909ead3b3c9ef8e467e2c7a.png"></div></div></section></section><section class="stack" data-id="rr7frameworkstack01"><section data-id="0f4a19125d2c395efaa2588247be38fe">
 
 
 
@@ -1245,20 +1244,186 @@ function UserProfile() {
 <div class="left">
 <div class="logo">&nbsp;</div>
 
-<div class="title">&nbsp;what about the new direction of react router?</div>
+<div class="title">&nbsp;react router 7 — what's new?</div>
 </div>
 
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div>
-<div class="sl-block" data-block-type="image" data-name="image-35bfd9" data-block-id="e92ea0764e7964d28f572b2f7de04d9a" style="width: 806.4px; height: 205.591px; left: 76.8005px; top: 129.603px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img class="" data-natural-width="1667" data-natural-height="425" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/47e3120db1faa7fc78e58b20c8ead72d.png"></div></div>
-<div class="sl-block" data-block-type="image" data-name="image-a4a030" data-block-id="4cb4eeca92f2bc7d464744cfc8e68d6c" style="width: 806.4px; height: 224.806px; left: 76.8px; top: 345.194px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1668" data-natural-height="465" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/routing-1768253383889/images/b6651342cc431b25d13b349e2633e840.png"></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 80.5px;" data-block-id="82883659e33dfdd10f543245b88a290c" data-name="text-251ff1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><p>providing a smarter data fetching layer</p></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 587px;" data-block-id="b96c7a7ae60e4a77626c7062307f2fbe" data-name="text-04d7be"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
-<p>great but messy idea - we'll use the regular syntax for now&nbsp;</p>
+<div class="sl-block" data-block-type="text" data-name="text-rr7changes" data-block-id="rr7changestext01" style="height: auto; width: 830px; left: 65px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+<li>Remix merged into React Router → <strong>v7</strong></li>
+<li>install: <code>npm i react-router</code> (replaces react-router-dom)</li>
+<li>import from <code>"react-router"</code> not <code>"react-router-dom"</code></li>
+<li>three modes: <strong>declarative</strong>, data, framework</li>
+<li>declarative JSX syntax is unchanged from v6!</li>
+</ul>
+</div></div><aside class="notes">* Remix and React Router merged — Remix is now React Router v7 framework mode
+* The declarative JSX syntax we've been using is identical
+* Only real change for library mode: imports come from "react-router" instead of "react-router-dom"
+* Three modes: declarative (what we've been doing), data (adds loaders/actions with createBrowserRouter), framework (full Vite plugin with file conventions, SSR, code splitting)</aside></section><section data-id="rr7threemodes01">
+<div class="sl-block" data-block-type="text" data-name="text-rr7modes" data-block-id="rr7modestext01" style="height: auto; width: 880px; left: 40px; top: 90px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<table style="width: 100%; font-size: 0.75em; border-collapse: collapse;">
+<thead><tr>
+<th style="text-align: left; padding: 8px; border-bottom: 2px solid #4757ff;">Feature</th>
+<th style="text-align: center; padding: 8px; border-bottom: 2px solid #4757ff;">Declarative</th>
+<th style="text-align: center; padding: 8px; border-bottom: 2px solid #4757ff;">Data</th>
+<th style="text-align: center; padding: 8px; border-bottom: 2px solid #4757ff;">Framework</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding: 6px 8px;">Routes / Route / Link JSX</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr>
+<tr><td style="padding: 6px 8px;">Loaders / Actions</td><td style="text-align: center;">—</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr>
+<tr><td style="padding: 6px 8px;">useLoaderData / Form</td><td style="text-align: center;">—</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr>
+<tr><td style="padding: 6px 8px;">Pending UI (useNavigation)</td><td style="text-align: center;">—</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr>
+<tr><td style="padding: 6px 8px;">File conventions / routes.ts</td><td style="text-align: center;">—</td><td style="text-align: center;">—</td><td style="text-align: center;">✓</td></tr>
+<tr><td style="padding: 6px 8px;">Auto code-splitting</td><td style="text-align: center;">—</td><td style="text-align: center;">—</td><td style="text-align: center;">✓</td></tr>
+<tr><td style="padding: 6px 8px;">SSR / SSG / SPA build modes</td><td style="text-align: center;">—</td><td style="text-align: center;">—</td><td style="text-align: center;">✓</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="rr7modesheader01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">&nbsp;three modes of react router 7</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* each mode is additive — framework includes everything from data mode, which includes everything from declarative
+* declarative mode is what we've been using — BrowserRouter with JSX Routes, manual data fetching
+* data mode adds createBrowserRouter with route objects, loaders, actions, useLoaderData
+* framework mode adds Vite plugin, file conventions, auto code splitting, SSR
+* we use declarative for this course, but framework mode is where production apps are heading</aside></section><section data-id="rr7framework01">
+<div class="sl-block" data-block-type="code" data-name="code-rr7routes" data-block-id="rr7routescode01" style="width: 520px; height: 340px; left: 20px; top: 90px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 14px; line-height: 17px;"><code data-line-numbers="">// app/routes.ts
+import { route, index, layout }
+  from "@react-router/dev/routes";
 
-<p>and explore data fetching in a later module!</p>
-</div></div><aside class="notes">https://reactrouter.com/en/main/upgrading/v6-data#migrating-to-routerprovider</aside></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
+export default [
+  index("./home.tsx"),
+  route("about", "./about.tsx"),
+
+  layout("./auth/layout.tsx", [
+    route("login", "./auth/login.tsx"),
+    route("register", "./auth/register.tsx"),
+  ]),
+
+  route("posts/:postId", "./posts/post.tsx"),
+];</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-rr7fw" data-block-id="rr7fwtext01" style="height: auto; width: 390px; left: 555px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="font-size: 0.85em;">
+<li>Vite plugin: <code>@react-router/dev</code></li>
+<li>define routes in <code>routes.ts</code></li>
+<li>auto code-splitting per route</li>
+<li>server loaders + actions</li>
+<li>SSR, SSG, or SPA builds</li>
+<li><strong>this is what Remix became</strong></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="rr7fwheader01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">&nbsp;framework mode — routes.ts</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* in framework mode you define routes in a routes.ts file using helper functions
+* index() for index routes, route() for path routes, layout() for layout wrappers without URL segments
+* each route points to a file (route module) that exports the component + optional loader/action
+* the Vite plugin handles code splitting, bundling, and SSR automatically
+* this is what Remix v2 became — the Remix team merged it directly into React Router</aside></section><section data-id="rr7filebased01">
+<div class="sl-block" data-block-type="code" data-name="code-rr7files" data-block-id="rr7filescode01" style="width: 480px; height: 310px; left: 10px; top: 90px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="text" style="font-size: 14px; line-height: 17px;"><code data-line-numbers="">app/routes/
+  _index.tsx            → /
+  about.tsx             → /about
+  posts.tsx             → /posts (layout)
+  posts._index.tsx      → /posts
+  posts.$postId.tsx     → /posts/:postId
+  _auth.login.tsx       → /login
+  _auth.register.tsx    → /register
+  $.tsx                 → /* (catchall)</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-rr7filelist" data-block-id="rr7filelisttext01" style="height: auto; width: 430px; left: 510px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="font-size: 0.8em;">
+<li><code>.</code> (dot) → URL path separator</li>
+<li><code>$param</code> → dynamic segment</li>
+<li><code>_index.tsx</code> → index route</li>
+<li><code>_prefix</code> → pathless layout (no URL)</li>
+<li><code>$.tsx</code> → splat / catchall</li>
+</ul>
+<p>&nbsp;</p>
+<p style="font-size: 0.8em;">optional via <code>@react-router/fs-routes</code></p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="rr7filesheader01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">&nbsp;file-based routing (flat routes)</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* file-based routing is optional in framework mode — you can use routes.ts config instead or both
+* flat file convention: dots in filenames become URL path separators
+* $param becomes a dynamic segment like :param in the URL
+* leading underscore means pathless layout — groups routes under a shared layout without adding a URL segment
+* _auth.login.tsx renders at /login but nests inside _auth.tsx layout
+* this convention came from Remix</aside></section><section data-id="rr7loaders01">
+<div class="sl-block" data-block-type="sandpack" data-name="sandpack-loaders-actions"
+     style="width: 900px; height: 560px; left: 30px; top: 75px;"
+     data-block-id="rr7loaderssandpack01">
+  <div class="sl-block-content" style="z-index: 10;">
+    <div class="sandpack-embed"
+         data-template="react"
+         data-theme="auto"
+         data-layout="preview-right"
+         data-visible-files='["/App.js"]'>
+      <script type="application/json" data-sandpack-files>
+{
+  "/package.json": "{\n  \"dependencies\": {\n    \"react\": \"^18.2.0\",\n    \"react-dom\": \"^18.2.0\",\n    \"react-router-dom\": \"^6.20.0\"\n  }\n}",
+  "/db.js": "// Simulates a server database\nconst delay = (ms) => new Promise((r) => setTimeout(r, ms));\n\nconst posts = [\n  { id: 1, title: \"Hello World\" },\n  { id: 2, title: \"React Router 7\" },\n];\n\nexport async function getPosts() {\n  await delay(800);\n  return [...posts];\n}\n\nexport async function createPost(title) {\n  await delay(800);\n  posts.push({ id: Date.now(), title });\n  return posts[posts.length - 1];\n}\n",
+  "/App.js": "import {\n  createBrowserRouter, RouterProvider,\n  useLoaderData, Form, useNavigation,\n} from \"react-router-dom\";\nimport { getPosts, createPost } from \"./db\";\n\n// loader: runs BEFORE component renders\nasync function loader() {\n  const posts = await getPosts();\n  return { posts };\n}\n\n// action: handles <Form> submissions\nasync function action({ request }) {\n  const formData = await request.formData();\n  await createPost(formData.get(\"title\"));\n  return { ok: true };\n  // after action -> loader re-runs automatically!\n}\n\nfunction Posts() {\n  const { posts } = useLoaderData();\n  const nav = useNavigation();\n  const busy = nav.state !== \"idle\";\n  return (\n    <div style={{ fontFamily: \"sans-serif\", padding: 20 }}>\n      <h2>Posts {busy && \"\\u23f3\"}</h2>\n      <ul style={{ opacity: busy ? 0.5 : 1, transition: \"opacity 0.2s\" }}>\n        {posts.map((p) => <li key={p.id}>{p.title}</li>)}\n      </ul>\n      <Form method=\"post\">\n        <input name=\"title\" placeholder=\"New post...\" required />\n        <button disabled={busy} type=\"submit\">\n          {nav.state === \"submitting\" ? \"Saving...\" : \"Add Post\"}\n        </button>\n      </Form>\n      <p style={{ color: \"#999\", fontSize: 12 }}>state: {nav.state}</p>\n    </div>\n  );\n}\n\nconst router = createBrowserRouter([\n  { path: \"/\", loader, action, element: <Posts /> },\n]);\n\nexport default function App() {\n  return <RouterProvider router={router} />;\n}\n"
+}
+      </script>
+    </div>
+  </div>
+</div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="rr7loaderheader01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">&nbsp;loaders + actions</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this is a live demo using React Router's data API (createBrowserRouter) — try adding a post!
+* loader runs BEFORE the component renders — data is ready on first paint
+* action handles Form submissions — mutations go through here
+* after an action completes, the loader automatically re-runs (revalidation!) — no manual refetch
+* in framework mode, these same loaders/actions run on the server and are stripped from the client bundle
+* framework mode also adds auto-generated types via +types directory and loaderData as a prop
+* also has clientLoader/clientAction for browser-only data fetching</aside></section><section data-id="rr7summary01">
+<div class="sl-block" data-block-type="text" data-name="text-rr7summary" data-block-id="rr7summarytext01" style="height: auto; width: 780px; left: 90px; top: 120px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul>
+<li><strong>we use declarative mode</strong> — BrowserRouter + JSX routes</li>
+<li>simplest setup for client-side SPA routing</li>
+<li>framework mode is the future for production apps</li>
+<li>if you need SSR, code-splitting, or server loaders → framework mode</li>
+<li>Next.js App Router solves similar problems with file-based routing</li>
+</ul>
+<p>&nbsp;</p>
+<p style="color: #2aa198;">for SA4 and beyond: declarative mode with BrowserRouter</p>
+</div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: -5.68434e-14px; top: 0px;" data-name="snippet-ad5a13" data-block-id="rr7summaryheader01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">&nbsp;which mode for us?</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* for this course we stick with declarative mode — it's simpler and focuses on understanding routing concepts
+* framework mode is powerful but adds complexity we don't need yet for learning
+* the concepts transfer — Routes, Outlet, params, Link all work the same way across all three modes
+* if you build a production app after this course, consider framework mode for the DX benefits
+* Next.js uses similar concepts with its App Router — file-based routing, server components, etc.</aside></section></section><section data-id="fa977095bed0c0cab8eaeb523d1d2afd">
 
 <div class="sl-block" data-block-type="text" data-name="text-610243" style="height: auto; width: 600px; left: 172px; top: 148px;" data-block-id="46f13c79e09960c7de15e639ae88f1ae"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><ul>
 	<li style="color:#3a3e40">SA4 routing out</li>
