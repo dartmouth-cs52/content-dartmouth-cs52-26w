@@ -553,7 +553,66 @@
 <div class="spacer">&nbsp;</div>
 </div>
 </div></div><aside class="notes">* designing your API interface is important - especially if it is public
-* status codes with each response</aside></section><section data-id="88f0c56d0721b12ea55f22a28af72382">
+* status codes with each response</aside></section><section data-id="http-status-codes-errors">
+
+
+<div class="sl-block" data-block-type="text" data-name="text-status-codes" style="height: auto; width: 500px; left: 15px; top: 85px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>2xx Success</strong>
+	<ul>
+		<li><span style="color:#a4c639"><strong>200</strong></span> OK — general success</li>
+		<li><span style="color:#a4c639"><strong>201</strong></span> Created — new resource made</li>
+	</ul>
+	</li>
+	<li><strong>4xx Client Error</strong>
+	<ul>
+		<li><span style="color:#c33851"><strong>400</strong></span> Bad Request — validation failed</li>
+		<li><span style="color:#c33851"><strong>401</strong></span> Unauthorized — not logged in</li>
+		<li><span style="color:#c33851"><strong>403</strong></span> Forbidden — no permission</li>
+		<li><span style="color:#c33851"><strong>404</strong></span> Not Found</li>
+		<li><span style="color:#c33851"><strong>422</strong></span> Unprocessable — bad data</li>
+	</ul>
+	</li>
+	<li><strong>5xx Server Error</strong>
+	<ul>
+		<li><span style="color:#c33851"><strong>500</strong></span> Internal Server Error</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-error-response" style="width: 430px; height: auto; left: 520px; top: 85px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 15px; line-height: 18px; tab-size: 4;"><code data-line-numbers="">// success response
+res.status(200).json(posts);
+
+// created
+res.status(201).json(newPost);
+
+// error responses
+res.status(404).json({
+  error: 'Post not found'
+});
+
+res.status(500).json({
+  error: 'Something went wrong'
+});
+
+// always: status code + JSON body
+// errors: { error: "message" }</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">HTTP Status Codes &amp; Error Responses</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* every REST response should include an appropriate status code
+* 2xx means success, 4xx means client did something wrong, 5xx means server broke
+* always return JSON - even for errors
+* standard pattern: { error: "human readable message" }
+* 401 vs 403: 401 means who are you? 403 means I know who you are but you can't do that
+* 422 is useful for validation errors - the request was well-formed but the data was bad
+</aside></section><section data-id="88f0c56d0721b12ea55f22a28af72382">
 
 
 
@@ -1784,7 +1843,8 @@ author: {
 <strong>O</strong>bject <strong>D</strong>efinition <strong>M</strong>odel</li>
 		<li>You thought documents were already friendly?</li>
 		<li>But need a bit of tooling to keep us safe</li>
-		<li>Prisma or Mongoose</li>
+		<li><strong>Prisma</strong> for SQL databases (PostgreSQL)</li>
+		<li><strong>Mongoose</strong> for NoSQL (MongoDB)</li>
 	</ul>
 	</li>
 </ul></div></div>
@@ -1802,55 +1862,7 @@ author: {
 </div></div>
 <div class="sl-block" data-block-type="video" data-name="video-0d84cf" data-block-id="4176d53b7ff66dc1fe3e63c9eb855211" style="min-width: 30px; min-height: 30px; width: 640px; height: 333.913px; left: 181.389px; top: 113.043px;"><div class="sl-block-content" style="z-index: 12;"><video playsinline="" data-paused-by-reveal="" data-autoplay="" muted="" loop="loop" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/rest-1768253652857/images/609fad134bb213d9533aeae718fe4410.avif"></video></div></div><aside class="notes">* we had ORM's for sql is that a thing?
 * just another tool
-</aside></section><section data-id="ee0fe617d7d67e53259a4ce848611093" data-visibility="hidden">
-
-
-
-
-
-
-
-
-
-<div class="sl-block" data-block-type="text" data-name="text-990860" style="height: auto; width: 926px; left: 26px; top: 455px;" data-block-id="ecefbba2e82df8b135c83f00a2472f96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
-	<li>
-<span style="color:rgb(58, 62, 64); text-align:left">Types:</span>
-	<ul>
-		<li>String, Int, Date, Boolean, etc</li>
-		<li>Array: []</li>
-		<li>references to other documents (relation)</li>
-	</ul>
-	</li>
-	<li>Relations</li>
-</ul></div></div>
-<div class="sl-block" data-block-type="code" data-name="code-3d7969" data-block-id="67ec53c45450b97941990a3beb5244de" style="width: 765.22px; height: auto; left: 97.39px; top: 80px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">model User {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  email     String   @unique
-  name      String?
-  role      Role     @default(USER)
-  posts     Post[]
-}
-
-
-model Post {
-  title       String
-  author      User       @relation(fields: [authorId], references: [id])
-  authorId    String     @db.ObjectId
-}
-</code></pre></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="5fb0c3e086c11842cf9c5702dade6caa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">Prisma Schema</div>
-</div>
-
-<div class="spacer">&nbsp;</div>
-</div>
-</div></div><aside class="notes">* schema defines the documents in a collection
-</aside></section><section data-id="dfff5db90e1eb3226ff78a695af9a84c">
+</aside></section></section><section class="stack" data-id="mongoose-stack"><section data-id="dfff5db90e1eb3226ff78a695af9a84c">
 
 
 
@@ -1972,7 +1984,276 @@ var User = new Schema({
 
 <div class="spacer">&nbsp;</div>
 </div>
-</div></div></section><section data-id="52b93f4f7217ce4378704aa2522956e7" data-visibility="hidden">
+</div></div></section><section data-id="3a4da6948540b6b79b8e9a2be024ed43">
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" data-name="code-47cb80" style="width: 960px; height: auto; left: 0px; top: 151.649px;" data-block-id="e67fe6b4d23d614b7d86fef9d6f3f1db"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 18px; line-height: 22px; tab-size: 4;"><code data-line-numbers="">const user = new User({
+  email: 'elsa@prisma.io',
+  name: 'Elsa Prisma',
+});
+
+await user.save();
+
+
+
+const user = await User.findOne({ email: 'emma@prisma.io' });
+
+
+
+const updateUser = await User.findOneAndUpdate(
+  { email: 'viola@prisma.io' },
+  { name: 'Viola the Magnificent' },
+  { new: true } // Returns the updated document
+);
+
+
+
+const deleteUser = await User.findOneAndDelete({ email: 'bert@prisma.io' });</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="fdd419ae3cc7246e4cc5e792de403f8c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">model operations</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div></section></section><section class="stack" data-id="prisma-stack"><section data-id="ee0fe617d7d67e53259a4ce848611093">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-990860" style="height: auto; width: 926px; left: 26px; top: 455px;" data-block-id="ecefbba2e82df8b135c83f00a2472f96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><ul>
+	<li>
+<span style="color:rgb(58, 62, 64); text-align:left">Types:</span>
+	<ul>
+		<li>String, Int, Date, Boolean, etc</li>
+		<li>Array: []</li>
+		<li>references to other documents (relation)</li>
+	</ul>
+	</li>
+	<li>Relations</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-3d7969" data-block-id="67ec53c45450b97941990a3beb5244de" style="width: 765.22px; height: auto; left: 97.39px; top: 80px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String?
+  role      Role     @default(USER)
+  posts     Post[]
+}
+
+model Post {
+  id        Int    @id @default(autoincrement())
+  title     String
+  author    User   @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="5fb0c3e086c11842cf9c5702dade6caa"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Prisma Schema</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* schema defines the tables and columns in the database
+* Int @id @default(autoincrement()) is the standard PostgreSQL primary key
+* @unique creates a unique constraint
+* Post[] means one-to-many relation
+* Role is an enum - can define custom types
+</aside></section><section data-id="prisma-what-is-it">
+
+
+<div class="sl-block" data-block-type="text" data-name="text-prisma-intro" style="height: auto; width: 440px; left: 20px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>Schema-first</strong> ORM
+	<ul>
+		<li>define models in <code>.prisma</code> DSL</li>
+		<li>auto-generates type-safe client</li>
+	</ul>
+	</li>
+	<li>Works with <strong>PostgreSQL, MySQL, SQLite</strong></li>
+	<li>Built-in <strong>migration</strong> system (version-controlled schema changes)</li>
+	<li><strong>Prisma Studio</strong> — visual DB browser</li>
+	<li>Best for <strong>SQL databases</strong> — use Mongoose for MongoDB</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-prisma-install" style="width: 480px; height: auto; left: 470px; top: 100px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="bash" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">npm install prisma @prisma/client
+
+npx prisma init</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-prisma-file" style="width: 480px; height: auto; left: 470px; top: 280px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 14px; line-height: 17px; tab-size: 4;"><code data-line-numbers="">// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Post {
+  id    Int      @id @default(autoincrement())
+  title String
+  tags  String[]
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">What is Prisma?</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* prisma is a modern ORM - schema first approach
+* you define your models in a special .prisma file
+* then it generates a type-safe client for you
+* best for SQL databases like PostgreSQL - we'll use Mongoose for MongoDB
+* prisma studio lets you browse your data visually - great for debugging
+* prisma has real migrations - version controlled SQL files
+</aside></section><section data-id="prisma-workflow">
+
+
+<div class="sl-block" data-block-type="text" data-name="text-prisma-workflow" style="height: auto; width: 920px; left: 20px; top: 95px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<ol style="color:rgb(58, 62, 64)">
+	<li><code>npx prisma init</code> — creates <code>prisma/schema.prisma</code> + <code>.env</code></li>
+	<li>Edit <code>schema.prisma</code> — define your models</li>
+	<li><code>npx prisma generate</code> — generates the client from your schema</li>
+	<li><code>npx prisma migrate dev --name init</code> — creates &amp; applies SQL migration</li>
+	<li><code>npx prisma studio</code> — visual database browser on localhost:5555</li>
+</ol></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-prisma-client" style="width: 900px; height: auto; left: 30px; top: 380px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">// in your server code
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+// now use prisma.post.create(), prisma.post.findMany(), etc.</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Prisma Workflow</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* the workflow is: init, define schema, generate client, push to db
+* prisma generate re-reads your schema and rebuilds the client
+* prisma migrate dev creates a SQL migration file - version controlled like git for your database schema
+* each migration is a .sql file you can inspect and edit
+* prisma studio is super helpful for debugging - see your data in a table view
+* remember to run generate after every schema change!
+</aside></section><section data-id="prisma-relations">
+
+
+<div class="sl-block" data-block-type="code" data-name="code-prisma-relations" style="width: 500px; height: auto; left: 20px; top: 85px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 15px; line-height: 18px; tab-size: 4;"><code data-line-numbers="">model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String
+  posts Post[]
+}
+
+model Post {
+  id       Int    @id @default(autoincrement())
+  title    String
+  content  String
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId Int
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-prisma-include" style="width: 420px; height: auto; left: 530px; top: 85px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 15px; line-height: 18px; tab-size: 4;"><code data-line-numbers="">// include related data
+const user = await prisma.user.findUnique({
+  where: { id: userId },
+  include: { posts: true },
+});
+// user.posts is now populated!
+
+// select specific fields only
+const user = await prisma.user.findUnique({
+  where: { id: userId },
+  select: {
+    name: true,
+    posts: { select: { title: true } },
+  },
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-prisma-rel-notes" style="height: auto; width: 920px; left: 20px; top: 530px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><code>@relation</code> defines the foreign key link — <code>include</code> fetches related data</li>
+	<li><code>select</code> picks only the fields you need (like GraphQL!)</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Prisma Relations &amp; Queries</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* relations use @relation to define the foreign key
+* Post[] on User means one-to-many
+* include is like populate in Mongoose - fetches related data
+* select is powerful - only fetch what you need, reduces bandwidth
+* in Mongoose you'd use .populate('posts') - Prisma's include is more explicit
+</aside></section><section data-id="prisma-indexing">
+
+
+<div class="sl-block" data-block-type="code" data-name="code-prisma-idx" style="width: 500px; height: auto; left: 30px; top: 95px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-wrap="true" data-code-autoheight="true"><pre class="asciidoc" style="font-size: 16px; line-height: 19px; tab-size: 4;"><code data-line-numbers="">model Post {
+  id       Int      @id @default(autoincrement())
+  title    String
+  slug     String   @unique       // unique index
+  authorId Int
+  tags     String[]
+
+  @@index([authorId])              // single index
+  @@index([title, authorId])       // composite index
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-prisma-idx-notes" style="height: auto; width: 420px; left: 540px; top: 95px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li><code>@unique</code> — field-level unique constraint</li>
+	<li><code>@@index</code> — model-level index</li>
+	<li><code>@@unique</code> — composite unique</li>
+	<li>Same tradeoffs as before:
+	<ul>
+		<li>faster reads</li>
+		<li>slightly slower writes</li>
+		<li>use for common query patterns</li>
+	</ul>
+	</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 12;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+
+<div class="title">Prisma Indexing</div>
+</div>
+
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* @unique creates a unique index automatically
+* @@index at the model level for non-unique indexes
+* @@unique for composite unique constraints (like unique combo of firstName + lastName)
+* same performance tradeoffs we discussed - index your common queries
+</aside></section><section data-id="52b93f4f7217ce4378704aa2522956e7">
 
 
 
@@ -2011,49 +2292,6 @@ const deleteUser = await prisma.user.delete({
   },
 })</code></pre></div></div>
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="d75c8e049d912a5a84fe4c9b03d48386"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
-<div id="header-title">
-<div class="left">
-<div class="logo">&nbsp;</div>
-
-<div class="title">model operations</div>
-</div>
-
-<div class="spacer">&nbsp;</div>
-</div>
-</div></div></section><section data-id="3a4da6948540b6b79b8e9a2be024ed43">
-
-
-
-
-
-
-
-
-
-
-<div class="sl-block" data-block-type="code" data-name="code-47cb80" style="width: 960px; height: auto; left: 0px; top: 151.649px;" data-block-id="e67fe6b4d23d614b7d86fef9d6f3f1db"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;" data-code-wrap="true" data-code-autoheight="true"><pre class="javascript" style="font-size: 18px; line-height: 22px; tab-size: 4;"><code data-line-numbers="">const user = new User({
-  email: 'elsa@prisma.io',
-  name: 'Elsa Prisma',
-});
-
-await user.save();
-
-
-
-const user = await User.findOne({ email: 'emma@prisma.io' });
-
-
-
-const updateUser = await User.findOneAndUpdate(
-  { email: 'viola@prisma.io' },
-  { name: 'Viola the Magnificent' },
-  { new: true } // Returns the updated document
-);
-
-
-
-const deleteUser = await User.findOneAndDelete({ email: 'bert@prisma.io' });</code></pre></div></div>
-<div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-1a93e3" data-block-id="fdd419ae3cc7246e4cc5e792de403f8c"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
 <div class="left">
 <div class="logo">&nbsp;</div>
