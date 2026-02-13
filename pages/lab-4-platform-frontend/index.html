@@ -452,18 +452,23 @@
 <div class="heading-block h3-block"><h3>Preview: Lab 5</h3></div>
 <p>We will rip out <code>platform-api.cs52.me/api</code> and build our own Nodejs+Express+Mongo based API server. Finally FULL-STACK! You’ll be able to modify the data model at this point and really make your platform do anything. We’ll also add authentication and image uploading!</p>
 <div class="heading-block h2-block"><h2>Let’s Start</h2></div>
-<p>🚀 Clone you <a href="http://classmoji.brunchlabs.com">classmoji.brunchlabs.com</a> generated repo. Then you’ll pull in your vite+babel+eslint+react+routing+zustand starter code like so:</p>
+<p>🚀 Clone your Classmoji provisioned repo for the assignment. Then you'll pull in your vite+babel+eslint+react+routing+zustand starter code like so:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your project directory
 git remote add starter URL_TO_YOUR_STARTERPACK
 git pull starter main  # you may need --allow-unrelated-histories</code></pre></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
 npm install #to fetch all your package.json dependencies</code></pre></div>
+<div class="heading-block h2-block"><h2>Feature Branch + Plan Workflow</h2></div>
+<p>Same as Lab 3 — use the <strong>feature branch workflow</strong> as you build. Don't build everything on <code>main</code> in one go. Break the work into features and for each one:</p>
+<ol start="1"><li><strong>Create a feature branch</strong> (e.g., <code>git checkout -b feature/post-list</code>)</li><li><strong>If using AI:</strong> enter plan mode and create a plan, then copy it from <code>~/.claude/plans/</code> to your project's <code>plans/</code> folder</li><li><strong>Implement the feature</strong></li><li><strong>Commit and merge</strong> back to main</li><li><strong>Repeat</strong> for the next feature</li></ol>
+<div class="alert alert-warning" data-type="warning"><span><strong>If working with AI: Do not one-shot this assignment.</strong> Each feature should have its own branch and plan file. We want to see incremental progress, not a single giant commit.<br><br><strong>If not using AI:</strong> you don't need plan files, but still use feature branches!</span></div>
 <div class="heading-block h2-block"><h2>CRUD API</h2></div>
 <p>We’ll be using an API server running at <a href="https://platform-api.cs52.me/api">https://platform-api.cs52.me/api</a></p>
 <p>The API has the following endpoints:</p>
 <ul><li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{"id":"",title":"","tags":"", "coverUrl":""},...]</code></li><li>POST <code>/api/posts/</code> with post parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> creates a new post</li><li>PUT <code>/api/posts/:postID</code> with parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> will update an entry</li><li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li><li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li></ul>
 <div class="heading-block h3-block"><h3>API key</h3></div>
 <p>For each of these you need to append an api key. This key can just be your <code>firstinitial_lastname</code>. You can test the api using <a href="https://insomnia.rest/">insomnia</a> or curl.</p>
+<div class="alert alert-note"><div><em>This is a simple shared class API key — not a real secret. In production, API keys should never be in query strings or committed to git. We'll cover proper authentication in Lab 5.</em></div></div>
 <div class="heading-block h3-block"><h3>Testing APIs from CLI with CURL</h3></div>
 <p>There is a command that you can run in Terminal called <code>curl</code> that can fetch remote data. Here’s how you would use it for testing the api server. This will also come in handy when you have to create the api server next week! </p>
 <p>🪟&nbsp;<em>If you are on windows you may need to download a <a href="https://curl.se/windows/">linux style curl command here</a>.</em></p>
@@ -497,7 +502,7 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform-api.cs52.me
 
 <div class="heading-block h2-block"><h2>Routes</h2></div>
 <p>We're going to use routes to set up our app with different "pages". You'll have a route for creating new posts (a form), a page for showing a post by ID, and a default route showing all posts.</p>
-<p>Your starterpack currently uses <strong>declarative routing</strong>:</p>
+<p>Your starterpack currently uses <strong>declarative routing</strong>, so your new routes might look like this:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">&lt;Routes&gt;
   &lt;Route path="/" element={&lt;Posts /&gt;} /&gt;
   &lt;Route path="/posts/new" element={&lt;NewPost /&gt;} /&gt;
@@ -513,7 +518,7 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform-api.cs52.me
 <div class="heading-block h3-block"><h3>Posts</h3></div>
 <p>Default page listing all posts. Display each post's <em>coverUrl</em>, <em>title</em>, and <em>tags</em>. Each post should be clickable via <code>&lt;Link to={`/posts/${post.id}`}&gt;</code>.</p>
 <p>Min specs:</p>
-<ul><li>default page listing all posts</li><li>use post id to link to full view</li><li>show <em>coverUrl</em>, <em>title</em>, <em>tags</em> — can be a list, tiles, cards, whatever you want!</li></ul>
+<ul><li>default page listing all posts</li><li>use post id to link to full view</li><li>show <em>coverUrl</em>, <em>title</em>, <em>tags</em> — can be a list, tiles, cards, whatever you want!</li><li>search/filter by tags and a text search on title</li><li>sort posts (e.g., newest, oldest, alphabetical)</li></ul>
 <div class="heading-block h3-block"><h3>NewPost</h3></div>
 <p>A form to create a new post. You <em>could</em> combine this with the edit view later, but start with a separate component.</p>
 <div class="heading-block h3-block"><h3>Post (display and edit)</h3></div>
@@ -533,7 +538,7 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform-api.cs52.me
 <tr><td><strong>Install</strong></td><td>Nothing extra (react-router already supports it)</td><td><code>@tanstack/react-query</code> + <code>axios</code></td></tr>
 </table>
 <div class="heading-block h2-block"><h2>Option A: React Router Data Mode</h2></div>
-<p>Data mode unlocks <strong>loaders</strong> (data fetching before your component renders) and <strong>actions</strong> (form-based mutations with automatic revalidation). No more <code>useEffect</code> for fetching! You don't need to install anything new — <code>react-router</code> already supports this.</p>
+<p>Data mode unlocks <strong>loaders</strong> (data fetching before your component renders) and <strong>actions</strong> (form-based mutations with automatic revalidation). No more <code>useEffect</code> for fetching! You don't need to install anything new — <code>react-router</code> v7+ already supports this (which your starterpack uses).</p>
 <p><a href="https://reactrouter.com/start/data/routing">React Router Data Mode Docs</a></p>
 <div class="heading-block h3-block"><h3>Step 1: Refactor Routes</h3></div>
 <p>Replace <code>BrowserRouter</code> with <code>createBrowserRouter</code> + <code>RouterProvider</code>. Your <code>App</code> component becomes a layout route using <code>&lt;Outlet /&gt;</code>:</p>
@@ -614,7 +619,29 @@ function NewPost() {
   );
 }</code></pre></div></div>
 <p>After any action completes, <strong>all active loaders automatically re-run</strong>. Create a post? The list refreshes. Delete a post? Same thing. No manual refetching needed!</p>
-<p>For delete, create a separate action that calls <code>DELETE</code> on the API and returns <code>redirect('/')</code>. You can trigger it from a button using a small <code>&lt;Form&gt;</code> with <code>method="post"</code> pointed at a delete route, or use <code>useFetcher</code> for inline actions without navigation.</p>
+<p>For delete, use <code>useFetcher</code> to trigger an inline action without navigating away. This is perfect for buttons that perform a mutation on the current page:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-javascript">// Add an action to the post route in your router config:
+// { path: 'posts/:postID', loader: postLoader, action: postAction, Component: Post }
+
+export async function postAction({ request, params }) {
+  const formData = await request.formData();
+  const intent = formData.get('intent');
+  if (intent === 'delete') {
+    await fetch(`${ROOT_URL}/posts/${params.postID}${API_KEY}`, { method: 'DELETE' });
+    return redirect('/');
+  }
+  // handle 'update' intent here too...
+}
+
+// In your Post component — useFetcher for inline delete button
+function Post() {
+  const fetcher = useFetcher();
+  return (
+    &lt;fetcher.Form method="post"&gt;
+      &lt;button name="intent" value="delete"&gt;Delete&lt;/button&gt;
+    &lt;/fetcher.Form&gt;
+  );
+}</code></pre></div></div>
 <div class="heading-block h2-block"><h2>Option B: TanStack Query</h2></div>
 <p>TanStack Query gives you smart data fetching with caching, loading/error states, and cache invalidation. Keep your existing declarative routes and add TanStack Query for the data layer.</p>
 <p><a href="https://tanstack.com/query/latest/docs/framework/react/overview">TanStack Query Docs</a></p>
@@ -654,7 +681,19 @@ function Posts() {
     &lt;Link key={post.id} to={`/posts/${post.id}`}&gt;{post.title}&lt;/Link&gt;
   ));
 }</code></pre></div></div>
-<p>The <code>queryKey</code> identifies this data in the cache. For a single post, use <code>queryKey: ['posts', postID]</code> and <code>useParams()</code> to get the ID.</p>
+<p>The <code>queryKey</code> identifies this data in the cache. For a single post, use <code>useParams()</code> to get the ID from the URL and include it in the key:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">function Post() {
+  const { postID } = useParams();
+  const { data: post, isPending, error } = useQuery({
+    queryKey: ['posts', postID],
+    queryFn: () =&gt; axios.get(`${ROOT_URL}/posts/${postID}${API_KEY}`).then(r =&gt; r.data),
+  });
+
+  if (isPending) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Post not found&lt;/div&gt;;
+
+  return &lt;div&gt;&lt;h1&gt;{post.title}&lt;/h1&gt;...&lt;/div&gt;;
+}</code></pre></div></div>
 <div class="heading-block h3-block"><h3>Step 3: Mutate with useMutation</h3></div>
 <p>Use <code>useMutation</code> for create, update, and delete. After success, <code>invalidateQueries</code> tells TanStack Query to refetch stale data:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -700,7 +739,24 @@ function NewPost() {
     setSortOrder: (order) =&gt; set(({ uiSlice }) =&gt; { uiSlice.sortOrder = order; }),
   };
 }</code></pre></div></div>
+<p><em>Note: the example above uses Immer-style direct mutation inside <code>set()</code>. This requires the <code>immer</code> middleware in your Zustand store setup (which your starterpack should already have configured from SA). If you're not using Immer, use the standard pattern: <code>set(({ uiSlice }) =&gt; ({ uiSlice: { ...uiSlice, editDraft: draft } }))</code>.</em></p>
 <p>Use the filter/sort state in your <em>Posts</em> component to filter and sort the post list before rendering. The edit draft state is useful in your <em>Post</em> edit view — store field changes in Zustand so you can implement cancel/discard.</p>
+<div class="heading-block h2-block"><h2>Search, Filter &amp; Sort</h2></div>
+<p>Your <em>Posts</em> component should let users search by title, filter by tag, and sort the list. The idea: your Zustand store holds the current search/filter/sort values, and you apply them to the posts array <em>before</em> rendering. Something like:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">// In your Posts component — apply filters before rendering
+const { searchTerm, tagFilter, sortOrder } = useStore((s) =&gt; s.uiSlice);
+
+const filtered = posts
+  .filter((p) =&gt; p.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  .filter((p) =&gt; !tagFilter || p.tags.includes(tagFilter))
+  .sort(/* sort by sortOrder */);
+
+return &lt;div&gt;
+  {/* add inputs/selects that call setSearchTerm, setTagFilter, setSortOrder */}
+  {filtered.map((post) =&gt; /* render post card */)}
+&lt;/div&gt;;</code></pre></div></div>
+<p>The UI for this is up to you — a search bar, a tag dropdown or clickable tag chips, a sort toggle. Keep it simple but functional.</p>
+<div class="callout"><span class="callout-emoji">🤔</span><div><strong>Think about it:</strong> Right now we fetch <em>all</em> posts from the API and filter/sort them client-side in JavaScript. This works fine for a class project with a handful of posts — but what if the database had a million rows? You wouldn't want to send all of them to the browser. How would the architecture need to change? Where would the filtering and sorting happen instead? What would the API calls look like? Keep this in mind as we build our own API server in Lab 5.</div></div>
 <div class="heading-block h2-block"><h2>Debugging</h2></div>
 <p>Use <strong>Redux DevTools</strong> to debug your Zustand store — you should see your UI state changing as you type in search fields, select filters, and edit posts.</p>
 <p>If you chose Option B, also add the <a href="https://tanstack.com/query/latest/docs/framework/react/devtools">TanStack Query DevTools</a> for a visual cache inspector showing which queries are cached, stale, or fetching.</p>
