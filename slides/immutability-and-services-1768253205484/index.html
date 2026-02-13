@@ -1074,18 +1074,22 @@ note.title = "New Title"
 <ul style="color:rgb(58, 62, 64); margin-top: 20px;">
 	<li><strong><a href="https://yjs.dev/">Y.js</a></strong> — most popular, great ecosystem, used by many editors</li>
 	<li><strong><a href="https://automerge.org/">Automerge</a></strong> — JSON-like API, great for documents</li>
+	<li><strong><a href="https://loro.dev/">Loro</a></strong> — Rust/WASM, built-in version control, moveable trees &amp; lists</li>
 	<li><strong><a href="https://jsonjoy.com/">json-joy</a></strong> — JSON CRDT implementation</li>
 </ul>
-<p style="color:#3a3e40; margin-top: 30px;">These handle the complexity — you just use familiar APIs and they sync automatically.</p>
+<p style="color:#3a3e40; margin-top: 20px;">These handle the complexity — you just use familiar APIs and they sync automatically.</p>
 </div></div>
-<div class="sl-block" data-block-type="code" style="width: 700px; height: 160px; left: 130px; top: 498px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Y.js example - just use it like a Map!
-const ymap = ydoc.getMap('notes');
-ymap.set('note1', { title: 'Hello', content: '...' });
+<div class="sl-block" data-block-type="code" style="width: 700px; height: 160px; left: 130px; top: 498px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 12;"><pre class="javascript" style="font-size: 14px; line-height: 18px;"><code>// Loro example
+const doc = new LoroDoc();
+const list = doc.getList('notes');
+list.push({ title: 'Hello', content: '...' });
 
-// Changes automatically sync with other clients!</code></pre></div></div>
-<aside class="notes">* Y.js is probably the most used
-* Automerge has a really nice API
-* fun fact: Automerge uses Immutable.js under the hood! full circle back to our immutability discussion
+// Export &amp; sync: doc.export({ mode: "update" })</code></pre></div></div>
+<aside class="notes">* Y.js is the most used, huge ecosystem
+* Automerge has a really nice API, backed by Ink &amp; Switch research
+* Loro is the newest — written in Rust, compiled to WASM
+* Loro has unique features: moveable tree (drag notes), built-in time travel (checkout any version like git)
+* Loro uses the Fugue algorithm for text - fewer merge anomalies than Y.js or Automerge
 * extra credit to add this to your notes app!</aside></section><section data-id="crdt-resources" class="editing-mode" style="top: 350px; display: none;" hidden="" aria-hidden="true">
 
 <div class="sl-block" data-block-type="snippet" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-name="snippet-ad5a13" data-column-label="Column 1"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 10;">
@@ -1103,7 +1107,8 @@ ymap.set('note1', { title: 'Hello', content: '...' });
 <p style="color:#3a3e40; font-size: 1.1em;">Want to go deeper? These are excellent resources:</p>
 <ul style="color:rgb(58, 62, 64); margin-top: 20px;">
 	<li><strong><a href="https://josephg.com/blog/crdts-go-brrr/">CRDTs Go Brrr</a></strong> — great visual explanation of how text CRDTs work under the hood (tree diagrams, performance comparisons)</li>
-	<li><strong><a href="https://www.inkandswitch.com/local-first/">Local-first Software</a></strong> — the philosophy behind CRDTs by Ink &amp; Switch</li></ul></div></div>
+	<li><strong><a href="https://www.inkandswitch.com/local-first/">Local-first Software</a></strong> — the philosophy behind CRDTs by Ink &amp; Switch</li>
+	<li><strong><a href="https://loro.dev/docs">Loro Documentation</a></strong> — getting started with Loro's collaborative data types</li></ul></div></div>
 
 <aside class="notes">* Martin Kleppmann is one of the foremost experts on distributed systems
 * His talk covers edge cases like cursor positions, undo, etc

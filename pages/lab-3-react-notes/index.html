@@ -827,12 +827,12 @@ npx cypress open</code></pre></div>
 <div class="heading-block h3-block"><h3>The Challenge</h3></div>
 <p>Add a CRDT layer to your notes app. You have options:</p>
 <p><strong>Option A: CRDT Library + Firebase</strong></p>
-<p>Use a CRDT library like <a href="https://automerge.org/">Automerge</a>, <a href="https://yjs.dev/">Yjs</a>, or <a href="https://jsonjoy.com/">json-joy</a> to manage state locally, and sync updates through Firebase.</p>
+<p>Use a CRDT library like <a href="https://loro.dev/">Loro</a>, <a href="https://automerge.org/">Automerge</a>, <a href="https://yjs.dev/">Yjs</a>, or <a href="https://jsonjoy.com/">json-joy</a> to manage state locally, and sync updates through Firebase. Loro is particularly interesting — it has built-in version control (checkout any historical state, like git for your data) and a native moveable tree CRDT (perfect for reordering notes).</p>
 <p><strong>Option B: CRDT Backend-as-a-Service</strong></p>
 <p>Use a backend service that provides CRDT sync out of the box (e.g., <a href="https://liveblocks.io/">Liveblocks</a>, <a href="https://partykit.io/">PartyKit</a>, or others). These handle the sync infrastructure for you. Not as impressive but still fun.</p>
 <div class="heading-block h3-block"><h3>Requirements</h3></div>
 <ul><li>Demonstrate conflict-free merging when two users edit simultaneously</li><li>Bonus: Add offline support — edits queue locally and sync when reconnected</li><li>Bonus: Implement undo/redo using CRDT history</li></ul>
 <div class="heading-block h3-block"><h3>Resources</h3></div>
-<ul><li><a href="https://automerge.org/docs/quickstart/">Automerge Documentation</a></li><li><a href="https://docs.yjs.dev/">Yjs Documentation</a></li><li><a href="https://jsonjoy.com/specs/json-crdt">json-joy JSON CRDT</a></li><li><a href="https://www.inkandswitch.com/local-first/">Local-first software</a> — the philosophy behind CRDTs</li></ul>
+<ul><li><a href="https://loro.dev/docs">Loro Documentation</a> — Rust/WASM CRDT with version control, moveable trees &amp; lists</li><li><a href="https://automerge.org/docs/quickstart/">Automerge Documentation</a></li><li><a href="https://docs.yjs.dev/">Yjs Documentation</a></li><li><a href="https://jsonjoy.com/specs/json-crdt">json-joy JSON CRDT</a></li><li><a href="https://www.inkandswitch.com/local-first/">Local-first software</a> — the philosophy behind CRDTs</li></ul>
 </body>
 </html>
