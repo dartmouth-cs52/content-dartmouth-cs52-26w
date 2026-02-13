@@ -213,6 +213,26 @@
       max-width: 100%;
       height: auto;
     }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .image-align-right {
+      text-align: right;
+    }
+    .image-align-right img {
+      margin-left: auto;
+    }
     .callout {
       background: #f7f6f3;
       padding: 1em;
@@ -443,32 +463,32 @@
 </head>
 <body>
 <p>We’ll build a React+State Management Content Platform. It can be a platform for any type of content you desire. As long as there are individual content items that have some content that need to be saved to a database! Aside from the core functionality of creating an item with title and content, showing those, editing the fields, and deleting, you should feel free to be creative with it. It will basically be a CRUD platform — create, read, update, delete, storing data on a server with best practices, user authentication, and security — those features encompass a world of possibilities.</p>
-<div class="video-embed"><video controls autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_840,h_643/v1546203223/cs52/platform-client.webm" type="video/webm">Your browser does not support the video tag.</video></div>
+<div class="video-embed"><iframe src="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_840,h_643/v1546203223/cs52/platform-client.webm" frameborder="0" allowfullscreen></iframe></div>
 <div class="heading-block h3-block"><h3><strong>Lab 4</strong></h3></div>
 <p>We’ll build out a Create+Update+Delete (CRUD) style content app using React and state management and React-Router. We will use an API server hosted at: <code>https://platform-api.cs52.me/api</code>.</p>
 <p>For now the API only supports <code>title</code>, <code>content</code>, <code>tags</code>, <code>coverUrl</code>, but even with just those fields (especially if content supports markdown) you could think of other things that you could display. Menu Items for a restaurant. Or even quiz answers (you’ll be able to add fields in Lab 5).</p>
 <p>Be creative and make this your own.</p>
 <p>🍰  Feel free to use any CSS or React Component Libraries that you want.</p>
-<div class="heading-block h3-block"><h3>Preview: Lab 5</h3></div>
+<div class="heading-block h3-block" data-bg-color="#FBF3DB"><h3 style="background-color: #FBF3DB">Preview: Lab 5</h3></div>
 <p>We will rip out <code>platform-api.cs52.me/api</code> and build our own Nodejs+Express+Mongo based API server. Finally FULL-STACK! You’ll be able to modify the data model at this point and really make your platform do anything. We’ll also add authentication and image uploading!</p>
-<div class="heading-block h2-block"><h2>Let’s Start</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Let’s Start</h2></div>
 <p>🚀 Clone your Classmoji provisioned repo for the assignment. Then you'll pull in your vite+babel+eslint+react+routing+zustand starter code like so:</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">#make sure you are in your project directory
 git remote add starter URL_TO_YOUR_STARTERPACK
 git pull starter main  # you may need --allow-unrelated-histories</code></pre></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># also don't forget to run:
 npm install #to fetch all your package.json dependencies</code></pre></div>
-<div class="heading-block h2-block"><h2>Feature Branch + Plan Workflow</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Feature Branch + Plan Workflow</h2></div>
 <p>Same as Lab 3 — use the <strong>feature branch workflow</strong> as you build. Don't build everything on <code>main</code> in one go. Break the work into features and for each one:</p>
 <ol start="1"><li><strong>Create a feature branch</strong> (e.g., <code>git checkout -b feature/post-list</code>)</li><li><strong>If using AI:</strong> enter plan mode and create a plan, then copy it from <code>~/.claude/plans/</code> to your project's <code>plans/</code> folder</li><li><strong>Implement the feature</strong></li><li><strong>Commit and merge</strong> back to main</li><li><strong>Repeat</strong> for the next feature</li></ol>
 <div class="alert alert-warning" data-type="warning"><span><strong>If working with AI: Do not one-shot this assignment.</strong> Each feature should have its own branch and plan file. We want to see incremental progress, not a single giant commit.<br><br><strong>If not using AI:</strong> you don't need plan files, but still use feature branches!</span></div>
-<div class="heading-block h2-block"><h2>CRUD API</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">CRUD API</h2></div>
 <p>We’ll be using an API server running at <a href="https://platform-api.cs52.me/api">https://platform-api.cs52.me/api</a></p>
 <p>The API has the following endpoints:</p>
 <ul><li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{"id":"",title":"","tags":"", "coverUrl":""},...]</code></li><li>POST <code>/api/posts/</code> with post parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> creates a new post</li><li>PUT <code>/api/posts/:postID</code> with parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> will update an entry</li><li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li><li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li></ul>
 <div class="heading-block h3-block"><h3>API key</h3></div>
 <p>For each of these you need to append an api key. This key can just be your <code>firstinitial_lastname</code>. You can test the api using <a href="https://insomnia.rest/">insomnia</a> or curl.</p>
-<div class="alert alert-note"><div><em>This is a simple shared class API key — not a real secret. In production, API keys should never be in query strings or committed to git. We'll cover proper authentication in Lab 5.</em></div></div>
+<div class="alert alert-info" data-type="info"><span></span></div>
 <div class="heading-block h3-block"><h3>Testing APIs from CLI with CURL</h3></div>
 <p>There is a command that you can run in Terminal called <code>curl</code> that can fetch remote data. Here’s how you would use it for testing the api server. This will also come in handy when you have to create the api server next week! </p>
 <p>🪟&nbsp;<em>If you are on windows you may need to download a <a href="https://curl.se/windows/">linux style curl command here</a>.</em></p>
@@ -496,11 +516,10 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform-api.cs52.me
 <p>Try these out. Run the create new post one a couple of times to populate your database!</p>
 <p>This will work a bit different from the react-notes, and in a way will be much simpler. Every time you want to update, create, delete, retrieve, you will use http calls like the above to interact with the server.</p>
 <p>Remember our SPA architecture:</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/single-page-app-1767548463916.png" alt="">
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/single-page-app-1767548463916.png" alt=""></figure>
 <p>The above are the data requests we’ll be making. They all return <em>JSON</em>.</p>
 <p>This site will <em>not</em> update live in the sense that if someone else on another browser added a post, you would not see it pop up automatically, but would need to reload. This is fairly common of most platforms like this, your feed does’t change as you look at it, you need to refresh to see new articles.  It’ll be easy to trigger a refresh with a button or pull down though if you want.</p>
-
-<div class="heading-block h2-block"><h2>Routes</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Routes</h2></div>
 <p>We're going to use routes to set up our app with different "pages". You'll have a route for creating new posts (a form), a page for showing a post by ID, and a default route showing all posts.</p>
 <p>Your starterpack currently uses <strong>declarative routing</strong>, so your new routes might look like this:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code class="language-javascript">&lt;Routes&gt;
@@ -527,22 +546,15 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform-api.cs52.me
 <p><em>Note: the shared API server only supports title, tags, content, coverUrl. In Lab 5 you'll build your own server and can add fields.</em></p>
 <p>Min specs:</p>
 <ul><li>render full content of post at route <code>/posts/:postID</code></li><li>render markdown</li><li>allow editing of post fields</li><li>allow deleting a post</li></ul>
-<div class="heading-block h2-block"><h2>Choose Your Data Strategy</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Choose Your Data Strategy</h2></div>
 <p>You have two options for how to fetch data from the API and manage server state. <strong>Pick one!</strong> Both are real-world patterns used in production apps.</p>
-<table>
-<tr><th></th><th>Option A: Data Mode</th><th>Option B: TanStack Query</th></tr>
-<tr><td><strong>Approach</strong></td><td>Upgrade React Router to use loaders &amp; actions</td><td>Add a dedicated data-fetching/caching library</td></tr>
-<tr><td><strong>Server data</strong></td><td>Loaders fetch before render, actions handle mutations</td><td><code>useQuery</code> fetches, <code>useMutation</code> handles writes</td></tr>
-<tr><td><strong>Revalidation</strong></td><td>Automatic after every action</td><td>Manual via <code>invalidateQueries</code></td></tr>
-<tr><td><strong>Forms</strong></td><td><code>&lt;Form&gt;</code> component (built into router)</td><td>Regular forms with <code>onSubmit</code> handlers</td></tr>
-<tr><td><strong>Install</strong></td><td>Nothing extra (react-router already supports it)</td><td><code>@tanstack/react-query</code> + <code>axios</code></td></tr>
-</table>
+<table><thead><tr></tr></thead><tbody><tr><td>Approach</td><td>Upgrade React Router to use loaders & actions</td><td>Add a dedicated data-fetching/caching library</td></tr><tr><td>Server data</td><td>Loaders fetch before render, actions handle mutations</td><td>useQuery fetches, useMutation handles writes</td></tr><tr><td>Revalidation</td><td>Automatic after every action</td><td>Manual via invalidateQueries</td></tr><tr><td>Forms</td><td><Form> component (built into router)</td><td>Regular forms with onSubmit handlers</td></tr><tr><td>Install</td><td>Nothing extra (react-router already supports it)</td><td>@tanstack/react-query + axios</td></tr></tbody></table>
 <div class="heading-block h2-block"><h2>Option A: React Router Data Mode</h2></div>
 <p>Data mode unlocks <strong>loaders</strong> (data fetching before your component renders) and <strong>actions</strong> (form-based mutations with automatic revalidation). No more <code>useEffect</code> for fetching! You don't need to install anything new — <code>react-router</code> v7+ already supports this (which your starterpack uses).</p>
 <p><a href="https://reactrouter.com/start/data/routing">React Router Data Mode Docs</a></p>
 <div class="heading-block h3-block"><h3>Step 1: Refactor Routes</h3></div>
 <p>Replace <code>BrowserRouter</code> with <code>createBrowserRouter</code> + <code>RouterProvider</code>. Your <code>App</code> component becomes a layout route using <code>&lt;Outlet /&gt;</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span></div><pre><code class="language-javascript">// main.jsx
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span></div><pre><code class="language-javascript">// main.jsx
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
 const router = createBrowserRouter([
@@ -582,7 +594,7 @@ export async function postsLoader() {
 // Hint: loaders receive { params } with your route parameters</code></pre></div></div>
 <div class="heading-block h3-block"><h3>Step 3: Add Actions + Forms</h3></div>
 <p>Actions handle mutations (create, update, delete). Use the <code>&lt;Form&gt;</code> component from react-router — it submits via fetch and triggers the matching route's action:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import { Form, redirect, useActionData } from 'react-router';
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span></div><pre><code class="language-javascript">import { Form, redirect, useActionData } from 'react-router';
 
 export async function createPostAction({ request }) {
   const formData = await request.formData();
@@ -608,7 +620,7 @@ function NewPost() {
 }</code></pre></div></div>
 <p>After any action completes, <strong>all active loaders automatically re-run</strong>. Create a post? The list refreshes. Delete a post? Same thing. No manual refetching needed!</p>
 <p>For delete, use <code>useFetcher</code> to trigger an inline action without navigating away. This is perfect for buttons that perform a mutation on the current page:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">// Add an action to the post route in your router config:
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-javascript">// Add an action to the post route in your router config:
 // { path: 'posts/:postID', loader: postLoader, action: postAction, Component: Post }
 
 export async function postAction({ request, params }) {
@@ -630,7 +642,7 @@ const fetcher = useFetcher();
 <div class="heading-block h3-block"><h3>Step 1: Install &amp; Setup</h3></div>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install @tanstack/react-query axios</code></pre></div>
 <p>Wrap your app in a <code>QueryClientProvider</code>:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">// main.jsx
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">// main.jsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
@@ -673,7 +685,7 @@ const { data: post, isPending, error } = useQuery({
 // Including the postID in queryKey means each post is cached separately</code></pre></div></div>
 <div class="heading-block h3-block"><h3>Step 3: Mutate with useMutation</h3></div>
 <p>Use <code>useMutation</code> for create, update, and delete. After success, <code>invalidateQueries</code> tells TanStack Query to refetch stale data:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import { useMutation, useQueryClient } from '@tanstack/react-query';
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-javascript">import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 function NewPost() {
   const navigate = useNavigate();
@@ -695,12 +707,12 @@ function NewPost() {
   // ... render your form with onSubmit={handleSubmit}
 }</code></pre></div></div>
 <p>Follow the same pattern for update (<code>axios.put</code>) and delete (<code>axios.delete</code>). Always <code>invalidateQueries</code> on success to keep the cache fresh.</p>
-<div class="heading-block h2-block"><h2>Zustand for Client State (Both Options)</h2></div>
+<div class="heading-block h2-block" data-bg-color="#DDEDEA"><h2 style="background-color: #DDEDEA">Zustand for Client State (Both Options)</h2></div>
 <p>Regardless of which data strategy you chose, use <strong>Zustand for client-side UI state</strong> — state that doesn't come from the server. This gives you a clean separation:</p>
 <ul><li><strong>Server state</strong> (posts from the API) = loaders or TanStack Query</li><li><strong>Client state</strong> (what the user is doing right now) = Zustand</li></ul>
 <p>Create a <code>uiSlice</code> for:</p>
 <ul><li><strong>Edit draft state</strong> — form fields while editing a post, so you can cancel/discard unsaved changes</li><li><strong>Search/filter</strong> — current search term, active tag filter</li><li><strong>Sort preferences</strong> — how the post list is ordered (newest, oldest, alphabetical)</li></ul>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span></div><pre><code class="language-javascript">export default function createUiSlice(set) {
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span></div><pre><code class="language-javascript">export default function createUiSlice(set) {
   return {
     // edit draft — track unsaved form changes
     editDraft: {},
@@ -718,7 +730,7 @@ function NewPost() {
 }</code></pre></div></div>
 <p><em>Note: the example above uses Immer-style direct mutation inside <code>set()</code>. This requires the <code>immer</code> middleware in your Zustand store setup (which your starterpack should already have configured from SA). If you're not using Immer, use the standard pattern: <code>set(({ uiSlice }) =&gt; ({ uiSlice: { ...uiSlice, editDraft: draft } }))</code>.</em></p>
 <p>Use the filter/sort state in your <em>Posts</em> component to filter and sort the post list before rendering. The edit draft state is useful in your <em>Post</em> edit view — store field changes in Zustand so you can implement cancel/discard.</p>
-<div class="heading-block h2-block"><h2>Search, Filter &amp; Sort</h2></div>
+<div class="heading-block h2-block" data-bg-color="#DDEDEA"><h2 style="background-color: #DDEDEA">Search, Filter &amp; Sort</h2></div>
 <p>Your <em>Posts</em> component should let users search by title, filter by tag, and sort the list. The idea: your Zustand store holds the current search/filter/sort values, and you apply them to the posts array <em>before</em> rendering. Something like:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">// In your Posts component — apply filters before rendering
 const { searchTerm, tagFilter, sortOrder } = useStore((s) =&gt; s.uiSlice);
@@ -733,12 +745,12 @@ return &lt;div&gt;
   {filtered.map((post) =&gt; /* render post card */)}
 &lt;/div&gt;;</code></pre></div></div>
 <p>The UI for this is up to you — a search bar, a tag dropdown or clickable tag chips, a sort toggle. Keep it simple but functional.</p>
-<div class="callout"><span class="callout-emoji">🤔</span><div><strong>Think about it:</strong> Right now we fetch <em>all</em> posts from the API and filter/sort them client-side in JavaScript. This works fine for a class project with a handful of posts — but what if the database had a million rows? You wouldn't want to send all of them to the browser. How would the architecture need to change? Where would the filtering and sorting happen instead? What would the API calls look like? Keep this in mind as we build our own API server in Lab 5.</div></div>
+<div class="callout"><span class="callout-emoji">🤔</span><span><span class="callout-emoji">🤔</span><div><strong>Think about it:</strong> Right now we fetch <em>all</em> posts from the API and filter/sort them client-side in JavaScript. This works fine for a class project with a handful of posts — but what if the database had a million rows? You wouldn't want to send all of them to the browser. How would the architecture need to change? Where would the filtering and sorting happen instead? What would the API calls look like? Keep this in mind as we build our own API server in Lab 5.</div></span></div>
 <div class="heading-block h2-block"><h2>Debugging</h2></div>
 <p>Use <strong>Redux DevTools</strong> to debug your Zustand store — you should see your UI state changing as you type in search fields, select filters, and edit posts.</p>
 <p>If you chose Option B, also add the <a href="https://tanstack.com/query/latest/docs/framework/react/devtools">TanStack Query DevTools</a> for a visual cache inspector showing which queries are cached, stale, or fetching.</p>
-<img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/screenshot-2024-04-30-at-9-1767548463916.png" alt="Screenshot 2024-04-30 at 9.43.00 PM.png">
-<div class="heading-block h2-block"><h2>Error Handling</h2></div>
+<figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/screenshot-2024-04-30-at-9-1767548463916.png" alt="Screenshot 2024-04-30 at 9.43.00 PM.png"></figure>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Error Handling</h2></div>
 <p>NEVER just <code>console.log</code> an error and move on. Silent fails are the worst — if the user does something wrong and nothing happens, they have no idea what went wrong. Always let the user know!</p>
 <p>🚀 Add <a href="https://fkhadra.github.io/react-toastify/introduction/">react-toastify</a> to your project for user-visible error messages.</p>
 <div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm install react-toastify</code></pre></div>
@@ -746,7 +758,7 @@ return &lt;div&gt;
 <p><strong>Option B (TanStack Query):</strong> Use <code>try/catch</code> in your mutation callbacks and <code>toast</code> the error. TanStack Query also provides <code>error</code> states from <code>useQuery</code> that you should display.</p>
 <p>Either way: <code>try/catch</code> your API calls and <code>toast</code> errors. Don't be bad.</p>
 <p><a href="https://fkhadra.github.io/react-toastify/introduction/">React-toastify | React-Toastify</a></p>
-<div class="heading-block h2-block"><h2>And you are on your way!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">And you are on your way!</h2></div>
 <p>That should be all you need to build a content platform. If you don't know where to start, remember:</p>
 <ol start="1"><li>Start with a mock!</li><li>Break the UI into a component hierarchy!</li><li>Build presentational components for a static version</li><li>Identify what state is server state vs client UI state</li><li>Implement your data strategy (Option A or B)</li><li>Add Zustand for client UI state (drafts, filters, sort)</li><li>Add search/filter functionality</li><li>Style it</li><li>Ship it</li></ol>
 <p>It might help to get one thing working first. Get the <em>Posts</em> list loading, then tackle single post view, then create, then edit and delete.</p>
