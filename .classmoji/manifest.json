@@ -280,6 +280,7 @@
       "logistics",
       "lab-2-v2-build-a-buzzfeed-quiz",
       "project-0-pitch-ideas",
+      "sample",
       "coding-agents-tips"
     ],
     "slides": [
@@ -295,12 +296,12 @@
       "intro-to-react",
       "wrap-up",
       "authentication-and-authorization",
-      "rest",
       "design",
       "routing",
-      "state-management",
+      "rest",
       "intro-to-frontend-testing",
       "intro-to-web-frameworks",
+      "state-management",
       "immutability-and-services"
     ]
   }
