@@ -569,7 +569,7 @@ function App() {
 </code></pre></div></div>
 <div class="heading-block h3-block"><h3>Step 2: Add Loaders</h3></div>
 <p>Loaders fetch data <em>before</em> your component renders. No <code>useEffect</code>, no loading spinners needed on navigation!</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">const ROOT_URL = 'https://platform-api.cs52.me/api';
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span></div><pre><code class="language-javascript">const ROOT_URL = 'https://platform-api.cs52.me/api';
 const API_KEY = '?key=yourfirstname_yourlastname';
 
 export async function postsLoader() {
@@ -578,18 +578,11 @@ export async function postsLoader() {
   return response.json();
 }
 
-export async function postLoader({ params }) {
-  const response = await fetch(`${ROOT_URL}/posts/${params.postID}${API_KEY}`);
-  if (!response.ok) throw new Response('Post not found', { status: 404 });
-  return response.json();
-}
-
-// In your component — data is just there, no useEffect!
-function Posts() {
-  const posts = useLoaderData();</code></pre></div></div>
+// Write a similar postLoader for fetching a single post by ID!
+// Hint: loaders receive { params } with your route parameters</code></pre></div></div>
 <div class="heading-block h3-block"><h3>Step 3: Add Actions + Forms</h3></div>
 <p>Actions handle mutations (create, update, delete). Use the <code>&lt;Form&gt;</code> component from react-router — it submits via fetch and triggers the matching route's action:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span><span class="line-number">23</span><span class="line-number">24</span><span class="line-number">25</span><span class="line-number">26</span><span class="line-number">27</span></div><pre><code class="language-javascript">import { Form, redirect, useActionData, useNavigation } from 'react-router';
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import { Form, redirect, useActionData } from 'react-router';
 
 export async function createPostAction({ request }) {
   const formData = await request.formData();
@@ -605,43 +598,32 @@ export async function createPostAction({ request }) {
 
 // NewPost component — just a &lt;Form&gt;, no onSubmit handler needed
 function NewPost() {
-  const actionData = useActionData();
-  const navigation = useNavigation();
   return (
     &lt;Form method="post"&gt;
-      {actionData?.error &amp;&amp; &lt;p className="error"&gt;{actionData.error}&lt;/p&gt;}
       &lt;input name="title" placeholder="Title" required /&gt;
-      &lt;textarea name="content" placeholder="Content" required /&gt;
-      &lt;input name="tags" placeholder="Tags" /&gt;
-      &lt;input name="coverUrl" placeholder="Cover URL" /&gt;
-      &lt;button disabled={navigation.state === 'submitting'}&gt;Create&lt;/button&gt;
+      {/* add the rest of your fields here */}
+      &lt;button&gt;Create&lt;/button&gt;
     &lt;/Form&gt;
   );
 }</code></pre></div></div>
 <p>After any action completes, <strong>all active loaders automatically re-run</strong>. Create a post? The list refreshes. Delete a post? Same thing. No manual refetching needed!</p>
 <p>For delete, use <code>useFetcher</code> to trigger an inline action without navigating away. This is perfect for buttons that perform a mutation on the current page:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span></div><pre><code class="language-javascript">// Add an action to the post route in your router config:
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span></div><pre><code class="language-javascript">// Add an action to the post route in your router config:
 // { path: 'posts/:postID', loader: postLoader, action: postAction, Component: Post }
 
 export async function postAction({ request, params }) {
   const formData = await request.formData();
   const intent = formData.get('intent');
   if (intent === 'delete') {
-    await fetch(`${ROOT_URL}/posts/${params.postID}${API_KEY}`, { method: 'DELETE' });
-    return redirect('/');
+    // make the DELETE api call and redirect home
   }
   // handle 'update' intent here too...
 }
 
-// In your Post component — useFetcher for inline delete button
-function Post() {
-  const fetcher = useFetcher();
-  return (
-    &lt;fetcher.Form method="post"&gt;
-      &lt;button name="intent" value="delete"&gt;Delete&lt;/button&gt;
-    &lt;/fetcher.Form&gt;
-  );
-}</code></pre></div></div>
+// In your Post component — useFetcher for inline actions without navigation
+const fetcher = useFetcher();
+// &lt;fetcher.Form&gt; works like &lt;Form&gt; but doesn't trigger a page navigation
+// use the button's name/value to pass the intent to the action</code></pre></div></div>
 <div class="heading-block h2-block"><h2>Option B: TanStack Query</h2></div>
 <p>TanStack Query gives you smart data fetching with caching, loading/error states, and cache invalidation. Keep your existing declarative routes and add TanStack Query for the data layer.</p>
 <p><a href="https://tanstack.com/query/latest/docs/framework/react/overview">TanStack Query Docs</a></p>
@@ -682,18 +664,13 @@ function Posts() {
   ));
 }</code></pre></div></div>
 <p>The <code>queryKey</code> identifies this data in the cache. For a single post, use <code>useParams()</code> to get the ID from the URL and include it in the key:</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span></div><pre><code class="language-javascript">function Post() {
-  const { postID } = useParams();
-  const { data: post, isPending, error } = useQuery({
-    queryKey: ['posts', postID],
-    queryFn: () =&gt; axios.get(`${ROOT_URL}/posts/${postID}${API_KEY}`).then(r =&gt; r.data),
-  });
-
-  if (isPending) return &lt;div&gt;Loading...&lt;/div&gt;;
-  if (error) return &lt;div&gt;Post not found&lt;/div&gt;;
-
-  return &lt;div&gt;&lt;h1&gt;{post.title}&lt;/h1&gt;...&lt;/div&gt;;
-}</code></pre></div></div>
+<div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span></div><pre><code class="language-javascript">const { postID } = useParams();
+const { data: post, isPending, error } = useQuery({
+  queryKey: ['posts', postID],
+  queryFn: () =&gt; axios.get(`${ROOT_URL}/posts/${postID}${API_KEY}`).then(r =&gt; r.data),
+});
+// Handle isPending and error states, then render the post
+// Including the postID in queryKey means each post is cached separately</code></pre></div></div>
 <div class="heading-block h3-block"><h3>Step 3: Mutate with useMutation</h3></div>
 <p>Use <code>useMutation</code> for create, update, and delete. After success, <code>invalidateQueries</code> tells TanStack Query to refetch stale data:</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">JavaScript</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span></div><pre><code class="language-javascript">import { useMutation, useQueryClient } from '@tanstack/react-query';
