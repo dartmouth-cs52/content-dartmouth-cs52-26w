@@ -463,7 +463,7 @@
 </head>
 <body>
 <p>We’ll build a React+State Management Content Platform. It can be a platform for any type of content you desire. As long as there are individual content items that have some content that need to be saved to a database! Aside from the core functionality of creating an item with title and content, showing those, editing the fields, and deleting, you should feel free to be creative with it. It will basically be a CRUD platform — create, read, update, delete, storing data on a server with best practices, user authentication, and security — those features encompass a world of possibilities.</p>
-<div class="video-embed"><iframe src="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_840,h_643/v1546203223/cs52/platform-client.webm" frameborder="0" allowfullscreen></iframe></div>
+<div class="video-embed"><video controls autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="http://res.cloudinary.com/dali-lab/video/upload/ac_none,w_840,h_643/v1546203223/cs52/platform-client.webm" type="video/webm">Your browser does not support the video tag.</video></div>
 <div class="heading-block h3-block"><h3><strong>Lab 4</strong></h3></div>
 <p>We’ll build out a Create+Update+Delete (CRUD) style content app using React and state management and React-Router. We will use an API server hosted at: <code>https://platform-api.cs52.me/api</code>.</p>
 <p>For now the API only supports <code>title</code>, <code>content</code>, <code>tags</code>, <code>coverUrl</code>, but even with just those fields (especially if content supports markdown) you could think of other things that you could display. Menu Items for a restaurant. Or even quiz answers (you’ll be able to add fields in Lab 5).</p>
@@ -488,7 +488,7 @@ npm install #to fetch all your package.json dependencies</code></pre></div>
 <ul><li>GET <code>/api/posts/</code> returns <strong>only</strong> title, tags, and id for all posts, <strong>not</strong> content <code>[[{"id":"",title":"","tags":"", "coverUrl":""},...]</code></li><li>POST <code>/api/posts/</code> with post parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> creates a new post</li><li>PUT <code>/api/posts/:postID</code> with parameters <code>{'title', 'tags', 'content', 'coverUrl'}</code> will update an entry</li><li>GET <code>/api/posts/:postID</code> returns the full post data found at <code>postID</code>, including <code>content</code></li><li>DELETE <code>/api/posts/:postID</code> deletes the post found at <code>postID</code></li></ul>
 <div class="heading-block h3-block"><h3>API key</h3></div>
 <p>For each of these you need to append an api key. This key can just be your <code>firstinitial_lastname</code>. You can test the api using <a href="https://insomnia.rest/">insomnia</a> or curl.</p>
-<div class="alert alert-info" data-type="info"><span></span></div>
+<div class="alert alert-note" data-type="note"><div><em>This is a simple shared class API key — not a real secret. In production, API keys should never be in query strings or committed to git. We'll cover proper authentication in Lab 5.</em></div></div>
 <div class="heading-block h3-block"><h3>Testing APIs from CLI with CURL</h3></div>
 <p>There is a command that you can run in Terminal called <code>curl</code> that can fetch remote data. Here’s how you would use it for testing the api server. This will also come in handy when you have to create the api server next week! </p>
 <p>🪟&nbsp;<em>If you are on windows you may need to download a <a href="https://curl.se/windows/">linux style curl command here</a>.</em></p>
@@ -549,7 +549,7 @@ curl -X DELETE -H "Content-Type: application/json" "https://platform-api.cs52.me
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Choose Your Data Strategy</h2></div>
 <p>You have two options for how to fetch data from the API and manage server state. <strong>Pick one!</strong> Both are real-world patterns used in production apps.</p>
 <table><thead><tr></tr></thead><tbody><tr><td>Approach</td><td>Upgrade React Router to use loaders & actions</td><td>Add a dedicated data-fetching/caching library</td></tr><tr><td>Server data</td><td>Loaders fetch before render, actions handle mutations</td><td>useQuery fetches, useMutation handles writes</td></tr><tr><td>Revalidation</td><td>Automatic after every action</td><td>Manual via invalidateQueries</td></tr><tr><td>Forms</td><td><Form> component (built into router)</td><td>Regular forms with onSubmit handlers</td></tr><tr><td>Install</td><td>Nothing extra (react-router already supports it)</td><td>@tanstack/react-query + axios</td></tr></tbody></table>
-<div class="heading-block h2-block"><h2>Option A: React Router Data Mode</h2></div>
+<div class="heading-block h2-block" data-bg-color="#DDEBF1"><h2 style="background-color: #DDEBF1">Option A: React Router Data Mode</h2></div>
 <p>Data mode unlocks <strong>loaders</strong> (data fetching before your component renders) and <strong>actions</strong> (form-based mutations with automatic revalidation). No more <code>useEffect</code> for fetching! You don't need to install anything new — <code>react-router</code> v7+ already supports this (which your starterpack uses).</p>
 <p><a href="https://reactrouter.com/start/data/routing">React Router Data Mode Docs</a></p>
 <div class="heading-block h3-block"><h3>Step 1: Refactor Routes</h3></div>
@@ -636,7 +636,7 @@ export async function postAction({ request, params }) {
 const fetcher = useFetcher();
 // &lt;fetcher.Form&gt; works like &lt;Form&gt; but doesn't trigger a page navigation
 // use the button's name/value to pass the intent to the action</code></pre></div></div>
-<div class="heading-block h2-block"><h2>Option B: TanStack Query</h2></div>
+<div class="heading-block h2-block" data-bg-color="#DDEBF1"><h2 style="background-color: #DDEBF1">Option B: TanStack Query</h2></div>
 <p>TanStack Query gives you smart data fetching with caching, loading/error states, and cache invalidation. Keep your existing declarative routes and add TanStack Query for the data layer.</p>
 <p><a href="https://tanstack.com/query/latest/docs/framework/react/overview">TanStack Query Docs</a></p>
 <div class="heading-block h3-block"><h3>Step 1: Install &amp; Setup</h3></div>
@@ -745,8 +745,8 @@ return &lt;div&gt;
   {filtered.map((post) =&gt; /* render post card */)}
 &lt;/div&gt;;</code></pre></div></div>
 <p>The UI for this is up to you — a search bar, a tag dropdown or clickable tag chips, a sort toggle. Keep it simple but functional.</p>
-<div class="callout"><span class="callout-emoji">🤔</span><span><span class="callout-emoji">🤔</span><div><strong>Think about it:</strong> Right now we fetch <em>all</em> posts from the API and filter/sort them client-side in JavaScript. This works fine for a class project with a handful of posts — but what if the database had a million rows? You wouldn't want to send all of them to the browser. How would the architecture need to change? Where would the filtering and sorting happen instead? What would the API calls look like? Keep this in mind as we build our own API server in Lab 5.</div></span></div>
-<div class="heading-block h2-block"><h2>Debugging</h2></div>
+<div class="callout"><span class="callout-emoji">🤔</span><div><strong>Think about it:</strong> Right now we fetch <em>all</em> posts from the API and filter/sort them client-side in JavaScript. This works fine for a class project with a handful of posts — but what if the database had a million rows? You wouldn't want to send all of them to the browser. How would the architecture need to change? Where would the filtering and sorting happen instead? What would the API calls look like? Keep this in mind as we build our own API server in Lab 5.</div></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Debugging</h2></div>
 <p>Use <strong>Redux DevTools</strong> to debug your Zustand store — you should see your UI state changing as you type in search fields, select filters, and edit posts.</p>
 <p>If you chose Option B, also add the <a href="https://tanstack.com/query/latest/docs/framework/react/devtools">TanStack Query DevTools</a> for a visual cache inspector showing which queries are cached, stale, or fetching.</p>
 <figure class="image-block"><img src="https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/lab-4-platform-frontend/assets/screenshot-2024-04-30-at-9-1767548463916.png" alt="Screenshot 2024-04-30 at 9.43.00 PM.png"></figure>
@@ -763,16 +763,16 @@ return &lt;div&gt;
 <ol start="1"><li>Start with a mock!</li><li>Break the UI into a component hierarchy!</li><li>Build presentational components for a static version</li><li>Identify what state is server state vs client UI state</li><li>Implement your data strategy (Option A or B)</li><li>Add Zustand for client UI state (drafts, filters, sort)</li><li>Add search/filter functionality</li><li>Style it</li><li>Ship it</li></ol>
 <p>It might help to get one thing working first. Get the <em>Posts</em> list loading, then tackle single post view, then create, then edit and delete.</p>
 <p>Don't forget to use #assignment-help slack channel!</p>
-<div class="heading-block h2-block"><h2>Style It!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Style It!</h2></div>
 <p>Make it look pretty. Remember you are free to make this whatever you want. It does NOT have to be blog posts. Right now there are a few required fields, but how you display them is up to you.</p>
 <p>You are allowed and encouraged to use various CSS/Styling/Component libraries:</p>
 <ul><li><a href="https://mantine.dev/">Mantine</a> is getting some hype these days.</li><li><a href="https://chakra-ui.com/guides/getting-started/cra-guide#manual-installation">Chakra UI</a> is a nice one</li><li><a href="https://material-ui.com/">Material-UI</a> has that google material look.</li><li><a href="https://v2.grommet.io/">Grommet</a> great look and simple to use components.</li><li><a href="https://blueprintjs.com/">Blueprint.JS</a> is popular.</li><li><a href="https://react.semantic-ui.com/">Semantic-UI</a> is pretty full featured.</li></ul>
-<div class="heading-block h2-block"><h2>Release it!</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Release it!</h2></div>
 <p>Get it hosted!</p>
-<div class="heading-block h2-block"><h2>To Turn In</h2></div>
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">To Turn In</h2></div>
 <ul><li>The GitHub assignment Issue will be considered your submission! <strong>To officially turn it in, please comment on the Issue in the repository when you have completed the assignment and mark it Closed.</strong></li><li>In your comment please include:<ul><li><strong>link to deployed hosted version of the page</strong></li><li><strong>which data strategy you chose (Option A or B)</strong></li><li>brief summary of what worked and what didn't</li><li>remember you must cite external sources when you include other people's code, chatGPT, etc</li></ul></li></ul>
 <ol start="1"><li>App should have individual routes for:<ul><li>new (unless you make this a modal)</li><li>list view (default view)</li><li>full show view (needs to be a path like posts/:id)</li></ul></li><li>App should make CRUD api calls<ul><li>create</li><li>update</li><li>delete</li><li>fetch post by id</li><li>fetch all posts</li></ul></li><li>Should use Zustand for client UI state (edit drafts, search/filter/sort)</li><li>Should be styled at least a little</li><li>Handle server errors with user-visible feedback (toasts, error states — no silent fails)</li><li>Should have search/filter by tags and sort functionality</li><li>Your repo should include a README.md file with:<ul><li>a couple sentence description about what you did</li><li>which data strategy you used (Option A or B) and why</li><li>what worked / didn't work</li><li>any extra credit attempted</li></ul></li></ol>
-<div class="heading-block h2-block"><h2>Extra Credit</h2></div>
+<div class="heading-block h2-block" data-bg-color="#DDEDEA"><h2 style="background-color: #DDEDEA">Extra Credit</h2></div>
 <p><em>always mention your extra credit in the README.md file</em></p>
 <ul><li>make it into something other than a blog platform as long as it has the CRUD functionality</li><li>input validation — check that all fields have required values when creating new form for instance</li><li>implement the <em>other</em> data strategy option (both A and B!) for extra learning</li><li>add optimistic updates (update the UI before the server responds)</li><li>style it extra special with transitions and all that squishy animation goodness</li><li>more EC available in lab5!</li></ul>
 </body>
