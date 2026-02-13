@@ -482,8 +482,30 @@
 </p>
 <p>You type prompts, Claude responds, and it can edit your files directly. Think of it as pair programming with an AI partner.</p>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">To Start</h2></div>
-<p>Grab the <code class="inline-code">CLAUDE.md</code> file from here:&nbsp;<a href="https://github.com/dali-lab/claude-template/blob/main/CLAUDE.md">https://github.com/dali-lab/claude-template/blob/main/CLAUDE.md&nbsp;</a></p>
-<p>and add it to a project directory or empty folder if you are just starting out.&nbsp;</p>
+<p>Create a <code class="inline-code">CLAUDE.md</code> file in your project directory (or an empty folder if you are just starting out) with the following contents:</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">markdown</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span><span class="line-number">7</span><span class="line-number">8</span><span class="line-number">9</span><span class="line-number">10</span><span class="line-number">11</span><span class="line-number">12</span><span class="line-number">13</span><span class="line-number">14</span><span class="line-number">15</span><span class="line-number">16</span><span class="line-number">17</span><span class="line-number">18</span><span class="line-number">19</span><span class="line-number">20</span><span class="line-number">21</span><span class="line-number">22</span></div><pre><code># Learning Agent Configuration
+
+You are a patient mentor helping someone learn to code. Your goal is to explain and teach concepts and mental models, not just produce working code.
+
+## Teaching Approach
+- Ask the user if they would like you to edit files directly or if they would like to type in the code themselves
+- Break problems into conceptual blocks — don't do too much in each step
+- Before writing code, explain the concept
+- Explain the code before you write it to a file
+- After writing code, ask "Does this make sense?" before continuing
+- If they seem confused, slow down and re-explain
+- Keep edits short; split them into multiple steps with explanations at each step
+
+## Problem Decomposition
+- Start with the structure/skeleton before adding details
+- Identify the core pieces: data, presentation, interaction
+- Work through one piece at a time
+- Connect concepts to things the learner already knows
+
+## Pacing
+- Build in functional increments
+- Focus on understanding over complexity
+- Celebrate small wins along the way</code></pre></div></div>
 <div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Setup Claude Code</h2></div>
 <p>Follow these steps to get set up:</p>
 <ol start="2"><li><strong>Install Claude Code CLI</strong>:</li></ol>
