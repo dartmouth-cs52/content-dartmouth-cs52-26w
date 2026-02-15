@@ -1,0 +1,2857 @@
+[
+  {
+    "id": "8f1acd60-9d0f-4f02-ad2f-0098fc73adde",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "GOAL: Continuous Curiosity",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "479dc34a-9ed6-426e-b30c-7b7316195b3f",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "AI coding tools are powerful — but how you use them determines whether you're building skills or outsourcing them.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "b84274a8-7a45-4b21-a3c2-20613bf118bb",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "link",
+        "href": "https://www.anthropic.com/research/AI-assistance-coding-skills",
+        "content": [
+          {
+            "type": "text",
+            "text": "Recent research from Anthropic",
+            "styles": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": " studied how different modes of AI interaction affect skill development. ",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "ebfe5c3f-578c-4e52-8acd-89f953ab0223",
+    "type": "image",
+    "props": {
+      "textAlignment": "left",
+      "backgroundColor": "default",
+      "name": "",
+      "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/coding-agents-tips/assets/1769854617812-anthropic-ai-assistance.jpeg",
+      "caption": "",
+      "showPreview": true
+    },
+    "children": []
+  },
+  {
+    "id": "047f5d52-ebfc-46fc-abf3-60796ff12494",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Turns out:",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": "  \nPeople who simply delegated tasks to AI (\"just generate the code\") scored lowest on skill assessments after completing a coding task — even though they did the task just fine. \nThose who practiced ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "continuous curiosity",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " — asking the AI to explain, questioning its choices, and understanding before moving on — developed significantly stronger skills in the same amount of time.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "22d872fb-e81a-42b4-876e-d2aefbde9ac5",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "You can use AI and ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "not learn anything",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ", or you can use it and ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "learn more than you would have doing in manually",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ". ",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "3e7b3c15-e56b-4c03-81fb-c33c23338ec1",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "This guide is designed around this principle. You'll configure Claude Code to act as a ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "mentor ",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": "that explains concepts as it writes code — and you'll build the habit of asking \"why?\" at every step.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "b45fc650-92ff-4486-8cda-d104e2e0238b",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "📌If you don't have a good terminal app for claude, consider: ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://ghostty.org",
+        "content": [
+          {
+            "type": "text",
+            "text": "Ghostty",
+            "styles": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": ", ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://sw.kovidgoyal.net/kitty/",
+        "content": [
+          {
+            "type": "text",
+            "text": "Kitty",
+            "styles": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": ", or ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://www.warp.dev",
+        "content": [
+          {
+            "type": "text",
+            "text": "Warp",
+            "styles": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": ".",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "c8c720a7-cddd-45c7-9765-0c0b4b7748b9",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "5d645329-8d13-4fe5-a92a-8ec9d8f6d787",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "What is Claude Code?",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "115c8b13-e0db-45d3-8b79-119d14bc61a6",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Claude Code is an ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "agentic coding tool",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " that runs in your terminal. Unlike the web chat interface, Claude Code can read and edit files in your project, run commands, and help you build things directly in your codebase.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "86a916eb-e52b-4bbc-ad8a-271eb3c4ad30",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Here's what it looks like when you run ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "claude",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " in a project directory:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "16fd0dc5-7980-4fef-a8c9-638867cb016e",
+    "type": "video",
+    "props": {
+      "url": "https://res.cloudinary.com/dali-lab/video/upload/v1768500512/cs52/claude-code-demo.mp4",
+      "caption": ""
+    },
+    "children": []
+  },
+  {
+    "id": "8a6beba8-2de4-40d4-9be9-737f69660343",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "You type prompts, Claude responds, and it can edit your files directly. Think of it as pair programming with an AI partner.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "fd20b1f5-f4b5-45a0-9cc3-137633911fb5",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "f8d8f94c-5668-437c-a2f2-a27cebdde0e1",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "To Start",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "6ce7827f-0a93-4082-af76-aae1bdf88316",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Create a ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "CLAUDE.md",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " file in your project directory (or an empty folder if you are just starting out) with the following contents:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "c7ac9cec-18ca-4afb-9605-805d600512bc",
+    "type": "codeBlock",
+    "props": {
+      "language": "javascript"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "# Learning Agent Configuration\n\nYou are a patient mentor helping someone learn to code. Your goal is to explain and teach concepts and mental models, not just produce working code.\n\n## Teaching Approach\n- Ask the user if they would like you to edit files directly or if they would like to type in the code themselves\n- Break problems into conceptual blocks — don't do too much in each step\n- Before writing code, explain the concept\n- Explain the code before you write it to a file\n- After writing code, ask \"Does this make sense?\" before continuing\n- If they seem confused, slow down and re-explain\n- Keep edits short; split them into multiple steps with explanations at each step\n\n## Problem Decomposition\n- Start with the structure/skeleton before adding details\n- Identify the core pieces: data, presentation, interaction\n- Work through one piece at a time\n- Connect concepts to things the learner already knows\n\n## Pacing\n- Build in functional increments\n- Focus on understanding over complexity\n- Celebrate small wins along the way",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "59a71d00-a0c8-4737-bc8c-745bb48b8cdd",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "ff90d65e-331a-4be1-b930-be38bb52f921",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Setup Claude Code",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "f215f7d9-f5a3-4a11-a96d-d72594abb6c7",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Follow these steps to get set up:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "330078c8-e26a-40f7-9a0d-134931833671",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left",
+      "start": 2
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Install Claude Code CLI",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ":",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "3be8f02c-4e95-4ada-b8b9-8cc1c1ee7739",
+    "type": "terminal",
+    "props": {
+      "code": "curl -fsSL https://claude.ai/install.sh | bash",
+      "title": "Terminal"
+    },
+    "children": []
+  },
+  {
+    "id": "1a53a861-ef87-414f-93ce-80c09b3db057",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Or ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://claude.com/product/claude-code",
+        "content": [
+          {
+            "type": "text",
+            "text": "download here",
+            "styles": {}
+          }
+        ]
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "d9959e1f-2b43-4497-993b-704233fee10f",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left",
+      "start": 3
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Authenticate",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " by running ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "claude",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " and following the prompts.  (you may have a Claude console account from CS52/CS98 otherwise you'll need a claude.ai subscription). ",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "13af63cd-60d8-423b-9422-366e3ec47a7b",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "742f3f76-fc20-4540-903f-a3abfff1f4cc",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Setup Chrome Integration",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "6ebb2454-de1f-49e3-8fce-93e4622bf659",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "⚠️This step is really important for web-dev in particular! Chrome integration lets Claude open and test your code in the browser as it builds.  It closes the loop so you don't have to tell it that its code didn't work, it can see for itself.  A common prompt I use: \"test this in browser and debug until it works\". ",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "25e5d852-8378-4618-a3cc-82e59c0af52a",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "There are two options for Chrome integration:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "5970a08a-6154-4a60-bd1c-27e2148bbd7e",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "f3c4e5bb-dacd-4171-9deb-d4aaadc193e8",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Option A: Claude in Chrome (Recommended)",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "b4deec83-ded4-4d77-a27e-722c9301967d",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "This option requires an ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "individual claude.ai Pro/Max subscription",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ". If you're using a Claude Console API account, skip to Option B.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "d4cf94a7-8aca-40c9-b16f-14809ce4c00d",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Claude in Chrome",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " is a browser extension that lets Claude Code control Chrome directly:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "7aa64c0f-aff0-4aa8-9db4-73b7a1103b4a",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Install the extension",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " from the ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://chromewebstore.google.com/detail/claude-in-chrome/bdlgkbkpbdhmiehjbnplhbdjepkadpip",
+        "content": [
+          {
+            "type": "text",
+            "text": "Chrome Web Store",
+            "styles": {}
+          }
+        ]
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "de4772c7-ae22-4c77-8cf0-e3ce94342f60",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Add the MCP server to Claude Code",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ":",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "cc819224-2b17-44ea-8ae1-87100d9d1e2c",
+    "type": "terminal",
+    "props": {
+      "code": "claude mcp add claude-in-chrome --scope user -- npx -y claude-in-chrome-mcp@latest",
+      "title": "Terminal"
+    },
+    "children": []
+  },
+  {
+    "id": "1a278ffd-579d-48a8-a2ee-8907c827b3a0",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left",
+      "start": 3
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Restart Claude Code",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " to load the new server",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "15cadbd3-0416-4e15-9c13-f44551e9449d",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Test it",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " by asking Claude to open a browser and navigate to a website",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "53f4534a-44e9-4bc2-ba40-53b4cd5b05c1",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "a2d83470-3332-46db-96de-bf57b2d1e47f",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Option B: Chrome DevTools MCP",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "3e125371-98e8-4105-ba5d-e7ba0838f4b2",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "If you're using a ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "Claude Console API account",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ", use the Chrome DevTools MCP server instead:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "28b00cd5-3d9c-46a9-b84e-cae3b5c42af9",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Add the MCP server to Claude Code",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ":",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "ae0fd1a5-9811-4486-9100-809b4366d0b1",
+    "type": "terminal",
+    "props": {
+      "code": "claude mcp add chrome-devtools --scope user -- npx chrome-devtools-mcp@latest",
+      "title": "Terminal"
+    },
+    "children": []
+  },
+  {
+    "id": "c148ac29-2793-495a-8999-42dd5068b402",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left",
+      "start": 2
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Restart Claude Code",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " to load the new server",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "5b50de64-aefd-499b-9e9c-84e57a874342",
+    "type": "numberedListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Test it",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " by asking Claude to open a browser and navigate to a website",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "a28ee86a-6f02-4c2b-863b-c314d6f93c53",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Docs: ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://github.com/anthropics/anthropic-quickstarts/tree/main/chrome-devtools-mcp",
+        "content": [
+          {
+            "type": "text",
+            "text": "GitHub",
+            "styles": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": " · ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://www.npmjs.com/package/chrome-devtools-mcp",
+        "content": [
+          {
+            "type": "text",
+            "text": "npm",
+            "styles": {}
+          }
+        ]
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "2e1c4452-287e-4211-b786-1d7ce0090ede",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "11d654e2-b32c-43ec-ac2c-e1e8dd1da3cb",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Install Recommended Plugins",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "6db0e5e4-86ba-48d0-b346-078efa618448",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "These plugins enhance Claude Code's capabilities. Install them from the plugin marketplace:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "df2baf97-3fc3-4670-b765-5046354b7141",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "92ccb0cd-0f91-4cde-aa72-c1ea2f53036d",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Frontend Design",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "5c3e5ebe-c419-405a-933c-52558f6e7710",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Helps Claude create polished, production-quality web interfaces that avoid the generic \"AI look\":",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "f9ed58c1-f513-4f9c-87ae-189a94c0c895",
+    "type": "terminal",
+    "props": {
+      "code": "/plugin marketplace add anthropics/claude-code\n/plugin install frontend-design@claude-code-plugins",
+      "title": "Terminal"
+    },
+    "children": []
+  },
+  {
+    "id": "dd71adeb-455e-4383-b500-98bea8ac2ebd",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Invoke with ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "/frontend-design",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " when you want Claude to build UI components.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "3ed8191e-7caa-4e2c-9e29-82d25ac26949",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "56137437-51ca-44fa-81b4-08844a955ec7",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Context7",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "e8ecd5ff-8b67-4a03-865c-6dda17590c03",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Gives Claude access to up-to-date documentation for libraries and frameworks:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "a4eb6e8a-aa54-4e7e-a4c3-d9123e7f6334",
+    "type": "terminal",
+    "props": {
+      "code": "/plugin install context7@claude-plugins-official",
+      "title": "Terminal"
+    },
+    "children": []
+  },
+  {
+    "id": "bc66875e-b0c8-47d2-aa59-23a69f93ba18",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💡Context7 automatically fetches current library docs when Claude detects you're working with frameworks — no need to ask for it.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "39fc922f-cd40-488a-89e0-9e37bd7c2c90",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "717c4f41-87a5-4cde-b81f-544843452e20",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Part 1: Review Your Learning Agent Config",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "5c2bdb06-a4f8-4e87-97d5-4a024a4db501",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Check out the ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "CLAUDE.md",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " file from above. This is a special file that Claude reads at the start of every conversation — it's like giving Claude instructions about how to work with you.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "50c432c6-8d8e-43f9-a04c-f1d426184fa1",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Open it and take a look. It tells Claude to:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "fd5e7acf-834e-442e-a75c-ca6165fd2450",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Break problems into conceptual blocks",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "4582a88c-22eb-4d7e-899a-2c2fbd5cfcde",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Explain concepts before writing code",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "dce4ce03-81cf-4c4c-95f3-289d8bcad7b3",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Focus on teaching, not just producing code",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "e635cb3a-41b7-405a-b6c7-7cc96151d0b9",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Check in to make sure you understand",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "8ad6a4f8-063a-4564-88a2-596caa87c7bb",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💬Feel free to customize the CLAUDE.md! Want Claude to be more concise? Add that. Prefer more examples? Tell it. This is your learning agent.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "f827e1b6-8ed8-4814-84bf-cda1f51f2cec",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Once you start working on your project you should also keep very succinct details about your project in this file.  How to run it,  does it have a database, how to test, where to put shared code and abstractions to use. ",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "9d519040-cd57-4ac6-9c13-a06ca7f6d316",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "0ee7ddd9-ede2-48c0-beb6-81bb5b1f3df7",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Part 2: Start Building with Claude",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "5ed72324-abaa-4058-bcb5-3dfe58e2229c",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Now for the fun part! Open Claude Code in your terminal from your project.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "1cfab92c-59d9-44b7-a304-4e1c41fc89e8",
+    "type": "terminal",
+    "props": {
+      "code": "cd your-project\nclaude",
+      "title": "Terminal"
+    },
+    "children": []
+  },
+  {
+    "id": "520c9c2d-e403-421c-8171-11ef86a02bfd",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Try prompts like these to get started. Claude will build with you while explaining each concept:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "6b2c5ccf-2cab-4e85-ab67-3c3b10a1789d",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "65283d3b-2aec-4aed-82a8-7db572e20426",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Start Simple",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "f6b875d4-6036-4667-a0ca-5a433903fc94",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💬\"i want to build [idea].  walk me through planning it step by step and explain each concept as you go.\"",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "6a2fd9ed-4631-4c78-bfaa-b52841f6c8f9",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "3cb70641-c107-4c41-9a22-ed9f6ff0b459",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Understand What You Built",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "42e3720c-3d96-4da8-898c-10df197b426f",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💬\"explain how [specific part] works. i want to understand it, not just have working code.\"",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "8fc854ee-1076-40ff-95e1-7c500b256844",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "5e7bcea8-db73-4677-abe8-544b087b2133",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Add Features Incrementally",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "83094a02-430e-4cfc-8ed2-99950316d5e2",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💬\"now let's add [feature]. before you write code, explain the approach you'd take.\"",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "9fe72b36-eba5-4789-afe6-be2dcccf2c18",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "2e373632-1286-4b7c-bcea-e6c2664a6611",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Debug Together",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "59d4a8d9-321c-4e8e-aa19-cd020cbd3c3d",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💬\"this isn't working: [paste error message or describe issue]. help me understand what's wrong.\"",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "6bd1f277-0218-4ec2-9c15-0a8d211348b5",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "4fcb1d2c-e56c-498e-8c31-e8c66340f049",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Tips for Working with Claude Code",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "35d5eaae-eec0-4d8d-9208-d8b82d96ab3e",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "6db4a519-6f43-4f74-80c9-d8e1d488adc9",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Essential Commands",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "ba78d203-64c1-414f-b05a-5c63fb6971cb",
+    "type": "table",
+    "props": {
+      "textColor": "default"
+    },
+    "content": {
+      "type": "tableContent",
+      "columnWidths": [
+        null,
+        null
+      ],
+      "headerRows": 1,
+      "rows": [
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Command",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "What it does",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "/plan",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Have Claude plan before coding — great for understanding the approach first",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "/compact",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Summarize the conversation when context gets long",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "/clear",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Start fresh when switching to a different task",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Escape",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Cancel Claude mid-response if it's going the wrong direction",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "children": []
+  },
+  {
+    "id": "531e2ba5-96bf-4efc-b456-6eb3d267f6a2",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "d09040b7-6fa3-456c-b0b0-ef4a9a631b7d",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(251, 228, 228)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Use Plan Mode — Seriously",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "d1a17e4e-00e3-4636-987f-9692599dcd98",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "This is the most important habit to build.",
+        "styles": {
+          "bold": true
+        }
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "e73dd89d-e633-4760-812b-b1a8fb3fc20f",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "When you give Claude a task, it wants to start coding immediately. That's often a mistake. Plan mode (",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "/plan",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ") forces Claude to think through the approach first:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "bd521bc1-e07a-4056-982b-85dd392db652",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "You see the strategy before any code is written",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Catch bad approaches early, not after 500 lines of code.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "f2484f53-5fe6-4ee4-baf7-e69e34bb2a08",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "You can ask questions about the plan",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - \"Why this library?\" or \"What about edge case X?\"",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "b229676a-f2c3-4877-8451-60c431e903d0",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "You learn how to break down problems",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Watching Claude decompose a task teaches you to think the same way.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "28d27725-d9a8-47ab-ac4b-2f32a6857843",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "You stay in control",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Approve each phase before Claude moves on.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "cba6dd21-cae4-49dc-bddd-2ddbea69305b",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Without plan mode, Claude might build something that technically works but uses the wrong approach, wrong libraries, or wrong architecture. ",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "a6235966-719e-47b8-94b5-b81382773f6c",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "💬Try: \"let's plan this out before writing any code. what are the main pieces we need to build?\"",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "31df6e18-12c3-472a-bc01-588dfd568348",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Plan mode uses exploration subagents and it does a great job figuring out where in the project you already are.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "b7c7f128-8928-416c-83a2-c883baf18dd6",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "98381219-0552-4f37-8943-311a11d6cbb6",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Effective Prompting",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "26f2d6fa-75b5-4428-abd4-7a1a2fa593c1",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Paste error messages directly",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Claude reads stack traces well. Copy the whole thing.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "5b5e5d33-b06f-48c7-afc9-0e8dfa31740a",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Share screenshots",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Claude can see images. Great for debugging UI issues. Just paste in.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "8db885c9-3876-41be-b536-85203624624c",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Be specific",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - \"Fix the bug\" is vague. \"The button click handler isn't firing\" is actionable.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "4d7e5084-0e4c-4a19-a5b9-97fd5eb65168",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Ask for explanations",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - If Claude writes something you don't understand, stop and ask. That's the whole point.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "032532a9-9b93-41be-94b5-5d259b661948",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "2388e87f-57e7-49ab-a8a9-a758591d0f18",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Project Workflow",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "45ef6b3f-f6e9-465e-92b2-cb928f32a364",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Claude can use git",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Ask it to commit changes, create branches, even open PRs.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "10009db2-0ff6-49c3-9fb2-53a41a733d6f",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Review diffs before accepting",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Claude shows you what it's about to change. Read it.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "92f201c1-e8de-487a-8906-e1ff43669565",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Start new conversations",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - When switching tasks, use ",
+        "styles": {}
+      },
+      {
+        "type": "text",
+        "text": "/clear",
+        "styles": {
+          "code": true
+        }
+      },
+      {
+        "type": "text",
+        "text": ". Old context can confuse things.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "8b014f20-2477-43db-9554-f5fa1ceda05d",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Use CLAUDE.md for memory",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Want Claude to remember something? Ask it to add notes to CLAUDE.md.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "8c824602-8545-41ed-8bc3-0f62d766584f",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "64ed55f7-2f64-4268-9046-0c44affa395e",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "rgb(221, 235, 241)",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 3,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Efficiency Tips",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "c0c39caf-a1cf-4305-a1f5-0cabc5e58884",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Keep CLAUDE.md focused",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - Bloated instructions waste tokens every conversation.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "672b12df-abae-4ead-9e7c-490631d285d8",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Test in browser",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - If you set up Chrome integration, ask Claude to open your page and test it.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "e1f5cd0d-c764-48af-b5c6-4062e8cc9965",
+    "type": "bulletListItem",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Let Claude search the web",
+        "styles": {
+          "bold": true
+        }
+      },
+      {
+        "type": "text",
+        "text": " - It can look up current docs, APIs, and solutions.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "4fd5058e-3cf1-4316-bde2-dc605fa37269",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  },
+  {
+    "id": "e51e6083-2fca-4077-b4f0-08905efd31e1",
+    "type": "heading",
+    "props": {
+      "backgroundColor": "blue",
+      "textColor": "default",
+      "textAlignment": "left",
+      "level": 2,
+      "isToggleable": false
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "What You Should Learn",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "57ad95ce-477a-4615-88a7-0902cecd7d6b",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "By working with Claude Code, you should get comfortable with:",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "92519b90-d13e-4cdf-883c-6e397e327e43",
+    "type": "table",
+    "props": {
+      "textColor": "default"
+    },
+    "content": {
+      "type": "tableContent",
+      "columnWidths": [
+        null,
+        null
+      ],
+      "headerRows": 1,
+      "rows": [
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Skill",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Why it matters",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Breaking down problems",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Complex features become manageable when split into small steps",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Reading code you didn't write",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Claude generates code — understanding it is your job",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Debugging with context",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Good error descriptions get better solutions",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Iterating on solutions",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "First attempts rarely perfect — refine as you go",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Knowing when to ask",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            },
+            {
+              "type": "tableCell",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Stop Claude when confused rather than letting it continue",
+                  "styles": {}
+                }
+              ],
+              "props": {
+                "colspan": 1,
+                "rowspan": 1,
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "children": []
+  },
+  {
+    "id": "edd4df4a-42f0-45ab-ba46-94cb06668cf0",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "The goal isn't just working code — it's understanding what you built and being able to modify it yourself.",
+        "styles": {}
+      }
+    ],
+    "children": []
+  },
+  {
+    "id": "60c3e45f-313d-44e5-86cf-e7e0d7e8344c",
+    "type": "paragraph",
+    "props": {
+      "backgroundColor": "default",
+      "textColor": "default",
+      "textAlignment": "left"
+    },
+    "content": [],
+    "children": []
+  }
+]
