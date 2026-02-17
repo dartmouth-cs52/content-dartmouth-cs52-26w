@@ -478,7 +478,6 @@ sessionStorage.removeItem('key')
 	<ul>
 		<li>request.session through middlewares</li>
 		<li>is cookies based</li>
-		<li>but we'll write our own that is more secure!</li>
 	</ul>
 	</li>
 </ul></div></div>
@@ -562,7 +561,7 @@ Cookie: connect.sid=2398sf98792874hk2kjh23iu
 <ul style="color:rgb(58, 62, 64)">
 	<li>use secret form fields</li>
 	<li>use javascript to post JSON rather than forms</li>
-	<li>or just don't use cookies!</li>
+	<li><code>SameSite=Lax|Strict</code> cookies — Lax is now the browser default</li>
 </ul>
 </div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e46f9fa4d8b517a236427655b38db14f"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
@@ -768,7 +767,51 @@ Cookie: connect.sid=2398sf98792874hk2kjh23iu
 </div>
 </div>
 </div></div><aside class="notes">* more auth flow
-</aside></section></section><section class="stack" data-id="842c0d76e9b5f544b15fa56b1618063c"><section data-id="7389c79f5fe3244aefab2ffe925c96e1">
+</aside></section><section data-id="c8f901token-storage-tradeoffs">
+<div class="sl-block" data-block-type="text" data-name="text-storage-tradeoffs" data-block-id="c8f901txt01" style="height: auto; width: 420px; left: 40px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong><span style="color:rgb(58, 62, 64)">localStorage</span></strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>you control when it's sent</li>
+	<li>works across domains/APIs</li>
+	<li>easy to use from JS</li>
+	<li>vulnerable to XSS — any injected script can read it</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-cookie-tradeoffs" data-block-id="c8f901txt02" style="height: auto; width: 420px; left: 500px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="color:rgb(58, 62, 64)">HttpOnly cookie</span></strong></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>sent automatically (CSRF risk)</li>
+	<li>scoped to one domain</li>
+	<li><strong>invisible to JavaScript</strong> — immune to XSS</li>
+	<li><code>SameSite=Lax|Strict</code> mitigates CSRF</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-storage-takeaway" data-block-id="c8f901txt03" style="height: auto; width: 839px; left: 60px; top: 440px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="color:rgb(58, 62, 64)">the real answer:</span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>HttpOnly + Secure + SameSite cookies</strong> for auth tokens</li>
+	<li><strong>localStorage</strong> if no possibility of JS injection</li>
+	<li>most auth libraries (including Better Auth) use cookies under the hood</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="c8f901hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">where to store the token?</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so we said tokens are better than cookies — but where do you PUT the token?
+* localStorage: convenient, you control it, works cross-domain
+* BUT any XSS vulnerability means an attacker's script can just read your token
+* HttpOnly cookie: JavaScript literally cannot access it — document.cookie returns nothing
+* that means even if someone injects a script, they can't steal the token
+* the old CSRF problem? SameSite attribute (now default in Chrome) largely solves it
+* SameSite=Lax means the cookie only gets sent on same-site requests — no more cross-site form attacks
+* so the irony: cookies done RIGHT are actually more secure for auth than localStorage
+* most serious auth libraries use HttpOnly cookies — including Better Auth
+* localStorage is great for stuff like dark mode preference, UI state — not secrets</aside></section></section><section class="stack" data-id="842c0d76e9b5f544b15fa56b1618063c"><section data-id="7389c79f5fe3244aefab2ffe925c96e1">
 <div class="sl-block" data-block-type="image" data-name="image-124fb5" data-block-id="da7944fac41c353eefbed8efe8d53c5a" style="width: 928.621px; height: 410.287px; left: 15.6895px; top: 133.713px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="636" data-natural-height="281" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/51ba7446d9bf528f73bdbbb81811ec12.gif"></div></div>
 <div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="a48e15edbd839f43afaa18c4d4900d0b"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 11;">
 <div id="header-title">
@@ -964,7 +1007,374 @@ Cookie: connect.sid=2398sf98792874hk2kjh23iu
 </div></div><aside class="notes">* tools exist to help with more complicated situations
 * but they are complicated themselves by nature
 * where do you store rules
-* how do you define rules</aside></section></section><section data-id="595daba8a588f3176070f7b6d8d153d7">
+* how do you define rules</aside></section></section><section class="stack" data-id="f7a3b1c9d2e8auth-practice"><section data-id="f7a301auth-practice-overview">
+<div class="sl-block" data-block-type="text" data-name="text-auth-overview" data-block-id="f7a301txt01" style="height: auto; width: 600px; left: 60px; top: 120px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64)">three approaches to auth:</span></p>
+<ol style="color:rgb(58, 62, 64)">
+	<li><strong>DIY</strong> — implement JWT + bcrypt + middleware yourself
+	<ul><li>what we just learned! full control, full responsibility</li></ul>
+	</li>
+	<li><strong>Auth Library</strong> — Better Auth, Passport.js
+	<ul><li>runs on YOUR server, handles the plumbing for you</li></ul>
+	</li>
+	<li><strong>Managed Service</strong> — Firebase Auth, Auth0, Clerk
+	<ul><li>hosted by provider, just configure and integrate</li></ul>
+	</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-door-lock-fail" data-block-id="f7a301img01" style="width: 240px; height: 427px; left: 690px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="280" data-natural-height="498" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/door-lock-fail.gif"></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f7a301hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">auth in practice</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* so we've learned all the concepts — sessions, cookies, tokens, JWT, hashing
+* but in practice you don't always build everything from scratch
+* three tiers: DIY (great for learning), auth library (production), managed service (fastest)
+* each has tradeoffs in control, effort, and cost</aside></section><section data-id="f7a302better-auth-intro">
+<div class="sl-block" data-block-type="image" data-name="image-ba-logo" data-block-id="f7a302img01" style="width: 140px; height: 140px; left: 780px; top: 100px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="500" data-natural-height="500" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/better-auth-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-ba-intro" data-block-id="f7a302txt01" style="height: auto; width: 700px; left: 80px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64)"><a href="https://www.better-auth.com" target="_blank">better-auth.com</a></span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>framework-agnostic (React, Vue, Svelte, Express, etc.)</li>
+	<li><strong>server + client</strong> architecture</li>
+	<li>built-in:
+	<ul>
+		<li>email/password, social auth (Google, GitHub, etc.)</li>
+		<li>2FA, passkeys, magic links</li>
+		<li>session management</li>
+	</ul>
+	</li>
+	<li>plugin ecosystem for advanced features</li>
+	<li>uses <strong>your own database</strong> — you own the data</li>
+	<li>supports both session cookies and JWT tokens</li>
+	<li>handles hashing, sessions, tokens under the hood</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f7a302hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">Better Auth</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* Better Auth is a modern TypeScript auth framework — YC backed
+* it's what you'd use if you want to own your auth but not write everything from scratch
+* framework agnostic - works with React, Express, whatever
+* key thing: it runs on YOUR server with YOUR database
+* all the stuff we learned (JWT, hashing, sessions) — it handles that for you
+* plugin system lets you add 2FA, passkeys, magic links etc</aside></section><section data-id="f7a303better-auth-code">
+<div class="sl-block" data-block-type="code" data-name="code-ba-server" data-block-id="f7a303code01" style="width: 876px; height: 240px; left: 42px; top: 86px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 15px; line-height: 18px;"><code data-line-numbers="">// server — auth.ts
+import { betterAuth } from 'better-auth';
+
+export const auth = betterAuth({
+  database: { url: process.env.DATABASE_URL },
+  emailAndPassword: { enabled: true },
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    },
+  },
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-ba-client" data-block-id="f7a303code02" style="width: 876px; height: 220px; left: 42px; top: 370px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 11;"><pre class="javascript" style="font-size: 15px; line-height: 18px;"><code data-line-numbers="">// client — authClient.ts
+import { createAuthClient } from 'better-auth/react';
+
+const authClient = createAuthClient();
+
+// sign up
+await authClient.signUp.email({
+  email: 'user@example.com', password: 'secret', name: 'Jane'
+});
+// sign in
+await authClient.signIn.email({
+  email: 'user@example.com', password: 'secret'
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f7a303hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">Better Auth — server + client</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* two parts: server config and client library
+* server: point at your database, enable email/password, add social providers
+* that's it — it creates all the routes, handles hashing, JWT, sessions
+* client: create a client, call signUp or signIn
+* all the complexity we talked about (salt, hash, JWT signing) happens automatically
+* compare this to the DIY approach — same concepts, way less code</aside></section><section data-id="f7a304managed-services">
+<div class="sl-block" data-block-type="text" data-name="text-managed-intro" data-block-id="f7a304txt01" style="height: auto; width: 839px; left: 60px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64)">let someone else handle it entirely:</span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>Firebase Auth</strong> — Google's auth service, generous free tier</li>
+	<li><strong>Auth0</strong> — enterprise-grade, very customizable</li>
+	<li><strong>Clerk</strong> — modern DX, beautiful drop-in components</li>
+	<li><strong>Supabase Auth</strong> — open source, pairs with Supabase DB</li>
+</ul>
+<p style="margin-top: 16px;"><span style="color:rgb(58, 62, 64)">what they handle for you:</span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>user storage, password hashing, session management</li>
+	<li>social login (OAuth flows)</li>
+	<li>email verification, password reset</li>
+	<li>2FA, rate limiting, brute force protection</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f7a304hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">managed auth services</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* the third option: don't run auth at all yourself
+* these services handle everything — user database, hashing, sessions, email verification
+* Firebase is Google's — free tier is very generous, great for prototypes
+* Auth0 is the enterprise standard — very customizable but pricey
+* Clerk is newer, amazing developer experience with pre-built UI components
+* Supabase Auth is open source and pairs with their Postgres database
+* all of them handle the hard security stuff: rate limiting, brute force protection, etc</aside></section><section data-id="f7a305firebase-auth">
+<div class="sl-block" data-block-type="code" data-name="code-firebase" data-block-id="f7a305code01" style="width: 876px; height: 370px; left: 42px; top: 86px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre class="javascript" style="font-size: 15px; line-height: 18px;"><code data-line-numbers="">import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, onAuthStateChanged
+} from 'firebase/auth';
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// sign up
+const { user } = await createUserWithEmailAndPassword(
+  auth, email, password
+);
+
+// sign in
+await signInWithEmailAndPassword(auth, email, password);
+
+// observe auth state changes
+onAuthStateChanged(auth, (user) =&gt; {
+  if (user) { console.log('logged in:', user.uid); }
+  else { console.log('logged out'); }
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-firebase-note" data-block-id="f7a305txt01" style="height: auto; width: 839px; left: 60px; top: 500px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>Firebase stores users for you — no local user DB needed</li>
+	<li>observer pattern: <code>onAuthStateChanged</code> fires on login/logout</li>
+	<li>your own API? must verify Firebase token on every request</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f7a305hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">Firebase Auth</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* Firebase Auth is probably the simplest to get started with
+* import Firebase SDK, initialize, and you get auth functions out of the box
+* createUserWithEmailAndPassword — that's literally it for sign up
+* Firebase stores the users, handles the hashing, everything
+* the cool pattern here is onAuthStateChanged — it's an observer
+* whenever login state changes, your callback fires
+* no need to write any backend auth code at all
+* tradeoff: your users live in Firebase, not your database</aside></section><section data-id="f7a306auth-tradeoffs">
+<div class="sl-block" data-block-type="text" data-name="text-tradeoffs" data-block-id="f7a306txt01" style="height: auto; width: 870px; left: 45px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<table style="color:rgb(58, 62, 64); width: 100%; border-collapse: collapse;">
+<tr style="border-bottom: 2px solid #aaa;">
+  <th style="text-align: left; padding: 10px;"></th>
+  <th style="text-align: left; padding: 10px;">DIY (JWT+bcrypt)</th>
+  <th style="text-align: left; padding: 10px;">Library (Better Auth)</th>
+  <th style="text-align: left; padding: 10px;">Managed (Firebase)</th>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+  <td style="padding: 10px;"><strong>control</strong></td>
+  <td style="padding: 10px;">full</td>
+  <td style="padding: 10px;">high</td>
+  <td style="padding: 10px;">limited</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+  <td style="padding: 10px;"><strong>effort</strong></td>
+  <td style="padding: 10px;">high</td>
+  <td style="padding: 10px;">medium</td>
+  <td style="padding: 10px;">low</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+  <td style="padding: 10px;"><strong>data ownership</strong></td>
+  <td style="padding: 10px;">yours</td>
+  <td style="padding: 10px;">yours</td>
+  <td style="padding: 10px;">provider's</td>
+</tr>
+<tr style="border-bottom: 1px solid #ddd;">
+  <td style="padding: 10px;"><strong>security burden</strong></td>
+  <td style="padding: 10px;">all on you</td>
+  <td style="padding: 10px;">shared</td>
+  <td style="padding: 10px;">mostly them</td>
+</tr>
+<tr>
+  <td style="padding: 10px;"><strong>best for</strong></td>
+  <td style="padding: 10px;">learning</td>
+  <td style="padding: 10px;">production apps</td>
+  <td style="padding: 10px;">prototypes / MVPs</td>
+</tr>
+</table>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="f7a306hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">when to use what</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this is a spectrum of control vs convenience
+* DIY: what we're learning in class — great for understanding, but you handle every security detail
+* Auth library like Better Auth: you own your data, your server, but the library handles the crypto and flows
+* Managed service: fastest to start, but vendor lock-in and you don't own your user data
+* for your class projects: we're doing DIY to learn the concepts
+* for a real production app: Better Auth or similar library is the sweet spot
+* for a hackathon or prototype: Firebase or Clerk gets you auth in 10 minutes</aside></section></section><section class="stack" data-id="e4d5c6b7a8f9oauth2-stack"><section data-id="e4d501oauth2-intro">
+<div class="sl-block" data-block-type="text" data-name="text-oauth-intro" data-block-id="e4d501txt01" style="height: auto; width: 800px; left: 80px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64)">the problem:</span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>your app wants to access a user's data on Google/GitHub/etc.</li>
+	<li>user should NOT give your app their Google password</li>
+	<li>need a way to <strong>delegate</strong> limited access</li>
+</ul>
+<p style="margin-top: 16px;"><span style="color:rgb(58, 62, 64)">OAuth2 is a framework for <strong>delegated authorization</strong>:</span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li>user grants your app limited access to their resources</li>
+	<li>without sharing their credentials</li>
+	<li>industry standard (Google, GitHub, Facebook, etc.)</li>
+	<li>OAuth2 is about <em>authorization</em> (access), not <em>authentication</em> (identity)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e4d501hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">OAuth2</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* OAuth2 solves the delegation problem
+* imagine you're building an app that needs to read a user's Google Calendar
+* you absolutely don't want the user typing their Google password into YOUR app
+* OAuth2 lets the user say "yes, this app can see my calendar" directly to Google
+* then Google gives your app a limited-access token
+* important distinction: OAuth2 is technically about authorization (what can you access), not authentication (who are you)
+* but it gets used for authentication too — we'll get to that</aside></section><section data-id="e4d502oauth2-roles">
+<div class="sl-block" data-block-type="text" data-name="text-oauth-roles" data-block-id="e4d502txt01" style="height: auto; width: 800px; left: 80px; top: 110px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64)">four roles:</span></p>
+<ul style="color:rgb(58, 62, 64)">
+	<li><strong>Resource Owner</strong> — the user (you)
+	<ul><li>owns the data (calendar, profile, repos)</li></ul>
+	</li>
+	<li><strong>Client</strong> — your application
+	<ul><li>wants to access the user's data</li></ul>
+	</li>
+	<li><strong>Authorization Server</strong> — Google's login/consent page
+	<ul><li>authenticates user and issues tokens</li></ul>
+	</li>
+	<li><strong>Resource Server</strong> — Google's API
+	<ul><li>holds the protected data, validates tokens</li></ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e4d502hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">OAuth2 roles</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* four players in every OAuth2 flow
+* Resource Owner is the human — they own the data
+* Client is your app — confusing name, but "client" means the app requesting access
+* Authorization Server is where the user logs in and says "yes, allow this"
+* Resource Server is the API that actually has the data
+* often the auth server and resource server are the same company (e.g., Google runs both)
+* your app never sees the user's password — only the auth server does</aside></section><section data-id="e4d503oauth2-flow">
+<div class="sl-block" data-block-type="code" data-name="code-oauth-flow" data-block-id="e4d503code01" style="width: 900px; height: 480px; left: 30px; top: 90px;"><div class="sl-block-content notranslate" data-highlight-theme="solarized-light" data-code-frame="osx-grey" style="z-index: 10;"><pre style="font-size: 14px; line-height: 17px;"><code data-line-numbers="">Authorization Code Flow (most common, most secure):
+
+1. User clicks "Sign in with Google" on YOUR app
+
+2. Your app redirects browser to Google:
+   GET https://accounts.google.com/o/oauth2/auth
+       ?client_id=YOUR_APP_ID
+       &amp;redirect_uri=https://yourapp.com/callback
+       &amp;scope=openid email profile
+       &amp;response_type=code
+
+3. User logs into Google &amp; grants permission (consent screen)
+
+4. Google redirects back to YOUR app with a code:
+   GET https://yourapp.com/callback?code=AUTHORIZATION_CODE
+
+5. Your SERVER exchanges code for tokens (secret server-to-server):
+   POST https://oauth2.googleapis.com/token
+   { code, client_id, client_secret, redirect_uri }
+
+6. Google returns: { access_token, id_token, refresh_token }
+
+7. Your server uses access_token to call Google APIs</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-oauth-flow-note" data-block-id="e4d503txt01" style="height: auto; width: 800px; left: 80px; top: 600px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul style="color:rgb(58, 62, 64)">
+	<li>the code exchange (step 5) happens server-side — client_secret never exposed</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e4d503hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">authorization code flow</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this is THE flow you need to know — authorization code flow
+* step 1-2: your app redirects the user TO Google (not to your server)
+* the user is now on Google's page, typing their Google password into Google's form
+* your app never sees the password!
+* step 3: user sees the consent screen — "this app wants to see your email and profile"
+* step 4: Google sends back a short-lived authorization CODE (not a token yet!)
+* step 5: your SERVER (not the browser) sends this code to Google along with your client_secret
+* this is the key security feature — the client_secret never goes to the browser
+* step 6: Google gives you the real tokens
+* the access_token lets you call APIs, the id_token tells you who the user is</aside></section><section data-id="e4d504oauth2-oidc">
+<div class="sl-block" data-block-type="text" data-name="text-oidc" data-block-id="e4d504txt01" style="height: auto; width: 800px; left: 80px; top: 100px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><span style="color:rgb(58, 62, 64)">in practice, "Sign in with Google" gives you a <strong>provider ID</strong>:</span></p>
+<ol style="color:rgb(58, 62, 64)">
+	<li>user authenticates with Google via OAuth2</li>
+	<li>Google returns an <strong>id_token</strong> (a JWT!) with their unique googleId</li>
+	<li>your server looks up: do I have a user with this googleId?</li>
+	<li>if yes → sign in, issue your own JWT</li>
+	<li>if no → create local user, store googleId, issue JWT</li>
+</ol>
+</div></div>
+<div class="sl-block" data-block-type="snippet" data-name="snippet-9c7d25" style="width: 960px; height: 70px; left: 0px; top: 0px;" data-block-id="e4d504hdr01"><div class="sl-block-content tim" data-has-custom-html="" style="z-index: 13;">
+<div id="header-title">
+<div class="left">
+<div class="logo">&nbsp;</div>
+<div class="title">OAuth2 for login — mapping to local users</div>
+</div>
+<div class="spacer">&nbsp;</div>
+</div>
+</div></div><aside class="notes">* this is the practical part — what actually happens in your code
+* Google gives you a unique ID for the user (their googleId) inside a JWT id_token
+* same idea with GitHub, Facebook — each gives you a provider-specific ID
+* your job: map that provider ID to a user in YOUR database
+* first time? create a new user record, store the googleId
+* returning user? look up by googleId, sign them in
+* then you issue your OWN JWT for your app — the google token is just for the handshake
+* this is exactly what libraries like Better Auth and Passport.js do under the hood
+* the scope parameter controls what else you learn about the user beyond their ID
+* "openid" is the base scope that gets you the id_token with the provider ID
+* users see the requested scopes on the consent screen — don't ask for more than you need</aside></section></section><section data-id="595daba8a588f3176070f7b6d8d153d7">
 <div class="sl-block" data-block-type="image" data-name="image-239a9e" data-block-id="53d1ac9dd8c35677a650bfde6c81de41" style="width: 609.067px; height: 342.6px; left: 175.466px; top: 92.2px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="800" data-natural-height="450" src="/content/dartmouth-cs52/content-dartmouth-cs52-26w/slides/authentication-and-authorization-1768253840637/images/a85a584cc2b72114d087a7b8696cc5af.gif"></div></div>
 <div class="sl-block" data-block-type="text" data-name="text-18f17e" data-block-id="93d65adb364c9679769cab6fc77cd9a9" style="height: auto; width: 839px; left: 60.5px; top: 455px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p><span style="color:rgb(58, 62, 64); text-align:left">summary:</span></p>
