@@ -1,0 +1,32 @@
+{
+  "blocks": [
+    {
+      "id": "8767f6ef-f415-47fd-b74f-2088738cb436",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "wordle here! ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f652b878-d8bb-4a52-a089-6feb5436e409",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
