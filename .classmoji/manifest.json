@@ -131,15 +131,15 @@
           ],
           "slides": []
         },
-        "react-notes-part-1": {
-          "pages": [
-            "lab-3-react-notes"
-          ],
-          "slides": []
-        },
         "react-notes-prelab": {
           "pages": [
             "prelab-3-react-notes"
+          ],
+          "slides": []
+        },
+        "react-notes-part-1": {
+          "pages": [
+            "lab-3-react-notes"
           ],
           "slides": []
         }
@@ -280,7 +280,8 @@
       "logistics",
       "lab-2-v2-build-a-buzzfeed-quiz",
       "project-0-pitch-ideas",
-      "coding-agents-tips"
+      "coding-agents-tips",
+      "sa-wordle-api"
     ],
     "slides": [
       "welcome",
