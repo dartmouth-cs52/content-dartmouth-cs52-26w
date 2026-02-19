@@ -2137,6 +2137,19 @@
       "children": []
     },
     {
+      "id": "s4-prisma-ver-callout",
+      "type": "callout",
+      "props": { "emoji": "⚠️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "The starter pins Prisma 6. If you ever need to reinstall, use ", "styles": {} },
+        { "type": "text", "text": "npm install @prisma/client@6", "styles": { "code": true } },
+        { "type": "text", "text": " and ", "styles": {} },
+        { "type": "text", "text": "npm install -D prisma@6", "styles": { "code": true } },
+        { "type": "text", "text": ". Prisma 7 is moving towards TypeScript (generated client, driver adapters, config file) — v6 is simpler for this assignment.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
       "id": "s4-p4",
       "type": "paragraph",
       "props": {

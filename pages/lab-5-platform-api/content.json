@@ -462,7 +462,20 @@
         {
           "id": "s4-prisma-term1",
           "type": "terminal",
-          "props": { "code": "npm install @prisma/client\nnpm install -D prisma\nnpx prisma init", "title": "Terminal" },
+          "props": { "code": "npm install @prisma/client@6\nnpm install -D prisma@6\nnpx prisma init", "title": "Terminal" },
+          "children": []
+        },
+        {
+          "id": "s4-prisma-callout-ver",
+          "type": "callout",
+          "props": { "emoji": "⚠️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Pin to Prisma 6 with the ", "styles": {} },
+            { "type": "text", "text": "@6", "styles": { "code": true } },
+            { "type": "text", "text": " tag — it's simpler for this assignment. Prisma 7 is moving towards TypeScript (generated ", "styles": {} },
+            { "type": "text", "text": ".ts", "styles": { "code": true } },
+            { "type": "text", "text": " client, driver adapters, config file). Node 22+ can handle it via built-in type stripping, but v6 keeps things straightforward.", "styles": {} }
+          ],
           "children": []
         },
         {
@@ -1558,6 +1571,18 @@
       "children": []
     },
 
+    {
+      "id": "s13-bl4",
+      "type": "bulletListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "TypeScript", "styles": { "bold": true } },
+        { "type": "text", "text": " — Rewrite your API in TypeScript. Node 22+ supports ", "styles": {} },
+        { "type": "text", "text": ".ts", "styles": { "code": true } },
+        { "type": "text", "text": " files natively via built-in type stripping — no build step needed. This also unlocks Prisma 7 and its type-safe generated client.", "styles": {} }
+      ],
+      "children": []
+    },
     {
       "id": "s13-callout",
       "type": "callout",
