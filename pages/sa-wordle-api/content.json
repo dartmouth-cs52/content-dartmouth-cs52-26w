@@ -10,7 +10,7 @@
     {
       "id": "s1-video",
       "type": "video",
-      "props": { "url": "https://res.cloudinary.com/dali-lab/video/upload/v1771457955/cs52/wordle-cli.mov", "caption": "" },
+      "props": { "url": "https://res.cloudinary.com/dali-lab/video/upload/v1771457955/cs52/wordle-cli.mp4", "caption": "" },
       "children": []
     },
     {
