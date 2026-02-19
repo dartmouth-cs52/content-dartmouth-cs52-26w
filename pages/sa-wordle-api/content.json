@@ -2259,38 +2259,151 @@
     {
       "id": "s5-bl1",
       "type": "bulletListItem",
-      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
       "content": [
-        { "type": "text", "text": "Puzzle", "styles": { "bold": true } },
-        { "type": "text", "text": " — one per day:", "styles": {} }
+        {
+          "type": "text",
+          "text": "Puzzle",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — one per day:",
+          "styles": {}
+        }
       ],
       "children": [
         {
           "id": "s5-bl1a",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "date", "styles": { "code": true } }, { "type": "text", "text": " — String, primary key (", "styles": {} }, { "type": "text", "text": "@id", "styles": { "code": true } }, { "type": "text", "text": ")", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "date",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — String, primary key (",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "@id",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": ")",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl1b",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "word", "styles": { "code": true } }, { "type": "text", "text": " — String, the secret answer", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "word",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — String, the secret answer",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl1c",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "createdAt", "styles": { "code": true } }, { "type": "text", "text": " — DateTime, auto-set with ", "styles": {} }, { "type": "text", "text": "@default(now())", "styles": { "code": true } }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "createdAt",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — DateTime, auto-set with ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "@default(now())",
+              "styles": {
+                "code": true
+              }
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl1d",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "guesses", "styles": { "code": true } }, { "type": "text", "text": " — relation to all Guess records for this puzzle (", "styles": {} }, { "type": "text", "text": "Guess[]", "styles": { "code": true } }, { "type": "text", "text": ")", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "guesses",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — relation to all Guess records for this puzzle (",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "Guess[]",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": ")",
+              "styles": {}
+            }
+          ],
           "children": []
         }
       ]
@@ -2298,73 +2411,259 @@
     {
       "id": "s5-bl2",
       "type": "bulletListItem",
-      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
       "content": [
-        { "type": "text", "text": "Guess", "styles": { "bold": true } },
-        { "type": "text", "text": " — one per guess attempt:", "styles": {} }
+        {
+          "type": "text",
+          "text": "Guess",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — one per guess attempt:",
+          "styles": {}
+        }
       ],
       "children": [
         {
           "id": "s5-bl2a",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "id", "styles": { "code": true } }, { "type": "text", "text": " — String, auto-generated with ", "styles": {} }, { "type": "text", "text": "@default(cuid())", "styles": { "code": true } }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "id",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — String, auto-generated with ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "@default(cuid())",
+              "styles": {
+                "code": true
+              }
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2b",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "puzzleDate", "styles": { "code": true } }, { "type": "text", "text": " — String, foreign key to Puzzle", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "puzzleDate",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — String, foreign key to Puzzle",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2c",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "puzzle", "styles": { "code": true } }, { "type": "text", "text": " — the Prisma relation (", "styles": {} }, { "type": "text", "text": "@relation(fields: [puzzleDate], references: [date])", "styles": { "code": true } }, { "type": "text", "text": ")", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "puzzle",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — the Prisma relation (",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "@relation(fields: [puzzleDate], references: [date])",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": ")",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2d",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "player", "styles": { "code": true } }, { "type": "text", "text": " — String, the player's name", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "player",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — String, the player's name",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2e",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "word", "styles": { "code": true } }, { "type": "text", "text": " — String, the guessed word", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "word",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — String, the guessed word",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2f",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "result", "styles": { "code": true } }, { "type": "text", "text": " — Json, the letter feedback array", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "result",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — Json, the letter feedback array",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2g",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "correct", "styles": { "code": true } }, { "type": "text", "text": " — Boolean, whether the guess matched", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "correct",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — Boolean, whether the guess matched",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2h",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "createdAt", "styles": { "code": true } }, { "type": "text", "text": " — DateTime, auto-set", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "createdAt",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — DateTime, auto-set",
+              "styles": {}
+            }
+          ],
           "children": []
         },
         {
           "id": "s5-bl2i",
           "type": "bulletListItem",
-          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
-          "content": [{ "type": "text", "text": "@@unique([puzzleDate, player, word])", "styles": { "code": true } }, { "type": "text", "text": " — prevents the same player from guessing the same word twice on the same puzzle", "styles": {} }],
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "@@unique([puzzleDate, player, word])",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " — prevents the same player from guessing the same word twice on the same puzzle",
+              "styles": {}
+            }
+          ],
           "children": []
         }
       ]
@@ -5489,7 +5788,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Screenshot of all 13 Cypress tests passing",
+          "text": "Screenshot from commandline interface",
           "styles": {}
         }
       ],
