@@ -264,9 +264,9 @@
                 "type": "tableCell",
                 "content": [
                   {
-                    "type": "text",
-                    "text": "PostgreSQL",
-                    "styles": {}
+                    "type": "link",
+                    "href": "https://www.postgresql.org/",
+                    "content": [{ "type": "text", "text": "PostgreSQL", "styles": {} }]
                   }
                 ],
                 "props": {
@@ -302,9 +302,9 @@
                 "type": "tableCell",
                 "content": [
                   {
-                    "type": "text",
-                    "text": "Node 22+",
-                    "styles": {}
+                    "type": "link",
+                    "href": "https://nodejs.org/",
+                    "content": [{ "type": "text", "text": "Node 22+", "styles": {} }]
                   }
                 ],
                 "props": {
@@ -771,31 +771,7 @@
         },
         {
           "type": "text",
-          "text": ". For example, if the answer is ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "SPEED",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " and you guess ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "ERASE",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": ", the first E should be \"present\" but the second E (position 5) is \"absent\" because the one E in SPEED was already accounted for.",
+          "text": ". You need to find exact matches (greens) first, then check remaining letters for yellows — otherwise you'd \"use up\" answer letters on yellow matches that should have been green. The solution is a two-pass algorithm.",
           "styles": {}
         }
       ],
@@ -938,7 +914,7 @@
         },
         {
           "type": "text",
-          "text": "SPEED",
+          "text": "CHART",
           "styles": {
             "code": true
           }
@@ -950,7 +926,7 @@
         },
         {
           "type": "text",
-          "text": "ERASE",
+          "text": "TRACE",
           "styles": {
             "code": true
           }
@@ -1114,410 +1090,46 @@
                 "content": [
                   {
                     "type": "text",
-                    "text": "S",
+                    "text": "C",
                     "styles": {}
                   }
                 ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
+                "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" }
               },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "P",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "E",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "E",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "D",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              }
+              { "type": "tableCell", "content": [{ "type": "text", "text": "H", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "A", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "R", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "T", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
             ]
           },
           {
             "cells": [
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Guess",
-                    "styles": {
-                      "bold": true
-                    }
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "E",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "R",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "A",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "S",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "E",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              }
+              { "type": "tableCell", "content": [{ "type": "text", "text": "Guess", "styles": { "bold": true } }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "T", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "R", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "A", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "C", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "E", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
             ]
           },
           {
             "cells": [
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Pass 1",
-                    "styles": {
-                      "bold": true
-                    }
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "—",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "—",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "—",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "—",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "—",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              }
+              { "type": "tableCell", "content": [{ "type": "text", "text": "Pass 1", "styles": { "bold": true } }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "🟩 correct", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
             ]
           },
           {
             "cells": [
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "Pass 2",
-                    "styles": {
-                      "bold": true
-                    }
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "🟨 present",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "⬜ absent",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "⬜ absent",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "🟨 present",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              },
-              {
-                "type": "tableCell",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": "⬜ absent",
-                    "styles": {}
-                  }
-                ],
-                "props": {
-                  "colspan": 1,
-                  "rowspan": 1,
-                  "backgroundColor": "default",
-                  "textColor": "default",
-                  "textAlignment": "left"
-                }
-              }
+              { "type": "tableCell", "content": [{ "type": "text", "text": "Pass 2", "styles": { "bold": true } }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "🟨 present", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "🟨 present", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "🟨 present", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
+              { "type": "tableCell", "content": [{ "type": "text", "text": "⬜ absent", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
             ]
           }
         ]
@@ -1535,67 +1147,57 @@
       "content": [
         {
           "type": "text",
-          "text": "Pass 1 finds no exact matches. Pass 2: E(1) matches answer E(3) → ",
+          "text": "Pass 1: only position 3 matches exactly (A = A) → ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "correct",
+          "styles": { "code": true }
+        },
+        {
+          "type": "text",
+          "text": ". Both A's are nulled out. Pass 2: T is in CHART (pos 5) → ",
           "styles": {}
         },
         {
           "type": "text",
           "text": "present",
-          "styles": {
-            "code": true
-          }
+          "styles": { "code": true }
         },
         {
           "type": "text",
-          "text": " (consumes it). R and A aren't in the answer → ",
+          "text": ". R is in CHART (pos 4) → ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "present",
+          "styles": { "code": true }
+        },
+        {
+          "type": "text",
+          "text": ". C is in CHART (pos 1) → ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "present",
+          "styles": { "code": true }
+        },
+        {
+          "type": "text",
+          "text": ". E is not in CHART → ",
           "styles": {}
         },
         {
           "type": "text",
           "text": "absent",
-          "styles": {
-            "code": true
-          }
+          "styles": { "code": true }
         },
         {
           "type": "text",
-          "text": ". S matches answer S(1) → ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "present",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": ". E(5) — the remaining answer E(4) is still available → ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "present",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": ". Wait — actually SPEED has two E's (positions 3 and 4). E(1) consumed E(3), S consumed S(1), so E(5) finds E(4) still available → ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "present",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": ".",
+          "text": ". Final result: 🟨🟨🟩🟨⬜",
           "styles": {}
         }
       ],
