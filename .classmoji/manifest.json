@@ -12,6 +12,18 @@
         }
       }
     },
+    "sa-wordle-api": {
+      "pages": [],
+      "slides": [],
+      "assignments": {
+        "sa-wordle-api": {
+          "pages": [
+            "sa-wordle-api"
+          ],
+          "slides": []
+        }
+      }
+    },
     "extra-credit-shorts": {
       "pages": [],
       "slides": [],
@@ -280,8 +292,7 @@
       "logistics",
       "lab-2-v2-build-a-buzzfeed-quiz",
       "project-0-pitch-ideas",
-      "coding-agents-tips",
-      "sa-wordle-api"
+      "coding-agents-tips"
     ],
     "slides": [
       "welcome",
