@@ -345,6 +345,45 @@
         "textColor": "default",
         "textAlignment": "left"
       },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "a96e22cb-db05-44c9-a924-2608de8f2c00",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀  Clone the github repo provided by Classmoji which has some small starter code. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "636ce582-3950-4156-8a9c-249be4154a08",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "84e0f908-bd8a-4b6f-b18f-d45e850ac234",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
       "content": [
         {
           "type": "text",
