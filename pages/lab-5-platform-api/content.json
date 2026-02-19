@@ -8,6 +8,15 @@
       "children": []
     },
     {
+      "id": "s1-video",
+      "type": "video",
+      "props": {
+        "url": "https://res.cloudinary.com/dali-lab/video/upload/v1771087397/claude-uploads/rwdt1lcevn8dkqxhjsfp.mp4",
+        "caption": ""
+      },
+      "children": []
+    },
+    {
       "id": "s1-p1",
       "type": "paragraph",
       "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
@@ -321,7 +330,7 @@
     {
       "id": "s4-term-clone",
       "type": "terminal",
-      "props": { "code": "cd ~/Documents\ngit clone <your-github-repo-url>\ncd platform-api\nnpm install\ncp .env.example .env", "title": "Terminal" },
+      "props": { "code": "git clone <your-github-repo-url>\ncd platform-api\nnpm install\ncp .env.example .env", "title": "Terminal" },
       "children": []
     },
     {
@@ -347,7 +356,7 @@
       "id": "s4-prisma-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "content": [{ "type": "text", "text": "🔮 PostgreSQL + Prisma", "styles": {} }],
       "children": [
         {
           "id": "s4-prisma-p1",
@@ -428,7 +437,7 @@
       "id": "s4-mongoose-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "content": [{ "type": "text", "text": "🍃 MongoDB + Mongoose", "styles": {} }],
       "children": [
         {
           "id": "s4-mongo-p1",
@@ -564,7 +573,7 @@
       "id": "s5-prisma-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "PostgreSQL + Prisma — Database Client", "styles": {} }],
+      "content": [{ "type": "text", "text": "🔮 PostgreSQL + Prisma — Database Client", "styles": {} }],
       "children": [
         {
           "id": "s5-prisma-p1",
@@ -604,7 +613,7 @@
       "id": "s5-mongoose-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "MongoDB + Mongoose — Database Connection", "styles": {} }],
+      "content": [{ "type": "text", "text": "🍃 MongoDB + Mongoose — Database Connection", "styles": {} }],
       "children": [
         {
           "id": "s5-mongo-p1",
@@ -672,7 +681,7 @@
       "id": "s6-prisma-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "content": [{ "type": "text", "text": "🔮 PostgreSQL + Prisma", "styles": {} }],
       "children": [
         {
           "id": "s6-prisma-p1",
@@ -731,7 +740,7 @@
       "id": "s6-mongoose-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "content": [{ "type": "text", "text": "🍃 MongoDB + Mongoose", "styles": {} }],
       "children": [
         {
           "id": "s6-mongo-p1",
@@ -820,7 +829,7 @@
       "id": "s7-prisma-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "content": [{ "type": "text", "text": "🔮 PostgreSQL + Prisma", "styles": {} }],
       "children": [
         {
           "id": "s7-prisma-code",
@@ -851,7 +860,7 @@
       "id": "s7-mongoose-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "content": [{ "type": "text", "text": "🍃 MongoDB + Mongoose", "styles": {} }],
       "children": [
         {
           "id": "s7-mongo-code",
@@ -1189,7 +1198,7 @@
       "id": "s11-prisma-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "content": [{ "type": "text", "text": "🔮 PostgreSQL + Prisma", "styles": {} }],
       "children": [
         {
           "id": "s11-prisma-nl1",
@@ -1290,7 +1299,7 @@
       "id": "s11-mongoose-heading",
       "type": "heading",
       "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "content": [{ "type": "text", "text": "🍃 MongoDB + Mongoose", "styles": {} }],
       "children": [
         {
           "id": "s11-mongo-nl1",
@@ -1522,36 +1531,6 @@
       "children": []
     },
 
-    {
-      "id": "s13-prisma-search",
-      "type": "heading",
-      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "Search Hint: Prisma", "styles": { "italic": true } }],
-      "children": [
-        {
-          "id": "s13-prisma-search-code",
-          "type": "codeBlock",
-          "props": { "language": "javascript" },
-          "content": [{ "type": "text", "text": "// Prisma full-text search (requires adding @@fulltext to schema)\nconst posts = await prisma.post.findMany({\n  where: {\n    OR: [\n      { title: { contains: search, mode: 'insensitive' } },\n      { content: { contains: search, mode: 'insensitive' } },\n    ],\n  },\n});", "styles": {} }],
-          "children": []
-        }
-      ]
-    },
-    {
-      "id": "s13-mongoose-search",
-      "type": "heading",
-      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
-      "content": [{ "type": "text", "text": "Search Hint: Mongoose", "styles": { "italic": true } }],
-      "children": [
-        {
-          "id": "s13-mongoose-search-code",
-          "type": "codeBlock",
-          "props": { "language": "javascript" },
-          "content": [{ "type": "text", "text": "// Mongoose text search (requires adding a text index to schema)\n// In post_model.js: PostSchema.index({ title: 'text', content: 'text' });\nconst posts = await Post.find({ $text: { $search: search } });", "styles": {} }],
-          "children": []
-        }
-      ]
-    },
     {
       "id": "s13-callout",
       "type": "callout",
