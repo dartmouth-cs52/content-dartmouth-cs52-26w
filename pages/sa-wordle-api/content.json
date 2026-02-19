@@ -150,9 +150,9 @@
                 "type": "tableCell",
                 "content": [
                   {
-                    "type": "text",
-                    "text": "Express 5",
-                    "styles": {}
+                    "type": "link",
+                    "href": "https://expressjs.com/",
+                    "content": [{ "type": "text", "text": "Express 5", "styles": {} }]
                   }
                 ],
                 "props": {
@@ -188,9 +188,9 @@
                 "type": "tableCell",
                 "content": [
                   {
-                    "type": "text",
-                    "text": "Prisma 6",
-                    "styles": {}
+                    "type": "link",
+                    "href": "https://www.prisma.io/",
+                    "content": [{ "type": "text", "text": "Prisma 6", "styles": {} }]
                   }
                 ],
                 "props": {
@@ -226,9 +226,9 @@
                 "type": "tableCell",
                 "content": [
                   {
-                    "type": "text",
-                    "text": "Zod 4",
-                    "styles": {}
+                    "type": "link",
+                    "href": "https://zod.dev/",
+                    "content": [{ "type": "text", "text": "Zod 4", "styles": {} }]
                   }
                 ],
                 "props": {
