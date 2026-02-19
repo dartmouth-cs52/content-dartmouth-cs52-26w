@@ -1,5 +1,4 @@
 {
-  "coverImage": { "url": "https://res.cloudinary.com/dali-lab/image/upload/v1771470902/cs52/cpppvbtbdaoib1xbeo9l.jpg", "position": 50 },
   "blocks": [
     {
       "id": "s1-heading",
@@ -152,7 +151,13 @@
                   {
                     "type": "link",
                     "href": "https://expressjs.com/",
-                    "content": [{ "type": "text", "text": "Express 5", "styles": {} }]
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Express 5",
+                        "styles": {}
+                      }
+                    ]
                   }
                 ],
                 "props": {
@@ -190,7 +195,13 @@
                   {
                     "type": "link",
                     "href": "https://www.prisma.io/",
-                    "content": [{ "type": "text", "text": "Prisma 6", "styles": {} }]
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Prisma 6",
+                        "styles": {}
+                      }
+                    ]
                   }
                 ],
                 "props": {
@@ -228,7 +239,13 @@
                   {
                     "type": "link",
                     "href": "https://zod.dev/",
-                    "content": [{ "type": "text", "text": "Zod 4", "styles": {} }]
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Zod 4",
+                        "styles": {}
+                      }
+                    ]
                   }
                 ],
                 "props": {
@@ -266,7 +283,13 @@
                   {
                     "type": "link",
                     "href": "https://www.postgresql.org/",
-                    "content": [{ "type": "text", "text": "PostgreSQL", "styles": {} }]
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "PostgreSQL",
+                        "styles": {}
+                      }
+                    ]
                   }
                 ],
                 "props": {
@@ -304,7 +327,13 @@
                   {
                     "type": "link",
                     "href": "https://nodejs.org/",
-                    "content": [{ "type": "text", "text": "Node 22+", "styles": {} }]
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Node 22+",
+                        "styles": {}
+                      }
+                    ]
                   }
                 ],
                 "props": {
@@ -1094,42 +1123,406 @@
                     "styles": {}
                   }
                 ],
-                "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" }
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
               },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "H", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "A", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "R", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "T", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "H",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "A",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "R",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "T",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
             ]
           },
           {
             "cells": [
-              { "type": "tableCell", "content": [{ "type": "text", "text": "Guess", "styles": { "bold": true } }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "T", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "R", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "A", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "C", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "E", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Guess",
+                    "styles": {
+                      "bold": true
+                    }
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "T",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "R",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "A",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "C",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "E",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
             ]
           },
           {
             "cells": [
-              { "type": "tableCell", "content": [{ "type": "text", "text": "Pass 1", "styles": { "bold": true } }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "🟩 correct", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Pass 1",
+                    "styles": {
+                      "bold": true
+                    }
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "—",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "—",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "🟩 correct",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "—",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "—",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
             ]
           },
           {
             "cells": [
-              { "type": "tableCell", "content": [{ "type": "text", "text": "Pass 2", "styles": { "bold": true } }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "🟨 present", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "🟨 present", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "—", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "🟨 present", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } },
-              { "type": "tableCell", "content": [{ "type": "text", "text": "⬜ absent", "styles": {} }], "props": { "colspan": 1, "rowspan": 1, "backgroundColor": "default", "textColor": "default", "textAlignment": "left" } }
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Pass 2",
+                    "styles": {
+                      "bold": true
+                    }
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "🟨 present",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "🟨 present",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "—",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "🟨 present",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "⬜ absent",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
             ]
           }
         ]
@@ -1153,7 +1546,9 @@
         {
           "type": "text",
           "text": "correct",
-          "styles": { "code": true }
+          "styles": {
+            "code": true
+          }
         },
         {
           "type": "text",
@@ -1163,7 +1558,9 @@
         {
           "type": "text",
           "text": "present",
-          "styles": { "code": true }
+          "styles": {
+            "code": true
+          }
         },
         {
           "type": "text",
@@ -1173,7 +1570,9 @@
         {
           "type": "text",
           "text": "present",
-          "styles": { "code": true }
+          "styles": {
+            "code": true
+          }
         },
         {
           "type": "text",
@@ -1183,7 +1582,9 @@
         {
           "type": "text",
           "text": "present",
-          "styles": { "code": true }
+          "styles": {
+            "code": true
+          }
         },
         {
           "type": "text",
@@ -1193,7 +1594,9 @@
         {
           "type": "text",
           "text": "absent",
-          "styles": { "code": true }
+          "styles": {
+            "code": true
+          }
         },
         {
           "type": "text",
@@ -1260,7 +1663,7 @@
         "type": "tableContent",
         "columnWidths": [
           null,
-          null,
+          212,
           null
         ],
         "rows": [
@@ -5447,5 +5850,9 @@
       "content": [],
       "children": []
     }
-  ]
+  ],
+  "coverImage": {
+    "url": "https://res.cloudinary.com/dali-lab/image/upload/v1771470902/cs52/cpppvbtbdaoib1xbeo9l.jpg",
+    "position": 50
+  }
 }
