@@ -1,0 +1,1565 @@
+{
+  "blocks": [
+    {
+      "id": "s1-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Overview", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s1-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Time to give your blog platform a ", "styles": {} },
+        { "type": "text", "text": "backend", "styles": { "bold": true } },
+        { "type": "text", "text": ". In this lab you'll build a REST API that stores blog posts in a database and serves them as JSON. By the end, your Lab 4 frontend will talk to ", "styles": {} },
+        { "type": "text", "text": "your own server", "styles": { "italic": true } },
+        { "type": "text", "text": " instead of a shared class API.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s1-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Tech stack:", "styles": { "bold": true } }],
+      "children": []
+    },
+    {
+      "id": "s1-table",
+      "type": "table",
+      "props": { "textColor": "default" },
+      "content": {
+        "type": "tableContent",
+        "columnWidths": [null, null],
+        "rows": [
+          {
+            "cells": [
+              [{ "type": "text", "text": "Technology", "styles": { "bold": true } }],
+              [{ "type": "text", "text": "What it does", "styles": { "bold": true } }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "link", "href": "https://expressjs.com/", "content": [{ "type": "text", "text": "Express 5", "styles": {} }] }],
+              [{ "type": "text", "text": "HTTP server framework", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "link", "href": "https://nodejs.org/", "content": [{ "type": "text", "text": "Node 22+", "styles": {} }] }],
+              [{ "type": "text", "text": "JavaScript runtime", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "cors / morgan / dotenv", "styles": { "code": true } }],
+              [{ "type": "text", "text": "CORS headers, request logging, env vars", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "Your choice", "styles": { "bold": true } }],
+              [{ "type": "link", "href": "https://www.postgresql.org/", "content": [{ "type": "text", "text": "PostgreSQL", "styles": {} }] }, { "type": "text", "text": " + ", "styles": {} }, { "type": "link", "href": "https://www.prisma.io/", "content": [{ "type": "text", "text": "Prisma", "styles": {} }] }, { "type": "text", "text": "  OR  ", "styles": {} }, { "type": "link", "href": "https://www.mongodb.com/", "content": [{ "type": "text", "text": "MongoDB", "styles": {} }] }, { "type": "text", "text": " + ", "styles": {} }, { "type": "link", "href": "https://mongoosejs.com/", "content": [{ "type": "text", "text": "Mongoose", "styles": {} }] }]
+            ]
+          }
+        ]
+      },
+      "children": []
+    },
+    {
+      "id": "s1-callout",
+      "type": "callout",
+      "props": { "emoji": "⏱️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "This is a full lab — budget around 2 hours. You'll set up a database, write an Express server, implement CRUD endpoints, and deploy.", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s1-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s2-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Choose Your Path", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s2-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "This assignment lets you choose between two database stacks:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2-bl1",
+      "type": "bulletListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "PostgreSQL + Prisma", "styles": { "bold": true } },
+        { "type": "text", "text": " — A relational database with a modern type-safe ORM. Prisma generates a client from a schema file and handles migrations. This is the same stack you used in SA: Wordle API.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2-bl2",
+      "type": "bulletListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "MongoDB + Mongoose", "styles": { "bold": true } },
+        { "type": "text", "text": " — A document database with an ODM (Object-Document Mapper). Mongoose defines schemas in JavaScript and stores data as flexible JSON-like documents.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2-callout",
+      "type": "callout",
+      "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Both paths produce the same API. Your frontend doesn't care which database backs it — it sends and receives the same JSON either way.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Throughout this assignment, sections that differ between the two paths appear as ", "styles": {} },
+        { "type": "text", "text": "two toggleable headings", "styles": { "bold": true } },
+        { "type": "text", "text": ". Click your chosen path to expand the instructions. Everything else is shared.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s3-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "API Design", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s3-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Your API will support five endpoints on ", "styles": {} },
+        { "type": "text", "text": "/api/posts", "styles": { "code": true } },
+        { "type": "text", "text": ":", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s3-table",
+      "type": "table",
+      "props": { "textColor": "default" },
+      "content": {
+        "type": "tableContent",
+        "columnWidths": [null, null, null],
+        "rows": [
+          {
+            "cells": [
+              [{ "type": "text", "text": "Method", "styles": { "bold": true } }],
+              [{ "type": "text", "text": "Route", "styles": { "bold": true } }],
+              [{ "type": "text", "text": "Description", "styles": { "bold": true } }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "POST", "styles": { "code": true } }],
+              [{ "type": "text", "text": "/api/posts", "styles": { "code": true } }],
+              [{ "type": "text", "text": "Create a new post", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "GET", "styles": { "code": true } }],
+              [{ "type": "text", "text": "/api/posts", "styles": { "code": true } }],
+              [{ "type": "text", "text": "List all posts (title + tags + coverUrl only)", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "GET", "styles": { "code": true } }],
+              [{ "type": "text", "text": "/api/posts/:id", "styles": { "code": true } }],
+              [{ "type": "text", "text": "Get one post with full content", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "PUT", "styles": { "code": true } }],
+              [{ "type": "text", "text": "/api/posts/:id", "styles": { "code": true } }],
+              [{ "type": "text", "text": "Update a post", "styles": {} }]
+            ]
+          },
+          {
+            "cells": [
+              [{ "type": "text", "text": "DELETE", "styles": { "code": true } }],
+              [{ "type": "text", "text": "/api/posts/:id", "styles": { "code": true } }],
+              [{ "type": "text", "text": "Delete a post", "styles": {} }]
+            ]
+          }
+        ]
+      },
+      "children": []
+    },
+    {
+      "id": "s3-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Plus a welcome route at ", "styles": {} },
+        { "type": "text", "text": "GET /api", "styles": { "code": true } },
+        { "type": "text", "text": " that returns a JSON message.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s3-h3-post",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Post Object Shape", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s3-p3",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Each post stores these fields:", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s3-post-code",
+      "type": "codeBlock",
+      "props": { "language": "json" },
+      "content": [{ "type": "text", "text": "{\n  \"id\": \"clx1abc...\",\n  \"title\": \"My First Post\",\n  \"tags\": \"adventure travel\",\n  \"content\": \"The full markdown/text content of the post...\",\n  \"coverUrl\": \"https://example.com/image.jpg\",\n  \"createdAt\": \"2026-02-19T12:00:00.000Z\",\n  \"updatedAt\": \"2026-02-19T12:00:00.000Z\"\n}", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s3-h3-curl",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": false },
+      "content": [{ "type": "text", "text": "curl Examples", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s3-p4",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "These are the requests your API should handle. Use them to test as you build:", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s3-term-create",
+      "type": "terminal",
+      "props": { "code": "# Create a post\ncurl -X POST http://localhost:9090/api/posts \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"My Post\", \"tags\": \"test\", \"content\": \"Hello world\", \"coverUrl\": \"https://example.com/img.jpg\"}'", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s3-term-list",
+      "type": "terminal",
+      "props": { "code": "# List all posts\ncurl http://localhost:9090/api/posts", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s3-term-get",
+      "type": "terminal",
+      "props": { "code": "# Get a single post (replace <id> with an actual id)\ncurl http://localhost:9090/api/posts/<id>", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s3-term-update",
+      "type": "terminal",
+      "props": { "code": "# Update a post\ncurl -X PUT http://localhost:9090/api/posts/<id> \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"Updated Title\"}'", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s3-term-delete",
+      "type": "terminal",
+      "props": { "code": "# Delete a post\ncurl -X DELETE http://localhost:9090/api/posts/<id>", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s3-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s4-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Getting Started", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s4-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Clone your starter repo (provided by Classmoji) and install dependencies:", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s4-term-clone",
+      "type": "terminal",
+      "props": { "code": "cd ~/Documents\ngit clone <your-github-repo-url>\ncd platform-api\nnpm install\ncp .env.example .env", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s4-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "The starter includes Express, cors, morgan, dotenv, and Cypress tests. No database driver yet — you'll install the one you need.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s4-p3",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Now pick your database and follow the setup below:", "styles": {} }
+      ],
+      "children": []
+    },
+
+    {
+      "id": "s4-prisma-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "children": [
+        {
+          "id": "s4-prisma-p1",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Install Prisma:", "styles": { "bold": true } }],
+          "children": []
+        },
+        {
+          "id": "s4-prisma-term1",
+          "type": "terminal",
+          "props": { "code": "npm install @prisma/client\nnpm install -D prisma\nnpx prisma init", "title": "Terminal" },
+          "children": []
+        },
+        {
+          "id": "s4-prisma-p2",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "This creates a ", "styles": {} },
+            { "type": "text", "text": "prisma/", "styles": { "code": true } },
+            { "type": "text", "text": " directory and updates your ", "styles": {} },
+            { "type": "text", "text": ".env", "styles": { "code": true } },
+            { "type": "text", "text": " with a placeholder ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": ".", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s4-prisma-p3",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Install PostgreSQL:", "styles": { "bold": true } }],
+          "children": []
+        },
+        {
+          "id": "s4-prisma-term2",
+          "type": "terminal",
+          "props": { "code": "# macOS with Homebrew\nbrew install postgresql@17\nbrew services start postgresql@17\n\n# Create the database\ncreatedb platform_dev", "title": "Terminal" },
+          "children": []
+        },
+        {
+          "id": "s4-prisma-callout",
+          "type": "callout",
+          "props": { "emoji": "☁️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Don't want to install PostgreSQL locally? Use ", "styles": {} },
+            { "type": "link", "href": "https://neon.tech/", "content": [{ "type": "text", "text": "Neon", "styles": {} }] },
+            { "type": "text", "text": " — a free cloud PostgreSQL service. Create a project, copy the connection string, and skip the local install.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s4-prisma-p4",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Set your ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": " in ", "styles": {} },
+            { "type": "text", "text": ".env", "styles": { "code": true } },
+            { "type": "text", "text": ":", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s4-prisma-env",
+          "type": "codeBlock",
+          "props": { "language": "bash" },
+          "content": [{ "type": "text", "text": "DATABASE_URL=postgresql://localhost:5432/platform_dev", "styles": {} }],
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "s4-mongoose-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "children": [
+        {
+          "id": "s4-mongo-p1",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Install Mongoose:", "styles": { "bold": true } }],
+          "children": []
+        },
+        {
+          "id": "s4-mongo-term1",
+          "type": "terminal",
+          "props": { "code": "npm install mongoose", "title": "Terminal" },
+          "children": []
+        },
+        {
+          "id": "s4-mongo-p2",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Install MongoDB:", "styles": { "bold": true } }],
+          "children": []
+        },
+        {
+          "id": "s4-mongo-term2",
+          "type": "terminal",
+          "props": { "code": "# macOS with Homebrew\nbrew tap mongodb/brew\nbrew install mongodb-community\nbrew services start mongodb-community", "title": "Terminal" },
+          "children": []
+        },
+        {
+          "id": "s4-mongo-callout",
+          "type": "callout",
+          "props": { "emoji": "☁️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Don't want to install MongoDB locally? Use ", "styles": {} },
+            { "type": "link", "href": "https://www.mongodb.com/atlas", "content": [{ "type": "text", "text": "MongoDB Atlas", "styles": {} }] },
+            { "type": "text", "text": " — a free cloud MongoDB service. Create a cluster, get the connection string, and skip the local install.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s4-mongo-p3",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Set your ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": " in ", "styles": {} },
+            { "type": "text", "text": ".env", "styles": { "code": true } },
+            { "type": "text", "text": ":", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s4-mongo-env",
+          "type": "codeBlock",
+          "props": { "language": "bash" },
+          "content": [{ "type": "text", "text": "DATABASE_URL=mongodb://localhost/platform_dev", "styles": {} }],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s4-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s5-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Express Server", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s5-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Create ", "styles": {} },
+        { "type": "text", "text": "src/server.js", "styles": { "code": true } },
+        { "type": "text", "text": " — this is the entry point for your API:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s5-server-code",
+      "type": "codeBlock",
+      "props": { "language": "javascript" },
+      "content": [{ "type": "text", "text": "import 'dotenv/config';\nimport express from 'express';\nimport cors from 'cors';\nimport morgan from 'morgan';\nimport apiRouter from './router.js';\n\nconst app = express();\napp.use(cors());\napp.use(morgan('dev'));\napp.use(express.json());\napp.use('/api', apiRouter);\n\n// error handler\napp.use((err, req, res, next) => {\n  console.error(err);\n  res.status(err.status || 500).json({ error: err.message });\n});\n\nconst port = process.env.PORT || 9090;\napp.listen(port, () => console.log(`listening on port ${port}`));", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s5-callout1",
+      "type": "callout",
+      "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Express 5 catches errors thrown from ", "styles": {} },
+        { "type": "text", "text": "async", "styles": { "code": true } },
+        { "type": "text", "text": " route handlers automatically — no more ", "styles": {} },
+        { "type": "text", "text": "try/catch", "styles": { "code": true } },
+        { "type": "text", "text": " in every route! The error handler at the bottom turns uncaught errors into JSON responses.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s5-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Notice we use ", "styles": {} },
+        { "type": "text", "text": "import 'dotenv/config'", "styles": { "code": true } },
+        { "type": "text", "text": " at the very top — this loads your ", "styles": {} },
+        { "type": "text", "text": ".env", "styles": { "code": true } },
+        { "type": "text", "text": " file before any other code runs. Also note the ", "styles": {} },
+        { "type": "text", "text": ".js", "styles": { "code": true } },
+        { "type": "text", "text": " extension on the import — native ES modules require explicit file extensions.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s5-p3",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Now connect your database. Expand your chosen path:", "styles": {} }
+      ],
+      "children": []
+    },
+
+    {
+      "id": "s5-prisma-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "PostgreSQL + Prisma — Database Client", "styles": {} }],
+      "children": [
+        {
+          "id": "s5-prisma-p1",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Create ", "styles": {} },
+            { "type": "text", "text": "src/db.js", "styles": { "code": true } },
+            { "type": "text", "text": " — a shared Prisma client instance:", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s5-prisma-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "import { PrismaClient } from '@prisma/client';\n\nconst prisma = new PrismaClient();\n\nexport default prisma;", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-prisma-p2",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "That's it! Prisma connects automatically using the ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": " from your ", "styles": {} },
+            { "type": "text", "text": ".env", "styles": { "code": true } },
+            { "type": "text", "text": ". No connection code needed in server.js.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "s5-mongoose-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "MongoDB + Mongoose — Database Connection", "styles": {} }],
+      "children": [
+        {
+          "id": "s5-mongo-p1",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Add the Mongoose connection to ", "styles": {} },
+            { "type": "text", "text": "src/server.js", "styles": { "code": true } },
+            { "type": "text", "text": ", before the ", "styles": {} },
+            { "type": "text", "text": "app.listen", "styles": { "code": true } },
+            { "type": "text", "text": " call:", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s5-mongo-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "import mongoose from 'mongoose';\n\n// add this before app.listen\nmongoose.connect(process.env.DATABASE_URL)\n  .then(() => console.log('connected to database'))\n  .catch((err) => console.error('database connection error:', err));", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-mongo-p2",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Mongoose reads ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": " from ", "styles": {} },
+            { "type": "text", "text": "process.env", "styles": { "code": true } },
+            { "type": "text", "text": " (already loaded by ", "styles": {} },
+            { "type": "text", "text": "dotenv/config", "styles": { "code": true } },
+            { "type": "text", "text": " at the top of server.js). MongoDB auto-creates the database on first write.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s5-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s6-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Model / Schema", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s6-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Now define how a Post is stored in your database. This section is fully path-specific:", "styles": {} }
+      ],
+      "children": []
+    },
+
+    {
+      "id": "s6-prisma-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "children": [
+        {
+          "id": "s6-prisma-p1",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Edit ", "styles": {} },
+            { "type": "text", "text": "prisma/schema.prisma", "styles": { "code": true } },
+            { "type": "text", "text": " (created by ", "styles": {} },
+            { "type": "text", "text": "npx prisma init", "styles": { "code": true } },
+            { "type": "text", "text": "). Replace the placeholder with:", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s6-prisma-schema",
+          "type": "codeBlock",
+          "props": { "language": "graphql" },
+          "content": [{ "type": "text", "text": "generator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Post {\n  id        String   @id @default(cuid())\n  title     String\n  tags      String?\n  content   String?\n  coverUrl  String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s6-prisma-p2",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Run the migration to create the table:", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s6-prisma-term",
+          "type": "terminal",
+          "props": { "code": "npx prisma migrate dev --name init", "title": "Terminal" },
+          "children": []
+        },
+        {
+          "id": "s6-prisma-p3",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "This generates the Prisma Client and creates the ", "styles": {} },
+            { "type": "text", "text": "Post", "styles": { "code": true } },
+            { "type": "text", "text": " table in your database. You can browse your data anytime with:", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s6-prisma-term2",
+          "type": "terminal",
+          "props": { "code": "npx prisma studio", "title": "Terminal" },
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "s6-mongoose-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "children": [
+        {
+          "id": "s6-mongo-p1",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Create ", "styles": {} },
+            { "type": "text", "text": "src/models/post_model.js", "styles": { "code": true } },
+            { "type": "text", "text": ":", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s6-mongo-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "import mongoose, { Schema } from 'mongoose';\n\nconst PostSchema = new Schema(\n  {\n    title: String,\n    tags: String,\n    content: String,\n    coverUrl: String,\n  },\n  {\n    timestamps: true,\n    toJSON: {\n      virtuals: true,\n      transform(doc, ret) {\n        ret.id = ret._id;\n        delete ret._id;\n        delete ret.__v;\n        return ret;\n      },\n    },\n  },\n);\n\nconst Post = mongoose.model('Post', PostSchema);\n\nexport default Post;", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s6-mongo-callout",
+          "type": "callout",
+          "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Why the toJSON transform? MongoDB stores IDs as ", "styles": {} },
+            { "type": "text", "text": "_id", "styles": { "code": true } },
+            { "type": "text", "text": ", but our Cypress tests (and the frontend) expect ", "styles": {} },
+            { "type": "text", "text": "id", "styles": { "code": true } },
+            { "type": "text", "text": ". The ", "styles": {} },
+            { "type": "text", "text": "toJSON", "styles": { "code": true } },
+            { "type": "text", "text": " option runs automatically when Express calls ", "styles": {} },
+            { "type": "text", "text": "res.json()", "styles": { "code": true } },
+            { "type": "text", "text": ", mapping ", "styles": {} },
+            { "type": "text", "text": "_id → id", "styles": { "code": true } },
+            { "type": "text", "text": " so both database paths produce identical JSON.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s6-mongo-p2",
+          "type": "paragraph",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "The ", "styles": {} },
+            { "type": "text", "text": "timestamps: true", "styles": { "code": true } },
+            { "type": "text", "text": " option automatically adds ", "styles": {} },
+            { "type": "text", "text": "createdAt", "styles": { "code": true } },
+            { "type": "text", "text": " and ", "styles": {} },
+            { "type": "text", "text": "updatedAt", "styles": { "code": true } },
+            { "type": "text", "text": " fields to every document. No migrations needed — MongoDB creates collections on first insert.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s6-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s7-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Controller", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s7-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Create ", "styles": {} },
+        { "type": "text", "text": "src/controllers/post_controller.js", "styles": { "code": true } },
+        { "type": "text", "text": " with five exported async functions. Each receives ", "styles": {} },
+        { "type": "text", "text": "(req, res)", "styles": { "code": true } },
+        { "type": "text", "text": " directly from the router:", "styles": {} }
+      ],
+      "children": []
+    },
+
+    {
+      "id": "s7-prisma-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "children": [
+        {
+          "id": "s7-prisma-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "import prisma from '../db.js';\n\nexport const createPost = async (req, res) => {\n  const post = await prisma.post.create({ data: req.body });\n  res.json(post);\n};\n\nexport const getPosts = async (req, res) => {\n  const posts = await prisma.post.findMany({\n    orderBy: { createdAt: 'desc' },\n    select: { id: true, title: true, tags: true, coverUrl: true, createdAt: true },\n  });\n  res.json(posts);\n};\n\nexport const getPost = async (req, res) => {\n  const post = await prisma.post.findUnique({ where: { id: req.params.id } });\n  if (!post) {\n    return res.status(404).json({ error: 'Post not found' });\n  }\n  res.json(post);\n};\n\nexport const updatePost = async (req, res) => {\n  try {\n    const post = await prisma.post.update({\n      where: { id: req.params.id },\n      data: req.body,\n    });\n    res.json(post);\n  } catch (err) {\n    if (err.code === 'P2025') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};\n\nexport const deletePost = async (req, res) => {\n  try {\n    await prisma.post.delete({ where: { id: req.params.id } });\n    res.json({ message: 'Post deleted' });\n  } catch (err) {\n    if (err.code === 'P2025') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s7-prisma-callout",
+          "type": "callout",
+          "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Prisma throws error code ", "styles": {} },
+            { "type": "text", "text": "P2025", "styles": { "code": true } },
+            { "type": "text", "text": " when you try to update or delete a record that doesn't exist. We catch that specific error and return 404. For ", "styles": {} },
+            { "type": "text", "text": "findUnique", "styles": { "code": true } },
+            { "type": "text", "text": ", Prisma returns ", "styles": {} },
+            { "type": "text", "text": "null", "styles": { "code": true } },
+            { "type": "text", "text": " instead of throwing, so we check manually.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "s7-mongoose-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "children": [
+        {
+          "id": "s7-mongo-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "import Post from '../models/post_model.js';\n\nexport const createPost = async (req, res) => {\n  const post = new Post(req.body);\n  const saved = await post.save();\n  res.json(saved);\n};\n\nexport const getPosts = async (req, res) => {\n  const posts = await Post.find({}, 'title tags coverUrl createdAt')\n    .sort({ createdAt: -1 });\n  res.json(posts);\n};\n\nexport const getPost = async (req, res) => {\n  try {\n    const post = await Post.findById(req.params.id);\n    if (!post) return res.status(404).json({ error: 'Post not found' });\n    res.json(post);\n  } catch (err) {\n    if (err.name === 'CastError') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};\n\nexport const updatePost = async (req, res) => {\n  try {\n    const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });\n    if (!post) return res.status(404).json({ error: 'Post not found' });\n    res.json(post);\n  } catch (err) {\n    if (err.name === 'CastError') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};\n\nexport const deletePost = async (req, res) => {\n  try {\n    const post = await Post.findByIdAndDelete(req.params.id);\n    if (!post) return res.status(404).json({ error: 'Post not found' });\n    res.json({ message: 'Post deleted' });\n  } catch (err) {\n    if (err.name === 'CastError') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s7-mongo-callout",
+          "type": "callout",
+          "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Mongoose throws a ", "styles": {} },
+            { "type": "text", "text": "CastError", "styles": { "code": true } },
+            { "type": "text", "text": " when the id isn't a valid MongoDB ObjectId (e.g. ", "styles": {} },
+            { "type": "text", "text": "\"nonexistent\"", "styles": { "code": true } },
+            { "type": "text", "text": "). We catch it and return 404 so the Cypress tests pass. For valid-but-missing ObjectIds, ", "styles": {} },
+            { "type": "text", "text": "findById", "styles": { "code": true } },
+            { "type": "text", "text": " returns ", "styles": {} },
+            { "type": "text", "text": "null", "styles": { "code": true } },
+            { "type": "text", "text": ", so we check for that too.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s7-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s8-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Routes", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s8-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Create ", "styles": {} },
+        { "type": "text", "text": "src/router.js", "styles": { "code": true } },
+        { "type": "text", "text": " — this wires your controller functions to URL paths:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s8-router-code",
+      "type": "codeBlock",
+      "props": { "language": "javascript" },
+      "content": [{ "type": "text", "text": "import { Router } from 'express';\nimport * as Posts from './controllers/post_controller.js';\n\nconst router = Router();\n\nrouter.get('/', (req, res) => {\n  res.json({ message: 'welcome to the blog api!' });\n});\n\nrouter.route('/posts')\n  .post(Posts.createPost)\n  .get(Posts.getPosts);\n\nrouter.route('/posts/:id')\n  .get(Posts.getPost)\n  .put(Posts.updatePost)\n  .delete(Posts.deletePost);\n\nexport default router;", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s8-callout",
+      "type": "callout",
+      "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "The ", "styles": {} },
+        { "type": "text", "text": "router.route()", "styles": { "code": true } },
+        { "type": "text", "text": " pattern groups multiple HTTP methods on the same path. It's cleaner than writing ", "styles": {} },
+        { "type": "text", "text": "router.get()", "styles": { "code": true } },
+        { "type": "text", "text": " / ", "styles": {} },
+        { "type": "text", "text": "router.post()", "styles": { "code": true } },
+        { "type": "text", "text": " / etc. separately. Note the ", "styles": {} },
+        { "type": "text", "text": ".js", "styles": { "code": true } },
+        { "type": "text", "text": " extension on the import — required for native ES modules.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s8-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s9-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Test It", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s9-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Start your server in one terminal:", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s9-term1",
+      "type": "terminal",
+      "props": { "code": "npm run dev", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s9-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Try a quick manual test:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-term2",
+      "type": "terminal",
+      "props": { "code": "curl http://localhost:9090/api\n# should return: {\"message\":\"welcome to the blog api!\"}", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s9-p3",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Once the welcome route works, run the full test suite in another terminal:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-term3",
+      "type": "terminal",
+      "props": { "code": "npm test", "title": "Terminal" },
+      "children": []
+    },
+    {
+      "id": "s9-p4",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "The starter includes ", "styles": {} },
+        { "type": "text", "text": "8 Cypress tests", "styles": { "bold": true } },
+        { "type": "text", "text": " that verify your CRUD API:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl1",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "GET /api", "styles": { "code": true } },
+        { "type": "text", "text": " returns a welcome message", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl2",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "POST /api/posts", "styles": { "code": true } },
+        { "type": "text", "text": " creates a post and returns it with an ", "styles": {} },
+        { "type": "text", "text": "id", "styles": { "code": true } }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl3",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "GET /api/posts", "styles": { "code": true } },
+        { "type": "text", "text": " returns an array containing the created post", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl4",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "GET /api/posts/:id", "styles": { "code": true } },
+        { "type": "text", "text": " returns the full post with content", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl5",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "PUT /api/posts/:id", "styles": { "code": true } },
+        { "type": "text", "text": " updates the title", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl6",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "DELETE /api/posts/:id", "styles": { "code": true } },
+        { "type": "text", "text": " removes the post", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl7",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "GET /api/posts/:id", "styles": { "code": true } },
+        { "type": "text", "text": " on the deleted post returns 404", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-nl8",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "GET /api/posts/nonexistent", "styles": { "code": true } },
+        { "type": "text", "text": " returns 404", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-p5",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "All 8 should pass. If any fail, read the error message — it usually tells you exactly what's wrong (missing field, wrong status code, etc.).", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s9-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s10-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Connect Your Frontend", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s10-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Open your Lab 4 platform-client project and update the ", "styles": {} },
+        { "type": "text", "text": "ROOT_URL", "styles": { "code": true } },
+        { "type": "text", "text": " (or wherever you defined the API base URL) to point to your local server:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s10-code",
+      "type": "codeBlock",
+      "props": { "language": "javascript" },
+      "content": [{ "type": "text", "text": "const ROOT_URL = 'http://localhost:9090/api';", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s10-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Remove any ", "styles": {} },
+        { "type": "text", "text": "API_KEY", "styles": { "code": true } },
+        { "type": "text", "text": " or ", "styles": {} },
+        { "type": "text", "text": "?key=", "styles": { "code": true } },
+        { "type": "text", "text": " query params — you own the whole API now, no shared namespace needed.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s10-p3",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Make sure both your API (", "styles": {} },
+        { "type": "text", "text": "npm run dev", "styles": { "code": true } },
+        { "type": "text", "text": " in the API repo) and your frontend dev server are running. You should be able to create, view, edit, and delete posts from the browser UI.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s10-callout",
+      "type": "callout",
+      "props": { "emoji": "⚠️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "If you see CORS errors in the console, make sure ", "styles": {} },
+        { "type": "text", "text": "app.use(cors())", "styles": { "code": true } },
+        { "type": "text", "text": " is in your server.js. The ", "styles": {} },
+        { "type": "text", "text": "cors", "styles": { "code": true } },
+        { "type": "text", "text": " middleware allows your frontend (localhost:5173) to talk to your API (localhost:9090).", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s10-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s11-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Deploy", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s11-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Deploy your API so your frontend can use it in production. We'll use ", "styles": {} },
+        { "type": "link", "href": "https://render.com/", "content": [{ "type": "text", "text": "Render", "styles": {} }] },
+        { "type": "text", "text": " for hosting.", "styles": {} }
+      ],
+      "children": []
+    },
+
+    {
+      "id": "s11-prisma-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "PostgreSQL + Prisma", "styles": {} }],
+      "children": [
+        {
+          "id": "s11-prisma-nl1",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Push your code to GitHub", "styles": { "bold": true } },
+            { "type": "text", "text": " (commit everything, including the ", "styles": {} },
+            { "type": "text", "text": "prisma/", "styles": { "code": true } },
+            { "type": "text", "text": " directory).", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s11-prisma-nl2",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Create a PostgreSQL database on Render", "styles": { "bold": true } },
+            { "type": "text", "text": " (or use a Neon database). Copy the connection string.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s11-prisma-nl3",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Create a Web Service on Render", "styles": { "bold": true } },
+            { "type": "text", "text": " connected to your GitHub repo.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s11-prisma-nl4",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Configure the service:", "styles": { "bold": true } }],
+          "children": []
+        },
+        {
+          "id": "s11-prisma-tbl",
+          "type": "table",
+          "props": { "textColor": "default" },
+          "content": {
+            "type": "tableContent",
+            "columnWidths": [null, null],
+            "rows": [
+              {
+                "cells": [
+                  [{ "type": "text", "text": "Setting", "styles": { "bold": true } }],
+                  [{ "type": "text", "text": "Value", "styles": { "bold": true } }]
+                ]
+              },
+              {
+                "cells": [
+                  [{ "type": "text", "text": "Build Command", "styles": {} }],
+                  [{ "type": "text", "text": "npm install && npx prisma migrate deploy", "styles": { "code": true } }]
+                ]
+              },
+              {
+                "cells": [
+                  [{ "type": "text", "text": "Start Command", "styles": {} }],
+                  [{ "type": "text", "text": "npm start", "styles": { "code": true } }]
+                ]
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "s11-prisma-nl5",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left", "start": 5 },
+          "content": [
+            { "type": "text", "text": "Add environment variable", "styles": { "bold": true } },
+            { "type": "text", "text": ": set ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": " to your PostgreSQL connection string.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s11-prisma-callout",
+          "type": "callout",
+          "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "The build command runs ", "styles": {} },
+            { "type": "text", "text": "prisma migrate deploy", "styles": { "code": true } },
+            { "type": "text", "text": " which applies your migrations to the production database. This runs once per deploy, not on every request.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+
+    {
+      "id": "s11-mongoose-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "MongoDB + Mongoose", "styles": {} }],
+      "children": [
+        {
+          "id": "s11-mongo-nl1",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Push your code to GitHub.", "styles": { "bold": true } }
+          ],
+          "children": []
+        },
+        {
+          "id": "s11-mongo-nl2",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [
+            { "type": "text", "text": "Create a MongoDB Atlas cluster", "styles": { "bold": true } },
+            { "type": "text", "text": " (free M0 tier). Go to ", "styles": {} },
+            { "type": "link", "href": "https://www.mongodb.com/atlas", "content": [{ "type": "text", "text": "mongodb.com/atlas", "styles": {} }] },
+            { "type": "text", "text": ", create a cluster, and get the connection string. Make sure to:", "styles": {} }
+          ],
+          "children": [
+            {
+              "id": "s11-mongo-nl2a",
+              "type": "bulletListItem",
+              "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+              "content": [{ "type": "text", "text": "Add your IP (or 0.0.0.0/0 for Render) to Network Access", "styles": {} }],
+              "children": []
+            },
+            {
+              "id": "s11-mongo-nl2b",
+              "type": "bulletListItem",
+              "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+              "content": [{ "type": "text", "text": "Create a database user with a password", "styles": {} }],
+              "children": []
+            },
+            {
+              "id": "s11-mongo-nl2c",
+              "type": "bulletListItem",
+              "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+              "content": [
+                { "type": "text", "text": "Replace ", "styles": {} },
+                { "type": "text", "text": "<password>", "styles": { "code": true } },
+                { "type": "text", "text": " in the connection string with your actual password", "styles": {} }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "s11-mongo-nl3",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left", "start": 3 },
+          "content": [
+            { "type": "text", "text": "Create a Web Service on Render", "styles": { "bold": true } },
+            { "type": "text", "text": " connected to your GitHub repo.", "styles": {} }
+          ],
+          "children": []
+        },
+        {
+          "id": "s11-mongo-nl4",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "Configure the service:", "styles": { "bold": true } }],
+          "children": []
+        },
+        {
+          "id": "s11-mongo-tbl",
+          "type": "table",
+          "props": { "textColor": "default" },
+          "content": {
+            "type": "tableContent",
+            "columnWidths": [null, null],
+            "rows": [
+              {
+                "cells": [
+                  [{ "type": "text", "text": "Setting", "styles": { "bold": true } }],
+                  [{ "type": "text", "text": "Value", "styles": { "bold": true } }]
+                ]
+              },
+              {
+                "cells": [
+                  [{ "type": "text", "text": "Build Command", "styles": {} }],
+                  [{ "type": "text", "text": "npm install", "styles": { "code": true } }]
+                ]
+              },
+              {
+                "cells": [
+                  [{ "type": "text", "text": "Start Command", "styles": {} }],
+                  [{ "type": "text", "text": "npm start", "styles": { "code": true } }]
+                ]
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "s11-mongo-nl5",
+          "type": "numberedListItem",
+          "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left", "start": 5 },
+          "content": [
+            { "type": "text", "text": "Add environment variable", "styles": { "bold": true } },
+            { "type": "text", "text": ": set ", "styles": {} },
+            { "type": "text", "text": "DATABASE_URL", "styles": { "code": true } },
+            { "type": "text", "text": " to your MongoDB Atlas connection string.", "styles": {} }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s11-p2",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Once deployed, update your Lab 4 frontend's ", "styles": {} },
+        { "type": "text", "text": "ROOT_URL", "styles": { "code": true } },
+        { "type": "text", "text": " to your Render URL (e.g. ", "styles": {} },
+        { "type": "text", "text": "https://your-api.onrender.com/api", "styles": { "code": true } },
+        { "type": "text", "text": ") and redeploy the frontend.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s11-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s12-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "To Turn In", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s12-cl1",
+      "type": "checkListItem",
+      "props": { "checked": false, "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "GitHub repo URL", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s12-cl2",
+      "type": "checkListItem",
+      "props": { "checked": false, "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Deployed API URL (should return JSON at ", "styles": {} },
+        { "type": "text", "text": "/api", "styles": { "code": true } },
+        { "type": "text", "text": ")", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s12-cl3",
+      "type": "checkListItem",
+      "props": { "checked": false, "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Lab 4 frontend updated to use your deployed API", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s12-cl4",
+      "type": "checkListItem",
+      "props": { "checked": false, "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "All 8 Cypress tests pass", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s12-cl5",
+      "type": "checkListItem",
+      "props": { "checked": false, "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Brief summary: what worked, what didn't, which database path you chose and why", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s12-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s13-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Extra Credit", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s13-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Want to go further? Try any of these:", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s13-bl1",
+      "type": "bulletListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Tags as array", "styles": { "bold": true } },
+        { "type": "text", "text": " — Split the tags string by spaces and store as an array. Update the model and controller accordingly.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s13-bl2",
+      "type": "bulletListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Comments", "styles": { "bold": true } },
+        { "type": "text", "text": " — Add a Comment model/collection with a relation to Post. Add endpoints for creating and listing comments on a post.", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s13-bl3",
+      "type": "bulletListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Search", "styles": { "bold": true } },
+        { "type": "text", "text": " — Add a ", "styles": {} },
+        { "type": "text", "text": "GET /api/posts?search=term", "styles": { "code": true } },
+        { "type": "text", "text": " endpoint.", "styles": {} }
+      ],
+      "children": []
+    },
+
+    {
+      "id": "s13-prisma-search",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "Search Hint: Prisma", "styles": { "italic": true } }],
+      "children": [
+        {
+          "id": "s13-prisma-search-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "// Prisma full-text search (requires adding @@fulltext to schema)\nconst posts = await prisma.post.findMany({\n  where: {\n    OR: [\n      { title: { contains: search, mode: 'insensitive' } },\n      { content: { contains: search, mode: 'insensitive' } },\n    ],\n  },\n});", "styles": {} }],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s13-mongoose-search",
+      "type": "heading",
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left", "level": 3, "isToggleable": true },
+      "content": [{ "type": "text", "text": "Search Hint: Mongoose", "styles": { "italic": true } }],
+      "children": [
+        {
+          "id": "s13-mongoose-search-code",
+          "type": "codeBlock",
+          "props": { "language": "javascript" },
+          "content": [{ "type": "text", "text": "// Mongoose text search (requires adding a text index to schema)\n// In post_model.js: PostSchema.index({ title: 'text', content: 'text' });\nconst posts = await Post.find({ $text: { $search: search } });", "styles": {} }],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "s13-callout",
+      "type": "callout",
+      "props": { "emoji": "🚨", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Do NOT add authentication to this lab — that's coming in a later assignment. Keep it CRUD-only for now.", "styles": {} }
+      ],
+      "children": []
+    }
+  ]
+}
