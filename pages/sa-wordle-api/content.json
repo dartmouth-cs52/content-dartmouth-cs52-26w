@@ -2259,194 +2259,115 @@
     {
       "id": "s5-bl1",
       "type": "bulletListItem",
-      "props": {
-        "backgroundColor": "default",
-        "textColor": "default",
-        "textAlignment": "left"
-      },
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
       "content": [
-        {
-          "type": "text",
-          "text": "Puzzle",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " — one per day. Fields: ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "date",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (String, primary key), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "word",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (the secret answer), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "createdAt",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (auto timestamp), and a ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "guesses",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " relation to all guesses for this puzzle.",
-          "styles": {}
-        }
+        { "type": "text", "text": "Puzzle", "styles": { "bold": true } },
+        { "type": "text", "text": " — one per day:", "styles": {} }
       ],
-      "children": []
+      "children": [
+        {
+          "id": "s5-bl1a",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "date", "styles": { "code": true } }, { "type": "text", "text": " — String, primary key (", "styles": {} }, { "type": "text", "text": "@id", "styles": { "code": true } }, { "type": "text", "text": ")", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl1b",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "word", "styles": { "code": true } }, { "type": "text", "text": " — String, the secret answer", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl1c",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "createdAt", "styles": { "code": true } }, { "type": "text", "text": " — DateTime, auto-set with ", "styles": {} }, { "type": "text", "text": "@default(now())", "styles": { "code": true } }],
+          "children": []
+        },
+        {
+          "id": "s5-bl1d",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "guesses", "styles": { "code": true } }, { "type": "text", "text": " — relation to all Guess records for this puzzle (", "styles": {} }, { "type": "text", "text": "Guess[]", "styles": { "code": true } }, { "type": "text", "text": ")", "styles": {} }],
+          "children": []
+        }
+      ]
     },
     {
       "id": "s5-bl2",
       "type": "bulletListItem",
-      "props": {
-        "backgroundColor": "default",
-        "textColor": "default",
-        "textAlignment": "left"
-      },
+      "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
       "content": [
-        {
-          "type": "text",
-          "text": "Guess",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " — one per guess attempt. Fields: ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "id",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (cuid), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "puzzleDate",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (foreign key to Puzzle), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "player",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (name), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "word",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (the guessed word), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "result",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (Json — the letter feedback array), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "correct",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " (Boolean), ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "createdAt",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": ". Add a ",
-          "styles": {}
-        },
-        {
-          "type": "text",
-          "text": "@@unique([puzzleDate, player, word])",
-          "styles": {
-            "code": true
-          }
-        },
-        {
-          "type": "text",
-          "text": " constraint so the same player can't guess the same word twice on the same puzzle.",
-          "styles": {}
-        }
+        { "type": "text", "text": "Guess", "styles": { "bold": true } },
+        { "type": "text", "text": " — one per guess attempt:", "styles": {} }
       ],
-      "children": []
+      "children": [
+        {
+          "id": "s5-bl2a",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "id", "styles": { "code": true } }, { "type": "text", "text": " — String, auto-generated with ", "styles": {} }, { "type": "text", "text": "@default(cuid())", "styles": { "code": true } }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2b",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "puzzleDate", "styles": { "code": true } }, { "type": "text", "text": " — String, foreign key to Puzzle", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2c",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "puzzle", "styles": { "code": true } }, { "type": "text", "text": " — the Prisma relation (", "styles": {} }, { "type": "text", "text": "@relation(fields: [puzzleDate], references: [date])", "styles": { "code": true } }, { "type": "text", "text": ")", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2d",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "player", "styles": { "code": true } }, { "type": "text", "text": " — String, the player's name", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2e",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "word", "styles": { "code": true } }, { "type": "text", "text": " — String, the guessed word", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2f",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "result", "styles": { "code": true } }, { "type": "text", "text": " — Json, the letter feedback array", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2g",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "correct", "styles": { "code": true } }, { "type": "text", "text": " — Boolean, whether the guess matched", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2h",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "createdAt", "styles": { "code": true } }, { "type": "text", "text": " — DateTime, auto-set", "styles": {} }],
+          "children": []
+        },
+        {
+          "id": "s5-bl2i",
+          "type": "bulletListItem",
+          "props": { "backgroundColor": "default", "textColor": "default", "textAlignment": "left" },
+          "content": [{ "type": "text", "text": "@@unique([puzzleDate, player, word])", "styles": { "code": true } }, { "type": "text", "text": " — prevents the same player from guessing the same word twice on the same puzzle", "styles": {} }],
+          "children": []
+        }
+      ]
     },
     {
       "id": "s5-hint",
@@ -4313,7 +4234,7 @@
       "content": [
         {
           "type": "text",
-          "text": "// Example output for checkGuess('crane', 'speed'):\n[\n  { letter: 'c', state: 'absent' },\n  { letter: 'r', state: 'absent' },\n  { letter: 'a', state: 'absent' },\n  { letter: 'n', state: 'absent' },\n  { letter: 'e', state: 'present' },\n]",
+          "text": "// Example output for checkGuess('trace', 'chart'):\n[\n  { letter: 't', state: 'present' },   // t is in 'chart' but not at position 1\n  { letter: 'r', state: 'present' },   // r is in 'chart' but not at position 2\n  { letter: 'a', state: 'correct' },   // a matches position 3 exactly 🟩\n  { letter: 'c', state: 'present' },   // c is in 'chart' but not at position 4\n  { letter: 'e', state: 'absent' },    // e is not in 'chart' at all\n]",
           "styles": {}
         }
       ],
