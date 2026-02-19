@@ -82,7 +82,7 @@
       "id": "s1-callout",
       "type": "callout",
       "props": { "emoji": "⏱️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [{ "type": "text", "text": "This is a full lab — budget around 2 hours. You'll set up a database, write an Express server, implement CRUD endpoints, and deploy.", "styles": {} }],
+      "content": [{ "type": "text", "text": "You'll set up a database, write an Express server, implement CRUD endpoints, and deploy.", "styles": {} }],
       "children": []
     },
     {
@@ -151,6 +151,100 @@
     },
     {
       "id": "s2-spacer",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [],
+      "children": []
+    },
+
+    {
+      "id": "s2b-heading",
+      "type": "heading",
+      "props": { "backgroundColor": "blue", "textColor": "default", "textAlignment": "left", "level": 2, "isToggleable": false },
+      "content": [{ "type": "text", "text": "Feature Branch + Plan Workflow", "styles": {} }],
+      "children": []
+    },
+    {
+      "id": "s2b-p1",
+      "type": "paragraph",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Same as Lab 4 — use the ", "styles": {} },
+        { "type": "text", "text": "feature branch workflow", "styles": { "bold": true } },
+        { "type": "text", "text": " as you build. Don't build everything on ", "styles": {} },
+        { "type": "text", "text": "main", "styles": { "code": true } },
+        { "type": "text", "text": " in one go. Break the work into features and for each one:", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2b-nl1",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Create a feature branch", "styles": { "bold": true } },
+        { "type": "text", "text": " (e.g. ", "styles": {} },
+        { "type": "text", "text": "git checkout -b feature/model", "styles": { "code": true } },
+        { "type": "text", "text": ")", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2b-nl2",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "If using AI:", "styles": { "bold": true } },
+        { "type": "text", "text": " enter plan mode and create a plan, then copy it from ", "styles": {} },
+        { "type": "text", "text": "~/.claude/plans/", "styles": { "code": true } },
+        { "type": "text", "text": " to your project's ", "styles": {} },
+        { "type": "text", "text": "plans/", "styles": { "code": true } },
+        { "type": "text", "text": " folder", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2b-nl3",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [{ "type": "text", "text": "Implement the feature", "styles": { "bold": true } }],
+      "children": []
+    },
+    {
+      "id": "s2b-nl4",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Commit and merge", "styles": { "bold": true } },
+        { "type": "text", "text": " back to main", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2b-nl5",
+      "type": "numberedListItem",
+      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Repeat", "styles": { "bold": true } },
+        { "type": "text", "text": " for the next feature", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2b-callout",
+      "type": "callout",
+      "props": { "emoji": "⚠️", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "If working with AI: Do not one-shot this assignment.", "styles": { "bold": true } },
+        { "type": "text", "text": " Each feature should have its own branch and plan file. We want to see incremental progress, not a single giant commit.", "styles": {} },
+        { "type": "text", "text": "\n\n", "styles": {} },
+        { "type": "text", "text": "If not using AI:", "styles": { "bold": true } },
+        { "type": "text", "text": " you don't need plan files, but still use feature branches!", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s2b-spacer",
       "type": "paragraph",
       "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
       "content": [],
@@ -818,7 +912,9 @@
       "content": [
         { "type": "text", "text": "Create ", "styles": {} },
         { "type": "text", "text": "src/controllers/post_controller.js", "styles": { "code": true } },
-        { "type": "text", "text": " with five exported async functions. Each receives ", "styles": {} },
+        { "type": "text", "text": " with five exported async functions. We'll give you ", "styles": {} },
+        { "type": "text", "text": "getPosts", "styles": { "code": true } },
+        { "type": "text", "text": " as a pattern — you'll write the other four. Each receives ", "styles": {} },
         { "type": "text", "text": "(req, res)", "styles": { "code": true } },
         { "type": "text", "text": " directly from the router:", "styles": {} }
       ],
@@ -835,7 +931,7 @@
           "id": "s7-prisma-code",
           "type": "codeBlock",
           "props": { "language": "javascript" },
-          "content": [{ "type": "text", "text": "import prisma from '../db.js';\n\nexport const createPost = async (req, res) => {\n  const post = await prisma.post.create({ data: req.body });\n  res.json(post);\n};\n\nexport const getPosts = async (req, res) => {\n  const posts = await prisma.post.findMany({\n    orderBy: { createdAt: 'desc' },\n    select: { id: true, title: true, tags: true, coverUrl: true, createdAt: true },\n  });\n  res.json(posts);\n};\n\nexport const getPost = async (req, res) => {\n  const post = await prisma.post.findUnique({ where: { id: req.params.id } });\n  if (!post) {\n    return res.status(404).json({ error: 'Post not found' });\n  }\n  res.json(post);\n};\n\nexport const updatePost = async (req, res) => {\n  try {\n    const post = await prisma.post.update({\n      where: { id: req.params.id },\n      data: req.body,\n    });\n    res.json(post);\n  } catch (err) {\n    if (err.code === 'P2025') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};\n\nexport const deletePost = async (req, res) => {\n  try {\n    await prisma.post.delete({ where: { id: req.params.id } });\n    res.json({ message: 'Post deleted' });\n  } catch (err) {\n    if (err.code === 'P2025') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};", "styles": {} }],
+          "content": [{ "type": "text", "text": "import prisma from '../db.js';\n\nexport const getPosts = async (req, res) => {\n  const posts = await prisma.post.findMany({\n    orderBy: { createdAt: 'desc' },\n    select: { id: true, title: true, tags: true, coverUrl: true, createdAt: true },\n  });\n  res.json(posts);\n};\n\nexport const createPost = async (req, res) => {\n  // your code here\n};\n\nexport const getPost = async (req, res) => {\n  // your code here\n};\n\nexport const updatePost = async (req, res) => {\n  // your code here\n};\n\nexport const deletePost = async (req, res) => {\n  // your code here\n};", "styles": {} }],
           "children": []
         },
         {
@@ -843,13 +939,11 @@
           "type": "callout",
           "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
           "content": [
-            { "type": "text", "text": "Prisma throws error code ", "styles": {} },
-            { "type": "text", "text": "P2025", "styles": { "code": true } },
-            { "type": "text", "text": " when you try to update or delete a record that doesn't exist. We catch that specific error and return 404. For ", "styles": {} },
-            { "type": "text", "text": "findUnique", "styles": { "code": true } },
-            { "type": "text", "text": ", Prisma returns ", "styles": {} },
+            { "type": "text", "text": "Heads up on 404 handling: Prisma behaves differently depending on the operation. Some methods return ", "styles": {} },
             { "type": "text", "text": "null", "styles": { "code": true } },
-            { "type": "text", "text": " instead of throwing, so we check manually.", "styles": {} }
+            { "type": "text", "text": " when a record isn't found, while others throw an error with code ", "styles": {} },
+            { "type": "text", "text": "P2025", "styles": { "code": true } },
+            { "type": "text", "text": ". You'll need to handle both cases to make the Cypress tests pass.", "styles": {} }
           ],
           "children": []
         }
@@ -866,7 +960,7 @@
           "id": "s7-mongo-code",
           "type": "codeBlock",
           "props": { "language": "javascript" },
-          "content": [{ "type": "text", "text": "import Post from '../models/post_model.js';\n\nexport const createPost = async (req, res) => {\n  const post = new Post(req.body);\n  const saved = await post.save();\n  res.json(saved);\n};\n\nexport const getPosts = async (req, res) => {\n  const posts = await Post.find({}, 'title tags coverUrl createdAt')\n    .sort({ createdAt: -1 });\n  res.json(posts);\n};\n\nexport const getPost = async (req, res) => {\n  try {\n    const post = await Post.findById(req.params.id);\n    if (!post) return res.status(404).json({ error: 'Post not found' });\n    res.json(post);\n  } catch (err) {\n    if (err.name === 'CastError') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};\n\nexport const updatePost = async (req, res) => {\n  try {\n    const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });\n    if (!post) return res.status(404).json({ error: 'Post not found' });\n    res.json(post);\n  } catch (err) {\n    if (err.name === 'CastError') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};\n\nexport const deletePost = async (req, res) => {\n  try {\n    const post = await Post.findByIdAndDelete(req.params.id);\n    if (!post) return res.status(404).json({ error: 'Post not found' });\n    res.json({ message: 'Post deleted' });\n  } catch (err) {\n    if (err.name === 'CastError') {\n      return res.status(404).json({ error: 'Post not found' });\n    }\n    throw err;\n  }\n};", "styles": {} }],
+          "content": [{ "type": "text", "text": "import Post from '../models/post_model.js';\n\nexport const getPosts = async (req, res) => {\n  const posts = await Post.find({}, 'title tags coverUrl createdAt')\n    .sort({ createdAt: -1 });\n  res.json(posts);\n};\n\nexport const createPost = async (req, res) => {\n  // your code here\n};\n\nexport const getPost = async (req, res) => {\n  // your code here\n};\n\nexport const updatePost = async (req, res) => {\n  // your code here\n};\n\nexport const deletePost = async (req, res) => {\n  // your code here\n};", "styles": {} }],
           "children": []
         },
         {
@@ -874,15 +968,13 @@
           "type": "callout",
           "props": { "emoji": "💡", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
           "content": [
-            { "type": "text", "text": "Mongoose throws a ", "styles": {} },
-            { "type": "text", "text": "CastError", "styles": { "code": true } },
-            { "type": "text", "text": " when the id isn't a valid MongoDB ObjectId (e.g. ", "styles": {} },
+            { "type": "text", "text": "Heads up on 404 handling: Mongoose has two different not-found cases. An id that isn't a valid ObjectId format (like ", "styles": {} },
             { "type": "text", "text": "\"nonexistent\"", "styles": { "code": true } },
-            { "type": "text", "text": "). We catch it and return 404 so the Cypress tests pass. For valid-but-missing ObjectIds, ", "styles": {} },
-            { "type": "text", "text": "findById", "styles": { "code": true } },
-            { "type": "text", "text": " returns ", "styles": {} },
+            { "type": "text", "text": ") throws a ", "styles": {} },
+            { "type": "text", "text": "CastError", "styles": { "code": true } },
+            { "type": "text", "text": ", while a valid ObjectId that doesn't match any document returns ", "styles": {} },
             { "type": "text", "text": "null", "styles": { "code": true } },
-            { "type": "text", "text": ", so we check for that too.", "styles": {} }
+            { "type": "text", "text": ". You'll need to handle both to make the Cypress tests pass.", "styles": {} }
           ],
           "children": []
         }
@@ -1003,88 +1095,9 @@
       "content": [
         { "type": "text", "text": "The starter includes ", "styles": {} },
         { "type": "text", "text": "8 Cypress tests", "styles": { "bold": true } },
-        { "type": "text", "text": " that verify your CRUD API:", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl1",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "GET /api", "styles": { "code": true } },
-        { "type": "text", "text": " returns a welcome message", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl2",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "POST /api/posts", "styles": { "code": true } },
-        { "type": "text", "text": " creates a post and returns it with an ", "styles": {} },
-        { "type": "text", "text": "id", "styles": { "code": true } }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl3",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "GET /api/posts", "styles": { "code": true } },
-        { "type": "text", "text": " returns an array containing the created post", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl4",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "GET /api/posts/:id", "styles": { "code": true } },
-        { "type": "text", "text": " returns the full post with content", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl5",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "PUT /api/posts/:id", "styles": { "code": true } },
-        { "type": "text", "text": " updates the title", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl6",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "DELETE /api/posts/:id", "styles": { "code": true } },
-        { "type": "text", "text": " removes the post", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl7",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "GET /api/posts/:id", "styles": { "code": true } },
-        { "type": "text", "text": " on the deleted post returns 404", "styles": {} }
-      ],
-      "children": []
-    },
-    {
-      "id": "s9-nl8",
-      "type": "numberedListItem",
-      "props": { "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
-      "content": [
-        { "type": "text", "text": "GET /api/posts/nonexistent", "styles": { "code": true } },
-        { "type": "text", "text": " returns 404", "styles": {} }
+        { "type": "text", "text": " that verify your CRUD API. Read through ", "styles": {} },
+        { "type": "text", "text": "cypress/e2e/platform-api.cy.js", "styles": { "code": true } },
+        { "type": "text", "text": " to see exactly what they expect — the test names and assertions tell you the response shape and status codes your API needs to return.", "styles": {} }
       ],
       "children": []
     },
@@ -1164,6 +1177,20 @@
         { "type": "text", "text": " is in your server.js. The ", "styles": {} },
         { "type": "text", "text": "cors", "styles": { "code": true } },
         { "type": "text", "text": " middleware allows your frontend (localhost:5173) to talk to your API (localhost:9090).", "styles": {} }
+      ],
+      "children": []
+    },
+    {
+      "id": "s10-callout2",
+      "type": "callout",
+      "props": { "emoji": "💬", "textColor": "default", "backgroundColor": "default", "textAlignment": "left" },
+      "content": [
+        { "type": "text", "text": "Why separate repos?", "styles": { "bold": true } },
+        { "type": "text", "text": " We're keeping the frontend and backend in separate repositories for this class because they have different dependencies and deploy targets. In industry, ", "styles": {} },
+        { "type": "text", "text": "monorepos", "styles": { "bold": true } },
+        { "type": "text", "text": " (one repo for both frontend and backend) are becoming the norm — especially when you have shared code like TypeScript types or validation logic. If you're interested in combining yours into a single repo for your final project, check out ", "styles": {} },
+        { "type": "link", "href": "https://turbo.build/repo", "content": [{ "type": "text", "text": "Turborepo", "styles": {} }] },
+        { "type": "text", "text": " — it manages multiple packages in one repo with smart caching and parallel builds.", "styles": {} }
       ],
       "children": []
     },
