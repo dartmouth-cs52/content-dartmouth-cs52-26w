@@ -246,15 +246,15 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "react-intro": {
-          "pages": [
-            "sa3-intro-react-short-assignment"
-          ],
-          "slides": []
-        },
         "state-management-part-2-refactor-videos": {
           "pages": [
             "sa-state-management-short-assignment"
+          ],
+          "slides": []
+        },
+        "react-intro": {
+          "pages": [
+            "sa3-intro-react-short-assignment"
           ],
           "slides": []
         }
