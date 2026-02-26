@@ -1,0 +1,5280 @@
+{
+  "blocks": [
+    {
+      "id": "34d2200b-6914-4a69-a51d-73c96b070ac5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For this assignment we are going to build an ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://expressjs.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "express",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://www.mongodb.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "mongodb",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " CRUD api server for our react+zustand blog frontend. This will finally bring our stack all the way down to the database. In this part we’re going to be adding in  ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ddaa4603-e829-4567-9328-403120897235",
+      "type": "video",
+      "props": {
+        "url": "https://res.cloudinary.com/dali-lab/video/upload/c_scale,w_800/v1589346003/cs52/withauth-small.webm",
+        "caption": ""
+      },
+      "children": []
+    },
+    {
+      "id": "9aa2f6ad-66f0-40d3-9cbe-99957d258d8d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "65019296-a4ad-44a3-b3ee-5b19a7c52336",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Assignment At a Glance",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8c0b5325-7509-40cd-8366-c0a613a1886a",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Authentication: We’ll extend both our frontend and our backend to support authentication and users!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "81eedd1e-9ea5-4b68-bfaf-264027b3d882",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "On the frontend we’ll want to add a place for users to sign in. We’ll create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signout",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " routes and add a way to restrict access to certain routes based on authentication. We’ll do this by designing our own higher order component.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "30642d51-e5ec-4209-bb51-be981baef4cf",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "On the api server, we’re going to also add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " routes that will connect to a new User model and Controller. We will also use ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://passportjs.org/",
+          "content": [
+            {
+              "type": "text",
+              "text": "Passport.js",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " to make JWT’s for us.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4ab2de61-bb84-4adb-ae28-a014f6921a97",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "eb7054a0-e8d7-4a07-845b-8deddf328882",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Some Setup",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a58dc20b-9264-4819-a573-dc0df94edf25",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll just continue working on the same code from Lab5.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "daff0dd1-36e4-42a0-a1f6-9009672428e1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’re going to do a new thing with our git repos. We’re going to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "tag",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " a certain revision so you’ll know where you started on authentication.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9cd469f6-56f4-41ab-b438-6a405929eb2f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Go into your Lab5 directory and run:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "00dd0e49-c320-4b1d-ad3e-144168adc1da",
+      "type": "terminal",
+      "props": {
+        "code": "git checkout -b withAuth",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "a72d923a-2da3-41f7-acda-fca3c0c631d6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Go into your Lab4 directory and run:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e806f293-4f83-4b09-a974-b26108dfcbb6",
+      "type": "terminal",
+      "props": {
+        "code": "git checkout -b withAuth",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "8bee75ec-7440-49ab-9eee-48f7c32163d7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Great, now you have a feature branch where you are adding in authentication, and a main branch before you veered off course and made this terrible decision to add authentication to your lovely content platform.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ff208644-ba87-4841-9adf-89de74407db9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You will end up with 3 server urls at the end of this:  A hosted url for loading the frontend, a hosted url for the api server, and an Atlas Cloud Mongo database url. In your hosting platform (render.com) for each of lab4 and lab5 you can create a new service to publish your withAuth branches as separate services (don’t use the same service as your prior labs).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "45d8ed90-315f-4b0a-a2fc-0ae3ee5b7610",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll be working on both the api server and frontend app. So you’ll have two code windows open and two services running - both frontend and backend!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2138eb1a-7217-4d90-adac-2ce48d539672",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "0d915198-5bab-4009-9981-2a87cf0dad80",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "red",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 1,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Auth Enabled API",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "eb83cde7-7d8a-4adc-8c97-32b02f5b8086",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We shall start with the backend.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab1e7c51-6f9a-4e5e-a802-c538a54cedaa",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "6d294cd7-6bfb-4d5e-b262-3bcaed8601c0",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Secret Key",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9d49faea-8a3e-4074-af44-834c5ec21ff4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For signing our JWT’s on the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server side",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " we’ll need a secret key. Might as well set that up now.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9c252c5e-ba79-4d42-b143-05da02d50b3a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll need to create an ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "AUTH_SECRET",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " environment variable with some long random string (any characters).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "83f083cb-acb8-41df-b862-73f38ebb2b11",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "dotenv",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " module to import it into your code. IE. Save ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "AUTH_SECRET=\"somerandomstringthiscanbeanythingyoushouldmakeityourown\"",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " into a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".env",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file that you do not add to git.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b8ec55c6-96ef-4a78-a3f8-4d19f7d9a5ef",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".env",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".gitignore",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3e68c8a9-f7ba-4a48-ba9d-e7bc85fef151",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Then in your code in any file where you need the secret you can use:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "367d4563-44a7-49e1-a496-2b3224c8c53b",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import dotenv from 'dotenv';\ndotenv.config({ silent: true });\n\n// and then the secret is usable this way:\nprocess.env.AUTH_SECRET;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "520a5819-09b6-4725-89c7-28830565de96",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ During deployment for ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://Render.com",
+          "content": [
+            {
+              "type": "text",
+              "text": "Render.com",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "  you’ll need to add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "AUTH_SECRET",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to your environment variables in Settings!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f771f519-a6e9-477f-90af-03bd00f6b8c4",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/heroku-1767548298128.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "864bf156-7b8a-4057-a351-02b6003cf5bd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "5e9c9fb5-560b-44fe-96af-c5b05c3590d2",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "API Server Auth support",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5c406cf4-58b8-43cd-b1e3-c3ffb8c615c0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s start adding authentication support to the api server.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9ec1ccea-be54-467e-8ffb-442c75f24dbe",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "e6ef83bb-e65e-4a07-9798-43522605c075",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "User Model",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ef4248a4-a3a6-405e-80be-ac83d44b0a6a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To start with, we want to add Users. This means we’ll need a User model.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5b5ec66e-0fa9-4345-ae6d-5ae8b22081a4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 You know models from Lab5 and SA6, oh yes you do. Create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "models/user_model.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file. It will be set up identically to your Post model (ie. copy and refactor), but with the following fields:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "abcff544-b1ca-480a-b68a-b7c5f126c4fb",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "email: { type: String, unique: true, lowercase: true },\npassword: { type: String }",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b8473689-d3fa-4a8e-80d8-11c3c73e3b32",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For now we won’t store anything else in the User model, but you may eventually want to add to this.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f499b50c-7766-48da-8b71-f98332dbc0f0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Make sure you have the config object:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d3738479-d0d3-4657-84fc-8369c172596d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  toObject: { virtuals: true },\n  toJSON: { virtuals: true },\n  timestamps: true,\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5088f20b-6d4e-4f37-99b1-809bc28cbeb2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These various settings provide a cleaner output object to JSON with ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "id",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " from ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "_id",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and also turns on using timestamps for each record.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "952d2a5e-e28d-4829-88ac-3359aec8e909",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "4d2503b9-6d2e-4aea-b4e6-bab849404e98",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Salt + Hash",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "63dff209-62c1-430a-980b-cd11b6f73839",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Remember how we planned on saving our passwords?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c66cc37e-9a1e-4fd3-8482-f33fde64c569",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/saving-password-1767548298128.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "a721f51b-a51c-4130-8adf-674e24fc9d26",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now we get to implement that!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8baff8a6-a875-4f84-9f82-2eeb752301d9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 We’re going to use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "bcryptjs",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " module for this. So you should ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install bcryptjs",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and import it into your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user_model",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " now.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "855f58a4-f7a5-4303-8bcf-443128a52a96",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cb59d194-71bd-4725-a260-e3efd21cf071",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Saving Salt+Hash",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1c45c048-03be-44c0-9e7e-1a5793712b8f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For saving the password, we’re going to need a utilize a mongoose ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://mongoosejs.com/docs/middleware.html#pre",
+          "content": [
+            {
+              "type": "text",
+              "text": "pre save hook",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ". This is a bit tricky. We define a function in our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user_model",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " that will be called when the User object is saved. It will then take the plain text password and generate a salt and hash the password and save the salt+hash instead.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d9281763-1c44-4d88-9bfc-003f4aca7494",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The syntax for the pre-save hook is:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a6f24c1f-e158-4a91-bf6f-f6f47d96a87b",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "yourModelSchema.pre('save', async function beforeyYourModelSave(next) {\n  // this is a reference to our model\n  // the function runs in some other context so DO NOT bind it\n  const model = this;\n\n  //TODO: do stuff here\n\n  // when done run the **next** callback with no arguments\n  // call next with an error if you encounter one\n  // return next();\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3cdfc2da-4b8f-40a5-a0a4-8cfd35ba4a2d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "bcryptjs",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " part what we’ll want to do first is generate a salt and then use that salt to hash our password. Take a look at the docs, there’s a few ways to do it. ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "10",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " (the default) is fine for the number of rounds.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b42eb413-8377-4882-9b5c-256856001b47",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 construct a method for: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "userSchema.pre('save', function beforeUserSave(next) {",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Don’t forget that you’ll need to set ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "this",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " at the top.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "21f8c454-6717-4e74-9a7d-4fcd36a4a57b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Generate a salt as they do in the docs and then hash ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user.password",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " with the salt. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f77ed386-bfcf-4529-a03e-23f004a1a4b4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Tip: in the docs the first argument to hash is the password, in our case you have it in a variable ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user.password",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " - in case that was confusing documentation.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "caf900a8-db1a-4498-ae49-78d8697a329c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Set the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user.password",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to the hash and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "return next()",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " which will allow the hook to proceed.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e0b51dab-ef52-416e-9597-b1357831efca",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "But wait, won’t this update every single time we save the user? Yes, that might not be ideal if later we want to add in new fields and such!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "78f2744f-6971-46b3-9030-04d84d368eea",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Luckily, you can add a check to see if the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "password",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " field is being updated or not at the top:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0d639013-4dd8-4f97-8a96-69f9ff8815f6",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// only hash the password if it has been modified (or is new)\nif (!user.isModified('password')) return next();",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8dfbe22e-3d66-4f27-bdc2-8d70594f3c4b",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Great, now we’ve got the first part down, how about comparing.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6164aba4-c9b9-49b3-876b-49ad61ef2bdd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "e7848fcb-73c4-48ee-8a16-9037a517a520",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Comparing Salt+Hash",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8a140792-cc21-4dcd-a192-d886809f700d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We now want to add a method to our model to support comparing passwords. Turns out there is a nice way to ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://mongoosejs.com/docs/guide.html#methods",
+          "content": [
+            {
+              "type": "text",
+              "text": "add methods to a schema",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " in Mongoose. As with anything javascript, everything is just an object, so we can add a property in at anytime.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2c394a54-acf5-4540-a40a-e08634a2e408",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 We need to add a method that takes a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "candidatePassword",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and returns a boolean. We’ll use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "bcrypt.compare",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " functionality to do this. We’ll make this an async function.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0ff5b423-1b02-47d7-8178-b5085f1669dd",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// note use of named function rather than arrow notation, required here\nUserSchema.methods.comparePassword = async function comparePassword(\n  candidatePassword,\n) {\n  const comparison = await bcrypt.compare(candidatePassword, this.password);\n  return comparison;\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fafddcf5-27ae-420f-be77-48fd7a65142c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This is slightly adapted for modern js from stackoverflow ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://stackoverflow.com/questions/14588032/mongoose-password-hashing",
+          "content": [
+            {
+              "type": "text",
+              "text": "mongoose-hashing",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "29978f10-92a6-4b8f-bc64-d32f0fb0a1d6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "dd303bf7-78c9-4456-a85d-170401a57dbb",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "User Controller",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6d6848a0-ee03-48dd-9b19-811e30bce24a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s add a new User controller!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "44bfa938-78c2-48e1-b8ef-f1b4b40df504",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "controllers/user_controller.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a6e74e5a-fce4-44a8-9604-de2d96412768",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To encode and decode our JWT’s we’re going to use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "jwt-simple",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Go ahead and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " it and import it: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "import jwt from 'jwt-simple';",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "deaddf4a-f9dc-43db-aa66-63232fa3e719",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Also import our new User model and init ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "dotenv",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " same as you did before!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "734df028-a61b-4b41-9f71-7a0fd56330f7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The controller has functions that we call for express routes. We are going to add 2 new routes ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", so lets create function headers for those:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0db0ab37-134c-49c5-ab2c-21725c0eb12c",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "export const signin = (user) => {};\n\n//note the lovely destructuring here indicating that we are passing in an object with these 3 keys\nexport const signup = async ({ email, password }) => {};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "87474a62-9a76-4ea2-a15a-3a1f41b01daa",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "When we generate a new JWT we need to simply encode a particular bit of json. This json has particular recommended fields which we’ll use. We’ll use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "sub",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " or subject claim for the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user id",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "iat",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "issued at timestamp",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". This is according to the ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2",
+          "content": [
+            {
+              "type": "text",
+              "text": "JWT standard",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4f683550-2ed1-4491-87ff-b9b000fa7ec1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 We’ll just create a helper function for this:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "21adcc50-ab2f-4d3d-8e1c-712816e66f9d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// encodes a new token for a user object\nfunction tokenForUser(user) {\n  const timestamp = new Date().getTime();\n  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.AUTH_SECRET);\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "42e5acd9-e315-40dc-b1ba-af192ac29bba",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "What should our two authentication methods do?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f4dbb70f-e341-48eb-a258-d332680d28ec",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/token-process-1767548298128.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "d781e293-4709-4aac-ae56-c2c0460f54a6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", once we have verified username/password we can just generate a new token. We’re going to do the verification with a passport middleware, so our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function will already be protected – all it has to do is return a new token, nice and simple.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "47d84c6c-059b-480c-b9f5-f7efc0c65299",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", it will be a bit more complicated. We need to create a new User object and save it, but first we need to verify that the user doesn’t already exist in the system (check their email address).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "00cf679c-b6b4-4d61-b2c3-931ed14173c0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "First, let’s grab email and password and check them (this is inside the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function in our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user_controller",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": "):",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fd975148-9ed6-4ba1-866f-a8d778795c5e",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "if (!email || !password) {\n  throw new Error('You must provide email and password');\n}\n\n// See if a user with the given email exists\nconst existingUser = await User.findOne({ email });\nif (existingUser) {\n  // If a user with email does exist, return an error\n  throw new Error('Email is in use');\n}\n\n// 🚀 TODO:\n// here you should use the User model to create a new user.\n// this is similar to how you created a Post\n// and then save and return a token\nawait user.save();\nreturn tokenForUser(user);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0e477ee5-57b5-40de-8b5f-3cb0c5798277",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, now we have our controller and model done. We need one more module. A module that will provide passport authentication services to the rest of the app.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8b154a2e-2d83-454f-b349-b806c109df46",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "ab577191-bee3-4904-9701-6a684638367a",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Passport Service",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "55e0b251-9a85-4a63-b320-3b39a7af92f6",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/passport-logo-1767548298128.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "3d563be4-1161-4cf4-9ab7-e629c6ab6ee6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’re going to use more npm modules! Yay!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f1524538-b971-4e4f-acdd-55fdd7368432",
+      "type": "terminal",
+      "props": {
+        "code": "npm install passport passport-local passport-jwt",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "d63e2dde-75e3-49da-b5ca-0588e56fa53f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll be using ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://passportjs.org/",
+          "content": [
+            {
+              "type": "text",
+              "text": "Passport.js",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " to provide authentication services. Passport gives us multiple authentication “strategies”. We’ll use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "passport-local",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for authenticating with username and password, and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "passport-jwt",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for using JWT’s.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b1b8b737-3433-48f7-b677-944ef536067b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Passport is a middleware in our routes, and it will analyze requests that need to be protected and deal with validating our JWT. It will do this automatically as a middleware on our routes.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f714a2d5-911b-41a2-ac5b-0f785601212c",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-frontend-and-backend-authentication/assets/passport-strategies-1767548298128.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "8633dd65-5861-4650-bc05-732ba09c02b7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a directory and file: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "services/passport.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d5330bb7-ed12-4b7b-99e4-b9728253d436",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import passport from 'passport';\nimport LocalStrategy from 'passport-local';\nimport { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';\nimport dotenv from 'dotenv';\n\nimport User from '../models/user_model';\n\n// loads in .env file if needed\ndotenv.config({ silent: true });\n\n// options for local strategy, we'll use email AS the username\n// not have separate ones\nconst localOptions = { usernameField: 'email' };\n\n// options for jwt strategy\n// we'll pass in the jwt in an `authorization` header\n// so passport can find it there\nconst jwtOptions = {\n  jwtFromRequest: ExtractJwt.fromHeader('authorization'),\n  secretOrKey: process.env.AUTH_SECRET,\n};\n// NOTE: we are not calling this a bearer token (although it technically is), if you see people use Bearer in front of token on the internet you could either ignore it, use it but then you have to parse it out here as well as prepend it on the frontend.\n\n// username/email + password authentication strategy\nconst localLogin = new LocalStrategy(\n  localOptions,\n  async (email, password, done) => {\n    // 🚀 TODO: should find user by email and check password\n  },\n);\n\nconst jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {\n  // 🚀 TODO: is called with confirmed jwt we just need to confirm that user exits\n});\n\n// Tell passport to use this strategy\npassport.use(jwtLogin); // for 'jwt'\npassport.use(localLogin); // for 'local'\n\n// middleware functions to use in routes\nexport const requireAuth = passport.authenticate('jwt', { session: false });\nexport const requireSignin = passport.authenticate('local', { session: false });",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ee31bce3-1923-4cdd-986b-ff8c26783ade",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "localLogin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " we need to run the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "comparePassword",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function that we wrote earlier.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7a958128-cf76-410e-84fa-cac037447a39",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "localLogin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function in the interest of time.",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "30073fa7-9c56-4959-bbae-e0f06b4ee5e1",
+          "type": "paragraph",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "  Read through the above, make sense?",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "4dd6129e-a51f-47a0-a1cc-22a33416786d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "✍️ Comment each of the  calls above to explain what case it is and what it is doing. We will grade based on the comments in this case.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "68270cee-9bcc-4e9c-ab87-507db5a4747f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "jwtLogin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", we are given the payload of the passed in JWT. We need to check the userid and return the found user.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "88092c70-79b5-43c1-885a-3178addd0e98",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Want to give ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "jwtLogin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " a shot?",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "6e7dd38a-afdd-4edf-b3a3-76d0406c255a",
+          "type": "paragraph",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "  ⚠️ Many mongoose functions return a null object rather than an error — hence we have to check that. ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "done",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " is the callback and has the form ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "done(error, value)",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " as is fairly common with some JS libraries.",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "98e00afe-028d-403c-a15c-6ccadb4d037b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "How does this all fit together?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6b9e2c33-ead6-41c7-b956-253bb8bffee8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "8fff80e0-34d0-44c1-aa47-519ece78d9b5",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Authentication Routes",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "747ef89a-d89d-4667-ae6e-c4850b6a6fe3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now that we have all the required parts, we are ready to tie it all together with Routes!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4c9dccee-41af-452e-9a20-a9290b548688",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Edit your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "router.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "12fd89aa-f4ee-48bc-86a8-9627a7cdc642",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// our imports as usual\nimport * as UserController from './controllers/user_controller';\nimport { requireAuth, requireSignin } from './services/passport';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0b2abefd-1938-4db4-89d5-31cfacd70a24",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s add in the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " route. Note the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "requireSignin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". This is the passport middleware. It makes this route protected by the password+username strategy we defined in our passport.js file. Only once the user is authenticated via that method, will it allow the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "UserController.signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function to run.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9c943e31-58c0-4eda-bca1-194fd1462b55",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "router.post('/signin', requireSignin, async (req, res) => {\n  try {\n    const token = UserController.signin(req.user);\n    res.json({ token, email: req.user.email });\n  } catch (error) {\n    res.status(422).send({ error: error.toString() });\n  }\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3ca6a639-f1e5-4618-9f3b-f19c05ba3c16",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 And add in the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " route.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "590fcba0-3d4b-48bf-8f52-26cd36ce675d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "router.post('/signup', async (req, res) => {\n  try {\n    const token = await UserController.signup(req.body);\n    res.json({ token, email: req.body.email });\n  } catch (error) {\n    res.status(422).send({ error: error.toString() });\n  }\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d9465be3-5c30-4585-bd06-b4258982a3fa",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "👀 See how we are handling the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "req",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "res",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " objects in each router function. This will be the pattern that we use, await an async function in the controller then ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "res.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to send the response back to the client.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "30f600b4-0cb1-45f1-93c0-86c29279b7a8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Note also how we set a status code and then send an error message. Note the 422 is a status code, there are ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://http.cat/",
+          "content": [
+            {
+              "type": "text",
+              "text": "lots of different status codes",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " to choose from, but is usually up to your client to interpret anyway, so choosing is somewhat arbitrary.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "43cf9523-5238-4fe7-8afa-4dff00b363ea",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Both of these are POSTs, so that implies that we are hoping that the frontend is going to be passing in some data in the request body — and that they match the email and password we are expecting.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9f7af042-3649-4403-9c47-077b5df82cb1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 What other routes should be we protect? For now let’s use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "requireAuth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to protect ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "createPost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "updatePost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "deletePost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". As easy as: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".post('/thepathinyourroute', requireAuth,async (req,res) => {})",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " That is, you are setting ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "requireAuth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " as middleware, in the middle between parsing the path, and your function handler.  ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c6c670de-1826-4f2c-82ac-f8b978a2def1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Try a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "curl",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " post to create a new post, you should get an unauthorized error!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "97132b5c-a190-4ea3-9166-436e41d3a7db",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s get a JWT we could use:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a3f7e5b9-f85a-48ba-8eae-112c57dcccad",
+      "type": "terminal",
+      "props": {
+        "code": "# try to signup\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"email\": \"test@test.com\",\"password\": \"password\"}' \"http://localhost:9090/api/signup\"\n\n# then try to signin\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"email\": \"test@test.com\",\"password\": \"password\"}' \"http://localhost:9090/api/signin\"\n\n# try posting!\ncurl -X POST -H \"Content-Type: application/json\" -H \"authorization: JUST_THE_LONG_TOKEN_STRING\" -d '{\"title\": \"test\",\"tags\": \"sometag\",\"content\": \"this is a test post\"}' \"http://localhost:9090/api/posts\"",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "a9abd016-d2dc-42d1-906b-be4894f6237b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Done! You now have an API server that supports authentication. This is fairly rudimentary, but you can expand on this. For instance you can make sure that a user can only update their own posts (just save the userID along with the post).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7019478e-23b5-44a0-8573-547dd2565352",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🆒 Within ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "post_controller.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for any route that is protected by ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "requireAuth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " you will now have a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "req.user",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " object. Nice!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a5658ce0-d129-48fe-85bb-32b1f9ce2b15",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Might as well just add in recording who the author is with each post now. Edit your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "post_model.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file and add in this field to your schema: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "author: { type: Schema.Types.ObjectId, ref: 'User' },",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". We are saying that the author field is now a reference to a User. We can later get this value automatically filled for us or can use the id to look up the author using ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "populate",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b896efa2-f344-454f-89c5-2daaa7a3cf17",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Don’t forget to update your controller to utilize this new field.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "433ae3a7-46bc-42ac-9d05-3dc359892b80",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now when you make new posts, here’s what your mongo database entry will look like:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d07e3485-342d-4263-b10a-5b25aff3ccce",
+      "type": "codeBlock",
+      "props": {
+        "language": "json"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{ \"_id\" : ObjectId(\"57a94e206ec5eae238e359f8\"), \"author\" : ObjectId(\"57a94813e4c55bb432fc3a4d\"), \"content\" : \"this is a test post\", \"tags\" : \"words\", \"title\" : \"first post MORE TESTING\", \"__v\" : 0 }",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5873dd3c-0a4b-4c75-8aca-2546f1fb6c49",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You can also have arrays of objectIds. This might come in handy if you are trying to model other types of relationships.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "20ed256e-1104-43a4-84f7-010ae7c483a9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "fddb3eba-110f-44af-99f7-992708db21b3",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Frontend Authentication",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "26f2e38e-1f15-4f7f-9397-7efad2b91945",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, so now we should update our frontend to support authentication too right? YES!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "14131bb3-336b-4418-9fa2-b8dae7047510",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "2a541947-d76f-4c3e-93ef-73bdf301fd33",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Frontend Auth Summary",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dc272b3e-e002-4051-8168-43e3967b77b4",
+      "type": "numberedListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Add in new authentication slice",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a57a4d06-8c0e-494a-a686-2dc06d706c5c",
+      "type": "numberedListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Add in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " routes",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "414628b4-840f-4f1c-a1b1-a3563f5d3ba4",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "these routes will need associated components",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "bed69fed-9b4f-4243-a8e0-341802c1045a",
+      "type": "numberedListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Modify NavBar with links and signout functionality",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "03ba0781-69da-4704-95ad-d43cdfd850ed",
+      "type": "numberedListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Create a new higher order component to allow us to require auth on any frontend components",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9bcfa580-7537-45fd-b094-564d4b1e0488",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7324b1aa-b463-48a8-81f8-95497fe99b8c",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Auth Slice",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "04e13872-69ff-47bb-99e5-6f98e5908794",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a new auth slice in your Zustand store. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9e473a3a-b23a-4ebc-94d8-736d8a1ea0b0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll need one state for now: a boolean for ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authenticated",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " where the default is false, and four actions: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "loadUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " , ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signinUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " , ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signUpUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " , ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signoutUser",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "671720ad-294f-4441-8aa9-80bd492fe9f3",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// store/auth-slice.js\n\nimport axios from 'axios';\n\nexport default function createAuthSlice(set, get) {\n  return {\n    authenticated: false,\n    loadUser: () => {\n      // check for token in local storage\n    },\n    signinUser: async (fields, navigate) => {\n      // sign in user\n      // takes in an object with email and password (minimal user object)\n      // does an axios.post on the /signin endpoint and passes in { email, password}\n      // on success does:\n      //  sets authSlice authenticated state to 'true'\n      //  localStorage.setItem('token', response.data.token);\n      //  navigates to the home page ('/')\n      // on error does:\n      //  set error in error slice: get().errorSlice.newError(`Sign In Failed: ${error}`);\n    },\n    signUpUser: async (fields, navigate) => {\n      // sign up user\n      // takes in an object with email and password (minimal user object)\n      // does an axios.post on the /signup endpoint (only difference from above)\n      // on success does:\n      //  sets authSlice authenticated state to 'true'\n      //  localStorage.setItem('token', response.data.token);\n      // on error does:\n      //  set error in error slice: get().errorSlice.newError(`Sign Up Failed: ${error}`);\n    },\n    signoutUser: async (navigate) => {\n      // sign out user\n      // deletes token from localstorage\n      // and deauths user\n      // sets authSlice authenticated state to 'false'\n    },\n  };\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f2f3fec9-1cba-4f19-abed-9e0fdde308c4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The most important difference in the above ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signupUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signinUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " actions is that they take the token that is in the response and put it in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "localStorage",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". We’ll be able to access this whenever we load up our site, so we’ll remain logged in without having to re-authenticate every time.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d174934f-65b4-4c10-bb9b-6674fbd18dee",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "ab99dd3b-70ae-4c61-948d-741535fed871",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Import the new auth slice and specify auth type",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c4f826a9-6184-4011-aa98-27b459b665ac",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// store/index.js\n\n// AT THE TOP, WITH YOUR POST SLICE!\nimport createAuthSlice from './auth-slice';\n\n// INSIDE YOUR USESTORE\nconst useStore = create(\n  devtools(\n    immer((...args) => ({\n      authSlice: createAuthSlice(...args), // add in your new auth slice\n      // WHATEVER OTHER SLICES/LOGIC YOU HAVE TO HANDLE POST STATE\n      authType: 'token', // specify 'token' auth type\n    })),\n  ),\n);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8224cbc7-e923-4285-8e42-091e51098387",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We import the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "createAuthSlice",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function we defined in './auth-slice'.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e1a09c8a-1738-4d53-9331-57e8d0b13ae5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In the object passed to our existing store creation function, we create a new slice of state named 'authSlice' by calling our new ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "createAuthSlice",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e9971521-8ac4-4b0d-8f6b-bbcf2f63eb41",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We also specify an authentication type to use token-based authentication.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2f15d0b6-bfba-4ab6-92d5-c852314faca7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "8a76f02e-def8-4508-bbc8-303f61f6b30d",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Authorization Header",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "54ff5462-8f7f-41f0-9e95-e758d9781876",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll need to add an Authorization Header to some of the existing axios API calls. For each of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "deletePost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "createPost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "updatePost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " you’ll need to modify the axios call to pass in headers. Here’s what the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "createPost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " one will look like:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e20b1a07-e701-4cca-8814-c8200b701564",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "axios.post(`${ROOT_URL}/posts`, post, {\n  headers: { authorization: localStorage.getItem('token') },\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0c09a7da-11c6-4e4c-bde1-3bda9cdd0f37",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Note, the headers are in a config object being passed in as a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "third argument",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to axios.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "73a840f8-73c3-4617-a09b-8ce07f2330e0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "3513386d-7cc2-4d33-9f4e-c4f378de4244",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "On First Load",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6fda5ce1-c761-409c-a8b6-9301a40a9bd4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 In your main ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "app.jsx",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file you should call the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "loadUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function from your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authSlice",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to check for a token in localStorage if you want it loaded on first start or reload:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "09abbf75-702c-4e59-8333-7abeffdbcb27",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// include at the top with your imports\nimport useStore from '../store';\n\n// inside your App component\nconst loadUser = useStore(({ authSlice }) => authSlice.loadUser);\n\n// call loadUser in useEffect\nuseEffect(() => {\n  loadUser();\n}, []);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a1c0b78b-f8bc-47d8-a1df-c37c742971f5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This will set our state as authenticated if there is a token available that was previously saved. You can debug this in your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Application",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " -> ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Local Storage",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " Chrome inspector tab.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "90220368-93f3-4ff9-8c30-8f119ba6cb25",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "5c3d7bc6-000b-4136-9aaf-ff41cacf2ce9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Auth state",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0f2ae78c-4362-49be-87a4-9d648f2df5a6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Your auth slice should have the default state of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "{ authenticated: false }",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Which means the state to access to check if someone is authenticated is simply ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "const authenticated = useStore(({ authSlice }) => authSlice.authenticated);",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d40edc5c-160b-48dc-9cec-7071e6f6d38c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You might want to eventually add more things, such as the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authorname",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " here later.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f31fe8f9-bea0-4ebf-a4f8-b2590bcd7744",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Why are we just setting a boolean",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", you ask? Good question. You may want to store something else, like the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authorname",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " which is a bit more useful.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1595c786-2fa3-4982-8f35-83cc11b5ff69",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The security here is provided by the server, which if you don’t have a valid token won’t allow you to do certain operations. The frontend just needs to know whether it has a valid token or not so a boolean will suffice here — this is so our user experience can be informed about auth status and show the appropriate pages.  But if a user does get to them, the server will prevent any unauthorized operations anyway.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8d48416a-9291-4c68-b8cd-e0e8127fe891",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cc834dca-a275-485c-8654-0fce3c52ed99",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Components",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c8920445-f202-4af8-ab20-d96b60e8f425",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, finally we’re ready for the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SignIn",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SignUp",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " components.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "019e65e0-caf1-4906-a066-da52150d4825",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "SignIn",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — A component that will use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signinUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function. Simple form with username and password.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "52e004a7-b971-4f73-bd79-9a970c6ad450",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "SignUp",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — A component that will use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signupUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function. Simple form with whatever fields you want a user to have.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1597c27b-2ba5-4f9e-9dd4-ccf50e83164a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create these components. You can base them off of your New Post component pretty easily. Feel free to create one single component for this with different buttons triggering the signup / signin if you prefer that UX.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "70e89bae-3434-48c9-b430-ddf1f2a4e6ad",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Add Routes to these components inside ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "<Routes></Routes>",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in your main ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "app.jsx",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6f10f90c-4c4d-491c-9f44-0d9f5a622a91",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "eb478551-5fc3-4994-9133-97e5829a3332",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "NavBar",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ce34e0ce-070c-4c79-8f0b-4dd619e4969e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For SignOut simply make grant our NavBar component access to the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signoutUser",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function. That function can do a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "navigate",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to ‘/’ on signout. You can just have a signout button that triggers this function. Then use the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authSlice.authenticated",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to only show the signout button if a user is logged in, and signup/signout otherwise.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4815ef6b-0c5b-410f-8b27-a6959d6b53d8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Additionally add Links to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signin",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "/signup",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "27ed7fd1-bc95-41a9-b8da-6ffe71af16ed",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "13d0a620-010e-41d2-beb6-18450b298e06",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Authorized Component",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "acece1f7-17a2-4b02-8c35-0a62275dc501",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "One last thing. Right now an unauthenticated user can access the “Add a post” functionality. They will get an error (if you implemented an error state+function+component) or just a submit button that doesn’t work. Let’s make that page ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "protected",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " so that if the user isn’t authenticated they will be prompted to log in. Rather than adding checks into each of our components, we are going to create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "higher order",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " component that wraps Route! How might you go about doing this?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "75778bc3-96ac-4146-b7e1-dc7d70606684",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "What we can do is create a new component that wraps a Route component and some logic inside it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8e4ba27e-5d54-40a7-84e1-4b9590aa3208",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a new component ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "requireAuth.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e009f60d-01f3-45e9-9b45-267828848c84",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Here’s it is in toto:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4ee8ee76-7eae-434d-aac6-fa8c7755b4e0",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { Navigate } from 'react-router-dom';\n\nimport useStore from '../store';\n\n// Router Wrapper\nfunction RequireAuth({ children }) {\n  const authenticated = useStore(({ authSlice }) => authSlice.authenticated);\n\n  if (!authenticated) {\n    return <Navigate to=\"/signin\" />;\n  } else {\n    return children;\n  }\n}\n\nexport default RequireAuth;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dadb5ec0-58ae-426b-a764-2ca1918b0636",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Note how it is a nice simple function component that simply checks if we are authenticated and if not navigates to sign-in.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9705e2c9-843f-4cb8-9f88-cd9af24fb43e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now in your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "<Routes>",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "app.jsx",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " you can import ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "RequireAuth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and protect the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "New",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " path like so: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "<Route path=\"/posts/new\" element={ <RequireAuth> <New/> </RequireAuth> } />",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "86bc6b09-dcfa-475e-9357-99bf20a03171",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "12a67987-dc1c-41ea-9909-a934fd1ddad9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Extend the User Model with Author",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b6be7d14-ee87-49ee-9224-ca2f794d684c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Extend the User Model to store the author’s name in addition to email, and add in support for that everywhere: express routes, user_model, user_controller, post_model, post_controller, Zustand state, function, and post components.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fdfaa646-f5c3-46ea-8b9d-c8f6ac0ff599",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Display the Author Name along with every post. You are welcome to either duplicate the name and store it directly as a field in the Post model, or look it up by reference. Note: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "name",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " is a reserved word in JS and can cause problems if you reassign object.name, so call your field something other than name (e.g. ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authorname",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " or ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "username",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ")",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "706dfcc2-2d4b-4edc-a18f-aba39c97bd4d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🍹The best time/place to have access to the User object is actually right when you create the post on the api side. Since that route is an authenticated route wrapped in our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "requireAuth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " middleware, passport adds a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "user",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " object to the request for you!  In your createPost method in your post controller you would have access to: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "req.user",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". If the user object has say an ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authorname",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " field, then that would be available there for you to then save along with the post.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dc9ba7be-d322-4987-be06-64398695e895",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "There are 2 ways to associate the user with the post. You can save a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "ref",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to the whole user object (which you started to set up when you added author as an ObjectID type field). If you do that, then later when you retrieve the user you need to use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "populate",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to fill in the object. Or you could add a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "authorname",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " field to post and assign that. Using a reference and populating on retrieval is the better way, you can even select which field specifically to populate so you aren’t sending the whole user object if you don’t want to.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3c8ca587-6452-4110-ad01-b4e53bda14c1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "8525812b-3ff6-4e23-a6dc-85da69e0cccc",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Test and Submit",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "38b1dcb2-5108-4d39-9406-22fcb224068f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Test it all out and make sure all the parts still work!  The cypress tests have a suite for testing our authentication api routes so use those to help.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d6d47d5e-8bb3-4034-b992-088b17bbeb6c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Commit and push both both your Lab5 and Lab4 withAuth branches.  Deploy everything - in render choose your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "withAuth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " branches for new sites so you have 2 new URLS: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Lab4+auth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Lab5+auth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " . At this point you don’t need any help with that.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d4760273-148c-4f54-8798-1e8d14ecdf60",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "9d1affd7-465b-40bf-8444-22744f2f828b",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To Turn In",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e563d8ad-795e-4375-a5fa-68b03ddff37c",
+      "type": "numberedListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "make a comment on the auth ec issue and submit links to the github branches as well as the deployed versions of each of your frontend and backend.",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "2da231bd-1896-4e65-a81b-45cb4bf28385",
+          "type": "numberedListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "include a couple sentence description about what you did",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "a261f8f0-2787-4fa9-9e38-8a27281376e4",
+      "type": "numberedListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "your app should:",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "11f2bace-500c-484b-8647-8f85f7adf07b",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "have users sign-in, sign-up, sign-out",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "1368c7a4-9f5a-42bc-a167-54f043503a7f",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "not allow people to access /posts/new when not logged in",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "7cca9493-fe7c-4bc7-9434-6e08281114a5",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "have a user model that stores authorname, salt+hashed password, and name",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "a8014669-35ff-4c53-b7e2-edda23ddd064",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "have a new Zustand auth slice to handle all auth state and functions",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "febb822e-9340-427f-8861-4215f4cdd73d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "aef9eccd-9d6b-4454-8d8f-3475ee53fb9c",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Extra Credit on Extra Credit!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9081de1c-889c-4561-934e-d51bca9e4d47",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "always mention your extra credit in the README.md file",
+          "styles": {
+            "italic": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "02c8f377-924d-402f-9b18-2da90cc09542",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "so you now have users, what can you do with users? so many things!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b33c2089-07eb-4541-8cf1-06b6287852e7",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "if you didn’t add error message handling before you should do it now (error state in store, error reducer, error action, error component)",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ee32cdfe-315c-46ba-8f10-e35ebf11c537",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "add more pages and content to your app, how about a profile page for each user (add in /user frontend route and api endpoints)",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c2c9ece4-0705-430f-b875-cbc8cc60cac3",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "extend the permissions system so that users can only edit their own posts",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f4f7fb63-3357-41da-9225-6dda54fc503c",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "add in commenting system, authenticated users can comment on posts",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3d43a9b9-a272-46d9-ad3d-f2e1e3f15190",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "suggest something else, this is your time to make this your own!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c254ecbe-7980-4ae5-a349-e3457f7e1598",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
