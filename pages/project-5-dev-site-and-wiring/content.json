@@ -1,0 +1,870 @@
+{
+  "blocks": [
+    {
+      "id": "b4a60e58-bb83-4de8-9a40-831633c6f136",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/project-5-dev-site-and-wiring/assets/iu9jnuusmxzty-1767578166127.gif",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "8257bc2d-d156-40b8-bfd2-cd0aaba2828e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Dev site goes live! This allows testing and sharing of progress for feedback.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c7b89a0d-6fce-439a-8640-d2df87d8d39c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "At this stage, you should have basic functionality in place. For instance, if you were building a web or mobile app, there should be frontend components hitting api endpoints that are pulling data from the database. You should have all the components/views planned out and started in code even if they are simple placeholders. You should be at the point where you have most of your presentational components (UI) laid out and have started on wiring things together with any data sources such as your api server.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "09706854-2b5e-4ec5-89e0-77ca97927897",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "18d395f2-1933-4341-b178-fdcb12afe8b9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Wiring",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fa53f343-c758-4426-9f12-4ed5d05dd385",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For this milestone the main idea is to get a “deep” wiring of your project components up and running in a testable fashion. Your frontend and backend need to be talking to each other. If you have computational elements and display elements, this is the time to move past mockup data and have the display use the computed data. You don’t have to have every data connection wired up, but at least one should be working - the idea being to test the full data path.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "db8dd889-f2fd-47ea-a73b-e8c4c8d6fa26",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "4e29b738-1eee-4012-91dc-51d139c7baf9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "GitHub Milestones and Issues",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b688c901-a26e-432d-8f2e-b129de5b2a1b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To help us plan out the work needed to be done we’re going to use GitHub Issues and Milestones. Don’t worry this won’t be a complicated thing that adds a ton of overhead to the project. You’ll find this will speed up your dev time and breaking up tasks and accomplishing them smoother and faster.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e54be85c-8c2e-4e98-a585-05abbaab5a04",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "8f328490-9898-403b-bfec-5385995b0c18",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Issues",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8f60403e-38e9-46e2-937c-dac8a59b2800",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/project-5-dev-site-and-wiring/assets/issuesviews-1767578166127.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "513c1ad1-f1b3-49c1-af3d-122ffa4282de",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You can think of the issues as individual tasks: “create login button”, “api endpoint for user profile”, etc. Issues can also be bugs that you find along the way.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a270f130-7e4b-4cf2-92fd-233037ca61b3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Break up large tasks into individual smaller ones, each one should be under a few hours of work. The smaller the tasks the faster you will actually work (not just the appearance of speed). It is easier to take on a manageable scope issue and work through it than if the issue has multiple steps that quickly become overwhelming to think through. Assign each other tasks, a little aggressiveness is good!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f2c6c023-4ddf-460d-85b7-6734a759c077",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create at least 2 issues per team member. Create a plan to have a deep wiring of your project so that major parts of your project work and record it as issues.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9649b694-db18-40a4-bf27-d8ea3d56d56c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "2dbeff0e-3c81-4c37-aef9-26e25d77c7f5",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Milestones",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "15850ea6-58f3-417b-bdce-712736c3a079",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/project-5-dev-site-and-wiring/assets/milestonesview-1767578166127.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "c4833c4f-179c-40e7-a176-a74c9ee1c015",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Milestones allow you to assign a due date to a set of issues. These are useful for feature level goals and allow you to easily see progress and group together sets of issues. Milestones should be less specific than “create login button” (this is an issue rather than a milestone). Examples include: “login and user profile flow”, “event review functionality”, “fully integrate current flows with api”. These are generally how people initially think of breaking up tasks - as the more overwhelming goals such as ‘integrate social into product’. However if you create this as a milestone you should then split that into a whole bunch of small achievable tasks: ‘add facebook sdk’, ‘add share button to posts’, ‘show profile image’, etc.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6df048b2-c203-4ead-8893-d8c8480cabb7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Group some issues together into milestones and split up any issues that seem too weighty into smaller tasks.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "42b52e73-2387-4cce-bfba-c0d413bcd3d1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "1f76ba5e-869b-4878-b986-5bfbbd0c3089",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "GitHub Projects",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f0d2e1b5-2de5-4c3c-9358-225e6a071637",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/project-5-dev-site-and-wiring/assets/gh-projects-1767578166127.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "4600d04c-1ba8-45ef-8f34-6b292026eb11",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Project Boards are a great way to view your github issues and have a more organized workflow. Think of this as an active and collaborative todo that is connected to your repos. Github Projects can span multiple repositories which can help you see all your issues in one place.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7af27b74-7167-461c-a441-3013e24ade65",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://docs.github.com/en/github/managing-your-work-on-github/about-project-boards",
+          "content": [
+            {
+              "type": "text",
+              "text": "Get started with GitHub Projects!",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1ceca08d-d28a-4c15-8c93-8752dfc110cf",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "It is not required that you do this, but highly recommended.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2b959ea3-c9a9-489d-832e-a751daeba9c4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⭐ Set up a github project to manage your issues for Extra Credit and because your project will go so much more smoothly.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "280f275a-4543-44aa-964f-c00f4b439cba",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "61299465-beb6-4a99-adb3-abf8f9c82e0a",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Continuous Integration",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1507994d-01b0-4e4f-a24d-f0fcfa3eb494",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Continuous integration is a software development practice where code changes are integrated into your product often and deployed as you go, after code reviews. We’ve already been doing this with the Render automatic deploys on changes. Your main branches should always contain code that works. This way your deployed site and api are always showable and testable.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "55c903b8-37b3-456f-bb66-3961d097a430",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "No action items necessary at this point since this is already how we are set up!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "52c0de2c-723f-43ee-95c4-5ee0e6d34b1e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "fb92f3f6-078c-4262-aaf2-455d53d9589a",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "What About ReactNative",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "266ffb36-cf35-44dc-baee-ba58c4f354a4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If your project is a ReactNative project with Expo this is a bit tricker. What you’ll want to do is create a team Expo account - one where you can share the username and password - this will be helpful later when we will want to have a way to test out your project. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "94f3e06d-8947-46b1-8418-e6749e6df374",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Set up 1 shared expo account that you all log into and with login credentials that you are comfortable sharing with others.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dd5035fb-b466-4982-bb7c-6a8686976f3a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You’ll also want to start using expo publish to make your project available offline. ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://docs.expo.io/workflow/publishing/",
+          "content": [
+            {
+              "type": "text",
+              "text": "See documentation here",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "40fbf0d7-e8fe-41ad-aab3-8e8aa928696f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For continuous integration the easiest option is to try out ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://github.com/marketplace/actions/expo-github-action",
+          "content": [
+            {
+              "type": "text",
+              "text": "Expo publishing using github actions here",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8e79f34a-be4f-486d-ab87-081895af3620",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⭐ Set up continuous integration for your Expo project - this would be super helpful for you to test with, but is ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "extra credit",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f824524a-f961-4607-964b-eaa113bcb098",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "fb1fae8f-d818-4e73-8bce-375dfee8f967",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Such Dev Environment",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "114e37a3-2f90-46fc-a326-41ff31d8b261",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, you can work in your local environment on your feature branch and when you are ready, merge it into main which will deploy it automatically. Do not simply start using the main branch and the dev site directly as your primary method of testing. You should always be working locally first! But this does allow you to merge in changes quickly and you can have a shared dev site where you can see the latest pushed version of everyone’s code and ask others for feedback.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3a9e672e-9503-42f7-a402-3d8dc3b19057",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "fe8e8ac3-408f-41ab-af79-e57015b0509a",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To Turn In:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9bb3c394-57b5-4ae7-a69c-1fee35cc7204",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "at least 2 github issues assigned per team member in github",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bc374f19-dd7c-44ff-92b9-5ce2e2c3b4e1",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "update your ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://README.md",
+          "content": [
+            {
+              "type": "text",
+              "text": "README.md",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " files on frontend and backend to have",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "0c899edc-a800-4151-81ab-64a074bcc371",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "dev urls",
+              "styles": {}
+            }
+          ],
+          "children": [
+            {
+              "id": "81640026-190f-4ce4-b308-481bc2ac9ea2",
+              "type": "bulletListItem",
+              "props": {
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "url of frontend",
+                  "styles": {}
+                }
+              ],
+              "children": []
+            },
+            {
+              "id": "9ee42da8-87f5-4b2f-ac28-7f710dd7fc25",
+              "type": "bulletListItem",
+              "props": {
+                "backgroundColor": "default",
+                "textColor": "default",
+                "textAlignment": "left"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "url for api server",
+                  "styles": {}
+                }
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "78b1e564-d0f9-4553-b853-23114da44e6d",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "demonstrated fetching of data from frontend ↔️ api.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fb0278b6-de2b-48bc-aa64-75795cbaa62c",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "make a short short comment on what worked and what didn’t on your feedback PR in your frontend and backend repos",
+          "styles": {}
+        }
+      ],
+      "children": []
+    }
+  ]
+}
