@@ -1,0 +1,3237 @@
+{
+  "blocks": [
+    {
+      "id": "2f04aca0-961d-4c54-b184-2ce92503590a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Today we’ll be using React Native to build an app that allows us to search YouTube (just like our intro React short way back when.)",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "050ed455-84c9-43e8-b1d8-c3acac1a44ca",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-1/assets/react-native-videos-1767548288941.gif",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "7f9b6e4c-11bc-42b0-9034-eed13bde4676",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "React Native is very cool - all your react skills can transfer over.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b3772e87-cd79-42f8-91c4-cc4c8a80b664",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ Important note! We will be using ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://expo.io/",
+          "content": [
+            {
+              "type": "text",
+              "text": "Expo.io",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " to start your project which should allow it to work more easily on Windows and older OS X though. Expo provides a cool cloud simulator so you can test your app more easily.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7072ad81-aa2d-4fdb-a48d-6fd763f6546e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "971ea392-b750-44ef-be76-6bbac3995657",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Set Up",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "949d3383-a184-4753-a860-1f64952af5e2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 You can do this extra credit in your own repos, all you need to do is submit screenshots and a description in the Extra Credit repository in the classroom.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "08b16e58-019e-496d-8bf4-5813d74bf722",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "59d62f9c-ce42-4784-9a34-833d766f9d80",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Expo.io",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b73554c8-be4e-4ee1-b4a4-8d78307a18d9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Go to ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://expo.io/",
+          "content": [
+            {
+              "type": "text",
+              "text": "http://expo.io",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and create a free account! ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f9bedde6-61fb-4663-ad3d-927ea4d86dd3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "a6bafe0f-64b2-4361-aedf-0254429ee384",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Command Line",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6432d2cc-4bae-4a21-962c-896c70e59c2d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We should already have node installed on our machines, but just in case, let’s go way to the beginning:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8d47c7be-5a65-43be-82da-92a0e2b6e26c",
+      "type": "terminal",
+      "props": {
+        "code": "brew install node",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "c2f6f950-9273-479f-af8a-f33633fa429d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 And, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "if on macOS / Linux",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", we should install Watchman, too, since on those platforms React Native depends on it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "19fec73b-a16e-4fe8-9ac4-6e41e92d5332",
+      "type": "terminal",
+      "props": {
+        "code": "brew install watchman",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "9df1f17c-a029-423c-970e-147d2129206c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Watchman is a file watching service that records when files change, and triggers actions when it detects changes.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c490af53-684e-454e-a0e1-1df9f021f81e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Alright, now we’re ready to use react-native! We’ll be using the expo command line to init our project.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "aa8730e7-084a-4885-9a2c-81e7e60e4b6d",
+      "type": "terminal",
+      "props": {
+        "code": "yarn global add expo-cli",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "9cd130f2-e58a-4fef-a014-ce5b4fc03d89",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Great! Now we’re ready to create our repo.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "932bc323-a30c-4761-9706-df450992289a",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npx create-expo-app --template\n# choose blank as the template, although at another time you can play with the more complicated one\n# name the repo youtube-search-app\n💻 cd youtube-search-app\n💻 npm run ios",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "111ca118-b264-4348-b84a-eb04b96dfc41",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This will run a server than you can then either connect to with then Expo app on your phone (scan the QR code) or launch a simulator via the directions (press the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "i",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " key on the active terminal).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "17129c25-bfd2-4249-8706-816d19938015",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ Make sure you are using Expo v50 or above. Lower versions are ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "deprecated",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and probably will not work.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "73f54279-c6b9-4098-adac-3def0382ebf8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "34a4dd84-6e3c-4489-bce0-1e9eb28859dd",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Expo Developer Menu",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8f839f1d-b8f2-4667-9de0-2b563b0e4655",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This menu gives you access to several functions which are useful for debugging and is built into the Expo Go or dev client apps. If you are using the emulator, simulator, or have your device connected via USB, you can open this menu by pressing ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "m",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in the terminal where Expo was started.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "96cf9b20-51d1-4cb0-8b56-ba86c4777476",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Alternative methods include:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bbdb48d1-cef2-4fa6-8d74-94b751c36a0d",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "iOS device (without USB):",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "1810af4d-1db9-40e5-8618-0514067464d7",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Shake the device.",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "1550714d-86ce-4a4f-a979-1f01b83caa5e",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Touch 3 fingers to the screen.",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "626b5072-d34c-419c-a6c3-b403c95c4aeb",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "iOS Simulator or device (with USB):",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "4e602bb5-a5f1-461a-a79b-0e52c44aae0f",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Press ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "Ctrl + Cmd ⌘ + z",
+              "styles": {
+                "code": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " or ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "Cmd ⌘ + d",
+              "styles": {
+                "code": true
+              }
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "70ebe426-c1d7-4294-99ca-462a4366a315",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Once you have opened the Developer menu, it will appear as below:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dcb8000c-992e-4325-956a-c49b0ce2e2b5",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "Untitled",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-1/assets/untitled-1767548288941.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "65460e19-561b-43bd-ac4d-01411e216d44",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The developer menu provides multiple options:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2167dbf1-f673-43d1-a900-ed8e1946bb77",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Reload: reloads your app. Usually not necessary since Fast Refresh is enabled by default",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d19deccc-e53c-4a9f-af0e-506d29b72fc6",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Copy Link: copy the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "exp://",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " link of your app.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3709ec23-92fd-4f43-9926-2c9411374d6a",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Go Home: leave your app and navigate back to the Expo Go app's Home screen",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4b23cd93-f466-48af-a789-de2d2bed16e6",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Enable/Disable Fast Refresh: toggle automatic refreshing of the JS bundle whenever you make changes to files in your project using a text editor (hot reloading)",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "136168d2-c1ca-4b1a-b743-dd39c1566c28",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "dbf8dd96-0282-4244-b8ae-867ad20112e4",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Installing Dependencies",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "30687a80-95a4-4c2f-8a70-0fc70c6ae948",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’re going to need a few dependencies from our trusty friend, the Node Package Manager.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "71ac9917-9624-410e-a7c3-819d44ea34c4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Since we’re making calls to the YouTube api, it would help if we made GET calls with axios, so:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1104780c-d9e6-43a5-92b6-4bc845dcf3bd",
+      "type": "terminal",
+      "props": {
+        "code": "# make sure you are cd'd into project dir\n💻 npm install axios",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "6c4e1d18-c235-45b6-8b96-620a6894d185",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Next, we’ll need some specific react-native components that some other open source developers have kindly provided to us. This is fairly common in the react-native community, and it’s great to have these pre-styled components at our disposal so we don’t have to go through all the trouble of making an input field look nice, for example.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a3ad115c-594c-4d12-a044-5f54972ed9de",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 There’s one additional component we’ll be using in the workshop, a search bar from: ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://reactnativeelements.com/docs/searchbar/",
+          "content": [
+            {
+              "type": "text",
+              "text": "react-native-elements",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", a simple input field made to look like the classic iOS search bar.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "643d7ace-2266-46ac-8f0c-aefd9e8e209c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "💻 npm install react-native-elements",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8ec90071-3c8c-4d5d-89e6-11f308287a5b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "b665f066-5bbd-43fa-af52-fa1c46cbcb32",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "ESLint",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ec2e8498-a62f-43f4-a2ae-b6782f369c5e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We can’t live without this:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4af8752f-048e-4939-948d-ca84585b7833",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npm install -D eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y babel-eslint",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "166faa8e-002a-4180-b94e-303fbfec648e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".eslintrc.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file from the following code and restart your code editor to pick up changes:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a2664469-08b4-4c6e-8a26-038fd82dadf2",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"extends\": \"airbnb\",\n  \"parser\": \"@babel/eslint-parser\",\n  \"env\": {\n    \"node\": true,\n    \"browser\": true,\n    \"es6\": true\n  },\n  \"rules\": {\n    \"strict\": 0,\n    \"quotes\": [\n      2,\n      \"single\"\n    ],\n    \"no-else-return\": 0,\n    \"new-cap\": 0,\n    \"no-console\": 0,\n    \"import/no-unresolved\": [\n      2,\n      {\n        \"caseSensitive\": false\n      }\n    ],\n    \"no-unused-vars\": [\n      \"error\",\n      {\n        \"vars\": \"all\",\n        \"args\": \"none\"\n      }\n    ],\n    \"no-underscore-dangle\": 0,\n    \"arrow-body-style\": 0,\n    \"one-var\": [\n      \"error\",\n      {\n        \"uninitialized\": \"always\",\n        \"initialized\": \"never\"\n      }\n    ],\n    \"one-var-declaration-per-line\": [\n      \"error\",\n      \"initializations\"\n    ],\n    \"max-len\": 0,\n    \"no-extra-parens\": 0,\n    \"no-plusplus\": 0,\n    \"no-restricted-syntax\": [\n      0,\n      \"DebuggerStatement\"\n    ],\n    \"no-debugger\": 1,\n    \"react/jsx-uses-react\": 2,\n    \"react/jsx-uses-vars\": 2,\n    \"react/react-in-jsx-scope\": 2,\n    \"react/prop-types\": 0,\n    \"react/jsx-first-prop-new-line\": 0,\n    \"react/jsx-filename-extension\": 0,\n    \"react/prefer-stateless-function\": 0,\n    \"prefer-destructuring\": 1,\n    \"class-methods-use-this\": 0,\n    \"no-use-before-define\": [\n      2,\n      {\n        \"variables\": false\n      }\n    ],\n    \"import/no-extraneous-dependencies\": 0\n  },\n  \"plugins\": [\n    \"react\"\n  ],\n  \"parserOptions\": {\n    \"ecmaFeatures\": {\n      \"jsx\": true,\n      \"sourceType\": \"module\"\n    }\n  }\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d92fcb61-7a3a-4d25-b040-d6a523b0c840",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "db4e12de-3900-4456-a570-28e6926a7118",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Basic Navigation",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "889f4f63-cf87-4890-b643-6603c08375f0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "One of the classic navigation components in iOS is the Tab Bar. We’ll be using the ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://reactnavigation.org/docs/en/getting-started.html",
+          "content": [
+            {
+              "type": "text",
+              "text": "React Navigation",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " plugin to help with this. You may encounter many conficting packages for doing this, TabBarIOS, NavigatorIOS, etc, but React Navigation’s Stack Navigator is currently the best option for this. It navigates using string ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Screen",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " identifiers. There is lots of documentation available.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "05a55ca2-08fa-4add-b0ce-c54198d65e86",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a new directory in the top level of the project folder called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "navigation",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "114bf90a-f45b-45e6-bc90-a900f7e8fd9b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now let’s install some of the React Navigation dependencies.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "62c4f0ae-2fe3-4619-8063-286c57d80ba1",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npm install @react-navigation/native @react-navigation/bottom-tabs",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "8b8cfc54-9175-4150-ab96-79fc1d5d9aff",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npx expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "604fd09b-6df5-47f4-a462-7eaa8600c6a2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npx expo install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " command will ensure that we’re installing dependencies that are compatible with the Expo SDK version that you’re using.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "308d1759-5bf2-4803-a288-53afb1062134",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "73fe7fed-25e5-4a8d-a0e8-46c784cfe56b",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Tabs",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "02a98502-5c31-46f6-b2c3-b84340871bba",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Tabs are a pretty common feature of apps, let’s set up some using ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://reactnavigation.org/docs/en/tab-based-navigation.html",
+          "content": [
+            {
+              "type": "text",
+              "text": "Tab Navigation",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "73100092-01ae-4592-9477-011b569d0aa0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a file called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "navigation/main_tab_bar.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ":",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f8e93562-2e72-4a80-936e-ee63eda847f1",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { Text, View } from 'react-native';\nimport { NavigationContainer } from '@react-navigation/native';\nimport { createBottomTabNavigator } from '@react-navigation/bottom-tabs';\n\nconst AboutTab = (props) => {\n  return (\n    <View style={{ flex: 1, justifyContent: 'center' }}>\n      <Text>about</Text>\n    </View>\n  );\n};\n\nconst SearchTab = (props) => {\n  return (\n    <View style={{ flex: 1, justifyContent: 'center' }}>\n      <Text>Search</Text>\n    </View>\n  );\n};\n\nconst Tab = createBottomTabNavigator();\n\nconst MainTabBar = () => {\n  return (\n    <NavigationContainer>\n      <Tab.Navigator>\n        <Tab.Screen name=\"Search\" component={SearchTab} />\n        <Tab.Screen name=\"About\" component={AboutTab} />\n      </Tab.Navigator>\n    </NavigationContainer>\n  );\n};\n\nexport default MainTabBar;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "63d527fd-6008-4cc9-a376-cb59696353b4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now lets load this in the main ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "App.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Change ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "App.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to be:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "86c44ff6-fc5b-45b9-8942-abc73f7b0e32",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { LogBox } from 'react-native';\nimport MainTabBar from './navigation/main_tab_bar';\n\n// disable really annoying in app warnings\nLogBox.ignoreAllLogs();\n\nconst App = (props) => {\n  return <MainTabBar />;\n};\n\nexport default App;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6dc96416-de7e-425e-8000-ffe30e66732d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "📱 Test it out. Looks great, right?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "67f2894d-2cff-4344-957e-284eb1a78608",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ Sometimes hot reloading doesn’t always capture new modules being added to a project and you may encounter an error complaining about requiring an unknown module. If that happens, just quit the Expo packager and restart Expo.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "41cc5b16-66b1-4c00-99f5-b6577d710a3e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "5a35a630-0a58-46a3-99d3-3bb4c8aaf7fb",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "About",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b8f2b369-d16c-47e0-bc90-6211f97921fb",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s play around with a simple ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "About",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " view.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fcaeb3d5-df44-49f0-92ac-d971e2e24864",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a new directory in the top level of the project folder called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Then create ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components/about.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bd0ac35d-bd70-4d2f-998c-d925c696f74d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { StyleSheet, View, Text, Image } from 'react-native';\n\nconst About = () => {\n  return (\n    <View style={styles.container}>\n      <Image\n        style={styles.image}\n        source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}\n      />\n      <Text>This app was written in React-Native.</Text>\n    </View>\n  );\n};\n\nconst styles = StyleSheet.create({\n  container: {\n    flex: 1,\n    justifyContent: 'space-around',\n    alignItems: 'center',\n  },\n  image: {\n    width: 400,\n    height: 300,\n  },\n});\n\nexport default About;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3119dfcb-5cc7-4bd2-98b1-229649cdb95c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "📱 try it out!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8cc4aaa7-7215-4636-a3ff-406972b07fe7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ Note how we are doing styling:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8719284f-4506-441d-a661-7326ae05db26",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We can really see how the styles are represented as dictionaries, with the ids being similar to css classes",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "89691859-c1a1-47f8-8ce2-673b1ecdc4d6",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Property names need not go in quotes, but if the property itself is a string, it should (like in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "backgroundColor: 'white'",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ")",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "df53654f-bbd2-46b9-b350-4e1099d6ea28",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Flex is dealt with in kind of a strange way. Instead of a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "display",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " property, these stylesheets default to flex when you simply specify ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "flex:",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " followed by some integer. This integer is a lot like the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "flex-grow",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " property that we’re familiar with.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "209a5e6c-8c98-460c-97e7-cd3629f23af7",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Finally, notice that all our integer values are simply integers! There’s no ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "px",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pt",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "em",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", etc. Only numbers.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f5e3d160-e7e0-48ae-bde1-3dfe36457608",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If we had a central style we could simply import it wherever we need it from a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "style_constants.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file for instance. For now we’ll create the styles in the same files.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0a4c0022-33bd-48f5-96c9-fa3de52513fb",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "fb5e90d9-cc51-47f4-b5ab-b46f640fd369",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Connect About",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c3d60661-d706-4cdd-944a-5ed9edf071ef",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s load this new ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "About",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " component and make out TabBar better looking at the same time.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b74dc81a-c511-4e97-a25d-ccbdf8a64345",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s add a package for icons:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "19f9c03a-03bf-4187-ab68-0fb00f9632ee",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npm install react-native-vector-icons",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "4a871f40-ba9d-4a03-b43f-22bd21da2fd2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 In your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "navigation/main_tab_bar.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file add some imports:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "652feea0-7010-47f6-b42b-5eda32467804",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import Ionicons from 'react-native-vector-icons/FontAwesome';\nimport About from '../components/about';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "cf1c2e76-a325-4c23-81ee-b2c7977a5d10",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 And replace the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "MainTabBar",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " component with:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8ca5b87e-88e0-4a5f-b1f8-8bee54e73a6b",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const MainTabBar = () => {\n  return (\n    <NavigationContainer>\n      <Tab.Navigator\n        initialRouteName=\"Search\"\n        screenOptions={({ route }) => ({\n          tabBarIcon: ({ focused }) => {\n            let iconName;\n\n            if (route.name === 'About') {\n              iconName = 'info-circle';\n            }\n\n            return (\n              <Ionicons\n                name={iconName}\n                size={26}\n                color={focused ? '#58AADA' : 'grey'}\n              />\n            );\n          },\n        })}\n      >\n        <Tab.Screen name=\"Search\" component={SearchTab} />\n        <Tab.Screen name=\"About\" component={About} />\n      </Tab.Navigator>\n    </NavigationContainer>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a6fd9bd4-77c8-4e97-8454-81495c446aca",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Delete the old AboutTab component while you’re at it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "268552a5-8819-4701-8b5f-20843cc248e9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "📱 Check it out!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d1c62923-56f4-43cd-8bfe-b4d8230fd7b7",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-1/assets/tabbar-1767548288941.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "99e8100b-6cac-4bdd-b80d-5531038219b0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cb2ed2d5-b905-4c9b-80fd-f09546e1dbb8",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Search and Detail",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "254a63a0-59e9-45e0-bb97-2873e16f9033",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "So we’ve got some basic navigation working on the app, but it looks pretty boring. Let’s make some cool stuff on the search tab, like how about a nice table view?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bff678da-9d0b-4f0d-ad70-d5bc9f8b8936",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "What we want to end up with is VideoDetail and a VideoList view similar to the SA4!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a0dde6ad-5d94-4362-b286-a2a30db02b2b",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-1/assets/videolist-1767548288941.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "98cfb0e5-6e99-442f-81cf-3b4d7b61d3b9",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-1/assets/videodetail-1767548288942.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "b7652b63-cf3f-4214-8d98-c5b5a4468823",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Note how the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "VideoDetail",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " view has a back button at the top. This indicates that it is part of a different type of navigation structure. Specifically, it is in a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "StackNavigator",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " where screens exist in a stack to push and pop on/off.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bf17c4b2-7d27-400a-8359-efbbde65150a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "But we already have a TabNavigator?! Turns out you can nest navigation stacks. This allows us to start off with a TabNavigator and have a StackNavigator as any of the tabs themselves. This is so that you can organize your screen flow in ways that make sense. It wouldn’t make sense to have a a back button when you switch tabs for instance.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f42551ce-eb7d-4ce8-9025-91790b250972",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "d471abce-0499-4263-b38f-eb7fca1c5609",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Create SearchTab",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "62f309ff-c834-40df-8f12-b102e4cb372f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s import the stack navigation package:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e9b99e35-de1b-42f5-befd-ebccac58da28",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npm install @react-navigation/stack",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "f02726df-601f-40b1-a86e-6c0b19aceaee",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "navigation/search_tab.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and populate with:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9c6d5031-89b0-4c71-8bdf-c91d0958a149",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { Button } from 'react-native';\nimport { createStackNavigator } from '@react-navigation/stack';\n\n// import VideoList from '../components/video_list';\n// import VideoDetail from '../components/video_detail';\n\nconst TempSearch = (props) => (\n  <Button\n    onPress={() => {\n      props.navigation.navigate('Detail');\n    }}\n    title=\"next\"\n  />\n);\nconst TempDetail = (props) => (\n  <Button\n    onPress={() => {\n      props.navigation.pop();\n    }}\n    title=\"close\"\n  />\n);\n\nconst Stack = createStackNavigator();\n\n// nest stack navigator to handle two internal views\n// \"name\" prop is the name of the route\nconst SearchTab = () => {\n  return (\n    <Stack.Navigator>\n      <Stack.Screen\n        name=\"Search\"\n        component={TempSearch}\n        options={{ headerShown: false }}\n      />\n      <Stack.Screen\n        name=\"Detail\"\n        component={TempDetail}\n        options={{ headerTitleStyle: { display: 'none' } }}\n      />\n    </Stack.Navigator>\n  );\n};\n\nexport default SearchTab;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3f60f268-b8ae-422b-8c15-359ce88774dd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Here we are using ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "createStackNavigator",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " instead but it works very similarly.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "86eadf3f-3eaa-4034-a22a-ddceef1a00b6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "c4d15dd4-ea52-41ee-b3eb-8cb08552a4e0",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Connect Search Tab",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dcf7c446-f6e7-451d-ab9f-0986e2633d8c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Similar to what we did with the About tab, we want to connect our new Search stack to the main tab bar.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "071b7262-b255-4bc3-98ae-3ca65ddccd57",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Delete the old SearchTab component inside ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "main_tab_bar.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and import your new one:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c10b5969-7304-46cd-991f-75bd4f638e01",
+      "type": "terminal",
+      "props": {
+        "code": "import SearchTab from './search_tab';",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "da8a433d-5b53-43a9-88e5-e14096ca6f78",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Next, we want to add an icon for the search tab, so edit the screenOptions prop to look like this:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1f89db3a-4ad5-472c-99d9-8ed3cd740fbe",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "screenOptions={({ route }) => ({\n  tabBarIcon: ({ focused }) => {\n    let iconName;\n\n        // Customize the icon we display based on the tab route\n    if (route.name === 'About') {\n      iconName = 'info-circle';\n    }\n        // Adding the search icon\n        else if (route.name === 'Search') {\n      iconName = 'search';\n    }\n\n        // Return the respective icon\n    return <Ionicons name={iconName} size={26} color={focused ? '#58AADA' : 'grey'} />;\n  },\n  headerShown: false,\n})}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ef518550-db8b-4d69-89ed-235a0fd65cb8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "📱 You should now see how stack navigation works inside of a tab navigator system.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c76b943a-db9c-4c60-b861-89fc57b18bd2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "904f5392-ce3e-49b2-80a8-2cda7b729862",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "VideoList",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d17bee16-1169-4374-8117-0e1a3547c6f1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We want to do more.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8be93957-6731-411c-9f1d-3bb6b796628c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s create ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components/video_list.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and fill it in:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "22b2f643-a433-4955-a43c-bbe0ad99950a",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "/* eslint-disable react/destructuring-assignment */\nimport React, { useState, useEffect } from 'react';\nimport { SearchBar } from 'react-native-elements';\nimport {\n  ActivityIndicator,\n  StyleSheet,\n  View,\n  Image,\n  Text,\n  FlatList,\n  TouchableHighlight,\n} from 'react-native';\nimport { useNavigation } from '@react-navigation/native';\n\n// import youtubeSearch from '../services/youtube-api';\n\nconst VideoCell = ({ video }) => {\n  const navigation = useNavigation();\n\n  return (\n    <TouchableHighlight\n      onPress={() => {\n        navigation.navigate('Detail', { video });\n      }}\n      underlayColor=\"orange\"\n    >\n      <View>\n        <View style={styles.container}>\n          <Image\n            source={{ uri: video.snippet.thumbnails.default.url }}\n            style={styles.thumbnail}\n          />\n          <View style={styles.rightContainer}>\n            <Text style={styles.title}>{video.snippet.title}</Text>\n            <Text style={styles.subtitle}>{video.snippet.description}</Text>\n          </View>\n        </View>\n        <View style={styles.separator} />\n      </View>\n    </TouchableHighlight>\n  );\n};\n\nconst VideoList = () => {\n  const [query, setQuery] = useState('');\n  const [dataSource, setDataSource] = useState([]);\n\n  // add useEffect here\n\n  return (\n    <View>\n      <SearchBar\n        showsCancelButton={false}\n        onChangeText={(newQuery) => {\n          setQuery(newQuery);\n        }}\n        value={query}\n        inputContainerStyle={{ backgroundColor: 'white' }}\n        containerStyle={{ backgroundColor: '#c4302b' }}\n      />\n\n      <FlatList\n        data={dataSource}\n        renderItem={({ item }) => {\n          return <VideoCell video={item} />;\n        }}\n        keyExtractor={(item) => item.snippet.thumbnails.default.url}\n        style={styles.listView}\n      />\n    </View>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0a00b4bc-335b-4157-9232-492eb0f54880",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 And we should add in some styles too. Let’s make it a little more interesting this time:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "11fe42d8-8e3f-4032-a89c-56114b89a709",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const styles = StyleSheet.create({\n  container: {\n    flex: 1,\n    flexDirection: 'row',\n    backgroundColor: 'rgb(240,240,240)',\n  },\n  thumbnail: {\n    width: 100,\n    height: 100,\n    marginRight: 5,\n    backgroundColor: 'black',\n  },\n  rightContainer: {\n    flex: 1,\n    padding: 5,\n    height: 100,\n  },\n  title: {\n    fontSize: 16,\n    fontWeight: 'bold',\n    marginBottom: 3,\n  },\n  subtitle: {\n    fontSize: 12,\n  },\n  separator: {\n    height: 1,\n    backgroundColor: 'rgb(200,200,200)',\n  },\n  listView: {\n    backgroundColor: 'rgb(240,240,240)',\n  },\n  loading: {\n    flex: 1,\n    justifyContent: 'center',\n    alignItems: 'center',\n  },\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9de396aa-b52c-416a-9ac6-fb88b1915f7f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Alright, let’s update the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "search_tab.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to show our new VideoList component:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c899e649-bb78-4d85-9810-baadb5d599cf",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "<Stack.Screen name=\"Search\" component={VideoList} />;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5df7f944-a007-4e8f-890e-ddd874da30f0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 While we’re here, let’s jazz up the style of the youtube search header:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f8773d1d-0036-449a-8ea4-05cfe5d6c50d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "<Stack.Screen\n  name=\"Search\"\n  component={VideoList}\n  options={{\n    title: 'Youtube Search',\n    headerStyle: {\n      backgroundColor: '#f4511e',\n    },\n    headerTintColor: '#fff',\n  }}\n/>;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ed0392fa-1d24-4ccd-9c8f-94b49827021e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "16a4e805-23a7-4bc2-925b-1d1c262cc74d",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Youtube API",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "32e81500-12f8-4cc2-9ac3-c828b7c27c67",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ah darn, one other thing. We need to actually have a reference to the API, right? This next part should (hopefully) look super familiar.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab3ddf55-8d9b-4c1e-8dde-af6c2d113e52",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a new file in the services directory, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "services/youtube-api.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "85a4f1e7-5841-437e-ba13-55e6945f345b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Sound familiar? We did this in ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://app.classmoji.io/dartmouth-cs52-26w/pages/cb1b1fc2-39ca-4151-a252-6a4fc0cbca7f",
+          "content": [
+            {
+              "type": "text",
+              "text": "SA3",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", and we will be using the exact same api for this react-native app! That’s coooool.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ee7a90c1-3fc9-4669-9a0c-c3a4df9a0a27",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Go ahead and find that file and copy it here. We need to do this because we need your individual api key, which you already made in sa4. If you want more than 5 results at a time then add in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "maxResults: 15",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "params",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7d6fa25c-fb4f-4c19-86c5-47e96def8d86",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Accidentally deleted your API key? No biggie. Just follow the ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://cs52.me/assignments/sa/react-videos/#youtube-api",
+          "content": [
+            {
+              "type": "text",
+              "text": "old instructions from sa4",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ff4821a2-29b4-41e3-8975-f112f88372e6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s add in a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "useEffect()",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to trigger our API call whenever the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "query",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " variable changes:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6b7f1bd6-3ecd-4403-ac24-fbfacb6b45c2",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "useEffect(() => {\n  youtubeSearch(query)\n    .then((responseData) => {\n      setDataSource(responseData);\n    })\n    .catch((error) => {\n      console.log(error);\n    });\n}, [query]);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5b2209b5-14a8-4a3c-8ec1-2a80d0493721",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "📱 At this point you should be showing a list of videos, coolbeans.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "979da1c2-2c11-4f81-bb5b-5cfb0798ae04",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "371e3dc4-1dc0-4864-9786-0dc4671ce1a0",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "VideoDetail",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6d0f6a63-7477-4bf0-81d0-ed412cee7185",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "At this point, clicking on a list item takes us to a boring screen. Let’s make that better.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0eadbe89-461d-4bc6-9dad-854977b9728a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create new file called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components/video_detail.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and paste in this code:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "720bbf2e-5abf-485a-ae51-623046813976",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport WebView from 'react-native-webview';\n\nconst VideoDetail = (props) => {\n  // example of destructuring, the below is equivalent to props.route.params.video\n  const { route } = props;\n  const { video } = route.params;\n\n  return (\n    <WebView\n      source={{ uri: `https://www.youtube.com/embed/${video.id.videoId}` }}\n      automaticallyAdjustContentInsets={false}\n    />\n  );\n};\n\nexport default VideoDetail;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c630eb22-793b-43f3-8a74-0a50a450a9cc",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Oops, we forgot to install the Webview component:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3e66b86e-7d1c-42d6-8bf9-f33239ee119c",
+      "type": "terminal",
+      "props": {
+        "code": "💻 npx expo install react-native-webview",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "0cd943b1-52dd-4b2a-9097-ce6412f1e125",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The WebView component is a sort of hybrid component that’s actually just rendering a webpage. The ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "source",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " prop holds a uri that’s called as if in a browser and then displayed in our application. Notice how it looks just like watching youtube on a mobile device. Pretty cool that we can do this within our application alongside native components, huh?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "784c4a18-5e76-4911-a521-9d82f3299356",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Swap out the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "TempDetail",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " view in your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "search_tab.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for this new component.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "87c93e20-3f7d-42d1-9ecb-8dbd90438bfe",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now that the app is complete, we’re using all the styling we pasted in awhile ago. Now it’s your turn: play around with the styling in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "video_list.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". If you haven’t enabled hot-reloading yet, do that, it’ll make it easy to see all your styling changes.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bd8dc1ba-1eae-4bbf-876d-bb9d53a51bf8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "ed0fd84e-6905-4da4-83fe-b33033c84141",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "And We Are Done!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "450e86f1-6bca-4ae5-a68e-d600aeff21a0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Look at you! You spend eight weeks in full-stack web dev, but little did you know it was actually smartphone programming in disguise!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8413826c-5ea6-4016-b53f-d9cf4aaf3372",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "778a6b06-4932-453c-90f7-66fba99e0bed",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Submission",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2980f5a5-ccfb-43ed-901e-b4f3d55cc374",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To submit, post a comment in the ECSC: React Native - Part 1 issue.  Submit screenshots of your app working and a response to:  describe what you made, what worked, and what didn’t. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "97a8ccda-bc1d-4a74-98ea-22edcdb151e5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "4aa4c511-1a32-41f7-8a45-15ff43d963cc",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Resources",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a4c77655-ce30-46c1-b347-ac65cfbd7487",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://docs.expo.io/",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://docs.expo.io/",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3362eb95-0677-4f5a-a460-d5bb78286a32",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "http://www.reactnative.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "http://www.reactnative.com/",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5e4fff70-5b0c-4da3-816f-82729fa8dfe4",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://reactnavigation.org",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://reactnavigation.org",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "cb5214f3-e024-40e2-b5da-d7d89130eb92",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://facebook.github.io/react-native/",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://facebook.github.io/react-native/",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "083214de-d7ba-4f28-b435-62e1271d8298",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://github.com/jondot/awesome-react-native",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://github.com/jondot/awesome-react-native",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "986e097d-da07-4a3b-b873-9d33c18dba47",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Thanks to: Jane Lee, Sia Peng, Armin Mahban, Adam Rinehouse for the original workshop in 17S. Refactored in 18S for expo.io and React Navigation. Refactored in 19S by Angela Li for React Navigation 5.x. Refactored in 24S by Eric Lu to update to Expo v50 and remove React class components.",
+          "styles": {
+            "italic": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "31ee2ddc-b470-4e1a-ae27-868ea3b7c0f7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
