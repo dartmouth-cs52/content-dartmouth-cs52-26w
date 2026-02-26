@@ -1,0 +1,2118 @@
+{
+  "blocks": [
+    {
+      "id": "f94f94a5-9447-4eee-9d57-cc7b236a3af9",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-websockets/assets/socket-io-1767548320056.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "f8c63707-4b6b-4aed-bfe5-9eb75dfbfa41",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "6eb0000f-7da0-4380-b40a-c899b5c97fbc",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Overview",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ef730ac2-10d6-4fcb-bff9-b5b6ef711690",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’re going to build a ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://en.wikipedia.org/wiki/WebSocket",
+          "content": [
+            {
+              "type": "text",
+              "text": "websocket",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " based server and refactor our notes app to use our own server rather than firebase! You’ll see how with just a little bit of code you can have a cool bidirectional event based server. You can also use this for implementing chat servers or push notification to your frontend! ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7975d266-0f40-411a-aba7-fa12d8750dc2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "5b9e32ff-d848-4a28-b256-ddf9fd9f9bac",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s Start",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "aa656b4e-9bd1-4397-9f5a-d5ba66ebd98e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Clone your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Lab3 with firebase",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Create a new branch with ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "git checkout -b websockets",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". We’ll need to refactor this very slightly to not use firebase but use our new backend instead, and using a branch seems reasonable for this.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4cd03ca1-27f8-4f39-8253-59a9d814042f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Clone or Fork ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://github.com/dartmouth-cs52/express-babel-starter",
+          "content": [
+            {
+              "type": "text",
+              "text": "express-babel-starter",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " for our new server component. You can create a new github repo in your own account if you want for this and add it as a remote.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f40467c4-6d8a-4b01-806d-332a8405b7cc",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In the following at times we’ll do stuff to both client (Lab3) and server (the new notes-websocket-server). This will be highlighted with ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SERVER",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " vs ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "CLIENT",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6b5c47ff-bbcb-4c7b-9092-40df49761a68",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "433a2c2a-8ac6-4527-b69c-5ae065778a50",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Overview",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b1d33127-8a35-40d6-82a8-ee45ab7d5535",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Server: we will utilize websockets and mongo to create a simple realtime backend. You can use the techniques learned here for any realtime applications such as chat or notifications.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e1ebe6c0-d997-494a-984b-279748906a83",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Frontend: we will utilize our realtime react notes app and refactor slightly.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9d990fff-5d90-4be1-806a-c1cc97966dc1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cd47210f-49ac-464e-879f-b9fe34cd07b1",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Database",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1dfb10e3-3aa7-4922-a02b-f31fae078bce",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "SERVER",
+          "styles": {
+            "bold": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "aab6c3fe-b78b-42b7-a747-ad1b8f5ded03",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s set up a few directories first. Create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "src/models",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "src/controllers",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " directory.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "307b4523-bc3a-4ddb-88a0-cf3be4544a08",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Remember how to make a mongoose model? Sure you do! Create a Note model ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "note.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in your models directory and give it the following fields (you may need to adjust the names of these later based on how you coded your Lab3):",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "97af6670-0d5b-4299-9bc8-ed18ba387be7",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "  title: String,\n  x: Number,\n  y: Number,\n  zIndex: Number,\n  text: String,",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7dd532a1-229a-48c7-9431-81fcd6389a0d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Don't remember how to make a model? Look here! ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "javascript import mongoose, { Schema } from 'mongoose'; const NoteSchema = new Schema({ title: String, x: Number, y: Number, zIndex: Number, text: String, }, { toJSON: { virtuals: true, }, }); // create model class const NoteModel = mongoose.model('Note', NoteSchema); export default NoteModel; ",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5d160dfc-9d7d-47a8-88e2-9c912b333544",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install mongoose",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "39d06012-7c19-4488-9c36-43ecb95edec3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " set up your mongo connection:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "84e7036b-88d2-4f07-afcc-40e5190538f4",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import mongoose from 'mongoose';\n\n// DB Setup\nconst mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/notes';\nmongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });\n// set mongoose promises to es6 default\nmongoose.Promise = global.Promise;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1caa9f78-f04a-4f7f-a628-b7096f307dda",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 And let’s make a controller, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "note_controller.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", while we are at it!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e90f7f28-6a89-4f92-b4b6-2079eae64e85",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "It’ll be a bit simpler than the post controller. We’ll also do something similar to SA7 where we returned promises from our controller rather than operating on request and response objects.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "806e3244-5fa7-484b-9f12-6cb37987e38d",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "createNote: super simple, takes in note fields, and returns the save promise (doesn’t need to create a new promise).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "cb1695ab-b86c-4dab-8830-bb453bc4fbd8",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "getNotes: this one is a bit trickier, hence full code is here. Returns the promise created by find(). If you recall our datastructure was a dictionary by note id. We can use an accumulator to construct an object from the array of notes that find gives us.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "384ad5ad-88be-445f-b3ce-717cd0cc4f84",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "deleteNote: delete a note by its id",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e5885754-d9bc-4cd9-92c6-25b8543c6ba6",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "updateNote: update note, pretty similar to how you did it for posts",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a837b22a-460b-4f3c-b40f-0ae24f3a78e3",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import Note from '../models/note';\n\nexport const getNotes = () => {\n  return Note.find({}).then((notes) => {\n    return notes.reduce((result, item) => {\n      result[item.id] = item;\n      return result;\n    }, {});\n  });\n};\n\nexport const deleteNote = (id) => {\n  // to quote Prof. Cormen: left as an exercise to the reader\n  // remember to return the mongoose function you use rather than just delete\n};\n\nexport const createNote = (fields) => {\n  // you know the drill. create a new Note mongoose object\n  // return .save()\n};\n\nexport const updateNote = (id, fields) => {\n  return Note.findById(id).then((note) => {\n    // check out this classy way of updating only the fields necessary\n    Object.keys(fields).forEach((k) => {\n      note[k] = fields[k];\n    });\n    return note.save();\n  });\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1acff535-de6f-48ba-9dfc-5511afc1b12f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "fe5c5d14-cf1d-48fc-91c0-63ce005e4212",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Socket.IO SERVER",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5963893f-7315-45f5-b0af-1d0233cce080",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll be using ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://socket.io/",
+          "content": [
+            {
+              "type": "text",
+              "text": "socket.io",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " serverside and clientside. We could implement these from scratch with Node and HTML5 has websocket support built in, but socket.io provides nice reconnect functionality and integrates easily with an express app.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dfb628a8-9646-4e8d-89c5-500ee3e6e757",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Install socket.io in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SERVER",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ":",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5119a9e0-6014-48b3-a81f-d1214b948e61",
+      "type": "terminal",
+      "props": {
+        "code": "npm install socket.io http",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "21dd408d-b978-41d9-bed8-0056fd6bdb8b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’ll need to change a few things in our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab45749e-c481-45b6-9935-8a6560dd649e",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// at top\nimport socketio from 'socket.io';\nimport http from 'http';\n\n// add server and io initialization after app\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketio(server, {\n  cors: {\n    origin: '*', // allows requests all incoming connections\n    methods: ['GET', 'POST', 'PUT', 'DELETE'],\n  },\n});\n\n// change app.listen to server.listen\nserver.listen(port);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f9e87adf-fd72-4ed6-8b5c-8a37ba5615b3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now our server can talk websockets!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2cf7cd74-1942-41a8-be49-d12845c30ef3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "6de8a806-a7d5-4c0b-883a-045e012d0e8d",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The Socket",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "55ddbed8-51a3-45e9-99f6-0b56099f14c5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Websockets are statefull connections. Each client gets their own socket. Let’s define some functionality — for now we’ll just do everything in our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file but for any larger app you’d separate this out into a separate module.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6c8b28c7-e9a1-48c2-8cc3-4537ea047dc5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 In ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " add:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3e6b4cb0-299a-4d69-ae47-eb6b3c81f1fa",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// at top\nimport * as Notes from './controllers/note_controller';\n\n// at the bottom of server.js\n// lets register a connection listener\nio.on('connection', (socket) => {\n  // on first connection emit notes\n  Notes.getNotes().then((result) => {\n    socket.emit('notes', result);\n  });\n\n  // pushes notes to everybody\n  const pushNotes = () => {\n    Notes.getNotes().then((result) => {\n      // broadcasts to all sockets including ourselves\n      io.sockets.emit('notes', result);\n    });\n  };\n\n  // creates notes and\n  socket.on('createNote', (fields) => {\n    Notes.createNote(fields)\n      .then((result) => {\n        pushNotes();\n      })\n      .catch((error) => {\n        console.log(error);\n        socket.emit('error', 'create failed');\n      });\n  });\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7b4baddd-b706-4b19-8876-a6d6d41956d9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok we have some basic functionality now. Let’s work on the frontend for a little bit. We’ll come back and add more listeners here. Don’t forget to start up mongod and also ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm start",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " the server.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c5734b7d-7a71-4400-bdcf-759bb00a8c54",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "eba5d265-f4ed-4d3a-8927-4ddfe7f85b1f",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Socket.IO CLIENT",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e524acf6-a2f3-4e94-aa1c-f4b870460b4d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In your Lab3 new branch, let’s add some socket.io smarts.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab95b1f0-2dea-4290-ae49-c2f0f463bc2c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Install socket.io in CLIENT (Lab3)",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "20c3dc8c-f617-4121-911e-65a906430723",
+      "type": "terminal",
+      "props": {
+        "code": "npm install socket.io-client",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "50ea5447-6904-409e-a39c-0ddfd09419f4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Some Setup in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "index.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " or your main app component.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5793861c-005b-47d3-a0ae-a372c3710cf8",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// at top\nimport io from 'socket.io-client';\nconst socketserver = 'http://localhost:9090';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7093ec68-b872-45b4-ae54-a6b06bce2a6e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "01114585-f1b7-4989-a7e8-b42a14198952",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Event Listeners",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e3ba9bf2-0c8e-4912-8530-3a30a1e98c1b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We will define some specific event listeners. Firebase had the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "on value",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " event listener, but for socket.io we will be able to define any number of our own custom events to listen to.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0b89fd1a-ec70-467e-a8a6-a75efa225fb0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In your database service file or App component (your choice which):",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8febd175-845a-497d-9948-69bdc492e50e",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const socket = io(socketserver);\nsocket.on('connect', () => {\n  console.log('socket.io connected');\n});\nsocket.on('disconnect', () => {\n  console.log('socket.io disconnected');\n});\nsocket.on('reconnect', () => {\n  console.log('socket.io reconnected');\n});\nsocket.on('error', (error) => {\n  console.log(error);\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "93827abb-d26d-4d0f-a42f-9aa0fab7708d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Great! Now test it out, load up ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://localhost:8080",
+          "content": [
+            {
+              "type": "text",
+              "text": "http://localhost:8080",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and you should be connecting and devtools console should be showing “socket.io connected”.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "63fdc1a9-94c3-4036-9498-291d200d265e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "51a99bd4-4bde-40b2-831d-6798caaf4569",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Notes Listener",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2611291e-d677-4f6c-8691-c4d84c09440e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "But what about notes?!!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "37311b96-5cc4-4df0-8364-abc67e6ffe05",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Edit the function call where you start your firebase ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "database.onNotesValueChange()",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " handler. We’ll replace it with our socket.io listener:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7ec7615c-3d5a-4e9c-a608-a2e9d942419a",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "//in your onNotesValueChange subscriber function\nexport function onNotesValueChange(callback) {\n  Notes.on('value', (snapshot) => {\n    const data = snapshot.val();\n    callback(data);\n  });\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a8739c48-5b74-4f45-8e2a-20ce369c4e88",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// use sockets instead of the firebase on value change callback.\nsocket.on('notes', (notes) => {\n  // etc etc\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d6a5a24d-6730-4a47-bd71-db3be1f6ffdd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "All we are doing is subscribing to the notes event, and taking the payload and processing it the normal way. Since on the server we are emitting new notes immediately on connection this is all we need. However, we don’t have any notes yet, so we let’s keep going and update everything on the front end so we don’t have to keep fiddling with it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e1fb9329-ab49-4da1-acee-ec298b79ebf9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "f3bca077-eeae-48f7-a279-cad1cd80adbc",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Notes Events",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e2b27743-e25e-4c7f-9a09-3bd78ee9121f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, how do we send data to the server though? Sockets are bidirectional so if you wanted you can emit events back to the server!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "86a5f2cf-a927-4421-82c7-f50d60bac823",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 For each of the update, delete, and create methods you have just replace your firebase call with a socket.emit.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8b7ea8b3-ba54-4e5d-994f-1f955bda48d7",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "socket.emit('updateNote', id, fields);\n\nsocket.emit('deleteNote', id);\n\nsocket.emit('createNote', note);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6919816e-a251-400a-927d-04198750f808",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "And, that’s it for the frontend! ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fbe26a1c-7e92-4266-8425-51bf3745b685",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Try creating a note!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fbef5666-09ea-4e3d-82f2-9be57f29da0c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cee1497a-6997-4c4c-b7d8-2d1884f605be",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "SERVER Part Deux",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7f0518c1-74c6-4931-bfdd-246e5d4843ea",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, let’s add back in some more functionality on the server side in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1fda54a9-61c4-4352-b990-440381b94da3",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// on update note do what is needful\nsocket.on('updateNote', (id, fields) => {\n  Notes.updateNote(id, fields).then(() => {\n    pushNotes();\n  });\n});\n\n// on deleteNote do what is needful\nsocket.on('deleteNote', (id) => {\n  // you can do it\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2dc0a045-85da-4c55-a111-d0b0d57b8780",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, try it out!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f9207ac3-8802-4116-aac6-55b1138276f1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "84dd90cb-28b8-4349-b197-4852fb950ff0",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Optimization (Optional)",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0da5088c-6b79-431c-82be-c201d15b03a4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, for now this seems to work pretty well. However, if you were to push the server to Heroku (don’t forget mLab), you’d notice a bad jitter as you drag the notes around. Especially if you had it set to no grid. We’re basically doing no optimization so we are sending thousands of update messages. When there is no lag things work perfectly smoothly. As soon as you have a bit of lag our driven Notes component starts behaving badly.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e04adab5-4120-4a48-bcbd-8aa296a3ec92",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The Firebase SDK handled this for us by being very optimized. It would batch together updates as well as doing internel state diff’ing to only send around the needed bits. Our websockets implementation is fairly naive at this point. We send everything around at max speed.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9df84878-daa1-4ced-acc1-205020a28d7e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "One thing we can do it throttle and debounce. Here’s a good article on the ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://css-tricks.com/debouncing-throttling-explained-examples/",
+          "content": [
+            {
+              "type": "text",
+              "text": "differences",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ". Just by adding this small optimization we can improve our performance by a lot.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "cfb11fa7-3df5-4a98-a060-14e3e9cda583",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 On the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SERVER",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " side lets add in lodash.debounce and lodash.throttle: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install --save lodash.throttle lodash.debounce",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8a9e3e5b-5316-4b9a-bb2c-ffc7807a5351",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Import them in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d80a5192-4186-473e-86ea-2d6b2e572cba",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import throttle from 'lodash.throttle';\nimport debounce from 'lodash.debounce';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "84e67042-6d05-4a7d-ae0f-63d24a44171b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, it turns out that in particular we want to do different things depending on whether we are the viewer dragging around a note, or if we are another browser that is just seeing the note being dragged around.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d4561daa-8821-4703-a5f9-5acccad39f66",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We want to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "throttle",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " broadcasting notes out to all other browsers (where throttle means: send at a constant decent rate). They don’t need the precision of getting every single update, but they should get a smooth constant rate of updates.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "58d356f4-ae6b-4988-a86d-d3947a2be2ff",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For the client that is initiating the dragging however, we want to debounce. Basically we don’t want delayed updates coming in and causing jitter. But there are different cases here as well:",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "d645198e-5a26-420b-a08d-4c922ad1ca1d",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "for dragging we want heavy debouncing",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "e95762e0-feed-49b3-a5e0-a970857e66e4",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "for updating our text box, we want ",
+              "styles": {}
+            },
+            {
+              "type": "text",
+              "text": "no",
+              "styles": {
+                "italic": true
+              }
+            },
+            {
+              "type": "text",
+              "text": " debouncing at all",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "c09077c1-1b61-496c-ba28-5277c71bb79f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, without further ado here’s how we can do this.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ee26872a-e10d-4a71-bebe-c5015d3247b8",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// add these at the top of your: io.on('connection' section\nlet emitToSelf = (notes) => {\n  socket.emit('notes', notes);\n};\nemitToSelf = debounce(emitToSelf, 200);\n\nlet emitToOthers = (notes) => {\n  socket.broadcast.emit('notes', notes);\n};\nemitToOthers = throttle(emitToOthers, 25);\n\nconst pushNotesSmoothed = () => {\n  Notes.getNotes().then((result) => {\n    emitToSelf(result);\n    emitToOthers(result);\n  });\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "387db27d-c582-4cdb-932c-d229c1383d2c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’re creating two wrapper functions. One that emits to oneself (socket) and one that emits a broadcast to everybody ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "except",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " the originating socket. One we debounce, the other we throttle (just slightly).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2f977546-838b-4e8b-af99-5ec809ffeaee",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now, let’s use this new ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pushNotesSmoothed",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function. We can leave delete and create alone as those don’t need to be smoothed, but update, that is the troublemaker. But we don’t want to use the smoothed function if we are updating text, that will cause really bad things. We only want to use it if we updating x,y. So let’s test for that:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "02b75ba5-25ab-4057-b6cd-2f9f4cdec129",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "//inside of your updateNote success .then\nif (fields.text) {\n  pushNotes();\n} else {\n  pushNotesSmoothed();\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "73ac88ed-f2c2-482c-8544-05b5ee4ce3fa",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok. Now it should work much better when deployed. You don’t have to deploy or turn this in, it is just for fun to play with websockets, but if you were to deploy it, you would see that this makes a big difference. There are more optimizations that can be done, the easiest would be to make ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Note",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " position not driven by props directly when you are dragging. For now though, you have implemented in half an hour a working alternative backend to firebase.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "008df207-6e79-4f69-9739-2d9cd5d293aa",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7945b4ed-76c0-42b9-a787-4c4d5d874d6d",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Turn it in",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0066161d-9719-4c45-917d-99f58678c740",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "comment on your lab3 PR with links to any new repos/deployed branches:",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "b2a86760-d977-43f6-8c62-01ab8a5eb649",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "you can deploy specific branches to new urls to keep your original versions separate",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "2ce60d21-4102-4a30-b5b2-0fc9bc7d4f3e",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "frontend branch",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "3afa3b88-1fc8-4683-9189-847e9c84ad74",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "websockets server",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "773b5154-0708-43ca-a09b-89beffc1d911",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "10048cd7-1924-4dd5-97bf-fa943ca18eee",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Resources",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fea3e99d-0653-4797-a17f-474066e0b0b1",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://github.com/socketio/socket.io",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://github.com/socketio/socket.io",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "10dbdbe7-c3bc-4c33-b9ed-228190dde9c5",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://github.com/socketio/socket.io-client",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://github.com/socketio/socket.io-client",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0464a3da-1508-4412-b00c-f5b801c243a6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
