@@ -1,0 +1,4082 @@
+{
+  "blocks": [
+    {
+      "id": "09327370-009f-4688-841c-c394a8b8fd69",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This short assignment will build off the React Native app you created in ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "http://cs52.me/assignments/sa/react-native/",
+          "content": [
+            {
+              "type": "text",
+              "text": "part 1",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " to search for and display YouTube videos. If you haven’t completed that project yet, you should do so before starting this short assignment.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "26fa9cf6-1ef3-44c6-8e7d-4e09467aec22",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We will be adding authentication, video uploads, and basic animations to this app to further showcase the power of React Native.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "37e837c3-3215-40d0-808f-e5592463a9db",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ For this assignment, we’ll be removing Expo and running the app as a bare React Native app through Xcode. We’ll also only focus on iOS development (although many of these steps are easily extendable to Android). Because of this, you’ll need a Mac to complete this tutorial and you should ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://apps.apple.com/us/app/xcode/id497799835",
+          "content": [
+            {
+              "type": "text",
+              "text": "download Xcode",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " before starting.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "69a3322c-da1e-4b7e-aa88-bd677036739e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ This assignment is relatively long/involved. Don’t hesitate to post in Slack for help with installation/dependencies/code setup or any other issues! ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bc5a7f1b-6dfb-4e7e-9408-2eef691cae33",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7190551c-d059-496d-923f-710408ffd807",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ejecting from Expo",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "88ebcbea-265e-4bbd-8f3c-4e40b340f6b4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "First, we’ll need to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "eject",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " from our trusty Expo client (oh no!) to install and set up the dependencies we’ll need for this assignment. Ejecting – or the process of removing Expo and configuring your project as a standard React Native app – is unnecessary in many cases. Often, it makes sense to keep all development in Expo and never eject, or only eject towards the end of development.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2cb850bc-1455-4156-9ac1-b5b0de2ce15b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "However, some modules will require you to install custom native code (usually indicated by references to “linking” in the installation instructions), which requires removing Expo and exposing the iOS and Android project files. While Expo does have its own authentication and background process modules (which we’ll be using), they rely on Expo API keys and generally aren’t as robust or adaptable as their native equivalents.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9763fb42-68ec-4fad-995d-b45809557a32",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ While Expo is constantly improving, the eject process tends to produce bugs and your app may not always compile properly straight after ejecting. If that happens, Google your error message – eject errors are common enough that someone likely has documented the error you’re encountering – or post in the Slack group for this short assignment.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "305a5e79-e523-4c4c-b407-439178c0c4b0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "git commit",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " any changes you’ve made before starting. This will allow you to easily revert back if something goes wrong with the eject process or you decide to switch back to the managed workflow in the future.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1ab3206e-3595-4582-8295-98d4034b08be",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "expo eject",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in your app’s directory. You can name your Android package and iOS bundle identifier whatever you want – it should be unique and in the format of a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "reverse domain name",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " (e.g. edu.dartmouth.cs.rnshort). Expo will then generate ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "android",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " folders for you containing traditional projects that can be opened with Xcode or the Android SDK. These projects essentially serve as the bridge between your JS code and the native platform code.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3603def2-c161-4da9-955c-a0d378517588",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀After this, ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://cocoapods.org/",
+          "content": [
+            {
+              "type": "text",
+              "text": "install Cocoapods",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " if you don’t already have them installed (you’ll only have to do this once). Then, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cd",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " into your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " folder and run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to install all of your dependencies for iOS.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "cc6652a7-8d25-4d8a-a0c7-e6dc5a5bb9e8",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "Screen Shot 2022-05-16 at 12.36.40 PM.png",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/screen-shot-2022-05-16-at-12-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "eb96fc5f-14ba-412d-abe5-07c64a69eaf6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "8255f110-0dff-4fd6-a1ec-dcadcc2f0a67",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Xcode",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "31348d01-f2d2-4b0b-8051-252939a37f6a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Next, let’s check to make sure the app still compiles and builds properly. You can do this by running ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm run ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " (the equivalent of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "expo start",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ") from the terminal to launch a simulator, but let’s do this through Xcode the first time so we can easily catch any errors.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "53c54fb6-4254-4441-a06f-14de963ca21d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " folder, open the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".xcworkspace",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file (",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "not",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".xcodeproj",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ") in Xcode.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "56246ce3-5f86-4a5d-9226-96cbce7be301",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/xcode-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "0f0e9237-8d5e-42dd-b3c8-fea9a258b210",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Click the run button (▶️) at the top of the screen to build and run your app on a simulator.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ac4b9c68-f360-4b09-97d2-ef42562f8847",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ Note that the build process takes a while, especially for the first time. That’s one downside of bare React Native apps as opposed to managed Expo projects – you have to wait for the Xcode compiler to bundle everything into a native app package before testing and debugging your app. You’ll still get access to hot reloading once the app’s open, though.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8be97fe6-cfa0-4402-90d7-432b11aefc79",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "At this point, if the simulator pops up with your app loaded, then you’ve successfully ejected from Expo!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "60020691-771b-4396-a356-b053b3b17250",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "489a2d85-b8c6-45af-bf8b-25b1b62e223e",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Upload Screen",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5181d8b4-4407-42dd-997d-18b7395340e9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s create the screen that’ll be used to upload videos from our app. This will require another set of nested navigators to provide two ways to navigate away from our search page: to the VideoDetail component or the Upload component.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4817ebd9-bec0-4800-b1b5-73cad182f13a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components/upload.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", let’s create an empty view for now to represent our Upload component.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dae89f28-f812-4dcf-9d0d-a3beaae948c2",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { View } from 'react-native';\n\nconst Upload = (props) => {\n  return <View />;\n};\n\nexport default Upload;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "44439f5d-dd94-4842-98e4-204455a2a540",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "6ea84c99-3e34-4c8b-8e5e-6a6143ab0332",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Header",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e5b6ad1d-5562-4e1e-9741-7457b08f2ebb",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, let’s create a custom header component to allow us to navigate between our search screen and upload screen. This allows us to handle navigation ourselves, which is nice, and enables some more complex header configurations and layouts.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f8408306-ae0a-4d35-82c8-88eff1433157",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Fill in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components/header.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ":",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "673f7e2b-168a-4b0a-a934-bfd7131f166c",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport {\n  View,\n  StyleSheet,\n  Text,\n  Dimensions,\n  TouchableOpacity,\n} from 'react-native';\nimport Ionicons from 'react-native-vector-icons/FontAwesome';\nimport { useNavigation } from '@react-navigation/native';\n\nconst UploadHeader = ({ title }) => {\n  const navigation = useNavigation();\n  const isUpload = title === 'Upload a Video';\n\n  return (\n    <View style={headerStyles.header}>\n      <Text style={{ color: 'white', fontWeight: '700', fontSize: 18 }}>\n        {title}\n      </Text>\n      {!isUpload ? (\n        <TouchableOpacity\n          style={headerStyles.uploadIcon}\n          onPress={() => {\n            navigation.navigate('Upload');\n          }}\n        >\n          <Ionicons name=\"upload\" size={26} color=\"#fff\" />\n        </TouchableOpacity>\n      ) : (\n        <TouchableOpacity\n          style={headerStyles.closeIcon}\n          onPress={() => {\n            navigation.goBack();\n          }}\n        >\n          <Ionicons name=\"times\" size={26} color=\"#fff\" />\n        </TouchableOpacity>\n      )}\n    </View>\n  );\n};\n\nconst headerStyles = StyleSheet.create({\n  header: {\n    backgroundColor: '#f4511e',\n    flex: 1,\n    alignItems: 'center',\n    justifyContent: 'center',\n    minHeight: 50,\n    width: Dimensions.get('window').width,\n  },\n  uploadIcon: {\n    position: 'absolute',\n    right: 15,\n  },\n  closeIcon: {\n    position: 'absolute',\n    left: 15,\n  },\n});\n\nexport default UploadHeader;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "09c20079-d572-4f55-b99a-891c4945f9b0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ There’s a lot going on here, so let’s break it down. We’re sharing this header between two screens – the search view and the upload view – so we pass the title in as a prop and use that to define which icon the header should display. We’re also using the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "useNavigation",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " hook conveniently provided by React Native Navigation to handle opening and closing our screens. Finally, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "TouchableOpacity",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " is a default React Native component that essentially serves as a more flexible button – you can use it to receive onPress events and it automatically responds by decreasing the opacity of its children when pressed.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9a28a5a9-d850-43c0-8486-6a69891b1c6d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Let’s update ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "search_tab.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " so we can display our new header. Replace the SearchTab component with the following:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b6468208-77e5-4b43-acf0-a9fc2e5c508a",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const SearchTab = () => {\n  return (\n    <Stack.Navigator>\n      <Stack.Screen\n        name=\"Search\"\n        component={SearchUploadNavigator}\n        options={{ headerShown: false }}\n      />\n      <Stack.Screen name=\"Detail\" component={VideoDetail} />\n    </Stack.Navigator>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "87c996de-5f6f-4955-969d-3f1f5e225c77",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And define ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SearchUploadNavigator",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " directly above ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SearchTab",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " (make sure to update your imports as well):",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "139db19e-114a-45b5-95f6-df36d6ffbbed",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const SearchUploadNavigator = () => {\n  return (\n    <Stack.Navigator mode=\"modal\" initialRouteName=\"SearchScreen\">\n      <Stack.Screen\n        name=\"SearchScreen\"\n        component={VideoList}\n        options={{\n          headerStyle: {\n            backgroundColor: '#f4511e',\n          },\n          headerTintColor: '#fff',\n          headerLeft: (props) => (\n            <UploadHeader {...props} title=\"YouTube Search\" />\n          ),\n          title: '', // Override default title\n        }}\n      />\n      <Stack.Screen\n        name=\"Upload\"\n        component={Upload}\n        options={{\n          headerStyle: {\n            backgroundColor: '#f4511e',\n          },\n          headerTintColor: '#fff',\n          headerLeft: (props) => (\n            <UploadHeader {...props} title=\"Upload a Video\" />\n          ),\n          title: '',\n        }}\n      />\n    </Stack.Navigator>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c9bceed3-281b-40b0-9ecc-bd9fb6ccbdfb",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "What happened here? We kept the “Search” route from the original navigator, but instead of making it point to a component, we directed it to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "another navigator",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " that controls navigation between the search and upload screens. The reason why we did this was so we could use modal navigation mode (where the view comes from the bottom instead of the side) with the Upload component. Notice how we override the header on the original navigator and use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "SearchUploadNavigator",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to control the custom headers.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "520a1cc0-b93f-49db-bbbd-95c73715848e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ Also notice how we pass the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "UploadHeader",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " component into the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "headerTitle",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " option of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Stack.Screen",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "headerTitle",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " allows you to pass in another component, and since we defined the width of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "UploadHeader",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to be the width of the window it takes up the whole header.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7a76f5d2-3cca-4241-bd40-6bf556cf870b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If you did it right, you should now be able to do this:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e2d91c5f-075b-4589-a026-62669bee3836",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/upload-1767548327240.gif",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "6e4ac7cf-52f9-46c6-98a8-7c097cceb677",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Cool, right?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "758853d2-e5b7-4297-9791-0053e7d9683b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "e01885e5-bd0d-4c7d-be5a-93c5037bb3c2",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Firebase",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "61085d20-0524-4ab2-8de5-4d8ff4d463a7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Let’s connect our app with Firebase to allow us to authenticate with Google.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "679cc5e0-fd10-4faf-bc82-caf44933db3d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "21a9df60-0842-4af4-b5cd-d30d37c4979b",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Configuration",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1ab17693-87fe-4787-a175-235baf1e618e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Go to ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://firebase.google.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "firebase.google.com",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and create a new project.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "267b416f-560d-4d55-935d-1e3c4b2937cd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Click the “iOS” button on the main screen to add an iOS app to your project. The bundle ID should be the same as the one you set when ejecting from Expo – if you can’t remember it, then go to Xcode and check the build settings.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a95e7ad8-df6c-4285-8db6-b50e75ff5ca6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Download the config file generated by Firebase and add it to your project’s root in Xcode.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ecb7a55e-712b-419c-8a84-5bae5a01ecb8",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/firebase-config-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "19545242-efef-44e1-8263-f60d01decbb4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀While we’re in Xcode, let’s modify a couple of the automatically generated app files so they’re compatible with Firebase. Open ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "AppDelegate.m",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " from Xcode and add this to the top:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "be54c3b5-2cbe-4a82-ad65-beb427ce7ab3",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "#import <Firebase.h>",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e9014f56-b1a8-4b53-8415-30929d28bbc6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And, at the top of the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "didFinishLaunchingWithOptions",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " method, add this:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "eaec456e-0387-42c3-9260-045945c5f0b2",
+      "type": "codeBlock",
+      "props": {
+        "language": "swift"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {\n  if ([FIRApp defaultApp] == nil) {\n    [FIRApp configure];\n  }\n  // Rest of the default function code\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7ef38f3a-01f9-4911-b546-292431f866a3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Finally, in your project directory, run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install @react-native-firebase/app",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to add the Firebase NPM package. Then run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cd ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to install its native dependencies.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6664ba26-c988-48f0-bdff-d165d0e0771f",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If this command fails, try running ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod repo update",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " first. Depending on the errors that you receive (e.g. you get an error about modular headers), you can add the following lines to your Podfile:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b1b8f999-71c9-4c73-968e-ef61f751b376",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": " Your app is now configured to use Firebase! Rebuild your app to make sure it still runs.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2109cce9-33da-4481-8dbb-5f1228c43501",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "24136f8d-4313-4dab-9fce-5bc939c10dee",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Authentication",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a65c512f-61bf-4c4a-a9f3-e536c3ef08b9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, let’s set up authentication for our app. Although we’re just using Google login in this case for the purposes of being able to upload videos to YouTube, this process can be scaled to add full user authentication to any React Native app.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c3ed94e5-ea9c-46a2-a9cd-940d55089cd9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In the Firebase console, click the Authentication icon in the sidebar and then the “Set up sign-in method” button.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a29c35ce-58c4-485b-beb2-c5b6abf8d354",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Enable Google as a sign-in provider. Save the web client ID – you’ll need it later.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5665c8d9-905e-4ee6-9d5b-337358d685b5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Let’s define the login UI for our app. Change ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to the following:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f98ac805-c84f-418e-85f7-96d84eb1d8f6",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import React from 'react';\nimport { View, TouchableOpacity, Text, StyleSheet } from 'react-native';\n\nconst Upload = (props) => {\n  const signInButton = () => {\n    return (\n      <TouchableOpacity style={styles.button}>\n        <Text style={{ color: 'white' }}>Sign in with Google</Text>\n      </TouchableOpacity>\n    );\n  };\n\n  return <View style={styles.background}>{signInButton()}</View>;\n};\n\nconst styles = StyleSheet.create({\n  background: {\n    flex: 1,\n    alignItems: 'center',\n    justifyContent: 'center',\n  },\n  button: {\n    flex: -1,\n    alignItems: 'center',\n    justifyContent: 'center',\n    padding: 10,\n    backgroundColor: '#f4511e',\n    borderRadius: 5,\n  },\n});\n\nexport default Upload;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dd5092a0-4989-45d2-80a0-bbc02e18547a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Install the Google login SDK – which Firebase will use to login with Google – using ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install @react-native-google-signin/google-signin @react-native-firebase/auth",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3fd3e999-fae2-4579-863d-3cb17af10b1f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Then, you know the drill – ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cd ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to get all the native dependencies.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "060ddfe4-b9f2-42ea-9e14-2e960c842312",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In Xcode, open ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "GoogleService-Info.plist",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and copy your REVERSED_CLIENT_ID. Then, click on your project in the left sidebar and add a new URL type under the Info panel containing your REVERSED_CLIENT_ID.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "58457fbb-4de6-4b0d-b7a1-128980f4609b",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/url-type-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "c8764732-0a72-4ec3-8316-51f6627c38d4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Rebuild the app to capture all your changes.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2410b954-0a51-42bc-8ce5-b60388859e34",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Let’s actually try signing in! At the top of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", add the following imports (note that this is where you use your Web Client ID from Firebase):",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bc92a5c5-0284-49c9-9b16-276eb81eb8e7",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import auth from '@react-native-firebase/auth';\nimport { GoogleSignin } from '@react-native-community/google-signin';\n\nGoogleSignin.configure({\n  webClientId: YOUR_WEB_CLIENT_ID,\n  scopes: ['https://www.googleapis.com/auth/youtube.upload'],\n});",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "128edcee-56dd-48b5-87ab-2db7d5e1322a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And then at the very top of the Upload functional component:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5e8745c1-665b-495c-ab1c-738626cb81b6",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const Upload = (props) => {\n  const [initializing, setInitializing] = useState(true);\n  const [user, setUser] = useState();\n\n  function onAuthStateChanged(newUser) {\n    setUser(newUser);\n    console.log(newUser);\n    if (initializing) setInitializing(false);\n  }\n\n  async function onGoogleButtonPress() {\n    const { idToken } = await GoogleSignin.signIn();\n    const googleCredential = auth.GoogleAuthProvider.credential(idToken);\n    return auth().signInWithCredential(googleCredential);\n  }\n\n  async function signInOnStart() {\n    await GoogleSignin.signInSilently();\n  }\n\n  useEffect(() => {\n    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);\n    signInOnStart();\n    return subscriber; // unsubscribe on unmount\n  }, []);\n\n  if (initializing) return null;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a2aedc77-f529-4fa8-8372-98b56f945947",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "onGoogleButtonPress",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "onPress",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " prop of your sign in button.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6e5218cf-268d-40dc-9875-cdf6144a4a3a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Try signing in! It’ll warn you about not being a verified app, which you can safely ignore, and then prompt you to grant access to your YouTube account. After the window closes, you should see your user data printed in the console. ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Make sure you explicitly grant Google access to manage your YouTube account during this step.",
+          "styles": {
+            "bold": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8e40ad9a-d1b0-45b2-b02a-20be72490769",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If you open the authentication pane of your Firebase console, you should see a new user added.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bbac905e-b344-4b32-b5b0-141e1759ff4d",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/firebase-user-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "7ec39f58-9eaf-4db3-878d-8a2beaaf11da",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ If you’ve used other authentication APIs in the past, you might be wondering whether we need to store a refresh token or some other means of persisting the user’s data between app closures. We don’t want to have to login again every time we reload the app! Luckily, Firebase deals with many of the complexities behind persisting a user for you. In this case, the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "onAuthStateChanged",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function subscribes to authentication state changes and automatically updates the state when the component is mounted with the user’s account info. Additionally, the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signInOnStart",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function automatically refreshes the user’s Google API access token when the component loads so that we can use it to call the YouTube API.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b81c1e20-78f1-49d8-90d9-14c9340f9445",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Finally, add an upload button and update what you return to check whether or not a user has logged in:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d5658751-a0a1-44a9-8f5b-ebd056b7ecce",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "  const uploadButton = () => {\n    return (\n      <TouchableOpacity style={styles.button}>\n        <Text style={{ color: 'white' }}>Upload Video</Text>\n      </TouchableOpacity>\n    );\n  };\n\n  return (\n    <View style={styles.background}>\n      {user ? uploadButton() : signInButton()}\n    </View>\n  );",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a64881fc-8d04-4f70-85ba-4c1c39a9aa0f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You should see your app change to display the new upload button. You’ve now implemented Google sign-in through Firebase for your app!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0aa2ab74-3aad-40bc-aa74-39a5e95936c7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "09836401-89a5-4497-a207-3b300db71002",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Upload Video",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0f3ec6d9-400a-4976-adc6-b035c943b22f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, let’s actually set up video uploading to YouTube.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d492bce8-4cca-470a-a8af-b615dadea4c9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cc14c18e-7774-44a0-b153-fca2b80c420f",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Getting Video from Camera Roll",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c83dbc7a-fadc-4cbd-8819-eedf9016de6c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In order to retrieve a video to upload, we’ll need to ask for permission from the user to access the Camera Roll and then display a dialog prompting them to select a video. Luckily, Expo has some built-in libraries that allow us to do this fairly easily.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "aa09e8e3-4745-41da-a1b9-c63c65da479b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ But I thought we got rid of Expo? Although we ejected the app from the Expo client, we can still use Expo-made packages in our app – essentially, you get the best of both worlds.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "591f486d-6b3f-4ee6-b478-6b1917183007",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npx expo install expo-image-picker expo-permissions",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in your command line. Then, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cd ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " again.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8633bb93-9478-43ed-be72-d2b9575998e0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In Xcode, open your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Info.plist",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " as source code by right-clicking on the file in the sidebar and selecting Open As > Source Code. Then, add the following key-value pair to the bottom of the file:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "452012fb-af15-40c1-b365-e904f60351a7",
+      "type": "codeBlock",
+      "props": {
+        "language": "xml"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "<key>NSPhotoLibraryUsageDescription</key>\n<string>Give $(PRODUCT_NAME) permission to save photos</string>",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8c0fc63f-6923-4ace-ac2d-a27f73e30bdd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Rebuild your app.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c0652193-42ec-45b0-9a10-711630e4cbb7",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", add the following under the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "signInOnStart",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b6407747-75e5-45de-9ddb-074236581b29",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "async function retrieveVideo() {\n  const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);\n  if (status === 'granted') {\n    const result = await ImagePicker.launchImageLibraryAsync({\n      mediaTypes: ImagePicker.MediaTypeOptions.Videos,\n      allowsEditing: false,\n      quality: 1,\n    });\n    if (!result.cancelled) {\n      return result;\n    }\n  }\n}\n\nasync function upload() {\n  const video = await retrieveVideo();\n  console.log(video?.uri);\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7d8dbc0f-b9a9-470d-b622-15f93fed4d0a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Update your imports:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "07ec214c-20b7-4cf7-a8a0-ef4cdf32ffdc",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import * as ImagePicker from 'expo-image-picker';\nimport * as Permissions from 'expo-permissions';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e4cab62d-5c11-4f15-afcd-ae9ec84667dd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And don’t forget to add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to the onPress handler of ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "uploadButton",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": "!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8d90473f-7abd-4691-8741-a91387cfa52d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ What is this ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "?.",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " operator we used in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "console.log",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": "? The ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining",
+          "content": [
+            {
+              "type": "text",
+              "text": "optional chaining",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " operator is new in the 2020 edition of Javascript. It allows you to check for nested properties in an object without receiving a TypeError for attempting to read properties from a missing or undefined object reference. Cool, right?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b28659d4-600a-4bfc-b9db-314a88959cea",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, when you click the upload button, it should prompt you to grant permission to access the Camera Roll and open a dialog to allow you to select a video. (Make sure to give the app access to your photos!) One problem – if you’re testing this on a simulator, there aren’t any videos to select! You’ll see the console log “undefined” when you close the dialog. Let’s fix that.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "90a612e4-6682-453b-87ea-297ded88bd93",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/empty-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "2d27ff5f-499a-4694-a963-9b4482530b80",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Choose a video from your hard drive and drag it onto the simulator. You can use any video – I used Dartmouth’s ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://www.youtube.com/watch?v=fIQoLdlJPk0",
+          "content": [
+            {
+              "type": "text",
+              "text": "2020 commencement address",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " – but make sure it’s at least several hundred MB so that it doesn’t upload instantly.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e703adf3-0be8-459c-9ef8-9f1f6c1e55c9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️  If you encounter an error when attempting to import your file from Finder, try moving it to a different directory and re-import it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a9fe2ccc-4da1-4bd6-a01a-1d70e9d91bbd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, you should be able to select your video from the Camera Roll and see the file URI displayed in the console.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b3362392-1877-474c-acf5-2172107aedc1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "97df19f0-3618-45d4-84f4-fd9b237033e9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Uploading the Video",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e9e19ad8-a0f4-43a8-bb41-579627bc8e54",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "could",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " use Axios to upload the video, but for a large upload like this we want to allow the user to send the app to the background and conduct other tasks on the device without fear of terminating the download. Let’s install another module to help us accomplish that.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "eb39c06e-b762-49b8-afdd-15238de7a593",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install react-native-background-upload",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and then ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cd ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "75586256-19a0-4dd4-9bd8-dfe3a6ef777c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Since we created a new Firebase project for this app and we’re using that API key to authenticate the user, we’ll need to re-enable access to the YouTube API. Go to your ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://console.cloud.google.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "Google Cloud console",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " (not Firebase console) and follow the instructions from Short Assignment 4 to enable the YouTube Data API. Note that you don’t have to generate a new API key, just enable the API.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b6c5a946-61bf-471d-a9b1-24c3f42629a5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 In your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function, under the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "console.log",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " add the following code:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f8229433-a3f8-4aae-bf16-3178da50f1d3",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "if (video) {\n  const { accessToken } = await GoogleSignin.getTokens();\n  const { size } = await stat(video.uri);\n\n  const uploadData = await axios({\n    method: 'POST',\n    url: 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status,contentDetails',\n    headers: {\n      Authorization: `Bearer ${accessToken}`,\n      'content-type': 'application/json; charset=UTF-8',\n      'x-upload-content-type': 'video/*',\n      'x-upload-content-length': size,\n    },\n    data: {\n      snippet: {\n        title: 'RN Video Upload',\n        categoryId: 24,\n      },\n      status: {\n        privacyStatus: 'private',\n      },\n    },\n  });\n\n  const uploadUrl = uploadData?.headers?.location;\n  console.log(uploadUrl);\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a78dac93-2857-4949-af1a-3f93876d6f2e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And, we’ll need to install the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "react-native-fs",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " module to get the video file size. Run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install react-native-fs",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and then manually add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod 'RNFS', :path => '../node_modules/react-native-fs'",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to your Podfile like before. Then, run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and add the following import statement:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "70030285-73a7-48eb-bc40-13a5cc725bfb",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import { stat } from 'react-native-fs';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "00028cf5-c883-4b9d-a7a1-192342f53952",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ There’s a lot going on here, so let’s break it down. YouTube follows a ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol",
+          "content": [
+            {
+              "type": "text",
+              "text": "multi-step upload protocol",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", and the first step is to retrieve the URL that will be used for upload. We then call YouTube’s upload API with the user’s access token and details about the video to obtain the URL. Note that some of these parameters, like the video title and category, would be generated based on user input in an actual app – you can see how to obtain YouTube category IDs ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://developers.google.com/youtube/v3/docs/videoCategories/list",
+          "content": [
+            {
+              "type": "text",
+              "text": "here",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0cfdae68-97f3-4792-9a89-638b93be861a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ For basic versions of the API, there’s a quota on the amount of times you can call this API endpoint per day – make sure to not test these steps more than a couple times once you get it working, or you may encounter 403 errors until midnight Pacific Time the next day.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b675d6e4-c01c-46c4-aa08-ee51797a5e2c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Let’s actually upload the video now! Replace the last ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "console.log",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " with the following:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f4a2e2af-5e32-4214-83e3-425a1495f949",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const uploadOptions = {\n  url: uploadUrl,\n  path: video.uri,\n  method: 'PUT',\n  type: 'raw',\n  headers: {\n    Authorization: `Bearer ${accessToken}`,\n    'content-type': 'video/*',\n    'content-length': size,\n  },\n};\n\nBackgroundUpload.startUpload(uploadOptions)\n  .then((uploadId) => {\n    BackgroundUpload.addListener('progress', uploadId, (data) => {\n      console.log(data.progress);\n      setProgress(data.progress);\n\n      if (progress === 100) {\n        setProgress(0);\n      }\n    });\n    BackgroundUpload.addListener('error', uploadId, (data) => {\n      console.log(`Error: ${data.error}`);\n    });\n  })\n  .catch((err) => {\n    console.log(err);\n  });",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a4cb4b0b-824e-460c-9795-6702871105a4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Update your imports:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "94bcb9db-545d-43a6-8fdf-3c8b70b706c3",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import BackgroundUpload from 'react-native-background-upload';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8ba80d6d-951a-4a59-9ce2-8cc21f67fa96",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And of course, add another variable to your state configuration:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2b0a0fc1-103c-49b9-bec2-e148cecdf222",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const [progress, setProgress] = useState(0);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d705d06e-9be2-4c71-b8ee-de81610a4f91",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, after selecting your video, you should see the progress logged in the console as it uploads.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f04a61da-f2f5-4fd8-a09f-40f41d9267a5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "61e6b671-658c-47c2-a573-898023505cfa",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Progress Bar",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bef908f8-c9f8-4e92-8269-cdbe2dc90448",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Just logging our progress isn’t very interesting, though. We want to keep the user informed of how much their upload has progressed.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6421a65c-a609-44da-9a8f-f28c7828770a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Let’s create a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "progressBar",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function to render a progress bar. Under where you have ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "uploadButton",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ":",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b5331e45-e03e-4073-852a-d202e5d84856",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const progressBar = () => {\n  return (\n    <>\n      <View style={styles.progressBar}>\n        <View style={[styles.progress, { width: `${progress}%` }]} />\n      </View>\n      <Text style={{ marginTop: 20 }}>{`${Math.floor(progress)}%`}</Text>\n    </>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a345e43d-df59-4f48-9b77-a9828c3e8c68",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Update your return block to conditionally check for progress:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5cee268d-1259-4881-9fa5-d75ad893678a",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "return (\n  <View style={styles.background}>\n    {progress > 0 && progressBar()}\n    {progress === 0 && (user ? uploadButton() : signInButton())}\n  </View>\n);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e1d67d8d-a30b-4bb6-8794-9052fc2dc06d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And add some styles:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "28842834-bf42-49e8-8738-f72a7297e3c8",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "  progressBar: {\n    width: '80%',\n    height: 25,\n    backgroundColor: 'rgba(0,0,0,0.2)',\n    borderRadius: 5,\n  },\n  progress: {\n    position: 'absolute',\n    left: 0,\n    height: 25,\n    backgroundColor: '#f4511e',\n    borderRadius: 5,\n  },",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4a650fe1-a63f-47c8-8322-067980cefc54",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "It should look like this:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "399f2b50-429e-4af4-be4b-2628bb33993d",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/progress-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "202dca2d-9016-4880-ba43-bfcd30b0a450",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀But wait! If we close the upload modal and wait for the component to unmount, when we open it again we don’t have access to the progress bar from before! Let’s update our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "useEffect",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " hook to listen for a progress event when the modal opens:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "65d19de5-8fb6-4779-90a5-b9acd000d9c0",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "useEffect(() => {\n  const subscriber = auth().onAuthStateChanged(onAuthStateChanged);\n  signInOnStart();\n\n  BackgroundUpload.addListener('progress', null, (data) => {\n    console.log(data.progress);\n    setProgress(data.progress);\n\n    if (progress === 100) {\n      setProgress(0);\n    }\n  });\n\n  return () => {\n    subscriber(); // unsubscribe on unmount\n    DeviceEventEmitter.removeAllListeners();\n  };\n}, []);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e9c56d99-a39e-43f8-a4a4-ea00c5008cd0",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And add ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "DeviceEventEmitter",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "react-native",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " imports.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9c8cced9-238c-4b39-8bbc-ebb1a423cb92",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❄️ What does useEffect do? useEffect is a React hook designed to mirror the functionality of componentDidMount, componentDidUpdate, and componentWillUnmount in functional components. Here, the empty dependency array [] supplied as the second parameter to the hook specifies that the function should run once upon mount, and returns a cleanup function for our event subscriptions that will run on unmount. You can add objects to the dependency array to specify that useEffect should run when one of those parameters changes.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2ff87c71-1ce4-40ba-bf1d-7806f4b9fd08",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 If you run into a “403: Quota Exceeded” error when attempting this code, that’s okay! You can still submit and receive credit if the rest of the code is there. YouTube restricts you to 4-5 upload requests a day on the free tier, so don’t try uploading until you’re sure you have it right.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8d43a451-08c9-4918-ad0d-782ef8541727",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://emojipedia.org/warning/",
+          "content": [
+            {
+              "type": "text",
+              "text": "**⚠️",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "** If you get a 401 unauthorized error, make sure the account you’re signing in with has a YouTube channel associated with it!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b4194eab-f775-4874-9609-d8cc8511107b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "73fee125-0839-4b06-81b3-7ac9eb50cd72",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Animation",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "56042ced-7e55-483f-8b0d-cab48fcc82a6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Finally, let’s add some animations to our upload screen to make it more interesting.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7ab34fd5-c83e-4c31-a4de-edf90bcb51be",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7b6d0fb0-1697-4f39-a45b-0847758df39c",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Lottie",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c8d4de42-ba2b-48e5-9e9d-d318da81e9d9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm i lottie-ios@3.1.8 lottie-react-native@3.5.0",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", then ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cd ios",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pod install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". This adds ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://github.com/react-native-community/lottie-react-native",
+          "content": [
+            {
+              "type": "text",
+              "text": "Lottie",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " to your project, a framework that parses Adobe After Effects animations and renders them natively on mobile.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fdedaf95-7441-4f9e-a169-4d766792392e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀We’re going to add an animation from ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://lottiefiles.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "LottieFiles",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", a free library of Lottie animations that you can download and use in your projects. We’re going to be using ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://lottiefiles.com/196-material-wave-loading",
+          "content": [
+            {
+              "type": "text",
+              "text": "this",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " loading indicator, which you can download below. Download it and put it in your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "assets",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " folder.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "838fcace-d892-441f-94ed-411a90b88dd8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "ECSA%20React%20Native%20%E2%80%94%20Part%202/196-material-wave-loading.json",
+          "content": [
+            {
+              "type": "text",
+              "text": "196-material-wave-loading.json",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4ca6db8f-8cb9-4ec6-a06a-24d241f9f9bd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀In ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", add the following import:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "72a996e0-5dab-4d4e-a668-4e147ccecf1a",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import LottieView from 'lottie-react-native';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1ecd6897-75ec-4451-b4a9-529f4a3440fb",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀And update your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "progressBar",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "08c38e22-39f9-4c04-8145-033e3e40a96f",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const progressBar = () => {\n  return (\n    <>\n      <LottieView\n        source={require('../assets/196-material-wave-loading.json')}\n        autoPlay\n        loop\n        style={{ marginBottom: 100 }}\n      />\n      <View style={styles.progressBar}>\n        <View style={[styles.progress, { width: `${progress}%` }]} />\n      </View>\n      <Text style={{ marginTop: 20 }}>{`${Math.floor(progress)}%`}</Text>\n    </>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1fc975ef-61ae-49ac-b96d-bb01f8380371",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You should now have a nice complement to your progress bar.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e07b024f-627a-424e-8674-c8e433a81176",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/lottie-1767548327240.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "a727bcc8-5e34-40d4-898a-52ec3e8f058a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "80dcd5da-cb30-48d9-8f73-901d75eacf86",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "React Native Animatable",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c97834df-74e2-4526-a946-985e16e8b24b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "React Native Animatable is a library that makes it easy to animate ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "components",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in React Native. Let’s use it to spruce up our upload button.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3a826ce5-604c-449b-9142-0f14450e8ecd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install react-native-animatable",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b8a75d0d-5f8e-471d-8518-0013d80c9539",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Import the module:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d17abb66-0557-41ea-810a-5a033c615aac",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import * as Animatable from 'react-native-animatable';",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "33c15822-f9ec-4e4f-8a46-0017cb166850",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀Then, wrap your button components in Animatable.View, like so:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e6a8c5d3-e153-46f4-bab1-b014db31952d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "const signInButton = () => {\n  return (\n    <Animatable.View animation=\"fadeInLeft\" delay={500}>\n      <TouchableOpacity style={styles.button} onPress={onGoogleButtonPress}>\n        <Text style={{ color: 'white' }}>Sign in with Google</Text>\n      </TouchableOpacity>\n    </Animatable.View>\n  );\n};\n\nconst uploadButton = () => {\n  return (\n    <Animatable.View animation=\"fadeInLeft\" delay={500}>\n      <TouchableOpacity style={styles.button} onPress={upload}>\n        <Text style={{ color: 'white' }}>Upload Video</Text>\n      </TouchableOpacity>\n    </Animatable.View>\n  );\n};",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0c5eedd3-9bf3-4f5e-b86f-aa53e151e7ae",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "That was easy!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bfca2d94-fd7f-43ea-84b6-64352c7f1f7e",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-react-native-part-2/assets/animation-1767548327240.gif",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "5f77403c-1f79-467d-9081-b28dea58bcda",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "b42e8e94-455e-40cd-adc5-2c96834a2281",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We’re done!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "de5c1e1a-5610-4af9-a9fd-50570441c3cc",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You successfully took off the Expo training wheels and built a full-fledged video uploader, complete with animations, background loading, and Firebase authentication. And you did it without having to write a single line of native code!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "88fc4351-8ae3-4ab9-809d-263b94d42a48",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "There’s a lot going on in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "upload.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " – think about how you’d divide up the code and organize a larger React or React Native project.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1d6287c8-2cdb-4f13-bb2f-9cad4c18310d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We breezed through Firebase and the YouTube API, but there’s a lot more functionality to them that’s accessible with a simple ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "16a9fb8a-bd31-40f5-812c-398b14f6cb0d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "895fb1ef-ca2c-4c82-8100-85c49e1cc1ed",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Submission",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "896707e6-3e07-4c10-b32d-22fb2e031582",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To submit, create a new comment on your react-native short assignment. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c71ef218-15b7-4df9-af23-7b37366de3d8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7e5b2387-facf-47cc-8bc5-2e4db455921a",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Resources",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7d85d341-9870-463d-b1dd-a17c64d10122",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://rnfirebase.io/auth/social-auth",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://rnfirebase.io/auth/social-auth",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "80114baa-93c6-4e97-819d-a8ec04f6e9d2",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://github.com/react-native-community/google-signin",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://github.com/react-native-community/google-signin",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d13908f1-52e7-4832-b36b-05e739d4ffd3",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2adddb47-3f56-483e-ac86-fbf366375f36",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://docs.expo.io/versions/latest/sdk/imagepicker",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://docs.expo.io/versions/latest/sdk/imagepicker",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3a0577f4-c211-4384-a360-ac9d195dd053",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://github.com/Vydia/react-native-background-upload",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://github.com/Vydia/react-native-background-upload",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab12014a-5494-461a-88da-df001a9c3a6e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
