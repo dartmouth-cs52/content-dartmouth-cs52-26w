@@ -1,0 +1,2004 @@
+{
+  "blocks": [
+    {
+      "id": "cc8c5e4e-30ef-44d9-a7f9-dc44a08b1550",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/fbansyz-1767548311581.png",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "b5685b1b-3459-4527-a5f9-a2b19a208c1d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "c6b56521-7927-4558-bdd1-fc63ed74cdec",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Overview",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dfa0557e-77d0-4149-8bb2-01bda9b1797b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "63f463ed-5ad5-4dee-9be6-25adc3094f6f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Today we’ll be learning how to directly upload images to Amazon Web Services Simple Storage Service (S3) on our blog application from Lab 4 and 5. We will be implementing an image input for handling image uploads and then these images will directly be uploaded to S3.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9362fa8b-0974-4fbb-ab3e-2a19c6db156a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Amazon S3 is a popular and reliable storage option for storing files such as images, documents, and videos. By uploading directly to S3, we can reduce server load because our server load no longer needs to handle receiving images from the client. When handling large images, our service would otherwise not be able to respond to other web requests as efficiently.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0f9babef-4a0d-45e3-94c9-15078abe63b5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "5eebed49-6a11-4d87-bfa1-876140280b84",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Code Flow",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9e3f766a-7daf-482a-9084-9003a885988f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In general, the method described in this article follows these simple steps:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "42fb8778-4e45-44cb-8fef-4dd73d75702d",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "A file is selected for upload by the user in the client",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "120e8390-e310-4dd5-8f85-f9ce0c1f5b31",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The client makes a request to your server, which produces a temporary signature with which to sign the upload request",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7718fec6-ed2c-45b2-bce7-0b696aa9eab6",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The browser then uploads the file directly to Amazon S3 using the signed request",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "db56954a-f134-44af-8dbb-de3541557826",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/s3-upload-1767548311581.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "15c5e2f8-d332-497e-9387-6cb8996fa8ee",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "406f9f18-31c3-4939-b1ae-17f7629b1b31",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Setup",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2bac3b62-d9c1-443f-b2f5-0b51bebbfe06",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Make sure everything is committed and pushed to github normally for both Lab4 and Lab5",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fcb412bc-bfd2-4eb1-abbd-b3f3c132f562",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Go into your Lab5 and Lab4 directories and run:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ff197117-1a6e-4dda-ad1b-40bd401329f5",
+      "type": "terminal",
+      "props": {
+        "code": "git checkout -b withS3",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "ac3b8d01-b97e-4e64-9b65-f13dca323bac",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Now you will have a separate branch with image uploading as a feature.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e8e4f6b8-1f6a-4e89-b659-631b2f2ecf2b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "e3418ff9-288a-4313-b2ac-6f790c56967e",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "S3 Setup",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "82fea11e-8dc6-445b-add1-fee5dad690d5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "First we need to enable our Heroku application to use S3, which requires that the app have access to the AWS credentials as well as the name of the bucket to store files.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2a8ced96-095f-4aa3-8ec4-6249dbff0f27",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create an AWS account ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://aws.amazon.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "here",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and navigate to the ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://console.aws.amazon.com/iam/home?#security_credential",
+          "content": [
+            {
+              "type": "text",
+              "text": "Security Credentials",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " page under Identity Access Management (IAM). You’ll need to scroll down to Access Keys and create an access key.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c6918fd5-7daa-42bf-8ea0-00923c0cd815",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/creating-key2-1767548311581.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "7c5e7bf1-e28c-4eef-b59e-1ac440f1a366",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Copy down the Access Key ID and the Secret Access Key ID, you will be putting it into your Heroku App config vars later on.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5a7fa3b9-c437-4a23-a20c-660d11b3a1b3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Next, navigate back to the AWS ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://aws.amazon.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "home page",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and then to the ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://console.aws.amazon.com/s3/home?#",
+          "content": [
+            {
+              "type": "text",
+              "text": "S3 Console",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ". Here, create a bucket; this is where all the files you upload from your client will live. Choose an ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://devcenter.heroku.com/articles/s3#naming-buckets",
+          "content": [
+            {
+              "type": "text",
+              "text": "appropriate name",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " and take it down as well, we will also be adding it to heroku. For the region, make sure you create the bucket in the same region as the app that will use it. Uncheck the block public access box for now and keep the rest of the settings the default.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "791896e2-e6d0-4d91-a645-6d55d047ea7f",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/creating-bucket2-1767548311581.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "69bbdb1a-2b2f-4efa-9c3a-c2821d50d01f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 You will now need to edit some of the permissions properties of the target S3 bucket so that the final request has sufficient privileges to write to the bucket. In a web-browser, sign in to the AWS console and select the S3 section. Select the appropriate bucket (or create a new one) and click the ‘Permissions’ tab. Scroll down to the very bottom, where you will see ‘cross-origin resource sharing’ (CORS).",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "434a0b8f-8fe8-4b84-b9a5-c21c7585475b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "CORS (Cross-Origin Resource Sharing) will allow your application to access content in the S3 bucket. Each rule should specify a set of domains from which access to the bucket is granted and also the methods and headers permitted from those domains.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a21dca85-520d-497c-abed-8d227e18fb53",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Then, click the Edit button at the right and enter the following JSON inside the configuration editor:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "dede22a3-7cd4-4152-b819-d1864352104b",
+      "type": "codeBlock",
+      "props": {
+        "language": "json"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "[\n  {\n    \"AllowedHeaders\": [\"*\"],\n    \"AllowedMethods\": [\"PUT\", \"POST\", \"GET\"],\n    \"AllowedOrigins\": [\"*\"],\n    \"ExposeHeaders\": []\n  }\n]",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3cfa1de4-cc86-4b70-9376-977ab043d744",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Click ‘Save’ in the CORS window.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2d68769d-e6be-4b41-8b3c-db63bb23a912",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This tells S3 to allow any domain access to the bucket and that requests can contain any headers, which is generally fine for testing. When deploying, you should change the ‘AllowedOrigin’ to only accept requests from your domain.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8d40f976-68ac-40da-8aa0-1a44b8d1b45d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a Bucket policy:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "63687116-1217-4c5e-8f5f-1c3f82c44cbb",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"PublicReadGetObject\",\n            \"Effect\": \"Allow\",\n            \"Principal\": \"*\",\n            \"Action\": \"s3:GetObject\",\n            \"Resource\": \"arn:aws:s3:::YOURBUCKETNAME/*\"\n        }\n    ]\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a5ffdfcf-6fd5-4717-98d1-a7bf9aac312b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This grants read access to ALL objects in YOURBUCKETNAME to anonymous users. This is slightly risky in that someone on the internet ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "could",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " use your platform to upload bad content and then use your bucket as free hosting, but if that starts happening there are ways to create signed urls for reading not just for writing. We’ll skip over that for now.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "908c0aba-1a09-469d-a5ed-ca7bfd812c82",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Finally, log the three fields you took down onto your API’s configuration variables. When you are locally testing, add them to your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".env",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "64517fbf-05cb-41ba-8b18-19038bc60858",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/ecsa-uploading-images/assets/config-vars-1767548311581.jpg",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "4daad09d-5d5f-4f49-b02c-e3846b14fb48",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7010ad5a-9a42-43e2-8606-1eeebc7d3720",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Direct Uploading Client",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9a55189b-a982-4b3c-8637-79d1c7328db4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "352823c1-ca70-463c-868f-32bdc7ea6def",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "File input component",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "33220a92-314c-4e12-9d32-ba2658103d24",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We need to add some JSX to our frontend in both the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "newPost",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " component and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "post",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " component that allows us to upload images for our cover image.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ea018337-1732-4294-aca4-5b5a7454a2cd",
+      "type": "codeBlock",
+      "props": {
+        "language": "html"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "<img id=\"preview\" alt=\"preview\" src=\"{img.preview}\" />\n<input type=\"file\" name=\"coverImage\" onChange=\"{onImageUpload}\" />",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "062966b5-3541-4672-a7fa-5a92399318d4",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "These are the basic elements you would need. You should definitely revamp this to make this look nicer. The ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "preview",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " element shows a preview of the new image you just added after you choose it. We have a function ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "onImageUpload",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " that handles our input.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "53cab560-86fd-4378-bdd5-e99a4527e169",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "function onImageUpload(event) {\n  const file = event.target.files[0];\n  // Get url of the file and set it to the src of preview\n  if (file) {\n    setImg({ preview: window.URL.createObjectURL(file), file });\n  }\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b330edf5-2bfa-4120-a00e-b63656201e4b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Note: in the above we have ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "2",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " bits of state. ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "preview",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " which is set to an inlined string blob version of the image created by ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "window.URL.createObjectURL",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "file",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " which is the actual ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://developer.mozilla.org/en-US/docs/Web/API/File",
+          "content": [
+            {
+              "type": "text",
+              "text": "file object",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " that is currently only in the browser memory but not yet uploaded.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c69a4a93-c614-4a1b-b2f4-55055350e116",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "⚠️ You should theoretically cleanup these weird window global preview url objects with: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "window.URL.revokeObjectURL()",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and if a new image is uploaded as they will leak memory, but you can ignore these for now.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b5ad3bd9-2de5-4ded-a527-80ec488b5061",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You can also use external react components such as ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://react-dropzone.netlify.com/",
+          "content": [
+            {
+              "type": "text",
+              "text": "react-dropzone",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5d23976d-8b73-473f-81e9-c5bdc434e67b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "0d022b02-1d68-470a-8315-b578497dd2d9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "S3 Functions",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8ca8d9cd-79a2-4cf4-8fec-9643b4d8c357",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Since our post creation no longer relies on the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "cover_url",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " input we need to do a bit more work to preview and upload the image, and only upon success get access to the url.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "37ae2709-8892-449a-9ead-192aa702b595",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Create a file named ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "s3.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " - we won’t need to use state management for this immediately so we’re going to simplify and keep these functions separate from actions. You will need access to your api server ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "ROOT_URL",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " through, so you can try to ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "import { ROOT_URL } from './store';",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " if you’ve also exported it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "19c2fe88-5296-4336-8728-441c4022be57",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "async function getSignedRequest(file) {\n  const fileName = encodeURIComponent(file.name);\n  // hit our own server to get a signed s3 url\n  const response = await axios.get(\n    `${ROOT_URL}/sign-s3?file-name=${fileName}&file-type=${file.type}`,\n  );\n  return response;\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "56644ea7-fa01-427e-9424-39f1942b3272",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "// upload file directly to S3\n// note how we return the passed in url here rather than any return value\n// since we already know what the url will be - just not that it has been uploaded\nasync function uploadFileToS3(signedRequest, file, url) {\n  await axios.put(signedRequest, file, {\n    headers: { 'Content-Type': file.type },\n  });\n  return url;\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "22220432-a6e2-4fb7-8976-60c4b818735c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We have two async helper functions, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "getSignedRequest",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "uploadFileToS3",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". The reason why we have this pattern is that ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "uploadFileToS3",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " requires ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "getSignedRequest",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to return a success call. These functions are used by ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "uploadImage",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " which also returns a promise.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab1505ec-5dc8-4eea-a2a2-df709e62af8d",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "export default async function uploadImage(file) {\n  // returns a promise so you can handle error and completion in your component\n  const response = await getSignedRequest(file);\n  return uploadFileToS3(response.data.signedRequest, file, response.data.url);\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3c0c5939-2f87-424b-ba99-c142b922b417",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We use promises because we need the image to successfully upload to S3 first, before we can add it to our post - this way we can wait for ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "uploadImage",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and only submit our post after that.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1e2c986a-b8ee-4ae3-81c4-a8ecdfe39c56",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "40a527bd-3d16-4448-b006-9105d97c95be",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Submit Handler",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b214dbf5-d30f-436b-bc05-6fba447e933a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "How would use our new ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "s3.uploadImage",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " function? Well something like the following in your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "onSubmit",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " or ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "onFinishEdit",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " handlers would work. All you are doing is waiting for the image to upload first and only then creating or updating your post.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "feb45cb4-3eb8-4d66-b4e4-dd74d14bca2e",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "async function onSubmit(event) {\n  event.preventDefault();\n\n  const url = await uploadImage(img.file);\n  await createPost({\n    title,\n    tags,\n    content,\n    cover_url: url,\n  });\n  navigate('/');\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "adb9b221-dae6-49e8-b1c8-5af575189601",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "0b8bd1ef-68b6-4a4c-99b2-401c6d956746",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Server",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "c3f12b7a-b3d8-4b7c-b566-5da8368eba27",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We need some new packages to communicate with s3. ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "aws-sdk",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " is used to communicate with s3 and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "dotenv",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " is used to load environment variables from ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".env",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for your server.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e3031c9d-947a-41fe-8f38-f3e6a2dc510a",
+      "type": "terminal",
+      "props": {
+        "code": "npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner dotenv",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "f71de058-87d5-4675-b1d3-51045fee4dc2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 To setup ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "dotenv",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", we want to call ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "dotenv.config({ silent: true });",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " as early as possible in our ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". Then we can access our environment variables by using ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "process.env.S3_BUCKET_NAME",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "791b3ca4-a2c8-43fe-98fe-84cca53ffa52",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "32d2660c-d910-4204-97fe-1ffeb4850f56",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Heroku/Render.com Setup",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4c5cbbb4-59ec-45c2-9472-83f7f11cfe2b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Make a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".env",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file in your root directory of your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "server",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". It should look something like this.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ec188a31-b1db-4ed3-9209-9f678194dd00",
+      "type": "terminal",
+      "props": {
+        "code": "AWS_ACCESS_KEY_ID=YOUR_KEY_HERE\nAWS_SECRET_ACCESS_KEY=YOUR_KEY_HERE\nS3_BUCKET_NAME=YOUR_BUCKET_NAME_HERE",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "5a6040e9-cdfc-4b68-8e4c-cf733ae69989",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Remember to add the ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".env",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file to your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".gitignore",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", since this file should only be used for local testing.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "66ac49be-397e-4cd8-b81e-49f19e92d14f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "In order for your application to access the AWS credentials for signing upload requests, they will need to be added as configuration/environment variables in Heroku/Render.com. ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fcb76d5c-4825-4e37-908d-a8d58779d5e2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We set all of these secret keys in environment variables because we don’t want to expose these variables directly in code, where they could be potentially stolen.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1a1724f9-20cb-49b8-b44b-5e2178a8aec9",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "4402d5fa-3770-4b8b-b79d-d03ef1af386c",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "S3 Service",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4780b4cf-bfbf-46b3-89ac-2c2cb5ea34a6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We also need a new route on our server to return our signedRequest. Make a new folder under app called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "services",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and add a new ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "s3.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6a051580-2037-4c5e-a90e-0e996389e0e5",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';\nimport { getSignedUrl } from '@aws-sdk/s3-request-presigner';\n\nconst createPresignedUrlWithClient = ({ region, bucket, key }) => {\n  const client = new S3Client({ region });\n  const command = new PutObjectCommand({ Bucket: bucket, Key: key });\n  return getSignedUrl(client, command, { expiresIn: 3600 });\n};\n\nconst signS3 = async (req, res) => {\n  const fileName = req.query['file-name'];\n  const s3Params = {\n    bucket: process.env.S3_BUCKET_NAME,\n    key: fileName,\n    acl: 'public-read',\n    region: 'us-east-1',\n  };\n  try {\n    const clientURL = await createPresignedUrlWithClient(s3Params);\n    const returnData = {\n      signedRequest: clientURL,\n      url: `https://${process.env.S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`,\n    };\n    return res.send(JSON.stringify(returnData));\n  } catch (error) {\n    return res.status(422).end();\n  }\n};\n\nexport default signS3;",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "09493203-cc9a-47b1-a8fc-70788b5bbe65",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Note:  double check ",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "994a2ff0-f101-4810-b9ef-9f22551acc26",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Now in your router, we can add a new route:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6ba8fc1b-5c27-4869-93ab-ee1173b67730",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "router.get('/sign-s3', signS3);",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e05f807b-272a-4452-8f16-dc1596d889b2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "0d6403ce-c222-49e2-85bc-a3613f7fc98f",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Test it",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a57cf392-fff1-4fd5-b3b1-66850a677d9a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Things should be working now!",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bf04939f-c30b-4565-a0c1-2e032f89e866",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "8f8ab2b4-a973-472c-8a35-ac4208fd58f9",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Required Features",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9097a848-652a-4392-a045-f093a449d287",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Add the image upload ability to create post and update post",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ea52bf81-47d1-4d19-9990-b6b7a190b33d",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Add a route on the backend to return signed requests",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "14af14cd-d973-4a71-88c6-23c5118f72a6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "c4aebef3-60f3-4611-a79d-dae6d7d29f98",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To Turn In",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3226aa1c-5ad4-4a8b-a022-ab8a94fae53f",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "add comment to the proper extra credit issue in your extra-credit repo",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e9325126-9554-437d-8cb3-b61f53b51045",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "include links to 2 new hosted urls to the withS3 branches of your frontend and backend.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "28beb9e6-01e2-43c0-abca-963e99a3b61b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
