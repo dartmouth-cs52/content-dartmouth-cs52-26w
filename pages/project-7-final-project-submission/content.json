@@ -1,0 +1,408 @@
+{
+  "blocks": [
+    {
+      "id": "a7a05e1b-e1e4-4cac-8978-9607160ecef5",
+      "type": "image",
+      "props": {
+        "textAlignment": "left",
+        "backgroundColor": "default",
+        "name": "",
+        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/project-7-final-project-submission/assets/sfytjuxdabsvw-1767578112962.gif",
+        "caption": "",
+        "showPreview": true
+      },
+      "children": []
+    },
+    {
+      "id": "38f840ef-8c11-42f0-a46c-77d23c23cd0e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Demos are now done! Hopefully, everything worked perfectly. Just a couple of last things to do.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0c4cc32e-9e84-467f-a443-8b5a82a33b90",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "dcfe53f5-a1d8-4652-ae2d-3b0e2eab76e1",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "README’s",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9846a319-29a3-49d2-ab8c-08ab8bdeb039",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Make sure all your readme’s are updated and that getting the project up and running for testing is possible based on your documentation. Run this through to make sure it works, as it is worth some points.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e64cd68f-436c-4e20-98e5-c578d637f1ed",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "58519ab0-7ed5-4ae2-b9a5-b5cd609a7008",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Demo Trailer Video",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ee9db7c4-66a1-474d-b40f-f028b822ea30",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Create a video trailer of your product. This should be like a trailer video showing some live video of the product, but can also include some advertising copy / screens.  You can add this to any advertising materials / webpage etc. This will also be displayed for posterity to inspire the next generation.  You don’t need to highlight each individual feature - just your app in general. Future classes don’t care that you have a login page - they do care to see what your product is all about.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0fc9f58c-e162-4cbc-ad24-27e3615ea81e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Resources:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "3862557a-6dd2-43bd-b438-7b7574dc5cbf",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://vimeo.com/create/trailers",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://vimeo.com/create/trailers",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ec31840a-94dd-487a-836b-822413e12423",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://www.uscreen.tv/blog/how-to-make-a-trailer/",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://www.uscreen.tv/blog/how-to-make-a-trailer/",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0e07d51f-95dc-45e5-a8a7-6c5e0b1f8660",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://blog.hubspot.com/marketing/make-a-marketing-video",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://blog.hubspot.com/marketing/make-a-marketing-video",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ad48cba7-0896-4d7f-9464-4a54674d5ed9",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://www.descript.com/tools/trailer-maker",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://www.descript.com/tools/trailer-maker",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ccce22da-1ab1-4118-b2db-ea0b6649c06d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "2f88b811-4b78-439f-a02b-e6f3eed74b00",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "To Turn In:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2560a34b-2274-4001-a809-3a5ea95eff42",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "README.md files need to all be up to date with",
+          "styles": {}
+        }
+      ],
+      "children": [
+        {
+          "id": "a8d5b5b3-4c7b-43d2-9282-30e29af3732c",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "update any setup/deployment steps (make sure a new user can set it up)",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "e0265d94-8568-41b7-aebb-5bd4f52f7cd1",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "make sure readmes have links to deployed sites",
+              "styles": {}
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "9508cd59-e29b-4b1c-8d9a-3cbc9ee4c796",
+          "type": "bulletListItem",
+          "props": {
+            "backgroundColor": "default",
+            "textColor": "default",
+            "textAlignment": "left"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "for expo projects - share expo published app credentials for ease of testing",
+              "styles": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "281ba8f7-3244-475d-b6e5-3e4bf5bef12c",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "create a notion card here: ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://www.notion.so/ea26acd6e0e7496dace6cf48a0ed63aa?pvs=21",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://brunchlabs.notion.site/ea26acd6e0e7496dace6cf48a0ed63aa?v=7b295dc7436d4af0b2e86e48facf7145&pvs=4",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ". and add video and short project description - this is public to the world as well as future classes. See the … link → edit at the top right of the page.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "92d7b669-6cdf-475e-8db7-1c4a0ce8eecb",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "make sure to fill out the team evaluation form: ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://forms.gle/fL4uCq5QQjwR2VEU9",
+          "content": [
+            {
+              "type": "text",
+              "text": "https://forms.gle/fL4uCq5QQjwR2VEU9",
+              "styles": {}
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1ac03c86-1b31-4dfe-a329-b49fa9d9f428",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
