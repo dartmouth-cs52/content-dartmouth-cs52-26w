@@ -28,24 +28,6 @@
       "pages": [],
       "slides": [],
       "assignments": {
-        "ecsa-git-map": {
-          "pages": [
-            "ecsa-git-map"
-          ],
-          "slides": []
-        },
-        "ecsa-websockets": {
-          "pages": [
-            "ecsa-websockets"
-          ],
-          "slides": []
-        },
-        "ecsa-reactnative-part-1": {
-          "pages": [
-            "ecsa-react-native-part-1"
-          ],
-          "slides": []
-        },
         "ecsa-react-native-part-2": {
           "pages": [
             "ecsa-react-native-part-2"
@@ -58,6 +40,12 @@
           ],
           "slides": []
         },
+        "ecsa-websockets": {
+          "pages": [
+            "ecsa-websockets"
+          ],
+          "slides": []
+        },
         "ecsa-intro-to-api-testing": {
           "pages": [
             "ecsa-intro-to-api-testing"
@@ -67,6 +55,18 @@
         "ecsa-frontend-and-backend-authentication": {
           "pages": [
             "ecsa-frontend-and-backend-authentication"
+          ],
+          "slides": []
+        },
+        "ecsa-git-map": {
+          "pages": [
+            "ecsa-git-map"
+          ],
+          "slides": []
+        },
+        "ecsa-reactnative-part-1": {
+          "pages": [
+            "ecsa-react-native-part-1"
           ],
           "slides": []
         }
