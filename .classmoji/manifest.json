@@ -28,6 +28,12 @@
       "pages": [],
       "slides": [],
       "assignments": {
+        "ecsa-git-map": {
+          "pages": [
+            "ecsa-git-map"
+          ],
+          "slides": []
+        },
         "ecsa-websockets": {
           "pages": [
             "ecsa-websockets"
@@ -61,12 +67,6 @@
         "ecsa-frontend-and-backend-authentication": {
           "pages": [
             "ecsa-frontend-and-backend-authentication"
-          ],
-          "slides": []
-        },
-        "ecsa-git-map": {
-          "pages": [
-            "ecsa-git-map"
           ],
           "slides": []
         }
@@ -193,24 +193,6 @@
       ],
       "slides": [],
       "assignments": {
-        "project-4-scaffolding": {
-          "pages": [
-            "project-4-scaffolding"
-          ],
-          "slides": []
-        },
-        "project-5-dev-site-and-wiring": {
-          "pages": [
-            "project-5-dev-site-and-wiring"
-          ],
-          "slides": []
-        },
-        "project-3-mockups-and-sketches": {
-          "pages": [
-            "project-3-mockups-and-sketches"
-          ],
-          "slides": []
-        },
         "project-1-first-team-meeting-worksheet": {
           "pages": [
             "project-1-first-team-meeting"
@@ -220,6 +202,24 @@
         "project-2-feature-spec": {
           "pages": [
             "project-2-feature-spec"
+          ],
+          "slides": []
+        },
+        "project-3-mockups-and-sketches": {
+          "pages": [
+            "project-3-mockups-and-sketches"
+          ],
+          "slides": []
+        },
+        "project-4-scaffolding": {
+          "pages": [
+            "project-4-scaffolding"
+          ],
+          "slides": []
+        },
+        "project-5-dev-site-and-wiring": {
+          "pages": [
+            "project-5-dev-site-and-wiring"
           ],
           "slides": []
         },
