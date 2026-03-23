@@ -498,16 +498,24 @@
       "children": []
     },
     {
-      "id": "5b7dbbe7-d0f3-4c54-ac6d-bcd846c97256",
-      "type": "image",
+      "id": "d8f76b28-b229-4076-99e9-0812ab54647a",
+      "type": "paragraph",
       "props": {
-        "textAlignment": "left",
         "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "57f79085-7993-4706-9dab-918153ddfd6d",
+      "type": "profile",
+      "props": {
         "name": "Tim Tregubov",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570129090-tim-profile.jpg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 298
+        "title": "Head Coach",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259608918-tim-profile.jpg",
+        "links": ""
       },
       "children": []
     },
@@ -519,35 +527,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Tim Tregubov",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Head Coach",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "afa791b3-8d06-4021-a4b7-b549a3c2d880",
-      "type": "image",
+      "id": "5bf00165-4dba-435b-a94a-0edf7414da0f",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Caleb Ash",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570555744-caleb.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 294
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259642694-caleb-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -559,35 +549,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Caleb Ash",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "dbc221d7-2b73-453d-b45e-22781e2a3402",
-      "type": "image",
+      "id": "212b6346-baf9-4836-b397-59c7bf03eebd",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Emmanuel Kasuti",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570424942-kasuti.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 288
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259756860-kasuti-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -599,35 +571,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Emmanuel Kasuti",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "37b7bbd7-a496-4098-b486-d6cf195a37b7",
-      "type": "image",
+      "id": "90d82921-ae89-4856-8f47-4c8d7a238d01",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Gene Park",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570429871-gene.png",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 286
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259885680-1767570429871-gene.png",
+        "links": ""
       },
       "children": []
     },
@@ -639,35 +593,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Gene Park",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "b27e9cc6-bb81-4c7e-839e-d399e487bdc5",
-      "type": "image",
+      "id": "59ba9648-e00b-426f-8250-ec81b83cd3dc",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Hamza Najam",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570434007-hamza.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 287
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259890243-hamza-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -679,35 +615,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Hamza Najam",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "3b0f8b88-7b37-4f5a-859e-d1a66e96e3c5",
-      "type": "image",
+      "id": "3900296b-c470-4fa5-b85f-ca648ec9f47b",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Joyce Zou",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570627479-joyce.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 283
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259895941-joyce-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -719,35 +637,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Joyce Zou",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "8d7581c4-56da-4040-b128-f345edc23a7a",
-      "type": "image",
+      "id": "07e7aaa0-cc8b-4d1e-9ebe-52265a1cfcfc",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Kalina Duncheva",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570467741-kalina.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 281
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259903468-kalina-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -759,35 +659,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Kalina Duncheva",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "2bd2188f-a90e-4325-b8e1-acfc0c0448eb",
-      "type": "image",
+      "id": "b8f0496c-877e-4cf0-bf96-be9e987e84ec",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Muhammad Moiz",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570443316-moiz.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 280
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259912720-classmoji-image-1767570443316.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -799,35 +681,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Muhammad Moiz",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "6c8b2364-b1a1-4aa3-ace7-a407e0217b8c",
-      "type": "image",
+      "id": "d8536aaa-9fc1-4a2a-99b6-cb49a61446dc",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Ranvir Deshmukh",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570449741-ranvir.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 282
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259920949-ranvir-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -839,35 +703,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Ranvir Deshmukh",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "d9e942f8-0665-4f0a-8dfe-3771e0787f12",
-      "type": "image",
+      "id": "19e01a5f-7d52-440d-a06f-fa4be03e0857",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Selena Zhou",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570462186-selena.jpeg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 282
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259925052-selena-classmoji.jpeg",
+        "links": ""
       },
       "children": []
     },
@@ -879,35 +725,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Selena Zhou",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "4ca81050-5d2b-49a6-b1ab-0d53e45f1554",
-      "type": "image",
+      "id": "f0544b49-d7f2-4ac9-8cc4-a617cca24205",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Thomas Cannon Clark",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570472453-thomas.png",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 286
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259929886-classmoji-thomas.png",
+        "links": ""
       },
       "children": []
     },
@@ -919,35 +747,17 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Thomas Cannon Clark",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
-      "id": "9e98580c-1b49-49d6-9d9b-84db6c8887bf",
-      "type": "image",
+      "id": "b7a932ac-a869-4aa2-bec4-70b61cae2de9",
+      "type": "profile",
       "props": {
-        "textAlignment": "left",
-        "backgroundColor": "default",
         "name": "Pape Sow Traore",
-        "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1767570140603-pape-profile.jpg",
-        "caption": "",
-        "showPreview": true,
-        "previewWidth": 287
+        "title": "Teaching Assistant",
+        "imageUrl": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/dartmouth-cs52/assets/1774259934119-classmoji-profile.jpg",
+        "links": ""
       },
       "children": []
     },
@@ -959,22 +769,7 @@
         "textColor": "default",
         "textAlignment": "left"
       },
-      "content": [
-        {
-          "type": "text",
-          "text": "Pape Sow Traore",
-          "styles": {
-            "bold": true
-          }
-        },
-        {
-          "type": "text",
-          "text": "Teaching Assistant",
-          "styles": {
-            "italic": true
-          }
-        }
-      ],
+      "content": [],
       "children": []
     },
     {
