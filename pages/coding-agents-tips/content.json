@@ -225,7 +225,7 @@
       },
       {
         "type": "text",
-        "text": ", or ",
+        "text": ", ",
         "styles": {}
       },
       {
@@ -235,6 +235,22 @@
           {
             "type": "text",
             "text": "Warp",
+            "styles": {}
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": ", or ",
+        "styles": {}
+      },
+      {
+        "type": "link",
+        "href": "https://cmux.com/",
+        "content": [
+          {
+            "type": "text",
+            "text": "cmux",
             "styles": {}
           }
         ]
