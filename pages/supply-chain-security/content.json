@@ -2615,5 +2615,9 @@
       "content": [],
       "children": []
     }
-  ]
+  ],
+  "coverImage": {
+    "url": "https://raw.githubusercontent.com/dartmouth-cs52/content-dartmouth-cs52-26w/main/pages/supply-chain-security/assets/supply-chain-header.jpg",
+    "position": 50
+  }
 }
