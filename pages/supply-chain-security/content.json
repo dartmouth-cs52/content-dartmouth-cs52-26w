@@ -1,0 +1,2619 @@
+{
+  "blocks": [
+    {
+      "id": "bc976694-4129-461c-80aa-378f1c21fdd8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Every time you run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", you're trusting thousands of strangers to not run malicious code on your machine. Today that trust got violated — again.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "00311d20-4626-4142-ba79-c982c0ac6aac",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "cde9bd58-f656-4988-8baa-770fd41a081f",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The Exploit",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4d8523cb-2868-4ea2-bde7-20436c8b18e8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "On March 31, 2026, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Axios",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — the HTTP library you've probably used in every project this term — was compromised. Two malicious versions were published to npm using a stolen maintainer token.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b1caaaf0-24e0-4771-9725-8cb80fabdae2",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's the timeline:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "685281d3-b400-4e85-9e28-620183b51263",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "An attacker stole a long-lived npm access token from the primary Axios maintainer",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "168bd3b1-b046-45e6-89fa-f7dca9af1389",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "They published ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "axios@1.14.1",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "axios@0.30.4",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — both containing a new dependency called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "plain-crypto-js",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "8f8b4cdd-e688-4021-b709-e2a99e0cad09",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "That dependency was never imported anywhere in the Axios source code. It existed for one reason: to run a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " script",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9b2020df-ac9e-4388-aa07-8a6102971983",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The script downloaded a platform-specific RAT (remote access trojan) for macOS, Windows, or Linux — then ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "deleted itself",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to cover its tracks",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "34133014-128e-40af-ab7a-9724e6ecf991",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://socket.dev",
+          "content": [
+            {
+              "type": "text",
+              "text": "Socket",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " detected the malicious package ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "6 minutes",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " after publication",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "22e545b6-c448-4f44-9b84-8ee639e1ef5c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Axios has over 100 million weekly downloads. This is the third major npm supply chain attack in six months.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "5f27fc9e-c968-475a-85ba-9d4e014f416e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "7f84bc36-4b0c-4bd0-af39-f99d08abc3d1",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "How ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " Can Attack You",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e2c77698-d33c-48c5-8e7e-3ce9644b01e6",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "You've run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " hundreds of times by now. But do you know what it actually does beyond downloading packages?",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "d8762774-2dde-4724-bf40-497724924d61",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Any npm package can define ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "lifecycle scripts",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in its ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "package.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". The most common one is ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — a command that runs automatically right after the package is downloaded. No prompt, no confirmation, no sandbox. It runs with ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "your full user permissions",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1e05977e-b5d1-4ee4-8510-0573212de53e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Here's what a malicious ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "package.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " looks like:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "af353161-330d-4234-9296-7fb780ad0ea0",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"name\": \"plain-crypto-js\",\n  \"version\": \"4.2.1\",\n  \"scripts\": {\n    \"postinstall\": \"node setup.js\"\n  }\n}",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0a535848-6e8e-4e28-8288-277a3b2724bf",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "That's it. That's the whole attack surface. When npm installs this package, it runs ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "node setup.js",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — which can do literally anything your user account can do. Read files, open network connections, install backdoors, exfiltrate tokens.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "fc0072c3-af26-4c2d-873a-bd07ec23748b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "And here's the thing that makes this really dangerous: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "transitive dependencies",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". You chose to install Axios. But npm also installs everything Axios depends on, and everything ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "those",
+          "styles": {
+            "italic": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " packages depend on. A typical project has hundreds of transitive dependencies you never explicitly chose. Any one of them can run a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " script.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0249c30f-3996-4106-a092-7ac2e560d432",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "❓So why does this feature exist? Packages like ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "esbuild",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "sharp",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "bcrypt",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "prisma",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to compile native binaries or download platform-specific assets. It's a legitimate feature that attackers exploit. Vite depends on esbuild, so yes — your CS52 projects use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " legitimately.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7072d21a-e9e2-476a-9f59-5a9fbb877a8a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "593363b4-0de1-4b79-8f41-774dfe4435b7",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This Keeps Happening",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "498d2479-656e-4bde-bc48-342d151a4cb1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The Axios compromise isn't a one-off. This has been the dominant attack pattern in the JavaScript ecosystem for the past year:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b50d891e-d177-46b0-897a-4f44efe8ae51",
+      "type": "table",
+      "props": {
+        "textColor": "default"
+      },
+      "content": {
+        "type": "tableContent",
+        "columnWidths": [
+          null,
+          null,
+          null
+        ],
+        "headerRows": 1,
+        "rows": [
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "When",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "What",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Impact",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Aug 2025",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Nx",
+                    "styles": {
+                      "bold": true
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": " — stolen publishing token via GitHub Actions",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Credential stealer exfiltrated 2,000+ secrets",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Sep 2025",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Chalk / Debug",
+                    "styles": {
+                      "bold": true
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": " — maintainer phished via fake npmjs.help domain",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "2B+ weekly downloads, crypto wallet theft",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Sep 2025",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Shai-Hulud",
+                    "styles": {
+                      "bold": true
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": " — first self-propagating npm worm",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "500+ packages infected, harvested npm/GitHub/cloud credentials",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Dec 2025",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Shai-Hulud 3.0",
+                    "styles": {
+                      "bold": true
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": " — evolved with automated self-publishing",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "187 packages, cross-platform malware",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Feb 2026",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Cline CLI",
+                    "styles": {
+                      "bold": true
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": " — compromised token, postinstall dropper",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "~4,000 downloads in 8 hours",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          },
+          {
+            "cells": [
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Mar 2026",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Axios",
+                    "styles": {
+                      "bold": true
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": " — stolen maintainer token, RAT via postinstall",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              },
+              {
+                "type": "tableCell",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "100M+ weekly downloads",
+                    "styles": {}
+                  }
+                ],
+                "props": {
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "backgroundColor": "default",
+                  "textColor": "default",
+                  "textAlignment": "left"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "children": []
+    },
+    {
+      "id": "951016c1-c821-44d3-b657-21488fa71bdd",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Notice the pattern: stolen credentials → malicious publish → postinstall payload → your machine is compromised. Same playbook every time.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "201343dd-5125-486b-b3e1-7aae191a32e5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "542bdf99-bc25-4066-b02f-b5ee116c928b",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Protect Your Dev Machine",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "f27b53e0-688a-491a-bf8f-4ebaa64d7fd3",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Ok, scary stuff. But this is fixable. Here's what to set up — it takes about 5 minutes and you only do it once.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "46839bab-ca59-4cbe-a8f7-336908349aae",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "bd2de3fa-7648-44ac-832d-910ffd338ff6",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Install Socket Firewall (",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "sfw",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ")",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e97134e3-bfde-4965-a16f-48c08732fe2c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Socket is the company that caught the Axios attack in 6 minutes. They make a free tool called ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "sfw",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " (Socket Firewall) that acts as a security proxy between npm and the package registry. Every package gets checked against Socket's malware database ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "before it reaches your machine",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "168481b5-cb33-4156-9b40-1649490b7081",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Install it globally:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4bf18021-04a3-4229-8cee-7fe3926cbc8c",
+      "type": "terminal",
+      "props": {
+        "code": "npm i -g sfw",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "9ef6c7c5-15be-4d54-a3ef-4698997eb0ed",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Add this alias to your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "~/.zshrc",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " so every ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " command routes through Socket automatically:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b4b79f64-5210-4482-9688-a090e15b50dc",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "# Socket Firewall — npm supply chain protection\nalias npm=\"sfw npm\"\nalias npx=\"sfw npx\"",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "92fcbd72-c2b1-4ebd-be60-e45be748fed8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Reload your shell:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "02a5e697-e3ec-4865-b391-6bfcabfe76b6",
+      "type": "terminal",
+      "props": {
+        "code": "source ~/.zshrc",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "f3c02380-91b1-454a-b31e-8aa451844849",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "That's it. No account, no API key, no config files. From now on, every ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " checks packages against Socket's database first. If it finds known malware, the install is blocked. If it detects something suspicious but unconfirmed, you get a warning.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9f5d82db-b592-46f6-8dce-90344412de29",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "sfw",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " also works with ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "yarn",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pnpm",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", and even ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pip",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for Python projects. ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://github.com/SocketDev/sfw-free",
+          "content": [
+            {
+              "type": "text",
+              "text": "GitHub repo here",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2150dd14-380d-4eb0-a7b0-448173015a91",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "577893dc-738d-485a-8911-13d60d47acf4",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Lock Your Dependencies",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e8863c7a-9cde-488f-80a3-2a7f67aa2e86",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "package-lock.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " file records the exact version of every package (including transitive dependencies) that was installed. This matters because without it, ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " can quietly resolve to newer versions you never vetted — like, say, a freshly compromised ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "axios@1.14.1",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1307190b-2e08-4387-9fba-f80db574f13c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Two rules:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "21352398-e2e7-4284-ac72-4619d1c1031f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Always commit ",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": "package-lock.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to git.",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " If it's in your ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".gitignore",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", remove it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6939a647-dbd3-4efe-a7f0-0fe0eff5ef43",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "Use ",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": "npm ci",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " instead of ",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " when cloning a repo or setting up CI. It installs exactly what's in the lockfile — no resolution, no surprises.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "da8143af-c971-4a52-b5ef-b8b1c98928b6",
+      "type": "terminal",
+      "props": {
+        "code": "# when you clone a project or set up CI:\nnpm ci\n\n# NOT npm install — which can resolve newer (potentially compromised) versions",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "bbe4c55f-294a-4a8e-a758-e627975210f1",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "488f40b5-ec67-40bc-b410-56d356fb071c",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Advanced: Disable Lifecycle Scripts",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "96c1c698-a008-4158-ad2c-7446e2081c2f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "For extra hardening, you can tell npm to never run ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " scripts by default. This is the nuclear option — it blocks the attack vector entirely, but it also breaks packages that legitimately need it.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6e81ae29-9c49-41b6-a80b-be8db87e2b9e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Set the global default in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "~/.npmrc",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ":",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "56c6b224-8a4d-4c38-ae0a-4f58d52b5922",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "ignore-scripts=true",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "0b60e142-6930-498c-ae54-e4c9236db3bc",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Then in any project that needs lifecycle scripts (like your CS52 Vite projects), add a local ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".npmrc",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in the project root:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bae4f44a-df1d-479b-baa6-e2e921e76bdd",
+      "type": "codeBlock",
+      "props": {
+        "language": "javascript"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "ignore-scripts=false",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ba8781f7-bb91-4d64-8992-2e656a751374",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "This ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "will break",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " for projects using esbuild (Vite), sharp, bcrypt, Puppeteer, or Prisma — because those packages need ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " to download native binaries. That's why the per-project ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": ".npmrc",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " override exists. If you're not sure, just use ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "sfw",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — it gives you protection without breaking your build.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1aa0a0e0-92d7-4a8d-8d99-bda9af37aa3c",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "91fe100f-13be-4545-bf65-ebfff7ce2407",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 3,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "A Note on pnpm",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "6262d272-461d-4d72-8439-040def8a7e68",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Since version 10, ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://pnpm.io",
+          "content": [
+            {
+              "type": "text",
+              "text": "pnpm",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " blocks lifecycle scripts by default. Instead of trusting everything, it uses an explicit allowlist (",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "pnpm.onlyBuiltDependencies",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " in ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "package.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ") where you opt in to specific packages that need ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ". This is the right model — secure by default, opt-in to trust.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ab5c4d32-7bfd-43a9-80bf-321683780f64",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "We're not switching package managers mid-course, but if you're starting a new project or setting up something for DALI, pnpm is worth considering. ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://socket.dev/blog/pnpm-10-0-0-blocks-lifecycle-scripts-by-default",
+          "content": [
+            {
+              "type": "text",
+              "text": "Socket wrote a good overview of why this matters",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ".",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "acb390b8-3b4d-4530-a538-6300a1b0f579",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "403e5fb9-0a0a-4f74-a4fc-88faa2ac3aac",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Protect Your Team Repos",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "077f5d5d-a11b-4179-acaa-e815a45287f5",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "The steps above protect your dev machine. For team projects — CS52 final projects, DALI apps, anything with shared repos — you also want automated scanning.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e226d603-f6e7-43b4-8c3c-a54aa61f4ef8",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Dependabot",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — free, built into GitHub. It opens PRs when known vulnerabilities are found in your dependencies. 🚀 Enable it in your repo's Settings → Security → Dependabot. It won't catch zero-days like the Axios attack (those aren't in the CVE database yet), but it handles the long tail of known vulnerabilities.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9c97e7ac-1a11-4278-85a5-77a021d3067d",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Socket for GitHub",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — a ",
+          "styles": {}
+        },
+        {
+          "type": "link",
+          "href": "https://github.com/apps/socket-security",
+          "content": [
+            {
+              "type": "text",
+              "text": "GitHub App",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " that scans PRs for suspicious dependency changes. It catches things Dependabot can't — like a new dependency that makes network calls from a ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "postinstall",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " script. Free tier gives you unlimited repos with 1,000 scans/month.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "13e58e27-5f44-4763-b73e-157c4ce92530",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Review lockfile diffs",
+          "styles": {
+            "bold": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " — when a PR changes ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "package-lock.json",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": ", actually look at what changed. A new transitive dependency appearing out of nowhere is a red flag.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "e24cf4e7-fec0-49e6-8e26-23141137980a",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "129c355e-bcc4-4516-b08f-83e83d5cb9ec",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If You Think You're Affected",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "1ca6ac82-e3a4-4634-9f71-d0ae9f676c63",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If you ran ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " on a project that depends on Axios in the last 24 hours, here's how to check:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "737ccaa1-5238-4552-bf3d-646923b2f188",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 Check if the malicious package exists in your project:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "da03799d-c290-412e-8c29-22c63948a711",
+      "type": "terminal",
+      "props": {
+        "code": "# check if the malicious dependency is present\nnpm ls plain-crypto-js\n\n# also check the directory directly\nls node_modules/plain-crypto-js/ 2>/dev/null && echo \"⚠️ FOUND\" || echo \"✅ Not found\"",
+        "title": "Terminal"
+      },
+      "children": []
+    },
+    {
+      "id": "f3a16fe2-b2c3-4ee1-8539-39af31281f03",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "🚀 If found — or if you're not sure:",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "281c8e0e-5e22-405b-a26e-5544a962b49e",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Delete ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "node_modules",
+          "styles": {
+            "code": true
+          }
+        },
+        {
+          "type": "text",
+          "text": " and reinstall: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "rm -rf node_modules && npm ci",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "b4360246-2308-4b7e-b964-0ecdd7fcc1be",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Clear your npm cache: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm cache clean --force",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "165dbb10-0b9b-4d1a-916c-193542e6403b",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Update Axios to the latest clean version: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "npm install axios@latest",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "7b18bfed-b3e3-4254-a236-aa0a8bfcfc7f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Check for the macOS RAT payload: ",
+          "styles": {}
+        },
+        {
+          "type": "text",
+          "text": "ls /Library/Caches/com.apple.act.mond 2>/dev/null",
+          "styles": {
+            "code": true
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "99a12efb-2973-4d0a-92d6-cfb6b373780f",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Rotate any tokens or secrets that were on the machine — npm, GitHub, AWS, database credentials",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4256f07a-7303-4697-8faf-07172d878491",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "If you find the RAT payload, wipe and reinstall the OS. Seriously.",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2109bbba-3936-4b15-beb1-17da7b642849",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    },
+    {
+      "id": "674eed35-32fb-4fc3-9746-7a3800505458",
+      "type": "heading",
+      "props": {
+        "backgroundColor": "blue",
+        "textColor": "default",
+        "textAlignment": "left",
+        "level": 2,
+        "isToggleable": false
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Further Reading",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "ae630d2c-dc71-4b77-a40a-83e0486ad12d",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://socket.dev/blog/axios-npm-package-compromised",
+          "content": [
+            {
+              "type": "text",
+              "text": "Socket: Axios Supply Chain Attack Analysis",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " — the most detailed technical breakdown",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "678077fd-79fb-4034-ae2e-35e84697f583",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://docs.socket.dev/docs/socket-firewall-free",
+          "content": [
+            {
+              "type": "text",
+              "text": "Socket Firewall Free docs",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " — setup and how it works under the hood",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "9e6b6de5-75d2-4499-ad85-590f7882d3a5",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://socket.dev/blog/pnpm-10-0-0-blocks-lifecycle-scripts-by-default",
+          "content": [
+            {
+              "type": "text",
+              "text": "pnpm 10 blocks lifecycle scripts by default",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " — why secure-by-default matters",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "2517859e-b3e4-4c22-bc01-28340e4eb3c4",
+      "type": "bulletListItem",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [
+        {
+          "type": "link",
+          "href": "https://www.nodejs-security.com/blog/npm-ignore-scripts-best-practices-as-security-mitigation-for-malicious-packages",
+          "content": [
+            {
+              "type": "text",
+              "text": "npm ignore-scripts best practices",
+              "styles": {}
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " — deep dive on the ignore-scripts approach",
+          "styles": {}
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "640ce820-8222-4938-a091-138e0fb8c3da",
+      "type": "paragraph",
+      "props": {
+        "backgroundColor": "default",
+        "textColor": "default",
+        "textAlignment": "left"
+      },
+      "content": [],
+      "children": []
+    }
+  ]
+}
