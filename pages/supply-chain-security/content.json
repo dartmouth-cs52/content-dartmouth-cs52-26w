@@ -82,7 +82,7 @@
         },
         {
           "type": "text",
-          "text": " — the HTTP library you've probably used in every project this term — was compromised. Two malicious versions were published to npm using a stolen maintainer token.",
+          "text": " — the HTTP library you may have used in some projects — was compromised. Two malicious versions were published to npm using a stolen maintainer token.",
           "styles": {}
         }
       ],
