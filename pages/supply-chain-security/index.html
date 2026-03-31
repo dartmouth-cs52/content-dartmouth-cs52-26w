@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 85%;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+      background-color: #FBF3DB;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 1.5rem;
+      background-color: #DDEBF1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    h3 { font-size: 1.25em; margin-top: 1rem; }
+    /* Heading block wrappers */
+    .heading-block { margin: 0; padding: 0; }
+    .heading-block h1, .heading-block h2, .heading-block h3 { margin-top: 0; }
+    .h1-block { margin-top: 2rem; }
+    .h2-block { margin-top: 1.5rem; }
+    .h3-block { margin-top: 1rem; }
+    p { margin-bottom: 1em; font-size: 16px; }
+    ul, ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+      list-style-position: outside;
+    }
+    ul { list-style-type: disc; }
+    ol { list-style-type: decimal; }
+    li {
+      margin-bottom: 0.25em;
+      display: list-item;
+      font-size: 16px;
+    }
+    ul ul, ol ul { list-style-type: circle; }
+    ul ul ul, ol ul ul { list-style-type: square; }
+    ol ol { list-style-type: lower-alpha; }
+    ol ol ol { list-style-type: lower-roman; }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 100%;
+    }
+    /* Code block with header and line numbers */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .code-block .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: #161616;
+      border-bottom: 1px solid #333;
+    }
+    .code-block .code-lang {
+      color: #9ca3af;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .code-block .code-body {
+      display: flex;
+      padding: 1rem 0;
+    }
+    .code-block .line-numbers {
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 0 1rem;
+      text-align: right;
+      user-select: none;
+      color: #6b7280;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .code-block .line-numbers .line-number {
+      display: block;
+    }
+    .code-block pre {
+      flex: 1;
+      background: transparent;
+      margin: 0;
+      padding: 0 1rem 0 0;
+      overflow-x: auto;
+    }
+    .code-block pre code {
+      color: #d4d4d4;
+      font-size: 1rem;
+      line-height: 1.625;
+    }
+    .terminal-block {
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .terminal-block .terminal-header {
+      background: linear-gradient(180deg, #3c3c3c 0%, #2d2d2d 100%);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .terminal-block .terminal-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .terminal-block .terminal-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-block .terminal-dots span:nth-child(1) { background: #ff5f57; }
+    .terminal-block .terminal-dots span:nth-child(2) { background: #febc2e; }
+    .terminal-block .terminal-dots span:nth-child(3) { background: #28c840; }
+    .terminal-block .terminal-title {
+      flex: 1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 60px;
+    }
+    .terminal-block pre {
+      background: transparent;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .terminal-block pre code {
+      background: transparent;
+      color: #d1d5db;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    .terminal-block .terminal-prompt {
+      color: #4ade80;
+      user-select: none;
+    }
+    blockquote {
+      border-left: 4px solid #ddd;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #666;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .image-block {
+      margin: 1em 0;
+      padding: 0;
+    }
+    .image-block img {
+      display: block;
+    }
+    .image-align-center {
+      text-align: center;
+    }
+    .image-align-center img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .callout {
+      background: #f7f6f3;
+      padding: 1em;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.75em;
+      margin-bottom: 1em;
+    }
+    .callout-emoji {
+      font-size: 1.25em;
+    }
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+      margin-bottom: 1em;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .alert-info {
+      background: #dbeafe;
+      border-left-color: #3b82f6;
+    }
+    .alert-warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    .alert-error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    .alert-success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .alert-note {
+      background: #f3f4f6;
+      border-left-color: #6b7280;
+    }
+    .alert::before {
+      content: '';
+      font-size: 1.25em;
+    }
+    .alert-info::before { content: '💡'; }
+    .alert-warning::before { content: '⚠️'; }
+    .alert-error::before { content: '🚨'; }
+    .alert-success::before { content: '✅'; }
+    .alert-note::before { content: '📌'; }
+    .checklist-item {
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+      margin-bottom: 0.5em;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.375rem;
+      width: 1rem;
+      height: 1rem;
+      cursor: not-allowed;
+    }
+    .checklist-item input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .file-tree {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .file-tree::before {
+      content: attr(data-title);
+      display: block;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .file-tree pre {
+      background: transparent;
+      color: #374151;
+      margin: 0;
+      padding: 1rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .columns {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1em;
+    }
+    .columns[data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns[data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .columns[data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .column {
+      min-height: 50px;
+    }
+    @media (max-width: 768px) {
+      .columns {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="heading-block h1-block"><h1>Supply Chain Security</h1></div>
+
+<p>Every time you run <code>npm install</code>, you're trusting thousands of strangers to not run malicious code on your machine. Today that trust got violated — again.</p>
+
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">What Just Happened</h2></div>
+
+<div class="alert alert-error" data-type="error"><span>On March 31, 2026, <strong>Axios</strong> — the HTTP library you've probably used in every project this term — was compromised. Two malicious versions were published to npm using a stolen maintainer token.</span></div>
+
+<p>Here's the timeline:</p>
+<ul>
+<li>An attacker stole a long-lived npm access token from the primary Axios maintainer</li>
+<li>They published <code>axios@1.14.1</code> and <code>axios@0.30.4</code> — both containing a new dependency called <code>plain-crypto-js</code></li>
+<li>That dependency was never imported anywhere in the Axios source code. It existed for one reason: to run a <code>postinstall</code> script</li>
+<li>The script downloaded a platform-specific RAT (remote access trojan) for macOS, Windows, or Linux — then <strong>deleted itself</strong> to cover its tracks</li>
+<li><a href="https://socket.dev">Socket</a> detected the malicious package <strong>6 minutes</strong> after publication</li>
+</ul>
+
+<p>Axios has over 100 million weekly downloads. This is the third major npm supply chain attack in six months.</p>
+
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">How <code>npm install</code> Can Attack You</h2></div>
+
+<p>You've run <code>npm install</code> hundreds of times by now. But do you know what it actually does beyond downloading packages?</p>
+
+<p>Any npm package can define <strong>lifecycle scripts</strong> in its <code>package.json</code>. The most common one is <code>postinstall</code> — a command that runs automatically right after the package is downloaded. No prompt, no confirmation, no sandbox. It runs with <strong>your full user permissions</strong>.</p>
+
+<p>Here's what a malicious <code>package.json</code> looks like:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">JSON</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span><span class="line-number">4</span><span class="line-number">5</span><span class="line-number">6</span></div><pre><code>{
+  "name": "plain-crypto-js",
+  "version": "4.2.1",
+  "scripts": {
+    "postinstall": "node setup.js"
+  }
+}</code></pre></div></div>
+
+<p>That's it. That's the whole attack surface. When npm installs this package, it runs <code>node setup.js</code> — which can do literally anything your user account can do. Read files, open network connections, install backdoors, exfiltrate tokens.</p>
+
+<p>And here's the thing that makes this really dangerous: <strong>transitive dependencies</strong>. You chose to install Axios. But npm also installs everything Axios depends on, and everything <em>those</em> packages depend on. A typical project has hundreds of transitive dependencies you never explicitly chose. Any one of them can run a <code>postinstall</code> script.</p>
+
+<div class="callout"><span class="callout-emoji">❓</span><span>So why does this feature exist? Packages like <code>esbuild</code>, <code>sharp</code>, <code>bcrypt</code>, and <code>prisma</code> use <code>postinstall</code> to compile native binaries or download platform-specific assets. It's a legitimate feature that attackers exploit. Vite depends on esbuild, so yes — your CS52 projects use <code>postinstall</code> legitimately.</span></div>
+
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">This Keeps Happening</h2></div>
+
+<p>The Axios compromise isn't a one-off. This has been the dominant attack pattern in the JavaScript ecosystem for the past year:</p>
+
+<table>
+<thead><tr><th>When</th><th>What</th><th>Impact</th></tr></thead>
+<tbody>
+<tr><td>Aug 2025</td><td><strong>Nx</strong> — stolen publishing token via GitHub Actions</td><td>Credential stealer exfiltrated 2,000+ secrets</td></tr>
+<tr><td>Sep 2025</td><td><strong>Chalk / Debug</strong> — maintainer phished via fake npmjs.help domain</td><td>2B+ weekly downloads, crypto wallet theft</td></tr>
+<tr><td>Sep 2025</td><td><strong>Shai-Hulud</strong> — first self-propagating npm worm</td><td>500+ packages infected, harvested npm/GitHub/cloud credentials</td></tr>
+<tr><td>Dec 2025</td><td><strong>Shai-Hulud 3.0</strong> — evolved with automated self-publishing</td><td>187 packages, cross-platform malware</td></tr>
+<tr><td>Feb 2026</td><td><strong>Cline CLI</strong> — compromised token, postinstall dropper</td><td>~4,000 downloads in 8 hours</td></tr>
+<tr><td>Mar 2026</td><td><strong>Axios</strong> — stolen maintainer token, RAT via postinstall</td><td>100M+ weekly downloads</td></tr>
+</tbody>
+</table>
+
+<p>Notice the pattern: stolen credentials → malicious publish → postinstall payload → your machine is compromised. Same playbook every time.</p>
+
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Protect Your Dev Machine</h2></div>
+
+<p>Ok, scary stuff. But this is fixable. Here's what to set up — it takes about 5 minutes and you only do it once.</p>
+
+<div class="heading-block h3-block"><h3>Install Socket Firewall (<code>sfw</code>)</h3></div>
+
+<p>Socket is the company that caught the Axios attack in 6 minutes. They make a free tool called <code>sfw</code> (Socket Firewall) that acts as a security proxy between npm and the package registry. Every package gets checked against Socket's malware database <strong>before it reaches your machine</strong>.</p>
+
+<p>🚀 Install it globally:</p>
+
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">npm i -g sfw</code></pre></div>
+
+<p>🚀 Add this alias to your <code>~/.zshrc</code> so every <code>npm</code> command routes through Socket automatically:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">bash</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span><span class="line-number">2</span><span class="line-number">3</span></div><pre><code># Socket Firewall — npm supply chain protection
+alias npm="sfw npm"
+alias npx="sfw npx"</code></pre></div></div>
+
+<p>🚀 Reload your shell:</p>
+
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash">source ~/.zshrc</code></pre></div>
+
+<p>That's it. No account, no API key, no config files. From now on, every <code>npm install</code> checks packages against Socket's database first. If it finds known malware, the install is blocked. If it detects something suspicious but unconfirmed, you get a warning.</p>
+
+<div class="alert alert-info" data-type="info"><span><code>sfw</code> also works with <code>yarn</code>, <code>pnpm</code>, and even <code>pip</code> for Python projects. <a href="https://github.com/SocketDev/sfw-free">GitHub repo here</a>.</span></div>
+
+<div class="heading-block h3-block"><h3>Lock Your Dependencies</h3></div>
+
+<p>Your <code>package-lock.json</code> file records the exact version of every package (including transitive dependencies) that was installed. This matters because without it, <code>npm install</code> can quietly resolve to newer versions you never vetted — like, say, a freshly compromised <code>axios@1.14.1</code>.</p>
+
+<p>Two rules:</p>
+
+<p>🚀 <strong>Always commit <code>package-lock.json</code> to git.</strong> If it's in your <code>.gitignore</code>, remove it.</p>
+
+<p>🚀 <strong>Use <code>npm ci</code> instead of <code>npm install</code></strong> when cloning a repo or setting up CI. It installs exactly what's in the lockfile — no resolution, no surprises.</p>
+
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># when you clone a project or set up CI:
+npm ci
+
+# NOT npm install — which can resolve newer (potentially compromised) versions</code></pre></div>
+
+<div class="heading-block h3-block"><h3>Advanced: Disable Lifecycle Scripts</h3></div>
+
+<p>For extra hardening, you can tell npm to never run <code>postinstall</code> scripts by default. This is the nuclear option — it blocks the attack vector entirely, but it also breaks packages that legitimately need it.</p>
+
+<p>🚀 Set the global default in <code>~/.npmrc</code>:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">ini</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code>ignore-scripts=true</code></pre></div></div>
+
+<p>🚀 Then in any project that needs lifecycle scripts (like your CS52 Vite projects), add a local <code>.npmrc</code> in the project root:</p>
+
+<div class="code-block"><div class="code-header"><span class="code-lang">ini</span></div><div class="code-body"><div class="line-numbers"><span class="line-number">1</span></div><pre><code>ignore-scripts=false</code></pre></div></div>
+
+<div class="alert alert-warning" data-type="warning"><span>This <strong>will break</strong> <code>npm install</code> for projects using esbuild (Vite), sharp, bcrypt, Puppeteer, or Prisma — because those packages need <code>postinstall</code> to download native binaries. That's why the per-project <code>.npmrc</code> override exists. If you're not sure, just use <code>sfw</code> — it gives you protection without breaking your build.</span></div>
+
+<div class="heading-block h3-block"><h3>A Note on pnpm</h3></div>
+
+<p>Since version 10, <a href="https://pnpm.io">pnpm</a> blocks lifecycle scripts by default. Instead of trusting everything, it uses an explicit allowlist (<code>pnpm.onlyBuiltDependencies</code> in <code>package.json</code>) where you opt in to specific packages that need <code>postinstall</code>. This is the right model — secure by default, opt-in to trust.</p>
+
+<p>We're not switching package managers mid-course, but if you're starting a new project or setting up something for DALI, pnpm is worth considering. <a href="https://socket.dev/blog/pnpm-10-0-0-blocks-lifecycle-scripts-by-default">Socket wrote a good overview of why this matters</a>.</p>
+
+<div class="heading-block h2-block" data-bg-color="#FBF3DB"><h2 style="background-color: #FBF3DB">Protect Your Team Repos</h2></div>
+
+<p>The steps above protect your dev machine. For team projects — CS52 final projects, DALI apps, anything with shared repos — you also want automated scanning.</p>
+
+<p><strong>Dependabot</strong> — free, built into GitHub. It opens PRs when known vulnerabilities are found in your dependencies. 🚀 Enable it in your repo's Settings → Security → Dependabot. It won't catch zero-days like the Axios attack (those aren't in the CVE database yet), but it handles the long tail of known vulnerabilities.</p>
+
+<p><strong>Socket for GitHub</strong> — a <a href="https://github.com/apps/socket-security">GitHub App</a> that scans PRs for suspicious dependency changes. It catches things Dependabot can't — like a new dependency that makes network calls from a <code>postinstall</code> script. Free tier gives you unlimited repos with 1,000 scans/month.</p>
+
+<p><strong>Review lockfile diffs</strong> — when a PR changes <code>package-lock.json</code>, actually look at what changed. A new transitive dependency appearing out of nowhere is a red flag.</p>
+
+<div class="heading-block h2-block" data-bg-color="#FBE4E4"><h2 style="background-color: #FBE4E4">If You Think You're Affected</h2></div>
+
+<p>If you ran <code>npm install</code> on a project that depends on Axios in the last 24 hours, here's how to check:</p>
+
+<p>🚀 Check if the malicious package exists in your project:</p>
+
+<div class="terminal-block"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-title">Terminal</span></div><pre><code class="language-bash"># check if the malicious dependency is present
+npm ls plain-crypto-js
+
+# also check the directory directly
+ls node_modules/plain-crypto-js/ 2>/dev/null && echo "⚠️ FOUND" || echo "✅ Not found"</code></pre></div>
+
+<p>🚀 If found — or if you're not sure:</p>
+
+<div class="checklist-item"><input type="checkbox" disabled><span>Delete <code>node_modules</code> and reinstall: <code>rm -rf node_modules && npm ci</code></span></div>
+<div class="checklist-item"><input type="checkbox" disabled><span>Clear your npm cache: <code>npm cache clean --force</code></span></div>
+<div class="checklist-item"><input type="checkbox" disabled><span>Update Axios to the latest clean version: <code>npm install axios@latest</code></span></div>
+<div class="checklist-item"><input type="checkbox" disabled><span>Check for the macOS RAT payload: <code>ls /Library/Caches/com.apple.act.mond 2>/dev/null</code></span></div>
+<div class="checklist-item"><input type="checkbox" disabled><span>Rotate any tokens or secrets that were on the machine — npm, GitHub, AWS, database credentials</span></div>
+<div class="checklist-item"><input type="checkbox" disabled><span>If you find the RAT payload, wipe and reinstall the OS. Seriously.</span></div>
+
+<div class="heading-block h2-block" data-bg-color="#DDEBF1"><h2 style="background-color: #DDEBF1">Further Reading</h2></div>
+
+<ul>
+<li><a href="https://socket.dev/blog/axios-npm-package-compromised">Socket: Axios Supply Chain Attack Analysis</a> — the most detailed technical breakdown</li>
+<li><a href="https://docs.socket.dev/docs/socket-firewall-free">Socket Firewall Free docs</a> — setup and how it works under the hood</li>
+<li><a href="https://socket.dev/blog/pnpm-10-0-0-blocks-lifecycle-scripts-by-default">pnpm 10 blocks lifecycle scripts by default</a> — why secure-by-default matters</li>
+<li><a href="https://www.nodejs-security.com/blog/npm-ignore-scripts-best-practices-as-security-mitigation-for-malicious-packages">npm ignore-scripts best practices</a> — deep dive on the ignore-scripts approach</li>
+</ul>
+
+</body>
+</html>
